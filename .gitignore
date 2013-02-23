@@ -1,0 +1,11 @@
+ipch/*
+*.pdb
+*.opensdf
+*.tlog
+*.unsuccessfulbuild
+*.pch
+*.log
+*.obj
+*.lastbuildstate
+*.ilk
+x64/Debug/ProjectSpaceshooter.exe
