@@ -1,4 +1,6 @@
 ipch/*
+*.obj
+*.exe
 *.pdb
 *.opensdf
 *.tlog
@@ -8,4 +10,12 @@ ipch/*
 *.obj
 *.lastbuildstate
 *.ilk
-x64/Debug/ProjectSpaceshooter.exe
+*.ipch
+*.suo
+*.sdf
+[Dd]ebug*/
+[Rr]elease*/
+x64/*
+ProjectSpaceshooter/x64/*
+ProjectSpaceshooter/Debug/*
+ProjectSpaceshooter/Release/*
