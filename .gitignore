@@ -16,6 +16,6 @@ ipch/*
 [Dd]ebug*/
 [Rr]elease*/
 x64/*
-# ProjectSpaceshooter/x64/*
+ProjectSpaceshooter/x64/*
 ProjectSpaceshooter/Debug/*
 ProjectSpaceshooter/Release/*
