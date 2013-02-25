@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="ac42403f-8882-4c6e-8ca0-36e6015a1a77" name="GameState" linkedPackageId="a3926857-9c78-4d6b-99a3-8e985a4b69ad" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <profileInstances>
+    <packageHasProfileInstances Id="6e3ae6e3-203d-4ee8-abc7-eeceb62a9f4b">
+      <profileInstance Id="b24cfd36-83bd-4de7-897f-631d5e9c0caa" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="5bedfd8c-694a-46fe-8449-460a0ac08386">
+      <profileInstance Id="d8c5bcb0-8096-4a82-b17f-ab4a00a7e3df" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="add797f1-2e8c-46e9-9f06-0d703417875f" name="GameState" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="dd450488-a4c2-4a01-a2f2-3e765998f35e" />
+        <ownedOperationsInternal>
+          <operation Id="bb4e5ec3-4e07-4a0d-87aa-1974791ddfdb" name="Update" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="5b7ff3b1-8c48-481c-9be3-a1a38f1677de" />
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="b4506a09-b593-4f50-a317-9c3223ed9881" name="PlayState" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="48426f6c-bc9f-474e-8d43-39bb1fc2bd8b" />
+        <generalsInternal>
+          <generalization Id="4dc347a7-17a0-41a8-8039-df132c765599" isSubstitutable="false">
+            <classMoniker Id="add797f1-2e8c-46e9-9f06-0d703417875f" LastKnownName="GameState" />
+            <elementDefinition Id="8503fec8-837a-46e5-bb27-8329b3af08f0" />
+          </generalization>
+        </generalsInternal>
+        <targetEnds>
+          <association Id="dbc08870-937d-4c88-b2b4-0fe2e22e518c" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <classMoniker Id="a036c511-0d31-4fbb-86b2-8c16f93cf309" LastKnownName="Game" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="b0e34e77-a0a1-4b67-8aaf-57fadd955d25" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="2d4b7b67-992a-452e-9bc8-94e3008facc5" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="49e7eec5-e89b-4c5f-b32c-42a5c09df4dd" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                  <elementDefinition Id="a27c711d-0025-4830-bc71-7692f6df3e37" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="3bce0baf-4907-4612-a387-a9b8f88f40c4" />
+          </association>
+        </targetEnds>
+        <ownedOperationsInternal>
+          <operation Id="ef359241-7d26-4ac1-9ae0-586483fb026f" name="Update" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="fb749ec3-c2e3-48e1-8b90-a10b978c6268" />
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="7d2d8b6b-ed09-48ac-8125-f60d90fe959d" name="PausedState" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="85578699-cb45-4ad1-8bac-d38bb7cf874f" />
+        <generalsInternal>
+          <generalization Id="a6831530-1f9e-4e74-8f0c-488d6fe442bb" isSubstitutable="false">
+            <classMoniker Id="add797f1-2e8c-46e9-9f06-0d703417875f" LastKnownName="GameState" />
+            <elementDefinition Id="c8c86570-f01f-4421-9e47-b21a7154fb00" />
+          </generalization>
+        </generalsInternal>
+        <targetEnds>
+          <association Id="860fed44-94b5-4109-9e47-ecf74f899803" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <classMoniker Id="a036c511-0d31-4fbb-86b2-8c16f93cf309" LastKnownName="Game" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="40b00b46-2265-4bc4-8569-1845dc84da21" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="886f1621-46c1-4c27-88e5-228d91e20c11" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="c16ce813-5a1d-4c5e-aae9-919f4adf6a36" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                  <elementDefinition Id="8dc904d4-8044-458f-84f3-21a864bd02ea" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="541b09a6-7f8c-4dbe-aacb-38e0c528bb5e" />
+          </association>
+        </targetEnds>
+        <ownedOperationsInternal>
+          <operation Id="cfa01cac-a0fa-4071-a158-02a41c54844c" name="Update" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="d68884fd-591d-4897-bbdc-51f1fc889391" />
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="0139aab6-5882-4a0b-a4a9-cb208853f993" name="HangarState" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="a1d9901d-8f78-4c4e-8da7-ee05176068b1" />
+        <generalsInternal>
+          <generalization Id="340f3cd9-fd96-4b4f-bf40-af8c0c5358e4" isSubstitutable="false">
+            <classMoniker Id="add797f1-2e8c-46e9-9f06-0d703417875f" LastKnownName="GameState" />
+            <elementDefinition Id="18e92957-e232-42df-8a67-f4cc710356e1" />
+          </generalization>
+        </generalsInternal>
+        <targetEnds>
+          <association Id="281d6b9d-75bc-4666-83b3-5317c0d1b547" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <classMoniker Id="a036c511-0d31-4fbb-86b2-8c16f93cf309" LastKnownName="Game" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="01196f36-ddb1-4e6b-a698-057e38f235a4" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="f0764f9f-826a-4baa-a9f7-92075bbc09bb" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="49a31834-e4c0-4436-957a-5ffe34ba06bd" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                  <elementDefinition Id="bfa25a67-c51b-4091-b1a1-5f64f06041f7" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="31445de6-4095-42d5-86d7-3004787b9398" />
+          </association>
+        </targetEnds>
+        <ownedOperationsInternal>
+          <operation Id="35cb8513-e314-43d2-92a3-305f9bb975b0" name="Update" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="416f7071-57d0-4743-9168-857efa13e404" />
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="a9fe7ea8-e3c9-4696-8756-308cc8002424" name="MainStateState" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="e9978860-49c6-4865-9c7c-8a7941be3ec5" />
+        <generalsInternal>
+          <generalization Id="3b966795-aa63-4a0a-9541-d518fe9bcf4e" isSubstitutable="false">
+            <classMoniker Id="add797f1-2e8c-46e9-9f06-0d703417875f" LastKnownName="GameState" />
+            <elementDefinition Id="6c44d363-3f0a-4a08-9ff5-e1ebaa2bf65a" />
+          </generalization>
+        </generalsInternal>
+        <targetEnds>
+          <association Id="7d91c382-a471-4913-adba-12a37c2b7e53" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <classMoniker Id="a036c511-0d31-4fbb-86b2-8c16f93cf309" LastKnownName="Game" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="8cf2ce75-e5bd-44d3-bd4e-d3cef54d0e85" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="460cde34-efb0-49c1-88c8-f9439b181a4c" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="5c756919-1a2b-446b-adca-cb8952eeeb64" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                  <elementDefinition Id="d9506915-ad59-4690-b4ad-42f306001fd1" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="9a98a4c8-06d8-4bb2-80f9-dedbc398c117" />
+          </association>
+        </targetEnds>
+        <ownedOperationsInternal>
+          <operation Id="9b9263ad-adef-4641-80b6-be100c473e07" name="Update" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="c898a41d-0a3f-4ae9-a06d-b221ec34ee6e" />
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="a036c511-0d31-4fbb-86b2-8c16f93cf309" name="Game" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="9daac43f-e2a6-4e63-b9f4-8ce148ab040a" />
+        <ownedAttributesInternal>
+          <property Id="9627d892-1e13-4351-b310-f4afb2e1891d" name="GameState* activeState" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="316ceb8e-02a0-4308-8e7b-6292e19f340b" />
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation Id="eb1ad62c-e4d5-4d9e-a735-7dbbe72a32a0" name="Run" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="9429ff46-784b-4e5d-84bd-d62eb5ce8b27" />
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+  </packagedElements>
+  <package Id="a3926857-9c78-4d6b-99a3-8e985a4b69ad" name="Game">
+    <elementDefinition Id="c740e44f-ee98-465f-b0b1-16ebcaa32fc9" />
+  </package>
+</logicalClassDesignerModel>
