@@ -3,6 +3,22 @@
   dslVersion="1.0.0.0"
   Id="c740e44f-ee98-465f-b0b1-16ebcaa32fc9"
   name="Game" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <ownedCommentsInternal>
+    <comment
+      Id="b7ee4107-1077-4010-9d75-24948b928716">
+      <body>Componenty  zawierają dane związane z jakimś systemem związane z każdym 
+poszczególnym gameobjectem</body>
+    </comment>
+    <comment
+      Id="b606dc15-9bb8-4fee-8152-ff039fc831d8">
+      <body>Są 2 opcje 
+- componenty to składowe klasy GameObject, dziedziczone potem dalej
+
+- Każdemu potomnemu GameObjectowi przypisane są componenty
+
+</body>
+    </comment>
+  </ownedCommentsInternal>
   <profileInstances>
     <packageHasProfileInstances
       Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b">
@@ -542,6 +558,299 @@
             concurrency="Sequential"
             isQuery="false" />
         </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="1241c72d-f35a-46ae-bda7-00f6d1162313"
+        name="GameObject"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <targetEnds>
+          <association
+            Id="02232074-b269-42ab-91aa-5b8c049c0662"
+            isDerived="false"
+            sourceEndRoleName=""
+            targetEndRoleName=""
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="33a5e1a5-0741-4814-898e-77549ef0aebc"
+              LastKnownName="GameObjectsCollection"
+              LastKnownLocation="Game.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="3d18385d-7e1b-462a-a108-4e0873076363"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Composite"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="efde1ccd-3207-4a13-88af-77ba94a48d9e"
+                      name="Lower"
+                      value="n" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="da1a6459-dd7a-421f-9b77-804b7805f5f3"
+                      name="Upper"
+                      value="n" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="c6cb879d-c168-4e0d-91ad-0c68f75dd7c2"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="true" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="33a5e1a5-0741-4814-898e-77549ef0aebc"
+        name="GameObjectsCollection"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="79c99567-fa98-417f-8691-8f3cb1a287cd"
+        name="TransfomDataComponent"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <targetEnds>
+          <association
+            Id="a95cbf47-aa9d-4412-bad5-3a7dd6d8adbf"
+            isDerived="false"
+            sourceEndRoleName=""
+            targetEndRoleName=""
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="1241c72d-f35a-46ae-bda7-00f6d1162313"
+              LastKnownName="GameObject"
+              LastKnownLocation="Game.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="20d38d46-a8c4-4bd4-8001-16cc7969e2f5"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Composite"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="3cdefe6d-292a-4b73-a9ff-01c1ac759361"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="true" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property
+            Id="340e94b9-422a-49ba-a8e2-0546119a68fc"
+            name="Vector translation"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+          <property
+            Id="0b64dac7-ab21-481f-9038-0a9cc8a280a9"
+            name="Vector rotation"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+        </ownedAttributesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="535e23ce-d792-4fa7-8ea7-5e8203e43748"
+        name="GraphicsComponent"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <targetEnds>
+          <association
+            Id="0507e778-533b-43a0-a8c0-32d246778359"
+            isDerived="false"
+            sourceEndRoleName=""
+            targetEndRoleName=""
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="1241c72d-f35a-46ae-bda7-00f6d1162313"
+              LastKnownName="GameObject"
+              LastKnownLocation="Game.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="d6dc7362-038c-4894-8866-3902f65420de"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Composite"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="3f283c33-7ae4-4e65-9af2-3785cc7a613a"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="true" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="f8354af0-edcf-4489-96d1-4c9fb3abac41"
+        name="PhysicsComponent"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <targetEnds>
+          <association
+            Id="07175e57-f35b-4700-b02f-f6559d5d158d"
+            isDerived="false"
+            sourceEndRoleName=""
+            targetEndRoleName=""
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="1241c72d-f35a-46ae-bda7-00f6d1162313"
+              LastKnownName="GameObject"
+              LastKnownLocation="Game.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="47cbf58d-c472-4228-a474-a91373282de1"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Composite"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="e634b8a4-6e67-4daa-a9c9-dec991f7c0a8"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="true" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property
+            Id="382e93cf-f6de-4043-900f-df71779abcc7"
+            name="Collider"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+          <property
+            Id="c1cc5387-347d-4b39-8b39-1fa64400b763"
+            name="Vector velocity"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+        </ownedAttributesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="4400e1a2-dcae-414c-bdff-b969ee9565a6"
+        name="OgreGraphicsComponent"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <generalsInternal>
+          <generalization
+            Id="114ec878-2bdd-40f1-bb96-2cf88e06f759"
+            isSubstitutable="false">
+            <classMoniker
+              Id="535e23ce-d792-4fa7-8ea7-5e8203e43748"
+              LastKnownName="GraphicsComponent"
+              LastKnownLocation="Game.uml" />
+          </generalization>
+        </generalsInternal>
+        <ownedAttributesInternal>
+          <property
+            Id="5112643c-6b61-4057-b29d-ccc93d619202"
+            name="Ogre::Node mNode"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+        </ownedAttributesInternal>
       </class>
     </packageHasNamedElement>
   </packagedElements>

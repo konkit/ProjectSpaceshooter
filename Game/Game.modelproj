@@ -30,6 +30,13 @@
       <SubType>Content</SubType>
       <DependentUpon>GameDiagram.classdiagram</DependentUpon>
     </Content>
+    <Content Include="GameObjectComponents.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="GameObjectComponents.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>GameObjectComponents.classdiagram</DependentUpon>
+    </Content>
     <Content Include="GameState.classdiagram">
       <SubType>Content</SubType>
     </Content>
