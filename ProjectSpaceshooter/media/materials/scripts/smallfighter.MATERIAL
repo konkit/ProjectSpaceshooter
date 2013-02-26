@@ -1,0 +1,23 @@
+material "\smallfighter.MESH/small_fighter_1"
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.588 0.588 0.588 0
+			diffuse 0.588 0.588 0.588 0
+			specular 0 0 0 0
+			emissive 0 0 0
+
+			texture_unit
+			{
+				texture small_fighter_1_color.jpg
+				tex_coord_set 0
+				colour_op modulate
+				scale 1 1
+				scroll 0 0
+				rotate 0
+			}
+		}
+	}
+}

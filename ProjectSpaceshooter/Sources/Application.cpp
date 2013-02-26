@@ -84,9 +84,9 @@ bool Application::run()
 	// Create the camera
 	mCamera = mSceneMgr->createCamera("PlayerCam");
 		// Position it at 80 in Z direction
-		mCamera->setPosition(Ogre::Vector3(0,0,80));
+		mCamera->setPosition(Ogre::Vector3(0,15,-50));
 		// Look back along -Z
-		mCamera->lookAt(Ogre::Vector3(0,0,-300));
+		mCamera->lookAt(Ogre::Vector3(0,5,0));
 		mCamera->setNearClipDistance(5);
 	
 	// Create one viewport, entire window
@@ -100,13 +100,13 @@ bool Application::run()
 /////////////////////////////////////////////////////////////////
 //		Setup scene
 ///////////////////////////////////////////////////////////////////
-	Ogre::Entity* ogreHead = mSceneMgr->createEntity("Head", "ogrehead.mesh");
+	Ogre::Entity* ogreHead = mSceneMgr->createEntity("Head", "smallfighter.MESH");
  
 	Ogre::SceneNode* headNode = mSceneMgr->getRootSceneNode()->createChildSceneNode();
 	headNode->attachObject(ogreHead);
  
 	// Set ambient light
-	mSceneMgr->setAmbientLight(Ogre::ColourValue(0.5, 0.5, 0.5));
+	mSceneMgr->setAmbientLight(Ogre::ColourValue(0.7, 0.7, 0.7));
  
 	// Create a light
 	Ogre::Light* l = mSceneMgr->createLight("MainLight");
