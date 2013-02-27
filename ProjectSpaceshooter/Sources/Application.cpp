@@ -120,9 +120,12 @@ bool Application::frameRenderingQueued(const Ogre::FrameEvent& evt)
     //Need to capture/update each device
     mKeyboard->capture();
     mMouse->capture();
- 
-    if(mKeyboard->isKeyDown(OIS::KC_ESCAPE))
-        return false;
+
+	if(updateInput(evt)==false)
+		return false;
+
+	mCamera->setPosition(Ogre::Vector3(camX, camY, camZ));
+
  
 	return true;
 }
@@ -139,6 +142,10 @@ void Application::initScene()
 		// Look back along -Z
 		mCamera->lookAt(Ogre::Vector3(0,5,0));
 		mCamera->setNearClipDistance(5);
+
+		camX = 0;
+		camY = 15;
+		camZ = -50;
 	
 	// Create one viewport, entire window
 	Ogre::Viewport* vp = mWindow->addViewport(mCamera);
@@ -222,3 +229,31 @@ void Application::initOIS()
 
  
 
+bool Application::updateInput(const Ogre::FrameEvent& evt)
+{
+	 
+    if(mKeyboard->isKeyDown(OIS::KC_ESCAPE))
+        return false;
+
+	if(mKeyboard->isKeyDown(OIS::KC_W) )
+	{
+		camZ += 10 * evt.timeSinceLastFrame;
+	}
+
+	if(mKeyboard->isKeyDown(OIS::KC_S) )
+	{
+		camZ -= 10 * evt.timeSinceLastFrame;
+	}
+
+	if(mKeyboard->isKeyDown(OIS::KC_A) )
+	{
+		camX += 10 * evt.timeSinceLastFrame;
+	}
+
+	if(mKeyboard->isKeyDown(OIS::KC_D) )
+	{
+		camX -= 10 * evt.timeSinceLastFrame;
+	}
+
+	return true;
+}

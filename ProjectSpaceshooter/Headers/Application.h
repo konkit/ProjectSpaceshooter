@@ -10,11 +10,14 @@ public:
 
 	bool run();
 
+	float camX, camY, camZ;
+
 private:
 	//Functions in init sequence
 	void initScene();
 	void setScene();
 	void initOIS();
+	bool updateInput(const Ogre::FrameEvent& evt);
 
 	//Root object of Ogre
 	Ogre::Root* mRoot;
