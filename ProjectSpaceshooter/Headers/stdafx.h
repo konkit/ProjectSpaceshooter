@@ -16,3 +16,8 @@
 #include <OgreWindowEventUtilities.h>
 
 #include <OgreException.h>
+
+#include <OISEvents.h>
+#include <OISInputManager.h>
+#include <OISKeyboard.h>
+#include <OISMouse.h>

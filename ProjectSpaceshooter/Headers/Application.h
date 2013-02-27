@@ -2,7 +2,7 @@
 #define __SPACESHOOTER_APPLICATION__
 
 
-class Application
+class Application : public Ogre::WindowEventListener, public Ogre::FrameListener
 {
 public:
 	Application();
@@ -11,10 +11,13 @@ public:
 	bool run();
 
 private:
+	//Functions in init sequence
+	void initScene();
+	void setScene();
+	void initOIS();
+
 	//Root object of Ogre
 	Ogre::Root* mRoot;
-	//Name of file with plugins
-    Ogre::String mPluginsCfg;
 	//Name of file with resources
 	Ogre::String mResourcesCfg;
 	//Render window object
@@ -23,8 +26,19 @@ private:
 	//Ogre Scene Manager
 	Ogre::SceneManager* mSceneMgr;
 	Ogre::Camera* mCamera;
-
 	Ogre::GLPlugin* mGLPlugin;
+
+	// OIS Input devices
+	OIS::InputManager* mInputManager;
+	OIS::Mouse*    mMouse;
+	OIS::Keyboard* mKeyboard;
+
+	// Ogre::WindowEventListener
+    virtual void windowResized(Ogre::RenderWindow* rw);
+    virtual void windowClosed(Ogre::RenderWindow* rw);
+ 
+    // Ogre::FrameListener
+    virtual bool frameRenderingQueued(const Ogre::FrameEvent& evt);
 
 };
 

@@ -1,8 +1,7 @@
 #include "Application.h"
 
 Application::Application() : 
-	mRoot(0),
-    mPluginsCfg(Ogre::StringUtil::BLANK) 
+	mRoot(0)
 {}
 
 Application::~Application()
@@ -75,42 +74,20 @@ bool Application::run()
 	// initialise all resource groups
 	Ogre::ResourceGroupManager::getSingleton().initialiseAllResourceGroups();
 
+//////////////////////////////////////////////////////////////
+//		Initialize input system and register addFrameListener
+//////////////////////////////////////////////////////////////
+	initOIS();
+
 ///////////////////////////////////////////////////////////////
 //		Create scene
 //////////////////////////////////////////////////////////////
-	// Create the SceneManager, in this case a generic one
-	mSceneMgr = mRoot->createSceneManager("DefaultSceneManager");
-
-	// Create the camera
-	mCamera = mSceneMgr->createCamera("PlayerCam");
-		// Position it at 80 in Z direction
-		mCamera->setPosition(Ogre::Vector3(0,15,-50));
-		// Look back along -Z
-		mCamera->lookAt(Ogre::Vector3(0,5,0));
-		mCamera->setNearClipDistance(5);
-	
-	// Create one viewport, entire window
-	Ogre::Viewport* vp = mWindow->addViewport(mCamera);
-		//Set Background color
-		vp->setBackgroundColour(Ogre::ColourValue(0,0,0));
-		// Alter the camera aspect ratio to match the viewport
-		mCamera->setAspectRatio(
-			Ogre::Real(vp->getActualWidth()) / Ogre::Real(vp->getActualHeight()));
+	initScene();
 
 /////////////////////////////////////////////////////////////////
 //		Setup scene
 ///////////////////////////////////////////////////////////////////
-	Ogre::Entity* ogreHead = mSceneMgr->createEntity("Head", "smallfighter.MESH");
- 
-	Ogre::SceneNode* headNode = mSceneMgr->getRootSceneNode()->createChildSceneNode();
-	headNode->attachObject(ogreHead);
- 
-	// Set ambient light
-	mSceneMgr->setAmbientLight(Ogre::ColourValue(0.7, 0.7, 0.7));
- 
-	// Create a light
-	Ogre::Light* l = mSceneMgr->createLight("MainLight");
-	l->setPosition(20,80,50);
+	setScene();
 
 /////////////////////////////////////////////////////////////////////////
 //		Render Loop
@@ -131,3 +108,117 @@ bool Application::run()
 
 	return true;
 }
+
+//Function which is running every frame
+//Derieved from FrameListener class
+//It is being run from mRoot->renderOneFrame()
+bool Application::frameRenderingQueued(const Ogre::FrameEvent& evt)
+{
+    if(mWindow->isClosed())
+        return false;
+ 
+    //Need to capture/update each device
+    mKeyboard->capture();
+    mMouse->capture();
+ 
+    if(mKeyboard->isKeyDown(OIS::KC_ESCAPE))
+        return false;
+ 
+	return true;
+}
+
+void Application::initScene()
+{
+	// Create the SceneManager, in this case a generic one
+	mSceneMgr = mRoot->createSceneManager("DefaultSceneManager");
+
+	// Create the camera
+	mCamera = mSceneMgr->createCamera("PlayerCam");
+		// Position it at 80 in Z direction
+		mCamera->setPosition(Ogre::Vector3(0,15,-50));
+		// Look back along -Z
+		mCamera->lookAt(Ogre::Vector3(0,5,0));
+		mCamera->setNearClipDistance(5);
+	
+	// Create one viewport, entire window
+	Ogre::Viewport* vp = mWindow->addViewport(mCamera);
+		//Set Background color
+		vp->setBackgroundColour(Ogre::ColourValue(0,0,0));
+		// Alter the camera aspect ratio to match the viewport
+		mCamera->setAspectRatio(
+			Ogre::Real(vp->getActualWidth()) / Ogre::Real(vp->getActualHeight()));
+}
+
+void Application::setScene()
+{
+	Ogre::Entity* ogreHead = mSceneMgr->createEntity("Head", "smallfighter.MESH");
+ 
+	Ogre::SceneNode* headNode = mSceneMgr->getRootSceneNode()->createChildSceneNode();
+	headNode->attachObject(ogreHead);
+ 
+	// Set ambient light
+	mSceneMgr->setAmbientLight(Ogre::ColourValue(0.7, 0.7, 0.7));
+ 
+	// Create a light
+	Ogre::Light* l = mSceneMgr->createLight("MainLight");
+	l->setPosition(20,80,50);
+}
+
+
+//Adjust mouse clipping area
+void Application::windowResized(Ogre::RenderWindow* rw)
+{
+    unsigned int width, height, depth;
+    int left, top;
+    rw->getMetrics(width, height, depth, left, top);
+ 
+    const OIS::MouseState &ms = mMouse->getMouseState();
+    ms.width = width;
+    ms.height = height;
+}
+ 
+//Unattach OIS before window shutdown (very important under Linux)
+void Application::windowClosed(Ogre::RenderWindow* rw)
+{
+    //Only close for window that created OIS (the main window in these demos)
+    if( rw == mWindow )
+    {
+        if( mInputManager )
+        {
+            mInputManager->destroyInputObject( mMouse );
+            mInputManager->destroyInputObject( mKeyboard );
+ 
+            OIS::InputManager::destroyInputSystem(mInputManager);
+            mInputManager = 0;
+        }
+    }
+}
+
+
+void Application::initOIS()
+{
+	Ogre::LogManager::getSingletonPtr()->logMessage("*** Initializing OIS ***");
+    OIS::ParamList pl;
+    size_t windowHnd = 0;
+    std::ostringstream windowHndStr;
+ 
+    mWindow->getCustomAttribute("WINDOW", &windowHnd);
+    windowHndStr << windowHnd;
+    pl.insert(std::make_pair(std::string("WINDOW"), windowHndStr.str()));
+ 
+    mInputManager = OIS::InputManager::createInputSystem( pl );
+ 
+    mKeyboard = static_cast<OIS::Keyboard*>(mInputManager->createInputObject( OIS::OISKeyboard, false ));
+    mMouse = static_cast<OIS::Mouse*>(mInputManager->createInputObject( OIS::OISMouse, false ));
+ 
+    //Set initial mouse clipping size
+    windowResized(mWindow);
+ 
+    //Register as a Window listener
+    Ogre::WindowEventUtilities::addWindowEventListener(mWindow, this);
+ 
+    mRoot->addFrameListener(this);
+}
+
+ 
+
