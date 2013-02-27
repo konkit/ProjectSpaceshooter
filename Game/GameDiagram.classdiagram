@@ -16,7 +16,7 @@
         <elementDefinition Id="c89fd99b-466c-45ad-a39b-c7a45617fe6a" />
         <targetEnds>
           <association Id="6b95a767-8eb4-434e-9db4-79e8bc8b57a1" isDerived="false" sourceEndRoleName="EnemysCollection" targetEndRoleName="GameObjects" isLeaf="false" isAbstract="false">
-            <classMoniker Id="b99a82b6-831b-40e4-8f7c-9f153ef31060" LastKnownName="GameObjects" />
+            <classMoniker Id="b99a82b6-831b-40e4-8f7c-9f153ef31060" LastKnownName="GameObjectsCollections" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd Id="bb643709-a6d0-4979-9777-ca8338030100" name="EnemysCollection" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
@@ -68,7 +68,7 @@
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
-      <class Id="b99a82b6-831b-40e4-8f7c-9f153ef31060" name="GameObjects" isAbstract="false" isLeaf="false" isActiveClass="false">
+      <class Id="b99a82b6-831b-40e4-8f7c-9f153ef31060" name="GameObjectsCollections" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="dbc10d97-9c38-48dc-8629-fd29d867f317" />
       </class>
     </logicalClassDesignerModelHasTypes>
@@ -77,7 +77,7 @@
         <elementDefinition Id="5cc6c5d8-9c7f-4ee4-ab34-a3ca909f8d69" />
         <targetEnds>
           <association Id="05422bb9-674c-4ef2-b2bc-7de34208a10a" isDerived="false" sourceEndRoleName="BulletsCollection" targetEndRoleName="GameObjects" isLeaf="false" isAbstract="false">
-            <classMoniker Id="b99a82b6-831b-40e4-8f7c-9f153ef31060" LastKnownName="GameObjects" />
+            <classMoniker Id="b99a82b6-831b-40e4-8f7c-9f153ef31060" LastKnownName="GameObjectsCollections" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd Id="9df35d9e-ccde-4908-8047-321d2319b1b1" name="BulletsCollection" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
@@ -133,7 +133,7 @@
         <elementDefinition Id="e49818c4-3e58-4d1d-b16e-fac9e762aca7" />
         <targetEnds>
           <association Id="d59b2b63-790b-41d6-b4bf-95cfb65c6c17" isDerived="false" sourceEndRoleName="StaticObjectsCollections" targetEndRoleName="GameObjects" isLeaf="false" isAbstract="false">
-            <classMoniker Id="b99a82b6-831b-40e4-8f7c-9f153ef31060" LastKnownName="GameObjects" />
+            <classMoniker Id="b99a82b6-831b-40e4-8f7c-9f153ef31060" LastKnownName="GameObjectsCollections" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd Id="b04d4a1c-052a-45a1-bfd9-8ea1eb28d221" name="StaticObjectsCollections" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
@@ -189,7 +189,7 @@
         <elementDefinition Id="9493a4ca-a528-460d-96be-5eec69fae1c3" />
         <targetEnds>
           <association Id="99d165c9-91d7-44d5-8897-1644056d5137" isDerived="false" sourceEndRoleName="Player" targetEndRoleName="GameObjects" isLeaf="false" isAbstract="false">
-            <classMoniker Id="b99a82b6-831b-40e4-8f7c-9f153ef31060" LastKnownName="GameObjects" />
+            <classMoniker Id="b99a82b6-831b-40e4-8f7c-9f153ef31060" LastKnownName="GameObjectsCollections" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd Id="4200c21d-cfb0-4613-b6c2-32d446c6d9cf" name="Player" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
@@ -237,6 +237,12 @@
           </enumerationLiteral>
           <enumerationLiteral Id="c82fd851-9fe7-4af9-a4d9-b3d95837bb09" name="Bullet">
             <elementDefinition Id="ca6c8305-3270-4b8b-a6aa-f744a07e1222" />
+          </enumerationLiteral>
+          <enumerationLiteral Id="458cc1b3-660b-42b2-8eb3-8c3eb6c3e13f" name="Player">
+            <elementDefinition Id="7c4dd693-5ac9-41ce-9baf-c2aa09537652" />
+          </enumerationLiteral>
+          <enumerationLiteral Id="15bd04b5-d16f-4b6b-bbe4-68de1e8617f4" name="Physic">
+            <elementDefinition Id="8ea52a69-ba64-4051-8539-f7bbeb9a16d7" />
           </enumerationLiteral>
         </ownedLiterals>
       </enumeration>

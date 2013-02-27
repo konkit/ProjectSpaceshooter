@@ -20,3 +20,5 @@ ProjectSpaceshooter/x64/*
 ProjectSpaceshooter/Debug/*
 ProjectSpaceshooter/Release/*
 *.suo
+
+/Game/CodeGeneration.Log.xml

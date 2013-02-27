@@ -878,7 +878,7 @@ poszczególnym gameobjectem</body>
             isAbstract="false">
             <classMoniker
               Id="dbc10d97-9c38-48dc-8629-fd29d867f317"
-              LastKnownName="GameObjects"
+              LastKnownName="GameObjectsCollections"
               LastKnownLocation="Game.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
@@ -975,7 +975,7 @@ poszczególnym gameobjectem</body>
     <packageHasNamedElement>
       <class
         Id="dbc10d97-9c38-48dc-8629-fd29d867f317"
-        name="GameObjects"
+        name="GameObjectsCollections"
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false" />
@@ -997,7 +997,7 @@ poszczególnym gameobjectem</body>
             isAbstract="false">
             <classMoniker
               Id="dbc10d97-9c38-48dc-8629-fd29d867f317"
-              LastKnownName="GameObjects"
+              LastKnownName="GameObjectsCollections"
               LastKnownLocation="Game.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
@@ -1108,7 +1108,7 @@ poszczególnym gameobjectem</body>
             isAbstract="false">
             <classMoniker
               Id="dbc10d97-9c38-48dc-8629-fd29d867f317"
-              LastKnownName="GameObjects"
+              LastKnownName="GameObjectsCollections"
               LastKnownLocation="Game.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
@@ -1227,7 +1227,7 @@ poszczególnym gameobjectem</body>
             isAbstract="false">
             <classMoniker
               Id="dbc10d97-9c38-48dc-8629-fd29d867f317"
-              LastKnownName="GameObjects"
+              LastKnownName="GameObjectsCollections"
               LastKnownLocation="Game.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
@@ -1317,6 +1317,12 @@ poszczególnym gameobjectem</body>
           <enumerationLiteral
             Id="ca6c8305-3270-4b8b-a6aa-f744a07e1222"
             name="Bullet" />
+          <enumerationLiteral
+            Id="7c4dd693-5ac9-41ce-9baf-c2aa09537652"
+            name="Player" />
+          <enumerationLiteral
+            Id="8ea52a69-ba64-4051-8539-f7bbeb9a16d7"
+            name="Physic" />
         </ownedLiterals>
       </enumeration>
     </packageHasNamedElement>
