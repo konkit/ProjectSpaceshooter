@@ -5,8 +5,10 @@
 class InputManager : public Ogre::WindowEventListener
 {
 public:
+	//initialize OIS 
 	void initOIS(Ogre::RenderWindow* window);
 	
+	//update data (temporairly just camera coords)
 	bool updateInput(float& camX, float& camY, float& camZ);
 
 private:
@@ -18,9 +20,9 @@ private:
 	Ogre::RenderWindow* mWindow;
 
 	// Derived WindowEventListener
+	// Callback functions run when certain event occurs
     virtual void windowResized(Ogre::RenderWindow* rw);
     virtual void windowClosed(Ogre::RenderWindow* rw);
-
 };
 
 

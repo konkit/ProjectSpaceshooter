@@ -2,50 +2,49 @@
 #define __SPACESHOOTER_GAME__
 
 #include "InputManager.h"
+#include "OgreManager.h"
+#include "GameData.h"
 
 
 class Game 
 {
 public:
-	bool run();
+	bool Game::run()
+	{ 
+		//Initialize ogre
+		mOgreManager.initOgre();
+		//Initialize OIS
+		mInputManager.initOIS( mOgreManager.getWindowHandle() );
 
-	
-	float camX, camY, camZ;
+		//Initialize scene - setup all cameras, entities, etc
+		mGameData.initScene( mOgreManager.getRoot(), mOgreManager.getWindowHandle() );
+		mGameData.setScene();
+
+		while(true)
+		{
+			//update input from player
+			/* powinno byc updateInput( mGameData ) */
+			if(mInputManager.updateInput(mGameData.camX, mGameData.camY, mGameData.camZ)==false)
+				return false;
+
+			//temporary game logic
+			/* to powinno byc gdzies w jakims systemie */
+			mGameData.mCamera->setPosition(Ogre::Vector3(mGameData.camX, mGameData.camY, mGameData.camZ));
+
+			// Render a frame
+			if(! mOgreManager.getRoot()->renderOneFrame()) return false;
+		}
+
+		return true;
+	}
 
 private:
 	InputManager mInputManager;
-	//OgreManager
-	//GameData
-
-	//Do ogre managera
-		//Root object of Ogre
-		Ogre::Root* mRoot;
-		//Name of file with resources
-		Ogre::String mResourcesCfg;
-		//Render window object
-		Ogre::RenderWindow* mWindow;
-		//OpenGL plugin
-		Ogre::GLPlugin* mGLPlugin;
-
-		Ogre::RenderWindow* getWindowHandle()	{	return mWindow;	}
-		Ogre::Root*			getRoot()	{		return mRoot;	}
-
-		//inner functions
-		void initOgre();
-	
-	//Do GameData
-		Ogre::SceneManager* mSceneMgr;
-		Ogre::Camera* mCamera;
-
-
-
-
-
-
-
-	void initScene();
-	void setScene();
+	OgreManager mOgreManager;
+	GameData mGameData;	
 };
+
+
 
 
 
