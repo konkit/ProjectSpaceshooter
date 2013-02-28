@@ -22,3 +22,4 @@ ProjectSpaceshooter/Release/*
 *.suo
 
 /Game/CodeGeneration.Log.xml
+*.orig

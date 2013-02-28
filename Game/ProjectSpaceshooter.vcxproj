@@ -162,23 +162,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Headers\Game.h" />
-    <ClInclude Include="Headers\GameData.h" />
-    <ClInclude Include="Headers\GameObject.h" />
-    <ClInclude Include="Headers\GameObjectBase.h" />
-    <ClInclude Include="Headers\GameObjectFactory.h" />
-    <ClInclude Include="Headers\GameObjectsCollection.h" />
-    <ClInclude Include="Headers\InputManager.h" />
-    <ClInclude Include="Headers\OgreManager.h" />
+    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="GameObjectBase.h" />
+    <ClInclude Include="GameObjectFactory.h" />
+    <ClInclude Include="GameObjectsCollection.h" />
     <ClInclude Include="Headers\stdafx.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="GameObjectBase.cpp" />
     <ClCompile Include="GameObjectFactory.cpp" />
-    <ClCompile Include="Sources\GameObject.cpp" />
-    <ClCompile Include="Sources\GameObjectBase.cpp" />
-    <ClCompile Include="Sources\GameObjectFactory.cpp" />
-    <ClCompile Include="Sources\GameObjectsCollection.cpp" />
-    <ClCompile Include="Sources\InputManager.cpp" />
+    <ClCompile Include="GameObjectsCollection.cpp" />
     <ClCompile Include="Sources\main.cpp" />
     <ClCompile Include="Sources\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
