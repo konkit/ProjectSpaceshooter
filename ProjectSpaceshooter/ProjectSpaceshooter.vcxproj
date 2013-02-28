@@ -158,7 +158,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Headers\Application.h" />
     <ClInclude Include="Headers\Game.h" />
     <ClInclude Include="Headers\GameData.h" />
     <ClInclude Include="Headers\InputManager.h" />
@@ -166,7 +165,6 @@
     <ClInclude Include="Headers\stdafx.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Sources\Application.cpp" />
     <ClCompile Include="Sources\InputManager.cpp" />
     <ClCompile Include="Sources\main.cpp" />
     <ClCompile Include="Sources\stdafx.cpp">

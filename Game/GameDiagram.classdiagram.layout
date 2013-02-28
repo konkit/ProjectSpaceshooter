@@ -129,7 +129,7 @@
         <classShapeMoniker Id="f876f604-eada-4bc7-a3e1-e8beaef1d83b" />
       </nodes>
     </associationConnector>
-    <commentShape Id="05a6ad7b-3b37-4979-a08a-9e4b5a1a0bf6" absoluteBounds="4.875, 4.25, 1.25, 1.25" customColor="251, 247, 200">
+    <commentShape Id="05a6ad7b-3b37-4979-a08a-9e4b5a1a0bf6" absoluteBounds="4.5, 3.875, 1.25, 1.25" customColor="251, 247, 200">
       <commentMoniker Id="de4a3c0a-9e18-40e4-bd1f-ee51a75f9bbb" />
       <relativeChildShapes />
     </commentShape>
