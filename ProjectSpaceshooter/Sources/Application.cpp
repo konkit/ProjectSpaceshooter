@@ -54,14 +54,9 @@ bool Application::run()
 	}
 
 //////////////////////////////////////////////////////////////
-//		Render system (which driver, etc.) and render window
+//		Load config file and init window
 //////////////////////////////////////////////////////////////
-	// configure
-	// Show the configuration dialog and initialise the system
-	if(!(mRoot->restoreConfig() || mRoot->showConfigDialog()))
-	{
-		return false;
-	}
+	mRoot->restoreConfig();
 
 	//Create render window
 	mWindow = mRoot->initialise(true, "Project SpaceShooter");
