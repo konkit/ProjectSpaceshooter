@@ -30,8 +30,17 @@
     <ClInclude Include="Headers\OgreManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Headers\stdafx.h">
-      <Filter>Precompiled headers</Filter>
+    <ClInclude Include="GameObjectsCollection.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObjectBase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObjectFactory.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -42,7 +51,18 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Sources\stdafx.cpp">
-      <Filter>Precompiled headers</Filter>
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObjectsCollection.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObjectBase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObjectFactory.cpp">
     </ClCompile>
   </ItemGroup>
 </Project>

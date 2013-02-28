@@ -1,79 +1,152 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="4a9d20a6-e24d-4c36-a3eb-23a54abb85cf" name="GameDiagram" linkedPackageId="14f5fc2d-4086-4801-8d6f-794a9a91df6e" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
   <ownedCommentsInternal>
-    <comment Id="de4a3c0a-9e18-40e4-bd1f-ee51a75f9bbb">
-      <elementDefinition Id="09132fdf-966d-4578-a1d0-2ec809eda6f5" />
-      <body>Do zrobienia są jeszcze state'y, ale to najpierw trzeba pomyśleć a potem pisać bo to jest delikatna sprawa (łatwo o sphagetti)
-</body>
+    <comment Id="fec2719f-2c4c-4607-a670-6aff8aef3d56">
+      <elementDefinition Id="e60e30d7-e7a3-4008-a97d-b86770c4397b" />
+      <body>Trzeba wymyślić lepszą nazwę</body>
+    </comment>
+    <comment Id="aa9c9873-ea86-4f8a-88db-67ec3b052533">
+      <elementDefinition Id="ba909ef0-b34e-4271-bafd-8b7def0e9ff3" />
+      <body>W czasie akutalizowania przeciwników wypluwają oni pociki, ale nie mogą oni przekazać ich odrazu do kolekcji pocików bo nie mają do niej dostępu, dlatego wrzucą je do swojego bufora, i na koniec aktualizowania wejdzie BulletMenager będący o poziom abstrackji wyżej, pobierze pociski z ich buforów i doda je do kolekcji pocisków, tak samo można zrobić np z wybuchami, tj po wybuchu powstaje wirtualna kula która symuluje falę uderzeniową, i jest brana pod uwagę w detekcji kolizji, fizyce z odrzutem itd, będzie generowana w bufforze obiektu a następnie przekazana do ew. kolekcji obiektów fizycznych </body>
     </comment>
   </ownedCommentsInternal>
   <packagedElements>
     <logicalClassDesignerModelHasTypes>
-      <class Id="2b6fedde-2d84-47f3-965d-15462aa7ab58" name="Game" isAbstract="false" isLeaf="false" isActiveClass="false">
-        <elementDefinition Id="9a617c95-b9af-4cb3-95d7-6abe21ba87e6" />
-        <ownedAttributesInternal>
-          <property Id="7710ed85-f00c-44cb-8b49-7966a0509d6d" name="GameData" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-            <elementDefinition Id="d8d2f1d2-c564-469d-b660-109c1be7ba2a" />
-          </property>
-          <property Id="3da6aae2-9fd1-4fd4-a997-6d91d4e561e2" name="InputManager" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-            <elementDefinition Id="181941c9-da11-4545-821c-720d126fa423" />
-          </property>
-          <property Id="d4cd6410-a4a5-4150-ba4e-281611640edc" name="OgreManager" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-            <elementDefinition Id="1fa1d045-1a51-43cb-ad07-22c34ff2429a" />
-          </property>
-        </ownedAttributesInternal>
-        <ownedOperationsInternal>
-          <operation Id="0052b0db-5e6a-4fd8-9533-ef12ddede3f7" name="run" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
-            <elementDefinition Id="aa6eb131-c7d8-45c7-8297-26bc1290bb71" />
-          </operation>
-        </ownedOperationsInternal>
+      <class Id="c3c3d48a-e03f-474b-b46a-4c171f695c28" name="EnemysCollection" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="c89fd99b-466c-45ad-a39b-c7a45617fe6a" />
+        <targetEnds>
+          <association Id="6b95a767-8eb4-434e-9db4-79e8bc8b57a1" isDerived="false" sourceEndRoleName="EnemysCollection" targetEndRoleName="GameObjects" isLeaf="false" isAbstract="false">
+            <classMoniker Id="b99a82b6-831b-40e4-8f7c-9f153ef31060" LastKnownName="GameObjectsCollections" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="bb643709-a6d0-4979-9777-ca8338030100" name="EnemysCollection" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="06884240-aa6a-48d2-984c-627ab1443311" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="e1ec435f-74b5-4e0b-807e-92069b1d090b" name="GameObjects" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                  <elementDefinition Id="7ccfbdf1-8d79-4e5b-bda8-18d70414b6e1" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="22004851-b714-4400-b54f-5a25cd5ddd3d" />
+          </association>
+        </targetEnds>
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
-      <class Id="c98dbfd1-79ca-455d-b96c-e8a3498d089f" name="GameObjectsCollection" isAbstract="false" isLeaf="false" isActiveClass="false">
-        <elementDefinition Id="f53a40d3-f580-488f-afff-df3e1e619e69" />
+      <class Id="09fc4376-aeb9-44cd-8b00-1b4b327e2a88" name="GameObject" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="5bf8d467-b09a-4506-b1f0-4fd80d47d77a" />
         <targetEnds>
-          <association Id="bd4e7bcf-a256-43c5-b79f-ad2a7ca6aff6" isDerived="false" sourceEndRoleName="GameObjectsCollection" targetEndRoleName="GameObject" isLeaf="false" isAbstract="false">
-            <classMoniker Id="8b9a6a69-34de-466e-8aab-8618ca6eda15" LastKnownName="GameObject" />
+          <association Id="2fa7de90-5261-4cd6-8b28-c93c836167a8" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <classMoniker Id="c3c3d48a-e03f-474b-b46a-4c171f695c28" LastKnownName="EnemysCollection" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
-                <memberEnd Id="ab5ba888-86f1-4e68-83b7-b325edb314b2" name="GameObjectsCollection" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Shared" isComposite="false" isNavigableOwned="false">
-                  <elementDefinition Id="6538a1b2-d4ca-4afa-b85a-c80458a33004" />
-                </memberEnd>
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd Id="783d7775-f9b8-4ef2-903e-dff147564813" name="GameObject" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                <memberEnd Id="a0269255-b7b8-4980-aa04-95e77bf89fb0" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
                   <lowerValueInternal>
-                    <literalString Id="39ee93fc-7d81-466e-ba64-b52ecc8666be" name="Lower" value="n">
-                      <elementDefinition Id="fbdd7edb-ff8c-4a3a-b68b-a147c143fcba" />
+                    <literalString Id="1cacd58f-be10-42a8-affe-9c19013b2ff9" name="Lower" value="n">
+                      <elementDefinition Id="d47324c5-cdb5-48ff-b4c7-a570c48d0fb2" />
                     </literalString>
                   </lowerValueInternal>
                   <upperValueInternal>
-                    <literalString Id="64a21cf5-d647-4cd0-8284-23e43dc35e43" name="Upper" value="n">
-                      <elementDefinition Id="9207fca5-8ac8-4566-b1f4-fbf7a2c1f8cd" />
+                    <literalString Id="94222cb7-9ae9-4dff-9be1-5e9c585e2c18" name="Upper" value="n">
+                      <elementDefinition Id="4cd01a1a-837c-4a13-8117-c3db074f481a" />
                     </literalString>
                   </upperValueInternal>
-                  <elementDefinition Id="5ffe41c6-5eb5-4efc-b5fe-4bb85032f129" />
+                  <elementDefinition Id="62740dd8-e034-40f7-811a-322641a9ff34" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="982054be-60d8-43aa-b710-1980754675c7" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                  <elementDefinition Id="d640325d-a3a9-4e2b-bca1-90db329ed940" />
                 </memberEnd>
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
-            <elementDefinition Id="11aeb376-7a7d-4fa8-b3af-533708435df1" />
+            <elementDefinition Id="05700e76-410b-4698-a404-c29b1835311e" />
           </association>
-          <association Id="1f1ec98d-e70f-4c72-931f-f208b93ded5c" isDerived="false" sourceEndRoleName="GameObjectsCollection" targetEndRoleName="Iterator" isLeaf="false" isAbstract="false">
-            <classMoniker Id="7c713193-1e01-4387-9f95-2e9f2ed394dc" LastKnownName="Iterator" />
+        </targetEnds>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="b99a82b6-831b-40e4-8f7c-9f153ef31060" name="GameObjectsCollections" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="dbc10d97-9c38-48dc-8629-fd29d867f317" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="685393f6-7728-4056-952f-4573724a37f3" name="BulletsCollection" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="5cc6c5d8-9c7f-4ee4-ab34-a3ca909f8d69" />
+        <targetEnds>
+          <association Id="05422bb9-674c-4ef2-b2bc-7de34208a10a" isDerived="false" sourceEndRoleName="BulletsCollection" targetEndRoleName="GameObjects" isLeaf="false" isAbstract="false">
+            <classMoniker Id="b99a82b6-831b-40e4-8f7c-9f153ef31060" LastKnownName="GameObjectsCollections" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
-                <memberEnd Id="e4bfb181-a599-4162-9145-2ce59e5d2efe" name="GameObjectsCollection" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
-                  <elementDefinition Id="be9761fe-de98-4130-ac17-c5c65af47a74" />
+                <memberEnd Id="9df35d9e-ccde-4908-8047-321d2319b1b1" name="BulletsCollection" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="9d496ccd-e790-4ef4-a2af-8fe0afc0a40e" />
                 </memberEnd>
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
-                <memberEnd Id="8afad4ce-45ef-4fb3-90b8-2a0054449044" name="Iterator" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-                  <elementDefinition Id="f20858e4-acb7-4b1d-abae-856fb0c7453d" />
+                <memberEnd Id="11259439-9fe2-40a5-8ab4-087d9c6fa78c" name="GameObjects" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                  <elementDefinition Id="a76321d8-0487-4479-b01d-447e2d2bc2e3" />
                 </memberEnd>
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
-            <elementDefinition Id="26c25f7c-dd24-4020-9363-9b14ef37a6af" />
+            <elementDefinition Id="e4a358b5-6c33-4aa9-b2bc-9ac6e69491ff" />
+          </association>
+        </targetEnds>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="6e223ce2-c7a6-4837-aab5-73af1780389d" name="GameObject" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="5fe09a71-5b91-4671-b2c7-ed07151a29e2" />
+        <targetEnds>
+          <association Id="2d017774-a65a-4869-86d5-c6ee6313477f" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <classMoniker Id="685393f6-7728-4056-952f-4573724a37f3" LastKnownName="BulletsCollection" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="8985b960-7429-417b-ac47-c316f3916350" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString Id="a25227d6-fc56-48dc-99b5-d247259f8cb3" name="Lower" value="n">
+                      <elementDefinition Id="bb01d6fb-1289-40f3-80d5-b7ad887040ad" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="84e00591-0d43-4a59-b238-514ae7ff9c8f" name="Upper" value="n">
+                      <elementDefinition Id="ba74cd6a-4fea-4c92-a66a-003f8221699c" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="f2820773-03c1-497d-a782-e8f1b38aaf08" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="d0df2901-cde4-4ab9-9056-5f53527d795e" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                  <elementDefinition Id="beb1850a-0bb9-45d3-8165-351072d9e69b" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="cad35c0f-9650-4f62-92e9-25883ae76c3c" />
+          </association>
+        </targetEnds>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="c635fade-0411-4a4c-9e5d-82ad9068f1a5" name="StaticObjectsCollections" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="e49818c4-3e58-4d1d-b16e-fac9e762aca7" />
+        <targetEnds>
+          <association Id="d59b2b63-790b-41d6-b4bf-95cfb65c6c17" isDerived="false" sourceEndRoleName="StaticObjectsCollections" targetEndRoleName="GameObjects" isLeaf="false" isAbstract="false">
+            <classMoniker Id="b99a82b6-831b-40e4-8f7c-9f153ef31060" LastKnownName="GameObjectsCollections" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="b04d4a1c-052a-45a1-bfd9-8ea1eb28d221" name="StaticObjectsCollections" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="730a9bf9-c845-4624-bdf8-f9b0dcf123ec" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="2d46296c-24a7-4a99-8e81-6ae35e4cc47c" name="GameObjects" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                  <elementDefinition Id="9c91dde1-a5ce-40f4-99b4-a710bb62e0b0" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="9a8a0675-0270-4b07-b571-c6d7a1313643" />
           </association>
           <association Id="198c036c-8f00-43d3-ad3f-601fabad1533" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
             <classMoniker Id="427539ad-ee77-4cbf-a425-35671c822a52" LastKnownName="GameData" />
@@ -92,54 +165,192 @@
             <elementDefinition Id="e76edee8-7d01-42a7-8bb0-6126bb5443e3" />
           </association>
         </targetEnds>
-        <ownedOperationsInternal>
-          <operation Id="583d44a1-ebaf-448e-8628-ddb02c14e19e" name="getIterator" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
-            <elementDefinition Id="be70cb35-8926-493a-a9f9-8a0a95219a17" />
-          </operation>
-        </ownedOperationsInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
-      <class Id="8b9a6a69-34de-466e-8aab-8618ca6eda15" name="GameObject" isAbstract="false" isLeaf="false" isActiveClass="false">
-        <elementDefinition Id="1ddbdd05-144b-43fb-bc85-edb5eb1aa00f" />
-        <generalsInternal>
-          <generalization Id="2447d627-8384-435e-9684-1578135c4e6c" isSubstitutable="false">
-            <classMoniker Id="7b5304af-1bba-4b8c-9ab9-f196ba7ae050" LastKnownName="StaticObject" />
-            <elementDefinition Id="ace811b9-bc7f-4f7f-9aa4-6d8d355cbc6a" />
-          </generalization>
-          <generalization Id="2a2ab369-9e66-4ff6-993b-60132adf963e" isSubstitutable="false">
-            <classMoniker Id="3aec3480-74b0-4ccd-b4fb-3579e3ba7290" LastKnownName="EnemyObject" />
-            <elementDefinition Id="0c6e1627-92eb-4c75-8b6b-ade2a37ffeb4" />
-          </generalization>
-        </generalsInternal>
-        <ownedAttributesInternal>
-          <property Id="a16b2fec-e5a5-4360-a16b-c6a4040ab8d5" name="deleteFlag" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-            <elementDefinition Id="db7e6129-f49c-4b9a-966b-6cf53e560bef" />
-          </property>
-        </ownedAttributesInternal>
+      <class Id="f98e72db-1735-4adb-8ef5-f47a5efffabd" name="GameObject" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="0c5d4ea2-98f6-4aa4-a042-0f3abc5e86a6" />
+        <targetEnds>
+          <association Id="13577979-9f9d-41e4-bcf1-bba9fec45bbd" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <classMoniker Id="c635fade-0411-4a4c-9e5d-82ad9068f1a5" LastKnownName="StaticObjectsCollections" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="92f619ab-7197-437a-84df-11f5b9648028" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString Id="4eadfd43-71a2-40b3-a06d-e7bd140b0e7e" name="Lower" value="n">
+                      <elementDefinition Id="4d58137a-a9d8-44ac-80d7-ce861ebb2805" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="19708033-e8fd-46ba-ad01-4b4a716b5b42" name="Upper" value="n">
+                      <elementDefinition Id="08004bc7-0b9a-41ea-8fe0-183c226a6999" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="e1c31ab3-d746-4f31-91b6-765c71058a90" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="98585290-c68a-4208-9be1-15d2a69b1e89" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                  <elementDefinition Id="a9fa13d5-fd07-4c49-90f1-b59679bc4b69" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="e5329e23-6f17-4f28-8d82-49c7b01b1215" />
+          </association>
+        </targetEnds>
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
-      <class Id="7c713193-1e01-4387-9f95-2e9f2ed394dc" name="Iterator" isAbstract="false" isLeaf="false" isActiveClass="false">
-        <elementDefinition Id="e319ba52-6a7c-4ca9-bf65-2c776147a277" />
-        <ownedOperationsInternal>
-          <operation Id="01df4a08-5e83-4dac-9dc5-8e5bbc616742" name="hasNext" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
-            <elementDefinition Id="791ceb04-a006-4370-bd9a-44c109a636c0" />
-          </operation>
-          <operation Id="5fc195de-672d-472d-aef3-4742a29a9e41" name="getNext" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
-            <elementDefinition Id="19c0a096-9edd-4007-a2bf-e30a29dceff0" />
-          </operation>
-        </ownedOperationsInternal>
+      <class Id="c94c1efc-9364-48b4-a3fb-239004f1e327" name="Player" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="9493a4ca-a528-460d-96be-5eec69fae1c3" />
+        <targetEnds>
+          <association Id="99d165c9-91d7-44d5-8897-1644056d5137" isDerived="false" sourceEndRoleName="Player" targetEndRoleName="GameObjects" isLeaf="false" isAbstract="false">
+            <classMoniker Id="b99a82b6-831b-40e4-8f7c-9f153ef31060" LastKnownName="GameObjectsCollections" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="4200c21d-cfb0-4613-b6c2-32d446c6d9cf" name="Player" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="bf72b1a4-9cf4-43ef-a1fb-9556709f80ce" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="cf95f246-b841-4c61-b6a1-befe9f13d747" name="GameObjects" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                  <elementDefinition Id="f01c22f9-bdd8-4f96-901f-7986fa41d6ea" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="268695c4-ae29-4851-abc3-1ea7677c8f14" />
+          </association>
+        </targetEnds>
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
-      <class Id="7b5304af-1bba-4b8c-9ab9-f196ba7ae050" name="StaticObject" isAbstract="false" isLeaf="false" isActiveClass="false">
-        <elementDefinition Id="6d68e2cd-323f-47ac-a0a7-a0de67aa2bfa" />
+      <enumeration Id="baf88316-27b6-44fa-b01c-821440df039e" name="ObjectType" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="2286481b-99f1-4e14-8940-e613dd95c2f9" />
+        <targetEnds>
+          <association Id="4dd682f7-e849-48d8-865f-f2f956e0b52c" isDerived="false" sourceEndRoleName="ObjectType" targetEndRoleName="GameObjectFactory" isLeaf="false" isAbstract="false">
+            <classMoniker Id="17128b09-9bfe-4461-b43b-8cd8b991940e" LastKnownName="GameObjectFactory" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="385ca5d6-4ced-4cee-a38f-ec22bdd9577a" name="ObjectType" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Shared" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="d33e10a5-112d-49be-9779-ca74b1a271e6" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="e955452a-8906-42e3-ad8a-b0614db4558a" name="GameObjectFactory" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="8c2844eb-8526-43d9-b6b1-5036bc137c7d" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="30773bfb-512f-4615-9fae-2d232965f304" />
+          </association>
+        </targetEnds>
+        <ownedLiterals>
+          <enumerationLiteral Id="b6ea135a-8c6a-464a-8eb2-6f7c6b2e8203" name="Enemy">
+            <elementDefinition Id="31a561be-ac06-4baa-855d-2d77202f2d34" />
+          </enumerationLiteral>
+          <enumerationLiteral Id="5ed6a9a8-658b-4d61-aea1-38e5cd41aaa9" name="Static">
+            <elementDefinition Id="b683282d-7fca-4070-8684-a605b87e4d29" />
+          </enumerationLiteral>
+          <enumerationLiteral Id="c82fd851-9fe7-4af9-a4d9-b3d95837bb09" name="Bullet">
+            <elementDefinition Id="ca6c8305-3270-4b8b-a6aa-f744a07e1222" />
+          </enumerationLiteral>
+          <enumerationLiteral Id="458cc1b3-660b-42b2-8eb3-8c3eb6c3e13f" name="Player">
+            <elementDefinition Id="7c4dd693-5ac9-41ce-9baf-c2aa09537652" />
+          </enumerationLiteral>
+          <enumerationLiteral Id="15bd04b5-d16f-4b6b-bbe4-68de1e8617f4" name="Physic">
+            <elementDefinition Id="8ea52a69-ba64-4051-8539-f7bbeb9a16d7" />
+          </enumerationLiteral>
+        </ownedLiterals>
+      </enumeration>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="17128b09-9bfe-4461-b43b-8cd8b991940e" name="GameObjectFactory" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="301422b3-f8f5-4d0c-9f32-799c0e60aa52" />
+        <targetEnds>
+          <association Id="492ab585-74eb-4539-bfd9-efcbeadbbda0" isDerived="false" sourceEndRoleName="GameObjectFactory" targetEndRoleName="GameObject" isLeaf="false" isAbstract="false">
+            <classMoniker Id="3e5629d3-117a-4639-bdb9-02db460513af" LastKnownName="GameObject" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="5cd19744-abb2-4148-81d3-c794db064db4" name="GameObjectFactory" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="e58da4ed-4647-4ebe-a70c-2a06dc32fb51" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="a40bf40d-7118-48e7-a8a3-fd9b1cf11af2" name="GameObject" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="ec14c887-f4c0-48c6-8fee-8f9ec4ede7cb" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="c37e168d-97c4-442b-aabb-612696a8f298" />
+          </association>
+        </targetEnds>
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
-      <class Id="3aec3480-74b0-4ccd-b4fb-3579e3ba7290" name="EnemyObject" isAbstract="false" isLeaf="false" isActiveClass="false">
-        <elementDefinition Id="01bc3edf-c994-47a9-b6b5-c9b54e9b9ac5" />
+      <class Id="3e5629d3-117a-4639-bdb9-02db460513af" name="GameObject" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="5cad6568-9e8d-49a2-8b82-132dc77ae9cc" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="c254be5b-0586-4aeb-a26d-e85ec06aea5e" name="Bullets" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="e75de72b-f467-479c-bf53-40ded2d09642" />
+        <targetEnds>
+          <association Id="8cd7d9d2-36f1-480e-94e2-cb898397f876" isDerived="false" sourceEndRoleName="Bullets" targetEndRoleName="GameObject" isLeaf="false" isAbstract="false">
+            <classMoniker Id="09fc4376-aeb9-44cd-8b00-1b4b327e2a88" LastKnownName="GameObject" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="de0b60ce-0209-4971-83c8-a33f691ab80b" name="Bullets" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Shared" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="f092d8d5-6b6d-4d8d-b336-cc0222c1ea60" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="c34db2a5-1698-486c-9491-263a18ed29ad" name="GameObject" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="c425468a-523a-41e7-a036-284df083dec2" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="0bf84e69-b974-4685-88d6-10b41ea2000d" />
+          </association>
+          <association Id="6d90b274-5093-4cd5-b57f-76e69dd0df67" isDerived="false" sourceEndRoleName="Bullets" targetEndRoleName="BulletMenager" isLeaf="false" isAbstract="false">
+            <classMoniker Id="793e7a12-6656-4c3f-82c1-7f25e3007a2f" LastKnownName="BulletMenager" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="93ecc719-0b34-47ad-8c4a-ff7ae2a975aa" name="Bullets" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="ef676c4a-9950-43c9-92f1-73cfa32e20a6" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="a130086d-50e3-4ed3-af87-fe95601eb76c" name="BulletMenager" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="ec3bc421-e234-4485-9844-a1f2b00ba200" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="6209347e-b63c-4a75-b027-6a1ea274d35a" />
+          </association>
+        </targetEnds>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="793e7a12-6656-4c3f-82c1-7f25e3007a2f" name="BulletMenager" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="597b6933-85a4-4d2f-8712-9ed0f2d5e69f" />
+        <targetEnds>
+          <association Id="66a10264-bcea-4ee2-8258-9404dc75b190" isDerived="false" sourceEndRoleName="BulletMenager" targetEndRoleName="GameObject" isLeaf="false" isAbstract="false">
+            <classMoniker Id="6e223ce2-c7a6-4837-aab5-73af1780389d" LastKnownName="GameObject" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="ef375a84-592c-4f86-9111-49c0273797e7" name="BulletMenager" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="ce97449b-15db-4165-a3c3-dc74e39c9aed" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="714a2559-ccec-458a-bacf-4dab766b85f0" name="GameObject" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="58ac00e6-d3c5-4101-96da-0477513f4d09" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="d682ccc8-4f24-4357-8d76-3afb4c302f2b" />
+          </association>
+        </targetEnds>
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>

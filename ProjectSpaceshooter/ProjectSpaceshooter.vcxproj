@@ -111,12 +111,16 @@
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <ForcedIncludeFiles>stdafx.h</ForcedIncludeFiles>
       <AdditionalOptions>-Zm250  %(AdditionalOptions)</AdditionalOptions>
+      <BrowseInformation>true</BrowseInformation>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>FreeImage_d.lib;freetype_d.lib;OgreMainStatic_d.lib;OgreRTShaderSystemStatic_d.lib;OgreTerrainStatic_d.lib;OIS_d.lib;zlib_d.lib;zziplib_d.lib;RenderSystem_GLStatic_d.lib;OpenGL32.lib;GLU32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <Bscmake>
+      <PreserveSbr>true</PreserveSbr>
+    </Bscmake>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -158,14 +162,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Headers\Game.h" />
-    <ClInclude Include="Headers\GameData.h" />
-    <ClInclude Include="Headers\InputManager.h" />
-    <ClInclude Include="Headers\OgreManager.h" />
+    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="GameObjectBase.h" />
+    <ClInclude Include="GameObjectFactory.h" />
+    <ClInclude Include="GameObjectsCollection.h" />
     <ClInclude Include="Headers\stdafx.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Sources\InputManager.cpp" />
+    <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="GameObjectBase.cpp" />
+    <ClCompile Include="GameObjectFactory.cpp" />
+    <ClCompile Include="GameObjectsCollection.cpp" />
     <ClCompile Include="Sources\main.cpp" />
     <ClCompile Include="Sources\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
