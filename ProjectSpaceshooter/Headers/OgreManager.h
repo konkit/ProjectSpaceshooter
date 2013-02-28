@@ -2,6 +2,10 @@
 #define __SPACESHOOTER_OGRE_MANAGER__
 
 
+
+
+//Class enveloping Ogre3D library and simplifying usage.
+//Stores Ogre::Root and other library-specific data
 class OgreManager
 {
 public:

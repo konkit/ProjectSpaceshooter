@@ -2,6 +2,9 @@
 #define __SPACESHOOTER_GAME_DATA__
 
 
+
+
+//Class which stores gameobjects and all data required by systems to do their job
 class GameData
 {
 public:

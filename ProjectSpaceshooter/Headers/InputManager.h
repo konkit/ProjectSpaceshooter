@@ -2,6 +2,9 @@
 #define __SPACESHOOTER_INPUT_MANAGER__
 
 
+
+
+//Class reading input from system and acting appropriately on GameData
 class InputManager : public Ogre::WindowEventListener
 {
 public:

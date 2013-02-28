@@ -5,7 +5,8 @@
 #include "OgreManager.h"
 #include "GameData.h"
 
-
+// Main class in this game, contains main loop.
+// Governs Systems, managers, STATES!
 class Game 
 {
 public:
@@ -42,6 +43,10 @@ private:
 	InputManager mInputManager;
 	OgreManager mOgreManager;
 	GameData mGameData;	
+
+	// State* activeState;
+	// State playState;
+	// etc...
 };
 
 

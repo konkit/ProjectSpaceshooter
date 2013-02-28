@@ -1,23 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="4a9d20a6-e24d-4c36-a3eb-23a54abb85cf" name="GameDiagram" linkedPackageId="14f5fc2d-4086-4801-8d6f-794a9a91df6e" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
-  <profileInstances>
-    <packageHasProfileInstances Id="b0dbfcee-d186-4f41-9c11-c26e58f5321d">
-      <profileInstance Id="2933dfbe-335a-4bb0-b4c8-0d79fceac813" name="StandardProfileL2">
-        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
-      </profileInstance>
-      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
-    </packageHasProfileInstances>
-    <packageHasProfileInstances Id="fbfec196-cd7c-437c-884d-f812354c3214">
-      <profileInstance Id="a0141ef5-4649-4f95-9956-b4b8a915159a" name="StandardProfileL3">
-        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
-      </profileInstance>
-      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
-    </packageHasProfileInstances>
-  </profileInstances>
+  <ownedCommentsInternal>
+    <comment Id="de4a3c0a-9e18-40e4-bd1f-ee51a75f9bbb">
+      <elementDefinition Id="09132fdf-966d-4578-a1d0-2ec809eda6f5" />
+      <body>Do zrobienia są jeszcze state'y, ale to najpierw trzeba pomyśleć a potem pisać bo to jest delikatna sprawa (łatwo o sphagetti)
+</body>
+    </comment>
+  </ownedCommentsInternal>
   <packagedElements>
     <logicalClassDesignerModelHasTypes>
       <class Id="2b6fedde-2d84-47f3-965d-15462aa7ab58" name="Game" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="9a617c95-b9af-4cb3-95d7-6abe21ba87e6" />
+        <ownedAttributesInternal>
+          <property Id="7710ed85-f00c-44cb-8b49-7966a0509d6d" name="GameData" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="d8d2f1d2-c564-469d-b660-109c1be7ba2a" />
+          </property>
+          <property Id="3da6aae2-9fd1-4fd4-a997-6d91d4e561e2" name="InputManager" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="181941c9-da11-4545-821c-720d126fa423" />
+          </property>
+          <property Id="d4cd6410-a4a5-4150-ba4e-281611640edc" name="OgreManager" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="1fa1d045-1a51-43cb-ad07-22c34ff2429a" />
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation Id="0052b0db-5e6a-4fd8-9533-ef12ddede3f7" name="run" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="aa6eb131-c7d8-45c7-8297-26bc1290bb71" />
+          </operation>
+        </ownedOperationsInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
@@ -65,6 +74,22 @@
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
             <elementDefinition Id="26c25f7c-dd24-4020-9363-9b14ef37a6af" />
+          </association>
+          <association Id="198c036c-8f00-43d3-ad3f-601fabad1533" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <classMoniker Id="427539ad-ee77-4cbf-a425-35671c822a52" LastKnownName="GameData" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="dc0be538-f82a-48d1-89d4-894553362f6b" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="2c24cb84-e58e-4d72-a00f-48e12a6de7eb" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="2e065913-8990-4cb7-ab27-1eb1260a88b3" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                  <elementDefinition Id="9df637db-e358-4baf-b8d5-6046effa5abc" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="e76edee8-7d01-42a7-8bb0-6126bb5443e3" />
           </association>
         </targetEnds>
         <ownedOperationsInternal>
@@ -117,8 +142,126 @@
         <elementDefinition Id="01bc3edf-c994-47a9-b6b5-c9b54e9b9ac5" />
       </class>
     </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="2fc44cff-7efe-45d2-88cf-e5405ee7cf40" name="InputManager" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="1549b7b7-a667-4bdc-a091-6558827cc3d6" />
+        <targetEnds>
+          <association Id="4a172377-2581-4478-840c-8beb1cb4187a" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <classMoniker Id="2b6fedde-2d84-47f3-965d-15462aa7ab58" LastKnownName="Game" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="abd74286-3084-4774-9b10-578e8d1af9a2" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="23c526ab-8745-4f2d-8c2f-ae77839fdb54" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="10f224f5-b19b-4140-85d4-2810e28e96eb" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                  <elementDefinition Id="040a69ba-b8ff-43b3-a250-8f2c5514fd5e" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="811fa848-3e23-4bfb-8737-52186de68d4d" />
+          </association>
+        </targetEnds>
+        <ownedOperationsInternal>
+          <operation Id="50d55cc8-f86f-441c-a0ed-eedf900a2a63" name="initOIS" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="dfcc77a6-a13b-4988-8d6b-fdaba8d4fbfd" />
+          </operation>
+          <operation Id="d05e64ea-4f70-41d4-9ee7-0df1e0896156" name="updateInput" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="627d7573-43bc-4799-a810-2f6a7fc5366d" />
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="56cb4dad-a156-4d0f-ac21-4601018e9817" name="OgreManager" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="b102f47e-d74e-4602-8a20-adf0924a9736" />
+        <targetEnds>
+          <association Id="8f52532f-d0e3-4864-a676-24ab2122985e" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <classMoniker Id="2b6fedde-2d84-47f3-965d-15462aa7ab58" LastKnownName="Game" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="a05d5aec-a92b-4101-9928-aaa667c8a1d6" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="30cfc1ca-e928-4393-9a05-716667551023" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="7ee34ae3-909d-44bc-9af7-a4de0415a744" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                  <elementDefinition Id="0648f990-cf6e-40cc-89d1-33fd132bfe6f" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="ec7ac6ce-76a7-4a15-977c-14532acd12a8" />
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property Id="2bed18d2-b038-4010-b8e9-809bf81c25a1" name="Ogre::Root mRoot" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="313ec4d4-3314-4d9e-b13c-b9ec6078c693" />
+          </property>
+          <property Id="5a57f6ba-daa2-486e-a6e7-4d1a8a935705" name="Ogre::RenderWindow mWindow" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="b32c38af-5ce5-4ae2-acf9-4fdff0c77344" />
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation Id="ae705830-5ff6-4f90-ba73-c11b98912321" name="initOgre" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="ca4f753d-cd44-4011-80d7-10d6beda16a4" />
+          </operation>
+          <operation Id="0f0c12c8-32ae-4e08-93ba-6dedf8e9fb27" name="getRoot" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="afc0cdca-8c99-40bb-83b3-131c4e127b81" />
+          </operation>
+          <operation Id="10b55d58-9f3a-492f-b93f-074c3c718072" name="getRenderWindow" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="d67f042e-4c2b-42b3-8753-f51ead90e755" />
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="427539ad-ee77-4cbf-a425-35671c822a52" name="GameData" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="592f1cbc-c7af-433d-8459-be9100eb0551" />
+        <targetEnds>
+          <association Id="85f596af-52be-4788-8f94-dc9f8ce53d5a" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <classMoniker Id="2b6fedde-2d84-47f3-965d-15462aa7ab58" LastKnownName="Game" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="b5a7f2cb-334c-4638-97d9-b5c76b5d2748" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="8fba45b9-8361-4f50-9a01-5d4451946b84" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="0b0d1958-e382-4cd9-b2c5-d7b23373ef8f" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                  <elementDefinition Id="25735f5e-0f9b-4249-84bb-317ac6c6a3ce" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="be9eb9a1-78d2-4ca3-bd26-3af1b8db0f9f" />
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property Id="c667d8bd-eb58-42df-8e9f-cfd9d19535b9" name="Ogre::SceneMgr" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="f1cf3f17-cc94-433d-b870-51b2baae4198" />
+          </property>
+          <property Id="ee1685b2-df6d-47bf-8d6d-044e68b67394" name="GameObjectsCollection" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="e5ffe122-0582-4917-aa70-fdc3b444520a" />
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
   </packagedElements>
   <package Id="14f5fc2d-4086-4801-8d6f-794a9a91df6e" name="Game">
     <elementDefinition Id="c740e44f-ee98-465f-b0b1-16ebcaa32fc9" />
+    <profileInstances>
+      <packageHasProfileInstances Id="b0dbfcee-d186-4f41-9c11-c26e58f5321d">
+        <profileInstance Id="2933dfbe-335a-4bb0-b4c8-0d79fceac813" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="fbfec196-cd7c-437c-884d-f812354c3214">
+        <profileInstance Id="a0141ef5-4649-4f95-9956-b4b8a915159a" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
   </package>
 </logicalClassDesignerModel>
