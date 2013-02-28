@@ -173,7 +173,6 @@
     <ClInclude Include="Headers\stdafx.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="GameObjectFactory.cpp" />
     <ClCompile Include="Sources\GameObject.cpp" />
     <ClCompile Include="Sources\GameObjectBase.cpp" />
     <ClCompile Include="Sources\GameObjectFactory.cpp" />
