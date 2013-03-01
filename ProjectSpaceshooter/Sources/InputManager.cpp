@@ -77,29 +77,33 @@ bool InputManager::updateInput(GameData& mGameData)
 	mKeyboard->capture();
 	mMouse->capture();
 
+	float tmpX=0.0, tmpY=0.0, tmpZ=0.0;
+
 	 
     if(mKeyboard->isKeyDown(OIS::KC_ESCAPE))
         return false;
 
 	if(mKeyboard->isKeyDown(OIS::KC_W) )
 	{
-		mGameData.camZ += 0.05;
+		tmpZ += 0.05;
 	}
 
 	if(mKeyboard->isKeyDown(OIS::KC_S) )
 	{
-		mGameData.camZ -= 0.05;
+		tmpZ -= 0.05;
 	}
 
 	if(mKeyboard->isKeyDown(OIS::KC_A) )
 	{
-		mGameData.camX += 0.05;
+		tmpX += 0.05;
 	}
 
 	if(mKeyboard->isKeyDown(OIS::KC_D) )
 	{
-		mGameData.camX -= 0.05;
+		tmpX -= 0.05;
 	}
+
+	mGameData.getPlayer()->getTransformComponent().move(tmpX, tmpY, tmpZ);
 
 	return true;
 }

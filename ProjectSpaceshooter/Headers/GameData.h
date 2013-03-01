@@ -20,6 +20,11 @@ public:
 
 	GameData();
 	~GameData();
+
+	GameObject* getPlayer()	{
+		return mPlayer;
+	}
+
 private:
 	//All GameObjects
 	Ogre::SceneManager* mSceneMgr;

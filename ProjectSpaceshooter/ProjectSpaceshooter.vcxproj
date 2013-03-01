@@ -170,6 +170,7 @@
     <ClInclude Include="Headers\InputManager.h" />
     <ClInclude Include="Headers\OgreManager.h" />
     <ClInclude Include="Headers\stdafx.h" />
+    <ClInclude Include="Headers\TransformComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\GameObject.cpp" />

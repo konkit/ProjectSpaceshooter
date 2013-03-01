@@ -72,7 +72,13 @@ void GameData::setScene()
 
 void GameData::updateScene()
 {
-	shipNode->setPosition(Ogre::Vector3(camX, camY, camZ));
+	float tmpX, tmpY, tmpZ;
+
+	tmpX = mPlayer->getTransformComponent().getX();
+	tmpY = mPlayer->getTransformComponent().getY();
+	tmpZ = mPlayer->getTransformComponent().getZ();
+
+	shipNode->setPosition(Ogre::Vector3(tmpX, tmpY, tmpZ));
 
 	//std::cout<<"Spaceship position - "<<camX<<", "<<camY<<", "<<camZ<<"\n";
 }

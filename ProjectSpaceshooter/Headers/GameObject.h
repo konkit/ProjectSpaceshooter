@@ -1,4 +1,7 @@
 #pragma once
+
+#include "TransformComponent.h"
+
 enum  class GameObjectType 
 {
 	player,
@@ -10,9 +13,17 @@ enum  class GameObjectType
 
 class GameObject 
 {
-	GameObjectType mObjectType;
 public:
 	GameObject(GameObjectType newObjectType);
 	virtual ~GameObject(void);
+
+	TransformComponent& getTransformComponent()	{
+		return mTransformComponent;
+	}
+
+
+private:
+	GameObjectType mObjectType;
+	TransformComponent mTransformComponent;
 };
 
