@@ -68,7 +68,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>..\Libs\include\OGRE\RenderSystems\GL;Headers\;..\Libs\include\OGRE;$(IncludePath)</IncludePath>
+    <IncludePath>..\Libs\include\OGRE\RenderSystems\GL;Headers\;..\Libs\include\OGRE;..\Libs\include\OIS;$(IncludePath)</IncludePath>
     <LibraryPath>..\Libs\lib\$(Configuration);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -160,13 +160,33 @@
   <ItemGroup>
     <ClInclude Include="Headers\Game.h" />
     <ClInclude Include="Headers\GameData.h" />
+    <ClInclude Include="Headers\GameObject.h" />
+    <ClInclude Include="Headers\GameObjectBase.h" />
+    <ClInclude Include="Headers\GameObjectFactory.h" />
+    <ClInclude Include="Headers\GameObjectsCollection.h" />
+    <ClInclude Include="Headers\GameState.h" />
+    <ClInclude Include="Headers\GameStateMain.h" />
+    <ClInclude Include="Headers\HangarState.h" />
     <ClInclude Include="Headers\InputManager.h" />
+    <ClInclude Include="Headers\LevelBuilder.h" />
     <ClInclude Include="Headers\OgreManager.h" />
+    <ClInclude Include="Headers\PauseState.h" />
+    <ClInclude Include="Headers\PlayState.h" />
     <ClInclude Include="Headers\stdafx.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Sources\Game.cpp" />
+    <ClCompile Include="Sources\GameObject.cpp" />
+    <ClCompile Include="Sources\GameObjectBase.cpp" />
+    <ClCompile Include="Sources\GameObjectFactory.cpp" />
+    <ClCompile Include="Sources\GameObjectsCollection.cpp" />
+    <ClCompile Include="Sources\GameStateMain.cpp" />
+    <ClCompile Include="Sources\HangarState.cpp" />
     <ClCompile Include="Sources\InputManager.cpp" />
+    <ClCompile Include="Sources\LevelBuilder.cpp" />
     <ClCompile Include="Sources\main.cpp" />
+    <ClCompile Include="Sources\PauseState.cpp" />
+    <ClCompile Include="Sources\PlayState.cpp" />
     <ClCompile Include="Sources\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

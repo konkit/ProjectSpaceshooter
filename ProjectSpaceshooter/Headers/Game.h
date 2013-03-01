@@ -4,42 +4,31 @@
 #include "InputManager.h"
 #include "OgreManager.h"
 #include "GameData.h"
-
+#include "GameState.h"
 // Main class in this game, contains main loop.
 // Governs Systems, managers, STATES!
 class Game 
 {
 public:
-	bool Game::run()
-	{ 
-		//Initialize ogre
-		mOgreManager.initOgre();
-		//Initialize OIS
-		mInputManager.initOIS( mOgreManager.getWindowHandle() );
+	Game();
+	~Game();
 
-		//Initialize scene - setup all cameras, entities, etc
-		mGameData.initScene( mOgreManager.getRoot(), mOgreManager.getWindowHandle() );
-		mGameData.setScene();
-
-		while(true)
-		{
-			//update input from player
-			/* powinno byc updateInput( mGameData ) */
-			if(mInputManager.updateInput(mGameData.camX, mGameData.camY, mGameData.camZ)==false)
-				return false;
-
-			//temporary game logic
-			/* to powinno byc gdzies w jakims systemie */
-			mGameData.mCamera->setPosition(Ogre::Vector3(mGameData.camX, mGameData.camY, mGameData.camZ));
-
-			// Render a frame
-			if(! mOgreManager.getRoot()->renderOneFrame()) return false;
-		}
-
-		return true;
-	}
-
+	void initializeGame();
+	bool run();
+	GameState * getPause() const { return pause; }
+	GameState * getPlay() const { return play; }
+	GameState * getHangar() const { return hangar; }
+	GameState * betLeveBuilder() const { return builder; }
+	GameState * changeState(GameState * newState) {state = newState; }
+	InputManager * getInputMenager() const { return &mInputManager;}
+	OgreManager * getOgreManager() const {return &mOgreManager;}
+	GameData * getGameData() const {return &mGameData};
 private:
+	GameState * pause;
+	GameState * play;
+	GameState * hangar;
+	GameState * state;
+	GameState * builder;
 	InputManager mInputManager;
 	OgreManager mOgreManager;
 	GameData mGameData;	
