@@ -1,5 +1,4 @@
-#ifndef __SPACESHOOTER_OGRE_MANAGER__
-#define __SPACESHOOTER_OGRE_MANAGER__
+#pragma once
 
 
 
@@ -81,4 +80,3 @@ void OgreManager::initOgre()
 	Ogre::ResourceGroupManager::getSingleton().initialiseAllResourceGroups();
 }
 
-#endif

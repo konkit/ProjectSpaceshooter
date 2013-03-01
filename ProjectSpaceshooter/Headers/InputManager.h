@@ -1,5 +1,4 @@
-#ifndef __SPACESHOOTER_INPUT_MANAGER__
-#define __SPACESHOOTER_INPUT_MANAGER__
+#pragma once
 
 
 
@@ -28,5 +27,3 @@ private:
     virtual void windowClosed(Ogre::RenderWindow* rw);
 };
 
-
-#endif

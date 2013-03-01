@@ -33,9 +33,6 @@
     <ClInclude Include="Headers\GameObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Headers\GameObjectBase.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Headers\GameObjectFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -56,9 +53,6 @@
     <ClCompile Include="Sources\GameObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\GameObjectBase.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Sources\GameObjectFactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -67,6 +61,9 @@
     </ClCompile>
     <ClCompile Include="Sources\stdafx.cpp">
       <Filter>Precompiled headers</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\GameData.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

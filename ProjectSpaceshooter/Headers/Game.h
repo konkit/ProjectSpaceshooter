@@ -1,5 +1,4 @@
-#ifndef __SPACESHOOTER_GAME__
-#define __SPACESHOOTER_GAME__
+#pragma once
 
 #include "InputManager.h"
 #include "OgreManager.h"
@@ -28,9 +27,14 @@ public:
 			if(mInputManager.updateInput(mGameData.camX, mGameData.camY, mGameData.camZ)==false)
 				return false;
 
+
+
 			//temporary game logic
 			/* to powinno byc gdzies w jakims systemie */
-			mGameData.mCamera->setPosition(Ogre::Vector3(mGameData.camX, mGameData.camY, mGameData.camZ));
+			//mGameData.mCamera->setPosition(Ogre::Vector3(mGameData.camX, mGameData.camY, mGameData.camZ));
+			//mGameData.mCamera->lookAt(mGameData.camX, 0.0, mGameData.camZ);
+			//mGameData.mCamera->lookAt(0.0, 0.0, 0.0);
+			mGameData.updateScene();
 
 			// Render a frame
 			if(! mOgreManager.getRoot()->renderOneFrame()) return false;
@@ -60,7 +64,3 @@ private:
 
 
  
-
-
-
-#endif
