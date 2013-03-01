@@ -1,5 +1,5 @@
 #include "Game.h"
-
+#include "GameState.h"
 Game::Game()
 {
 	pause = new PauseState(this);
@@ -28,7 +28,7 @@ bool Game::run()
 		//temporary game logic
 		/* to powinno byc gdzies w jakims systemie */
 		mGameData.mCamera->setPosition(Ogre::Vector3(mGameData.camX, mGameData.camY, mGameData.camZ));
-
+		state->update();
 		// Render a frame
 		if(! mOgreManager.getRoot()->renderOneFrame()) return false;
 	}

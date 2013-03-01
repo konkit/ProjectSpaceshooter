@@ -37,14 +37,14 @@ public:
 				Ogre::Real(vp->getActualWidth()) / Ogre::Real(vp->getActualHeight()));
 	}
 
-
+	Ogre::SceneNode* ShipNode;
 	void setScene()
 	{
 		Ogre::Entity* ogreHead = mSceneMgr->createEntity("Head", "smallfighter.MESH");
  
 		Ogre::SceneNode* headNode = mSceneMgr->getRootSceneNode()->createChildSceneNode();
 		headNode->attachObject(ogreHead);
- 
+		ShipNode = headNode;
 		// Set ambient light
 		mSceneMgr->setAmbientLight(Ogre::ColourValue(0.7, 0.7, 0.7));
  

@@ -165,7 +165,6 @@
     <ClInclude Include="Headers\GameObjectFactory.h" />
     <ClInclude Include="Headers\GameObjectsCollection.h" />
     <ClInclude Include="Headers\GameState.h" />
-    <ClInclude Include="Headers\GameStateMain.h" />
     <ClInclude Include="Headers\HangarState.h" />
     <ClInclude Include="Headers\InputManager.h" />
     <ClInclude Include="Headers\LevelBuilder.h" />
@@ -175,12 +174,12 @@
     <ClInclude Include="Headers\stdafx.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="OgreManager.cpp" />
     <ClCompile Include="Sources\Game.cpp" />
     <ClCompile Include="Sources\GameObject.cpp" />
     <ClCompile Include="Sources\GameObjectBase.cpp" />
     <ClCompile Include="Sources\GameObjectFactory.cpp" />
     <ClCompile Include="Sources\GameObjectsCollection.cpp" />
-    <ClCompile Include="Sources\GameStateMain.cpp" />
     <ClCompile Include="Sources\HangarState.cpp" />
     <ClCompile Include="Sources\InputManager.cpp" />
     <ClCompile Include="Sources\LevelBuilder.cpp" />

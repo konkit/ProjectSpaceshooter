@@ -4,7 +4,17 @@
 #include "InputManager.h"
 #include "OgreManager.h"
 #include "GameData.h"
-#include "GameState.h"
+
+class Game;
+class GameState
+{
+protected:
+	Game * game;
+public:
+	GameState(Game * game): game(game){};
+	virtual bool update() = 0;
+	virtual ~GameState(void){};
+};
 // Main class in this game, contains main loop.
 // Governs Systems, managers, STATES!
 class Game 
@@ -20,9 +30,9 @@ public:
 	GameState * getHangar() const { return hangar; }
 	GameState * betLeveBuilder() const { return builder; }
 	GameState * changeState(GameState * newState) {state = newState; }
-	InputManager * getInputMenager() const { return &mInputManager;}
-	OgreManager * getOgreManager() const {return &mOgreManager;}
-	GameData * getGameData() const {return &mGameData};
+	const InputManager * getInputMenager() { return &mInputManager;}
+	OgreManager * getOgreManager() {return &mOgreManager;}
+	GameData * getGameData() {return &mGameData;};
 private:
 	GameState * pause;
 	GameState * play;
@@ -37,6 +47,7 @@ private:
 	// State playState;
 	// etc...
 };
+
 
 
 

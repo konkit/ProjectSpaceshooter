@@ -1,13 +1,12 @@
 #pragma once
 #include "Game.h"
-#include "GameStateMain.h"
 class HangarState : public GameState
 {
 public:
 	HangarState(Game * game);
-	~HangarState();
+	~HangarState(){};
 
-	virtual bool update();
+	virtual bool update(){return true;};
 
 private:
 
