@@ -15,7 +15,6 @@ enum  class GameObjectType
 
 class GameObject 
 {
-	GameObjectType mObjectType;
 public:
 	GameObject(GameObjectType newObjectType);
 	virtual ~GameObject(void);

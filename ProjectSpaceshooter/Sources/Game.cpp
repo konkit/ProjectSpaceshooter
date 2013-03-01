@@ -20,17 +20,32 @@ bool Game::run()
 {
 	while(true)
 	{
-		//update input from player
-		/* powinno byc updateInput( mGameData ) */
-		if(mInputManager.updateInput(mGameData.camX, mGameData.camY, mGameData.camZ)==false)
-			return false;
-
-		//temporary game logic
-		/* to powinno byc gdzies w jakims systemie */
-		mGameData.mCamera->setPosition(Ogre::Vector3(mGameData.camX, mGameData.camY, mGameData.camZ));
-		state->update();
-		// Render a frame
 		if(! mOgreManager.getRoot()->renderOneFrame()) return false;
+
+
+					//update input from player
+			/* powinno byc updateInput( mGameData ) */
+			if(mInputManager.updateInput(mGameData)==false)
+				return false;
+
+			//std::cout<<"Player velocity = "<<mGameData.getPlayer()->getPhysicsComponent().velocityX<<", "<<
+			//								mGameData.getPlayer()->getPhysicsComponent().velocityY<<", "<<
+			//								mGameData.getPlayer()->getPhysicsComponent().velocityZ<<"\n";
+
+			// game logic
+			/* tu powinny byæ wszystkie update'y systemów
+			   aiSystem.update( mGameData );
+			   physicsSystem.update( mGameData );
+			   collisionSystem.update( mGameData );*/
+
+			mPhysicsSystem.update( mGameData );
+
+
+			mGraphicsSystem.updateNodesAndDraw(mGameData);
+
+			//std::cout<<"Player pos = "<<mGameData.getPlayer()->getTransformComponent().getX()<<", "<<
+			//							mGameData.getPlayer()->getTransformComponent().getY()<<", "<<
+			//							mGameData.getPlayer()->getTransformComponent().getZ()<<"\n";
 	}
 
 	return true;

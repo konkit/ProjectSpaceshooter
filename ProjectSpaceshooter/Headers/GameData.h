@@ -16,7 +16,6 @@ public:
 	Ogre::SceneNode* shipNode;
 	float camX, camY, camZ;
 	Ogre::SceneNode* ShipNode;
-		ShipNode = headNode;
 	GameData();
 	~GameData();
 
