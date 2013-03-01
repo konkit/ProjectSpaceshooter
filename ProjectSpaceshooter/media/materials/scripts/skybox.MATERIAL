@@ -9,7 +9,7 @@ material Examples/SpaceSkyPlane
 
 			texture_unit
 			{
-				texture spacesky.jpg
+				texture spacesky2.jpg
 			}
 		}
 	}

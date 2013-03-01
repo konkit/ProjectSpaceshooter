@@ -31,16 +31,16 @@ void GameData::initScene(Ogre::Root* mRoot, Ogre::RenderWindow* mWindow)
 	// Create the camera
 	mCamera = mSceneMgr->createCamera("PlayerCam");
 		// Position it at 80 in Z direction
-		mCamera->setPosition(Ogre::Vector3(0.0, 350.0, 0.0));
+		mCamera->setPosition(Ogre::Vector3(0.0, 350.0, -100.0));
 		// Look back along -Z
 		mCamera->lookAt(0.0, 1.0, 1.0);
 		mCamera->setNearClipDistance(5);
 
-	//skybox
+	//skyplane
 	Ogre::Plane plane;
-		plane.d = 2000;
+		plane.d = 2500;
 		plane.normal = Ogre::Vector3::UNIT_Y;
-	mSceneMgr->setSkyPlane(true, plane, "Examples/SpaceSkyPlane", 1000, 75);
+	mSceneMgr->setSkyPlane(true, plane, "Examples/SpaceSkyPlane", 1000, 45);
 	
 	// Create one viewport, entire window
 	Ogre::Viewport* vp = mWindow->addViewport(mCamera);
@@ -61,15 +61,18 @@ void GameData::setScene()
 	shipNode->setPosition(Ogre::Vector3(camX, camY, camZ));
  
 	// Set ambient light
-	mSceneMgr->setAmbientLight(Ogre::ColourValue(0.7, 0.7, 0.7));
+	mSceneMgr->setAmbientLight(Ogre::ColourValue(0.5, 0.5, 0.5));
  
 	// Create a light
 	Ogre::Light* l = mSceneMgr->createLight("MainLight");
-	l->setPosition(20,80,50);
+	l->setPosition(-50,50,0);
+	l->setPowerScale(200.0);
 }
 
 
 void GameData::updateScene()
 {
 	shipNode->setPosition(Ogre::Vector3(camX, camY, camZ));
+
+	//std::cout<<"Spaceship position - "<<camX<<", "<<camY<<", "<<camZ<<"\n";
 }

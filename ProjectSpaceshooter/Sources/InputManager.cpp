@@ -83,22 +83,22 @@ bool InputManager::updateInput(float& camX, float& camY, float& camZ)
 
 	if(mKeyboard->isKeyDown(OIS::KC_W) )
 	{
-		camZ += 0.01;
+		camZ += 0.1;
 	}
 
 	if(mKeyboard->isKeyDown(OIS::KC_S) )
 	{
-		camZ -= 0.01;
+		camZ -= 0.1;
 	}
 
 	if(mKeyboard->isKeyDown(OIS::KC_A) )
 	{
-		camX += 0.01;
+		camX += 0.1;
 	}
 
 	if(mKeyboard->isKeyDown(OIS::KC_D) )
 	{
-		camX -= 0.01;
+		camX -= 0.1;
 	}
 
 	return true;
