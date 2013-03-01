@@ -167,8 +167,12 @@
     <ClInclude Include="Headers\GameObject.h" />
     <ClInclude Include="Headers\GameObjectFactory.h" />
     <ClInclude Include="Headers\GameObjectsCollection.h" />
+    <ClInclude Include="Headers\GraphicsComponent.h" />
+    <ClInclude Include="Headers\GraphicsSystem.h" />
     <ClInclude Include="Headers\InputManager.h" />
     <ClInclude Include="Headers\OgreManager.h" />
+    <ClInclude Include="Headers\PhysicsComponent.h" />
+    <ClInclude Include="Headers\PhysicsSystem.h" />
     <ClInclude Include="Headers\stdafx.h" />
     <ClInclude Include="Headers\TransformComponent.h" />
   </ItemGroup>

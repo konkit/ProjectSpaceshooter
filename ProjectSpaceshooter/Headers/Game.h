@@ -4,6 +4,9 @@
 #include "OgreManager.h"
 #include "GameData.h"
 
+#include "PhysicsSystem.h"
+#include "GraphicsSystem.h"
+
 // Main class in this game, contains main loop.
 // Governs Systems, managers, STATES!
 class Game 
@@ -20,6 +23,9 @@ public:
 		mGameData.initScene( mOgreManager.getRoot(), mOgreManager.getWindowHandle() );
 		mGameData.setScene();
 
+		//init systems
+		mGraphicsSystem.init( &mOgreManager );
+
 		while(true)
 		{
 			//update input from player
@@ -27,17 +33,27 @@ public:
 			if(mInputManager.updateInput(mGameData)==false)
 				return false;
 
+			//std::cout<<"Player velocity = "<<mGameData.getPlayer()->getPhysicsComponent().velocityX<<", "<<
+			//								mGameData.getPlayer()->getPhysicsComponent().velocityY<<", "<<
+			//								mGameData.getPlayer()->getPhysicsComponent().velocityZ<<"\n";
+
+			// game logic
+			/* tu powinny byæ wszystkie update'y systemów
+			   aiSystem.update( mGameData );
+			   physicsSystem.update( mGameData );
+			   collisionSystem.update( mGameData );*/
+
+			mPhysicsSystem.update( mGameData );
 
 
-			//temporary game logic
-			/* to powinno byc gdzies w jakims systemie */
-			//mGameData.mCamera->setPosition(Ogre::Vector3(mGameData.camX, mGameData.camY, mGameData.camZ));
-			//mGameData.mCamera->lookAt(mGameData.camX, 0.0, mGameData.camZ);
-			//mGameData.mCamera->lookAt(0.0, 0.0, 0.0);
-			mGameData.updateScene();
 
 			// Render a frame
-			if(! mOgreManager.getRoot()->renderOneFrame()) return false;
+			mGraphicsSystem.updateNodesAndDraw(mGameData);
+
+			//std::cout<<"Player pos = "<<mGameData.getPlayer()->getTransformComponent().getX()<<", "<<
+			//							mGameData.getPlayer()->getTransformComponent().getY()<<", "<<
+			//							mGameData.getPlayer()->getTransformComponent().getZ()<<"\n";
+
 		}
 
 		return true;
@@ -47,6 +63,9 @@ private:
 	InputManager mInputManager;
 	OgreManager mOgreManager;
 	GameData mGameData;	
+
+	PhysicsSystem mPhysicsSystem;
+	GraphicsSystem mGraphicsSystem;
 
 	// State* activeState;
 	// State playState;

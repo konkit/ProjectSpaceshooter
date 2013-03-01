@@ -1,6 +1,8 @@
 #pragma once
 
 #include "TransformComponent.h"
+#include "GraphicsComponent.h"
+#include "PhysicsComponent.h"
 
 enum  class GameObjectType 
 {
@@ -21,9 +23,20 @@ public:
 		return mTransformComponent;
 	}
 
+	GraphicsComponent& getGraphicsComponent()	{
+		return mGraphicsComponent;
+	}
+
+	PhysicsComponent& getPhysicsComponent()	{
+		return mPhysicsComponent;
+	}
+
+
 
 private:
 	GameObjectType mObjectType;
 	TransformComponent mTransformComponent;
+	GraphicsComponent mGraphicsComponent;
+	PhysicsComponent mPhysicsComponent;
 };
 

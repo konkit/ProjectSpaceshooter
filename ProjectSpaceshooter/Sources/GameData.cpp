@@ -54,11 +54,15 @@ void GameData::initScene(Ogre::Root* mRoot, Ogre::RenderWindow* mWindow)
 
 void GameData::setScene()
 {
+	//create entity with spaceship model
 	Ogre::Entity* ogreHead = mSceneMgr->createEntity("Head", "smallfighter.MESH");
  
+	//create sceneNode for player
 	shipNode = mSceneMgr->getRootSceneNode()->createChildSceneNode();
-	shipNode->attachObject(ogreHead);
-	shipNode->setPosition(Ogre::Vector3(camX, camY, camZ));
+		//atach model to that node
+		shipNode->attachObject(ogreHead);
+	//save node in player's GraphicsComponent
+	mPlayer->getGraphicsComponent().initNode(shipNode);
  
 	// Set ambient light
 	mSceneMgr->setAmbientLight(Ogre::ColourValue(0.5, 0.5, 0.5));
@@ -67,18 +71,4 @@ void GameData::setScene()
 	Ogre::Light* l = mSceneMgr->createLight("MainLight");
 	l->setPosition(-50,50,0);
 	l->setPowerScale(200.0);
-}
-
-
-void GameData::updateScene()
-{
-	float tmpX, tmpY, tmpZ;
-
-	tmpX = mPlayer->getTransformComponent().getX();
-	tmpY = mPlayer->getTransformComponent().getY();
-	tmpZ = mPlayer->getTransformComponent().getZ();
-
-	shipNode->setPosition(Ogre::Vector3(tmpX, tmpY, tmpZ));
-
-	//std::cout<<"Spaceship position - "<<camX<<", "<<camY<<", "<<camZ<<"\n";
 }

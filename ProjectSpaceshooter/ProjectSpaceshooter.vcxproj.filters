@@ -16,6 +16,9 @@
     <Filter Include="Precompiled headers">
       <UniqueIdentifier>{095e8aca-fa94-4bfc-b701-515d9f8821a5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\GameObject components">
+      <UniqueIdentifier>{5036c554-2387-4cf4-8f51-7427d11e9021}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Headers\Game.h">
@@ -43,6 +46,18 @@
       <Filter>Precompiled headers</Filter>
     </ClInclude>
     <ClInclude Include="Headers\TransformComponent.h">
+      <Filter>Header Files\GameObject components</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\GraphicsComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\GraphicsSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\PhysicsComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\PhysicsSystem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

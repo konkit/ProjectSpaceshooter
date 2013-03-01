@@ -12,8 +12,6 @@ public:
 	void initScene(Ogre::Root* mRoot, Ogre::RenderWindow* mWindow);
 	void setScene();
 
-	void updateScene();
-
 	Ogre::Camera* mCamera;
 	Ogre::SceneNode* shipNode;
 	float camX, camY, camZ;

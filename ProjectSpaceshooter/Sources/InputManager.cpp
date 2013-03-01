@@ -103,7 +103,7 @@ bool InputManager::updateInput(GameData& mGameData)
 		tmpX -= 0.05;
 	}
 
-	mGameData.getPlayer()->getTransformComponent().move(tmpX, tmpY, tmpZ);
+	mGameData.getPlayer()->getPhysicsComponent().setVelocity(tmpX, tmpY, tmpZ);
 
 	return true;
 }
