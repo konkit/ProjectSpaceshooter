@@ -58,6 +58,8 @@ void Game::initializeGame()
 	//Initialize OIS
 	mInputManager.initOIS( mOgreManager.getWindowHandle() );
 
+	mGraphicsSystem.init(&mOgreManager);
+
 	//Initialize scene - setup all cameras, entities, etc
 	mGameData.initScene( mOgreManager.getRoot(), mOgreManager.getWindowHandle() );
 	mGameData.setScene();
