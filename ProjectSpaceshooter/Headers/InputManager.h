@@ -1,6 +1,6 @@
 #pragma once
 
-
+#include "GameData.h"
 
 
 //Class reading input from system and acting appropriately on GameData
@@ -11,7 +11,7 @@ public:
 	void initOIS(Ogre::RenderWindow* window);
 	
 	//update data (temporairly just camera coords)
-	bool updateInput(float& camX, float& camY, float& camZ);
+	bool updateInput(GameData& mGameData);
 
 private:
 	// OIS Input devices

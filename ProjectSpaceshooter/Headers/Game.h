@@ -24,7 +24,7 @@ public:
 		{
 			//update input from player
 			/* powinno byc updateInput( mGameData ) */
-			if(mInputManager.updateInput(mGameData.camX, mGameData.camY, mGameData.camZ)==false)
+			if(mInputManager.updateInput(mGameData)==false)
 				return false;
 
 

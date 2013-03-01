@@ -60,7 +60,7 @@ void InputManager::windowClosed(Ogre::RenderWindow* rw)
     }
 }
 
-bool InputManager::updateInput(float& camX, float& camY, float& camZ)
+bool InputManager::updateInput(GameData& mGameData)
 {
 	// Pump window messages for nice behaviour
 	Ogre::WindowEventUtilities::messagePump();
@@ -83,22 +83,22 @@ bool InputManager::updateInput(float& camX, float& camY, float& camZ)
 
 	if(mKeyboard->isKeyDown(OIS::KC_W) )
 	{
-		camZ += 0.1;
+		mGameData.camZ += 0.05;
 	}
 
 	if(mKeyboard->isKeyDown(OIS::KC_S) )
 	{
-		camZ -= 0.1;
+		mGameData.camZ -= 0.05;
 	}
 
 	if(mKeyboard->isKeyDown(OIS::KC_A) )
 	{
-		camX += 0.1;
+		mGameData.camX += 0.05;
 	}
 
 	if(mKeyboard->isKeyDown(OIS::KC_D) )
 	{
-		camX -= 0.1;
+		mGameData.camX -= 0.05;
 	}
 
 	return true;
