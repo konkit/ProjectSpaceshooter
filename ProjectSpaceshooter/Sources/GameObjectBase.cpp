@@ -10,7 +10,7 @@ GameObjectBase::GameObjectBase(void)
 	mBulletCollection = new GameObjectsCollection(GameObjectType::bulletObject);
 	mStaticCollection = new GameObjectsCollection(GameObjectType::staticObject);
 	mEnemyCollection = new GameObjectsCollection(GameObjectType::enemyObject);
-	mPlayer = GameObjectFactory::getGameObject(GameObjectType::player);
+	mPlayer = GameObjectFactory::createGameObject(GameObjectType::player);
 }
 
 

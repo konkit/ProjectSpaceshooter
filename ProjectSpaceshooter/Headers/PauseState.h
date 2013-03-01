@@ -5,7 +5,8 @@ class PauseState : public GameState
 public:
 	PauseState(Game * game);
 	~PauseState(){};
-	virtual bool update(){return true;};
+	void createCamera();
+	virtual bool update();
 
 private:
 };

@@ -26,7 +26,7 @@ void InputManager::initOIS(Ogre::RenderWindow* window)
  
     //Register as a Window listener
     Ogre::WindowEventUtilities::addWindowEventListener(mWindow, this);
- 
+	mTime.reset();
     //mRoot->addFrameListener(this);
 }
 
@@ -62,9 +62,10 @@ void InputManager::windowClosed(Ogre::RenderWindow* rw)
 
 bool InputManager::updateInput(GameData& mGameData)
 {
+	static unsigned long lastTime = 0; 
 	// Pump window messages for nice behaviour
 	Ogre::WindowEventUtilities::messagePump();
-
+	
 	if(mWindow->isClosed())
 	{
 		return false;
@@ -97,12 +98,17 @@ bool InputManager::updateInput(GameData& mGameData)
 	{
 		tmpX += 0.05;
 	}
-
+	
 	if(mKeyboard->isKeyDown(OIS::KC_D) )
 	{
 		tmpX -= 0.05;
 	}
-
+	unsigned long deltaTime = mTime.getMilliseconds() - lastTime;
+	if (mKeyboard->isKeyDown(OIS::KC_P) && ( deltaTime > 1000))
+	{
+		mGameData.changeFlag = !mGameData.changeFlag;
+		lastTime = mTime.getMilliseconds();
+	}
 	mGameData.getPlayer()->getPhysicsComponent().setVelocity(tmpX, tmpY, tmpZ);
 
 	return true;

@@ -5,6 +5,6 @@ class GameObjectFactory
 	GameObjectFactory(){};
 	~GameObjectFactory(void){};
 public:
-	static GameObject * getGameObject(GameObjectType newObjectType);
+	static GameObject * createGameObject(GameObjectType newObjectType);
 };
 

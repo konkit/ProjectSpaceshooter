@@ -18,7 +18,7 @@ private:
 	OIS::InputManager* mInputManager;
 	OIS::Mouse*    mMouse;
 	OIS::Keyboard* mKeyboard;
-
+	Ogre::Timer mTime;
 	Ogre::RenderWindow* mWindow;
 
 	// Derived WindowEventListener

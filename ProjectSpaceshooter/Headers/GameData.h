@@ -9,15 +9,10 @@
 class GameData
 {
 public:
-	void initScene(Ogre::Root* mRoot, Ogre::RenderWindow* mWindow);
-	void setScene();
-
-	Ogre::Camera* mCamera;
 	Ogre::SceneNode* shipNode;
-	float camX, camY, camZ;
-	Ogre::SceneNode* ShipNode;
 	GameData();
 	~GameData();
+	bool changeFlag;
 
 	GameObject* getPlayer()	{
 		return mPlayer;
@@ -25,6 +20,7 @@ public:
 
 private:
 	//All GameObjects
+
 	Ogre::SceneManager* mSceneMgr;
 
 	GameObjectsCollection* mEnemyCollection;
