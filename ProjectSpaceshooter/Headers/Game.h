@@ -9,8 +9,10 @@ class Game;
 class GameState
 {
 protected:
+	Ogre::SceneManager* mSceneMgr;
 	Game * game;
 public:
+	Ogre::SceneManager* getSceneMgr(){return mSceneMgr;};
 	GameState(Game * game): game(game){};
 	virtual bool update() = 0;
 	virtual ~GameState(void){};
@@ -28,7 +30,7 @@ public:
 	GameState * getPause() const { return pause; }
 	GameState * getPlay() const { return play; }
 	GameState * getHangar() const { return hangar; }
-	GameState * betLeveBuilder() const { return builder; }
+	GameState * getLevelBuilder() const { return builder; }
 	GameState * changeState(GameState * newState) {state = newState; }
 	const InputManager * getInputMenager() { return &mInputManager;}
 	OgreManager * getOgreManager() {return &mOgreManager;}
