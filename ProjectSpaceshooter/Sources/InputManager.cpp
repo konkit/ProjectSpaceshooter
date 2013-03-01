@@ -60,7 +60,7 @@ void InputManager::windowClosed(Ogre::RenderWindow* rw)
     }
 }
 
-bool InputManager::updateInput(float& camX, float& camY, float& camZ)
+bool InputManager::updateInput(GameData& mGameData)
 {
 	// Pump window messages for nice behaviour
 	Ogre::WindowEventUtilities::messagePump();
@@ -77,29 +77,33 @@ bool InputManager::updateInput(float& camX, float& camY, float& camZ)
 	mKeyboard->capture();
 	mMouse->capture();
 
+	float tmpX=0.0, tmpY=0.0, tmpZ=0.0;
+
 	 
     if(mKeyboard->isKeyDown(OIS::KC_ESCAPE))
         return false;
 
 	if(mKeyboard->isKeyDown(OIS::KC_W) )
 	{
-		camZ += 0.01;
+		tmpZ += 0.05;
 	}
 
 	if(mKeyboard->isKeyDown(OIS::KC_S) )
 	{
-		camZ -= 0.01;
+		tmpZ -= 0.05;
 	}
 
 	if(mKeyboard->isKeyDown(OIS::KC_A) )
 	{
-		camX += 0.01;
+		tmpX += 0.05;
 	}
 
 	if(mKeyboard->isKeyDown(OIS::KC_D) )
 	{
-		camX -= 0.01;
+		tmpX -= 0.05;
 	}
+
+	mGameData.getPlayer()->getPhysicsComponent().setVelocity(tmpX, tmpY, tmpZ);
 
 	return true;
 }

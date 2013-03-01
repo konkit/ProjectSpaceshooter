@@ -1,9 +1,11 @@
-#ifndef __SPACESHOOTER_GAME__
-#define __SPACESHOOTER_GAME__
+#pragma once
 
 #include "InputManager.h"
 #include "OgreManager.h"
 #include "GameData.h"
+
+#include "PhysicsSystem.h"
+#include "GraphicsSystem.h"
 
 class Game;
 class GameState
@@ -24,6 +26,35 @@ class Game
 public:
 	Game();
 	~Game();
+		//init systems
+		mGraphicsSystem.init( &mOgreManager );
+
+		while(true)
+		{
+			//update input from player
+			/* powinno byc updateInput( mGameData ) */
+			if(mInputManager.updateInput(mGameData)==false)
+				return false;
+
+			//std::cout<<"Player velocity = "<<mGameData.getPlayer()->getPhysicsComponent().velocityX<<", "<<
+			//								mGameData.getPlayer()->getPhysicsComponent().velocityY<<", "<<
+			//								mGameData.getPlayer()->getPhysicsComponent().velocityZ<<"\n";
+
+			// game logic
+			/* tu powinny byæ wszystkie update'y systemów
+			   aiSystem.update( mGameData );
+			   physicsSystem.update( mGameData );
+			   collisionSystem.update( mGameData );*/
+
+			mPhysicsSystem.update( mGameData );
+
+
+			mGraphicsSystem.updateNodesAndDraw(mGameData);
+
+			//std::cout<<"Player pos = "<<mGameData.getPlayer()->getTransformComponent().getX()<<", "<<
+			//							mGameData.getPlayer()->getTransformComponent().getY()<<", "<<
+			//							mGameData.getPlayer()->getTransformComponent().getZ()<<"\n";
+
 
 	void initializeGame();
 	bool run();
@@ -45,6 +76,9 @@ private:
 	OgreManager mOgreManager;
 	GameData mGameData;	
 
+	PhysicsSystem mPhysicsSystem;
+	GraphicsSystem mGraphicsSystem;
+
 	// State* activeState;
 	// State playState;
 	// etc...
@@ -62,7 +96,3 @@ private:
 
 
  
-
-
-
-#endif

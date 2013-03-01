@@ -16,6 +16,7 @@
     <Filter Include="Precompiled headers">
       <UniqueIdentifier>{095e8aca-fa94-4bfc-b701-515d9f8821a5}</UniqueIdentifier>
     </Filter>
+<<<<<<< HEAD
     <Filter Include="State%27s">
       <UniqueIdentifier>{95937e4d-4926-4d8d-8fb8-9057f9422786}</UniqueIdentifier>
     </Filter>
@@ -24,24 +25,38 @@
     </Filter>
     <Filter Include="State%27s\Header Files">
       <UniqueIdentifier>{46f84ed2-48c2-4d35-a115-8914e46c68a8}</UniqueIdentifier>
+=======
+    <Filter Include="Header Files\GameObject components">
+      <UniqueIdentifier>{5036c554-2387-4cf4-8f51-7427d11e9021}</UniqueIdentifier>
+>>>>>>> 88c18ed406df8bfa31cba7c8f224f4ea205df112
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Headers\Game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Headers\InputManager.h">
+    <ClInclude Include="Headers\GameData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Headers\GameData.h">
+    <ClInclude Include="Headers\InputManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Headers\OgreManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Headers\GameObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\GameObjectFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\GameObjectsCollection.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="Headers\stdafx.h">
       <Filter>Precompiled headers</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="Headers\GameObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -67,6 +82,21 @@
       <Filter>State%27s\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Headers\GameState.h">
+=======
+    <ClInclude Include="Headers\TransformComponent.h">
+      <Filter>Header Files\GameObject components</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\GraphicsComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\GraphicsSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\PhysicsComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\PhysicsSystem.h">
+>>>>>>> 88c18ed406df8bfa31cba7c8f224f4ea205df112
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -77,9 +107,19 @@
     <ClCompile Include="Sources\InputManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\GameObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\GameObjectFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\GameObjectsCollection.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="Sources\stdafx.cpp">
       <Filter>Precompiled headers</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="Sources\GameObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -108,6 +148,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="OgreManager.cpp">
+=======
+    <ClCompile Include="Sources\GameData.cpp">
+>>>>>>> 88c18ed406df8bfa31cba7c8f224f4ea205df112
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

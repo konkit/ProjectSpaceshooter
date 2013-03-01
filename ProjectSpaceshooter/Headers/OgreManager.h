@@ -1,5 +1,4 @@
-#ifndef __SPACESHOOTER_OGRE_MANAGER__
-#define __SPACESHOOTER_OGRE_MANAGER__
+#pragma once
 
 
 
@@ -28,4 +27,3 @@ private:
 	Ogre::GLPlugin* mGLPlugin;
 };
 
-#endif
