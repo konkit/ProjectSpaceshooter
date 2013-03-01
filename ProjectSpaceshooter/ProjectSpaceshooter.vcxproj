@@ -83,7 +83,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>..\Libs\include\OGRE\RenderSystems\GL;Headers\;..\Libs\include\OGRE;$(IncludePath)</IncludePath>
+    <IncludePath>..\Libs\include\OGRE\RenderSystems\GL;Headers\;..\Libs\include\OGRE;..\Libs\include\OIS;$(IncludePath)</IncludePath>
     <LibraryPath>..\Libs\lib\$(Configuration);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
