@@ -3,7 +3,7 @@
 class PhysicsComponent
 {
 public:
-	PhysicsComponent() : velocityX(0.0), velocityY(0.0), velocityZ(0.0)	{
+	PhysicsComponent() : velocityX(0.0), velocityY(0.0), velocityZ(0.0), rotVelocity(0.0)	{
 
 	}
 
@@ -13,8 +13,13 @@ public:
 		velocityZ = nz;
 	}
 
+	void setRotVelocity(float newRotVelocity)	{
+		rotVelocity = newRotVelocity;
+	}
+
+
 	//do czasu zrobienia funkcji getVector to bedzie public
-	float velocityX, velocityY, velocityZ;
+	float velocityX, velocityY, velocityZ, rotVelocity;
 
 private:
 

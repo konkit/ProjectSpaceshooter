@@ -22,30 +22,14 @@ bool Game::run()
 	{
 		if(! mOgreManager.getRoot()->renderOneFrame()) return false;
 
-
-					//update input from player
-			/* powinno byc updateInput( mGameData ) */
+			//update input from player
 			if(mInputManager.updateInput(mGameData)==false)
 				return false;
-
-			//std::cout<<"Player velocity = "<<mGameData.getPlayer()->getPhysicsComponent().velocityX<<", "<<
-			//								mGameData.getPlayer()->getPhysicsComponent().velocityY<<", "<<
-			//								mGameData.getPlayer()->getPhysicsComponent().velocityZ<<"\n";
-
-			// game logic
-			/* tu powinny byæ wszystkie update'y systemów
-			   aiSystem.update( mGameData );
-			   physicsSystem.update( mGameData );
-			   collisionSystem.update( mGameData );*/
 
 			mPhysicsSystem.update( mGameData );
 			state->update();
 
 			mGraphicsSystem.updateNodesAndDraw(mGameData);
-
-			//std::cout<<"Player pos = "<<mGameData.getPlayer()->getTransformComponent().getX()<<", "<<
-			//							mGameData.getPlayer()->getTransformComponent().getY()<<", "<<
-			//							mGameData.getPlayer()->getTransformComponent().getZ()<<"\n";
 	}
 
 	return true;

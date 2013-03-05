@@ -19,47 +19,50 @@
     <ClInclude Include="Headers\GameObjectsCollection.h">
       <Filter>Header</Filter>
     </ClInclude>
-    <ClInclude Include="Headers\GameState.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="Headers\GameStateMain.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="Headers\GraphicsComponent.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="Headers\GraphicsSystem.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="Headers\HangarState.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="Headers\InputManager.h">
-      <Filter>Header</Filter>
-    </ClInclude>
     <ClInclude Include="Headers\LevelBuilder.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="Headers\OgreManager.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="Headers\PauseState.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="Headers\PhysicsComponent.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="Headers\PhysicsSystem.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="Headers\PlayState.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="Headers\TransformComponent.h">
       <Filter>Header</Filter>
     </ClInclude>
     <ClInclude Include="Headers\stdafx.h">
       <Filter>Precompiled Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\Math_Vector.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\GraphicsComponent.h">
+      <Filter>Header\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\PhysicsComponent.h">
+      <Filter>Header\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\PhysicsSystem.h">
+      <Filter>Header\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\GraphicsSystem.h">
+      <Filter>Header\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\GameState.h">
+      <Filter>Header\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\GameStateMain.h">
+      <Filter>Header\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\HangarState.h">
+      <Filter>Header\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\PauseState.h">
+      <Filter>Header\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\TransformComponent.h">
+      <Filter>Header\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\PlayState.h">
+      <Filter>Header\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\InputManager.h">
+      <Filter>Header\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\OgreManager.h">
+      <Filter>Header\Systems</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -71,6 +74,15 @@
     </Filter>
     <Filter Include="Precompiled Header">
       <UniqueIdentifier>{ac63aaff-2ebe-4384-8075-54560efc291c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header\Components">
+      <UniqueIdentifier>{5bdc0862-3b8e-40f4-84e1-7d2b67db875e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header\Systems">
+      <UniqueIdentifier>{baf1f096-e313-4072-b429-20550641c120}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header\States">
+      <UniqueIdentifier>{8898f20c-ea1d-41f5-b074-c367fd41e688}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

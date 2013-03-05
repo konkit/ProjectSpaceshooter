@@ -13,9 +13,11 @@ public:
 		TransformComponent& tmpTransform = 
 			mGameData.getPlayer()->getTransformComponent();
 
+		tmpTransform.rotate( tmpPhysics.rotVelocity );
 		tmpTransform.move(tmpPhysics.velocityX, 
 							tmpPhysics.velocityY,
 							tmpPhysics.velocityZ);
+
 	}
 
 

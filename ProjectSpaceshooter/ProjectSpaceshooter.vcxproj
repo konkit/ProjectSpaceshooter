@@ -175,6 +175,7 @@
     <ClInclude Include="Headers\HangarState.h" />
     <ClInclude Include="Headers\InputManager.h" />
     <ClInclude Include="Headers\LevelBuilder.h" />
+    <ClInclude Include="Headers\Math_Vector.h" />
     <ClInclude Include="Headers\OgreManager.h" />
     <ClInclude Include="Headers\PauseState.h" />
     <ClInclude Include="Headers\PhysicsComponent.h" />

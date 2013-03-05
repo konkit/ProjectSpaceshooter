@@ -78,7 +78,7 @@ bool InputManager::updateInput(GameData& mGameData)
 	mKeyboard->capture();
 	mMouse->capture();
 
-	float tmpX=0.0, tmpY=0.0, tmpZ=0.0;
+	float tmpX=0.0, tmpY=0.0, tmpZ=0.0, tmpAngle=0.0;
 
 	 
     if(mKeyboard->isKeyDown(OIS::KC_ESCAPE))
@@ -94,15 +94,25 @@ bool InputManager::updateInput(GameData& mGameData)
 		tmpZ -= 0.05;
 	}
 
-	if(mKeyboard->isKeyDown(OIS::KC_A) )
+	if(mKeyboard->isKeyDown(OIS::KC_Q) )
 	{
 		tmpX += 0.05;
 	}
 	
-	if(mKeyboard->isKeyDown(OIS::KC_D) )
+	if(mKeyboard->isKeyDown(OIS::KC_E) )
 	{
 		tmpX -= 0.05;
 	}
+	if(mKeyboard->isKeyDown(OIS::KC_A) )
+	{
+		tmpAngle += 0.005;
+	}
+	if(mKeyboard->isKeyDown(OIS::KC_D) )
+	{
+		tmpAngle -= 0.005;
+	}
+
+
 	unsigned long deltaTime = mTime.getMilliseconds() - lastTime;
 	if (mKeyboard->isKeyDown(OIS::KC_P) && ( deltaTime > 1000))
 	{
@@ -110,6 +120,7 @@ bool InputManager::updateInput(GameData& mGameData)
 		lastTime = mTime.getMilliseconds();
 	}
 	mGameData.getPlayer()->getPhysicsComponent().setVelocity(tmpX, tmpY, tmpZ);
+	mGameData.getPlayer()->getPhysicsComponent().setRotVelocity(tmpAngle);
 
 	return true;
 }
