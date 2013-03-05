@@ -87,12 +87,12 @@ bool InputManager::updateInput(GameData& mGameData)
 
 	if(mKeyboard->isKeyDown(OIS::KC_W) )
 	{
-		tmpPos.z += 0.05;
+		tmpPos.z += 0.1;
 	}
 
 	if(mKeyboard->isKeyDown(OIS::KC_S) )
 	{
-		tmpPos.z -= 0.05;
+		tmpPos.z -= 0.1;
 	}
 
 	if(mKeyboard->isKeyDown(OIS::KC_Q) )
@@ -106,11 +106,11 @@ bool InputManager::updateInput(GameData& mGameData)
 	}
 	if(mKeyboard->isKeyDown(OIS::KC_A) )
 	{
-		tmpAngle += 0.005;
+		tmpAngle += 0.01;
 	}
 	if(mKeyboard->isKeyDown(OIS::KC_D) )
 	{
-		tmpAngle -= 0.005;
+		tmpAngle -= 0.01;
 	}
 
 

@@ -63,7 +63,7 @@ extern "C" {
         //Application app;
 		Game app;
 
-		showWin32Console();
+		//showWin32Console();
         try {
             app.run();
         } catch( Ogre::Exception& e ) {
