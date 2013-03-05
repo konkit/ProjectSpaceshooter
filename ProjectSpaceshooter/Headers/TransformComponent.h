@@ -3,12 +3,14 @@
 class TransformComponent
 {
 public:
-	TransformComponent() : x(0.0), y(0.0), z(0.0), angle(0.0)
+	TransformComponent() : pos(0.0, 0.0, 0.0), angle(0.0)
 	{	}
 
-	void move(float nx, float ny, float nz) {
-		x += nz * sin(angle) + nx * cos(angle);
-		z += nz * cos(angle) - nx * sin(angle);
+	//nPos.z - forward direction relative to object
+	//nPos.x - right direction relative to object
+	void move(Ogre::Vector3 nPos) {
+		pos.x += nPos.z * sin(angle) + nPos.x * cos(angle);
+		pos.z += nPos.z * cos(angle) - nPos.x * sin(angle);
 	}
 
 	void rotate(float rotVelocity)	{
@@ -16,28 +18,17 @@ public:
 	}
 
 
-	void setPosition(float nx, float ny, float nz)	{
-		x = nx;
-		y = ny;
-		z = nz;
+	void setPosition(Ogre::Vector3 newPos)	{
+		pos = newPos;
 	}
+
+	Ogre::Vector3 getPosition()	{
+		return pos;
+	}
+
 
 	void setAngle(float nangle)	{
 		angle = nangle;
-	}
-
-
-	//jak sie zrobi wektory zamiast luŸnych floatów, to to bedzie lepsze
-	float getX()	{
-		return x;
-	}
-
-	float getY()	{
-		return y;
-	}
-
-	float getZ()	{
-		return z;
 	}
 
 	float getAngle()	{
@@ -50,6 +41,6 @@ public:
 
 
 private:
-	float x, y, z;
+	Ogre::Vector3 pos;
 	float angle;
 };

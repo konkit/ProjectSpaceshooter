@@ -25,9 +25,6 @@
     <ClInclude Include="Headers\stdafx.h">
       <Filter>Precompiled Header</Filter>
     </ClInclude>
-    <ClInclude Include="Headers\Math_Vector.h">
-      <Filter>Header</Filter>
-    </ClInclude>
     <ClInclude Include="Headers\GraphicsComponent.h">
       <Filter>Header\Components</Filter>
     </ClInclude>

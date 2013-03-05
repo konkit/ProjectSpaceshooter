@@ -3,25 +3,27 @@
 class PhysicsComponent
 {
 public:
-	PhysicsComponent() : velocityX(0.0), velocityY(0.0), velocityZ(0.0), rotVelocity(0.0)	{
+	PhysicsComponent() : velocity(0.0, 0.0, 0.0), rotVelocity(0.0)	{
 
 	}
 
-	void setVelocity(float nx, float ny, float nz)	{
-		velocityX = nx;
-		velocityY = ny;
-		velocityZ = nz;
+	void setVelocity(Ogre::Vector3 const& newVelocity)	{
+		velocity = newVelocity;
 	}
 
 	void setRotVelocity(float newRotVelocity)	{
 		rotVelocity = newRotVelocity;
 	}
 
+	Ogre::Vector3 getVelocity()	{
+		return velocity;
+	}
 
-	//do czasu zrobienia funkcji getVector to bedzie public
-	float velocityX, velocityY, velocityZ, rotVelocity;
+	float getRotVelocity()	{
+		return rotVelocity;
+	}
 
 private:
-
-	
+	Ogre::Vector3 velocity;
+	float rotVelocity;
 };

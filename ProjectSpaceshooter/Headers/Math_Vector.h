@@ -1,20 +1,25 @@
 #pragma once
 
-class Vector3
+
+namespace GameUtils
 {
-	void set(float nx, float ny, float nz)	{
-		x = nx;
-		y = ny;
-		z = nz;
-	}
 
-	Ogre::Vector3 toOgreVector()
+	class Vector3
 	{
-		Ogre::Vector3 result(x, y, z);
-		return result;
-	}
+		void set(float nx, float ny, float nz)	{
+			x = nx;
+			y = ny;
+			z = nz;
+		}
 
+		Ogre::Vector3 toOgreVector()
+		{
+			Ogre::Vector3 result(x, y, z);
+			return result;
+		}
 
-private:
-	float x, y, z;
-};
+		float x, y, z;
+	private:
+
+	};
+}

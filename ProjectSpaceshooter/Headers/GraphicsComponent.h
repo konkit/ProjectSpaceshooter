@@ -7,10 +7,12 @@ public:
 	}
 
 
-	void updateNode(float posX, float posY, float posZ, float angle)	{
+	void updateNode(Ogre::Vector3 pos, float angle)	{
 		if(mNode != NULL)
-			mNode->setPosition(Ogre::Vector3(posX, posY, posZ));
+		{
+			mNode->setPosition(pos);
 			mNode->setOrientation(Ogre::Quaternion( Ogre::Radian(angle), Ogre::Vector3::UNIT_Y));
+		}
 	}
 
 	void initNode( Ogre::SceneNode* newNode )	{

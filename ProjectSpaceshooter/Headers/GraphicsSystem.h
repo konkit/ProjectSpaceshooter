@@ -18,14 +18,13 @@ public:
 	void updateNodesAndDraw( GameData& mGameData )
 	{
 		//update all nodes
-		float tmpX, tmpY, tmpZ, tmpAngle;
+		Ogre::Vector3 tmpPos;
+		float tmpAngle;
 
-		tmpX = mGameData.getPlayer()->getTransformComponent().getX();
-		tmpY = mGameData.getPlayer()->getTransformComponent().getY();
-		tmpZ = mGameData.getPlayer()->getTransformComponent().getZ();
+		tmpPos = mGameData.getPlayer()->getTransformComponent().getPosition();
 		tmpAngle = mGameData.getPlayer()->getTransformComponent().getAngle();
 
-		mGameData.getPlayer()->getGraphicsComponent().updateNode(tmpX, tmpY, tmpZ, tmpAngle);
+		mGameData.getPlayer()->getGraphicsComponent().updateNode(tmpPos, tmpAngle);
 
 		// Render a frame
 		mOgreManager->getRoot()->renderOneFrame();
