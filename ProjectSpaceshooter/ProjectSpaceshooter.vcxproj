@@ -163,11 +163,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Headers\Game.h" />
+    <ClInclude Include="Headers\GameObjectsCollection.h" />
     <ClInclude Include="Headers\GameData.h" />
     <ClInclude Include="Headers\GameObject.h" />
-    <ClInclude Include="Headers\GameObjectBase.h" />
-    <ClInclude Include="Headers\GameObjectFactory.h" />
-    <ClInclude Include="Headers\GameObjectsCollection.h" />
     <ClInclude Include="Headers\GameState.h" />
     <ClInclude Include="Headers\GameStateMain.h" />
     <ClInclude Include="Headers\GraphicsComponent.h" />
@@ -175,6 +173,7 @@
     <ClInclude Include="Headers\HangarState.h" />
     <ClInclude Include="Headers\InputManager.h" />
     <ClInclude Include="Headers\LevelBuilder.h" />
+    <ClInclude Include="Headers\ObjectMenager.h" />
     <ClInclude Include="Headers\OgreManager.h" />
     <ClInclude Include="Headers\PauseState.h" />
     <ClInclude Include="Headers\PhysicsComponent.h" />
@@ -187,14 +186,12 @@
     <ClCompile Include="Sources\Game.cpp" />
     <ClCompile Include="Sources\GameData.cpp" />
     <ClCompile Include="Sources\GameObject.cpp" />
-    <ClCompile Include="Sources\GameObjectBase.cpp" />
-    <ClCompile Include="Sources\GameObjectFactory.cpp" />
-    <ClCompile Include="Sources\GameObjectsCollection.cpp" />
     <ClCompile Include="Sources\GameStateMain.cpp" />
     <ClCompile Include="Sources\HangarState.cpp" />
     <ClCompile Include="Sources\InputManager.cpp" />
     <ClCompile Include="Sources\LevelBuilder.cpp" />
     <ClCompile Include="Sources\main.cpp" />
+    <ClCompile Include="Sources\ObjectMenager.cpp" />
     <ClCompile Include="Sources\OgreManager.cpp" />
     <ClCompile Include="Sources\PauseState.cpp" />
     <ClCompile Include="Sources\PlayState.cpp" />

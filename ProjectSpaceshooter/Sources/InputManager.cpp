@@ -60,7 +60,7 @@ void InputManager::windowClosed(Ogre::RenderWindow* rw)
     }
 }
 
-bool InputManager::updateInput(GameData& mGameData)
+bool InputManager::updateInput(GameData& _gameData)
 {
 	static unsigned long lastTime = 0; 
 	// Pump window messages for nice behaviour
@@ -80,29 +80,29 @@ bool InputManager::updateInput(GameData& mGameData)
 
 	Ogre::Vector3 tmpPos(0.0, 0.0, 0.0);
 	float tmpAngle=0.0;
-
+	GameObject * player = _gameData.getPlayer();
 	 
     if(mKeyboard->isKeyDown(OIS::KC_ESCAPE))
         return false;
 
 	if(mKeyboard->isKeyDown(OIS::KC_W) )
 	{
-		tmpPos.z += 0.15;
+		tmpPos.z += 0.25;
 	}
 
 	if(mKeyboard->isKeyDown(OIS::KC_S) )
 	{
-		tmpPos.z -= 0.15;
+		tmpPos.z -= 0.25;
 	}
 
 	if(mKeyboard->isKeyDown(OIS::KC_Q) )
 	{
-		tmpPos.x += 0.1;
+		tmpPos.x += 0.2;
 	}
 	
 	if(mKeyboard->isKeyDown(OIS::KC_E) )
 	{
-		tmpPos.x -= 0.1;
+		tmpPos.x -= 0.2;
 	}
 	if(mKeyboard->isKeyDown(OIS::KC_A) )
 	{
@@ -113,15 +113,18 @@ bool InputManager::updateInput(GameData& mGameData)
 		tmpAngle -= 0.01;
 	}
 
-
+	if(mKeyboard->isKeyDown(OIS::KC_SPACE))
+	{
+		player->setShoot(true);
+	}
 	unsigned long deltaTime = mTime.getMilliseconds() - lastTime;
 	if (mKeyboard->isKeyDown(OIS::KC_P) && ( deltaTime > 1000))
 	{
-		mGameData.changeFlag = !mGameData.changeFlag;
+		_gameData.changeFlag = !_gameData.changeFlag;
 		lastTime = mTime.getMilliseconds();
 	}
-	mGameData.getPlayer()->getPhysicsComponent().setVelocity(tmpPos);
-	mGameData.getPlayer()->getPhysicsComponent().setRotVelocity(tmpAngle);
+	player->getPhysicsComponent().setVelocity(tmpPos);
+	player->getPhysicsComponent().setRotVelocity(tmpAngle);
 
 	return true;
 }

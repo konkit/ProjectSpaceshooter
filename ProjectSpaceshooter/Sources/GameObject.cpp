@@ -2,11 +2,15 @@
 #include "GameObject.h"
 
 
-GameObject::GameObject( GameObjectType newObjectType )
+GameObject::GameObject()
 {
-	mObjectType = newObjectType;
+
 }
 
+GameObject::GameObject(std::string new_name)
+	: name(new_name)
+{
+}
 
 GameObject::~GameObject(void)
 {

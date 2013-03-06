@@ -18,26 +18,26 @@ PlayState::PlayState( Game * game )
 	mGame->getGameData()->shipNode->attachObject(ogreHead);
 	Ogre::SceneNode *cameraNode = mGame->getGameData()->shipNode->createChildSceneNode();
 	cameraNode->attachObject(mCamera);
-	cameraNode->setPosition(Ogre::Vector3(0.0,60.0,-100.0));
-	mCamera->lookAt(Ogre::Vector3(0,1.0,1.0));
+	cameraNode->setPosition(Ogre::Vector3(0.0,20.0,-60.0));
+	mCamera->lookAt(Ogre::Vector3(0,0,100));
 	//save node in player's GraphicsComponent
 	mGame->getGameData()->getPlayer()->getGraphicsComponent().initNode(mGame->getGameData()->shipNode);
 	Ogre::Entity* ship = mSceneMgr->createEntity("Staic", "smallfighter.MESH");
 	Ogre::SceneNode *stat = mSceneMgr->getRootSceneNode()->createChildSceneNode();
 	stat->attachObject(ship);
-	stat->setPosition(Ogre::Vector3(40,0,40));
-	stat->pitch(Ogre::Degree(-90));
+	stat->setPosition(Ogre::Vector3(70,0,100));
+	//stat->pitch(Ogre::Degree(-90));
 	stat->scale(3,3,3);
 	// Set ambient light
-	mSceneMgr->setAmbientLight(Ogre::ColourValue(0.5, 0.5, 0.5));
+	mSceneMgr->setAmbientLight(Ogre::ColourValue(1.0, 1.0, 1.0));
 
 	// Create a light
 	Ogre::Light* light = mSceneMgr->createLight("MainLight");
 	light->setPosition(-50,50,0);
 	light->setPowerScale(200.0);
-	Ogre::Light* adLight = mSceneMgr->createLight("AdditionalLight");
-	adLight->setPosition(50,50,-200);
-	adLight->setPowerScale(400.0);
+	//Ogre::Light* spotLight = mSceneMgr->createLight("AdditionalLight");
+	//adLight->setPosition(50,50,-200);
+	//adLight->setPowerScale(400.0);
 }
 
 bool PlayState::update()

@@ -21,3 +21,7 @@
 #include <OISInputManager.h>
 #include <OISKeyboard.h>
 #include <OISMouse.h>
+
+#include "GameObjectsCollection.h"
+#include "GameData.h"
+#include "GameObject.h"

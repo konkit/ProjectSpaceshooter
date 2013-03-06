@@ -10,15 +10,6 @@
     <ClInclude Include="Headers\GameObject.h">
       <Filter>Header</Filter>
     </ClInclude>
-    <ClInclude Include="Headers\GameObjectBase.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="Headers\GameObjectFactory.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="Headers\GameObjectsCollection.h">
-      <Filter>Header</Filter>
-    </ClInclude>
     <ClInclude Include="Headers\LevelBuilder.h">
       <Filter>Header</Filter>
     </ClInclude>
@@ -61,6 +52,12 @@
     <ClInclude Include="Headers\OgreManager.h">
       <Filter>Header\Systems</Filter>
     </ClInclude>
+    <ClInclude Include="Headers\ObjectMenager.h">
+      <Filter>Header\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\GameObjectsCollection.h">
+      <Filter>Header</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header">
@@ -92,15 +89,6 @@
     <ClCompile Include="Sources\GameObject.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\GameObjectBase.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\GameObjectFactory.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\GameObjectsCollection.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="Sources\GameStateMain.cpp">
       <Filter>Source</Filter>
     </ClCompile>
@@ -126,6 +114,9 @@
       <Filter>Precompiled Header</Filter>
     </ClCompile>
     <ClCompile Include="Sources\OgreManager.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\ObjectMenager.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>

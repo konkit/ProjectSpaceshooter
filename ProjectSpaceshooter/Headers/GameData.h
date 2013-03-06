@@ -1,5 +1,4 @@
 #pragma once
-#include "GameObjectsCollection.h"
 #include "GameObject.h"
 
 
@@ -14,8 +13,9 @@ public:
 	~GameData();
 	bool changeFlag;
 
-	GameObject* getPlayer()	{
-		return mPlayer;
+	GameObject* getPlayer()	
+	{
+		return &mPlayer;
 	}
 
 private:
@@ -23,11 +23,10 @@ private:
 
 	Ogre::SceneManager* mSceneMgr;
 
-	GameObjectsCollection* mEnemyCollection;
-	GameObjectsCollection* mBulletCollection;
-	GameObjectsCollection* mStaticCollection;
+	GameObjectsCollection<GameObject> mEnemyCollection;
+	GameObjectsCollection<GameObject> mBulletCollection;
+	GameObjectsCollection<GameObject> mStaticCollection;
 //	GameObjectsCollection mPhysicCollection;  there will be physics object ex. explosion sphere
-	GameObject* mPlayer;
-
+	GameObject mPlayer;
 
 };
