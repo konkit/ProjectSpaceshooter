@@ -61,6 +61,12 @@
     <ClInclude Include="Headers\OgreManager.h">
       <Filter>Header\Systems</Filter>
     </ClInclude>
+    <ClInclude Include="Headers\GamelogicComponent.h">
+      <Filter>Header\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\ObjectStateUpdateSystem.h">
+      <Filter>Header\Systems</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header">

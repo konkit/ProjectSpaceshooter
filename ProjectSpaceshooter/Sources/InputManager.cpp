@@ -78,6 +78,7 @@ bool InputManager::updateInput(GameData& mGameData)
 	mKeyboard->capture();
 	mMouse->capture();
 
+	//temporary values
 	Ogre::Vector3 tmpPos(0.0, 0.0, 0.0);
 	float tmpAngle=0.0;
 
@@ -113,6 +114,10 @@ bool InputManager::updateInput(GameData& mGameData)
 		tmpAngle -= 1.0;
 	}
 
+	if(mKeyboard->isKeyDown(OIS::KC_SPACE) )
+	{
+		//set shoot on player
+	}
 
 	unsigned long deltaTime = mTime.getMilliseconds() - lastTime;
 	if (mKeyboard->isKeyDown(OIS::KC_P) && ( deltaTime > 1000))
@@ -120,6 +125,7 @@ bool InputManager::updateInput(GameData& mGameData)
 		mGameData.changeFlag = !mGameData.changeFlag;
 		lastTime = mTime.getMilliseconds();
 	}
+
 	mGameData.getPlayer()->getPhysicsComponent().setVelocity(tmpPos);
 	mGameData.getPlayer()->getPhysicsComponent().setRotVelocity(tmpAngle);
 
