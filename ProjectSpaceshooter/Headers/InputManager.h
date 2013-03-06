@@ -23,7 +23,7 @@ private:
 
 	// Derived WindowEventListener
 	// Callback functions run when certain event occurs
-    virtual void windowResized(Ogre::RenderWindow* rw);
-    virtual void windowClosed(Ogre::RenderWindow* rw);
+	virtual void windowResized(Ogre::RenderWindow* rw);
+	virtual void windowClosed(Ogre::RenderWindow* rw);
 };
 

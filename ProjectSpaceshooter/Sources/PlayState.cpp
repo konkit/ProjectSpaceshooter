@@ -10,15 +10,24 @@ PlayState::PlayState( Game * game )
 	Ogre::Plane plane;
 	plane.d = 2500;
 	plane.normal = Ogre::Vector3::UNIT_Y;
-	mSceneMgr->setSkyPlane(true, plane, "Examples/SpaceSkyPlane", 1000, 45);
-
+	//mSceneMgr->setSkyPlane(true, plane, "Examples/SpaceSkyPlane", 1000, 45);
+	mSceneMgr->setSkyBox(true, "Examples/SpaceSkyBox");
 	//create sceneNode for player
 	mGame->getGameData()->shipNode = mSceneMgr->getRootSceneNode()->createChildSceneNode();
 	//atach model to that node
 	mGame->getGameData()->shipNode->attachObject(ogreHead);
+	Ogre::SceneNode *cameraNode = mGame->getGameData()->shipNode->createChildSceneNode();
+	cameraNode->attachObject(mCamera);
+	cameraNode->setPosition(Ogre::Vector3(0.0,60.0,-100.0));
+	mCamera->lookAt(Ogre::Vector3(0,1.0,1.0));
 	//save node in player's GraphicsComponent
 	mGame->getGameData()->getPlayer()->getGraphicsComponent().initNode(mGame->getGameData()->shipNode);
-
+	Ogre::Entity* ship = mSceneMgr->createEntity("Staic", "smallfighter.MESH");
+	Ogre::SceneNode *stat = mSceneMgr->getRootSceneNode()->createChildSceneNode();
+	stat->attachObject(ship);
+	stat->setPosition(Ogre::Vector3(40,0,40));
+	stat->pitch(Ogre::Degree(-90));
+	stat->scale(3,3,3);
 	// Set ambient light
 	mSceneMgr->setAmbientLight(Ogre::ColourValue(0.5, 0.5, 0.5));
 
@@ -26,6 +35,9 @@ PlayState::PlayState( Game * game )
 	Ogre::Light* light = mSceneMgr->createLight("MainLight");
 	light->setPosition(-50,50,0);
 	light->setPowerScale(200.0);
+	Ogre::Light* adLight = mSceneMgr->createLight("AdditionalLight");
+	adLight->setPosition(50,50,-200);
+	adLight->setPowerScale(400.0);
 }
 
 bool PlayState::update()
@@ -40,8 +52,6 @@ void PlayState::createCamera()
 	// create the camera
 	mCamera = mSceneMgr->createCamera("PlayerCam");
 	// set its position, direction  
-	mCamera->setPosition(Ogre::Vector3(0.0,350.0,-100.0));
-	mCamera->lookAt(Ogre::Vector3(0,1.0,1.0));
 	// set the near clip distance
 	mCamera->setNearClipDistance(5);
 }

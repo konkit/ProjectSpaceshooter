@@ -87,22 +87,22 @@ bool InputManager::updateInput(GameData& mGameData)
 
 	if(mKeyboard->isKeyDown(OIS::KC_W) )
 	{
-		tmpPos.z += 0.1;
+		tmpPos.z += 0.15;
 	}
 
 	if(mKeyboard->isKeyDown(OIS::KC_S) )
 	{
-		tmpPos.z -= 0.1;
+		tmpPos.z -= 0.15;
 	}
 
 	if(mKeyboard->isKeyDown(OIS::KC_Q) )
 	{
-		tmpPos.x += 0.05;
+		tmpPos.x += 0.1;
 	}
 	
 	if(mKeyboard->isKeyDown(OIS::KC_E) )
 	{
-		tmpPos.x -= 0.05;
+		tmpPos.x -= 0.1;
 	}
 	if(mKeyboard->isKeyDown(OIS::KC_A) )
 	{

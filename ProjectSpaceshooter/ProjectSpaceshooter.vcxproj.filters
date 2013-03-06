@@ -129,4 +129,8 @@
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="ogre.cfg" />
+    <None Include="resources_d.cfg" />
+  </ItemGroup>
 </Project>
