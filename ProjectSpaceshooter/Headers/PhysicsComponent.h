@@ -4,7 +4,7 @@ class PhysicsComponent
 {
 public:
 	PhysicsComponent() : velocity(0.0, 0.0, 0.0), rotVelocity(0.0),
-		velocityValue(0.1), rotVelocityValue(0.01)
+		velocityValue(100.0), rotVelocityValue(5.0)
 	{	}
 
 	void setVelocity(Ogre::Vector3 const& newVelocity)	{

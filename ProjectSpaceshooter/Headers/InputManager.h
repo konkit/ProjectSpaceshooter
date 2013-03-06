@@ -11,14 +11,13 @@ public:
 	void initOIS(Ogre::RenderWindow* window);
 	
 	//update data (temporairly just camera coords)
-	bool updateInput(GameData& mGameData);
+	bool updateInput(GameData& mGameData, float deltaTime);
 
 private:
 	// OIS Input devices
 	OIS::InputManager* mInputManager;
 	OIS::Mouse*    mMouse;
 	OIS::Keyboard* mKeyboard;
-	Ogre::Timer mTime;
 	Ogre::RenderWindow* mWindow;
 
 	// Derived WindowEventListener

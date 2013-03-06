@@ -26,7 +26,7 @@ void InputManager::initOIS(Ogre::RenderWindow* window)
  
     //Register as a Window listener
     Ogre::WindowEventUtilities::addWindowEventListener(mWindow, this);
-	mTime.reset();
+	
     //mRoot->addFrameListener(this);
 }
 
@@ -60,7 +60,7 @@ void InputManager::windowClosed(Ogre::RenderWindow* rw)
     }
 }
 
-bool InputManager::updateInput(GameData& mGameData)
+bool InputManager::updateInput(GameData& mGameData, float deltaTime)
 {
 	static unsigned long lastTime = 0; 
 	// Pump window messages for nice behaviour
@@ -119,11 +119,15 @@ bool InputManager::updateInput(GameData& mGameData)
 		//set shoot on player
 	}
 
-	unsigned long deltaTime = mTime.getMilliseconds() - lastTime;
-	if (mKeyboard->isKeyDown(OIS::KC_P) && ( deltaTime > 1000))
+	//unsigned long deltaTime = mTime.getMilliseconds() - lastTime;
+	static float cntTimeElapsed = 0.0;
+	cntTimeElapsed += deltaTime;
+
+	if (mKeyboard->isKeyDown(OIS::KC_P) && ( cntTimeElapsed > 1000))
 	{
 		mGameData.changeFlag = !mGameData.changeFlag;
-		lastTime = mTime.getMilliseconds();
+		cntTimeElapsed = 0.0;
+		//lastTime = mTime.getMilliseconds();
 	}
 
 	mGameData.getPlayer()->getPhysicsComponent().setVelocity(tmpPos);

@@ -20,13 +20,16 @@ bool Game::run()
 {
 	while(true)
 	{
+		//get time
+		float deltaTime = mOgreManager.getDeltaTime();
+
 		if(! mOgreManager.getRoot()->renderOneFrame()) return false;
 
 			//update input from player
-			if(mInputManager.updateInput(mGameData)==false)
+			if(mInputManager.updateInput(mGameData, deltaTime)==false)
 				return false;
 
-			mPhysicsSystem.update( mGameData );
+			mPhysicsSystem.update( mGameData, deltaTime );
 			state->update();
 
 			mGraphicsSystem.updateNodesAndDraw(mGameData);
