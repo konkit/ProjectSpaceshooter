@@ -25,7 +25,9 @@ public:
 		tmpAngle = mGameData.getPlayer()->getTransformComponent().getAngle();
 		mGameData.getPlayer()->getGraphicsComponent().updateNode(tmpPos, tmpAngle);
 		// Render a frame
-		mOgreManager->getRoot()->renderOneFrame();
+		if( !mOgreManager->getRoot()->renderOneFrame() )	{
+			throw WindowClosedException();
+		}
 	}
 
 private:

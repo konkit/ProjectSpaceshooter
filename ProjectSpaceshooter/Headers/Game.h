@@ -6,6 +6,7 @@
 
 #include "PhysicsSystem.h"
 #include "GraphicsSystem.h"
+#include "ObjectStateUpdateSystem.h"
 
 class Game;
 
@@ -34,7 +35,7 @@ public:
 	Game();
 	~Game();
 	void initializeGame();
-	bool run();
+	void run();
 	
 	GameState * getPause() const { return pause; }
 	GameState * getPlay() const { return play; }
@@ -57,6 +58,7 @@ private:
 
 	PhysicsSystem mPhysicsSystem;
 	GraphicsSystem mGraphicsSystem;
+	ObjectStateUpdateSystem mObjectStateSystem;
 
 	// State* activeState;
 	// State playState;

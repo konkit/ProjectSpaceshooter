@@ -162,9 +162,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Headers\Exceptions.h" />
     <ClInclude Include="Headers\Game.h" />
     <ClInclude Include="Headers\GameObjectsCollection.h" />
     <ClInclude Include="Headers\GameData.h" />
+    <ClInclude Include="Headers\GamelogicComponent.h" />
     <ClInclude Include="Headers\GameObject.h" />
     <ClInclude Include="Headers\GameState.h" />
     <ClInclude Include="Headers\GameStateMain.h" />
@@ -173,7 +175,7 @@
     <ClInclude Include="Headers\HangarState.h" />
     <ClInclude Include="Headers\InputManager.h" />
     <ClInclude Include="Headers\LevelBuilder.h" />
-    <ClInclude Include="Headers\ObjectMenager.h" />
+    <ClInclude Include="Headers\ObjectStateUpdateSystem.h" />
     <ClInclude Include="Headers\OgreManager.h" />
     <ClInclude Include="Headers\PauseState.h" />
     <ClInclude Include="Headers\PhysicsComponent.h" />
@@ -191,7 +193,6 @@
     <ClCompile Include="Sources\InputManager.cpp" />
     <ClCompile Include="Sources\LevelBuilder.cpp" />
     <ClCompile Include="Sources\main.cpp" />
-    <ClCompile Include="Sources\ObjectMenager.cpp" />
     <ClCompile Include="Sources\OgreManager.cpp" />
     <ClCompile Include="Sources\PauseState.cpp" />
     <ClCompile Include="Sources\PlayState.cpp" />

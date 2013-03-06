@@ -16,23 +16,23 @@ Game::~Game()
 	delete hangar;
 }
 
-bool Game::run()
+void Game::run()
 {
 	while(true)
 	{
-		if(! mOgreManager.getRoot()->renderOneFrame()) return false;
+		//get time
+		float deltaTime = mOgreManager.getDeltaTime();
 
-			//update input from player
-			if(mInputManager.updateInput(mGameData)==false)
-				return false;
+		//update input from player
+		mInputManager.updateInput(mGameData, deltaTime);
 
-			mPhysicsSystem.update( mGameData );
-			state->update();
+		mPhysicsSystem.update( mGameData, deltaTime );
+		state->update();
 
-			mGraphicsSystem.updateNodesAndDraw(mGameData);
+		mObjectStateSystem.update( mGameData, deltaTime );
+
+		mGraphicsSystem.updateNodesAndDraw(mGameData);
 	}
-
-	return true;
 }
 
 void Game::initializeGame()

@@ -16,6 +16,13 @@ public:
 	Ogre::RenderWindow* getWindowHandle();
 	Ogre::Root*			getRoot();
 
+	float getDeltaTime()	{
+		float deltaTime = ( mTime.getMilliseconds() - lastTime) / 1000.0;
+		lastTime = mTime.getMilliseconds();
+
+		return deltaTime;
+	}
+
 private:
 	//Root object of Ogre
 	Ogre::Root* mRoot;
@@ -25,5 +32,8 @@ private:
 	Ogre::RenderWindow* mWindow;
 	//OpenGL plugin
 	Ogre::GLPlugin* mGLPlugin;
+	//Timer
+	Ogre::Timer mTime;
+	unsigned long lastTime;
 };
 

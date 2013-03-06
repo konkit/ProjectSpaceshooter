@@ -49,6 +49,10 @@ void OgreManager::initOgre()
 	Ogre::TextureManager::getSingleton().setDefaultNumMipmaps(5);
 	// initialise all resource groups
 	Ogre::ResourceGroupManager::getSingleton().initialiseAllResourceGroups();
+
+	mTime.reset();
+	lastTime = 0;
+
 }
 
 Ogre::Root* OgreManager::getRoot()

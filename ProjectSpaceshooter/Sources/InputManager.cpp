@@ -26,7 +26,7 @@ void InputManager::initOIS(Ogre::RenderWindow* window)
  
     //Register as a Window listener
     Ogre::WindowEventUtilities::addWindowEventListener(mWindow, this);
-	mTime.reset();
+	
     //mRoot->addFrameListener(this);
 }
 
@@ -60,7 +60,7 @@ void InputManager::windowClosed(Ogre::RenderWindow* rw)
     }
 }
 
-bool InputManager::updateInput(GameData& _gameData)
+void InputManager::updateInput(GameData& mGameData, float deltaTime)
 {
 	static unsigned long lastTime = 0; 
 	// Pump window messages for nice behaviour
@@ -68,63 +68,67 @@ bool InputManager::updateInput(GameData& _gameData)
 	
 	if(mWindow->isClosed())
 	{
-		return false;
+		throw WindowClosedException();
 	}
-
-	if(mWindow->isClosed())
-		return false;
  
 	//Need to capture/update each device
 	mKeyboard->capture();
 	mMouse->capture();
 
+	//temporary values
 	Ogre::Vector3 tmpPos(0.0, 0.0, 0.0);
 	float tmpAngle=0.0;
-	GameObject * player = _gameData.getPlayer();
+
 	 
     if(mKeyboard->isKeyDown(OIS::KC_ESCAPE))
-        return false;
+		throw WindowClosedException();
 
 	if(mKeyboard->isKeyDown(OIS::KC_W) )
 	{
-		tmpPos.z += 0.25;
+		tmpPos.z += 1.0;
 	}
 
 	if(mKeyboard->isKeyDown(OIS::KC_S) )
 	{
-		tmpPos.z -= 0.25;
+		tmpPos.z -= 1.0;
 	}
 
 	if(mKeyboard->isKeyDown(OIS::KC_Q) )
 	{
-		tmpPos.x += 0.2;
+		tmpPos.x += 1.0;
 	}
 	
 	if(mKeyboard->isKeyDown(OIS::KC_E) )
 	{
-		tmpPos.x -= 0.2;
+		tmpPos.x -= 1.0;
 	}
 	if(mKeyboard->isKeyDown(OIS::KC_A) )
 	{
-		tmpAngle += 0.01;
+		tmpAngle += 1.0;
 	}
 	if(mKeyboard->isKeyDown(OIS::KC_D) )
 	{
-		tmpAngle -= 0.01;
+		tmpAngle -= 1.0;
 	}
 
-	if(mKeyboard->isKeyDown(OIS::KC_SPACE))
+	if(mKeyboard->isKeyDown(OIS::KC_SPACE) )
 	{
-		player->setShoot(true);
+		//set shoot on player
 	}
-	unsigned long deltaTime = mTime.getMilliseconds() - lastTime;
-	if (mKeyboard->isKeyDown(OIS::KC_P) && ( deltaTime > 1000))
-	{
-		_gameData.changeFlag = !_gameData.changeFlag;
-		lastTime = mTime.getMilliseconds();
-	}
-	player->getPhysicsComponent().setVelocity(tmpPos);
-	player->getPhysicsComponent().setRotVelocity(tmpAngle);
 
-	return true;
+	//unsigned long deltaTime = mTime.getMilliseconds() - lastTime;
+	static float cntTimeElapsed = 0.0;
+	cntTimeElapsed += deltaTime;
+
+	if (mKeyboard->isKeyDown(OIS::KC_P) && ( cntTimeElapsed > 1000))
+	{
+		mGameData.changeFlag = !mGameData.changeFlag;
+		cntTimeElapsed = 0.0;
+		//lastTime = mTime.getMilliseconds();
+	}
+
+	mGameData.getPlayer()->getPhysicsComponent().setVelocity(tmpPos);
+	mGameData.getPlayer()->getPhysicsComponent().setRotVelocity(tmpAngle);
+
+
 }
