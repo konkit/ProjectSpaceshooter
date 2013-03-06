@@ -162,6 +162,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Headers\Exceptions.h" />
     <ClInclude Include="Headers\Game.h" />
     <ClInclude Include="Headers\GameData.h" />
     <ClInclude Include="Headers\GamelogicComponent.h" />

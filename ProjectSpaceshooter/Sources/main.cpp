@@ -73,7 +73,13 @@ extern "C" {
             std::cerr << "An exception has occured: " <<
                 e.getFullDescription().c_str() << std::endl;
 #endif
-        }
+        } 
+		catch( AbstractException& e)	{
+			
+		}
+
+
+
 		FreeConsole();
         return 0;
     }

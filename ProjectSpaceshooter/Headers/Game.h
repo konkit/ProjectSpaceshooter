@@ -34,7 +34,7 @@ public:
 	Game();
 	~Game();
 	void initializeGame();
-	bool run();
+	void run();
 	
 	GameState * getPause() const { return pause; }
 	GameState * getPlay() const { return play; }

@@ -67,6 +67,9 @@
     <ClInclude Include="Headers\ObjectStateUpdateSystem.h">
       <Filter>Header\Systems</Filter>
     </ClInclude>
+    <ClInclude Include="Headers\Exceptions.h">
+      <Filter>Header</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header">

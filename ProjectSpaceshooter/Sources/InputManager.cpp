@@ -60,7 +60,7 @@ void InputManager::windowClosed(Ogre::RenderWindow* rw)
     }
 }
 
-bool InputManager::updateInput(GameData& mGameData, float deltaTime)
+void InputManager::updateInput(GameData& mGameData, float deltaTime)
 {
 	static unsigned long lastTime = 0; 
 	// Pump window messages for nice behaviour
@@ -68,11 +68,8 @@ bool InputManager::updateInput(GameData& mGameData, float deltaTime)
 	
 	if(mWindow->isClosed())
 	{
-		return false;
+		throw WindowClosedException();
 	}
-
-	if(mWindow->isClosed())
-		return false;
  
 	//Need to capture/update each device
 	mKeyboard->capture();
@@ -84,7 +81,7 @@ bool InputManager::updateInput(GameData& mGameData, float deltaTime)
 
 	 
     if(mKeyboard->isKeyDown(OIS::KC_ESCAPE))
-        return false;
+		throw WindowClosedException();
 
 	if(mKeyboard->isKeyDown(OIS::KC_W) )
 	{
@@ -133,5 +130,5 @@ bool InputManager::updateInput(GameData& mGameData, float deltaTime)
 	mGameData.getPlayer()->getPhysicsComponent().setVelocity(tmpPos);
 	mGameData.getPlayer()->getPhysicsComponent().setRotVelocity(tmpAngle);
 
-	return true;
+
 }
