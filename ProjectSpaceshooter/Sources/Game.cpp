@@ -29,6 +29,8 @@ void Game::run()
 		mPhysicsSystem.update( mGameData, deltaTime );
 		state->update();
 
+		mObjectStateSystem.update( mGameData, deltaTime );
+
 		mGraphicsSystem.updateNodesAndDraw(mGameData);
 	}
 }

@@ -6,6 +6,7 @@
 
 #include "PhysicsSystem.h"
 #include "GraphicsSystem.h"
+#include "ObjectStateUpdateSystem.h"
 
 class Game;
 
@@ -57,6 +58,7 @@ private:
 
 	PhysicsSystem mPhysicsSystem;
 	GraphicsSystem mGraphicsSystem;
+	ObjectStateUpdateSystem mObjectStateSystem;
 
 	// State* activeState;
 	// State playState;
