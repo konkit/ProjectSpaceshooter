@@ -10,6 +10,15 @@ public:
 		//for every gameobject
 			//if one needs to be removed - remove it
 			//if one needs to be created - create it
+
+		if( mGameData.getPlayer()->isShooting() == true)	{
+			//instantiate bullet
+
+
+			//set shooting as false
+			mGameData.getPlayer()->unsetShoot();
+		}
+
 	}
 
 };

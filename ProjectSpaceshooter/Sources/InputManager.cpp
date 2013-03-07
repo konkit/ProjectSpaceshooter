@@ -60,7 +60,7 @@ void InputManager::windowClosed(Ogre::RenderWindow* rw)
     }
 }
 
-void InputManager::updateInput(GameData& mGameData, float deltaTime)
+void InputManager::updateInput(GameData& mGameData, float deltaTime, unsigned long currentTime)
 {
 	static unsigned long lastTime = 0; 
 	// Pump window messages for nice behaviour
@@ -114,7 +114,9 @@ void InputManager::updateInput(GameData& mGameData, float deltaTime)
 	if(mKeyboard->isKeyDown(OIS::KC_SPACE) )
 	{
 		//set shoot on player
+		mGameData.getPlayer()->setShoot(currentTime);
 	}
+
 
 	static bool kayPwasPressed = false;
 	if (!mKeyboard->isKeyDown(OIS::KC_P) && (kayPwasPressed))

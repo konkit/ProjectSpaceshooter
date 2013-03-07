@@ -1,32 +1,38 @@
 #pragma once
 
 
-enum class ActivityType { 
-	passive,
-	shoot 
-};
-
 
 
 class GamelogicComponent
 {
-	void setActivity(ActivityType activity)	{
-		currentActivity = activity;
+public:
+	GamelogicComponent() : shooting(false), rateOfFire(500), timeSinceLastShot(0)
+	{	}
+
+	void setShoot(unsigned long currentTime)	{
+		if( timeSinceLastShot + rateOfFire < currentTime )	{
+			shooting = true;
+			timeSinceLastShot = currentTime;
+		}
 	}
 
-	ActivityType getActivity()	{
-		return currentActivity;
+	void unsetShoot()	{
+		shooting = false;
 	}
+
+	bool isShooting()	{
+		return shooting;
+	}
+
 
 
 
 private:
-	//current action
-	ActivityType currentActivity;
-
+	bool shooting;
 	//weapon data
-	float rateOfFire;
+	int rateOfFire;
 	//time last shot
+	unsigned long timeSinceLastShot;
 
 	
 };

@@ -23,6 +23,11 @@ public:
 		return deltaTime;
 	}
 
+	unsigned long getCurrentTime()	{
+		return mTime.getMilliseconds();
+	}
+
+
 private:
 	//Root object of Ogre
 	Ogre::Root* mRoot;

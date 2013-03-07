@@ -3,6 +3,7 @@
 #include "TransformComponent.h"
 #include "GraphicsComponent.h"
 #include "PhysicsComponent.h"
+#include "GamelogicComponent.h"
 #include <string>
 enum  class GameObjectType 
 {
@@ -38,11 +39,27 @@ public:
 	void incrementTimeSinceLastShoot(long int deltaTime) {timeSinceLastShoot += deltaTime;}
 	std::string name;
 
+	void setShoot(unsigned long currentTime)	{
+		mGamelogicComponent.setShoot(currentTime);
+	}
+
+	void unsetShoot()	{
+		mGamelogicComponent.unsetShoot();
+	}
+
+	bool isShooting()	{
+		return mGamelogicComponent.isShooting();
+	}
+
+
+
+
 private:
 	GameObjectType mObjectType;
 	TransformComponent mTransformComponent;
 	GraphicsComponent mGraphicsComponent;
 	PhysicsComponent mPhysicsComponent;
+	GamelogicComponent mGamelogicComponent;
 	long int timeSinceLastShoot;
 	bool shoot;
 };

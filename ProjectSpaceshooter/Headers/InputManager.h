@@ -12,7 +12,7 @@ public:
 	void initOIS(Ogre::RenderWindow* window);
 	
 	//update data (temporairly just camera coords)
-	void updateInput(GameData& mGameData, float deltaTime);
+	void updateInput(GameData& mGameData, float deltaTime, unsigned long currentTime);
 
 private:
 	// OIS Input devices

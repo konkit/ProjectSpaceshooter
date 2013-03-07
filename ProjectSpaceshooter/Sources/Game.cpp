@@ -22,9 +22,10 @@ void Game::run()
 	{
 		//get time
 		float deltaTime = mOgreManager.getDeltaTime();
+		unsigned long currentTime = mOgreManager.getCurrentTime();
 
 		//update input from player
-		mInputManager.updateInput(mGameData, deltaTime);
+		mInputManager.updateInput(mGameData, deltaTime, currentTime);
 
 		mPhysicsSystem.update( mGameData, deltaTime );
 		state->update();
