@@ -17,9 +17,13 @@ public:
 			//instantiate bullet
 				Bullet* newBullet = new Bullet;
 					//set proper orientation
-						//orientation as shooter (player/enemy)
-						//but a little in front of it
+					newBullet->getTransformComponent().setAngle( 
+							mGameData.getPlayer()->getTransformComponent().getAngle() );
+					//set proper position
+					newBullet->getTransformComponent().setPosition(
+							mGameData.getPlayer()->getTransformComponent().getPosition() );					
 					//set mesh!!! ?
+					newBullet->setMesh(mGameData.bulletEntity);
 					//set owner
 					//set power
 					//set timeout before being destroyed

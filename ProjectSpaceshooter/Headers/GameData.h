@@ -9,6 +9,9 @@ class GameData
 {
 public:
 	Ogre::SceneNode* shipNode;
+
+	Ogre::Entity* bulletEntity;
+
 	GameData();
 	~GameData();
 	bool changeFlag;
