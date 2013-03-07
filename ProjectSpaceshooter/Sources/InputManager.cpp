@@ -116,15 +116,14 @@ void InputManager::updateInput(GameData& mGameData, float deltaTime)
 		//set shoot on player
 	}
 
-	//unsigned long deltaTime = mTime.getMilliseconds() - lastTime;
-	static float cntTimeElapsed = 0.0;
-	cntTimeElapsed += deltaTime;
-
-	if (mKeyboard->isKeyDown(OIS::KC_P) && ( cntTimeElapsed > 1000))
+	static bool kayPwasPressed = false;
+	if (!mKeyboard->isKeyDown(OIS::KC_P) && (kayPwasPressed))
 	{
 		mGameData.changeFlag = !mGameData.changeFlag;
-		cntTimeElapsed = 0.0;
-		//lastTime = mTime.getMilliseconds();
+		kayPwasPressed = false;
+	} else if (mKeyboard->isKeyDown(OIS::KC_P))
+	{
+		kayPwasPressed = true;
 	}
 
 	mGameData.getPlayer()->getPhysicsComponent().setVelocity(tmpPos);
