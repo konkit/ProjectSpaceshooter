@@ -3,6 +3,8 @@
 PlayState::PlayState( Game * game )
 	:GameState(game)
 {
+	
+
 	mSceneMgr = game->getOgreManager()->getRoot()->createSceneManager(Ogre::ST_GENERIC, "primary");
 	createCamera();
 
@@ -28,7 +30,6 @@ PlayState::PlayState( Game * game )
 
 	//save node in player's GraphicsComponent
 	mGame->getGameData()->getPlayer()->getGraphicsComponent().initNode(mGame->getGameData()->shipNode);
-	Ogre::Entity* ship = mSceneMgr->createEntity("Staic", "smallfighter.MESH");
 	Ogre::SceneNode *stat = mSceneMgr->getRootSceneNode()->createChildSceneNode();
 		//stat->attachObject(ship);
 		stat->attachObject(mGame->getGameData()->bulletEntity);
@@ -45,14 +46,22 @@ PlayState::PlayState( Game * game )
 	light->setPosition(-50,50,0);
 	light->setPowerScale(200.0);
 	//Ogre::Light* spotLight = mSceneMgr->createLight("AdditionalLight");
-	//adLight->setPosition(50,50,-200);
-	//adLight->setPowerScale(400.0);
+	//spotLight->setPosition(50,50,-200);
+	//spotLight->setPowerScale(400.0);
 }
 
-bool PlayState::update()
+
+bool PlayState::update( SystemsSet & gameSystems, TimeData& time )
 {
-	if(mGame->getGameData()->changeFlag)
+	//update input from player
+	gameSystems.mInputManager.updateInputForGame(gameSystems.mGameData, time.deltaTime, time.deltaTime);
+	mPhysicsSystem.update( gameSystems.mGameData, time.deltaTime );
+	mObjectStateSystem.update( gameSystems.mGameData, time.deltaTime );
+	gameSystems.mGraphicsSystem.updateNodesAndDrawForPlay(gameSystems.mGameData);
+	if(gameSystems.mGameData.isSetPauseFlag())
+	{
 		mGame->changeState(mGame->getPause());
+	}
 	return true;
 }
 

@@ -6,7 +6,8 @@ public:
 	HangarState(Game * game);
 	~HangarState(){};
 
-	virtual bool update(){return true;};
+	virtual bool update( SystemsSet & gameSystems, TimeData& time );
+
 
 private:
 

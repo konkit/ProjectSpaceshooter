@@ -8,11 +8,17 @@
 class InputManager : public Ogre::WindowEventListener
 {
 public:
+	InputManager() 
+	{ 
+		wasP_KeyPressed = false;
+		wasH_KeyPressed = false;
+	}
 	//initialize OIS 
 	void initOIS(Ogre::RenderWindow* window);
 	
-	//update data (temporairly just camera coords)
-	void updateInput(GameData& mGameData, float deltaTime, unsigned long currentTime);
+	//update data (temporarily just camera coords)
+	void updateInputForGame(GameData& mGameData, float deltaTime, unsigned long currentTime);
+	void updateInputForPause(GameData& mGameData);
 
 private:
 	// OIS Input devices
@@ -20,7 +26,8 @@ private:
 	OIS::Mouse*    mMouse;
 	OIS::Keyboard* mKeyboard;
 	Ogre::RenderWindow* mWindow;
-
+	bool wasP_KeyPressed;
+	bool wasH_KeyPressed;
 	// Derived WindowEventListener
 	// Callback functions run when certain event occurs
 	virtual void windowResized(Ogre::RenderWindow* rw);

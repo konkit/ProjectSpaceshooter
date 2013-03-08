@@ -28,14 +28,15 @@ PauseState::PauseState( Game * game )
 	light->setPowerScale(200.0);
 }
 
-
-
-bool PauseState::update()
+bool PauseState::update( SystemsSet &gameSystems, TimeData& time )
 {
-	
-	if(!mGame->getGameData()->changeFlag)
+	gameSystems.mInputManager.updateInputForPause(gameSystems.mGameData);
+	gameSystems.mGraphicsSystem.updateNodesAndDrawForPause(gameSystems.mGameData);
+	if(gameSystems.mGameData.isSetPlayFlag())
+	{
 		mGame->changeState(mGame->getPlay());
-	return true;
+	}
+	return true;	
 }
 
 void PauseState::createCamera()

@@ -15,7 +15,7 @@ public:
 		mOgreManager = cntOgreManager;
 	}
 
-	void updateNodesAndDraw( GameData& mGameData )
+	void updateNodesAndDrawForPlay( GameData& mGameData )
 	{
 		//update all nodes
 		Ogre::Vector3 tmpPos;
@@ -25,7 +25,16 @@ public:
 		tmpAngle = mGameData.getPlayer()->getTransformComponent().getAngle();
 		mGameData.getPlayer()->getGraphicsComponent().updateNode(tmpPos, tmpAngle);
 		// Render a frame
-		if( !mOgreManager->getRoot()->renderOneFrame() )	{
+		if( !mOgreManager->getRoot()->renderOneFrame() )	
+		{
+			throw WindowClosedException();
+		}
+	}
+
+	void updateNodesAndDrawForPause( GameData& mGameData )
+	{
+		if( !mOgreManager->getRoot()->renderOneFrame() )	
+		{
 			throw WindowClosedException();
 		}
 	}

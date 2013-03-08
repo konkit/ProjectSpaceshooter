@@ -60,7 +60,7 @@ void InputManager::windowClosed(Ogre::RenderWindow* rw)
     }
 }
 
-void InputManager::updateInput(GameData& mGameData, float deltaTime, unsigned long currentTime)
+void InputManager::updateInputForGame(GameData& mGameData, float deltaTime, unsigned long currentTime)
 {
 	static unsigned long lastTime = 0; 
 	// Pump window messages for nice behaviour
@@ -118,18 +118,53 @@ void InputManager::updateInput(GameData& mGameData, float deltaTime, unsigned lo
 	}
 
 
-	static bool kayPwasPressed = false;
-	if (!mKeyboard->isKeyDown(OIS::KC_P) && (kayPwasPressed))
+	
+	if (!mKeyboard->isKeyDown(OIS::KC_P) && (wasP_KeyPressed))
 	{
-		mGameData.changeFlag = !mGameData.changeFlag;
-		kayPwasPressed = false;
+		mGameData.setChangeToPause(true);
+		wasP_KeyPressed = false;
 	} else if (mKeyboard->isKeyDown(OIS::KC_P))
 	{
-		kayPwasPressed = true;
+		wasP_KeyPressed = true;
 	}
 
+	if (!mKeyboard->isKeyDown(OIS::KC_H) && (wasH_KeyPressed))
+	{
+		mGameData.setChangeToHangar(true);
+		wasH_KeyPressed = false;
+	} else if (mKeyboard->isKeyDown(OIS::KC_H))
+	{
+		wasH_KeyPressed = true;
+	}
 	mGameData.getPlayer()->getPhysicsComponent().setVelocity(tmpPos);
 	mGameData.getPlayer()->getPhysicsComponent().setRotVelocity(tmpAngle);
+}
 
+void InputManager::updateInputForPause( GameData& mGameData )
+{
+	// Pump window messages for nice behavior
+	Ogre::WindowEventUtilities::messagePump();
 
+	if(mWindow->isClosed())
+	{
+		throw WindowClosedException();
+	}
+
+	mKeyboard->capture();
+	mMouse->capture();
+		
+	if(mKeyboard->isKeyDown(OIS::KC_ESCAPE))
+		throw WindowClosedException();
+
+	if(mKeyboard->isKeyDown(OIS::KC_Q) )
+		throw WindowClosedException();
+
+	if (!mKeyboard->isKeyDown(OIS::KC_P) && (wasP_KeyPressed))
+	{
+		mGameData.setChangeToPlay(true);
+		wasP_KeyPressed = false;
+	} else if (mKeyboard->isKeyDown(OIS::KC_P))
+	{
+		wasP_KeyPressed = true;
+	}
 }

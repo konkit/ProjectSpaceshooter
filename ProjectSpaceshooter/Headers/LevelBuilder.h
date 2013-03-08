@@ -5,5 +5,8 @@ class LevelBuilder : public GameState
 public:
 	LevelBuilder(Game * game);
 	~LevelBuilder();
-	virtual bool update();
+
+	virtual bool update( SystemsSet & gameSystems, TimeData time );
+
+
 };

@@ -10,7 +10,11 @@ public:
 
 	~PlayState(){};
 
-	virtual bool update();;
+	virtual bool update( SystemsSet & gameSystems, TimeData& time );
+
 
 private:
+	PhysicsSystem			mPhysicsSystem;
+
+	ObjectStateUpdateSystem mObjectStateSystem;
 };

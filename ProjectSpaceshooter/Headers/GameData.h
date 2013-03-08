@@ -9,19 +9,34 @@ class GameData
 {
 public:
 	Ogre::SceneNode* shipNode;
-
 	Ogre::Entity* bulletEntity;
 
+	
 	GameData();
 	~GameData();
-	bool changeFlag;
 
 	GameObject* getPlayer()	
 	{
 		return &mPlayer;
 	}
+	bool isSetPauseFlag() { return changeFlags.changeToPause;}
+	bool isSetPlayFlag()  { return changeFlags.changeToPlay;}
+	bool isSetHangarFlag(){ return changeFlags.changeToHangar;}
+	bool isSetMenuFlag()  { return changeFlags.changeToMenu;}
 
+	void setChangeToPause(bool flag) {changeFlags.changeToPause  = flag;} 
+	void setChangeToPlay (bool flag) {changeFlags.changeToPlay   = flag;} 
+	void setChangeToMenu (bool flag) {changeFlags.changeToMenu   = flag;} 
+	void setChangeToHangar(bool flag){changeFlags.changeToHangar = flag;}
+	
 private:
+	struct changeFlagsStruct
+	{
+	bool changeToPause;
+	bool changeToHangar;
+	bool changeToPlay;
+	bool changeToMenu;
+	} changeFlags;
 	//All GameObjects
 
 	Ogre::SceneManager* mSceneMgr;

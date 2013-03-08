@@ -6,7 +6,10 @@ public:
 	PauseState(Game * game);
 	~PauseState(){};
 	void createCamera();
-	virtual bool update();
+
+	virtual bool update( SystemsSet & gameSystems, TimeData &time );
+
+
 
 private:
 };

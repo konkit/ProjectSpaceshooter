@@ -1,12 +1,14 @@
 #include "Game.h"
 #include "GameState.h"
+
 Game::Game()
 {
+	
 	initializeGame();
 	pause = new PauseState(this);
 	play = new PlayState(this);
 	hangar = new HangarState(this);
-	changeState(pause);
+	changeState(play);
 }
 
 Game::~Game()
@@ -21,37 +23,29 @@ void Game::run()
 	while(true)
 	{
 		//get time
-		float deltaTime = mOgreManager.getDeltaTime();
-		unsigned long currentTime = mOgreManager.getCurrentTime();
+		time.deltaTime = mGameSystems.mOgreManager.getDeltaTime();
+		time.currentTime = mGameSystems.mOgreManager.getCurrentTime();
 
-		//update input from player
-		mInputManager.updateInput(mGameData, deltaTime, currentTime);
-
-		mPhysicsSystem.update( mGameData, deltaTime );
-		state->update();
-
-		mObjectStateSystem.update( mGameData, deltaTime );
-
-		mGraphicsSystem.updateNodesAndDraw(mGameData);
+		state->update(mGameSystems, time);
 	}
 }
 
 void Game::initializeGame()
 {
 	//Initialize ogre
-	mOgreManager.initOgre();
+	mGameSystems.mOgreManager.initOgre();
 	//Initialize OIS
-	mInputManager.initOIS( mOgreManager.getWindowHandle() );
-
-	mGraphicsSystem.init(&mOgreManager);
+	mGameSystems.mInputManager.initOIS( mGameSystems.mOgreManager.getWindowHandle() );
+	mGameSystems.mGraphicsSystem.init(&mGameSystems.mOgreManager); // TODO change to systemset
+	
 
 }
 
 void Game::setupViewport(Ogre::Camera * camera )
 {
-	mOgreManager.getWindowHandle()->removeAllViewports();
+	mGameSystems.mOgreManager.getWindowHandle()->removeAllViewports();
 	// Create one viewport, entire window
-	Ogre::Viewport* vp = mOgreManager.getWindowHandle()->addViewport(camera);
+	Ogre::Viewport* vp = mGameSystems.mOgreManager.getWindowHandle()->addViewport(camera);
 	//Set Background color
 	vp->setBackgroundColour(Ogre::ColourValue(0,0,0));
 	// Alter the camera aspect ratio to match the viewport
@@ -62,6 +56,10 @@ void Game::setupViewport(Ogre::Camera * camera )
 void Game::changeState( GameState * newState )
 {
 	state = newState;
+	mGameSystems.mGameData.setChangeToHangar(false);
+	mGameSystems.mGameData.setChangeToMenu(false);
+	mGameSystems.mGameData.setChangeToPause(false);
+	mGameSystems.mGameData.setChangeToPlay(false);
 	setupViewport(state->getCamera());
 }
 

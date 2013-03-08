@@ -6,7 +6,10 @@
 
 GameData::GameData(void)
 {
-	changeFlag = false;
+	changeFlags.changeToHangar = false;
+	changeFlags.changeToMenu = false;
+	changeFlags.changeToPause = false;
+	changeFlags.changeToPlay = false;
 }
 
 
