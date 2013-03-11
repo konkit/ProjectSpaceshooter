@@ -3,10 +3,11 @@
 class GraphicsComponent
 {
 public:
-	GraphicsComponent(Ogre::SceneNode* newNode ) : mNode(NULL)	{
+	GraphicsComponent() : mNode(NULL)	{
 	}
 
-	GraphicsComponent(Ogre::SceneNode* newNode) : mNode(NULL)	{
+	GraphicsComponent(Ogre::SceneNode* newNode) : mNode(NULL)	
+	{
 		mNode = newNode;
 	}
 
