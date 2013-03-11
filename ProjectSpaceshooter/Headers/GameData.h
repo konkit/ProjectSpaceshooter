@@ -29,7 +29,13 @@ public:
 	void setChangeToMenu (bool flag) {changeFlags.changeToMenu   = flag;} 
 	void setChangeToHangar(bool flag){changeFlags.changeToHangar = flag;}
 
+	void initSceneManager(Ogre::SceneManager* newMgr)	{ mSceneMgr = newMgr; }
 	Ogre::SceneManager* getSceneManager()	{ return mSceneMgr;	}
+
+	GameObjectsCollection<GameObject>& getBullets()	{
+		return mBulletCollection;
+	}
+
 	
 private:
 	struct changeFlagsStruct

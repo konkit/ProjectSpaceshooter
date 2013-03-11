@@ -10,6 +10,8 @@ public:
 	{	}
 
 	void setShoot(unsigned long currentTime)	{
+		std::cout<<"Current time = "<<currentTime<<std::endl;
+
 		if( timeSinceLastShot + rateOfFire < currentTime )	{
 			shooting = true;
 			timeSinceLastShot = currentTime;
