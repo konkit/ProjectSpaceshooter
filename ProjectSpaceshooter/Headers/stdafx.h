@@ -26,3 +26,4 @@
 #include "GameData.h"
 #include "GameObject.h"
 
+#include <string>

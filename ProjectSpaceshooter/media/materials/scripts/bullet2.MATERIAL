@@ -4,8 +4,8 @@ material "\bullet2.MESH/01 - Default"
 	{
 		pass
 		{
-			ambient 1 1 1 0
-			diffuse 1 1 1 0
+			ambient 0.2 0.2 0.2 0
+			diffuse 0.2 0.2 0.2 0
 			specular 0 0 0 0
 			emissive 0 0 0
 		}
@@ -17,8 +17,8 @@ material "\bullet2.MESH/01 - Default44"
 	{
 		pass
 		{
-			ambient 0.964706 0.337255 0.254902 0
-			diffuse 0.964706 0.337255 0.254902 0
+			ambient 0,1451	0,3922	0,9608 0
+			diffuse 0,1451	0,3922	0,9608 0
 			specular 0 0 0 0
 			emissive 0 0 0
 		}

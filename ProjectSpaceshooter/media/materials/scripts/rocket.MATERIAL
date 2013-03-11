@@ -1,0 +1,91 @@
+material "\rocket.MESH/Material_005"
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.276 0.08296 0.13192 0
+			diffuse 0.276 0.08296 0.13192 0
+			specular 0 0 0 0
+			emissive 0 0 0
+		}
+	}
+}
+material "\rocket.MESH/Material_006"
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.64 0.17056 0.17872 0
+			diffuse 0.64 0.17056 0.17872 0
+			specular 0 0 0 0
+			emissive 0 0 0
+		}
+	}
+}
+material "\rocket.MESH/Material_007"
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.64 0.14496 0.15312 0
+			diffuse 0.64 0.14496 0.15312 0
+			specular 0 0 0 0
+			emissive 0 0 0
+		}
+	}
+}
+material "\rocket.MESH/Material_004"
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.30752 0.06 0.06784 0
+			diffuse 0.30752 0.06 0.06784 0
+			specular 0 0 0 0
+			emissive 0 0 0
+		}
+	}
+}
+material "\rocket.MESH/Material_001"
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.02496 0.0668 0.04832 0
+			diffuse 0.02496 0.0668 0.04832 0
+			specular 0 0 0 0
+			emissive 0 0 0
+		}
+	}
+}
+material "\rocket.MESH/Material_002"
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.41384 0.05304 0.032 0
+			diffuse 0.41384 0.05304 0.032 0
+			specular 0 0 0 0
+			emissive 0 0 0
+		}
+	}
+}
+material "\rocket.MESH/Material_008"
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.27184 0.36968 0.64 0
+			diffuse 0.27184 0.36968 0.64 0
+			specular 0 0 0 0
+			emissive 0 0 0
+		}
+	}
+}

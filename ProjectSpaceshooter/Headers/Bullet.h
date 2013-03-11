@@ -6,7 +6,8 @@
 class Bullet : public GameObject	{
 
 public:
-	Bullet() : GameObject()	{
+	Bullet() : GameObject(){}
+	Bullet(std::string meshName) : GameObject(), meshName(meshName)	{
 		
 	}
 
@@ -16,5 +17,5 @@ public:
 
 
 private:
-
+	std::string meshName;
 };
