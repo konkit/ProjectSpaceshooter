@@ -28,6 +28,8 @@ public:
 	void setChangeToPlay (bool flag) {changeFlags.changeToPlay   = flag;} 
 	void setChangeToMenu (bool flag) {changeFlags.changeToMenu   = flag;} 
 	void setChangeToHangar(bool flag){changeFlags.changeToHangar = flag;}
+
+	Ogre::SceneManager* getSceneManager()	{ return mSceneMgr;	}
 	
 private:
 	struct changeFlagsStruct

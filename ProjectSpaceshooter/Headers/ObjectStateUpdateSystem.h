@@ -21,9 +21,13 @@ public:
 							mGameData.getPlayer()->getTransformComponent().getAngle() );
 					//set proper position
 					newBullet->getTransformComponent().setPosition(
-							mGameData.getPlayer()->getTransformComponent().getPosition() );					
-					//set mesh!!! ?
-					newBullet->setMesh(mGameData.bulletEntity);
+							mGameData.getPlayer()->getTransformComponent().getPosition() );		
+					//create new sceneNode
+					Ogre::SceneNode* newSceneNode = mGameData.getSceneManager()->getRootSceneNode()
+						->createChildSceneNode();
+
+
+					newBullet->setMesh(mGameData.bulletEntity, newSceneNode);
 					//set owner
 					//set power
 					//set timeout before being destroyed

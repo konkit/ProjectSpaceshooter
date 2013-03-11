@@ -54,7 +54,7 @@ public:
 
 
 
-private:
+protected:
 	GameObjectType mObjectType;
 	TransformComponent mTransformComponent;
 	GraphicsComponent mGraphicsComponent;

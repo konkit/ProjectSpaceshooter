@@ -10,8 +10,9 @@ public:
 		
 	}
 
-	void setMesh(Ogre::Entity* entity)	{
-		
+	void setMesh(Ogre::Entity* entity, Ogre::SceneNode* newNode)	{
+		mGraphicsComponent.initNode(newNode);
+		mGraphicsComponent.getNode()->attachObject(entity);
 	}
 
 
