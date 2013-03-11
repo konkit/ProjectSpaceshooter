@@ -8,6 +8,10 @@ PlayState::PlayState( Game * game )
 	mSceneMgr = game->getOgreManager()->getRoot()->createSceneManager(Ogre::ST_GENERIC, "primary");
 	createCamera();
 
+	//save pointer to SceneManager in gameData (needed in instantiation)
+	//prowizorka! trzeba ustaliæ, czy tak mo¿e byæ
+	game->getGameData()->initSceneManager(mSceneMgr);
+
 	Ogre::Entity* ogreHead = mSceneMgr->createEntity("Head", "smallfighter.MESH");
 	Ogre::Plane plane;
 		plane.d = 2500;
@@ -54,7 +58,7 @@ PlayState::PlayState( Game * game )
 bool PlayState::update( SystemsSet & gameSystems, TimeData& time )
 {
 	//update input from player
-	gameSystems.mInputManager.updateInputForGame(gameSystems.mGameData, time.deltaTime, time.deltaTime);
+	gameSystems.mInputManager.updateInputForGame(gameSystems.mGameData, time.deltaTime, time.currentTime);
 	mPhysicsSystem.update( gameSystems.mGameData, time.deltaTime );
 	mObjectStateSystem.update( gameSystems.mGameData, time.deltaTime );
 	gameSystems.mGraphicsSystem.updateNodesAndDrawForPlay(gameSystems.mGameData);

@@ -113,6 +113,7 @@ void InputManager::updateInputForGame(GameData& mGameData, float deltaTime, unsi
 
 	if(mKeyboard->isKeyDown(OIS::KC_SPACE) )
 	{
+		std::cout<<"Shoot key set \n";
 		//set shoot on player
 		mGameData.getPlayer()->setShoot(currentTime);
 	}

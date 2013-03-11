@@ -31,9 +31,10 @@ public:
 			delete mNode;
 		}
 		mNode = newNode; 
+		
 	}
 
-
+	Ogre::SceneNode* getNode()	{ return mNode; }
 private:
 	Ogre::SceneNode* mNode;
 };
