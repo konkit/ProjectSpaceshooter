@@ -14,7 +14,7 @@ void InputManager::initOIS(Ogre::RenderWindow* window)
  
     mWindow->getCustomAttribute("WINDOW", &windowHnd);
     windowHndStr << windowHnd;
-    pl.insert(std::make_pair(std::string("WINDOW"), windowHndStr.str()));
+		pl.insert(std::make_pair(std::string("WINDOW"), windowHndStr.str()));
  
     mInputManager = OIS::InputManager::createInputSystem( pl );
  
@@ -113,7 +113,6 @@ void InputManager::updateInputForGame(GameData& mGameData, float deltaTime, unsi
 
 	if(mKeyboard->isKeyDown(OIS::KC_SPACE) )
 	{
-		std::cout<<"Shoot key set \n";
 		//set shoot on player
 		mGameData.getPlayer()->setShoot(currentTime);
 	}

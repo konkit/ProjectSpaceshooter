@@ -7,7 +7,7 @@
 class ObjectStateUpdateSystem
 {
 public:
-	void update(GameData& mGameData, float deltaTime)
+	void update(GameData& mGameData, float deltaTime, Ogre::SceneManager* sceneMgr)
 	{
 		//for every gameobject
 			//if one needs to be removed - remove it
@@ -25,15 +25,16 @@ public:
 					newBullet->getTransformComponent().setPosition(
 							mGameData.getPlayer()->getTransformComponent().getPosition() );		
 					//create new sceneNode
-					//Ogre::SceneNode* newSceneNode = mGameData.getSceneManager()->getRootSceneNode()
-					//	->createChildSceneNode();
-					Ogre::SceneManager* tmpMgr = mGameData.getSceneManager();
-					Ogre::SceneNode* tmpRootNode = tmpMgr->getRootSceneNode();
-					Ogre::SceneNode* newSceneNode = tmpRootNode->createChildSceneNode();
+					Ogre::SceneNode* newSceneNode = sceneMgr->getRootSceneNode()->createChildSceneNode();
 
-					std::cout<<"Shooting \n"<<std::endl;
+					Ogre::Entity* bulletEntity = sceneMgr->createEntity("bullet2.MESH");
 
-					newBullet->setMesh(mGameData.bulletEntity, newSceneNode);
+					newSceneNode->attachObject(bulletEntity);
+
+					newBullet->setMesh( newSceneNode );
+
+					newBullet->getPhysicsComponent().setVelocity(Ogre::Vector3(0.0, 0.0, 1.0));
+
 					//set owner
 					//set power
 					//set timeout before being destroyed

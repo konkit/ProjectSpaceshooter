@@ -29,8 +29,6 @@ public:
 	void setChangeToMenu (bool flag) {changeFlags.changeToMenu   = flag;} 
 	void setChangeToHangar(bool flag){changeFlags.changeToHangar = flag;}
 
-	void initSceneManager(Ogre::SceneManager* newMgr)	{ mSceneMgr = newMgr; }
-	Ogre::SceneManager* getSceneManager()	{ return mSceneMgr;	}
 
 	GameObjectsCollection<GameObject>& getBullets()	{
 		return mBulletCollection;
@@ -46,8 +44,6 @@ private:
 	bool changeToMenu;
 	} changeFlags;
 	//All GameObjects
-
-	Ogre::SceneManager* mSceneMgr;
 
 	GameObjectsCollection<GameObject> mEnemyCollection;
 	GameObjectsCollection<GameObject> mBulletCollection;

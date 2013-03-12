@@ -54,7 +54,7 @@ public:
 	gObject * getActual()
 	{
 		if(pointerToActual == NULL)
-			return NULL
+			return NULL;
 		else
 			return pointerToActual->mObject;
 	}

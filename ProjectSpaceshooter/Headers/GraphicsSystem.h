@@ -26,13 +26,16 @@ public:
 		mGameData.getPlayer()->getGraphicsComponent().updateNode(tmpPos, tmpAngle);
 
 		GameObjectsCollectionIterator<GameObject> * myIterator = mGameData.getBullets().getIterator();
+		GameObject* it;
 		while (myIterator->hasNext())
 		{
-			tmpPos = myIterator->getNext()->getTransformComponent().getPosition();
-			tmpAngle = myIterator->getNext()->getTransformComponent().getAngle();
-			myIterator->getNext()->getGraphicsComponent().updateNode(tmpPos, tmpAngle);
+			it = myIterator->getNext();
+			tmpPos = it->getTransformComponent().getPosition();
+			tmpAngle = it->getTransformComponent().getAngle();
+			it->getGraphicsComponent().updateNode(tmpPos, tmpAngle);
 		}
 		delete myIterator;
+
 
 
 		// Render a frame
