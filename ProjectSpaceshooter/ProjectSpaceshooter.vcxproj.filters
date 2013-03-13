@@ -68,6 +68,9 @@
       <Filter>Header\States</Filter>
     </ClInclude>
     <ClInclude Include="Headers\Enemy.h" />
+    <ClInclude Include="Headers\LevelDescribtion.h" />
+    <ClInclude Include="Headers\StaticObject.h" />
+    <ClInclude Include="Headers\EnemySpawner.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header">
@@ -127,6 +130,9 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Sources\Enemy.cpp" />
+    <ClCompile Include="Sources\LevelDescribtion.cpp" />
+    <ClCompile Include="Sources\StaticObject.cpp" />
+    <ClCompile Include="Sources\EnemySpawner.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ogre.cfg" />

@@ -164,6 +164,7 @@
   <ItemGroup>
     <ClInclude Include="Headers\Bullet.h" />
     <ClInclude Include="Headers\Enemy.h" />
+    <ClInclude Include="Headers\EnemySpawner.h" />
     <ClInclude Include="Headers\Exceptions.h" />
     <ClInclude Include="Headers\Game.h" />
     <ClInclude Include="Headers\GameObjectsCollection.h" />
@@ -176,18 +177,21 @@
     <ClInclude Include="Headers\HangarState.h" />
     <ClInclude Include="Headers\InputManager.h" />
     <ClInclude Include="Headers\LevelBuilder.h" />
+    <ClInclude Include="Headers\LevelDescribtion.h" />
     <ClInclude Include="Headers\ObjectStateUpdateSystem.h" />
     <ClInclude Include="Headers\OgreManager.h" />
     <ClInclude Include="Headers\PauseState.h" />
     <ClInclude Include="Headers\PhysicsComponent.h" />
     <ClInclude Include="Headers\PhysicsSystem.h" />
     <ClInclude Include="Headers\PlayState.h" />
+    <ClInclude Include="Headers\StaticObject.h" />
     <ClInclude Include="Headers\stdafx.h" />
     <ClInclude Include="Headers\Systems.h" />
     <ClInclude Include="Headers\TransformComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\Enemy.cpp" />
+    <ClCompile Include="Sources\EnemySpawner.cpp" />
     <ClCompile Include="Sources\Game.cpp" />
     <ClCompile Include="Sources\GameData.cpp" />
     <ClCompile Include="Sources\GameObject.cpp" />
@@ -195,10 +199,12 @@
     <ClCompile Include="Sources\HangarState.cpp" />
     <ClCompile Include="Sources\InputManager.cpp" />
     <ClCompile Include="Sources\LevelBuilder.cpp" />
+    <ClCompile Include="Sources\LevelDescribtion.cpp" />
     <ClCompile Include="Sources\main.cpp" />
     <ClCompile Include="Sources\OgreManager.cpp" />
     <ClCompile Include="Sources\PauseState.cpp" />
     <ClCompile Include="Sources\PlayState.cpp" />
+    <ClCompile Include="Sources\StaticObject.cpp" />
     <ClCompile Include="Sources\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
