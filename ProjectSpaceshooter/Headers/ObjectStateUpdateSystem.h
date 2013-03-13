@@ -15,41 +15,13 @@ public:
 
 		if( mGameData.getPlayer()->isShooting() == true)	{
 
+			//get player's data required to create new bullet
 			GameObject* player = mGameData.getPlayer();
 			float playerAngle = player->getTransformComponent().getAngle();
 			Ogre::Vector3 playerPos = player->getTransformComponent().getPosition();
 
+			//create new bullet
 			mGameData.getBullets().instantiate(0, sceneMgr, playerPos, playerAngle );
-			/*
-			//instantiate bullet
-				Bullet* newBullet = new Bullet;
-					//set proper orientation
-					newBullet->getTransformComponent().setAngle( 
-							mGameData.getPlayer()->getTransformComponent().getAngle() );
-					//set proper position
-					newBullet->getTransformComponent().setPosition(
-							mGameData.getPlayer()->getTransformComponent().getPosition() );		
-					//create new sceneNode
-					Ogre::SceneNode* newSceneNode = sceneMgr->getRootSceneNode()->createChildSceneNode();
-
-					Ogre::Entity* bulletEntity = sceneMgr->createEntity("bullet2.MESH");
-
-					newSceneNode->attachObject(bulletEntity);
-
-					newBullet->setMesh( newSceneNode );
-
-					newBullet->getPhysicsComponent().setVelocity(Ogre::Vector3(0.0, 0.0, 1.0));
-
-					//set owner
-					//set power
-					//set timeout before being destroyed
-					//set collider
-					// ... or copy from prefab
-
-				//add ready object to Collection
-				mGameData.getBullets().addObject(newBullet);
-
-			*/
 
 			//set shooting as false
 			mGameData.getPlayer()->unsetShoot();

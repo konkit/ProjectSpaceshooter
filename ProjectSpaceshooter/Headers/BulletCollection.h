@@ -39,6 +39,10 @@ public:
 			newBullet->setMesh( newSceneNode );
 			//set proper velocity for bullet
 			newBullet->getPhysicsComponent().setVelocity(Ogre::Vector3(0.0, 0.0, 1.0));
+			//set owner
+			//set power
+			//set timeout before being destroyed
+			//set collider
 
 		//add it to the collection
 			mCollection.addObject(newBullet);
