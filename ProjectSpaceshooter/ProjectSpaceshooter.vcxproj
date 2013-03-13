@@ -163,7 +163,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Headers\Bullet.h" />
+    <ClInclude Include="Headers\BulletCollection.h" />
     <ClInclude Include="Headers\Enemy.h" />
+    <ClInclude Include="Headers\EnemyCollection.h" />
     <ClInclude Include="Headers\Exceptions.h" />
     <ClInclude Include="Headers\Game.h" />
     <ClInclude Include="Headers\GameObjectsCollection.h" />

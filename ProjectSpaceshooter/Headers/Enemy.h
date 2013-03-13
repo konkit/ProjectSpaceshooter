@@ -9,13 +9,13 @@ public:
 	~EnemyPrefab(void);
 	
 	void setEnemyName(std::string val) { mName = val; }
-	void setWaeponeName(std::string val) { mWaeponeName = val; }
+	void setWeaponName(std::string val) { mWeaponName = val; }
 	void setAiType(AI_TYPE val) { mMyAI = val; }
 	void setMeshName(std::string val) { mMeshName = val; }
 	void setResistance(unsigned int val) { resistance = val; }
 
 	std::string	 getEnemyName()   const { return mName; }
-	std::string	 getWaeponeName() const { return mWaeponeName; }
+	std::string	 getWeaponName() const { return mWeaponName; }
 	AI_TYPE		 getAiType()	  const { return mMyAI; }
 	std::string	 getMeshName()	  const { return mMeshName; }
 	unsigned int getResistance()  const { return resistance; }
@@ -24,7 +24,7 @@ private:
 	string		 mName;
 	string		 mMeshName;
 	AI_TYPE		 mMyAI; 
-	string		 mWaeponeName;
+	string		 mWeaponName;
 };
 
 class EnemyObject : public GameObject

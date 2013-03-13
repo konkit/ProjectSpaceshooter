@@ -15,7 +15,12 @@ public:
 
 		if( mGameData.getPlayer()->isShooting() == true)	{
 
+			GameObject* player = mGameData.getPlayer();
+			float playerAngle = player->getTransformComponent().getAngle();
+			Ogre::Vector3 playerPos = player->getTransformComponent().getPosition();
 
+			mGameData.getBullets().instantiate(0, sceneMgr, playerPos, playerAngle );
+			/*
 			//instantiate bullet
 				Bullet* newBullet = new Bullet;
 					//set proper orientation
@@ -43,6 +48,8 @@ public:
 
 				//add ready object to Collection
 				mGameData.getBullets().addObject(newBullet);
+
+			*/
 
 			//set shooting as false
 			mGameData.getPlayer()->unsetShoot();

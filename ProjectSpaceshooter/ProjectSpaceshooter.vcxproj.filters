@@ -67,7 +67,13 @@
     <ClInclude Include="Headers\LevelBuilder.h">
       <Filter>Header\States</Filter>
     </ClInclude>
-    <ClInclude Include="Headers\Enemy.h" />
+    <ClInclude Include="Headers\EnemyCollection.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\Enemy.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\BulletCollection.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header">

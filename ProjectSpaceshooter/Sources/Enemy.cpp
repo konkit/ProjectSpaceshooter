@@ -3,7 +3,7 @@
 
 
 EnemyPrefab::EnemyPrefab(string name ) 
-	: mName(), mMyAI(AI_TYPE::fighter), resistance(100), mWaeponeName() 
+	: mName(), mMyAI(AI_TYPE::fighter), resistance(100), mWeaponName() 
 {
 }
 

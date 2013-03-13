@@ -2,6 +2,8 @@
 #include "GameObject.h"
 #include "Enemy.h"
 
+#include "BulletCollection.h"
+
 
 
 //Class which stores gameobjects and all data required by systems to do their job
@@ -35,7 +37,7 @@ public:
 	void setChangeToHangar(bool flag){changeFlags.changeToHangar = flag;}
 
 
-	GameObjectsCollection<GameObject>& getBullets()	{
+	BulletCollection& getBullets()	{
 		return mBulletCollection;
 	}
 	void initObjectsTemplates();
@@ -51,7 +53,8 @@ private:
 	//All GameObjects
 
 	GameObjectsCollection<GameObject> mEnemyCollection;
-	GameObjectsCollection<GameObject> mBulletCollection;
+	//GameObjectsCollection<GameObject> mBulletCollection;
+	BulletCollection mBulletCollection;
 	GameObjectsCollection<GameObject> mStaticCollection;
 //	GameObjectsCollection mPhysicCollection;  there will be physics object ex. explosion sphere
 	GameObject mPlayer;

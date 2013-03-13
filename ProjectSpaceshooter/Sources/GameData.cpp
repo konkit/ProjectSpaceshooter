@@ -26,7 +26,7 @@ void GameData::initObjectsTemplates()
 	myEnemy->setAiType(AI_TYPE::fighter);
 	myEnemy->setMeshName("smallfighter.MESH");
 	myEnemy->setResistance(1000);
-	myEnemy->setWaeponeName("basicWaepon");
+	myEnemy->setWeaponName("basicWaepon");
 }
 
 
