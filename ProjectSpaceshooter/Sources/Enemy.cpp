@@ -3,7 +3,7 @@
 
 
 EnemyPrefab::EnemyPrefab(unsigned prefabID) 
-	: mEnemyPrefabID(prefabID), mMyAI(AI_TYPE::fighter), resistance(100), mWaeponePrefabID() 
+	: mEnemyPrefabID(prefabID), mMyAI(AI_TYPE::fighter), resistance(100), mWeaponPrefabID() 
 {
 }
 
