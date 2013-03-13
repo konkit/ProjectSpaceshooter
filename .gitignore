@@ -23,3 +23,4 @@ ProjectSpaceshooter/Release/*
 
 /Game/CodeGeneration.Log.xml
 *.orig
+/ProjectSpaceshooter/ogre.cfg

@@ -31,11 +31,15 @@ public:
 	{
 	};
 	~GameObjectsCollectionIterator<gObject>(){}
+
 	bool hasNext()
 	{
 		if (pointerToActual == NULL)
 			return false;
-		return pointerToActual->next != 0 ? true : false;
+		else if (pointerToActual == pointerToNext)
+			return true; 
+		else
+			return pointerToActual->next != 0 ? true : false;
 	};
 	gObject * getNext() 
 	{
@@ -47,7 +51,8 @@ public:
 		if (pointerToActual->next != NULL) // Czy usun¹æ to zabezpieczenie i pozwoliæ na wejœcie aktualnego wskaŸnika na puste?
 		{
 			pointerToNext = pointerToActual->next;
-		}
+		} else
+			pointerToNext = NULL;
 		return pointerToActual->mObject;  
 
 	}
