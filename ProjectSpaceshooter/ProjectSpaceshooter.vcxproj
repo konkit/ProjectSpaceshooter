@@ -163,8 +163,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Headers\Bullet.h" />
+    <ClInclude Include="Headers\BulletCollection.h" />
     <ClInclude Include="Headers\Enemy.h" />
     <ClInclude Include="Headers\EnemySpawner.h" />
+    <ClInclude Include="Headers\EnemyCollection.h" />
     <ClInclude Include="Headers\Exceptions.h" />
     <ClInclude Include="Headers\Game.h" />
     <ClInclude Include="Headers\GameObjectsCollection.h" />
@@ -199,7 +201,6 @@
     <ClCompile Include="Sources\HangarState.cpp" />
     <ClCompile Include="Sources\InputManager.cpp" />
     <ClCompile Include="Sources\LevelBuilder.cpp" />
-    <ClCompile Include="Sources\LevelDescribtion.cpp" />
     <ClCompile Include="Sources\main.cpp" />
     <ClCompile Include="Sources\OgreManager.cpp" />
     <ClCompile Include="Sources\PauseState.cpp" />

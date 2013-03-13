@@ -3,6 +3,8 @@
 #include "GameObject.h"
 
 
+class BulletPrefab;
+
 class Bullet : public GameObject	{
 
 public:
