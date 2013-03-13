@@ -14,11 +14,17 @@ enum  class GameObjectType
 	physicObject
 };
 
+enum class AI_TYPE
+{
+	fighter,
+	defender
+};
+
+
 class GameObject 
 {
 public:
 	GameObject();
-	GameObject(std::string new_name);
 	virtual ~GameObject(void);
 
 	TransformComponent& getTransformComponent()	{
@@ -37,7 +43,6 @@ public:
 	long int getTimeSinceLastShoot() {return timeSinceLastShoot;};
 	void resetTimeSinceLastShoot() {timeSinceLastShoot = 0;};
 	void incrementTimeSinceLastShoot(long int deltaTime) {timeSinceLastShoot += deltaTime;}
-	std::string name;
 
 	void setShoot(unsigned long currentTime)	{
 		mGamelogicComponent.setShoot(currentTime);
@@ -62,5 +67,7 @@ protected:
 	GamelogicComponent mGamelogicComponent;
 	long int timeSinceLastShoot;
 	bool shoot;
+
+
 };
 

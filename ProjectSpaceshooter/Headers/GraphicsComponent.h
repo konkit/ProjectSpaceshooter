@@ -10,8 +10,8 @@ public:
 	{
 		mNode = newNode;
 	}
-
-	GraphicsComponent(std::string meshName, Ogre::SceneManager * _sceneMenager) : mNode(NULL)	
+	~GraphicsComponent(){};
+	void initGraphicComponent(std::string meshName, Ogre::SceneManager * _sceneMenager)
 	{
 		Ogre::Entity * tmp = _sceneMenager->createEntity(meshName);
 		mNode->attachObject(tmp);
@@ -36,6 +36,8 @@ public:
 	}
 
 	Ogre::SceneNode* getNode()	{ return mNode; }
+
 private:
 	Ogre::SceneNode* mNode;
+
 };

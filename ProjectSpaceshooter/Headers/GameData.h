@@ -1,10 +1,15 @@
 #pragma once
 #include "GameObject.h"
-
+#include "Enemy.h"
 
 
 
 //Class which stores gameobjects and all data required by systems to do their job
+struct GameObjectTemplates
+{
+	GameObjectsCollection<EnemyPrefab> enemyPrefabCollection;
+};
+
 class GameData
 {
 public:
@@ -33,7 +38,7 @@ public:
 	GameObjectsCollection<GameObject>& getBullets()	{
 		return mBulletCollection;
 	}
-
+	void initObjectsTemplates();
 	
 private:
 	struct changeFlagsStruct
@@ -50,5 +55,5 @@ private:
 	GameObjectsCollection<GameObject> mStaticCollection;
 //	GameObjectsCollection mPhysicCollection;  there will be physics object ex. explosion sphere
 	GameObject mPlayer;
-
+	GameObjectTemplates mPrefabCollections;
 };

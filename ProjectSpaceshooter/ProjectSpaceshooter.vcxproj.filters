@@ -67,6 +67,7 @@
     <ClInclude Include="Headers\LevelBuilder.h">
       <Filter>Header\States</Filter>
     </ClInclude>
+    <ClInclude Include="Headers\Enemy.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header">
@@ -125,6 +126,7 @@
     <ClCompile Include="Sources\OgreManager.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\Enemy.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ogre.cfg" />
