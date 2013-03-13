@@ -2,8 +2,8 @@
 #include "Enemy.h"
 
 
-EnemyPrefab::EnemyPrefab(string name ) 
-	: mName(), mMyAI(AI_TYPE::fighter), resistance(100), mWaeponeName() 
+EnemyPrefab::EnemyPrefab(unsigned prefabID) 
+	: mEnemyPrefabID(prefabID), mMyAI(AI_TYPE::fighter), resistance(100), mWaeponePrefabID() 
 {
 }
 

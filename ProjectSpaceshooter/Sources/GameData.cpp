@@ -21,12 +21,12 @@ GameData::~GameData(void)
 void GameData::initObjectsTemplates()
 {
 	//TODO Iniciajlizowaæ nowe obiekty z plików
-	EnemyPrefab * myEnemy = new EnemyPrefab("basicEnemy"); 
+	EnemyPrefab * myEnemy = new EnemyPrefab(1); 
 	mPrefabCollections.enemyPrefabCollection.addObject(myEnemy);
 	myEnemy->setAiType(AI_TYPE::fighter);
 	myEnemy->setMeshName("smallfighter.MESH");
 	myEnemy->setResistance(1000);
-	myEnemy->setWaeponeName("basicWaepon");
+	myEnemy->setWaeponePrefabID(1);
 }
 
 
