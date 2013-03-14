@@ -38,6 +38,12 @@ public:
 	PhysicsComponent& getPhysicsComponent()	{
 		return mPhysicsComponent;
 	}
+
+	GamelogicComponent& getGamelogicComponent() {
+		return mGamelogicComponent;
+	}
+
+
 	bool isShootActive() { return shoot;}
 	void setShoot(bool _shoot) { shoot = _shoot;} 
 	long int getTimeSinceLastShoot() {return timeSinceLastShoot;};

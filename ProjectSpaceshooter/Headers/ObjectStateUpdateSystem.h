@@ -27,6 +27,25 @@ public:
 			mGameData.getPlayer()->unsetShoot();
 		}
 
+		GameCollectionIterator<Bullet> * myIterator = mGameData.getBullets().getCollection().getIterator();
+		GameObject* it;
+		while (myIterator->hasNext())
+		{
+			it = myIterator->getNext();
+
+			it->getGamelogicComponent().decreaseTimeToLive();
+
+			if( it->getGamelogicComponent().isStillAlive() == false )	{
+				//remove from collection
+				Bullet* removedObject = (Bullet*)it;
+					it->getGraphicsComponent().getNode()->detachAllObjects();	//PROWIZORKA!!!
+				mGameData.getBullets().getCollection().deleteObject(removedObject);
+			}
+
+		}
+		delete myIterator;
+		
+
 	}
 
 };

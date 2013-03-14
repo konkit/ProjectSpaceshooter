@@ -6,7 +6,7 @@
 class GamelogicComponent
 {
 public:
-	GamelogicComponent() : shooting(false), rateOfFire(500), timeSinceLastShot(0)
+	GamelogicComponent() : shooting(false), rateOfFire(500), timeSinceLastShot(0), timeToLive(300)
 	{	}
 
 	void setShoot(unsigned long currentTime)	{
@@ -24,6 +24,18 @@ public:
 		return shooting;
 	}
 
+	void setTimeToLive(int newTime)	{
+		timeToLive = newTime;
+	}
+
+	void decreaseTimeToLive()	{
+		timeToLive--;
+	}
+
+	bool isStillAlive()	{
+		return timeToLive > 0;
+	}
+
 
 
 
@@ -33,6 +45,8 @@ private:
 	int rateOfFire;
 	//time last shot
 	unsigned long timeSinceLastShot;
+
+	int timeToLive;
 
 	
 };
