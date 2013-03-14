@@ -26,7 +26,7 @@ PlayState::PlayState( Game * game )
 	mCamera->lookAt(Ogre::Vector3(0,0,100));
 
 	//bullet model
-	mGame->getGameData()->bulletEntity = mSceneMgr->createEntity("BulletEntity", "bullet2.MESH");
+	mGame->getGameData()->bulletEntity = mSceneMgr->createEntity("BulletEntity", "rocket.MESH");
 
 	//save node in player's GraphicsComponent
 	mGame->getGameData()->getPlayer()->getGraphicsComponent().initNode(mGame->getGameData()->shipNode);
@@ -35,7 +35,7 @@ PlayState::PlayState( Game * game )
 		stat->attachObject(mGame->getGameData()->bulletEntity);
 		stat->setPosition(Ogre::Vector3(70,0,100));
 		//stat->pitch(Ogre::Degree(-90));
-		stat->scale(3,3,3);
+		stat->scale(20,20,20);
 
 
 	// Set ambient light

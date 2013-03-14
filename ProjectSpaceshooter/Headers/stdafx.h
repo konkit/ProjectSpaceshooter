@@ -22,8 +22,11 @@
 #include <OISKeyboard.h>
 #include <OISMouse.h>
 
-#include "GameObjectsCollection.h"
+#include "GameCollection.h"
 #include "GameData.h"
 #include "GameObject.h"
 
 #include <string>
+#include <exception>
+
+using Ogre::Vector3;

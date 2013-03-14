@@ -1,23 +1,23 @@
 #pragma once
-#include <vector>
 
-struct SpawnerStruct 
+struct SpawnerInfo 
 {
 	unsigned prefabID;
-	unsigned number;
+	unsigned amount;
 };
 
 class EnemySpawner
 {
 public:
-	EnemySpawner(unsigned numberOfEnemyTypes, unsigned _spawnFrequency);
+	EnemySpawner(Ogre::Vector3 spawnerPosition ,unsigned _spawnFrequency, unsigned _onceSpawn);
 	~EnemySpawner(void);
 	void addEnemyToSpawn(unsigned prefabID, unsigned number);
 	void spawnEnemy(GameData * _gameData, unsigned long currentTime);
 private:
-	std::vector<SpawnerStruct> enemyToSpawn;
-	unsigned lastFreeIndex;
+	GameCollection<SpawnerInfo> enemyToSpawn;
+	Ogre::Vector3 myPosition;
 	unsigned spawnFrequency;
+	unsigned onceSpawn;
 	unsigned long timeToNextSpawn;
 };
 

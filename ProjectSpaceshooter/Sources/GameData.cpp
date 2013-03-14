@@ -29,4 +29,19 @@ void GameData::initObjectsTemplates()
 	myEnemy->setWeaponPrefabID(1);
 }
 
+Ogre::SceneManager * GameData::getSceneManagerFor( GAME_STATES gameState )
+{
+	switch (gameState)
+	{
+	case GAME_STATES::PLAY:
+		return mStateScenesManager.playSceneManager;
+	case GAME_STATES::PAUSE:
+		return mStateScenesManager.pauseSceneManager;
+	case GAME_STATES::HANGAR:
+		return mStateScenesManager.hangarSceneManager;
+	default:
+		return NULL;
+	}
+}
+
 

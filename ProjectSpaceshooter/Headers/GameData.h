@@ -3,14 +3,28 @@
 #include "Enemy.h"
 
 #include "BulletCollection.h"
+#include "EnemyCollection.h"
 
-
+enum class GAME_STATES
+{
+	PLAY,
+	PAUSE,
+	HANGAR
+};
 
 //Class which stores gameobjects and all data required by systems to do their job
 struct GameObjectTemplates
 {
-	GameObjectsCollection<EnemyPrefab> enemyPrefabCollection;
+	GameCollection<EnemyPrefab> enemyPrefabCollection;
 };
+
+struct StateScenesManager_Struct
+{
+	Ogre::SceneManager * playSceneManager;
+	Ogre::SceneManager * pauseSceneManager;
+	Ogre::SceneManager * hangarSceneManager;
+};
+
 
 class GameData
 {
@@ -35,11 +49,18 @@ public:
 	void setChangeToPlay (bool flag) {changeFlags.changeToPlay   = flag;} 
 	void setChangeToMenu (bool flag) {changeFlags.changeToMenu   = flag;} 
 	void setChangeToHangar(bool flag){changeFlags.changeToHangar = flag;}
-
+	
+	Ogre::SceneManager * getSceneManagerFor(GAME_STATES gameState);
 
 	BulletCollection& getBullets()	{
 		return mBulletCollection;
 	}
+
+	EnemyCollection& getEnemys()
+	{
+		return mEnemyCollection;
+	}
+
 	void initObjectsTemplates();
 	
 private:
@@ -52,11 +73,12 @@ private:
 	} changeFlags;
 	//All GameObjects
 
-	GameObjectsCollection<GameObject> mEnemyCollection;
+	EnemyCollection mEnemyCollection;
 	//GameObjectsCollection<GameObject> mBulletCollection;
 	BulletCollection mBulletCollection;
-	GameObjectsCollection<GameObject> mStaticCollection;
+	GameCollection<GameObject> mStaticCollection;
 //	GameObjectsCollection mPhysicCollection;  there will be physics object ex. explosion sphere
 	GameObject mPlayer;
 	GameObjectTemplates mPrefabCollections;
+	StateScenesManager_Struct mStateScenesManager;
 };

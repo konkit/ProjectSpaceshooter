@@ -25,7 +25,7 @@ public:
 		tmpAngle = mGameData.getPlayer()->getTransformComponent().getAngle();
 		mGameData.getPlayer()->getGraphicsComponent().updateNode(tmpPos, tmpAngle);
 
-		GameObjectsCollectionIterator<Bullet> * myIterator = mGameData.getBullets().getCollection().getIterator();
+		GameCollectionIterator<Bullet> * myIterator = mGameData.getBullets().getCollection().getIterator();
 		GameObject* it;
 		while (myIterator->hasNext())
 		{

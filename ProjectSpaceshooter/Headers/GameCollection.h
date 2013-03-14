@@ -23,38 +23,42 @@ struct ListElement
 };
 
 template <class gObject>
-class GameObjectsCollectionIterator
+class GameCollectionIterator
 {
 public:
-	GameObjectsCollectionIterator<gObject>(ListElement<gObject> * head)
-		:	pointerToActual(head), pointerToNext(head)
+	GameCollectionIterator<gObject>(ListElement<gObject> * head)
+		:	pointerToActual(head), pointerToHead(head),  isFirstObject(true)
 	{
+		if (pointerToActual != NULL)
+		{
+			pointerToNext = pointerToActual->next;
+		}
 	};
-	~GameObjectsCollectionIterator<gObject>(){}
+	~GameCollectionIterator<gObject>(){}
 
 	bool hasNext()
 	{
 		if (pointerToActual == NULL)
 			return false;
-		else if (pointerToActual == pointerToNext)
+		else if (isFirstObject)
 			return true; 
 		else
-			return pointerToActual->next != 0 ? true : false;
+			return pointerToNext != 0 ? true : false;
 	};
 	gObject * getNext() 
 	{
-		pointerToActual = pointerToNext;
-		if (pointerToActual == NULL)
+		if (isFirstObject)
 		{
-			return NULL;
-		}
-		if (pointerToActual->next != NULL) // Czy usun¹æ to zabezpieczenie i pozwoliæ na wejœcie aktualnego wskaŸnika na puste?
-		{
-			pointerToNext = pointerToActual->next;
+			isFirstObject = false;
 		} else
-			pointerToNext = NULL;
-		return pointerToActual->mObject;  
-
+		{
+			pointerToActual = pointerToNext;
+			if (pointerToNext != NULL)
+			{
+				pointerToNext = pointerToNext->next;
+			}
+		}
+		return pointerToActual->mObject;
 	}
 	gObject * getActual()
 	{
@@ -64,21 +68,28 @@ public:
 			return pointerToActual->mObject;
 	}
 
+	void resetIterator()
+	{
+		pointerToActual = pointerToNext = pointerToHead;
+	}
+
 private:
 	ListElement<gObject> * pointerToActual;
 	ListElement<gObject> * pointerToNext;
+	ListElement<gObject> * pointerToHead;
+	bool isFirstObject;
 };
 
 template<typename gObject>
-class GameObjectsCollection
+class GameCollection
 {
 public:
-	GameObjectsCollection<gObject>()
+	GameCollection<gObject>()
 		:mListHead(0), mListTail(0)
 	{
 	}
 
-	~GameObjectsCollection<gObject>()
+	~GameCollection<gObject>()
 	{
 		ListElement<gObject> * tmp = mListHead;
 		while (tmp!=NULL)
@@ -145,9 +156,6 @@ public:
 		delete item; // Deleted struct have destructor to delate pointed object;
 		return;
 	}
-	
-	//Required deleted iterator after used
-	GameObjectsCollectionIterator<gObject> * getIterator(){return new GameObjectsCollectionIterator<gObject>(mListHead);} 
 	void operator+=(gObject * newObject)
 	{
 		ListElement<gObject> * tmp = new ListElement<gObject>;
@@ -163,6 +171,19 @@ public:
 		mListTail = tmp;
 		return;
 	}
+	void clearCollection()
+	{
+		ListElement<gObject> * tmp = mListHead;
+		while (tmp!=NULL)
+		{
+			mListHead = mListHead->next;
+			delete tmp;
+			tmp = mListHead;
+		}
+		mListHead = mListTail = NULL;
+	}
+	//Required delete iterator after used
+	GameCollectionIterator<gObject> * getIterator(){return new GameCollectionIterator<gObject>(mListHead);} 
 private:
 	ListElement<gObject> * mListHead;
 	ListElement<gObject> * mListTail;

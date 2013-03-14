@@ -46,9 +46,6 @@
     <ClInclude Include="Headers\OgreManager.h">
       <Filter>Header\Systems</Filter>
     </ClInclude>
-    <ClInclude Include="Headers\GameObjectsCollection.h">
-      <Filter>Header</Filter>
-    </ClInclude>
     <ClInclude Include="Headers\GamelogicComponent.h">
       <Filter>Header\Components</Filter>
     </ClInclude>
@@ -75,8 +72,11 @@
     </ClInclude>
     <ClInclude Include="Headers\BulletCollection.h" />
     <ClInclude Include="Headers\EnemySpawner.h" />
-    <ClInclude Include="Headers\LevelDescribtion.h" />
     <ClInclude Include="Headers\StaticObject.h" />
+    <ClInclude Include="Headers\LevelDescription.h" />
+    <ClInclude Include="Headers\GameCollection.h">
+      <Filter>Header</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header">

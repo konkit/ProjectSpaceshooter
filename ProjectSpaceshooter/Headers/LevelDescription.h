@@ -29,16 +29,16 @@ struct LevelStage
 {
 	unsigned number;
 	missionType typeOfMission;
-	GameObjectsCollection<EnemySpawner> enemySpawnerCollection;
+	GameCollection<EnemySpawner> enemySpawnerCollection;
 };
 
 struct LevelDescription
 {
 //	string resourceGroupName; Bêdzie potrzebne do wybierania zasobów dla konkretnego levelu
 	Ogre::ColourValue ambientColour;
-	GameObjectsCollection<Light> lightsCollections;
-	GameObjectsCollection<StaticObjectDescribe> staticObjectList;
-	GameObjectsCollection<LevelStage> levelStageCollection;
+	GameCollection<Light> lightsCollections;
+	GameCollection<StaticObjectDescribe> staticObjectList;
+	GameCollection<LevelStage> levelStageCollection;
 };
 
 

@@ -169,7 +169,7 @@
     <ClInclude Include="Headers\EnemyCollection.h" />
     <ClInclude Include="Headers\Exceptions.h" />
     <ClInclude Include="Headers\Game.h" />
-    <ClInclude Include="Headers\GameObjectsCollection.h" />
+    <ClInclude Include="Headers\GameCollection.h" />
     <ClInclude Include="Headers\GameData.h" />
     <ClInclude Include="Headers\GamelogicComponent.h" />
     <ClInclude Include="Headers\GameObject.h" />
@@ -179,7 +179,7 @@
     <ClInclude Include="Headers\HangarState.h" />
     <ClInclude Include="Headers\InputManager.h" />
     <ClInclude Include="Headers\LevelBuilder.h" />
-    <ClInclude Include="Headers\LevelDescribtion.h" />
+    <ClInclude Include="Headers\LevelDescription.h" />
     <ClInclude Include="Headers\ObjectStateUpdateSystem.h" />
     <ClInclude Include="Headers\OgreManager.h" />
     <ClInclude Include="Headers\PauseState.h" />

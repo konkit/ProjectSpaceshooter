@@ -1,13 +1,13 @@
 #include "stdafx.h"
-#include "GameObjectsCollection.h"
+#include "GameCollection.h"
 
 
-GameObjectsCollectionIterator * GameObjectsCollection::getIterator()
+GameObjectsCollectionIterator * GameCollection::getIterator()
 {
 	return new GameObjectsCollectionIterator(mListHead);
 }
 
-void GameObjectsCollection::addGameObject( GameObject * newObject )
+void GameCollection::addGameObject( GameObject * newObject )
 {
 	GameObjectsListElement * tmp = new GameObjectsListElement;
 	if (mListHead)
@@ -22,7 +22,7 @@ void GameObjectsCollection::addGameObject( GameObject * newObject )
 	return;
 }
 
-void GameObjectsCollection::deleteGameObject( GameObject * deletedObject )
+void GameCollection::deleteGameObject( GameObject * deletedObject )
 {
 	GameObjectsListElement * it = mListHead;
 	GameObjectsListElement * prevIt = 0;
@@ -44,7 +44,7 @@ void GameObjectsCollection::deleteGameObject( GameObject * deletedObject )
 	return;
 }
 
-void GameObjectsCollection::operator-( GameObject * deletedObject )
+void GameCollection::operator-( GameObject * deletedObject )
 {
 	GameObjectsListElement * it = mListHead;
 	GameObjectsListElement * prevIt = 0;
@@ -66,7 +66,7 @@ void GameObjectsCollection::operator-( GameObject * deletedObject )
 	return;
 }
 
-void GameObjectsCollection::operator+( GameObject * newObject )
+void GameCollection::operator+( GameObject * newObject )
 {
 	GameObjectsListElement * tmp = new GameObjectsListElement;
 	if (mListHead)
@@ -81,12 +81,12 @@ void GameObjectsCollection::operator+( GameObject * newObject )
 		return;
 }
 
-GameObjectsCollection::GameObjectsCollection( GameObjectType storedObjectType )
+GameCollection::GameCollection( GameObjectType storedObjectType )
 {
 	mStoredObjectType = storedObjectType;
 }
 
-GameObjectsCollection::~GameObjectsCollection( void )
+GameCollection::~GameCollection( void )
 {
 	GameObjectsListElement *tmp;
 	while (mListHead != 0)

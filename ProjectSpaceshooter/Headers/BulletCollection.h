@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Bullet.h"
-#include "GameObjectsCollection.h"
+#include "GameCollection.h"
 
 class BulletCollection
 {
@@ -16,7 +16,8 @@ public:
 	}
 
 	//this method receives id of prefab from which it should create new object
-	void instantiate(int ID, Ogre::SceneManager* sceneMgr, Ogre::Vector3 position, float angle)	{
+	void instantiate(int ID, Ogre::SceneManager* sceneMgr, Ogre::Vector3 position, float angle)	
+	{
 		
 		//Uwaga - PROWIZORKA!!!!
 
@@ -49,16 +50,13 @@ public:
 		
 	}
 
-	GameObjectsCollection<Bullet>& getCollection()	{
+	GameCollection<Bullet>& getCollection()	{
 		return mCollection;
 	}
 
-
-
-
 private:
 
-	GameObjectsCollection<Bullet> mCollection;
-	GameObjectsCollection<BulletPrefab> mPrefabs;
+	GameCollection<Bullet> mCollection;
+	GameCollection<BulletPrefab> mPrefabs;
 
 };
