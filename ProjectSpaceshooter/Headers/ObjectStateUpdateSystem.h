@@ -39,6 +39,7 @@ public:
 				//remove from collection
 				Bullet* removedObject = (Bullet*)it;
 					it->getGraphicsComponent().getNode()->detachAllObjects();	//PROWIZORKA!!!
+					sceneMgr->getRootSceneNode()->removeAndDestroyChild( it->getGraphicsComponent().getNode()->getName() );
 				mGameData.getBullets().getCollection().deleteObject(removedObject);
 			}
 
