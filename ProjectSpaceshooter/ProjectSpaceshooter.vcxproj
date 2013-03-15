@@ -198,6 +198,7 @@
     <ClCompile Include="Sources\GameData.cpp" />
     <ClCompile Include="Sources\GameObject.cpp" />
     <ClCompile Include="Sources\GameStateMain.cpp" />
+    <ClCompile Include="Sources\GraphicsSystem.cpp" />
     <ClCompile Include="Sources\HangarState.cpp" />
     <ClCompile Include="Sources\InputManager.cpp" />
     <ClCompile Include="Sources\LevelBuilder.cpp" />

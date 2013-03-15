@@ -6,7 +6,7 @@ EnemySpawner::EnemySpawner(Ogre::Vector3 spawnerPosition, unsigned _spawnFrequen
 	: spawnFrequency(_spawnFrequency),
 	  myPosition(spawnerPosition),
 	  timeToNextSpawn(0),
-	  onceSpawn(_onceSpawn)
+	  onceMomentSpawn(_onceSpawn)
 {
 
 }
@@ -30,15 +30,15 @@ void EnemySpawner::spawnEnemy( GameData * _gameData, unsigned long currentTime )
 	{
 		GameCollectionIterator<SpawnerInfo> * it = enemyToSpawn.getIterator();
 		SpawnerInfo * tmpSpawnInfo;
-		unsigned amountToSpawn;
-		unsigned leftToSpawn = onceSpawn;
+		unsigned amountToSpawnNow;
+		unsigned leftToSpawn = onceMomentSpawn;
 		while (it->hasNext() && leftToSpawn > 0)
 		{
 			tmpSpawnInfo = it->getNext();
-			amountToSpawn =  leftToSpawn >= tmpSpawnInfo->amount ? tmpSpawnInfo->amount : leftToSpawn;
-			leftToSpawn -= amountToSpawn;
-			tmpSpawnInfo->amount -= amountToSpawn;
-			for(int i = amountToSpawn; i > 0; i --)
+			amountToSpawnNow =  leftToSpawn >= tmpSpawnInfo->amount ? tmpSpawnInfo->amount : leftToSpawn;
+			leftToSpawn -= amountToSpawnNow;
+			tmpSpawnInfo->amount -= amountToSpawnNow;
+			for(int i = amountToSpawnNow; i > 0; i --)
 			{
 				EnemyObject * tmpEnemy = enemysColl.instantiate(tmpSpawnInfo->prefabID, _gameData->getSceneManagerFor(GAME_STATES::PLAY));
 				Vector3 newPosition = myPosition + Vector3(50*(i-1),0,0);

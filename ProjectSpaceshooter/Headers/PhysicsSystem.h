@@ -16,7 +16,7 @@ public:
 		tmpTransform.rotate( tmpPhysics.getRotVelocity() * deltaTime );
 		tmpTransform.move( tmpPhysics.getVelocity() * deltaTime );
 
-		GameCollectionIterator<Bullet> * myIterator = mGameData.getBullets().getCollection().getIterator();
+		GameCollectionIterator<Bullet> * myIterator = mGameData.getBullets().getBulletIterator();
 		GameObject* it;
 		while (myIterator->hasNext())
 		{

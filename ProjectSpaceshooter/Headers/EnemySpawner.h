@@ -19,7 +19,7 @@ private:
 	GameCollection<SpawnerInfo> enemyToSpawn;
 	Ogre::Vector3 myPosition;
 	unsigned spawnFrequency;
-	unsigned onceSpawn;
+	unsigned onceMomentSpawn;
 	unsigned long timeToNextSpawn;
 };
 

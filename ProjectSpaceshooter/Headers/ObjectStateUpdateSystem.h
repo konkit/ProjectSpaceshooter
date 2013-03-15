@@ -7,7 +7,7 @@
 class ObjectStateUpdateSystem
 {
 public:
-	void update(GameData& mGameData, TimeData& time, Ogre::SceneManager* sceneMgr)
+	void update(GameData& mGameData, TimeData& time)
 	{
 		//for every gameobject
 			//if one needs to be removed - remove it
@@ -21,7 +21,7 @@ public:
 			Ogre::Vector3 playerPos = player->getTransformComponent().getPosition();
 
 			//create new bullet
-			mGameData.getBullets().instantiate(0, sceneMgr, playerPos, playerAngle );
+			mGameData.getBullets().instantiate(0, mGameData.getSceneManagerFor(GAME_STATES::PLAY), playerPos, playerAngle);
 
 			//set shooting as false
 			mGameData.getPlayer()->unsetShoot();
