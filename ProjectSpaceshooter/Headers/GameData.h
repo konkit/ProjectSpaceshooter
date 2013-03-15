@@ -4,6 +4,8 @@
 
 #include "BulletCollection.h"
 #include "EnemyCollection.h"
+#include "LevelDescription.h"
+
 
 enum class GAME_STATES
 {
@@ -31,8 +33,7 @@ class GameData
 public:
 	Ogre::SceneNode* shipNode;
 	Ogre::Entity* bulletEntity;
-
-	
+		
 	GameData();
 	~GameData();
 
@@ -51,6 +52,9 @@ public:
 	void setChangeToHangar(bool flag){changeFlags.changeToHangar = flag;}
 	
 	Ogre::SceneManager * getSceneManagerFor(GAME_STATES gameState);
+	void setSceneMenagerFor(GAME_STATES gameState, Ogre::SceneManager * sceneManagerForState);
+
+	LevelDescription & getLevelDescription() {return currentLevelDecription;}
 
 	BulletCollection& getBullets()	{
 		return mBulletCollection;
@@ -60,8 +64,6 @@ public:
 	{
 		return mEnemyCollection;
 	}
-
-	void initObjectsTemplates();
 	
 private:
 	struct changeFlagsStruct
@@ -81,4 +83,5 @@ private:
 	GameObject mPlayer;
 	GameObjectTemplates mPrefabCollections;
 	StateScenesManager_Struct mStateScenesManager;
+	LevelDescription currentLevelDecription;
 };

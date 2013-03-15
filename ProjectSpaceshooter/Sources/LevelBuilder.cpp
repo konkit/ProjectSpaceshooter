@@ -14,6 +14,11 @@ LevelBuilder::~LevelBuilder()
 
 bool LevelBuilder::update( SystemsSet & gameSystems, TimeData time )
 {
-	throw std::exception("The method or operation is not implemented.");
+	loadLevelDescribe(gameSystems);
 	return true;
+}
+
+void LevelBuilder::loadLevelDescribe( SystemsSet & gameSystems )
+{
+
 }

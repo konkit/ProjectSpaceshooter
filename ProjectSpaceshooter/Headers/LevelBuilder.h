@@ -6,7 +6,7 @@ public:
 	LevelBuilder(Game * game);
 	~LevelBuilder();
 
-	virtual bool update( SystemsSet & gameSystems, TimeData time );
-
+	bool update( SystemsSet & gameSystems, TimeData time );
+	void loadLevelDescribe( SystemsSet & gameSystems );
 
 };

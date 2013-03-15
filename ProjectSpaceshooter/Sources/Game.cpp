@@ -20,6 +20,8 @@ Game::~Game()
 
 void Game::run()
 {
+		static_cast<PlayState*>(play)->loadLevelDescribe(mGameSystems);
+
 	while(true)
 	{
 		//get time

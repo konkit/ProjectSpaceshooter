@@ -1,5 +1,7 @@
 #pragma once
 
+class GameData;
+
 struct SpawnerInfo 
 {
 	unsigned prefabID;

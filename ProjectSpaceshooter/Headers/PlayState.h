@@ -11,7 +11,7 @@ public:
 	~PlayState(){};
 
 	virtual bool update( SystemsSet & gameSystems, TimeData& time );
-
+	void loadLevelDescribe( SystemsSet & gameSystems );
 
 private:
 	PhysicsSystem			mPhysicsSystem;

@@ -1,13 +1,13 @@
 #pragma once
 
 #include "Bullet.h"
-
+#include "Systems.h"
 //Name is to be changed - chill out :D
 //I really had no idea for descriptive name for this class
 class ObjectStateUpdateSystem
 {
 public:
-	void update(GameData& mGameData, float deltaTime, Ogre::SceneManager* sceneMgr)
+	void update(GameData& mGameData, TimeData& time, Ogre::SceneManager* sceneMgr)
 	{
 		//for every gameobject
 			//if one needs to be removed - remove it
@@ -26,7 +26,7 @@ public:
 			//set shooting as false
 			mGameData.getPlayer()->unsetShoot();
 		}
-
+		mGameData.getLevelDescription().spawn(mGameData, time.currentTime);
 	}
 
 };

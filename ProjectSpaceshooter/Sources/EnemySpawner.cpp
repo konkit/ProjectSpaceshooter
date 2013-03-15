@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "EnemySpawner.h"
-
+#include <iostream>
 
 EnemySpawner::EnemySpawner(Ogre::Vector3 spawnerPosition, unsigned _spawnFrequency, unsigned _onceSpawn )
 	: spawnFrequency(_spawnFrequency),
@@ -37,17 +37,23 @@ void EnemySpawner::spawnEnemy( GameData * _gameData, unsigned long currentTime )
 			tmpSpawnInfo = it->getNext();
 			amountToSpawn =  leftToSpawn >= tmpSpawnInfo->amount ? tmpSpawnInfo->amount : leftToSpawn;
 			leftToSpawn -= amountToSpawn;
-			for(int i = leftToSpawn; i > 0; i --)
+			tmpSpawnInfo->amount -= amountToSpawn;
+			for(int i = amountToSpawn; i > 0; i --)
 			{
 				EnemyObject * tmpEnemy = enemysColl.instantiate(tmpSpawnInfo->prefabID, _gameData->getSceneManagerFor(GAME_STATES::PLAY));
-				tmpEnemy->getTransformComponent().setPosition(myPosition + Vector3(10*(i-1),0,0));
+				Vector3 newPosition = myPosition + Vector3(50*(i-1),0,0);
+				tmpEnemy->getTransformComponent().setPosition(newPosition);
 			}
 			if (tmpSpawnInfo->amount == 0)
 			{
+				std::cout << "Wyspawnowane wszytkie obiekty - usuwamy\n";
 				enemyToSpawn -= tmpSpawnInfo;
 			}
 		}
+		timeToNextSpawn = currentTime + spawnFrequency;
+		delete it;
 	}
+
 }
 
 

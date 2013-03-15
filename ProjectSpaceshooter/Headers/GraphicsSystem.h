@@ -25,18 +25,28 @@ public:
 		tmpAngle = mGameData.getPlayer()->getTransformComponent().getAngle();
 		mGameData.getPlayer()->getGraphicsComponent().updateNode(tmpPos, tmpAngle);
 
+		//Z³amane prawo Diameter - do poprawy
 		GameCollectionIterator<Bullet> * myIterator = mGameData.getBullets().getCollection().getIterator();
-		GameObject* it;
+		GameObject* bullet;
 		while (myIterator->hasNext())
 		{
-			it = myIterator->getNext();
-			tmpPos = it->getTransformComponent().getPosition();
-			tmpAngle = it->getTransformComponent().getAngle();
-			it->getGraphicsComponent().updateNode(tmpPos, tmpAngle);
+			bullet = myIterator->getNext();
+			tmpPos = bullet->getTransformComponent().getPosition();
+			tmpAngle = bullet->getTransformComponent().getAngle();
+			bullet->getGraphicsComponent().updateNode(tmpPos, tmpAngle);
 		}
 		delete myIterator;
 
-
+		GameCollectionIterator<EnemyObject> * enemyIterator = mGameData.getEnemys().getEnemyIterator();
+		EnemyObject * enemy;
+		while (enemyIterator->hasNext())
+		{
+			enemy = enemyIterator->getNext();
+			tmpPos = enemy->getTransformComponent().getPosition();
+			tmpAngle = enemy->getTransformComponent().getAngle();
+			enemy->getGraphicsComponent().updateNode(tmpPos, tmpAngle);
+		}
+		delete enemyIterator;
 
 		// Render a frame
 		if( !mOgreManager->getRoot()->renderOneFrame() )	

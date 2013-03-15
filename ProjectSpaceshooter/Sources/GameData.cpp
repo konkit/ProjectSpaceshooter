@@ -10,23 +10,11 @@ GameData::GameData(void)
 	changeFlags.changeToMenu = false;
 	changeFlags.changeToPause = false;
 	changeFlags.changeToPlay = false;
-	initObjectsTemplates();
+	mEnemyCollection.loadPrefabs();
 }
-
 
 GameData::~GameData(void)
 {
-}
-
-void GameData::initObjectsTemplates()
-{
-	//TODO Iniciajlizowaæ nowe obiekty z plików
-	EnemyPrefab * myEnemy = new EnemyPrefab(1); 
-	mPrefabCollections.enemyPrefabCollection.addObject(myEnemy);
-	myEnemy->setAiType(AI_TYPE::fighter);
-	myEnemy->setMeshName("smallfighter.MESH");
-	myEnemy->setResistance(1000);
-	myEnemy->setWeaponPrefabID(1);
 }
 
 Ogre::SceneManager * GameData::getSceneManagerFor( GAME_STATES gameState )
@@ -42,6 +30,23 @@ Ogre::SceneManager * GameData::getSceneManagerFor( GAME_STATES gameState )
 	default:
 		return NULL;
 	}
+}
+
+void GameData::setSceneMenagerFor( GAME_STATES gameState, Ogre::SceneManager * sceneManagerForState )
+{
+	switch (gameState)
+	{
+	case GAME_STATES::PLAY:
+		mStateScenesManager.playSceneManager = sceneManagerForState;
+		break;
+	case GAME_STATES::PAUSE:
+		mStateScenesManager.pauseSceneManager = sceneManagerForState;
+		break;
+	case GAME_STATES::HANGAR:
+		mStateScenesManager.hangarSceneManager = sceneManagerForState;
+		break;
+	}
+	return;
 }
 
 
