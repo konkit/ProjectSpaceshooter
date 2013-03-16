@@ -4,7 +4,12 @@
 #include "Exceptions.h"
 
 
-//Class reading input from system and acting appropriately on GameData
+
+
+/** Class reading input from system and acting appropriately on GameData
+  *
+  * @author 
+  */
 class InputManager : public Ogre::WindowEventListener
 {
 public:

@@ -2,6 +2,11 @@
 
 using namespace std;
 
+
+/** 
+  *
+  * @author Zygi
+  */
 class EnemyPrefab
 {
 public:
@@ -27,12 +32,28 @@ private:
 	unsigned	mWeaponPrefabID;
 };
 
+/** 
+  *
+  * @author Zygi
+  */
 class EnemyObject : public GameObject
 {
 public:
 	EnemyObject::EnemyObject( EnemyPrefab * objectTemplate, Ogre::SceneManager * _sceneMenager);
 	~EnemyObject();
 	unsigned int mResistance;
+
+	void setShoot(unsigned long currentTime)	{
+		mGamelogicComponent.setShoot(currentTime);
+	}
+
+	void unsetShoot()	{
+		mGamelogicComponent.unsetShoot();
+	}
+
+	bool isShooting()	{
+		return mGamelogicComponent.isShooting();
+	}
 private:
 //  AI component
 

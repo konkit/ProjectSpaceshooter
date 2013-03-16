@@ -8,6 +8,10 @@ struct SpawnerInfo
 	unsigned amount;
 };
 
+/** 
+  *
+  * @author Zygi
+  */
 class EnemySpawner
 {
 public:

@@ -1,6 +1,6 @@
 #pragma once
 
-
+//do wywalenia - zast¹piæ Ogre::Node
 
 class TransformComponent
 {

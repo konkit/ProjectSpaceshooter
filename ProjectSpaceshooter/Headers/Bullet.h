@@ -2,8 +2,14 @@
 
 #include "GameObject.h"
 
-
-class BulletPrefab;
+/** 
+  *
+  * @author konkit
+  */
+class BulletPrefab
+{
+	//Ja to ogarnê, spoko ;P - Konkit
+};
 
 /** Class of Bullet gameobject
   * 

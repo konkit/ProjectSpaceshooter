@@ -1,5 +1,11 @@
 #pragma once
 
+
+/** 
+  *
+  * @author konkit
+  */
+
 class PhysicsComponent
 {
 public:

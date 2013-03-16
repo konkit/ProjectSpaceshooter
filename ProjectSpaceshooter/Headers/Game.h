@@ -11,7 +11,12 @@
 
 class Game;
 
-//KOmentarz
+
+/** 
+  * Class enveloping Ogre3D library and simplifying usage.
+  * Stores Ogre::Root and other library-specific data
+  * @author 
+  */
 class GameState
 {
 protected:
@@ -29,8 +34,11 @@ public:
 
 
 
-// Main class in this game, contains main loop.
-// Governs Systems, managers, STATES!
+/** 
+  * Class enveloping Ogre3D library and simplifying usage.
+  * Governs Systems, managers, STATES!
+  * @author
+  */
 class Game 
 {
 public:

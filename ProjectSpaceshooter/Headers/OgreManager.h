@@ -3,8 +3,14 @@
 
 
 
-//Class enveloping Ogre3D library and simplifying usage.
-//Stores Ogre::Root and other library-specific data
+
+
+
+/** Class enveloping Ogre3D library and simplifying usage.
+  * Stores Ogre::Root and other library-specific data
+  * 
+  * @author konkit 
+  */
 class OgreManager
 {
 public:

@@ -14,12 +14,21 @@ enum class GAME_STATES
 	HANGAR
 };
 
-//Class which stores gameobjects and all data required by systems to do their job
+/** Class which stores gameobjects and all data required by systems to do their job
+  * In other words - class storing prefabs -
+  * - for quick instantiation of already configured objects
+  *
+  * @author Zygi
+  */
 struct GameObjectTemplates
 {
 	GameCollection<EnemyPrefab> enemyPrefabCollection;
 };
 
+/** Structure storing SceneManagers for each GameState
+  *
+  * @author Zygi
+  */
 struct StateScenesManager_Struct
 {
 	Ogre::SceneManager * playSceneManager;
@@ -27,7 +36,12 @@ struct StateScenesManager_Struct
 	Ogre::SceneManager * hangarSceneManager;
 };
 
-
+/** GameData class
+  * Stores all information about GameWorld
+  * including GameObjects (Enemies, Bullets, etc)
+  *
+  * @author 
+  */
 class GameData
 {
 public:
@@ -37,6 +51,7 @@ public:
 	GameData();
 	~GameData();
 
+	/** Accessor functions */
 	GameObject* getPlayer()	
 	{
 		return &mPlayer;
@@ -76,7 +91,6 @@ private:
 	//All GameObjects
 
 	EnemyCollection mEnemyCollection;
-	//GameObjectsCollection<GameObject> mBulletCollection;
 	BulletCollection mBulletCollection;
 	GameCollection<GameObject> mStaticCollection;
 //	GameObjectsCollection mPhysicCollection;  there will be physics object ex. explosion sphere

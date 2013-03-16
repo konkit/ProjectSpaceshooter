@@ -3,6 +3,13 @@
 #include "Bullet.h"
 #include "GameCollection.h"
 
+
+/** Collection of bullets
+  * contains of collection itself as well as methods 
+  * which allows adding and removal of the objects
+  *
+  * @author konkit
+  */
 class BulletCollection
 {
 public:
@@ -15,7 +22,12 @@ public:
 
 	}
 
-	//this method receives id of prefab from which it should create new object
+	/** this method receives id of prefab from which it should create new object
+	  * @param ID of prefab
+	  * @param current sceneMgr
+	  * @param position
+	  * @param angle
+	  */
 	void instantiate(int ID, Ogre::SceneManager* sceneMgr, Ogre::Vector3 position, float angle)	
 	{
 		
@@ -46,14 +58,20 @@ public:
 			//set collider
 
 		//add it to the collection
-			mCollection.addObject(newBullet);
-		
+			mCollection.addObject(newBullet);	
 	}
 
+	/** function removing object from collection */
+	void removeObject(Bullet* deletedObject)	{
+		mCollection.deleteObject(deletedObject);
+	}
+
+	/** accessor function */
 	GameCollection<Bullet>& getCollection()	{
 		return mCollection;
 	}
 
+	/**accessor function */
 	GameCollectionIterator<Bullet>* getBulletIterator()
 	{
 		return mCollection.getIterator();

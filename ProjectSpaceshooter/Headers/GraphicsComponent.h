@@ -1,5 +1,10 @@
 #pragma once
 
+/** Class containing Ogre::SceneNode and providing functions for usage
+  * Objects of this class are part of GameObject as components 
+  *
+  * @author konkit
+  */
 class GraphicsComponent
 {
 public:

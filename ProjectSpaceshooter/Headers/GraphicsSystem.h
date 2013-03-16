@@ -3,6 +3,8 @@
 #include "OgreManager.h"
 #include "GameData.h"
 
+//do wywalenia - jak sie wywali tez TransformComponent i wszystko zapisze w node'ie
+
 class GraphicsSystem
 {
 public:

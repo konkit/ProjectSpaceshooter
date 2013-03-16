@@ -7,7 +7,6 @@
   * System governing physics stuff (velocities, accelerations etc)
   * @author konkit
   */
-
 class PhysicsSystem
 {
 public:

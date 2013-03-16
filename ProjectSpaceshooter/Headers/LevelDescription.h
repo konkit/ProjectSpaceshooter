@@ -26,7 +26,10 @@ struct StaticObjectDescribe
 	unsigned int resistance;
 };
 
-
+/** 
+  *
+  * @author Zygi
+  */
 class LevelStage
 {
 public:
@@ -53,6 +56,10 @@ private:
 	GameCollection<EnemySpawner> enemySpawnerCollection;
 };
 
+/** 
+  *
+  * @author Zygi
+  */
 class LevelDescription
 {
 public:

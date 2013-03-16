@@ -20,7 +20,13 @@ enum class AI_TYPE
 	defender
 };
 
-
+/** Game object class
+  * Game objects represents object in gameworld - enemies, bullets etc.
+  * Those are composed from components (physics component, gamelogiccomponent, etc.)
+  * This is abstract class - Bullet, Enemy and other classes inherit from this class
+  * 
+  * @author 
+  */
 class GameObject 
 {
 public:
@@ -44,12 +50,7 @@ public:
 	}
 
 
-	bool isShootActive() { return shoot;}
-	void setShoot(bool _shoot) { shoot = _shoot;} 
-	long int getTimeSinceLastShoot() {return timeSinceLastShoot;};
-	void resetTimeSinceLastShoot() {timeSinceLastShoot = 0;};
-	void incrementTimeSinceLastShoot(long int deltaTime) {timeSinceLastShoot += deltaTime;}
-
+	//Do wywalenia do klas Enemy i Player
 	void setShoot(unsigned long currentTime)	{
 		mGamelogicComponent.setShoot(currentTime);
 	}
@@ -61,7 +62,7 @@ public:
 	bool isShooting()	{
 		return mGamelogicComponent.isShooting();
 	}
-
+	//
 
 
 
@@ -71,8 +72,6 @@ protected:
 	GraphicsComponent mGraphicsComponent;
 	PhysicsComponent mPhysicsComponent;
 	GamelogicComponent mGamelogicComponent;
-	long int timeSinceLastShoot;
-	bool shoot;
 
 
 };

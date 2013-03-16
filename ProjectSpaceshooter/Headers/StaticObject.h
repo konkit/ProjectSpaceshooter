@@ -1,4 +1,9 @@
 #pragma once
+
+/** 
+  *
+  * @author Zygi
+  */
 class StaticPrefab
 {
 public:

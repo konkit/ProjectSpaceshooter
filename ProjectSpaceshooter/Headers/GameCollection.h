@@ -10,7 +10,10 @@
 //}
 //delete myIterator;
 
-
+/** 
+  *
+  * @author Zygi
+  */
 template <class gObject>
 struct ListElement
 {
@@ -22,6 +25,11 @@ struct ListElement
 	}
 };
 
+
+/** 
+  *
+  * @author Zygi
+  */
 template <class gObject>
 class GameCollectionIterator
 {
@@ -80,6 +88,11 @@ private:
 	bool isFirstObject;
 };
 
+
+/** 
+  *
+  * @author Zygi
+  */
 template<typename gObject>
 class GameCollection
 {
