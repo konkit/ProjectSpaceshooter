@@ -2,12 +2,23 @@
 
 #include "GameData.h"
 
+
+/** 
+  * System governing physics stuff (velocities, accelerations etc)
+  * @author konkit
+  */
+
 class PhysicsSystem
 {
 public:
+
+	/** update function running for every frame 
+	  * @param mGameData - GameData paramter - there are all GameObject data
+	  * @param deltaTime - time since last frame - needed in physics calculations 
+	  */
 	void update(GameData& mGameData, float deltaTime)
 	{
-		//for every game object
+		//player object update
 		PhysicsComponent& tmpPhysics = 
 			mGameData.getPlayer()->getPhysicsComponent();
 		TransformComponent& tmpTransform = 
@@ -16,6 +27,7 @@ public:
 		tmpTransform.rotate( tmpPhysics.getRotVelocity() * deltaTime );
 		tmpTransform.move( tmpPhysics.getVelocity() * deltaTime );
 
+		//bullet objects update
 		GameCollectionIterator<Bullet> * myIterator = mGameData.getBullets().getBulletIterator();
 		GameObject* it;
 		while (myIterator->hasNext())

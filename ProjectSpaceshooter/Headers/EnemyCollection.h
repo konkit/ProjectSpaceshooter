@@ -5,6 +5,12 @@
 #include "EnemyCollection.h"
 #include <sstream>
 
+
+/** 
+  * Collection of enemies
+  * @author Zygi
+  */
+
 class EnemyCollection
 {
 public:

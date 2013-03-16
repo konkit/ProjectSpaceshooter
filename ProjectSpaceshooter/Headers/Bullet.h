@@ -5,6 +5,10 @@
 
 class BulletPrefab;
 
+/** Class of Bullet gameobject
+  * 
+  * @author konkit 
+  */
 class Bullet : public GameObject	{
 
 public:
