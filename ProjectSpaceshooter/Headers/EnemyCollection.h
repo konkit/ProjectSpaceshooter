@@ -4,6 +4,7 @@
 #include "GameCollection.h"
 #include "EnemyCollection.h"
 #include <sstream>
+
 class EnemyCollection
 {
 public:
@@ -13,15 +14,22 @@ public:
 	}
 
 	void loadPrefabs()	{
-
+		//TODO Iniciajlizowaæ nowe obiekty z plików
+		EnemyPrefab * myEnemy = new EnemyPrefab(1); 
+		mPrefabs += myEnemy;
+		myEnemy->setAiType(AI_TYPE::fighter);
+		myEnemy->setMeshName("smallfighter.MESH");
+		myEnemy->setResistance(1000);
+		myEnemy->setWeaponPrefabID(1);
 	}
 
 	//this method receives id of prefab from which it should create new object
-	EnemyObject * instantiate(int ID, Ogre::SceneManager* sceneMgr)	{
+	EnemyObject * instantiate(int ID, Ogre::SceneManager* sceneMgr)	
+	{
 		//zygi, zrób tak, by by³o dobrze :D
 
 		//get prefab with id given
-		EnemyPrefab* currentPrefab; // = ...
+		EnemyPrefab* currentPrefab = findPrefab(ID);
 
 		//create new object from prefab
 		EnemyObject* newEnemy = new EnemyObject(currentPrefab, sceneMgr);
@@ -38,6 +46,10 @@ public:
 		return mCollection;
 	}
 
+	GameCollectionIterator<EnemyObject> * getEnemyIterator()
+	{
+		return mCollection.getIterator();
+	}
 
 
 

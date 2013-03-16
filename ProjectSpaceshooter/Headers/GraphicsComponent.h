@@ -14,6 +14,7 @@ public:
 	void initGraphicComponent(std::string meshName, Ogre::SceneManager * _sceneMenager)
 	{
 		Ogre::Entity * tmp = _sceneMenager->createEntity(meshName);
+		mNode = _sceneMenager->getRootSceneNode()->createChildSceneNode();
 		mNode->attachObject(tmp);
 	}
 

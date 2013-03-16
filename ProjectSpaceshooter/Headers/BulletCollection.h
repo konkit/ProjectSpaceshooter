@@ -50,8 +50,9 @@ public:
 		
 	}
 
-	GameCollection<Bullet>& getCollection()	{
-		return mCollection;
+	GameCollectionIterator<Bullet>* getBulletIterator()
+	{
+		return mCollection.getIterator();
 	}
 
 private:

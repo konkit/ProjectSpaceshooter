@@ -37,6 +37,7 @@ PlayState::PlayState( Game * game )
 		//stat->pitch(Ogre::Degree(-90));
 		stat->scale(20,20,20);
 
+	mGame->getGameData()->setSceneMenagerFor(GAME_STATES::PLAY, mSceneMgr);
 
 	// Set ambient light
 	mSceneMgr->setAmbientLight(Ogre::ColourValue(1.0, 1.0, 1.0));
@@ -56,7 +57,7 @@ bool PlayState::update( SystemsSet & gameSystems, TimeData& time )
 	//update input from player
 	gameSystems.mInputManager.updateInputForGame(gameSystems.mGameData, time.deltaTime, time.currentTime);
 	mPhysicsSystem.update( gameSystems.mGameData, time.deltaTime );
-	mObjectStateSystem.update( gameSystems.mGameData, time.deltaTime, this->mSceneMgr );
+	mObjectStateSystem.update( gameSystems.mGameData, time);
 	gameSystems.mGraphicsSystem.updateNodesAndDrawForPlay(gameSystems.mGameData);
 	if(gameSystems.mGameData.isSetPauseFlag())
 	{
@@ -72,5 +73,29 @@ void PlayState::createCamera()
 	// set its position, direction  
 	// set the near clip distance
 	mCamera->setNearClipDistance(5);
+}
+
+
+void PlayState::loadLevelDescribe( SystemsSet & gameSystems )
+{
+	LevelDescription & _levelDescription = gameSystems.mGameData.getLevelDescription();
+	_levelDescription.ambientColour = Ogre::ColourValue(1.0f,1.0f,1.0f);
+	Light * newLight = new Light;
+	newLight->position = Vector3(100,100,100);
+	_levelDescription.lightsCollections += newLight;
+
+	LevelStage * newStage = new LevelStage;
+	newStage->setStageNumber(1);
+	newStage->setMissionType(missionType::destroyAllEnemy);
+
+	EnemySpawner * newSpawner = new EnemySpawner(Vector3(100,0,400),10, 3);
+	newSpawner->addEnemyToSpawn(1,3);
+	newStage->addSpawner(newSpawner);
+	
+	newSpawner = new EnemySpawner(Vector3(-100,0,-400),10,5);
+	newSpawner->addEnemyToSpawn(1,4);
+	newStage->addSpawner(newSpawner);
+
+	_levelDescription.addNewLevelStage(newStage);
 }
 

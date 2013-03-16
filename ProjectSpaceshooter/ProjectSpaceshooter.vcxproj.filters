@@ -7,9 +7,6 @@
     <ClInclude Include="Headers\GameData.h">
       <Filter>Header</Filter>
     </ClInclude>
-    <ClInclude Include="Headers\GameObject.h">
-      <Filter>Header</Filter>
-    </ClInclude>
     <ClInclude Include="Headers\stdafx.h">
       <Filter>Precompiled Header</Filter>
     </ClInclude>
@@ -55,27 +52,38 @@
     <ClInclude Include="Headers\ObjectStateUpdateSystem.h">
       <Filter>Header\Systems</Filter>
     </ClInclude>
-    <ClInclude Include="Headers\Bullet.h">
-      <Filter>Header</Filter>
-    </ClInclude>
     <ClInclude Include="Headers\Systems.h">
       <Filter>Header\Systems</Filter>
     </ClInclude>
     <ClInclude Include="Headers\LevelBuilder.h">
       <Filter>Header\States</Filter>
     </ClInclude>
-    <ClInclude Include="Headers\EnemyCollection.h">
+    <ClInclude Include="Headers\LevelDescription.h">
       <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\EnemySpawner.h">
+      <Filter>Header\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\BulletCollection.h">
+      <Filter>Header\GameCollections</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\EnemyCollection.h">
+      <Filter>Header\GameCollections</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\GameCollection.h">
+      <Filter>Header\GameCollections</Filter>
     </ClInclude>
     <ClInclude Include="Headers\Enemy.h">
-      <Filter>Header</Filter>
+      <Filter>Header\GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="Headers\BulletCollection.h" />
-    <ClInclude Include="Headers\EnemySpawner.h" />
-    <ClInclude Include="Headers\StaticObject.h" />
-    <ClInclude Include="Headers\LevelDescription.h" />
-    <ClInclude Include="Headers\GameCollection.h">
-      <Filter>Header</Filter>
+    <ClInclude Include="Headers\Bullet.h">
+      <Filter>Header\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\GameObject.h">
+      <Filter>Header\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\StaticObject.h">
+      <Filter>Header\GameObjects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -96,6 +104,12 @@
     </Filter>
     <Filter Include="Header\States">
       <UniqueIdentifier>{8898f20c-ea1d-41f5-b074-c367fd41e688}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header\GameCollections">
+      <UniqueIdentifier>{ef4373f3-1555-4abf-af4b-41518e6f228a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header\GameObjects">
+      <UniqueIdentifier>{9042edd7-7dbd-4c63-bf2a-1a507630428f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -135,9 +149,18 @@
     <ClCompile Include="Sources\OgreManager.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\Enemy.cpp" />
-    <ClCompile Include="Sources\StaticObject.cpp" />
-    <ClCompile Include="Sources\EnemySpawner.cpp" />
+    <ClCompile Include="Sources\Enemy.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\EnemySpawner.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\StaticObject.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\GraphicsSystem.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="ogre.cfg" />

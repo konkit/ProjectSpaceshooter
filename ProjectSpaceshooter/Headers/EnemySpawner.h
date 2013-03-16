@@ -1,5 +1,7 @@
 #pragma once
 
+class GameData;
+
 struct SpawnerInfo 
 {
 	unsigned prefabID;
@@ -17,7 +19,7 @@ private:
 	GameCollection<SpawnerInfo> enemyToSpawn;
 	Ogre::Vector3 myPosition;
 	unsigned spawnFrequency;
-	unsigned onceSpawn;
+	unsigned onceMomentSpawn;
 	unsigned long timeToNextSpawn;
 };
 

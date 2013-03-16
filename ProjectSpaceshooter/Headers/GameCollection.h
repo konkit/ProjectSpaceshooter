@@ -182,6 +182,8 @@ public:
 		}
 		mListHead = mListTail = NULL;
 	}
+
+	gObject * getFirst() {return mListHead->mObject;}
 	//Required delete iterator after used
 	GameCollectionIterator<gObject> * getIterator(){return new GameCollectionIterator<gObject>(mListHead);} 
 private:
