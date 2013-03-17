@@ -1,6 +1,7 @@
 #pragma once
 #include "GameObject.h"
 #include "Enemy.h"
+#include "Player.h"
 
 #include "BulletCollection.h"
 #include "EnemyCollection.h"
@@ -52,10 +53,7 @@ public:
 	~GameData();
 
 	/** Accessor functions */
-	GameObject* getPlayer()	
-	{
-		return &mPlayer;
-	}
+	Player* getPlayer()	{	return &mPlayer;	}
 	bool isSetPauseFlag() { return changeFlags.changeToPause;}
 	bool isSetPlayFlag()  { return changeFlags.changeToPlay;}
 	bool isSetHangarFlag(){ return changeFlags.changeToHangar;}
@@ -94,7 +92,8 @@ private:
 	BulletCollection mBulletCollection;
 	GameCollection<GameObject> mStaticCollection;
 //	GameObjectsCollection mPhysicCollection;  there will be physics object ex. explosion sphere
-	GameObject mPlayer;
+	//GameObject mPlayer;
+	Player mPlayer;
 	GameObjectTemplates mPrefabCollections;
 	StateScenesManager_Struct mStateScenesManager;
 	LevelDescription currentLevelDecription;

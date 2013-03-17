@@ -88,6 +88,9 @@
     <ClInclude Include="Headers\Player.h">
       <Filter>Header\GameObjects</Filter>
     </ClInclude>
+    <ClInclude Include="Headers\AISystem.h">
+      <Filter>Header\Systems</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header">

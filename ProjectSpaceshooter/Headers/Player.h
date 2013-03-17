@@ -6,14 +6,12 @@
   *
   * @author konkit
   */
+
 class Player : public GameObject
 {
 public:
-	Player( Ogre::SceneManager * _sceneMenager)	{
-		//mGraphicsComponent.initGraphicComponent()
-	}
-}
-	~EnemyObject();
+	Player() { }
+	~Player()	{}
 	unsigned int mResistance;
 
 	void setShoot(unsigned long currentTime)	{

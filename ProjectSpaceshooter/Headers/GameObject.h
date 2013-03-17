@@ -49,23 +49,6 @@ public:
 		return mGamelogicComponent;
 	}
 
-
-	//Do wywalenia do klas Enemy i Player
-	void setShoot(unsigned long currentTime)	{
-		mGamelogicComponent.setShoot(currentTime);
-	}
-
-	void unsetShoot()	{
-		mGamelogicComponent.unsetShoot();
-	}
-
-	bool isShooting()	{
-		return mGamelogicComponent.isShooting();
-	}
-	//
-
-
-
 protected:
 	GameObjectType mObjectType;
 	TransformComponent mTransformComponent;
