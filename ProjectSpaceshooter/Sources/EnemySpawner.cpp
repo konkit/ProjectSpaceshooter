@@ -6,7 +6,8 @@ EnemySpawner::EnemySpawner(Ogre::Vector3 spawnerPosition, unsigned _spawnFrequen
 	: spawnFrequency(_spawnFrequency),
 	  myPosition(spawnerPosition),
 	  timeToNextSpawn(0),
-	  onceMomentSpawn(_onceSpawn)
+	  onceMomentSpawn(_onceSpawn),
+	  delaySinceSageStart(0)
 {
 
 }
@@ -25,8 +26,9 @@ void EnemySpawner::addEnemyToSpawn( unsigned prefabID, unsigned number )
 
 void EnemySpawner::spawnEnemy( GameData * _gameData, unsigned long currentTime )
 {
-	EnemyCollection& enemysColl = _gameData->getEnemys();
-	if (currentTime > timeToNextSpawn || timeToNextSpawn == 0)
+	initSpawnDelaySinceStart(currentTime);
+
+	if (currentTime > timeToNextSpawn)
 	{
 		GameCollectionIterator<SpawnerInfo> * it = enemyToSpawn.getIterator();
 		SpawnerInfo * tmpSpawnInfo;
@@ -37,23 +39,36 @@ void EnemySpawner::spawnEnemy( GameData * _gameData, unsigned long currentTime )
 			tmpSpawnInfo = it->getNext();
 			amountToSpawnNow =  leftToSpawn >= tmpSpawnInfo->amount ? tmpSpawnInfo->amount : leftToSpawn;
 			leftToSpawn -= amountToSpawnNow;
-			tmpSpawnInfo->amount -= amountToSpawnNow;
-			for(int i = amountToSpawnNow; i > 0; i --)
-			{
-				EnemyObject * tmpEnemy = enemysColl.instantiate(tmpSpawnInfo->prefabID, _gameData->getSceneManagerFor(GAME_STATES::PLAY));
-				Vector3 newPosition = myPosition + Vector3(50*(i-1),0,0);
-				tmpEnemy->getTransformComponent().setPosition(newPosition);
-			}
-			if (tmpSpawnInfo->amount == 0)
-			{
-				std::cout << "Wyspawnowane wszytkie obiekty - usuwamy\n";
+			tmpSpawnInfo->amount -= amountToSpawnNow;			
+			spawnCountOfEnemy(amountToSpawnNow, _gameData, tmpSpawnInfo->prefabID);
+
+			if (tmpSpawnInfo->amount == 0) //Delete empty spawn slot
 				enemyToSpawn -= tmpSpawnInfo;
-			}
 		}
 		timeToNextSpawn = currentTime + spawnFrequency;
 		delete it;
 	}
 
+}
+
+void EnemySpawner::initSpawnDelaySinceStart( unsigned long currentTime )
+{
+	if (delaySinceSageStart != 0)
+	{
+		timeToNextSpawn += delaySinceSageStart + currentTime;
+		delaySinceSageStart = 0;
+	}
+}
+
+void EnemySpawner::spawnCountOfEnemy( unsigned amountToSpawnNow, GameData * _gameData, unsigned _prefabID )
+{
+	for(int i = amountToSpawnNow; i > 0; i --)
+	{
+		EnemyCollection& enemysColl = _gameData->getEnemys();
+		EnemyObject * tmpEnemy = enemysColl.instantiate(_prefabID, _gameData->getSceneManagerFor(GAME_STATES::PLAY));
+		Vector3 newPosition = myPosition + Vector3(50*(i-1),0,0);
+		tmpEnemy->getTransformComponent().setPosition(newPosition);
+	}
 }
 
 

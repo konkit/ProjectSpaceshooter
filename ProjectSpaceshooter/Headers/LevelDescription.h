@@ -38,7 +38,7 @@ public:
 	missionType getMissionType() const {return typeOfMission;}
 	void setMissionType(missionType _typeOfMission){typeOfMission = _typeOfMission;}
 	void addSpawner(EnemySpawner * _newSpawner) {enemySpawnerCollection += _newSpawner;}
-	void spawn(GameData & _gameData, unsigned long currentTime)
+	void spawnEnemy(GameData & _gameData, unsigned long currentTime)
 	{
 		GameCollectionIterator<EnemySpawner> * spawnerIT = enemySpawnerCollection.getIterator();
 		EnemySpawner * tmpSpawner;
@@ -65,7 +65,7 @@ class LevelDescription
 public:
 	void spawn(GameData & _gameData, unsigned long currentTime)
 	{
-		levelStageCollection.getFirst()->spawn(_gameData, currentTime);
+		levelStageCollection.getFirst()->spawnEnemy(_gameData, currentTime);
 	}
 	void addNewLevelStage(LevelStage * _newStage)
 	{
