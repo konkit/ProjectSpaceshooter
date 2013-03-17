@@ -31,7 +31,13 @@ PauseState::PauseState( Game * game )
 bool PauseState::update( SystemsSet &gameSystems, TimeData& time )
 {
 	gameSystems.mInputManager.updateInputForPause(gameSystems.mGameData);
-	gameSystems.mGraphicsSystem.updateNodesAndDrawForPause(gameSystems.mGameData);
+
+	//render
+	if( !gameSystems.mOgreManager.getRoot()->renderOneFrame() )	
+	{
+		throw WindowClosedException();
+	}
+
 	if(gameSystems.mGameData.isSetPlayFlag())
 	{
 		mGame->changeState(mGame->getPlay());

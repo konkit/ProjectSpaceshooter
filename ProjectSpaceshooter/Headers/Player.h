@@ -3,6 +3,7 @@
 
 
 /** Player class
+  * Gameobject representing player's spaceship
   *
   * @author konkit
   */

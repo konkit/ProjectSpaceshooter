@@ -28,7 +28,7 @@ public:
 	  * @param position
 	  * @param angle
 	  */
-	void instantiate(int ID, Ogre::SceneManager* sceneMgr, Ogre::Vector3 position, float angle)	
+	void instantiate(int ID, Ogre::SceneManager* sceneMgr, Ogre::Vector3 position, Ogre::Quaternion orientation)	
 	{
 		
 		//Uwaga - PROWIZORKA!!!!
@@ -37,11 +37,7 @@ public:
 			//do zrobienia
 
 		//create new object from prefab
-		Bullet *newBullet = new Bullet;
-			//set proper orientation
-			newBullet->getTransformComponent().setAngle( angle );
-			//set proper position
-			newBullet->getTransformComponent().setPosition( position );		
+		Bullet *newBullet = new Bullet;	
 			//create new sceneNode
 			Ogre::SceneNode* newSceneNode = sceneMgr->getRootSceneNode()->createChildSceneNode();
 			//create new entity
@@ -50,6 +46,10 @@ public:
 			newSceneNode->attachObject(bulletEntity);
 			//save scene node in gameobject
 			newBullet->setMesh( newSceneNode );
+			//set proper orientation
+			newBullet->getGraphicsComponent().setOrientation( orientation );
+			//set proper position
+			newBullet->getGraphicsComponent().setPosition( position );	
 			//set proper velocity for bullet
 			newBullet->getPhysicsComponent().setVelocity(Ogre::Vector3(0.0, 0.0, 1.0));
 			//set owner

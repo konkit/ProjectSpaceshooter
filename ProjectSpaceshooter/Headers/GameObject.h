@@ -1,6 +1,5 @@
 #pragma once
 
-#include "TransformComponent.h"
 #include "GraphicsComponent.h"
 #include "PhysicsComponent.h"
 #include "GamelogicComponent.h"
@@ -33,10 +32,6 @@ public:
 	GameObject();
 	virtual ~GameObject(void);
 
-	TransformComponent& getTransformComponent()	{
-		return mTransformComponent;
-	}
-
 	GraphicsComponent& getGraphicsComponent()	{
 		return mGraphicsComponent;
 	}
@@ -51,7 +46,6 @@ public:
 
 protected:
 	GameObjectType mObjectType;
-	TransformComponent mTransformComponent;
 	GraphicsComponent mGraphicsComponent;
 	PhysicsComponent mPhysicsComponent;
 	GamelogicComponent mGamelogicComponent;

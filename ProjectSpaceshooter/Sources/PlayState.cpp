@@ -58,7 +58,13 @@ bool PlayState::update( SystemsSet & gameSystems, TimeData& time )
 	gameSystems.mInputManager.updateInputForGame(gameSystems.mGameData, time.deltaTime, time.currentTime);
 	mPhysicsSystem.update( gameSystems.mGameData, time.deltaTime );
 	mObjectStateSystem.update( gameSystems.mGameData, time);
-	gameSystems.mGraphicsSystem.updateNodesAndDrawForPlay(gameSystems.mGameData);
+
+	//Render
+	if( !gameSystems.mOgreManager.getRoot()->renderOneFrame() )	
+	{
+		throw WindowClosedException();
+	}
+
 	if(gameSystems.mGameData.isSetPauseFlag())
 	{
 		mGame->changeState(mGame->getPause());

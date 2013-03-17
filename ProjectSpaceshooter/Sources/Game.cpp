@@ -38,7 +38,6 @@ void Game::initializeGame()
 	mGameSystems.mOgreManager.initOgre();
 	//Initialize OIS
 	mGameSystems.mInputManager.initOIS( mGameSystems.mOgreManager.getWindowHandle() );
-	mGameSystems.mGraphicsSystem.init(&mGameSystems.mOgreManager); // TODO change to systemset
 }
 
 void Game::setupViewport(Ogre::Camera * camera )

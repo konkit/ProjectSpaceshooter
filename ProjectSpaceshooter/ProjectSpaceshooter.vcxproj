@@ -191,7 +191,6 @@
     <ClInclude Include="Headers\StaticObject.h" />
     <ClInclude Include="Headers\stdafx.h" />
     <ClInclude Include="Headers\Systems.h" />
-    <ClInclude Include="Headers\TransformComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\Enemy.cpp" />
@@ -200,7 +199,6 @@
     <ClCompile Include="Sources\GameData.cpp" />
     <ClCompile Include="Sources\GameObject.cpp" />
     <ClCompile Include="Sources\GameStateMain.cpp" />
-    <ClCompile Include="Sources\GraphicsSystem.cpp" />
     <ClCompile Include="Sources\HangarState.cpp" />
     <ClCompile Include="Sources\InputManager.cpp" />
     <ClCompile Include="Sources\LevelBuilder.cpp" />

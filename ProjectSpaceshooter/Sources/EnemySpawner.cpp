@@ -42,7 +42,7 @@ void EnemySpawner::spawnEnemy( GameData * _gameData, unsigned long currentTime )
 			{
 				EnemyObject * tmpEnemy = enemysColl.instantiate(tmpSpawnInfo->prefabID, _gameData->getSceneManagerFor(GAME_STATES::PLAY));
 				Vector3 newPosition = myPosition + Vector3(50*(i-1),0,0);
-				tmpEnemy->getTransformComponent().setPosition(newPosition);
+				tmpEnemy->getGraphicsComponent().setPosition(newPosition);
 			}
 			if (tmpSpawnInfo->amount == 0)
 			{

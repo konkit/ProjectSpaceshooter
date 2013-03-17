@@ -31,9 +31,6 @@
     <ClInclude Include="Headers\PauseState.h">
       <Filter>Header\States</Filter>
     </ClInclude>
-    <ClInclude Include="Headers\TransformComponent.h">
-      <Filter>Header\Components</Filter>
-    </ClInclude>
     <ClInclude Include="Headers\PlayState.h">
       <Filter>Header\States</Filter>
     </ClInclude>
@@ -162,9 +159,6 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Sources\StaticObject.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\GraphicsSystem.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>

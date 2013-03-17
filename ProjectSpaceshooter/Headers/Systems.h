@@ -7,7 +7,6 @@ struct SystemsSet
 	InputManager  mInputManager;
 	OgreManager	  mOgreManager;
 	GameData	  mGameData;	
-	GraphicsSystem			mGraphicsSystem;
 };
 
 struct TimeData

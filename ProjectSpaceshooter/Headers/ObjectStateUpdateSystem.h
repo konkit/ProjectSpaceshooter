@@ -34,11 +34,11 @@ public:
 		if( mGameData.getPlayer()->isShooting() == true)	{
 			//get player's data required to create new bullet
 			GameObject* player = mGameData.getPlayer();
-			float playerAngle = player->getTransformComponent().getAngle();
-			Ogre::Vector3 playerPos = player->getTransformComponent().getPosition();
+			Ogre::Quaternion playerOrientation = player->getGraphicsComponent().getOrientation();
+			Ogre::Vector3 playerPos = player->getGraphicsComponent().getPosition();
 
 			//create new bullet
-			mGameData.getBullets().instantiate(0, mGameData.getSceneManagerFor(GAME_STATES::PLAY), playerPos, playerAngle);
+			mGameData.getBullets().instantiate(0, mGameData.getSceneManagerFor(GAME_STATES::PLAY), playerPos, playerOrientation);
 
 			//set shooting as false
 			mGameData.getPlayer()->unsetShoot();

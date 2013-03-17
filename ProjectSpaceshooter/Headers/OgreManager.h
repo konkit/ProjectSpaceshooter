@@ -22,6 +22,7 @@ public:
 	Ogre::RenderWindow* getWindowHandle();
 	Ogre::Root*			getRoot();
 
+	//get time since last frame in fraction of SECONDS
 	float getDeltaTime()	{
 		float deltaTime = ( mTime.getMilliseconds() - lastTime) / 1000.0;
 		lastTime = mTime.getMilliseconds();
@@ -29,6 +30,7 @@ public:
 		return deltaTime;
 	}
 
+	//get current time (from start of program ? ) in MILISECONDS
 	unsigned long getCurrentTime()	{
 		return mTime.getMilliseconds();
 	}
