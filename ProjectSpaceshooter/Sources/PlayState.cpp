@@ -61,6 +61,7 @@ bool PlayState::update( SystemsSet & gameSystems, TimeData& time )
 	//update input from player
 	gameSystems.mInputManager.updateInputForGame(gameSystems.mGameData, time.deltaTime, time.currentTime);
 	mPhysicsSystem.update( gameSystems.mGameData, time.deltaTime );
+	mCollisionSystem.update( gameSystems.mGameData);
 	mObjectStateSystem.update( gameSystems.mGameData, time);
 
 	//Render

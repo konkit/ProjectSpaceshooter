@@ -6,6 +6,7 @@
 
 #include "PhysicsSystem.h"
 #include "ObjectStateUpdateSystem.h"
+#include "CollisionSystem.h"
 #include "Systems.h"
 
 class Game;

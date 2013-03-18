@@ -2,6 +2,8 @@
 
 #include "PhysicsComponent.h"
 #include "GamelogicComponent.h"
+#include "ColliderComponent.h"
+
 #include <string>
 enum  class GameObjectType 
 {
@@ -57,6 +59,7 @@ protected:
 	GameObjectType mObjectType;
 	PhysicsComponent mPhysicsComponent;
 	GamelogicComponent mGamelogicComponent;
+	Collider mColliderComponent;
 
 	Ogre::SceneNode* mNode;
 
