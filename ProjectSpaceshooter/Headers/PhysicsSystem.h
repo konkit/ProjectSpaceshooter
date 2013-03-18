@@ -18,13 +18,12 @@ public:
 	void update(GameData& mGameData, float deltaTime)
 	{
 		//player object update
+		GameObject* cntPlayer = mGameData.getPlayer();
 		PhysicsComponent& tmpPhysics = 
 			mGameData.getPlayer()->getPhysicsComponent();
-		GraphicsComponent& tmpGraphics = 
-			mGameData.getPlayer()->getGraphicsComponent();
 
-		tmpGraphics.rotate( tmpPhysics.getRotVelocity() * deltaTime );
-		tmpGraphics.move( tmpPhysics.getVelocity() * deltaTime );
+		cntPlayer->rotate( tmpPhysics.getRotVelocity() * deltaTime );
+		cntPlayer->move( tmpPhysics.getVelocity() * deltaTime );
 
 		//bullet objects update
 		GameCollectionIterator<Bullet> * myIterator = mGameData.getBullets().getBulletIterator();
@@ -35,11 +34,9 @@ public:
 			//for every game object
 			PhysicsComponent& tmpPhysics = 
 				it->getPhysicsComponent();
-			GraphicsComponent& tmpGraphics = 
-				it->getGraphicsComponent();
 
-			tmpGraphics.rotate( tmpPhysics.getRotVelocity() * deltaTime );
-			tmpGraphics.move( tmpPhysics.getVelocity() * deltaTime );
+			it->rotate( tmpPhysics.getRotVelocity() * deltaTime );
+			it->move( tmpPhysics.getVelocity() * deltaTime );
 		}
 		delete myIterator;
 	}

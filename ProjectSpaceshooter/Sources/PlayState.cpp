@@ -29,7 +29,8 @@ PlayState::PlayState( Game * game )
 	mGame->getGameData()->bulletEntity = mSceneMgr->createEntity("BulletEntity", "rocket.MESH");
 
 	//save node in player's GraphicsComponent
-	mGame->getGameData()->getPlayer()->getGraphicsComponent().initNode(mGame->getGameData()->shipNode);
+	mGame->getGameData()->getPlayer()->initNode(mGame->getGameData()->shipNode);
+
 	Ogre::SceneNode *stat = mSceneMgr->getRootSceneNode()->createChildSceneNode();
 		//stat->attachObject(ship);
 		stat->attachObject(mGame->getGameData()->bulletEntity);

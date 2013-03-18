@@ -12,10 +12,8 @@ EnemyPrefab::~EnemyPrefab(void)
 }
 
 EnemyObject::EnemyObject( EnemyPrefab * objectTemplate, Ogre::SceneManager * _sceneMenager)
-	: GameObject(), mResistance(objectTemplate->getResistance())
-{
-	mGraphicsComponent.initGraphicComponent(objectTemplate->getMeshName(), _sceneMenager);
-}
+	: GameObject(objectTemplate->getMeshName(), _sceneMenager), mResistance(objectTemplate->getResistance())
+{}
 
 EnemyObject::~EnemyObject()
 {

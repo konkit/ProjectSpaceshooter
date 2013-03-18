@@ -30,11 +30,8 @@ class GameObject
 {
 public:
 	GameObject();
+	GameObject(std::string meshName, Ogre::SceneManager* sceneMgr);
 	virtual ~GameObject(void);
-
-	GraphicsComponent& getGraphicsComponent()	{
-		return mGraphicsComponent;
-	}
 
 	PhysicsComponent& getPhysicsComponent()	{
 		return mPhysicsComponent;
@@ -44,11 +41,34 @@ public:
 		return mGamelogicComponent;
 	}
 
+	//Manipulations on Ogre::SceneNode
+	void createSceneNode(std::string meshName, Ogre::SceneManager* sceneMgr);
+	void initNode( Ogre::SceneNode* newNode )	{
+		if (mNode != NULL)
+		{
+			delete mNode;
+		}
+		mNode = newNode; 
+	}
+	Ogre::SceneNode* getSceneNode()	{	return mNode;	}
+
+	void setPosition(Ogre::Vector3 newPos)	{	mNode->setPosition(newPos); }
+	Ogre::Vector3 getPosition()	{	return mNode->getPosition(); }
+
+	void setOrientation(Ogre::Quaternion newOrientation)	{	mNode->setOrientation(newOrientation);	}
+	Ogre::Quaternion getOrientation()	{	return mNode->getOrientation();	}
+
+	void move(Ogre::Vector3 nPos) {		mNode->translate( mNode->getOrientation() * nPos );	}
+	void rotate(float rotVelocity)	{	mNode->yaw( Ogre::Radian(rotVelocity) ); }
+
 protected:
 	GameObjectType mObjectType;
-	GraphicsComponent mGraphicsComponent;
 	PhysicsComponent mPhysicsComponent;
 	GamelogicComponent mGamelogicComponent;
+
+	Ogre::SceneNode* mNode;
+
+	
 
 
 };

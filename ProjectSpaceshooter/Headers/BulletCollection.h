@@ -37,21 +37,14 @@ public:
 			//do zrobienia
 
 		//create new object from prefab
-		Bullet *newBullet = new Bullet;	
-			//create new sceneNode
-			Ogre::SceneNode* newSceneNode = sceneMgr->getRootSceneNode()->createChildSceneNode();
-			//create new entity
-			Ogre::Entity* bulletEntity = sceneMgr->createEntity("bullet2.MESH");
-			//attach entity to node
-			newSceneNode->attachObject(bulletEntity);
-			//save scene node in gameobject
-			newBullet->setMesh( newSceneNode );
-			//set proper orientation
-			newBullet->getGraphicsComponent().setOrientation( orientation );
-			//set proper position
-			newBullet->getGraphicsComponent().setPosition( position );	
+		Bullet *newBullet = new Bullet("bullet2.MESH", sceneMgr);	
+			//Initialize sceneNode
+			newBullet->setOrientation(orientation);
+			newBullet->setPosition(position);
+
 			//set proper velocity for bullet
 			newBullet->getPhysicsComponent().setVelocity(Ogre::Vector3(0.0, 0.0, 1.0));
+
 			//set owner
 			//set power
 			//set timeout before being destroyed

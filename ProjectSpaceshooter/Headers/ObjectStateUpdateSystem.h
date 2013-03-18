@@ -34,8 +34,8 @@ public:
 		if( mGameData.getPlayer()->isShooting() == true)	{
 			//get player's data required to create new bullet
 			GameObject* player = mGameData.getPlayer();
-			Ogre::Quaternion playerOrientation = player->getGraphicsComponent().getOrientation();
-			Ogre::Vector3 playerPos = player->getGraphicsComponent().getPosition();
+			Ogre::Quaternion playerOrientation = player->getOrientation();
+			Ogre::Vector3 playerPos = player->getPosition();
 
 			//create new bullet
 			mGameData.getBullets().instantiate(0, mGameData.getSceneManagerFor(GAME_STATES::PLAY), playerPos, playerOrientation);
@@ -59,8 +59,8 @@ public:
 			if( it->getGamelogicComponent().isStillAlive() == false )	{
 				//remove from collection
 				Bullet* removedObject = (Bullet*)it;
-					it->getGraphicsComponent().getNode()->detachAllObjects();	//PROWIZORKA!!!
-					mGameData.getSceneManagerFor(GAME_STATES::PLAY)->getRootSceneNode()->removeAndDestroyChild( it->getGraphicsComponent().getNode()->getName() );
+					it->getSceneNode()->detachAllObjects();	//PROWIZORKA!!!
+					mGameData.getSceneManagerFor(GAME_STATES::PLAY)->getRootSceneNode()->removeAndDestroyChild( it->getSceneNode()->getName() );
 				mGameData.getBullets().getCollection().deleteObject(removedObject);
 			}
 

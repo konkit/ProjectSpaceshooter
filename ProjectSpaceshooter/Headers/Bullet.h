@@ -19,15 +19,8 @@ class Bullet : public GameObject	{
 
 public:
 	Bullet() : GameObject(){}
-	Bullet(std::string meshName) : GameObject(), meshName(meshName)	{
-		
-	}
-
-	void setMesh(Ogre::SceneNode* newNode)	{
-		mGraphicsComponent.initNode(newNode);
-	}
-
+	Bullet(std::string meshName, Ogre::SceneManager* sceneMgr) : GameObject(meshName, sceneMgr)	{}
 
 private:
-	std::string meshName;
+
 };

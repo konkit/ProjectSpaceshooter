@@ -34,30 +34,30 @@ public:
 		mNode = newNode; 
 	}
 
-	void move(Ogre::Vector3 nPos) {
-		mNode->translate( mNode->getOrientation() * nPos );
-	}
+	//void move(Ogre::Vector3 nPos) {
+	//	mNode->translate( mNode->getOrientation() * nPos );
+	//}
 
-	void rotate(float rotVelocity)	{
-		mNode->yaw( Ogre::Radian(rotVelocity) );
-	}
+	//void rotate(float rotVelocity)	{
+	//	mNode->yaw( Ogre::Radian(rotVelocity) );
+	//}
 
-	void setPosition(Ogre::Vector3 newPos)	{
-		mNode->setPosition( newPos );
-	}
+	//void setPosition(Ogre::Vector3 newPos)	{
+	//	mNode->setPosition( newPos );
+	//}
 
-	Ogre::Vector3 getPosition()	{
-		return mNode->getPosition();
-	}
+	//Ogre::Vector3 getPosition()	{
+	//	return mNode->getPosition();
+	//}
 
-	void setOrientation(Ogre::Quaternion norientation)	{
-		mNode->setOrientation(norientation);
-	}
+	//void setOrientation(Ogre::Quaternion norientation)	{
+	//	mNode->setOrientation(norientation);
+	//}
 
-	Ogre::Quaternion getOrientation()	{
-		//get proper quaterion
-		return mNode->getOrientation();
-	}
+	//Ogre::Quaternion getOrientation()	{
+	//	//get proper quaterion
+	//	return mNode->getOrientation();
+	//}
 
 	Ogre::SceneNode* getNode()	{ return mNode; }
 
