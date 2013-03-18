@@ -46,6 +46,12 @@ PlayState::PlayState( Game * game )
 	Ogre::Light* light = mSceneMgr->createLight("MainLight");
 	light->setPosition(-50,50,0);
 	light->setPowerScale(200.0);
+	light = mSceneMgr->createLight("Light1");
+	light->setPosition(-100,20,400);
+	light->setPowerScale(200.0);
+	light = mSceneMgr->createLight("Light2");
+	light->setPosition(100,20,400);
+	light->setPowerScale(200.0);
 	//Ogre::Light* spotLight = mSceneMgr->createLight("AdditionalLight");
 	//spotLight->setPosition(50,50,-200);
 	//spotLight->setPowerScale(400.0);
@@ -98,8 +104,9 @@ void PlayState::loadLevelDescribe( SystemsSet & gameSystems )
 	newSpawner->addEnemyToSpawn(1,3);
 	newStage->addSpawner(newSpawner);
 	
-	newSpawner = new EnemySpawner(Vector3(-100,0,-400),10,5);
+	newSpawner = new EnemySpawner(Vector3(-100,0,400),10,5);
 	newSpawner->addEnemyToSpawn(1,4);
+	newSpawner->setSpawnerDelaySinceStageStart(100);
 	newStage->addSpawner(newSpawner);
 
 	_levelDescription.addNewLevelStage(newStage);
