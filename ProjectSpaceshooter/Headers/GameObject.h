@@ -43,13 +43,6 @@ public:
 
 	//Manipulations on Ogre::SceneNode
 	void createSceneNode(std::string meshName, Ogre::SceneManager* sceneMgr);
-	void initNode( Ogre::SceneNode* newNode )	{
-		if (mNode != NULL)
-		{
-			delete mNode;
-		}
-		mNode = newNode; 
-	}
 	Ogre::SceneNode* getSceneNode()	{	return mNode;	}
 
 	void setPosition(Ogre::Vector3 newPos)	{	mNode->setPosition(newPos); }

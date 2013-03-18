@@ -3,24 +3,21 @@
 PlayState::PlayState( Game * game )
 	:GameState(game)
 {
-	
-
 	mSceneMgr = game->getOgreManager()->getRoot()->createSceneManager(Ogre::ST_GENERIC, "primary");
 	createCamera();
 
-	Ogre::Entity* ogreHead = mSceneMgr->createEntity("Head", "smallfighter.MESH");
 	Ogre::Plane plane;
 		plane.d = 2500;
 		plane.normal = Ogre::Vector3::UNIT_Y;
 	//mSceneMgr->setSkyPlane(true, plane, "Examples/SpaceSkyPlane", 1000, 45);
 	mSceneMgr->setSkyBox(true, "Examples/SpaceSkyBox");
 
-	//create sceneNode for player
-	mGame->getGameData()->shipNode = mSceneMgr->getRootSceneNode()->createChildSceneNode();
-
-	//atach model to that node
-	mGame->getGameData()->shipNode->attachObject(ogreHead);
-	Ogre::SceneNode *cameraNode = mGame->getGameData()->shipNode->createChildSceneNode();
+	//Init player's sceneNode
+	Player* player = mGame->getGameData()->getPlayer();
+	player->createSceneNode("smallfighter.MESH", mSceneMgr);
+	
+	//Create camera
+	Ogre::SceneNode *cameraNode = player->getSceneNode()->createChildSceneNode();
 		cameraNode->attachObject(mCamera);
 		cameraNode->setPosition(Ogre::Vector3(0.0,20.0,-60.0));
 	mCamera->lookAt(Ogre::Vector3(0,0,100));
@@ -29,7 +26,7 @@ PlayState::PlayState( Game * game )
 	mGame->getGameData()->bulletEntity = mSceneMgr->createEntity("BulletEntity", "rocket.MESH");
 
 	//save node in player's GraphicsComponent
-	mGame->getGameData()->getPlayer()->initNode(mGame->getGameData()->shipNode);
+	//mGame->getGameData()->getPlayer()->initNode(mGame->getGameData()->shipNode);
 
 	Ogre::SceneNode *stat = mSceneMgr->getRootSceneNode()->createChildSceneNode();
 		//stat->attachObject(ship);
