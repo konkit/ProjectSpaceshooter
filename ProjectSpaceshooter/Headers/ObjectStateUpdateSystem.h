@@ -3,7 +3,6 @@
 #include "Bullet.h"
 #include "Systems.h"
 
-
 //Name is to be changed - chill out :D
 //I really had no idea for descriptive name for this class
 

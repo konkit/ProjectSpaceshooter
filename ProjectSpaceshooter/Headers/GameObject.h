@@ -1,6 +1,5 @@
 #pragma once
 
-#include "GraphicsComponent.h"
 #include "PhysicsComponent.h"
 #include "GamelogicComponent.h"
 #include <string>

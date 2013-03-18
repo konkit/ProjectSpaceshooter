@@ -10,16 +10,10 @@
     <ClInclude Include="Headers\stdafx.h">
       <Filter>Precompiled Header</Filter>
     </ClInclude>
-    <ClInclude Include="Headers\GraphicsComponent.h">
-      <Filter>Header\Components</Filter>
-    </ClInclude>
     <ClInclude Include="Headers\PhysicsComponent.h">
       <Filter>Header\Components</Filter>
     </ClInclude>
     <ClInclude Include="Headers\PhysicsSystem.h">
-      <Filter>Header\Systems</Filter>
-    </ClInclude>
-    <ClInclude Include="Headers\GraphicsSystem.h">
       <Filter>Header\Systems</Filter>
     </ClInclude>
     <ClInclude Include="Headers\GameState.h">

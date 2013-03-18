@@ -175,8 +175,6 @@
     <ClInclude Include="Headers\GamelogicComponent.h" />
     <ClInclude Include="Headers\GameObject.h" />
     <ClInclude Include="Headers\GameState.h" />
-    <ClInclude Include="Headers\GraphicsComponent.h" />
-    <ClInclude Include="Headers\GraphicsSystem.h" />
     <ClInclude Include="Headers\HangarState.h" />
     <ClInclude Include="Headers\InputManager.h" />
     <ClInclude Include="Headers\LevelBuilder.h" />

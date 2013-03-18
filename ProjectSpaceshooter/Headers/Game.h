@@ -5,7 +5,6 @@
 #include "GameData.h"
 
 #include "PhysicsSystem.h"
-#include "GraphicsSystem.h"
 #include "ObjectStateUpdateSystem.h"
 #include "Systems.h"
 

@@ -104,7 +104,7 @@ void PlayState::loadLevelDescribe( SystemsSet & gameSystems )
 	
 	newSpawner = new EnemySpawner(Vector3(-100,0,400),10,5);
 	newSpawner->addEnemyToSpawn(1,4);
-	newSpawner->setSpawnerDelaySinceStageStart(100);
+	newSpawner->setSpawnerDelaySinceStageStart(10);
 	newStage->addSpawner(newSpawner);
 
 	_levelDescription.addNewLevelStage(newStage);
