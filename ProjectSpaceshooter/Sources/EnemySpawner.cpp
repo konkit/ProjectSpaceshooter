@@ -67,7 +67,7 @@ void EnemySpawner::spawnCountOfEnemy( unsigned amountToSpawnNow, GameData * _gam
 		EnemyCollection& enemysColl = _gameData->getEnemys();
 		EnemyObject * tmpEnemy = enemysColl.instantiate(_prefabID, _gameData->getSceneManagerFor(GAME_STATES::PLAY));
 		Vector3 newPosition = myPosition + Vector3(50*(i-1),0,0);
-		tmpEnemy->getTransformComponent().setPosition(newPosition);
+		tmpEnemy->getGraphicsComponent().setPosition(newPosition);
 	}
 }
 

@@ -2,7 +2,7 @@
 
 /** Class containing Ogre::SceneNode and providing functions for usage
   * Objects of this class are part of GameObject as components 
-  *
+  * It contains methods manipulating rotation and position
   * @author konkit
   * 
   */
@@ -24,14 +24,6 @@ public:
 		mNode->attachObject(tmp);
 	}
 
-	//void updateNode(Ogre::Vector3 pos, float angle)	{
-	//	if(mNode != NULL)
-	//	{
-	//		mNode->setPosition(pos);
-	//		mNode->setOrientation(Ogre::Quaternion( Ogre::Radian(angle), Ogre::Vector3::UNIT_Y));
-	//	}
-	//}
-
 	Ogre::SceneNode* getOgreNode() {return mNode;}
 
 	void initNode( Ogre::SceneNode* newNode )	{
@@ -40,21 +32,17 @@ public:
 			delete mNode;
 		}
 		mNode = newNode; 
-		
 	}
+
 	void move(Ogre::Vector3 nPos) {
-		//float x = nPos.z * sin(angle) + nPos.x * cos(angle);
-		//float z = nPos.z * cos(angle) - nPos.x * sin(angle);
 		mNode->translate( mNode->getOrientation() * nPos );
 	}
 
 	void rotate(float rotVelocity)	{
-		//angle += rotVelocity;
 		mNode->yaw( Ogre::Radian(rotVelocity) );
 	}
 
 	void setPosition(Ogre::Vector3 newPos)	{
-		//pos = newPos;
 		mNode->setPosition( newPos );
 	}
 
@@ -63,8 +51,6 @@ public:
 	}
 
 	void setOrientation(Ogre::Quaternion norientation)	{
-		//angle = nangle;
-		//mNode->setOrientation(Ogre::Quaternion( Ogre::Radian(nangle), Ogre::Vector3::UNIT_Y));
 		mNode->setOrientation(norientation);
 	}
 
