@@ -50,6 +50,7 @@ public:
 				}
 			}
 		}
+		delete myBulletIterator;
 
 		GameCollectionIterator<EnemyObject> * myEnemyIterator = mGameData.getEnemys().getEnemyIterator();
 		EnemyObject* itEnemy;
@@ -68,6 +69,7 @@ public:
 				std::cout<<"Collision of "<<typeName<<" with enemy\n";
 			}
 		}
+		delete myEnemyIterator;
 	}
 
 

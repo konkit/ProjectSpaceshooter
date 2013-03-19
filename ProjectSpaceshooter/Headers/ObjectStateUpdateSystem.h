@@ -71,9 +71,6 @@ public:
 		while (enemyIterator->hasNext())
 		{
 			it = enemyIterator->getNext();
-
-			it->getGamelogicComponent().decreaseTimeToLive();
-
 			if( it->getGamelogicComponent().isStillAlive() == false )	{
 				//remove from collection
 				EnemyObject* removedObject = dynamic_cast<EnemyObject*> (it);
