@@ -47,24 +47,43 @@ public:
 		mGameData.getLevelDescription().spawn(mGameData, time.currentTime);
 
 		//deleting bullets when time to Live is up.
-		GameCollectionIterator<Bullet> * myIterator = mGameData.getBullets().getBulletIterator();
+		GameCollectionIterator<Bullet> * bulletIterator = mGameData.getBullets().getBulletIterator();
 		GameObject* it;
-		while (myIterator->hasNext())
+		while (bulletIterator->hasNext())
 		{
-			it = myIterator->getNext();
+			it = bulletIterator->getNext();
 
 			it->getGamelogicComponent().decreaseTimeToLive();
 
 			if( it->getGamelogicComponent().isStillAlive() == false )	{
 				//remove from collection
-				Bullet* removedObject = (Bullet*)it;
+				Bullet* removedObject = dynamic_cast<Bullet*> (it);
 					it->getSceneNode()->detachAllObjects();	//PROWIZORKA!!!
 					mGameData.getSceneManagerFor(GAME_STATES::PLAY)->getRootSceneNode()->removeAndDestroyChild( it->getSceneNode()->getName() );
 				mGameData.getBullets().getCollection().deleteObject(removedObject);
 			}
 
 		}
-		delete myIterator;
+		delete bulletIterator;
+
+		//deleting enemies when dead.
+		GameCollectionIterator<EnemyObject> * enemyIterator = mGameData.getEnemys().getEnemyIterator();
+		while (enemyIterator->hasNext())
+		{
+			it = enemyIterator->getNext();
+
+			it->getGamelogicComponent().decreaseTimeToLive();
+
+			if( it->getGamelogicComponent().isStillAlive() == false )	{
+				//remove from collection
+				EnemyObject* removedObject = dynamic_cast<EnemyObject*> (it);
+				it->getSceneNode()->detachAllObjects();	//PROWIZORKA!!!
+				mGameData.getSceneManagerFor(GAME_STATES::PLAY)->getRootSceneNode()->removeAndDestroyChild( it->getSceneNode()->getName() );
+				mGameData.getEnemys().getCollection().deleteObject(removedObject);
+			}
+
+		}
+		delete enemyIterator;
 		
 
 	}

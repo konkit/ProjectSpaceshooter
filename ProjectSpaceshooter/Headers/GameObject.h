@@ -50,7 +50,10 @@ public:
 	void createSceneNode(std::string meshName, Ogre::SceneManager* sceneMgr);
 	Ogre::SceneNode* getSceneNode()	{	return mNode;	}
 
-	void setPosition(Ogre::Vector3 newPos)	{	mNode->setPosition(newPos); }
+	void setPosition(Ogre::Vector3 newPos)	
+	{	
+		mNode->setPosition(newPos); 
+	}
 	Ogre::Vector3 getPosition()	{	return mNode->getPosition(); }
 
 	void setOrientation(Ogre::Quaternion newOrientation)	{	mNode->setOrientation(newOrientation);	}

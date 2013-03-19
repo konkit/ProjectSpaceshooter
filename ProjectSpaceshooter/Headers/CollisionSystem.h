@@ -6,25 +6,22 @@ public:
 	//Method which resolves collisions
 	//collisions are resolved a posteriori
 	void update(GameData& mGameData)	{
-
-		//for every object1
-		GameObject *currentObject = mGameData.getPlayer();
-
 		CheckForCollisions( mGameData.getPlayer(), mGameData, "player" );
 
 		GameCollectionIterator<Bullet> * myBulletIterator = mGameData.getBullets().getBulletIterator();
-		GameObject* it;
+		Bullet* itBullet;
 		while (myBulletIterator->hasNext())
 		{
-			it = myBulletIterator->getNext();
-			CheckForCollisions( it, mGameData, "bullet" );
+			itBullet = myBulletIterator->getNext();
+			CheckForCollisions( itBullet, mGameData, "bullet" );
 		}
 
 		GameCollectionIterator<EnemyObject> * myEnemyIterator = mGameData.getEnemys().getEnemyIterator();
+		EnemyObject* itEnemy;
 		while (myEnemyIterator->hasNext())
 		{
-			it = myEnemyIterator->getNext();
-			CheckForCollisions( it, mGameData, "enemy" );
+			itEnemy = myEnemyIterator->getNext();
+			CheckForCollisions( itEnemy, mGameData, "enemy" );
 		}
 				
 	}
@@ -32,32 +29,39 @@ public:
 	void CheckForCollisions( GameObject* currentObject, GameData& mGameData, std::string typeName )	{
 		//for every object2
 		GameCollectionIterator<Bullet> * myBulletIterator = mGameData.getBullets().getBulletIterator();
-		GameObject* it;
+		Bullet* itBullet;
 		bool isColliding;
 		while (myBulletIterator->hasNext())
 		{
-			it = myBulletIterator->getNext();
+			itBullet = myBulletIterator->getNext();
 
-			if( it == currentObject)
+			if( itBullet == currentObject)
 				continue;
 
 			isColliding = 
-				Collider::isCollisionOccuring( currentObject->getCollider(), it->getCollider(), currentObject->getPosition(), it->getPosition() );
+				Collider::isCollisionOccuring( currentObject->getCollider(), itBullet->getCollider(), currentObject->getPosition(), itBullet->getPosition() );
 
 			if( isColliding == true )	
+			{
 				std::cout<<"Collision of "<<typeName<<" with bullet \n";
+				//PROWIZOOOORKAAAA
+				if(typeName == "enemy")	{
+					currentObject->getGamelogicComponent().die();
+				}
+			}
 		}
 
 		GameCollectionIterator<EnemyObject> * myEnemyIterator = mGameData.getEnemys().getEnemyIterator();
+		EnemyObject* itEnemy;
 		while (myEnemyIterator->hasNext())
 		{
-			it = myEnemyIterator->getNext();
+			itEnemy = myEnemyIterator->getNext();
 
-			if( it == currentObject)
+			if( itEnemy == currentObject)
 				continue;
 
 			isColliding = 
-				Collider::isCollisionOccuring( currentObject->getCollider(), it->getCollider(), currentObject->getPosition(), it->getPosition() );
+				Collider::isCollisionOccuring( currentObject->getCollider(), itEnemy->getCollider(), currentObject->getPosition(), itEnemy->getPosition() );
 
 			if( isColliding == true )
 			{

@@ -14,7 +14,7 @@
 class GamelogicComponent
 {
 public:
-	GamelogicComponent() : shooting(false), rateOfFire(500), timeSinceLastShot(0), timeToLive(1000)
+	GamelogicComponent() : shooting(false), rateOfFire(500), timeSinceLastShot(0), timeToLive(1000), isDead(false)
 	{	}
 
 	/** sets shooting flag to true if time is proper */
@@ -44,10 +44,16 @@ public:
 	/** function running every frame and decreasing time to live */
 	void decreaseTimeToLive()	{
 		timeToLive--;
+		if( timeToLive <= 0)
+			isDead = true;
+	}
+
+	void die()	{
+		isDead = true;
 	}
 
 	bool isStillAlive()	{
-		return timeToLive > 0;
+		return !isDead;
 	}
 
 
@@ -63,6 +69,6 @@ private:
 
 	//lifetime management
 	int timeToLive;
-
+	bool isDead;
 	
 };
