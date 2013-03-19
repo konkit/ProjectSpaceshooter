@@ -162,9 +162,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Headers\AIComponent.h" />
     <ClInclude Include="Headers\AISystem.h" />
     <ClInclude Include="Headers\Bullet.h" />
     <ClInclude Include="Headers\BulletCollection.h" />
+    <ClInclude Include="Headers\ColliderComponent.h" />
+    <ClInclude Include="Headers\CollisionSystem.h" />
     <ClInclude Include="Headers\Enemy.h" />
     <ClInclude Include="Headers\EnemySpawner.h" />
     <ClInclude Include="Headers\EnemyCollection.h" />

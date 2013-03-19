@@ -82,6 +82,15 @@
     <ClInclude Include="Headers\AISystem.h">
       <Filter>Header\Systems</Filter>
     </ClInclude>
+    <ClInclude Include="Headers\ColliderComponent.h">
+      <Filter>Header\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\CollisionSystem.h">
+      <Filter>Header\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\AIComponent.h">
+      <Filter>Header\Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header">

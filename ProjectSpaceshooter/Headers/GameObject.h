@@ -2,6 +2,8 @@
 
 #include "PhysicsComponent.h"
 #include "GamelogicComponent.h"
+#include "ColliderComponent.h"
+
 #include <string>
 enum  class GameObjectType 
 {
@@ -40,6 +42,10 @@ public:
 		return mGamelogicComponent;
 	}
 
+	Collider& getCollider()	{
+		return mCollider;
+	}
+
 	//Manipulations on Ogre::SceneNode
 	void createSceneNode(std::string meshName, Ogre::SceneManager* sceneMgr);
 	Ogre::SceneNode* getSceneNode()	{	return mNode;	}
@@ -57,6 +63,7 @@ protected:
 	GameObjectType mObjectType;
 	PhysicsComponent mPhysicsComponent;
 	GamelogicComponent mGamelogicComponent;
+	Collider mCollider;
 
 	Ogre::SceneNode* mNode;
 

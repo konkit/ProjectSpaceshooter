@@ -17,4 +17,6 @@ private:
 	PhysicsSystem			mPhysicsSystem;
 
 	ObjectStateUpdateSystem mObjectStateSystem;
+	CollisionSystem			mCollisionSystem;
+	AISystem				mAISystem;
 };
