@@ -29,6 +29,9 @@ public:
 		return rotVelocity;
 	}
 
+	void setVelocityValue(float newValue) { velocityValue = newValue; }
+	float getVelocityValue() { return velocityValue; }
+
 private:
 	Ogre::Vector3 velocity;
 	float rotVelocity;

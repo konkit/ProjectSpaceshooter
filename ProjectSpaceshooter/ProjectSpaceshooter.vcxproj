@@ -162,6 +162,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Headers\AIComponent.h" />
     <ClInclude Include="Headers\AISystem.h" />
     <ClInclude Include="Headers\Bullet.h" />
     <ClInclude Include="Headers\BulletCollection.h" />

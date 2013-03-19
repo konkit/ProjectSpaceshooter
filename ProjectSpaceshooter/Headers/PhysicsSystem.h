@@ -39,6 +39,19 @@ public:
 			it->move( tmpPhysics.getVelocity() * deltaTime );
 		}
 		delete myIterator;
+
+		GameCollectionIterator<EnemyObject> * myEnemyIterator = mGameData.getEnemys().getEnemyIterator();
+		while (myEnemyIterator->hasNext())
+		{
+			it = myEnemyIterator->getNext();
+			//for every game object
+			PhysicsComponent& tmpPhysics = 
+				it->getPhysicsComponent();
+
+			it->rotate( tmpPhysics.getRotVelocity() * deltaTime );
+			it->move( tmpPhysics.getVelocity() * deltaTime );
+		}
+		delete myEnemyIterator;
 	}
 
 
