@@ -1,0 +1,13 @@
+material "\core2.MESH/"
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.5 0.5 0.5 0.5
+			diffuse 0.5 0.5 0.5 0.5
+			specular 0 0 0 0
+			emissive 0 0 0
+		}
+	}
+}

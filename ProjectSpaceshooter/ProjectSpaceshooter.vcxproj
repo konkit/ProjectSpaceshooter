@@ -168,6 +168,7 @@
     <ClInclude Include="Headers\BulletCollection.h" />
     <ClInclude Include="Headers\ColliderComponent.h" />
     <ClInclude Include="Headers\CollisionSystem.h" />
+    <ClInclude Include="Headers\Core.h" />
     <ClInclude Include="Headers\Enemy.h" />
     <ClInclude Include="Headers\EnemySpawner.h" />
     <ClInclude Include="Headers\EnemyCollection.h" />
@@ -204,6 +205,7 @@
     <ClCompile Include="Sources\InputManager.cpp" />
     <ClCompile Include="Sources\LevelBuilder.cpp" />
     <ClCompile Include="Sources\main.cpp" />
+    <ClCompile Include="Sources\ObjectStateUpdateSystem.cpp" />
     <ClCompile Include="Sources\OgreManager.cpp" />
     <ClCompile Include="Sources\PauseState.cpp" />
     <ClCompile Include="Sources\PlayState.cpp" />

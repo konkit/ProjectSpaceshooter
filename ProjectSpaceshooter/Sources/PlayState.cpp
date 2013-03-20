@@ -53,6 +53,10 @@ PlayState::PlayState( Game * game )
 	//Ogre::Light* spotLight = mSceneMgr->createLight("AdditionalLight");
 	//spotLight->setPosition(50,50,-200);
 	//spotLight->setPowerScale(400.0);
+
+	//Create tmp Core
+	mGame->getGameData()->theCore.createSceneNode("core2.MESH", mSceneMgr);
+	mGame->getGameData()->theCore.getSceneNode()->scale(35.0, 35.0, 35.0);
 }
 
 
