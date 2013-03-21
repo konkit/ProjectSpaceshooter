@@ -5,10 +5,7 @@ Game::Game()
 {
 	
 	initializeGame();
-	pause = new PauseState(this);
-	play = new PlayState(this);
-	hangar = new HangarState(this);
-	changeState(play);
+	
 }
 
 Game::~Game()

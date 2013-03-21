@@ -190,6 +190,7 @@
     <ClInclude Include="Headers\PhysicsSystem.h" />
     <ClInclude Include="Headers\Player.h" />
     <ClInclude Include="Headers\PlayState.h" />
+    <ClInclude Include="Headers\StateManager.h" />
     <ClInclude Include="Headers\StaticObject.h" />
     <ClInclude Include="Headers\stdafx.h" />
     <ClInclude Include="Headers\Systems.h" />
@@ -209,6 +210,7 @@
     <ClCompile Include="Sources\OgreManager.cpp" />
     <ClCompile Include="Sources\PauseState.cpp" />
     <ClCompile Include="Sources\PlayState.cpp" />
+    <ClCompile Include="Sources\StateManager.cpp" />
     <ClCompile Include="Sources\StaticObject.cpp" />
     <ClCompile Include="Sources\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
