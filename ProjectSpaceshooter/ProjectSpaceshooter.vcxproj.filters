@@ -91,6 +91,9 @@
     <ClInclude Include="Headers\AIComponent.h">
       <Filter>Header\Components</Filter>
     </ClInclude>
+    <ClInclude Include="Headers\Core.h">
+      <Filter>Header\GameObjects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header">
@@ -162,6 +165,9 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Sources\StaticObject.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\ObjectStateUpdateSystem.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>

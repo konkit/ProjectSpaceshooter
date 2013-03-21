@@ -2,10 +2,12 @@
 #include "GameObject.h"
 #include "Enemy.h"
 #include "Player.h"
+#include "Core.h"
 
 #include "BulletCollection.h"
 #include "EnemyCollection.h"
 #include "LevelDescription.h"
+
 
 
 enum class GAME_STATES
@@ -48,6 +50,9 @@ class GameData
 public:
 	Ogre::SceneNode* shipNode;
 	Ogre::Entity* bulletEntity;
+
+	//PROWIZORKA
+	Core theCore;
 		
 	GameData();
 	~GameData();
