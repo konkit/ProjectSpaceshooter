@@ -10,7 +10,7 @@ PlayState::PlayState( Game * game )
 		plane.d = 2500;
 		plane.normal = Ogre::Vector3::UNIT_Y;
 	//mSceneMgr->setSkyPlane(true, plane, "Examples/SpaceSkyPlane", 1000, 45);
-	mSceneMgr->setSkyBox(true, "Examples/SpaceSkyBox");
+	mSceneMgr->setSkyBox(true, "zygaBOX");
 
 	//Init player's sceneNode
 	Player* player = mGame->getGameData()->getPlayer();
