@@ -43,6 +43,7 @@ public:
 			newBullet->setPosition(position);
 
 			//set proper velocity for bullet
+			newBullet->getPhysicsComponent().setMaxVelocityValue(1100);
 			newBullet->getPhysicsComponent().setVelocity(Ogre::Vector3(0.0, 0.0, 1.0));
 
 			//set owner
