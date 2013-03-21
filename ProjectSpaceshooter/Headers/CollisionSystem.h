@@ -44,9 +44,13 @@ public:
 			if( isColliding == true )	
 			{
 				std::cout<<"Collision of "<<typeName<<" with bullet \n";
-				//PROWIZOOOORKAAAA
+
+				//PROWIZOOOORKAAAA - trzeba wykminic lepszy system rozpoznawania jakie typy obiektow sie zderzyly
+				//a) polimorfizm - metoda getType
+				//b) polimorfizm ale jakis niejawny - jakas metoda doSomething( objekt1)
+				//c) jakies RTTI ? O_o
 				if(typeName == "enemy")	{
-					currentObject->getGamelogicComponent().die();
+					currentObject->setDead();
 				}
 			}
 		}

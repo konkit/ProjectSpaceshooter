@@ -198,7 +198,10 @@ public:
 
 	gObject * getFirst() {return mListHead->mObject;}
 	//Required delete iterator after used
-	GameCollectionIterator<gObject> * getIterator(){return new GameCollectionIterator<gObject>(mListHead);} 
+	GameCollectionIterator<gObject> * getIterator()
+	{
+		return new GameCollectionIterator<gObject>(mListHead);
+	} 
 private:
 	ListElement<gObject> * mListHead;
 	ListElement<gObject> * mListTail;

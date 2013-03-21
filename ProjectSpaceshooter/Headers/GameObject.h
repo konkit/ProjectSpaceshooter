@@ -1,7 +1,6 @@
 #pragma once
 
 #include "PhysicsComponent.h"
-#include "GamelogicComponent.h"
 #include "ColliderComponent.h"
 
 #include <string>
@@ -38,10 +37,6 @@ public:
 		return mPhysicsComponent;
 	}
 
-	GamelogicComponent& getGamelogicComponent() {
-		return mGamelogicComponent;
-	}
-
 	Collider& getCollider()	{
 		return mCollider;
 	}
@@ -54,21 +49,40 @@ public:
 	{	
 		mNode->setPosition(newPos); 
 	}
-	Ogre::Vector3 getPosition()	{	return mNode->getPosition(); }
 
-	void setOrientation(Ogre::Quaternion newOrientation)	{	mNode->setOrientation(newOrientation);	}
-	Ogre::Quaternion getOrientation()	{	return mNode->getOrientation();	}
+	Ogre::Vector3 getPosition()	
+	{	
+		return mNode->getPosition(); 
+	}
+
+	void setOrientation(Ogre::Quaternion newOrientation)	
+	{	
+		mNode->setOrientation(newOrientation);	
+	}
+	Ogre::Quaternion getOrientation()	
+	{	
+		return mNode->getOrientation();	
+	}
 
 	void move(Ogre::Vector3 nPos) {		mNode->translate( mNode->getOrientation() * nPos );	}
 	void rotate(float rotVelocity)	{	mNode->yaw( Ogre::Radian(rotVelocity) ); }
 
+	bool isDead() {
+		return mDeadFlag;
+	}
+
+	void setDead() {
+		mDeadFlag = true;
+	}
+
 protected:
 	GameObjectType mObjectType;
 	PhysicsComponent mPhysicsComponent;
-	GamelogicComponent mGamelogicComponent;
 	Collider mCollider;
 
 	Ogre::SceneNode* mNode;
+
+	bool mDeadFlag;
 
 	
 

@@ -27,14 +27,20 @@ public:
 	  * @param current sceneMgr
 	  * @param position
 	  * @param angle
+	  * @param power - power of the bullet
+	  * @param owner - owner GameObject (i.e. Player, Enemy) of the bullet
 	  */
-	void instantiate(int ID, Ogre::SceneManager* sceneMgr, Ogre::Vector3 position, Ogre::Quaternion orientation)	
+	void instantiate( int ID, 
+					  Ogre::SceneManager* sceneMgr, 
+					  Ogre::Vector3 position, 
+					  Ogre::Quaternion orientation, 
+					  float power,
+					  GameObject* owner
+					 )	
 	{
 		
 		//Uwaga - PROWIZORKA!!!!
-
-		//get prefab with id given
-			//do zrobienia
+		//Jak bêdzie robione wczytywanie prefabow z pliku to wtedy to bêdzie siê dalo dalej rozwin¹æ
 
 		//create new object from prefab
 		Bullet *newBullet = new Bullet("bullet2.MESH", sceneMgr);	
@@ -46,8 +52,14 @@ public:
 			newBullet->getPhysicsComponent().setVelocity(Ogre::Vector3(0.0, 0.0, 1.0));
 
 			//set owner
+			newBullet->setOwner(owner);
+
 			//set power
+			newBullet->setPower(power);
+
 			//set timeout before being destroyed
+
+
 			//set collider
 
 		//add it to the collection

@@ -176,10 +176,10 @@
     <ClInclude Include="Headers\Game.h" />
     <ClInclude Include="Headers\GameCollection.h" />
     <ClInclude Include="Headers\GameData.h" />
-    <ClInclude Include="Headers\GamelogicComponent.h" />
     <ClInclude Include="Headers\GameObject.h" />
     <ClInclude Include="Headers\GameState.h" />
     <ClInclude Include="Headers\HangarState.h" />
+    <ClInclude Include="Headers\HealthComponent.h" />
     <ClInclude Include="Headers\InputManager.h" />
     <ClInclude Include="Headers\LevelBuilder.h" />
     <ClInclude Include="Headers\LevelDescription.h" />
@@ -193,6 +193,8 @@
     <ClInclude Include="Headers\StaticObject.h" />
     <ClInclude Include="Headers\stdafx.h" />
     <ClInclude Include="Headers\Systems.h" />
+    <ClInclude Include="Headers\TimeToLiveComponent.h" />
+    <ClInclude Include="Headers\WeaponComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\Enemy.cpp" />

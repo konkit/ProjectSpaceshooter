@@ -51,7 +51,7 @@ public:
 	Ogre::SceneNode* shipNode;
 	Ogre::Entity* bulletEntity;
 
-	//PROWIZORKA
+	//PROWIZORKA - to bêdzie chyba te¿ jakoœ wczytywane z pliku nie ?
 	Core theCore;
 		
 	GameData();
