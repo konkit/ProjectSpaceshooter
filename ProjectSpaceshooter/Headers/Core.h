@@ -12,7 +12,7 @@ public:
 	{
 
 	}
-
+	Ogre::SceneNode* getSceneNode(){return this->mNode;}
 
 private:
 

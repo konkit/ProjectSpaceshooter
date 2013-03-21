@@ -58,6 +58,8 @@ PlayState::PlayState( Game * game )
 	mGame->getGameData()->theCore.createSceneNode("core2.MESH", mSceneMgr);
 	mGame->getGameData()->theCore.getSceneNode()->scale(35.0, 35.0, 35.0);
 	mGame->getGameData()->theCore.setPosition(Ogre::Vector3(-500.0, 0.0, 0.0));
+	mGame->getGameData()->theCore.getSceneNode()->roll(Ogre::Degree(90)); // BARDZO DUZA PROWIZORKA
+	
 }
 
 
