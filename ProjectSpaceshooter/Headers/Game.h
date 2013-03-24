@@ -1,5 +1,5 @@
 #pragma once
-
+	
 #include "InputManager.h"
 #include "OgreManager.h"
 #include "GameData.h"
@@ -18,19 +18,7 @@ class Game;
   * Stores Ogre::Root and other library-specific data
   * @author 
   */
-class GameState
-{
-protected:
-	Ogre::SceneManager* mSceneMgr;
-	Game * mGame;
-	Ogre::Camera * mCamera;
-public:
-	Ogre::SceneManager* getSceneMgr(){return mSceneMgr;}
-	GameState(Game * game): mGame(game){}
-	virtual bool update(SystemsSet & gameSystems, TimeData& time) = 0;
-	virtual ~GameState(void){}
-	Ogre::Camera * getCamera() {return mCamera;}
-};
+
 
 
 
@@ -58,11 +46,7 @@ public:
 	GameData * getGameData() {return &mGameSystems.mGameData;};
 	void setupViewport(Ogre::Camera * camera);
 private:
-	GameState * pause;
-	GameState * play;
-	GameState * hangar;
-	GameState * state;
-	GameState * builder;
+
 	SystemsSet mGameSystems;
 	TimeData time;
 	// State playState;

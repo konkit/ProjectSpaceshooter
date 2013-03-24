@@ -29,5 +29,6 @@
 
 #include <string>
 #include <exception>
+#include "StateManager.h"
 
 using Ogre::Vector3;

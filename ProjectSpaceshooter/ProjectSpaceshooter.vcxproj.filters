@@ -94,6 +94,7 @@
     <ClInclude Include="Headers\Core.h">
       <Filter>Header\GameObjects</Filter>
     </ClInclude>
+    <ClInclude Include="Headers\StateManager.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header">
@@ -170,6 +171,7 @@
     <ClCompile Include="Sources\ObjectStateUpdateSystem.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\StateManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ogre.cfg" />
