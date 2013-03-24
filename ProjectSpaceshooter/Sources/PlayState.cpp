@@ -23,7 +23,7 @@ PlayState::PlayState( Game * game )
 	mCamera->lookAt(Ogre::Vector3(0,0,100));
 
 	//bullet model
-	mGame->getGameData()->bulletEntity = mSceneMgr->createEntity("BulletEntity", "rocket.MESH");
+	mGame->getGameData()->bulletEntity = mSceneMgr->createEntity("BulletEntity", "my_sun.MESH");
 
 	//save node in player's GraphicsComponent
 	//mGame->getGameData()->getPlayer()->initNode(mGame->getGameData()->shipNode);
@@ -31,9 +31,9 @@ PlayState::PlayState( Game * game )
 	Ogre::SceneNode *stat = mSceneMgr->getRootSceneNode()->createChildSceneNode();
 		//stat->attachObject(ship);
 		stat->attachObject(mGame->getGameData()->bulletEntity);
-		stat->setPosition(Ogre::Vector3(70,0,100));
+		stat->setPosition(Ogre::Vector3(2400,0,100));
 		//stat->pitch(Ogre::Degree(-90));
-		stat->scale(20,20,20);
+		stat->scale(2,2,2);
 
 	mGame->getGameData()->setSceneMenagerFor(GAME_STATES::PLAY, mSceneMgr);
 

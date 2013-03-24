@@ -1,5 +1,6 @@
 
 
+#include <vld.h>
 
 //Ogre includes
 #include <OgreRoot.h>
