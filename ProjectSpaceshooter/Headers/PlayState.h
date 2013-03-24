@@ -4,18 +4,16 @@ class PlayState : public GameState
 {
 private:
 public:
-	PlayState(Game * game);
-
+	PlayState(SystemsSet & _systems);
 	void createCamera();
 
 	~PlayState(){};
 
-	virtual bool update( SystemsSet & gameSystems, TimeData& time );
+	virtual GAME_STATES update( SystemsSet & gameSystems, TimeData& time );
 	void loadLevelDescribe( SystemsSet & gameSystems );
 
 private:
 	PhysicsSystem			mPhysicsSystem;
-
 	ObjectStateUpdateSystem mObjectStateSystem;
 	CollisionSystem			mCollisionSystem;
 	AISystem				mAISystem;

@@ -3,7 +3,12 @@
 PauseState::PauseState( Game * game )
 	:GameState(game)
 {
-	mSceneMgr = game->getOgreManager()->getRoot()->createSceneManager(Ogre::ST_GENERIC, "pause");
+}
+
+PauseState::PauseState( SystemsSet & _systems )
+	: GameState()
+{
+	mSceneMgr = _systems->mOgreManager->getRoot()->createSceneManager(Ogre::ST_GENERIC, "pause");
 	createCamera();
 
 	Ogre::Entity* ogreHead = mSceneMgr->createEntity("Head", "smallfighter.MESH");
@@ -14,7 +19,7 @@ PauseState::PauseState( Game * game )
 	mSceneMgr->setSkyBox(true, "Examples/SpaceSkyBox");
 	//create sceneNode for player
 	Ogre::SceneNode * shipNode = mSceneMgr->getRootSceneNode()->createChildSceneNode();
-	//atach model to that node
+	//attach model to that node
 	shipNode->attachObject(ogreHead);
 	//save node in player's GraphicsComponent
 	shipNode->yaw(Ogre::Degree(10));
@@ -26,9 +31,17 @@ PauseState::PauseState( Game * game )
 	Ogre::Light* light = mSceneMgr->createLight("MainLight");
 	light->setPosition(-50,50,0);
 	light->setPowerScale(200.0);
+
 }
 
-bool PauseState::update( SystemsSet &gameSystems, TimeData& time )
+
+/**
+* It's main method for pause state. This method update input system and render next frame
+* @return GAME_STATES - return next game state
+* @param SystemsSet & gameSystems
+* @param TimeData & time
+* @author Zyga 
+*/GAME_STATES PauseState::update( SystemsSet &gameSystems, TimeData& time )
 {
 	gameSystems.mInputManager.updateInputForPause(gameSystems.mGameData);
 
@@ -40,9 +53,9 @@ bool PauseState::update( SystemsSet &gameSystems, TimeData& time )
 
 	if(gameSystems.mGameData.isSetPlayFlag())
 	{
-		mGame->changeState(mGame->getPlay());
+		return GAME_STATES::PLAY;
 	}
-	return true;	
+	return GAME_STATES::PAUSE;	
 }
 
 void PauseState::createCamera()

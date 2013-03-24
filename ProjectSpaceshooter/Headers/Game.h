@@ -9,6 +9,7 @@
 #include "CollisionSystem.h"
 #include "AISystem.h"
 #include "Systems.h"
+#include "StateManager.h"
 
 class Game;
 
@@ -36,10 +37,6 @@ public:
 	void initializeGame();
 	void run();
 	
-	GameState * getPause() const { return pause; }
-	GameState * getPlay() const { return play; }
-	GameState * getHangar() const { return hangar; }
-	GameState * getLevelBuilder() const { return builder; }
 	void changeState(GameState * newState);
 	const InputManager * getInputMenager() { return &mGameSystems.mInputManager;}
 	OgreManager * getOgreManager() {return &mGameSystems.mOgreManager;}
@@ -49,6 +46,7 @@ private:
 
 	SystemsSet mGameSystems;
 	TimeData time;
+	StateManager mStateMenager;
 	// State playState;
 	// etc...
 };

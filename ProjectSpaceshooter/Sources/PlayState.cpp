@@ -1,9 +1,8 @@
 #include "GameState.h"
 
-PlayState::PlayState( Game * game )
-	:GameState(game)
+PlayState::PlayState(SystemsSet & _systems) :GameState()
 {
-	mSceneMgr = game->getOgreManager()->getRoot()->createSceneManager(Ogre::ST_GENERIC, "primary");
+	mSceneMgr = _systems->mOgreManager->getRoot()->createSceneManager(Ogre::ST_GENERIC, "primary");
 	createCamera();
 
 	Ogre::Plane plane;
@@ -13,7 +12,7 @@ PlayState::PlayState( Game * game )
 	mSceneMgr->setSkyBox(true, "zygaBOX");
 
 	//Init player's sceneNode
-	Player* player = mGame->getGameData()->getPlayer();
+	Player* player = _systems->mGameData->getGameData()->getPlayer();
 	player->createSceneNode("smallfighter.MESH", mSceneMgr);
 	
 	//Create camera
@@ -23,19 +22,19 @@ PlayState::PlayState( Game * game )
 	mCamera->lookAt(Ogre::Vector3(0,0,100));
 
 	//bullet model
-	mGame->getGameData()->bulletEntity = mSceneMgr->createEntity("BulletEntity", "my_sun.MESH");
+	_systems->mGameData->bulletEntity = mSceneMgr->createEntity("BulletEntity", "my_sun.MESH");
 
 	//save node in player's GraphicsComponent
 	//mGame->getGameData()->getPlayer()->initNode(mGame->getGameData()->shipNode);
 
 	Ogre::SceneNode *stat = mSceneMgr->getRootSceneNode()->createChildSceneNode();
 		//stat->attachObject(ship);
-		stat->attachObject(mGame->getGameData()->bulletEntity);
+		stat->attachObject(_systems->mGameData->bulletEntity);
 		stat->setPosition(Ogre::Vector3(2400,0,100));
 		//stat->pitch(Ogre::Degree(-90));
 		stat->scale(2,2,2);
 
-	mGame->getGameData()->setSceneMenagerFor(GAME_STATES::PLAY, mSceneMgr);
+	_systems->mGameData->setSceneMenagerFor(GAME_STATES::PLAY, mSceneMgr);
 
 	// Set ambient light
 	mSceneMgr->setAmbientLight(Ogre::ColourValue(1.0, 1.0, 1.0));
@@ -63,7 +62,7 @@ PlayState::PlayState( Game * game )
 }
 
 
-bool PlayState::update( SystemsSet & gameSystems, TimeData& time )
+GAME_STATES PlayState::update( SystemsSet & gameSystems, TimeData& time )
 {
 	//update input from player
 	gameSystems.mInputManager.updateInputForGame(gameSystems.mGameData, time.deltaTime, time.currentTime);
