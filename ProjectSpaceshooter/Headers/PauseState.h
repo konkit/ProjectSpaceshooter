@@ -1,15 +1,18 @@
 #pragma once
-#include "Game.h"
+
+/**
+* It's class for updating systems for pause
+*
+* @author Zyga
+*/
 class PauseState : public GameState
 {
 public:
-	PauseState(Game * game);
+	PauseState(SystemsSet & _systems);
 	~PauseState(){};
-	void createCamera();
-
-	virtual bool update( SystemsSet & gameSystems, TimeData &time );
-
-
+	GAME_STATES update( SystemsSet &gameSystems, TimeData& time );
 
 private:
+	void createCamera();
+	GAME_STATES nextState( SystemsSet &gameSystems );
 };

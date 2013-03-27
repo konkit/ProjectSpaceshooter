@@ -1,5 +1,6 @@
 
 
+#include <vld.h>
 
 //Ogre includes
 #include <OgreRoot.h>
@@ -23,10 +24,11 @@
 #include <OISMouse.h>
 
 #include "GameCollection.h"
-#include "GameData.h"
 #include "GameObject.h"
+#include "Systems.h"
 
 #include <string>
 #include <exception>
+#include "StateManager.h"
 
 using Ogre::Vector3;

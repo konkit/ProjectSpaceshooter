@@ -15,6 +15,7 @@ public:
 			itBullet = myBulletIterator->getNext();
 			CheckForCollisions( itBullet, mGameData, "bullet" );
 		}
+		delete myBulletIterator;
 
 		GameCollectionIterator<EnemyObject> * myEnemyIterator = mGameData.getEnemys().getEnemyIterator();
 		EnemyObject* itEnemy;
@@ -23,6 +24,7 @@ public:
 			itEnemy = myEnemyIterator->getNext();
 			CheckForCollisions( itEnemy, mGameData, "enemy" );
 		}
+		delete myEnemyIterator;
 				
 	}
 

@@ -14,9 +14,17 @@
 class OgreManager
 {
 public:
+	OgreManager(){}
+	~OgreManager()
+	{
+		delete mRoot;
+		delete mGLPlugin;
+	}
 	//function which initializes Ogre
 	//must be run before OIS initialization
 	void initOgre();
+
+	void loadResources();
 
 	//getters for root and renderwindow
 	Ogre::RenderWindow* getWindowHandle();

@@ -1,12 +1,13 @@
 #pragma once
 #include "InputManager.h"
 #include "OgreManager.h"
+#include "GameData.h"
 
 struct SystemsSet
 {
-	InputManager  mInputManager;
-	OgreManager	  mOgreManager;
-	GameData	  mGameData;	
+	InputManager  inputManager;
+	OgreManager	  ogreManager;
+	GameData	  gameData;	
 };
 
 struct TimeData

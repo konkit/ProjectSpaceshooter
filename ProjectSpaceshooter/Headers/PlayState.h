@@ -1,21 +1,20 @@
 #pragma once
-#include "Game.h"
+#include "PhysicsSystem.h"
+#include "ObjectStateUpdateSystem.h"
+#include "CollisionSystem.h"
+#include "AISystem.h"
 class PlayState : public GameState
 {
 private:
 public:
-	PlayState(Game * game);
-
-	void createCamera();
-
+	PlayState(SystemsSet & _systems);
 	~PlayState(){};
-
-	virtual bool update( SystemsSet & gameSystems, TimeData& time );
+	virtual GAME_STATES update( SystemsSet & gameSystems, TimeData& time );
 	void loadLevelDescribe( SystemsSet & gameSystems );
-
 private:
+	void createCamera();
+	GAME_STATES nextState( SystemsSet &gameSystems );
 	PhysicsSystem			mPhysicsSystem;
-
 	ObjectStateUpdateSystem mObjectStateSystem;
 	CollisionSystem			mCollisionSystem;
 	AISystem				mAISystem;

@@ -4,9 +4,6 @@
     <ClInclude Include="Headers\Game.h">
       <Filter>Header</Filter>
     </ClInclude>
-    <ClInclude Include="Headers\GameData.h">
-      <Filter>Header</Filter>
-    </ClInclude>
     <ClInclude Include="Headers\stdafx.h">
       <Filter>Precompiled Header</Filter>
     </ClInclude>
@@ -100,6 +97,13 @@
     <ClInclude Include="Headers\TimeToLiveComponent.h">
       <Filter>Header\Components</Filter>
     </ClInclude>
+    <ClInclude Include="Headers\GameData.h">
+      <Filter>Header\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\StateManager.h">
+      <Filter>Header\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\ResoursceLoader.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header">
@@ -176,6 +180,13 @@
     <ClCompile Include="Sources\ObjectStateUpdateSystem.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\StateManager.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\GameState.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\ResoursceLoader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ogre.cfg" />

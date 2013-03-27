@@ -1,13 +1,24 @@
 #include "GameState.h"
 
-HangarState::HangarState( Game * game )
-	:GameState(game)
+
+HangarState::HangarState( SystemsSet & gameSystems )
+	:GameState()
 {
 
 }
 
 
-bool HangarState::update( SystemsSet & gameSystems, TimeData& time )
+GAME_STATES HangarState::update( SystemsSet & gameSystems, TimeData& time )
+{
+	throw std::exception("The method or operation is not implemented.");
+}
+
+void HangarState::createCamera()
+{
+	throw std::exception("The method or operation is not implemented.");
+}
+
+GAME_STATES HangarState::nextState( SystemsSet & gameSystems )
 {
 	throw std::exception("The method or operation is not implemented.");
 }

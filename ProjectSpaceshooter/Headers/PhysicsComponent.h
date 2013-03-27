@@ -13,6 +13,10 @@ public:
 		velocityValue(700.0), rotVelocityValue(2.0)
 	{	}
 
+	void setMaxVelocityValue(float newVelocity)
+	{
+		velocityValue = newVelocity;
+	}
 	void setVelocity(Ogre::Vector3 const& newVelocity)	{
 		velocity = newVelocity * velocityValue;
 	}

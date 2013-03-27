@@ -18,6 +18,7 @@ public:
 		wasP_KeyPressed = false;
 		wasH_KeyPressed = false;
 	}
+
 	//initialize OIS 
 	void initOIS(Ogre::RenderWindow* window);
 	

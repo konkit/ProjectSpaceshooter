@@ -15,6 +15,30 @@ void OgreManager::initOgre()
 	// Create render window
 	mWindow = mRoot->initialise(true, "Project SpaceShooter");
 
+	loadResources();
+
+	// Set default mipmap level (note: some APIs ignore this)
+	Ogre::TextureManager::getSingleton().setDefaultNumMipmaps(5);
+	// initialise all resource groups
+	Ogre::ResourceGroupManager::getSingleton().initialiseAllResourceGroups();
+
+	mTime.reset();
+	lastTime = 0;
+
+}
+
+Ogre::Root* OgreManager::getRoot()
+{
+	return mRoot;
+}
+
+Ogre::RenderWindow* OgreManager::getWindowHandle()
+{
+	return mWindow;
+}
+
+void OgreManager::loadResources()
+{
 	//Set filenames
 #ifdef _DEBUG
 	Ogre::String mResourcesCfg = "resources_d.cfg";
@@ -44,24 +68,5 @@ void OgreManager::initOgre()
 				archName, typeName, secName);
 		}
 	}
-
-	// Set default mipmap level (note: some APIs ignore this)
-	Ogre::TextureManager::getSingleton().setDefaultNumMipmaps(5);
-	// initialise all resource groups
-	Ogre::ResourceGroupManager::getSingleton().initialiseAllResourceGroups();
-
-	mTime.reset();
-	lastTime = 0;
-
-}
-
-Ogre::Root* OgreManager::getRoot()
-{
-	return mRoot;
-}
-
-Ogre::RenderWindow* OgreManager::getWindowHandle()
-{
-	return mWindow;
 }
 

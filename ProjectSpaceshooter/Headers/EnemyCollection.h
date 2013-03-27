@@ -72,6 +72,7 @@ private:
 				return tmpPrefab;
 			}
 		}
+		delete it;
 		using std::string;
 		std::stringstream exceptionString;
 		exceptionString << "There are no prefab with id =" << prefabID << " in prefab collection";
