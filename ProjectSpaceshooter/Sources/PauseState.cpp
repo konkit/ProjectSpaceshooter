@@ -1,14 +1,10 @@
-#include "GameState.h"
+#include "PauseState.h"
 
-PauseState::PauseState( Game * game )
-	:GameState(game)
-{
-}
 
-PauseState::PauseState( SystemsSet & _systems )
+PauseState::PauseState( SystemsSet & gameSystems )
 	: GameState()
 {
-	mSceneMgr = _systems->mOgreManager->getRoot()->createSceneManager(Ogre::ST_GENERIC, "pause");
+	mSceneMgr = gameSystems.ogreManager.getRoot()->createSceneManager(Ogre::ST_GENERIC, "pause");
 	createCamera();
 
 	Ogre::Entity* ogreHead = mSceneMgr->createEntity("Head", "smallfighter.MESH");
@@ -34,30 +30,6 @@ PauseState::PauseState( SystemsSet & _systems )
 
 }
 
-
-/**
-* It's main method for pause state. This method update input system and render next frame
-* @return GAME_STATES - return next game state
-* @param SystemsSet & gameSystems
-* @param TimeData & time
-* @author Zyga 
-*/GAME_STATES PauseState::update( SystemsSet &gameSystems, TimeData& time )
-{
-	gameSystems.mInputManager.updateInputForPause(gameSystems.mGameData);
-
-	//render
-	if( !gameSystems.mOgreManager.getRoot()->renderOneFrame() )	
-	{
-		throw WindowClosedException();
-	}
-
-	if(gameSystems.mGameData.isSetPlayFlag())
-	{
-		return GAME_STATES::PLAY;
-	}
-	return GAME_STATES::PAUSE;	
-}
-
 void PauseState::createCamera()
 {
 	// create the camera
@@ -67,4 +39,29 @@ void PauseState::createCamera()
 	mCamera->lookAt(Ogre::Vector3(0,1.0,1.0));
 	// set the near clip distance
 	mCamera->setNearClipDistance(5);
+}
+
+/**
+* It's main method for pause state. This method update input system and render next frame
+* @return GAME_STATES - return next game state
+* @param SystemsSet & gameSystems
+* @param TimeData & time
+* @author Zyga 
+*/GAME_STATES PauseState::update( SystemsSet &gameSystems, TimeData& time )
+{
+	gameSystems.inputManager.updateInputForPause(gameSystems.gameData);
+	renderOneFrame(gameSystems.ogreManager);
+	return nextState(gameSystems);
+
+}
+
+GAME_STATES PauseState::nextState( SystemsSet &gameSystems )
+{
+	if(gameSystems.gameData.isSetPlayFlag())
+	{
+		return GAME_STATES::PLAY;
+	} else
+	{
+		return GAME_STATES::PAUSE;	
+	}
 }

@@ -1,14 +1,14 @@
 #pragma once
-#include "Game.h"
+#include "GameState.h"
 class HangarState : public GameState
 {
 public:
-	HangarState(Game * game);
+	HangarState(SystemsSet & gameSystems);
 	~HangarState(){};
 
-	virtual bool update( SystemsSet & gameSystems, TimeData& time );
-
+	virtual GAME_STATES update( SystemsSet & gameSystems, TimeData& time );
 
 private:
-
+	virtual void createCamera();
+	virtual GAME_STATES nextState( SystemsSet & gameSystems );
 };

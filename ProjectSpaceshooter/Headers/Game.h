@@ -1,26 +1,6 @@
 #pragma once
 	
-#include "InputManager.h"
-#include "OgreManager.h"
-#include "GameData.h"
-
-#include "PhysicsSystem.h"
-#include "ObjectStateUpdateSystem.h"
-#include "CollisionSystem.h"
-#include "AISystem.h"
-#include "Systems.h"
 #include "StateManager.h"
-
-class Game;
-
-
-/** 
-  * Class enveloping Ogre3D library and simplifying usage.
-  * Stores Ogre::Root and other library-specific data
-  * @author 
-  */
-
-
 
 
 
@@ -36,19 +16,15 @@ public:
 	~Game();
 	void initializeGame();
 	void run();
-	
-	void changeState(GameState * newState);
-	const InputManager * getInputMenager() { return &mGameSystems.mInputManager;}
-	OgreManager * getOgreManager() {return &mGameSystems.mOgreManager;}
-	GameData * getGameData() {return &mGameSystems.mGameData;};
-	void setupViewport(Ogre::Camera * camera);
-private:
 
-	SystemsSet mGameSystems;
-	TimeData time;
+    InputManager	* getInputMenager()	{ return &mGameSystems.inputManager;}
+	OgreManager		* getOgreManager()	{ return &mGameSystems.ogreManager;}
+	GameData		* getGameData()		{ return &mGameSystems.gameData;};
+
+private:
+	TimeData	 time;
+	SystemsSet	 mGameSystems;
 	StateManager mStateMenager;
-	// State playState;
-	// etc...
 };
 
 

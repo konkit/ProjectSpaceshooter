@@ -24,8 +24,8 @@
 #include <OISMouse.h>
 
 #include "GameCollection.h"
-#include "GameData.h"
 #include "GameObject.h"
+#include "Systems.h"
 
 #include <string>
 #include <exception>

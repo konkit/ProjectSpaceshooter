@@ -1,18 +1,16 @@
 #include "GameState.h"
+#include "PlayState.h"
 
-PlayState::PlayState(SystemsSet & _systems) :GameState()
+PlayState::PlayState(SystemsSet & gameSystems) :GameState()
 {
-	mSceneMgr = _systems->mOgreManager->getRoot()->createSceneManager(Ogre::ST_GENERIC, "primary");
+	mSceneMgr = gameSystems.ogreManager.getRoot()->createSceneManager(Ogre::ST_GENERIC, "primary");
 	createCamera();
-
-	Ogre::Plane plane;
-		plane.d = 2500;
-		plane.normal = Ogre::Vector3::UNIT_Y;
-	//mSceneMgr->setSkyPlane(true, plane, "Examples/SpaceSkyPlane", 1000, 45);
+	loadLevelDescribe(gameSystems);
+	
 	mSceneMgr->setSkyBox(true, "zygaBOX");
 
 	//Init player's sceneNode
-	Player* player = _systems->mGameData->getGameData()->getPlayer();
+	Player* player = gameSystems.gameData.getPlayer();
 	player->createSceneNode("smallfighter.MESH", mSceneMgr);
 	
 	//Create camera
@@ -22,19 +20,19 @@ PlayState::PlayState(SystemsSet & _systems) :GameState()
 	mCamera->lookAt(Ogre::Vector3(0,0,100));
 
 	//bullet model
-	_systems->mGameData->bulletEntity = mSceneMgr->createEntity("BulletEntity", "my_sun.MESH");
+	gameSystems.gameData.bulletEntity = mSceneMgr->createEntity("BulletEntity", "my_sun.MESH");
 
 	//save node in player's GraphicsComponent
 	//mGame->getGameData()->getPlayer()->initNode(mGame->getGameData()->shipNode);
 
 	Ogre::SceneNode *stat = mSceneMgr->getRootSceneNode()->createChildSceneNode();
 		//stat->attachObject(ship);
-		stat->attachObject(_systems->mGameData->bulletEntity);
+		stat->attachObject(gameSystems.gameData.bulletEntity);
 		stat->setPosition(Ogre::Vector3(2400,0,100));
 		//stat->pitch(Ogre::Degree(-90));
 		stat->scale(2,2,2);
 
-	_systems->mGameData->setSceneMenagerFor(GAME_STATES::PLAY, mSceneMgr);
+	gameSystems.gameData.setSceneMenagerFor(GAME_STATES::PLAY, mSceneMgr);
 
 	// Set ambient light
 	mSceneMgr->setAmbientLight(Ogre::ColourValue(1.0, 1.0, 1.0));
@@ -54,10 +52,10 @@ PlayState::PlayState(SystemsSet & _systems) :GameState()
 	//spotLight->setPowerScale(400.0);
 
 	//Create tmp Core
-	mGame->getGameData()->theCore.createSceneNode("core2.MESH", mSceneMgr);
-	mGame->getGameData()->theCore.getSceneNode()->scale(35.0, 35.0, 35.0);
-	mGame->getGameData()->theCore.setPosition(Ogre::Vector3(-500.0, 0.0, 0.0));
-	mGame->getGameData()->theCore.getSceneNode()->roll(Ogre::Degree(90)); // BARDZO DUZA PROWIZORKA
+	gameSystems.gameData.theCore.createSceneNode("core2.MESH", mSceneMgr);
+	gameSystems.gameData.theCore.getSceneNode()->scale(35.0, 35.0, 35.0);
+	gameSystems.gameData.theCore.setPosition(Ogre::Vector3(-500.0, 0.0, 0.0));
+	gameSystems.gameData.theCore.getSceneNode()->roll(Ogre::Degree(90)); // BARDZO DUZA PROWIZORKA
 	
 }
 
@@ -65,23 +63,16 @@ PlayState::PlayState(SystemsSet & _systems) :GameState()
 GAME_STATES PlayState::update( SystemsSet & gameSystems, TimeData& time )
 {
 	//update input from player
-	gameSystems.mInputManager.updateInputForGame(gameSystems.mGameData, time.deltaTime, time.currentTime);
-	mAISystem.update(gameSystems.mGameData, time.deltaTime);
-	mPhysicsSystem.update( gameSystems.mGameData, time.deltaTime );
-	mCollisionSystem.update( gameSystems.mGameData);
-	mObjectStateSystem.update( gameSystems.mGameData, time);
+	gameSystems.inputManager.updateInputForGame(gameSystems.gameData, time.deltaTime, time.currentTime);
+	mAISystem.update(gameSystems.gameData, time.deltaTime);
+	mPhysicsSystem.update( gameSystems.gameData, time.deltaTime );
+	mCollisionSystem.update( gameSystems.gameData);
+	mObjectStateSystem.update( gameSystems.gameData, time);
 
-	//Render
-	if( !gameSystems.mOgreManager.getRoot()->renderOneFrame() )	
-	{
-		throw WindowClosedException();
-	}
+	renderOneFrame(gameSystems.ogreManager);
 
-	if(gameSystems.mGameData.isSetPauseFlag())
-	{
-		mGame->changeState(mGame->getPause());
-	}
-	return true;
+	return nextState(gameSystems);
+
 }
 
 void PlayState::createCamera()
@@ -96,7 +87,7 @@ void PlayState::createCamera()
 
 void PlayState::loadLevelDescribe( SystemsSet & gameSystems )
 {
-	LevelDescription & _levelDescription = gameSystems.mGameData.getLevelDescription();
+	LevelDescription & _levelDescription = gameSystems.gameData.getLevelDescription();
 	_levelDescription.ambientColour = Ogre::ColourValue(1.0f,1.0f,1.0f);
 	Light * newLight = new Light;
 	newLight->position = Vector3(100,100,100);
@@ -116,5 +107,16 @@ void PlayState::loadLevelDescribe( SystemsSet & gameSystems )
 	newStage->addSpawner(newSpawner);
 
 	_levelDescription.addNewLevelStage(newStage);
+}
+
+GAME_STATES PlayState::nextState( SystemsSet &gameSystems )
+{
+	if(gameSystems.gameData.isSetPauseFlag())
+	{
+		return GAME_STATES::PAUSE;
+	} else
+	{
+		return GAME_STATES::PLAY;
+	}
 }
 

@@ -1,4 +1,19 @@
-#include "HangarState.h"
-#include "PauseState.h"
-#include "PlayState.h"
-#include "LevelBuilder.h"
+#pragma once
+
+class GameState
+{
+protected:
+	GameData * mGameData;
+	Ogre::SceneManager* mSceneMgr;
+	Ogre::Camera * mCamera;
+public:
+	Ogre::SceneManager* getSceneMgr(){return mSceneMgr;}
+	GameState(){}
+	virtual GAME_STATES update(SystemsSet & gameSystems, TimeData& time) = 0;
+	virtual ~GameState(void){delete mSceneMgr;}
+	void renderOneFrame(OgreManager & _ogreManager);
+	Ogre::Camera * getCamera() {return mCamera;}
+private:
+	virtual	void createCamera() = 0;
+	virtual GAME_STATES nextState(SystemsSet & gameSystems) = 0;
+};

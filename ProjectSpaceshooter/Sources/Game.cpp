@@ -5,7 +5,7 @@ Game::Game()
 {
 	
 	initializeGame();
-	
+	mStateMenager.initStateManager(mGameSystems);
 }
 
 Game::~Game()
@@ -17,24 +17,18 @@ void Game::run()
 	while(true)
 	{
 		//get time
-		time.deltaTime = mGameSystems.mOgreManager.getDeltaTime();
-		time.currentTime = mGameSystems.mOgreManager.getCurrentTime();
+		time.deltaTime = mGameSystems.ogreManager.getDeltaTime();
+		time.currentTime = mGameSystems.ogreManager.getCurrentTime();
 
-		mGameSystems.update(mGameSystems, time);
+		mStateMenager.update(mGameSystems, time);
 	}
 }
 
 void Game::initializeGame()
 {
 	//Initialize ogre
-	mGameSystems.mOgreManager.initOgre();
+	mGameSystems.ogreManager.initOgre();
 	//Initialize OIS
-	mGameSystems.mInputManager.initOIS( mGameSystems.mOgreManager.getWindowHandle() );
-}
-
-
-void Game::changeState( GameState * newState )
-{
-
+	mGameSystems.inputManager.initOIS( mGameSystems.ogreManager.getWindowHandle() );
 }
 

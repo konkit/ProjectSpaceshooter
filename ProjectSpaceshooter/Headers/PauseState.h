@@ -1,5 +1,4 @@
 #pragma once
-#include "Game.h"
 
 /**
 * It's class for updating systems for pause
@@ -11,7 +10,9 @@ class PauseState : public GameState
 public:
 	PauseState(SystemsSet & _systems);
 	~PauseState(){};
-	void createCamera();
 	GAME_STATES update( SystemsSet &gameSystems, TimeData& time );
+
 private:
+	void createCamera();
+	GAME_STATES nextState( SystemsSet &gameSystems );
 };

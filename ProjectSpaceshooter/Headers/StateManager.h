@@ -1,31 +1,21 @@
 #pragma once
 #include "Systems.h"
 #include "GameState.h"
-class Game;
-
-class GameState
-{
-protected:
-	GameData * mGameData;
-
-	Ogre::SceneManager* mSceneMgr;
-	Ogre::Camera * mCamera;
-public:
-	Ogre::SceneManager* getSceneMgr(){return mSceneMgr;}
-	GameState(){}
-	virtual GAME_STATES update(SystemsSet & gameSystems, TimeData& time) = 0;
-	virtual ~GameState(void){delete mSceneMgr;}
-	Ogre::Camera * getCamera() {return mCamera;}
-};
+#include "PlayState.h"
+#include "PauseState.h"
+#include "HangarState.h"
+#include "LevelBuilder.h"
 
 class StateManager
 {
 public:
-	StateManager(SystemsSet * _systems);
-	virtual bool update( SystemsSet & gameSystems, TimeData& time );
-	void renderOneFrame();
-	void changeState(GAME_STATES * nextState);
+	StateManager();
 	~StateManager(void);
+	virtual bool update( SystemsSet & gameSystems, TimeData& time );
+	void changeState(GAME_STATES nextState, SystemsSet & gameSystems);
+	void setupViewport(OgreManager & _ogreManager, Ogre::Camera * camera );
+	GameState * getStateFor( GAME_STATES nextState );
+	void initStateManager( SystemsSet & _systems );
 private:
 	OgreManager * mOgreManager;
 	GAME_STATES activeStateName;
@@ -33,7 +23,6 @@ private:
 	GameState * pause;
 	GameState * play;
 	GameState * hangar;
-	GameState * state;
 	GameState * builder;
 };
 

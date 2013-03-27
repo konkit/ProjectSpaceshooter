@@ -190,6 +190,7 @@
     <ClInclude Include="Headers\PhysicsSystem.h" />
     <ClInclude Include="Headers\Player.h" />
     <ClInclude Include="Headers\PlayState.h" />
+    <ClInclude Include="Headers\ResoursceLoader.h" />
     <ClInclude Include="Headers\StateManager.h" />
     <ClInclude Include="Headers\StaticObject.h" />
     <ClInclude Include="Headers\stdafx.h" />
@@ -201,6 +202,7 @@
     <ClCompile Include="Sources\Game.cpp" />
     <ClCompile Include="Sources\GameData.cpp" />
     <ClCompile Include="Sources\GameObject.cpp" />
+    <ClCompile Include="Sources\GameState.cpp" />
     <ClCompile Include="Sources\GameStateMain.cpp" />
     <ClCompile Include="Sources\HangarState.cpp" />
     <ClCompile Include="Sources\InputManager.cpp" />
@@ -210,6 +212,7 @@
     <ClCompile Include="Sources\OgreManager.cpp" />
     <ClCompile Include="Sources\PauseState.cpp" />
     <ClCompile Include="Sources\PlayState.cpp" />
+    <ClCompile Include="Sources\ResoursceLoader.cpp" />
     <ClCompile Include="Sources\StateManager.cpp" />
     <ClCompile Include="Sources\StaticObject.cpp" />
     <ClCompile Include="Sources\stdafx.cpp">
