@@ -4,6 +4,7 @@
 #include "Player.h"
 #include "Core.h"
 
+#include "BaseCollection.h"
 #include "BulletCollection.h"
 #include "EnemyCollection.h"
 #include "LevelDescription.h"
@@ -74,12 +75,13 @@ public:
 
 	LevelDescription & getLevelDescription() {return currentLevelDecription;}
 
-	BulletCollection& getBullets()	{
+	//BulletCollection& getBullets()	{
+	BaseCollection<BulletPrefab, Bullet>& getBullets() {
 		return mBulletCollection;
 	}
 
-	EnemyCollection& getEnemys()
-	{
+	//EnemyCollection& getEnemys()
+	BaseCollection<EnemyPrefab, EnemyObject>& getEnemies() {
 		return mEnemyCollection;
 	}
 	
@@ -93,9 +95,14 @@ private:
 	} changeFlags;
 	//All GameObjects
 
-	EnemyCollection mEnemyCollection;
-	BulletCollection mBulletCollection;
+	//EnemyCollection mEnemyCollection;
+	BaseCollection<EnemyPrefab, EnemyObject> mEnemyCollection;
+
+	//BulletCollection mBulletCollection;
+	BaseCollection<BulletPrefab, Bullet> mBulletCollection;
+
 	GameCollection<GameObject> mStaticCollection;
+
 //	GameObjectsCollection mPhysicCollection;  there will be physics object ex. explosion sphere
 	//GameObject mPlayer;
 	Player mPlayer;

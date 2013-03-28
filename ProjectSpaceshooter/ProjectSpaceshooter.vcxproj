@@ -73,8 +73,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>..\Libs\include\OGRE\RenderSystems\GL;Headers\;..\Libs\include\OGRE;..\Libs\include\OIS;C:\Program Files %28x86%29\Visual Leak Detector\include;$(IncludePath)</IncludePath>
-    <LibraryPath>..\Libs\lib\$(Configuration);..\Libs\lib\$(Configuration)\opt;C:\Program Files %28x86%29\Visual Leak Detector\lib\Win64;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\Libs\include\OGRE\RenderSystems\GL;Headers\;..\Libs\include\OGRE;..\Libs\include\OIS;d:\Program Files %28x86%29\Visual Leak Detector\include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\Libs\lib\$(Configuration);..\Libs\lib\$(Configuration)\opt;d:\Program Files %28x86%29\Visual Leak Detector\lib\Win64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -164,6 +164,7 @@
   <ItemGroup>
     <ClInclude Include="Headers\AIComponent.h" />
     <ClInclude Include="Headers\AISystem.h" />
+    <ClInclude Include="Headers\BaseCollection.h" />
     <ClInclude Include="Headers\Bullet.h" />
     <ClInclude Include="Headers\BulletCollection.h" />
     <ClInclude Include="Headers\ColliderComponent.h" />
@@ -173,6 +174,7 @@
     <ClInclude Include="Headers\EnemySpawner.h" />
     <ClInclude Include="Headers\EnemyCollection.h" />
     <ClInclude Include="Headers\Exceptions.h" />
+    <ClInclude Include="Headers\Explosion.h" />
     <ClInclude Include="Headers\Game.h" />
     <ClInclude Include="Headers\GameCollection.h" />
     <ClInclude Include="Headers\GameData.h" />

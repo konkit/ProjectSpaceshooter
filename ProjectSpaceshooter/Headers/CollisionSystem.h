@@ -8,7 +8,7 @@ public:
 	void update(GameData& mGameData)	{
 		CheckForCollisions( mGameData.getPlayer(), mGameData, "player" );
 
-		GameCollectionIterator<Bullet> * myBulletIterator = mGameData.getBullets().getBulletIterator();
+		GameCollectionIterator<Bullet> * myBulletIterator = mGameData.getBullets().getIterator();
 		Bullet* itBullet;
 		while (myBulletIterator->hasNext())
 		{
@@ -17,7 +17,7 @@ public:
 		}
 		delete myBulletIterator;
 
-		GameCollectionIterator<EnemyObject> * myEnemyIterator = mGameData.getEnemys().getEnemyIterator();
+		GameCollectionIterator<EnemyObject> * myEnemyIterator = mGameData.getEnemies().getIterator();
 		EnemyObject* itEnemy;
 		while (myEnemyIterator->hasNext())
 		{
@@ -30,7 +30,7 @@ public:
 
 	void CheckForCollisions( GameObject* currentObject, GameData& mGameData, std::string typeName )	{
 		//for every object2
-		GameCollectionIterator<Bullet> * myBulletIterator = mGameData.getBullets().getBulletIterator();
+		GameCollectionIterator<Bullet> * myBulletIterator = mGameData.getBullets().getIterator();
 		Bullet* itBullet;
 		bool isColliding;
 		while (myBulletIterator->hasNext())
@@ -58,7 +58,7 @@ public:
 		}
 		delete myBulletIterator;
 
-		GameCollectionIterator<EnemyObject> * myEnemyIterator = mGameData.getEnemys().getEnemyIterator();
+		GameCollectionIterator<EnemyObject> * myEnemyIterator = mGameData.getEnemies().getIterator();
 		EnemyObject* itEnemy;
 		while (myEnemyIterator->hasNext())
 		{

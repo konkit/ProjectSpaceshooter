@@ -67,7 +67,7 @@ private:
 		while(it->hasNext())
 		{
 			tmpPrefab = it->getNext();
-			if (tmpPrefab->getEnemyPrefabID() == prefabID)
+			if (tmpPrefab->getPrefabID() == prefabID)
 			{
 				return tmpPrefab;
 			}

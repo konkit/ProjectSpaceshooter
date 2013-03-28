@@ -104,6 +104,12 @@
       <Filter>Header\States</Filter>
     </ClInclude>
     <ClInclude Include="Headers\ResoursceLoader.h" />
+    <ClInclude Include="Headers\BaseCollection.h">
+      <Filter>Header\GameCollections</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\Explosion.h">
+      <Filter>Header\GameObjects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header">

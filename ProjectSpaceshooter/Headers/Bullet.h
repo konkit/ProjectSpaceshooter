@@ -9,7 +9,27 @@
   */
 class BulletPrefab
 {
-	//Ja to ogarnê, spoko ;P - Konkit
+public:
+	BulletPrefab(unsigned prefabID) : mPrefabID(prefabID)
+	{	}
+
+	void setPrefabID(unsigned val) { mPrefabID = val; }
+	void setMeshName(string val) { mMeshName = val; }
+	void setBulletPower(float newPower) { bulletPower = newPower; }
+	void setMaxVelocity(float newMaxVelocity) { mMaxVelocity= newMaxVelocity; }
+	void setVelocityVector( Ogre::Vector3 newVector){ mVelocityVector = newVector; }
+
+	unsigned	 getPrefabID()   const { return mPrefabID; }
+	std::string	 getMeshName()	  const { return mMeshName; }
+	float		 getBulletPower() const { return bulletPower; }
+	float		 getMaxVelocity() const { return mMaxVelocity; }
+	Ogre::Vector3 getVelocityVector() const { return mVelocityVector; }
+private:
+	unsigned	mPrefabID;
+	string		mMeshName;
+	float		bulletPower;
+	float		mMaxVelocity;
+	Ogre::Vector3 mVelocityVector;
 };
 
 /** Class of Bullet gameobject
@@ -26,6 +46,16 @@ public:
 
 	Bullet(std::string meshName, Ogre::SceneManager* sceneMgr) : GameObject(meshName, sceneMgr)	
 	{
+		mTTLComponent.setTimeToLive(3000);
+	}
+
+	Bullet::Bullet( BulletPrefab * objectTemplate, Ogre::SceneManager * _sceneMenager)
+		: GameObject(objectTemplate->getMeshName(), _sceneMenager), 
+		  mPower(objectTemplate->getBulletPower())
+
+	{
+		mPhysicsComponent.setMaxVelocityValue( objectTemplate->getMaxVelocity() );
+		mPhysicsComponent.setVelocity( objectTemplate->getVelocityVector() );
 		mTTLComponent.setTimeToLive(3000);
 	}
 

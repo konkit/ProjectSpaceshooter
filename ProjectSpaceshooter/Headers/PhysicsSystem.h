@@ -26,7 +26,7 @@ public:
 		cntPlayer->move( tmpPhysics.getVelocity() * deltaTime );
 
 		//bullet objects update
-		GameCollectionIterator<Bullet> * myIterator = mGameData.getBullets().getBulletIterator();
+		GameCollectionIterator<Bullet> * myIterator = mGameData.getBullets().getIterator();
 		GameObject* it;
 		while (myIterator->hasNext())
 		{
@@ -40,7 +40,7 @@ public:
 		}
 		delete myIterator;
 
-		GameCollectionIterator<EnemyObject> * myEnemyIterator = mGameData.getEnemys().getEnemyIterator();
+		GameCollectionIterator<EnemyObject> * myEnemyIterator = mGameData.getEnemies().getIterator();
 		while (myEnemyIterator->hasNext())
 		{
 			it = myEnemyIterator->getNext();

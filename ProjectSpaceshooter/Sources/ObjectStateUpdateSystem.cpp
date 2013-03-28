@@ -14,7 +14,10 @@ void ObjectStateUpdateSystem::update( GameData& mGameData, TimeData& time )
 		Ogre::Vector3 playerPos = player->getPosition();
 		float bulletPower = mGameData.getPlayer()->getCurrentWeapon().getPower();
 
+		//
+
 		//create new bullet
+		/*
 		mGameData.getBullets().instantiate(0, 
 					mGameData.getSceneManagerFor(GAME_STATES::PLAY), 
 					playerPos, 
@@ -22,6 +25,14 @@ void ObjectStateUpdateSystem::update( GameData& mGameData, TimeData& time )
 					mGameData.getPlayer()->getCurrentWeapon().getPower(),
 					mGameData.getPlayer()
 				);
+				*/
+		Bullet* newBullet = mGameData.getBullets().instantiate(1, mGameData.getSceneManagerFor(GAME_STATES::PLAY));
+			//set player pos
+			newBullet->setPosition(playerPos);
+			//set player orientation
+			newBullet->setOrientation(playerOrientation);
+			//set owner
+			newBullet->setOwner(player);
 
 		//set shooting as false
 		mGameData.getPlayer()->unsetShoot();
@@ -31,7 +42,7 @@ void ObjectStateUpdateSystem::update( GameData& mGameData, TimeData& time )
 	mGameData.getLevelDescription().spawn(mGameData, time.currentTime);
 
 	//deleting bullets when time to Live is up.
-	GameCollectionIterator<Bullet> * bulletIterator = mGameData.getBullets().getBulletIterator();
+	GameCollectionIterator<Bullet> * bulletIterator = mGameData.getBullets().getIterator();
 	Bullet* bulletIt;
 	while (bulletIterator->hasNext())
 	{
@@ -55,7 +66,7 @@ void ObjectStateUpdateSystem::update( GameData& mGameData, TimeData& time )
 	delete bulletIterator;
 
 	//deleting enemies when dead.
-	GameCollectionIterator<EnemyObject> * enemyIterator = mGameData.getEnemys().getEnemyIterator();
+	GameCollectionIterator<EnemyObject> * enemyIterator = mGameData.getEnemies().getIterator();
 	EnemyObject* enemyIt;
 	while (enemyIterator->hasNext())
 	{
@@ -65,7 +76,7 @@ void ObjectStateUpdateSystem::update( GameData& mGameData, TimeData& time )
 			EnemyObject* removedObject = dynamic_cast<EnemyObject*> (enemyIt);
 			enemyIt->getSceneNode()->detachAllObjects();
 			mGameData.getSceneManagerFor(GAME_STATES::PLAY)->getRootSceneNode()->removeAndDestroyChild( enemyIt->getSceneNode()->getName() );
-			mGameData.getEnemys().getCollection().deleteObject(removedObject);
+			mGameData.getEnemies().getCollection().deleteObject(removedObject);
 		}
 
 	}
