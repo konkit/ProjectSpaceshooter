@@ -10,6 +10,7 @@ using namespace std;
 class EnemyPrefab
 {
 public:
+	EnemyPrefab(){};
 	EnemyPrefab(unsigned prefabID);
 	~EnemyPrefab(void);
 	

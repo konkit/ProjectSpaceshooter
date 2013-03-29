@@ -181,6 +181,7 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Sources\ResoursceLoader.cpp" />
+    <ClCompile Include="Sources\EnemyCollection.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ogre.cfg" />

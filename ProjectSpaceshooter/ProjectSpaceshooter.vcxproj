@@ -116,7 +116,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>FreeImage_d.lib;freetype_d.lib;OgreMainStatic_d.lib;OgreRTShaderSystemStatic_d.lib;OgreTerrainStatic_d.lib;vld.lib;OIS_d.lib;zlib_d.lib;zziplib_d.lib;RenderSystem_GLStatic_d.lib;OpenGL32.lib;GLU32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>FreeImage_d.lib;freetype_d.lib;OgreMainStatic_d.lib;OgreRTShaderSystemStatic_d.lib;OgreTerrainStatic_d.lib;xmllite.lib;vld.lib;OIS_d.lib;zlib_d.lib;zziplib_d.lib;RenderSystem_GLStatic_d.lib;OpenGL32.lib;GLU32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Bscmake>
       <PreserveSbr>true</PreserveSbr>
@@ -198,6 +198,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\Enemy.cpp" />
+    <ClCompile Include="Sources\EnemyCollection.cpp" />
     <ClCompile Include="Sources\EnemySpawner.cpp" />
     <ClCompile Include="Sources\Game.cpp" />
     <ClCompile Include="Sources\GameData.cpp" />

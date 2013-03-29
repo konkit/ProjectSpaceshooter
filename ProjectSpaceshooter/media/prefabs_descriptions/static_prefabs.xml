@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<static_prefabs>
+	<static id='1'>
+		<static_name name='sun'/>
+		<mesh name='sun.mesh'/>
+		<health value='1000'/>
+		<scale x_scale='1' y_scale='1' z_scale='1' />
+		<rotation x_rot='1' y_rot='1' z_rot='1' />
+		<coliders>
+			<colider>
+				<offset x='0' y='0' z='0' />
+				<radian r='10'/>
+			</colider>
+		</coliders>
+ 	</static>
+</ship_prefabs>
