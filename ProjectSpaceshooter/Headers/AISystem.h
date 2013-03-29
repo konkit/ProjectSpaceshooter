@@ -12,7 +12,7 @@ public:
 	void update(GameData& mGameData, float deltaTime)	{
 
 		//For every enemy
-		GameCollectionIterator<EnemyObject> * myEnemyIterator = mGameData.getEnemys().getEnemyIterator();
+		GameCollectionIterator<EnemyObject> * myEnemyIterator = mGameData.getEnemies().getIterator();
 		EnemyObject* it;
 		while (myEnemyIterator->hasNext())
 		{

@@ -73,8 +73,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>..\Libs\include\OGRE\RenderSystems\GL;Headers\;..\Libs\include\OGRE;..\Libs\include\OIS;C:\Program Files %28x86%29\Visual Leak Detector\include;$(IncludePath)</IncludePath>
-    <LibraryPath>..\Libs\lib\$(Configuration);..\Libs\lib\$(Configuration)\opt;C:\Program Files %28x86%29\Visual Leak Detector\lib\Win64;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\Libs\include\OGRE\RenderSystems\GL;Headers\;..\Libs\include\OGRE;..\Libs\include\OIS;d:\Program Files %28x86%29\Visual Leak Detector\include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\Libs\lib\$(Configuration);..\Libs\lib\$(Configuration)\opt;d:\Program Files %28x86%29\Visual Leak Detector\lib\Win64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -116,7 +116,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>FreeImage_d.lib;freetype_d.lib;OgreMainStatic_d.lib;OgreRTShaderSystemStatic_d.lib;OgreTerrainStatic_d.lib;xmllite.lib;vld.lib;OIS_d.lib;zlib_d.lib;zziplib_d.lib;RenderSystem_GLStatic_d.lib;OpenGL32.lib;GLU32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>FreeImage_d.lib;freetype_d.lib;OgreMainStatic_d.lib;OgreRTShaderSystemStatic_d.lib;OgreTerrainStatic_d.lib;xmllite.lib;OIS_d.lib;zlib_d.lib;zziplib_d.lib;RenderSystem_GLStatic_d.lib;OpenGL32.lib;GLU32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Bscmake>
       <PreserveSbr>true</PreserveSbr>
@@ -164,6 +164,7 @@
   <ItemGroup>
     <ClInclude Include="Headers\AIComponent.h" />
     <ClInclude Include="Headers\AISystem.h" />
+    <ClInclude Include="Headers\BaseCollection.h" />
     <ClInclude Include="Headers\Bullet.h" />
     <ClInclude Include="Headers\BulletCollection.h" />
     <ClInclude Include="Headers\ColliderComponent.h" />
@@ -173,13 +174,14 @@
     <ClInclude Include="Headers\EnemySpawner.h" />
     <ClInclude Include="Headers\EnemyCollection.h" />
     <ClInclude Include="Headers\Exceptions.h" />
+    <ClInclude Include="Headers\EffectObject.h" />
     <ClInclude Include="Headers\Game.h" />
     <ClInclude Include="Headers\GameCollection.h" />
     <ClInclude Include="Headers\GameData.h" />
-    <ClInclude Include="Headers\GamelogicComponent.h" />
     <ClInclude Include="Headers\GameObject.h" />
     <ClInclude Include="Headers\GameState.h" />
     <ClInclude Include="Headers\HangarState.h" />
+    <ClInclude Include="Headers\HealthComponent.h" />
     <ClInclude Include="Headers\InputManager.h" />
     <ClInclude Include="Headers\LevelBuilder.h" />
     <ClInclude Include="Headers\LevelDescription.h" />
@@ -195,6 +197,8 @@
     <ClInclude Include="Headers\StaticObject.h" />
     <ClInclude Include="Headers\stdafx.h" />
     <ClInclude Include="Headers\Systems.h" />
+    <ClInclude Include="Headers\TimeToLiveComponent.h" />
+    <ClInclude Include="Headers\WeaponComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\Enemy.cpp" />

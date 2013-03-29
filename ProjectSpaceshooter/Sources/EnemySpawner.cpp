@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "EnemySpawner.h"
+#include "BaseCollection.h"
 #include <iostream>
 
 EnemySpawner::EnemySpawner(Ogre::Vector3 spawnerPosition, unsigned _spawnFrequency, unsigned _onceSpawn )
@@ -64,8 +65,9 @@ void EnemySpawner::spawnCountOfEnemy( unsigned amountToSpawnNow, GameData * _gam
 {
 	for(int i = amountToSpawnNow; i > 0; i --)
 	{
-		EnemyCollection& enemysColl = _gameData->getEnemys();
-		EnemyObject * tmpEnemy = enemysColl.instantiate(_prefabID, _gameData->getSceneManagerFor(GAME_STATES::PLAY));
+		//EnemyCollection& enemysColl = _gameData->getEnemys();
+		BaseCollection<EnemyPrefab, EnemyObject>& enemiesCollection = _gameData->getEnemies();
+		EnemyObject * tmpEnemy = enemiesCollection.instantiate(_prefabID, _gameData->getSceneManagerFor(GAME_STATES::PLAY));
 		Vector3 newPosition = myPosition + Vector3(50*(i-1),0,0);
 		tmpEnemy->setPosition(newPosition);
 	}

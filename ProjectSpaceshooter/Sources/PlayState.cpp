@@ -56,6 +56,16 @@ PlayState::PlayState(SystemsSet & gameSystems) :GameState()
 	gameSystems.gameData.theCore.getSceneNode()->scale(35.0, 35.0, 35.0);
 	gameSystems.gameData.theCore.setPosition(Ogre::Vector3(-500.0, 0.0, 0.0));
 	gameSystems.gameData.theCore.getSceneNode()->roll(Ogre::Degree(90)); // BARDZO DUZA PROWIZORKA
+
+	//Temporary explosion
+	//Ogre::ParticleSystem* particleSystem = mSceneMgr->createParticleSystem("explosions", "explosionTemplate");
+
+	//fast forward 1 second to the point where the particle has been emitted
+	//particleSystem->fastForward(1.0);
+
+	//attach the particle system to a scene node
+	//Ogre::SceneNode *explosion = mSceneMgr->getRootSceneNode()->createChildSceneNode();
+	//explosion->attachObject(particleSystem);
 	
 }
 

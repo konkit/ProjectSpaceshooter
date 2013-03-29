@@ -9,6 +9,9 @@ void OgreManager::initOgre()
 	mGLPlugin = OGRE_NEW Ogre::GLPlugin();
 	mRoot->installPlugin(mGLPlugin);
 
+	mParticlePlugin = OGRE_NEW Ogre::ParticleFXPlugin();
+	mRoot->installPlugin(mParticlePlugin);
+
 	// Load config file and init window
 	mRoot->restoreConfig();
 

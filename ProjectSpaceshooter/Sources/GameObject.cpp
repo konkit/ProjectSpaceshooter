@@ -2,12 +2,12 @@
 #include "GameObject.h"
 
 
-GameObject::GameObject() : mNode(NULL)
+GameObject::GameObject() : mNode(NULL), mDeadFlag(false)
 {
 
 }
 
-GameObject::GameObject(std::string meshName, Ogre::SceneManager* sceneMgr) : mNode(NULL)
+GameObject::GameObject(std::string meshName, Ogre::SceneManager* sceneMgr) : mNode(NULL), mDeadFlag(false)
 {
 	createSceneNode(meshName, sceneMgr);
 }

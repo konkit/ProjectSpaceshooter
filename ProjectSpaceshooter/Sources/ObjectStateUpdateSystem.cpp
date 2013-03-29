@@ -12,9 +12,15 @@ void ObjectStateUpdateSystem::update( GameData& mGameData, TimeData& time )
 		GameObject* player = mGameData.getPlayer();
 		Ogre::Quaternion playerOrientation = player->getOrientation();
 		Ogre::Vector3 playerPos = player->getPosition();
+		float bulletPower = mGameData.getPlayer()->getCurrentWeapon().getPower();
 
-		//create new bullet
-		mGameData.getBullets().instantiate(0, mGameData.getSceneManagerFor(GAME_STATES::PLAY), playerPos, playerOrientation);
+		Bullet* newBullet = mGameData.getBullets().instantiate(1, mGameData.getSceneManagerFor(GAME_STATES::PLAY));
+			//set player pos
+			newBullet->setPosition(playerPos);
+			//set player orientation
+			newBullet->setOrientation(playerOrientation);
+			//set owner
+			newBullet->setOwner(player);
 
 		//set shooting as false
 		mGameData.getPlayer()->unsetShoot();
@@ -24,40 +30,41 @@ void ObjectStateUpdateSystem::update( GameData& mGameData, TimeData& time )
 	mGameData.getLevelDescription().spawn(mGameData, time.currentTime);
 
 	//deleting bullets when time to Live is up.
-	GameCollectionIterator<Bullet> * bulletIterator = mGameData.getBullets().getBulletIterator();
-	GameObject* it;
+	GameCollectionIterator<Bullet> * bulletIterator = mGameData.getBullets().getIterator();
+	Bullet* bulletIt;
 	while (bulletIterator->hasNext())
 	{
-		it = bulletIterator->getNext();
+		bulletIt = bulletIterator->getNext();
 
-		it->getGamelogicComponent().decreaseTimeToLive();
+		bulletIt->getTTLComponent().decreaseTimeToLive();
 
-		if( it->getGamelogicComponent().isStillAlive() == false )	{
-
+		if( bulletIt->isDead() == true )	{
 			//remove from collection
-			Bullet* removedObject = dynamic_cast<Bullet*> (it);
-			it->getSceneNode()->detachAllObjects();	//PROWIZORKA!!!
-			mGameData.getSceneManagerFor(GAME_STATES::PLAY)->getRootSceneNode()->removeAndDestroyChild( it->getSceneNode()->getName() );
+			Bullet* removedObject = dynamic_cast<Bullet*> (bulletIt);
+			bulletIt->getSceneNode()->detachAllObjects();	
+			mGameData.getSceneManagerFor(GAME_STATES::PLAY)->getRootSceneNode()->removeAndDestroyChild( bulletIt->getSceneNode()->getName() );
 			mGameData.getBullets().getCollection().deleteObject(removedObject);
-
-			//create explosion
-
 		}
 
 	}
 	delete bulletIterator;
 
 	//deleting enemies when dead.
-	GameCollectionIterator<EnemyObject> * enemyIterator = mGameData.getEnemys().getEnemyIterator();
+	GameCollectionIterator<EnemyObject> * enemyIterator = mGameData.getEnemies().getIterator();
+	EnemyObject* enemyIt;
 	while (enemyIterator->hasNext())
 	{
-		it = enemyIterator->getNext();
-		if( it->getGamelogicComponent().isStillAlive() == false )	{
+		enemyIt = enemyIterator->getNext();
+		if( enemyIt->isDead() == true )	{
+			//create explosion
+			EffectObject* newExplosion = mGameData.getEffects().instantiate(1, mGameData.getSceneManagerFor(GAME_STATES::PLAY));
+			newExplosion->setPosition( enemyIt->getPosition()  );
+
 			//remove from collection
-			EnemyObject* removedObject = dynamic_cast<EnemyObject*> (it);
-			it->getSceneNode()->detachAllObjects();	//PROWIZORKA!!!
-			mGameData.getSceneManagerFor(GAME_STATES::PLAY)->getRootSceneNode()->removeAndDestroyChild( it->getSceneNode()->getName() );
-			mGameData.getEnemys().getCollection().deleteObject(removedObject);
+			EnemyObject* removedObject = dynamic_cast<EnemyObject*> (enemyIt);
+			enemyIt->getSceneNode()->detachAllObjects();
+			mGameData.getSceneManagerFor(GAME_STATES::PLAY)->getRootSceneNode()->removeAndDestroyChild( enemyIt->getSceneNode()->getName() );
+			mGameData.getEnemies().getCollection().deleteObject(removedObject);
 		}
 
 	}

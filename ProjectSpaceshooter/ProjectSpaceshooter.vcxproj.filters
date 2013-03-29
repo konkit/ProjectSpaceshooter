@@ -31,9 +31,6 @@
     <ClInclude Include="Headers\OgreManager.h">
       <Filter>Header\Systems</Filter>
     </ClInclude>
-    <ClInclude Include="Headers\GamelogicComponent.h">
-      <Filter>Header\Components</Filter>
-    </ClInclude>
     <ClInclude Include="Headers\Exceptions.h">
       <Filter>Header</Filter>
     </ClInclude>
@@ -91,6 +88,15 @@
     <ClInclude Include="Headers\Core.h">
       <Filter>Header\GameObjects</Filter>
     </ClInclude>
+    <ClInclude Include="Headers\WeaponComponent.h">
+      <Filter>Header\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\HealthComponent.h">
+      <Filter>Header\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\TimeToLiveComponent.h">
+      <Filter>Header\Components</Filter>
+    </ClInclude>
     <ClInclude Include="Headers\GameData.h">
       <Filter>Header\Systems</Filter>
     </ClInclude>
@@ -98,6 +104,12 @@
       <Filter>Header\States</Filter>
     </ClInclude>
     <ClInclude Include="Headers\ResoursceLoader.h" />
+    <ClInclude Include="Headers\BaseCollection.h">
+      <Filter>Header\GameCollections</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\EffectObject.h">
+      <Filter>Header\GameObjects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header">

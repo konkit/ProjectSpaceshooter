@@ -4,6 +4,7 @@
 #include "Player.h"
 #include "Core.h"
 
+#include "BaseCollection.h"
 #include "BulletCollection.h"
 #include "EnemyCollection.h"
 #include "LevelDescription.h"
@@ -51,7 +52,7 @@ public:
 	Ogre::SceneNode* shipNode;
 	Ogre::Entity* bulletEntity;
 
-	//PROWIZORKA
+	//PROWIZORKA - to bêdzie chyba te¿ jakoœ wczytywane z pliku nie ?
 	Core theCore;
 		
 	GameData();
@@ -74,13 +75,18 @@ public:
 
 	LevelDescription & getLevelDescription() {return currentLevelDecription;}
 
-	BulletCollection& getBullets()	{
+	//BulletCollection& getBullets()	{
+	BaseCollection<BulletPrefab, Bullet>& getBullets() {
 		return mBulletCollection;
 	}
 
-	EnemyCollection& getEnemys()
-	{
+	//EnemyCollection& getEnemys()
+	BaseCollection<EnemyPrefab, EnemyObject>& getEnemies() {
 		return mEnemyCollection;
+	}
+
+	BaseCollection<EffectPrefab, EffectObject>& getEffects() {
+		return mEffectsCollection;
 	}
 	
 private:
@@ -93,11 +99,13 @@ private:
 	} changeFlags;
 	//All GameObjects
 
-	EnemyCollection mEnemyCollection;
-	BulletCollection mBulletCollection;
+	BaseCollection<EnemyPrefab, EnemyObject> mEnemyCollection;
+	BaseCollection<BulletPrefab, Bullet> mBulletCollection;
+	BaseCollection<EffectPrefab, EffectObject> mEffectsCollection;
+
 	GameCollection<GameObject> mStaticCollection;
+
 //	GameObjectsCollection mPhysicCollection;  there will be physics object ex. explosion sphere
-	//GameObject mPlayer;
 	Player mPlayer;
 	GameObjectTemplates mPrefabCollections;
 	StateScenesManager_Struct mStateScenesManager;

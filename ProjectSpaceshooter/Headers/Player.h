@@ -11,21 +11,42 @@
 class Player : public GameObject
 {
 public:
-	Player() { }
+	Player() : mWeapon(5.0)
+	{}
 	~Player()	{}
 	unsigned int mResistance;
 
 	void setShoot(unsigned long currentTime)	{
-		mGamelogicComponent.setShoot(currentTime);
+		std::cout<<"Player = set shoot "<<std::endl;
+		mWeapon.setShoot(currentTime);
 	}
 
 	void unsetShoot()	{
-		mGamelogicComponent.unsetShoot();
+		mWeapon.unsetShoot();
 	}
 
 	bool isShooting()	{
-		return mGamelogicComponent.isShooting();
+		return mWeapon.isShooting();
+	}
+
+	WeaponComponent& getCurrentWeapon()	{
+		return mWeapon;
+	}
+
+	HealthComponent& getHealthComponent()	{
+		return mHealthComponent;
+	}
+
+	bool isDead() {
+		if( mHealthComponent.isDead() == true )
+			return true;
+		if( GameObject::isDead() == true )
+			return true;
+
+		return false;
 	}
 
 private:  
+	WeaponComponent mWeapon;
+	HealthComponent mHealthComponent;
 };
