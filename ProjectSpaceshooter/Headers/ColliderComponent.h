@@ -7,7 +7,7 @@ public:
 	//sphere collider
 	float radius;
 
-	Collider() : radius(4.0f) {}
+	Collider() : radius(10.0f) {}
 
 	bool isCollidingOther( Ogre::Vector3 currentPos, Ogre::Vector3 otherPos, float otherRadius )	{
 		//calculate distance between positions

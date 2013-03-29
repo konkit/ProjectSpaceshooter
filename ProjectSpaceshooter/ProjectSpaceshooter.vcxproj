@@ -116,7 +116,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>FreeImage_d.lib;freetype_d.lib;OgreMainStatic_d.lib;OgreRTShaderSystemStatic_d.lib;OgreTerrainStatic_d.lib;vld.lib;OIS_d.lib;zlib_d.lib;zziplib_d.lib;RenderSystem_GLStatic_d.lib;OpenGL32.lib;GLU32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>FreeImage_d.lib;freetype_d.lib;OgreMainStatic_d.lib;OgreRTShaderSystemStatic_d.lib;OgreTerrainStatic_d.lib;vld.lib;OIS_d.lib;zlib_d.lib;zziplib_d.lib;RenderSystem_GLStatic_d.lib;OpenGL32.lib;GLU32.lib;opt/Plugin_ParticleFXStatic_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Bscmake>
       <PreserveSbr>true</PreserveSbr>
@@ -174,7 +174,7 @@
     <ClInclude Include="Headers\EnemySpawner.h" />
     <ClInclude Include="Headers\EnemyCollection.h" />
     <ClInclude Include="Headers\Exceptions.h" />
-    <ClInclude Include="Headers\Explosion.h" />
+    <ClInclude Include="Headers\EffectObject.h" />
     <ClInclude Include="Headers\Game.h" />
     <ClInclude Include="Headers\GameCollection.h" />
     <ClInclude Include="Headers\GameData.h" />

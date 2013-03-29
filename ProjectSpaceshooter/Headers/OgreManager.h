@@ -53,6 +53,7 @@ private:
 	Ogre::RenderWindow* mWindow;
 	//OpenGL plugin
 	Ogre::GLPlugin* mGLPlugin;
+	Ogre::ParticleFXPlugin* mParticlePlugin;
 	//Timer
 	Ogre::Timer mTime;
 	unsigned long lastTime;

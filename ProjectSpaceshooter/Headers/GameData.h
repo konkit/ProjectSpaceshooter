@@ -84,6 +84,10 @@ public:
 	BaseCollection<EnemyPrefab, EnemyObject>& getEnemies() {
 		return mEnemyCollection;
 	}
+
+	BaseCollection<EffectPrefab, EffectObject>& getEffects() {
+		return mEffectsCollection;
+	}
 	
 private:
 	struct changeFlagsStruct
@@ -95,16 +99,13 @@ private:
 	} changeFlags;
 	//All GameObjects
 
-	//EnemyCollection mEnemyCollection;
 	BaseCollection<EnemyPrefab, EnemyObject> mEnemyCollection;
-
-	//BulletCollection mBulletCollection;
 	BaseCollection<BulletPrefab, Bullet> mBulletCollection;
+	BaseCollection<EffectPrefab, EffectObject> mEffectsCollection;
 
 	GameCollection<GameObject> mStaticCollection;
 
 //	GameObjectsCollection mPhysicCollection;  there will be physics object ex. explosion sphere
-	//GameObject mPlayer;
 	Player mPlayer;
 	GameObjectTemplates mPrefabCollections;
 	StateScenesManager_Struct mStateScenesManager;

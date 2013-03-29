@@ -14,18 +14,6 @@ void ObjectStateUpdateSystem::update( GameData& mGameData, TimeData& time )
 		Ogre::Vector3 playerPos = player->getPosition();
 		float bulletPower = mGameData.getPlayer()->getCurrentWeapon().getPower();
 
-		//
-
-		//create new bullet
-		/*
-		mGameData.getBullets().instantiate(0, 
-					mGameData.getSceneManagerFor(GAME_STATES::PLAY), 
-					playerPos, 
-					playerOrientation, 
-					mGameData.getPlayer()->getCurrentWeapon().getPower(),
-					mGameData.getPlayer()
-				);
-				*/
 		Bullet* newBullet = mGameData.getBullets().instantiate(1, mGameData.getSceneManagerFor(GAME_STATES::PLAY));
 			//set player pos
 			newBullet->setPosition(playerPos);
@@ -51,15 +39,11 @@ void ObjectStateUpdateSystem::update( GameData& mGameData, TimeData& time )
 		bulletIt->getTTLComponent().decreaseTimeToLive();
 
 		if( bulletIt->isDead() == true )	{
-
 			//remove from collection
 			Bullet* removedObject = dynamic_cast<Bullet*> (bulletIt);
 			bulletIt->getSceneNode()->detachAllObjects();	
 			mGameData.getSceneManagerFor(GAME_STATES::PLAY)->getRootSceneNode()->removeAndDestroyChild( bulletIt->getSceneNode()->getName() );
 			mGameData.getBullets().getCollection().deleteObject(removedObject);
-
-			//create explosion
-
 		}
 
 	}
@@ -72,6 +56,10 @@ void ObjectStateUpdateSystem::update( GameData& mGameData, TimeData& time )
 	{
 		enemyIt = enemyIterator->getNext();
 		if( enemyIt->isDead() == true )	{
+			//create explosion
+			EffectObject* newExplosion = mGameData.getEffects().instantiate(1, mGameData.getSceneManagerFor(GAME_STATES::PLAY));
+			newExplosion->setPosition( enemyIt->getPosition()  );
+
 			//remove from collection
 			EnemyObject* removedObject = dynamic_cast<EnemyObject*> (enemyIt);
 			enemyIt->getSceneNode()->detachAllObjects();

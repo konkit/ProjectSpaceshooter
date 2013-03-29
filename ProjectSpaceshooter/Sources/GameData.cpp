@@ -12,6 +12,8 @@ GameData::GameData(void)
 	changeFlags.changeToPlay = false;
 	mEnemyCollection.loadPrefabs();
 	mBulletCollection.loadPrefabs();
+	mEffectsCollection.loadPrefabs();
+
 }
 
 GameData::~GameData(void)

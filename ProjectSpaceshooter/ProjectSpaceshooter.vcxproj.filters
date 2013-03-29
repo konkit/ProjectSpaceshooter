@@ -107,7 +107,7 @@
     <ClInclude Include="Headers\BaseCollection.h">
       <Filter>Header\GameCollections</Filter>
     </ClInclude>
-    <ClInclude Include="Headers\Explosion.h">
+    <ClInclude Include="Headers\EffectObject.h">
       <Filter>Header\GameObjects</Filter>
     </ClInclude>
   </ItemGroup>

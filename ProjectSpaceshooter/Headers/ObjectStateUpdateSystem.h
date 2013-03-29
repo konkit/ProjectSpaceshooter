@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Bullet.h"
+#include "EffectObject.h"
 #include "Systems.h"
 
 //Name is to be changed - chill out :D

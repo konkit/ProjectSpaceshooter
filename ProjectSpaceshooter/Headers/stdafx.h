@@ -10,8 +10,10 @@
 #include <OgreViewport.h>
 #include <OgreSceneManager.h>
 #include <OgreRenderWindow.h>
+#include <OgreParticleSystem.h>
 
 #include <RenderSystems/GL/OgreGLPlugin.h>
+#include <Plugins/ParticleFX/OgreParticleFXPlugin.h>
 
 #include <OgreEntity.h>
 #include <OgreWindowEventUtilities.h>

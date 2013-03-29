@@ -2,10 +2,10 @@
 
 class WeaponComponent {
 public:
-	WeaponComponent() : shooting(false), rateOfFire(500), timeSinceLastShot(0) 
+	WeaponComponent() : shooting(false), rateOfFire(150), timeSinceLastShot(0) 
 	{}
 
-	WeaponComponent(float power) : mPower(power), shooting(false), rateOfFire(500), timeSinceLastShot(0)
+	WeaponComponent(float power) : mPower(power), shooting(false), rateOfFire(150), timeSinceLastShot(0)
 	{}
 
 	void setPower(float newPower)	{ mPower = newPower; }

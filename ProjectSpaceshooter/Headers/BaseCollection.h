@@ -2,6 +2,7 @@
 
 #include "Bullet.h"
 #include "Enemy.h"
+#include "EffectObject.h"
 
 /** Class which is base for all collections of Enemies, Bullets etc
   * Its main parts are collection of GameObjects and collection of prefab
@@ -89,7 +90,14 @@ inline void BaseCollection<BulletPrefab, Bullet>::loadPrefabs()	{
 	myBullet->setBulletPower(5.0);
 	myBullet->setMeshName("bullet2.MESH");
 
-	myBullet->setMaxVelocity(1100);
+	myBullet->setMaxVelocity(11000);
 	myBullet->setVelocityVector(Ogre::Vector3(0.0, 0.0, 1.0));
+}
+
+template<>
+inline void BaseCollection<EffectPrefab, EffectObject>::loadPrefabs() {
+	EffectPrefab* myEffect = new EffectPrefab(1);
+	addPrefab(myEffect);
+	myEffect->setParticleSystemName( "explosionTemplate" );
 }
 
