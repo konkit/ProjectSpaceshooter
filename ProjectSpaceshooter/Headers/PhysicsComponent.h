@@ -9,32 +9,19 @@
 class PhysicsComponent
 {
 public:
-	PhysicsComponent() : velocity(0.0, 0.0, 0.0), rotVelocity(0.0),
-		velocityValue(700.0), rotVelocityValue(2.0)
-	{	}
+	PhysicsComponent();
 
-	void setMaxVelocityValue(float newVelocity)
-	{
-		velocityValue = newVelocity;
-	}
-	void setVelocity(Ogre::Vector3 const& newVelocity)	{
-		velocity = newVelocity * velocityValue;
-	}
+	void setMaxVelocityValue(float newVelocity);
+	void setVelocity(Ogre::Vector3 const& newVelocity);
 
-	void setRotVelocity(float newRotVelocity)	{
-		rotVelocity = newRotVelocity * rotVelocityValue;
-	}
+	void setRotVelocity(float newRotVelocity);
 
-	Ogre::Vector3 getVelocity()	{
-		return velocity;
-	}
+	Ogre::Vector3 getVelocity();
 
-	float getRotVelocity()	{
-		return rotVelocity;
-	}
+	float getRotVelocity();
 
-	void setVelocityValue(float newValue) { velocityValue = newValue; }
-	float getVelocityValue() { return velocityValue; }
+	void setVelocityValue(float newValue);
+	float getVelocityValue();
 
 private:
 	Ogre::Vector3 velocity;

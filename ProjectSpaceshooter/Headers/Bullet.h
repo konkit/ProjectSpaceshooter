@@ -10,8 +10,7 @@
 class BulletPrefab
 {
 public:
-	BulletPrefab(unsigned prefabID) : mPrefabID(prefabID)
-	{	}
+	BulletPrefab(unsigned prefabID);
 
 	void setPrefabID(unsigned val) { mPrefabID = val; }
 	void setMeshName(string val) { mMeshName = val; }
@@ -39,55 +38,20 @@ private:
 class Bullet : public GameObject	{
 
 public:
-	Bullet() : GameObject()
-	{
-		mTTLComponent.setTimeToLive(3000);
-	}
+	Bullet();
 
-	Bullet(std::string meshName, Ogre::SceneManager* sceneMgr) : GameObject(meshName, sceneMgr)	
-	{
-		mTTLComponent.setTimeToLive(3000);
-	}
+	Bullet(std::string meshName, Ogre::SceneManager* sceneMgr);
 
-	Bullet::Bullet( BulletPrefab * objectTemplate, Ogre::SceneManager * _sceneMenager)
-		: GameObject(objectTemplate->getMeshName(), _sceneMenager), 
-		  mPower(objectTemplate->getBulletPower())
+	Bullet::Bullet( BulletPrefab * objectTemplate, Ogre::SceneManager * _sceneMenager);
 
-	{
-		mPhysicsComponent.setMaxVelocityValue( objectTemplate->getMaxVelocity() );
-		mPhysicsComponent.setVelocity( objectTemplate->getVelocityVector() );
-		mTTLComponent.setTimeToLive(3000);
-	}
+	float getPower();
+	void setPower(float newPower);
 
+	void setOwner(GameObject* owner);
 
+	bool isDead();
 
-	float getPower()
-	{
-		return mPower;
-	}
-
-	void setPower(float newPower)
-	{
-		mPower = newPower;
-	}
-
-	void setOwner(GameObject* owner)
-	{
-		mOwner = owner;
-	}
-
-	bool isDead() {
-		if( mTTLComponent.isTimeIsUp()==true )
-			return true;
-		if( GameObject::isDead() == true )
-			return true;
-
-		return false;
-	}
-
-	TimeToLiveComponent& getTTLComponent()	{
-		return mTTLComponent;
-	}
+	TimeToLiveComponent& getTTLComponent();
 
 private:
 	float mPower;
