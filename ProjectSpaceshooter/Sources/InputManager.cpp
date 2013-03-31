@@ -87,7 +87,7 @@ void InputManager::updateInputForGame(GameData& mGameData, float deltaTime, unsi
 	{
 		tmpPos.z += 1.0;
 	}
-
+	
 	if(mKeyboard->isKeyDown(OIS::KC_S) )
 	{
 		tmpPos.z -= 1.0;
@@ -136,7 +136,8 @@ void InputManager::updateInputForGame(GameData& mGameData, float deltaTime, unsi
 	{
 		wasH_KeyPressed = true;
 	}
-	mGameData.getPlayer()->getPhysicsComponent().setVelocity(tmpPos);
+	//mGameData.getPlayer()->getPhysicsComponent().setAcceleration(tmpPos);
+	mGameData.getPlayer()->setTargetVelocity( tmpPos );
 	mGameData.getPlayer()->getPhysicsComponent().setRotVelocity(tmpAngle);
 }
 

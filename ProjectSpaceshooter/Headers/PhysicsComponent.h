@@ -23,10 +23,19 @@ public:
 	void setVelocityValue(float newValue);
 	float getVelocityValue();
 
+	void updateVelocity();
+
+	void setTargetVelocity( Ogre::Quaternion orientation,  Ogre::Vector3 localDir );
+
+
 private:
 	Ogre::Vector3 velocity;
 	float rotVelocity;
 
 	float velocityValue;
+	float maxVelocityValue;
 	float rotVelocityValue;
+
+	float accelerationValue;
+	Ogre::Vector3 targetVelocity;
 };

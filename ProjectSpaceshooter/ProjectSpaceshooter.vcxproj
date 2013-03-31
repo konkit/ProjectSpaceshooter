@@ -203,6 +203,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\AIComponent.cpp" />
+    <ClCompile Include="Sources\AISystem.cpp" />
     <ClCompile Include="Sources\Bullet.cpp" />
     <ClCompile Include="Sources\ColliderComponent.cpp" />
     <ClCompile Include="Sources\Enemy.cpp" />

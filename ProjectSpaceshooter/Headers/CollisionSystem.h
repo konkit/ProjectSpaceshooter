@@ -45,7 +45,7 @@ public:
 
 			if( isColliding == true )	
 			{
-				std::cout<<"Collision of "<<typeName<<" with bullet \n";
+				//std::cout<<"Collision of "<<typeName<<" with bullet \n";
 
 				//PROWIZOOOORKAAAA - trzeba wykminic lepszy system rozpoznawania jakie typy obiektow sie zderzyly
 				//a) polimorfizm - metoda getType
@@ -72,7 +72,7 @@ public:
 
 			if( isColliding == true )
 			{
-				std::cout<<"Collision of "<<typeName<<" with enemy\n";
+				//std::cout<<"Collision of "<<typeName<<" with enemy\n";
 			}
 		}
 		delete myEnemyIterator;

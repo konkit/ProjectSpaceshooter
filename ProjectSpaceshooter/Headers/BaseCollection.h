@@ -90,7 +90,7 @@ inline void BaseCollection<BulletPrefab, Bullet>::loadPrefabs()	{
 	myBullet->setBulletPower(5.0);
 	myBullet->setMeshName("bullet2.MESH");
 
-	myBullet->setMaxVelocity(11000);
+	myBullet->setMaxVelocity(500);
 	myBullet->setVelocityVector(Ogre::Vector3(0.0, 0.0, 1.0));
 }
 
