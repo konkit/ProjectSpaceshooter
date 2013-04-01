@@ -4,20 +4,14 @@
 class TimeToLiveComponent
 {
 public:
-	TimeToLiveComponent() {}
+	TimeToLiveComponent();
 
-	void setTimeToLive(int newTime)	{
-		timeToLive = newTime;
-	}
+	void setTimeToLive(int newTime);
 
 	/** function running every frame and decreasing time to live */
-	void decreaseTimeToLive()	{
-		timeToLive--;
-	}
+	void decreaseTimeToLive();
 
-	bool isTimeIsUp()	{
-		return timeToLive<0;
-	}
+	bool isTimeIsUp();
 private:
 	int timeToLive;
 };

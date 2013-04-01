@@ -18,12 +18,7 @@ public:
 	void update(GameData& mGameData, float deltaTime)
 	{
 		//player object update
-		GameObject* cntPlayer = mGameData.getPlayer();
-		PhysicsComponent& tmpPhysics = 
-			mGameData.getPlayer()->getPhysicsComponent();
-
-		cntPlayer->rotate( tmpPhysics.getRotVelocity() * deltaTime );
-		cntPlayer->move( tmpPhysics.getVelocity() * deltaTime );
+		updateOneObject( mGameData.getPlayer(), deltaTime );
 
 		//bullet objects update
 		GameCollectionIterator<Bullet> * myIterator = mGameData.getBullets().getIterator();
@@ -32,11 +27,7 @@ public:
 		{
 			it = myIterator->getNext();
 			//for every game object
-			PhysicsComponent& tmpPhysics = 
-				it->getPhysicsComponent();
-
-			it->rotate( tmpPhysics.getRotVelocity() * deltaTime );
-			it->move( tmpPhysics.getVelocity() * deltaTime );
+			updateOneObject(it, deltaTime);
 		}
 		delete myIterator;
 
@@ -45,13 +36,18 @@ public:
 		{
 			it = myEnemyIterator->getNext();
 			//for every game object
-			PhysicsComponent& tmpPhysics = 
-				it->getPhysicsComponent();
-
-			it->rotate( tmpPhysics.getRotVelocity() * deltaTime );
-			it->move( tmpPhysics.getVelocity() * deltaTime );
+			updateOneObject(it, deltaTime);
 		}
 		delete myEnemyIterator;
+	}
+
+	void updateOneObject( GameObject* it, float deltaTime ) {
+		PhysicsComponent& tmpPhysics = it->getPhysicsComponent();
+
+		tmpPhysics.updateVelocity();
+
+		it->rotate( tmpPhysics.getRotVelocity() * deltaTime );
+		it->move( tmpPhysics.getVelocity() * deltaTime );
 	}
 
 

@@ -110,6 +110,9 @@
     <ClInclude Include="Headers\EffectObject.h">
       <Filter>Header\GameObjects</Filter>
     </ClInclude>
+    <ClInclude Include="Headers\OgreText.h">
+      <Filter>Header</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header">
@@ -136,63 +139,102 @@
     <Filter Include="Header\GameObjects">
       <UniqueIdentifier>{9042edd7-7dbd-4c63-bf2a-1a507630428f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Systems">
+      <UniqueIdentifier>{d00010e2-1d43-4e36-b7fc-adfe92b81b3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Components">
+      <UniqueIdentifier>{ed1ff946-1036-4020-b539-d66f1aca1524}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\GameCollections">
+      <UniqueIdentifier>{0baa3349-959d-4413-829f-6182372bebe6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\GameObjects">
+      <UniqueIdentifier>{61717c08-4b9a-4214-aff8-a85063829349}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\States">
+      <UniqueIdentifier>{d7a5067c-91c8-419c-abca-afa6f4901c85}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\Game.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\GameData.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\GameObject.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\GameStateMain.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\HangarState.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\InputManager.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\LevelBuilder.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="Sources\main.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\PauseState.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\PlayState.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Sources\stdafx.cpp">
       <Filter>Precompiled Header</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\OgreManager.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
+    <ClCompile Include="Sources\ResoursceLoader.cpp" />
     <ClCompile Include="Sources\Enemy.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\EnemySpawner.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\StaticObject.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\ObjectStateUpdateSystem.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\StateManager.cpp">
-      <Filter>Source</Filter>
+      <Filter>Source\GameObjects</Filter>
     </ClCompile>
     <ClCompile Include="Sources\GameState.cpp">
-      <Filter>Source</Filter>
+      <Filter>Source\States</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\ResoursceLoader.cpp" />
+    <ClCompile Include="Sources\PauseState.cpp">
+      <Filter>Source\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\InputManager.cpp">
+      <Filter>Source\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\ObjectStateUpdateSystem.cpp">
+      <Filter>Source\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\OgreManager.cpp">
+      <Filter>Source\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\PlayState.cpp">
+      <Filter>Source\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\StaticObject.cpp">
+      <Filter>Source\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\GameStateMain.cpp">
+      <Filter>Source\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\HangarState.cpp">
+      <Filter>Source\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\GameData.cpp">
+      <Filter>Source\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\StateManager.cpp">
+      <Filter>Source\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\LevelBuilder.cpp">
+      <Filter>Source\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\GameObject.cpp">
+      <Filter>Source\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\EnemySpawner.cpp">
+      <Filter>Source\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Bullet.cpp">
+      <Filter>Source\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\AIComponent.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\ColliderComponent.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\HealthComponent.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\PhysicsComponent.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\TimeToLiveComponent.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\WeaponComponent.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\AISystem.cpp">
+      <Filter>Source\Systems</Filter>
+    </ClCompile>
     <ClCompile Include="Sources\EnemyCollection.cpp" />
   </ItemGroup>
   <ItemGroup>

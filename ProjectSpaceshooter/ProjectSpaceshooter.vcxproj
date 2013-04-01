@@ -187,6 +187,7 @@
     <ClInclude Include="Headers\LevelDescription.h" />
     <ClInclude Include="Headers\ObjectStateUpdateSystem.h" />
     <ClInclude Include="Headers\OgreManager.h" />
+    <ClInclude Include="Headers\OgreText.h" />
     <ClInclude Include="Headers\PauseState.h" />
     <ClInclude Include="Headers\PhysicsComponent.h" />
     <ClInclude Include="Headers\PhysicsSystem.h" />
@@ -201,6 +202,10 @@
     <ClInclude Include="Headers\WeaponComponent.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Sources\AIComponent.cpp" />
+    <ClCompile Include="Sources\AISystem.cpp" />
+    <ClCompile Include="Sources\Bullet.cpp" />
+    <ClCompile Include="Sources\ColliderComponent.cpp" />
     <ClCompile Include="Sources\Enemy.cpp" />
     <ClCompile Include="Sources\EnemyCollection.cpp" />
     <ClCompile Include="Sources\EnemySpawner.cpp" />
@@ -210,12 +215,14 @@
     <ClCompile Include="Sources\GameState.cpp" />
     <ClCompile Include="Sources\GameStateMain.cpp" />
     <ClCompile Include="Sources\HangarState.cpp" />
+    <ClCompile Include="Sources\HealthComponent.cpp" />
     <ClCompile Include="Sources\InputManager.cpp" />
     <ClCompile Include="Sources\LevelBuilder.cpp" />
     <ClCompile Include="Sources\main.cpp" />
     <ClCompile Include="Sources\ObjectStateUpdateSystem.cpp" />
     <ClCompile Include="Sources\OgreManager.cpp" />
     <ClCompile Include="Sources\PauseState.cpp" />
+    <ClCompile Include="Sources\PhysicsComponent.cpp" />
     <ClCompile Include="Sources\PlayState.cpp" />
     <ClCompile Include="Sources\ResoursceLoader.cpp" />
     <ClCompile Include="Sources\StateManager.cpp" />
@@ -226,6 +233,8 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Sources\TimeToLiveComponent.cpp" />
+    <ClCompile Include="Sources\WeaponComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ogre.cfg" />

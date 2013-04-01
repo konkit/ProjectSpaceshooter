@@ -88,6 +88,8 @@ public:
 	BaseCollection<EffectPrefab, EffectObject>& getEffects() {
 		return mEffectsCollection;
 	}
+
+	Core& getCore() { return theCore; }
 	
 private:
 	struct changeFlagsStruct

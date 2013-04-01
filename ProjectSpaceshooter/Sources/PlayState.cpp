@@ -14,10 +14,21 @@ PlayState::PlayState(SystemsSet & gameSystems) :GameState()
 	player->createSceneNode("smallfighter.MESH", mSceneMgr);
 	
 	//Create camera
-	Ogre::SceneNode *cameraNode = player->getSceneNode()->createChildSceneNode();
-		cameraNode->attachObject(mCamera);
-		cameraNode->setPosition(Ogre::Vector3(0.0,20.0,-60.0));
-	mCamera->lookAt(Ogre::Vector3(0,0,100));
+	//Third person perspective camera
+//		Ogre::SceneNode *cameraNode = player->getSceneNode()->createChildSceneNode();
+//		cameraNode->attachObject(mCamera);			
+//		cameraNode->setPosition(Ogre::Vector3(0.0,20.0,-60.0));
+//		mCamera->lookAt(Ogre::Vector3(0,0,100));
+	//2D like camera
+//	Ogre::SceneNode *cameraNode = mSceneMgr->getRootSceneNode()->createChildSceneNode();
+//		cameraNode->attachObject(mCamera);
+//		cameraNode->setPosition(Ogre::Vector3(0.0, 2000.0, 0.0));
+//		mCamera->lookAt(Ogre::Vector3(0.01, 0.01, 0.01));
+	//2D like camera tied to player
+		Ogre::SceneNode *cameraNode = player->getSceneNode()->createChildSceneNode();
+		cameraNode->attachObject(mCamera);			
+		cameraNode->setPosition(Ogre::Vector3(0.0,2000.0,-25.0));
+		mCamera->lookAt(Ogre::Vector3(0.001,0.001,0.01));
 
 	//bullet model
 	gameSystems.gameData.bulletEntity = mSceneMgr->createEntity("BulletEntity", "my_sun.MESH");

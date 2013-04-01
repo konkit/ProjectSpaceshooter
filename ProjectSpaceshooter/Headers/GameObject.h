@@ -64,7 +64,11 @@ public:
 		return mNode->getOrientation();	
 	}
 
-	void move(Ogre::Vector3 nPos) {		mNode->translate( mNode->getOrientation() * nPos );	}
+	void setTargetVelocity( Ogre::Vector3 localDirection ) {
+		mPhysicsComponent.setTargetVelocity( mNode->getOrientation(), localDirection );
+	}
+
+	void move(Ogre::Vector3 nPos) {		mNode->translate( nPos );	}
 	void rotate(float rotVelocity)	{	mNode->yaw( Ogre::Radian(rotVelocity) ); }
 
 	bool isDead() {

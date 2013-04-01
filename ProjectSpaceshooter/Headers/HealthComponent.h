@@ -2,26 +2,15 @@
 
 class HealthComponent {
 public:
-	HealthComponent() : health(100), maxHealth(100)
-	{
+	HealthComponent();
 
-	}
+	void decreaseHealth( int value );
 
-	void decreaseHealth( int value )	{
-		health -= value;
-	}
+	void restoreToMax();
 
-	void restoreToMax()	{
-		health = maxHealth;
-	}
+	int getHealth();
 
-	int getHealth()	{
-		return health;
-	}
-
-	bool isDead()	{
-		return health < 0;
-	}
+	bool isDead();
 
 
 private:
