@@ -1,35 +1,6 @@
 #pragma once
-
-class EffectPrefab
-{
-public:
-	EffectPrefab(unsigned prefabID) : mPrefabID(prefabID)
-	{	}
-
-	void setPrefabID(unsigned val) { mPrefabID = val; }
-	unsigned	 getPrefabID()   const { return mPrefabID; }
-
-	void setParticleSystemName( std::string newParticleSystem) {
-		mParticleSystemName = newParticleSystem;
-	}
-
-	std::string getParticleSystemName() {
-		return mParticleSystemName;
-	}
-
-	//void setParticleSystem( Ogre::ParticleSystem newParticleSystem) {
-	//	mParticleSystem = newParticleSystem;
-	//}
-
-	//Ogre::ParticleSystem getParticleSystem() {
-	//	return mParticleSystem;
-	//}
-
-private:
-	std::string mParticleSystemName;
-	//Ogre::ParticleSystem* mParticleSystem;
-	unsigned	mPrefabID;
-};
+#include "Prefabs.h"
+#include "TimeToLiveComponent.h"
 
 class EffectObject : public GameObject
 {

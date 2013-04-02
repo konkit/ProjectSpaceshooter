@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Prefabs.h"
 #include "Bullet.h"
 #include "Enemy.h"
 #include "EffectObject.h"

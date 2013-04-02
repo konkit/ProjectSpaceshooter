@@ -2,7 +2,6 @@
 
 #include "Enemy.h"
 #include "GameCollection.h"
-#include "EnemyCollection.h"
 #include <sstream>
 #include <vector>
 

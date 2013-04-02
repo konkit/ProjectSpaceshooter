@@ -113,6 +113,10 @@
     <ClInclude Include="Headers\OgreText.h">
       <Filter>Header</Filter>
     </ClInclude>
+    <ClInclude Include="Headers\XMLreader.h" />
+    <ClInclude Include="Headers\PrefabPlant.h" />
+    <ClInclude Include="Headers\Prefabs.h" />
+    <ClInclude Include="Headers\EnemyPrefabPlant.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header">
@@ -236,6 +240,10 @@
       <Filter>Source\Systems</Filter>
     </ClCompile>
     <ClCompile Include="Sources\EnemyCollection.cpp" />
+    <ClCompile Include="Sources\XMLreader.cpp" />
+    <ClCompile Include="Sources\PrefabPlant.cpp" />
+    <ClCompile Include="Sources\Prefabs.cpp" />
+    <ClCompile Include="Sources\EnemyPrefabPlant.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ogre.cfg" />
