@@ -116,7 +116,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>FreeImage_d.lib;freetype_d.lib;OgreMainStatic_d.lib;OgreRTShaderSystemStatic_d.lib;OgreTerrainStatic_d.lib;OIS_d.lib;zlib_d.lib;zziplib_d.lib;RenderSystem_GLStatic_d.lib;OpenGL32.lib;GLU32.lib;opt/Plugin_ParticleFXStatic_d.lib;xmllite.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>FreeImage_d.lib;freetype_d.lib;OgreMainStatic_d.lib;OgreRTShaderSystemStatic_d.lib;OgreTerrainStatic_d.lib;OIS_d.lib;zlib_d.lib;zziplib_d.lib;RenderSystem_GLStatic_d.lib;OpenGL32.lib;GLU32.lib;opt/Plugin_ParticleFXStatic_d.lib;xmllite.lib;shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Bscmake>
       <PreserveSbr>true</PreserveSbr>
@@ -203,7 +203,7 @@
     <ClInclude Include="Headers\Systems.h" />
     <ClInclude Include="Headers\TimeToLiveComponent.h" />
     <ClInclude Include="Headers\WeaponComponent.h" />
-    <ClInclude Include="Headers\XMLreader.h" />
+    <ClInclude Include="Headers\PredabReader_XML.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\AIComponent.cpp" />
@@ -242,7 +242,7 @@
     </ClCompile>
     <ClCompile Include="Sources\TimeToLiveComponent.cpp" />
     <ClCompile Include="Sources\WeaponComponent.cpp" />
-    <ClCompile Include="Sources\XMLreader.cpp" />
+    <ClCompile Include="Sources\PredabReader_XML.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ogre.cfg" />

@@ -3,6 +3,7 @@
 #include "EnemyPrefabPlant.h"
 #include "Exceptions.h"
 PrefabPlant::PrefabPlant(void)
+	: mPrefabReady(true)
 {
 }
 
@@ -52,4 +53,9 @@ PrefabPlant * PrefabPlant::CreatePrefabPlantFor( PREFAB_TYPE prefabType )
 void PrefabPlant::DeletePrefabPlant( PrefabPlant * _prefabPlant )
 {
 	delete _prefabPlant;
+}
+
+bool PrefabPlant::IsPrefabReady()
+{
+	return mPrefabReady;
 }

@@ -17,22 +17,22 @@
  * getNext method return read prefab, but you must down cast returned prefab.
  * @author Zyga
  */
-class XMLreader
+class PredabReader_XML
 {
 public:
-	XMLreader(string fileName, PREFAB_TYPE prefabType);
-	~XMLreader(void);
+	PredabReader_XML(string fileName, PREFAB_TYPE prefabType);
+	~PredabReader_XML(void);
 	bool hasNext();
-	Prefab getNext();
-
-	void readXML_Text();
-
-	void readXMLEndElement();
-
-	void readXmlElement();
+	Prefab * getNext();
 
 private:
+	bool readToNextPrefab();
+	void readXML_Text();
+	void readXML_EndElement();
+	void readXml_Element();
 	HRESULT readAttributes();
+	bool openReadingPrefab;
+	bool readyPrefab;
 	bool CHKHR(HRESULT state);
 	bool HR(HRESULT state);
 	bool CleanUp();

@@ -40,12 +40,12 @@ public:
 	{
 		return mCollection.getIterator();
 	}
-
-private:
-
 	void addPrefab(TPrefab* newPrefab) {
 		mPrefabs += newPrefab;
 	}
+
+private:
+
 
 	TPrefab* getPrefab(int prefabID)	{
 		GameCollectionIterator<TPrefab> * it = mPrefabs.getIterator();
