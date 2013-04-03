@@ -12,10 +12,10 @@
 		<rotation x_rot='1' y_rot='1' z_rot='1' />
 		<coliders>
 			<colider>
-				<offset x='0' y='0' z='0' />
-				<radian r='10' />
+				<offset x_pos='0' y_pos='0' z_pos='0' /> 
+				<radian value='10' />
 			</colider>
 		</coliders>
-		<standard_wapone id = '1' />
+		<standard_waepon id = '1' />
  	</ship>
 </ship_prefabs>

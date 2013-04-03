@@ -67,11 +67,11 @@ extern "C" {
         try {
             app.run();
         } catch( Ogre::Exception& e ) {
-			std::cout << " ! Exception : An exception has occured: " <<
+			std::cout << " ! Exception : An exception has occurred: " <<
             e.getFullDescription().c_str() << std::endl;
 
 //#if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
-            MessageBoxW( NULL, (LPCWSTR)e.getFullDescription().c_str(), L"An exception has occured!", MB_OK | MB_ICONERROR | MB_TASKMODAL);
+            MessageBoxA( NULL, e.getFullDescription().c_str(), "An exception has occurred!", MB_OK | MB_ICONERROR | MB_TASKMODAL);
 //#else
 
 //#endif

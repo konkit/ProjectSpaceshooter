@@ -49,8 +49,6 @@ Prefab * PredabReader_XML::getNext()
 		throw My_Exception("Try to read from broken file");
 	}
 	readyPrefab = false;
-	mPrefabPlant->resetPrefab();
-
 	while (S_OK == (hr = pReader->Read(&nodeType)) && !readyPrefab)
 	{
 		switch (nodeType)
@@ -142,7 +140,7 @@ void PredabReader_XML::readXml_Element()
 	}
 
 	if (cwchPrefix > 0)
-		mPrefabPlant->nextElement(pwszLocalName, pwszPrefix);
+		mPrefabPlant->nextElement(pwszPrefix, pwszLocalName);
 	else
 		mPrefabPlant->nextElement(pwszLocalName);
 
@@ -181,9 +179,9 @@ void PredabReader_XML::readXML_EndElement()
 	}
 
 	if (cwchPrefix > 0)
-		mPrefabPlant->nextElement(pwszLocalName, pwszPrefix);
+		mPrefabPlant->closeElement(pwszPrefix, pwszLocalName);
 	else
-		mPrefabPlant->nextElement(pwszLocalName);
+		mPrefabPlant->closeElement(pwszLocalName);
 }
 
 void PredabReader_XML::readXML_Text()
@@ -267,7 +265,7 @@ bool PredabReader_XML::readToNextPrefab()
 	{
 		return false;
 	}
-
+	mPrefabPlant->resetPrefab();
 	while (S_OK == (hr = pReader->Read(&nodeType)) && !readyPrefab)
 	{
 		switch (nodeType)
@@ -307,7 +305,7 @@ bool PredabReader_XML::readToNextPrefab()
 			}
 
 			if (cwchPrefix > 0)
-				mPrefabPlant->nextElement(pwszLocalName, pwszPrefix);
+				mPrefabPlant->nextElement(pwszPrefix, pwszLocalName);
 			else
 				mPrefabPlant->nextElement(pwszLocalName);
 

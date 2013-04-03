@@ -15,7 +15,11 @@ public:
 	My_Exception(std::string errorMessage)
 		: exception(errorMessage.c_str())
 	{};
+	My_Exception(std::wstring errorMessage)
+		: exception(string(errorMessage.begin(),errorMessage.end()).c_str())
+	{};
 	~My_Exception(){};
+
 
 private:
 
