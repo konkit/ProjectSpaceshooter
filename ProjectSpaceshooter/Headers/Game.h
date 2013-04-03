@@ -1,6 +1,7 @@
 #pragma once
 	
 #include "StateManager.h"
+#include "ResoursceLoader.h"
 
 
 
@@ -24,6 +25,7 @@ public:
 private:
 	TimeData	 time;
 	SystemsSet	 mGameSystems;
+	ResoursceLoader resurceSystem;
 	StateManager mStateMenager;
 };
 

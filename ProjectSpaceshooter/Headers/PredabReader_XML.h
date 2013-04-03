@@ -27,6 +27,9 @@ public:
 
 private:
 	bool readToNextPrefab();
+
+	void resetPrefab();
+
 	void readXML_Text();
 	void readXML_EndElement();
 	void readXml_Element();

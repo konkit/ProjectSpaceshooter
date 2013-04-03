@@ -12,6 +12,7 @@ ResoursceLoader::ResoursceLoader()
 
 void ResoursceLoader::loadPrefabs( GameData & _gameData )
 {
+	loadEnemyPrefabs(_gameData);
 }
 
 void ResoursceLoader::loadEnemyPrefabs( GameData & _gameData )

@@ -265,7 +265,8 @@ bool PredabReader_XML::readToNextPrefab()
 	{
 		return false;
 	}
-	mPrefabPlant->resetPrefab();
+	resetPrefab();
+
 	while (S_OK == (hr = pReader->Read(&nodeType)) && !readyPrefab)
 	{
 		switch (nodeType)
@@ -325,4 +326,10 @@ bool PredabReader_XML::readToNextPrefab()
 
 	}
 		return false;
+}
+
+void PredabReader_XML::resetPrefab()
+{
+	mPrefabPlant->resetPrefab();
+	readyPrefab = false;
 }

@@ -1,12 +1,11 @@
 #include "Game.h"
-#include "ResoursceLoader.h"
-
 
 Game::Game()
 {
 	
 	initializeGame();
 	mStateMenager.initStateManager(mGameSystems);
+	resurceSystem.loadPrefabs(mGameSystems.gameData);
 }
 
 Game::~Game()
@@ -31,7 +30,5 @@ void Game::initializeGame()
 	mGameSystems.ogreManager.initOgre();
 	//Initialize OIS
 	mGameSystems.inputManager.initOIS( mGameSystems.ogreManager.getWindowHandle() );
-	ResoursceLoader resurce;
-	resurce.loadEnemyPrefabs(mGameSystems.gameData);
 }
 
