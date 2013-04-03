@@ -66,7 +66,14 @@ extern "C" {
 		showWin32Console();
         try {
             app.run();
-        } catch( Ogre::Exception& e ) {
+
+        } 
+		catch(My_Exception& exce)
+		{
+			 MessageBoxA( NULL, exce.what(), "An exception has occurred!", MB_OK | MB_ICONERROR | MB_TASKMODAL);
+		}
+		catch( Ogre::Exception& e ) 
+		{
 			std::cout << " ! Exception : An exception has occurred: " <<
             e.getFullDescription().c_str() << std::endl;
 
@@ -79,8 +86,6 @@ extern "C" {
 		catch( AbstractException& e)	{
 			
 		}
-
-
 
 		FreeConsole();
         return 0;

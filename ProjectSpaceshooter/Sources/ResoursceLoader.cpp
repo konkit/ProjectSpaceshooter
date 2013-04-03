@@ -33,7 +33,7 @@ void ResoursceLoader::loadEnemyPrefabs( GameData & _gameData )
 			My_Exception("loadEnemyPrefabs: Can't convert prefab into enemyPrefab");
 		}
 	}
-	}catch(My_Exception excep)
+	}catch(My_Exception& excep)
 	{
 		MessageBoxA( NULL, excep.what(), "An exception has occured!", MB_OK | MB_ICONERROR | MB_TASKMODAL);
 	}
