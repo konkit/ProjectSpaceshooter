@@ -1,12 +1,6 @@
 #include "stdafx.h"
 #include "Enemy.h"
 
-
-EnemyPrefab::EnemyPrefab(unsigned prefabID) 
-	: mEnemyPrefabID(prefabID), mMyAI(AI_TYPE::fighter), mResistance(100), mWeaponPrefabID() 
-{
-}
-
 EnemyPrefab::~EnemyPrefab(void)
 {
 }

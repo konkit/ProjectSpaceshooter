@@ -49,15 +49,53 @@ class Prefab
 public:
 	Prefab(void);
 	virtual ~Prefab(void);
+	virtual void resetPrefab() = 0;
+};
+
+class PrefabWithColider : virtual public Prefab
+{
+public:
+	void setColiderList(std::list<colider_struct> coliders){mColiders = coliders;}
+	void addColider(colider_struct colider){mColiders.push_back(colider);}
+	const colider_struct	&			getColider()	const {return mColiders.front();}
+	const std::list<colider_struct> &	getColiderList() const {return mColiders;}
+	void clearColiders() {mColiders.clear();}
+
+	virtual void resetPrefab();
+
+protected:
+	std::list<colider_struct>	mColiders;
+};
+
+class PrefabWithMesh : virtual public Prefab
+{
+public:
+	PrefabWithMesh(){;}
+	~PrefabWithMesh(){;}
+	void setMeshName(string val) { mMeshName = val; }
+	void setScale(scale_struct scale){mScale = scale;}
+	void setRotation(rotation_struct rotation){mRotation = rotation;}
+	const scale_struct		&			getScale()		const {return mScale;}
+	const rotation_struct	&			getRotation()	const {return mRotation;}
+	const std::string		&			getMeshName()	const { return mMeshName; }
+
+	virtual void resetPrefab();
+
+protected:
+	string			mMeshName;
+	rotation_struct mRotation;
+	scale_struct	mScale;
+
 };
 
 /** 
   *
   * @author konkit
   */
-class BulletPrefab : public Prefab
+class BulletPrefab : public PrefabWithColider, public PrefabWithMesh
 {
 public:
+	BulletPrefab();
 	BulletPrefab(unsigned prefabID);
 
 	void setPrefabID(unsigned val) { mPrefabID = val; }
@@ -71,6 +109,9 @@ public:
 	float		 getBulletPower() const { return bulletPower; }
 	float		 getMaxVelocity() const { return mMaxVelocity; }
 	Ogre::Vector3 getVelocityVector() const { return mVelocityVector; }
+
+	virtual void resetPrefab();
+
 private:
 	unsigned	mPrefabID;
 	string		mMeshName;
@@ -83,7 +124,7 @@ private:
   *
   * @author Zygi
   */
-class StaticPrefab : public Prefab
+class StaticPrefab : public PrefabWithColider, public PrefabWithMesh
 {
 public:
 	void setStaticPrefabID(unsigned val) { mStaticPrefabID = val; }
@@ -93,6 +134,9 @@ public:
 	unsigned	 getStaticPrefabID()   const { return mStaticPrefabID; }
 	std::string	 getMeshName()	  const { return mMeshName; }
 	unsigned int getResistance()  const { return resistance; }
+
+	virtual void resetPrefab();
+
 private:
 	unsigned	resistance;
 	unsigned	mStaticPrefabID;
@@ -103,6 +147,7 @@ private:
 class EffectPrefab : public Prefab
 {
 public:
+	EffectPrefab();
 	EffectPrefab(unsigned prefabID) : mPrefabID(prefabID)
 	{	}
 
@@ -116,6 +161,8 @@ public:
 	std::string getParticleSystemName() {
 		return mParticleSystemName;
 	}
+
+	virtual void resetPrefab();
 
 	//void setParticleSystem( Ogre::ParticleSystem newParticleSystem) {
 	//	mParticleSystem = newParticleSystem;
@@ -135,31 +182,27 @@ private:
   *
   * @author Zygi
   */
-class EnemyPrefab: public Prefab
+class EnemyPrefab: public PrefabWithMesh, public PrefabWithColider
 {
 public:
 	EnemyPrefab()
+		: Prefab()
 	{
-		resetFields();
+		resetPrefab();
 	};
 	EnemyPrefab(unsigned prefabID);
 	~EnemyPrefab(void);
-	void resetFields();
+	void resetPrefab();
 	
 	void setPrefabID(unsigned val) { mEnemyPrefabID = val; }
 	void setWeaponPrefabID(unsigned val) { mWeaponPrefabID = val; }
 	void setAiType(AI_TYPE val) { mMyAI = val; }
-	void setMeshName(string val) { mMeshName = val; }
 	void setResistance(unsigned int val) { mResistance = val; }
 	void setMaxVelocity(unsigned velocity){mMaxVelocity = velocity;}
 	void setMaxAcceleration(unsigned acceleration){mMaxAcceleration = acceleration;}
 	void setMaxAngleVelocity(unsigned angleVel){mMaxAngleVelocity = angleVel;}
 	void setMaxHealth(unsigned health){mMaxHealth = health;}
-	void setScale(scale_struct scale){mScale = scale;}
-	void setRotation(rotation_struct rotation){mRotation = rotation;}
-	void setColiderList(std::list<colider_struct> coliders){mColiders = coliders;}
-	void addColider(colider_struct colider){mColiders.push_back(colider);}
-
+	
 	unsigned	 getPrefabID()			const { return mEnemyPrefabID; }
 	unsigned	 getWeaponPrefabID()	const { return mWeaponPrefabID; }
 	AI_TYPE		 getAiType()			const { return mMyAI; }
@@ -168,23 +211,14 @@ public:
 	unsigned	 getMaxAcceleration()	const {return mMaxAcceleration;}
 	unsigned	 getMaxAngleVelocity()	const {return mMaxAngleVelocity;}
 	unsigned	 getMaxHealth()			const {return mMaxHealth;}
-	const scale_struct		&			getScale()		const {return mScale;}
-	const rotation_struct	&			getRotation()	const {return mRotation;}
-	const std::string		&			getMeshName()	const { return mMeshName; }
-	const colider_struct	&			getColider()	const {return mColiders.front();}
-	const std::list<colider_struct> &	getColiderList() const {return mColiders;}
-
 private:
 	unsigned		mResistance;
 	unsigned		mEnemyPrefabID;
-	string			mMeshName;
 	unsigned		mMaxVelocity;
 	unsigned		mMaxAcceleration;
 	unsigned		mMaxAngleVelocity;
 	unsigned		mMaxHealth;
-	scale_struct	mScale;
-	rotation_struct mRotation;
 	AI_TYPE			mMyAI; 
 	unsigned		mWeaponPrefabID;
-	std::list<colider_struct>	mColiders;
+
 };

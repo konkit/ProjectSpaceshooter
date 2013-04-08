@@ -1,12 +1,11 @@
 #pragma once
 #include "PrefabPlant.h"
 
-class EnemyPrefabPlant : public PrefabWithColider_Plant, public PrefabWithMesh_Plant
+class BulletPrefabPlant : public PrefabWithColider_Plant, public PrefabWithMesh_Plant
 {
 public:
-	EnemyPrefabPlant();
-	~EnemyPrefabPlant();
-
+	BulletPrefabPlant(){};
+	~BulletPrefabPlant();;
 	void setText(const wstring & text );
 	Prefab * getCreatedPrefab();
 	void virtual resetPrefab();
@@ -23,14 +22,14 @@ private:
 	void _setMaxAngleVellocity(const wstring & attribute, const wstring & value);
 	void _setMaxHealth(const wstring & attribute, const wstring & value);
 	void _setShipName(const wstring & attribute, const wstring & value);
-	
+
 	//--------------------------------------------------------------------------------------
 
 
-	void (EnemyPrefabPlant:: *methodToFillEnemyProperty)(const wstring & attribute, const wstring & value);
-	static const wstring rootEnemyPrefabsNode;
+	void (BulletPrefabPlant:: *methodToFillProperty)(const wstring & attribute, const wstring & value);
+	static const wstring rootBulletPrefabsNode;
 	static const wstring prefabName;
-	EnemyPrefab _enemyPrefab;
+	BulletPrefab _bulletPrefab;
 
 	static const wchar_t * ship;
 	static const wchar_t * ship_name;

@@ -103,7 +103,6 @@
     <ClInclude Include="Headers\StateManager.h">
       <Filter>Header\States</Filter>
     </ClInclude>
-    <ClInclude Include="Headers\ResoursceLoader.h" />
     <ClInclude Include="Headers\BaseCollection.h">
       <Filter>Header\GameCollections</Filter>
     </ClInclude>
@@ -113,10 +112,22 @@
     <ClInclude Include="Headers\OgreText.h">
       <Filter>Header</Filter>
     </ClInclude>
-    <ClInclude Include="Headers\PrefabPlant.h" />
-    <ClInclude Include="Headers\Prefabs.h" />
-    <ClInclude Include="Headers\EnemyPrefabPlant.h" />
-    <ClInclude Include="Headers\PredabReader_XML.h" />
+    <ClInclude Include="Headers\EnemyPrefabPlant.h">
+      <Filter>Header\PrefabsPlant</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\PredabReader_XML.h">
+      <Filter>Header\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\PrefabPlant.h">
+      <Filter>Header\PrefabsPlant</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\Prefabs.h">
+      <Filter>Header\PrefabsPlant</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\ResoursceLoader.h">
+      <Filter>Header\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\BulletPrefabPlant.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header">
@@ -158,6 +169,15 @@
     <Filter Include="Source\States">
       <UniqueIdentifier>{d7a5067c-91c8-419c-abca-afa6f4901c85}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header\PrefabsPlant">
+      <UniqueIdentifier>{34a2e814-3a1b-4ee9-8e96-789d11a26f8f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\PrefabsPlants">
+      <UniqueIdentifier>{c13e223f-f044-45d8-a29d-8e3c1e63f7f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PrefabsFiles">
+      <UniqueIdentifier>{e35d30a9-6bab-4613-92c1-5ae3813a9e04}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\Game.cpp">
@@ -169,7 +189,6 @@
     <ClCompile Include="Sources\stdafx.cpp">
       <Filter>Precompiled Header</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\ResoursceLoader.cpp" />
     <ClCompile Include="Sources\Enemy.cpp">
       <Filter>Source\GameObjects</Filter>
     </ClCompile>
@@ -239,14 +258,39 @@
     <ClCompile Include="Sources\AISystem.cpp">
       <Filter>Source\Systems</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\EnemyCollection.cpp" />
-    <ClCompile Include="Sources\PrefabPlant.cpp" />
-    <ClCompile Include="Sources\Prefabs.cpp" />
-    <ClCompile Include="Sources\EnemyPrefabPlant.cpp" />
-    <ClCompile Include="Sources\PredabReader_XML.cpp" />
+    <ClCompile Include="Sources\EnemyCollection.cpp">
+      <Filter>Source\GameCollections</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\EnemyPrefabPlant.cpp">
+      <Filter>Source\PrefabsPlants</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\PredabReader_XML.cpp">
+      <Filter>Source\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\PrefabPlant.cpp">
+      <Filter>Source\PrefabsPlants</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Prefabs.cpp">
+      <Filter>Source\PrefabsPlants</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\ResoursceLoader.cpp">
+      <Filter>Source\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\BulletPrefabPlant.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ogre.cfg" />
     <None Include="resources_d.cfg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="media\prefabs_descriptions\static_prefabs.xml">
+      <Filter>PrefabsFiles</Filter>
+    </Xml>
+    <Xml Include="media\prefabs_descriptions\ship_prefabs.xml">
+      <Filter>PrefabsFiles</Filter>
+    </Xml>
+    <Xml Include="media\prefabs_descriptions\bullet_prefabs.xml">
+      <Filter>PrefabsFiles</Filter>
+    </Xml>
   </ItemGroup>
 </Project>

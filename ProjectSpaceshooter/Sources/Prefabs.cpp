@@ -11,7 +11,7 @@ Prefab::~Prefab(void)
 {
 }
 
-void EnemyPrefab::resetFields()
+void EnemyPrefab::resetPrefab()
 {
 	mResistance       = 0;
 	mEnemyPrefabID    = 0;
@@ -28,5 +28,46 @@ void EnemyPrefab::resetFields()
 	mRotation.z_rot   = 0;
 	mMyAI             = AI_TYPE::defender;
 	mWeaponPrefabID   = 0;
-	mColiders.clear();
+	clearColiders();
+}
+
+EnemyPrefab::EnemyPrefab( unsigned prefabID )
+	: Prefab()
+{
+
+}
+
+void BulletPrefab::resetPrefab()
+{
+	throw std::exception("The method or operation is not implemented.");
+}
+
+BulletPrefab::BulletPrefab()
+{
+	resetPrefab();
+}
+
+void EffectPrefab::resetPrefab()
+{
+	throw std::exception("The method or operation is not implemented.");
+}
+
+EffectPrefab::EffectPrefab()
+{
+	resetPrefab();
+}
+
+void StaticPrefab::resetPrefab()
+{
+	throw std::exception("The method or operation is not implemented.");
+}
+
+void PrefabWithColider::resetPrefab()
+{
+	throw std::exception("The method or operation is not implemented.");
+}
+
+void PrefabWithMesh::resetPrefab()
+{
+	throw std::exception("The method or operation is not implemented.");
 }

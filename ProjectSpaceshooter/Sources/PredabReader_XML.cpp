@@ -84,6 +84,8 @@ PredabReader_XML::~PredabReader_XML( void )
 		pFileStream->Release();
 	if(pReader)
 		pReader->Release();
+
+	PrefabPlant::DeletePrefabPlant(mPrefabPlant);
 }
 
 bool PredabReader_XML::CHKHR( HRESULT state )

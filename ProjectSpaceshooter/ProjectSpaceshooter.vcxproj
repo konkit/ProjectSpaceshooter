@@ -167,6 +167,7 @@
     <ClInclude Include="Headers\BaseCollection.h" />
     <ClInclude Include="Headers\Bullet.h" />
     <ClInclude Include="Headers\BulletCollection.h" />
+    <ClInclude Include="Headers\BulletPrefabPlant.h" />
     <ClInclude Include="Headers\ColliderComponent.h" />
     <ClInclude Include="Headers\CollisionSystem.h" />
     <ClInclude Include="Headers\Core.h" />
@@ -209,6 +210,7 @@
     <ClCompile Include="Sources\AIComponent.cpp" />
     <ClCompile Include="Sources\AISystem.cpp" />
     <ClCompile Include="Sources\Bullet.cpp" />
+    <ClCompile Include="Sources\BulletPrefabPlant.cpp" />
     <ClCompile Include="Sources\ColliderComponent.cpp" />
     <ClCompile Include="Sources\Enemy.cpp" />
     <ClCompile Include="Sources\EnemyCollection.cpp" />
@@ -247,6 +249,15 @@
   <ItemGroup>
     <None Include="ogre.cfg" />
     <None Include="resources_d.cfg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="media\prefabs_descriptions\bullet_prefabs.xml">
+      <SubType>Designer</SubType>
+    </Xml>
+    <Xml Include="media\prefabs_descriptions\ship_prefabs.xml">
+      <SubType>Designer</SubType>
+    </Xml>
+    <Xml Include="media\prefabs_descriptions\static_prefabs.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

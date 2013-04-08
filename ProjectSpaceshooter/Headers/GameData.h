@@ -29,7 +29,7 @@ struct GameObjectTemplates
 	GameCollection<EnemyPrefab> enemyPrefabCollection;
 };
 
-/** Structure storing SceneManagers for each GameState
+/** Structure storage SceneManagers for each GameState
   *
   * @author Zygi
   */
