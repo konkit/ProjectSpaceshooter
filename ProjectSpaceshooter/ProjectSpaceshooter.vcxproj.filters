@@ -130,6 +130,9 @@
     <ClInclude Include="Headers\EffectPrefabPlant.h">
       <Filter>Header\PrefabsPlant</Filter>
     </ClInclude>
+    <ClInclude Include="Headers\DebugDrawer.h">
+      <Filter>Header</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header">
@@ -262,6 +265,9 @@
     </ClCompile>
     <ClCompile Include="Sources\EnemyPrefabPlant.cpp">
       <Filter>Source\PrefabsPlants</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\DebugDrawer.cpp">
+      <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Sources\PredabReader_XML.cpp">
       <Filter>Source\Systems</Filter>

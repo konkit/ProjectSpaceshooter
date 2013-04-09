@@ -1,5 +1,6 @@
 #pragma once
 
+#include "DebugDrawer.h"
 
 class CollisionSystem	{
 public:
@@ -72,6 +73,12 @@ public:
 				//std::cout<<"Collision of "<<typeName<<" with enemy\n";
 			}
 		}
+
+
+		//Draw debug sphere
+#ifdef _DEBUG
+		DebugDrawer::getSingleton().drawCircle( currentObject->getPosition(), currentObject->getCollider().radius, 25, Ogre::ColourValue(1.0f, 1.0f, 1.0f) );
+#endif 
 	}
 
 

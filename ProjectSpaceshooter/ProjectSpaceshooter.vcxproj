@@ -171,6 +171,7 @@
     <ClInclude Include="Headers\CollisionSystem.h" />
     <ClInclude Include="Headers\Core.h" />
     <ClInclude Include="Headers\EffectPrefabPlant.h" />
+    <ClInclude Include="Headers\DebugDrawer.h" />
     <ClInclude Include="Headers\Enemy.h" />
     <ClInclude Include="Headers\EnemyPrefabPlant.h" />
     <ClInclude Include="Headers\EnemySpawner.h" />
@@ -213,6 +214,7 @@
     <ClCompile Include="Sources\BulletPrefabPlant.cpp" />
     <ClCompile Include="Sources\ColliderComponent.cpp" />
     <ClCompile Include="Sources\EffectPrefabPlant.cpp" />
+    <ClCompile Include="Sources\DebugDrawer.cpp" />
     <ClCompile Include="Sources\Enemy.cpp" />
     <ClCompile Include="Sources\EnemyPrefabPlant.cpp" />
     <ClCompile Include="Sources\EnemySpawner.cpp" />
