@@ -8,34 +8,32 @@ public:
 	void update(GameData& mGameData)	{
 		CheckForCollisions( mGameData.getPlayer(), mGameData, "player" );
 
-		GameCollectionIterator<Bullet> * myBulletIterator = mGameData.getBullets().getIterator();
+		GameCollectionIterator<Bullet>  myBulletIterator = mGameData.getBullets().getIterator();
 		Bullet* itBullet;
-		while (myBulletIterator->hasNext())
+		while (myBulletIterator.hasNext())
 		{
-			itBullet = myBulletIterator->getNext();
+			itBullet = myBulletIterator.getNext();
 			CheckForCollisions( itBullet, mGameData, "bullet" );
 		}
-		delete myBulletIterator;
-
-		GameCollectionIterator<EnemyObject> * myEnemyIterator = mGameData.getEnemies().getIterator();
+		
+		GameCollectionIterator<EnemyObject> myEnemyIterator = mGameData.getEnemies().getIterator();
 		EnemyObject* itEnemy;
-		while (myEnemyIterator->hasNext())
+		while (myEnemyIterator.hasNext())
 		{
-			itEnemy = myEnemyIterator->getNext();
+			itEnemy = myEnemyIterator.getNext();
 			CheckForCollisions( itEnemy, mGameData, "enemy" );
 		}
-		delete myEnemyIterator;
-				
+					
 	}
 
 	void CheckForCollisions( GameObject* currentObject, GameData& mGameData, std::string typeName )	{
 		//for every object2
-		GameCollectionIterator<Bullet> * myBulletIterator = mGameData.getBullets().getIterator();
+		GameCollectionIterator<Bullet> myBulletIterator = mGameData.getBullets().getIterator();
 		Bullet* itBullet;
 		bool isColliding;
-		while (myBulletIterator->hasNext())
+		while (myBulletIterator.hasNext())
 		{
-			itBullet = myBulletIterator->getNext();
+			itBullet = myBulletIterator.getNext();
 
 			if( itBullet == currentObject)
 				continue;
@@ -56,13 +54,12 @@ public:
 				}
 			}
 		}
-		delete myBulletIterator;
 
-		GameCollectionIterator<EnemyObject> * myEnemyIterator = mGameData.getEnemies().getIterator();
+		GameCollectionIterator<EnemyObject> myEnemyIterator = mGameData.getEnemies().getIterator();
 		EnemyObject* itEnemy;
-		while (myEnemyIterator->hasNext())
+		while (myEnemyIterator.hasNext())
 		{
-			itEnemy = myEnemyIterator->getNext();
+			itEnemy = myEnemyIterator.getNext();
 
 			if( itEnemy == currentObject)
 				continue;
@@ -75,7 +72,6 @@ public:
 				//std::cout<<"Collision of "<<typeName<<" with enemy\n";
 			}
 		}
-		delete myEnemyIterator;
 	}
 
 

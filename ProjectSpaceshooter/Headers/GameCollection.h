@@ -8,7 +8,7 @@
 //{
 //	std::cout<<myIterator->getNext()->name << std::endl;
 //}
-//delete myIterator;
+
 
 /** 
   *
@@ -198,9 +198,9 @@ public:
 
 	gObject * getFirst() {return mListHead->mObject;}
 	//Required delete iterator after used
-	GameCollectionIterator<gObject> * getIterator()
+	GameCollectionIterator<gObject> getIterator()
 	{
-		return new GameCollectionIterator<gObject>(mListHead);
+		return GameCollectionIterator<gObject>(mListHead);
 	} 
 private:
 	ListElement<gObject> * mListHead;

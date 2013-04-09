@@ -40,14 +40,13 @@ public:
 	void addSpawner(EnemySpawner * _newSpawner) {enemySpawnerCollection += _newSpawner;}
 	void spawnEnemy(GameData & _gameData, unsigned long currentTime)
 	{
-		GameCollectionIterator<EnemySpawner> * spawnerIT = enemySpawnerCollection.getIterator();
+		GameCollectionIterator<EnemySpawner> spawnerIT = enemySpawnerCollection.getIterator();
 		EnemySpawner * tmpSpawner;
-		while (spawnerIT->hasNext())
+		while (spawnerIT.hasNext())
 		{
-			tmpSpawner = spawnerIT->getNext();
+			tmpSpawner = spawnerIT.getNext();
 			tmpSpawner->spawnEnemy(&_gameData, currentTime);
 		}
-		delete spawnerIT;
 	}
 
 private:

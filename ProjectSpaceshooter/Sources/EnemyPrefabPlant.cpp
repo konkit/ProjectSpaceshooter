@@ -4,6 +4,9 @@
 const wstring EnemyPrefabPlant::rootEnemyPrefabsNode(L"ship_prefabs");
 const wstring EnemyPrefabPlant::prefabName(L"ship");
 
+const wchar_t * EnemyPrefabPlant::ship_name = L"ship_name";
+
+
 EnemyPrefabPlant::EnemyPrefabPlant()
 {
 	PrefabPlant::setPrefab(static_cast<Prefab*>(&_enemyPrefab));
@@ -26,24 +29,21 @@ void EnemyPrefabPlant::resetPrefab()
 	_enemyPrefab.resetPrefab();
 }
 
-const wstring & EnemyPrefabPlant::getPrefabRootNode()
+const wstring EnemyPrefabPlant::getPrefabRootNode()
 {
-	return rootEnemyPrefabsNode;
+	return wstring(rootEnemyPrefabsNode);
 }
 
-const wstring & EnemyPrefabPlant::getPrefabName()
+const wstring EnemyPrefabPlant::getPrefabNodeName()
 {
-	return prefabName;
+	return wstring(prefabName);
 }
 
 void EnemyPrefabPlant::setMethodToFillProperty( const wstring & name )
 {
-	if (name == EnemyPrefabPlant::ship)
+	if (SetMethodToFillBasicProperty(name))
 	{
-		methodToFillEnemyProperty = &EnemyPrefabPlant::_setPrefabID;
-	} else if (name == EnemyPrefabPlant::ship_name)
-	{
-		methodToFillEnemyProperty = &EnemyPrefabPlant::_setShipName;
+		methodToFillEnemyProperty = methodToFillBasicProperty;
 	} else if (name == PrefabPlant::max_velocity)
 	{
 		methodToFillEnemyProperty = &EnemyPrefabPlant::_setMaxVelocity;
@@ -55,12 +55,7 @@ void EnemyPrefabPlant::setMethodToFillProperty( const wstring & name )
 	else if (name == PrefabPlant::max_angle_velocity)
 	{
 		methodToFillEnemyProperty = &EnemyPrefabPlant::_setMaxAngleVellocity;
-	}
-	else if (name == PrefabPlant::health)
-	{
-		methodToFillEnemyProperty = &EnemyPrefabPlant::_setMaxHealth;
-	}
-	else if (SetMethodToFillMeshProperty(name))
+	} else if (SetMethodToFillMeshProperty(name))
 	{
 		methodToFillEnemyProperty = methodToFillMeshProperty;
 	} else if (SetMethodToFillColiderProperty(name))
@@ -79,19 +74,9 @@ void EnemyPrefabPlant::setMethodToFillProperty( const wstring & name )
 }
 
 
-Prefab * EnemyPrefabPlant::getCreatedPrefab()
+Prefab & EnemyPrefabPlant::getCreatedPrefab()
 {
-	return static_cast<Prefab *>(&_enemyPrefab);
-}
-
-void EnemyPrefabPlant::_setPrefabID( const wstring & attribute, const wstring & value )
-{
-	if (attribute == id)
-	{
-		unsigned int id;
-		id = ValueToUINT(value);
-		_enemyPrefab.setPrefabID(id);
-	};
+	return static_cast<Prefab &>(_enemyPrefab);
 }
 
 void EnemyPrefabPlant::_setWaeponPrefab( const wstring & attribute, const wstring & value )
@@ -109,8 +94,8 @@ void EnemyPrefabPlant::_setMaxVelocity( const wstring & attribute, const wstring
 {
 	if (attribute == PrefabPlant::value)
 	{
-		unsigned int val;
-		val = ValueToUINT(value);
+		double val;
+		val = ValueToDouble(value);
 		_enemyPrefab.setMaxVelocity(val);
 	};
 }
@@ -119,8 +104,8 @@ void EnemyPrefabPlant::_setMaxAcceleration( const wstring & attribute, const wst
 {
 	if (attribute == PrefabPlant::value)
 	{
-		unsigned int val;
-		val = ValueToUINT(value);
+		double val;
+		val = ValueToDouble(value);
 		_enemyPrefab.setMaxAcceleration(val);
 	};
 }
@@ -129,32 +114,21 @@ void EnemyPrefabPlant::_setMaxAngleVellocity( const wstring & attribute, const w
 {
 	if (attribute == PrefabPlant::value)
 	{
-		unsigned int val;
-		val = ValueToUINT(value);
+		double val;
+		val = ValueToDouble(value);
 		_enemyPrefab.setMaxAngleVelocity(val);
 	};
 }
 
-void EnemyPrefabPlant::_setMaxHealth( const wstring & attribute, const wstring & value )
-{
-	if (attribute == PrefabPlant::value)
-	{
-		unsigned int val;
-		val = ValueToUINT(value);
-		_enemyPrefab.setMaxHealth(val);
-	};
-}
-
-
-void EnemyPrefabPlant::_setShipName( const wstring & attribute, const wstring & value )
-{
-
-}
 
 void EnemyPrefabPlant::fillPrefabProperty(const wstring & attribute, const wstring & value )
 {
 	(this->*methodToFillEnemyProperty)(attribute, value);
 }
 
-const wchar_t * EnemyPrefabPlant::ship_name = L"ship_name";
-const wchar_t * EnemyPrefabPlant::ship	= L"ship";
+const wstring EnemyPrefabPlant::getPrefabName()
+{
+	return wstring(ship_name);
+}
+
+

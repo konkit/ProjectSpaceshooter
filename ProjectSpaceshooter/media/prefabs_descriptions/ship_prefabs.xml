@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ship_prefabs>
 	<max_id id='2' />
+	
 	<ship id='1'>
 		<ship_name name='Basic Ship'  />
 		<mesh name='smallfighter.MESH' />
@@ -17,7 +18,8 @@
 			</colider>
 		</coliders>
 		<standard_waepon id = '1' />
- 	</ship>
+	</ship>
+	
 	<ship id='2'>
 		<ship_name name='Advance Ship'  />
 		<mesh name='advanceFlighter' />
@@ -34,5 +36,6 @@
 			</colider>
 		</coliders>
 		<standard_waepon id = '2' />
- 	</ship>
+	</ship>
+	
 </ship_prefabs>

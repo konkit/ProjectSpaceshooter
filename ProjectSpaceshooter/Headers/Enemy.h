@@ -13,7 +13,7 @@ using namespace std;
 class EnemyObject : public GameObject
 {
 public:
-	EnemyObject::EnemyObject( EnemyPrefab * objectTemplate, Ogre::SceneManager * _sceneMenager);
+	EnemyObject::EnemyObject( ShipPrefab * objectTemplate, Ogre::SceneManager * _sceneMenager);
 	~EnemyObject();
 	unsigned int mResistance;
 

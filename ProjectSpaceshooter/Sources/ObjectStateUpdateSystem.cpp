@@ -34,11 +34,11 @@ void ObjectStateUpdateSystem::update( GameData& mGameData, TimeData& time )
 	mGameData.getLevelDescription().spawn(mGameData, time.currentTime);
 
 	//deleting bullets when time to Live is up.
-	GameCollectionIterator<Bullet> * bulletIterator = mGameData.getBullets().getIterator();
+	GameCollectionIterator<Bullet> bulletIterator = mGameData.getBullets().getIterator();
 	Bullet* bulletIt;
-	while (bulletIterator->hasNext())
+	while (bulletIterator.hasNext())
 	{
-		bulletIt = bulletIterator->getNext();
+		bulletIt = bulletIterator.getNext();
 
 		bulletIt->getTTLComponent().decreaseTimeToLive();
 
@@ -51,14 +51,13 @@ void ObjectStateUpdateSystem::update( GameData& mGameData, TimeData& time )
 		}
 
 	}
-	delete bulletIterator;
 
 	//deleting enemies when dead.
-	GameCollectionIterator<EnemyObject> * enemyIterator = mGameData.getEnemies().getIterator();
+	GameCollectionIterator<EnemyObject> enemyIterator = mGameData.getEnemies().getIterator();
 	EnemyObject* enemyIt;
-	while (enemyIterator->hasNext())
+	while (enemyIterator.hasNext())
 	{
-		enemyIt = enemyIterator->getNext();
+		enemyIt = enemyIterator.getNext();
 		if( enemyIt->isDead() == true )	{
 			//create explosion
 			EffectObject* newExplosion = mGameData.getEffects().instantiate(1, mGameData.getSceneManagerFor(GAME_STATES::PLAY));
@@ -72,6 +71,5 @@ void ObjectStateUpdateSystem::update( GameData& mGameData, TimeData& time )
 		}
 
 	}
-	delete enemyIterator;
 }
 

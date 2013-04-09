@@ -1,11 +1,11 @@
 #include "stdafx.h"
 #include "Enemy.h"
 
-EnemyPrefab::~EnemyPrefab(void)
+ShipPrefab::~ShipPrefab(void)
 {
 }
 
-EnemyObject::EnemyObject( EnemyPrefab * objectTemplate, Ogre::SceneManager * _sceneMenager)
+EnemyObject::EnemyObject( ShipPrefab * objectTemplate, Ogre::SceneManager * _sceneMenager)
 	: GameObject(objectTemplate->getMeshName(), _sceneMenager), mResistance(objectTemplate->getResistance())
 {}
 

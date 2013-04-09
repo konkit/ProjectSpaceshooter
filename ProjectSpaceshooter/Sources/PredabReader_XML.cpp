@@ -41,7 +41,7 @@ PredabReader_XML::PredabReader_XML( string fileName, PREFAB_TYPE prefabType )
 
 
 
-Prefab * PredabReader_XML::getNext()
+Prefab & PredabReader_XML::getNext()
 {
 	XmlNodeType nodeType;
 	if (mErrorFlag == true)
@@ -136,7 +136,7 @@ void PredabReader_XML::readXml_Element()
 		HR(hr);
 	}
 
-	if (mPrefabPlant->getPrefabName() == pwszLocalName && openReadingPrefab)
+	if (mPrefabPlant->getPrefabNodeName() == pwszLocalName && openReadingPrefab)
 	{
 		throw My_Exception("XML Reader: Declarate Prefab in prefab.");
 	}
@@ -174,7 +174,7 @@ void PredabReader_XML::readXML_EndElement()
 	//Skip insignificant node
 	if (mPrefabPlant->getPrefabRootNode() == pwszLocalName)
 		return;
-	if (mPrefabPlant->getPrefabName() == pwszLocalName)
+	if (mPrefabPlant->getPrefabNodeName() == pwszLocalName)
 	{
 		openReadingPrefab = false;
 		readyPrefab = mPrefabPlant->IsPrefabReady();
@@ -296,10 +296,10 @@ bool PredabReader_XML::readToNextPrefab()
 			if(!wcscmp(L"max_id",pwszLocalName))
 				break;
 
-			if (mPrefabPlant->getPrefabName() != pwszLocalName)
+			if (mPrefabPlant->getPrefabNodeName() != pwszLocalName)
 				break;
 			
-			if (mPrefabPlant->getPrefabName() == pwszLocalName && openReadingPrefab)
+			if (mPrefabPlant->getPrefabNodeName() == pwszLocalName && openReadingPrefab)
 			{
 				throw My_Exception("XML Reader: Declarate Prefab in prefab.");
 			} else

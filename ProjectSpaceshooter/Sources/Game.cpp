@@ -5,7 +5,7 @@ Game::Game()
 	
 	initializeGame();
 	mStateMenager.initStateManager(mGameSystems);
-	resurceSystem.loadPrefabs(mGameSystems.gameData);
+	resurceSystem.loadAllPrefabs(mGameSystems.gameData);
 }
 
 Game::~Game()

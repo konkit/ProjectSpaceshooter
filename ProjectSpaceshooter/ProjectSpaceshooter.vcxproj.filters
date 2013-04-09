@@ -49,12 +49,6 @@
     <ClInclude Include="Headers\EnemySpawner.h">
       <Filter>Header\Systems</Filter>
     </ClInclude>
-    <ClInclude Include="Headers\BulletCollection.h">
-      <Filter>Header\GameCollections</Filter>
-    </ClInclude>
-    <ClInclude Include="Headers\EnemyCollection.h">
-      <Filter>Header\GameCollections</Filter>
-    </ClInclude>
     <ClInclude Include="Headers\GameCollection.h">
       <Filter>Header\GameCollections</Filter>
     </ClInclude>
@@ -127,7 +121,9 @@
     <ClInclude Include="Headers\ResoursceLoader.h">
       <Filter>Header\Systems</Filter>
     </ClInclude>
-    <ClInclude Include="Headers\BulletPrefabPlant.h" />
+    <ClInclude Include="Headers\BulletPrefabPlant.h">
+      <Filter>Header\PrefabsPlant</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header">
@@ -258,9 +254,6 @@
     <ClCompile Include="Sources\AISystem.cpp">
       <Filter>Source\Systems</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\EnemyCollection.cpp">
-      <Filter>Source\GameCollections</Filter>
-    </ClCompile>
     <ClCompile Include="Sources\EnemyPrefabPlant.cpp">
       <Filter>Source\PrefabsPlants</Filter>
     </ClCompile>
@@ -276,7 +269,9 @@
     <ClCompile Include="Sources\ResoursceLoader.cpp">
       <Filter>Source\Systems</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\BulletPrefabPlant.cpp" />
+    <ClCompile Include="Sources\BulletPrefabPlant.cpp">
+      <Filter>Source\PrefabsPlants</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="ogre.cfg" />

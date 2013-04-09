@@ -5,9 +5,8 @@
 #include "Core.h"
 
 #include "BaseCollection.h"
-#include "BulletCollection.h"
-#include "EnemyCollection.h"
 #include "LevelDescription.h"
+#include "Exceptions.h"
 
 
 
@@ -26,7 +25,7 @@ enum class GAME_STATES
   */
 struct GameObjectTemplates
 {
-	GameCollection<EnemyPrefab> enemyPrefabCollection;
+	GameCollection<ShipPrefab> enemyPrefabCollection;
 };
 
 /** Structure storage SceneManagers for each GameState
@@ -81,7 +80,7 @@ public:
 	}
 
 	//EnemyCollection& getEnemys()
-	BaseCollection<EnemyPrefab, EnemyObject>& getEnemies() {
+	BaseCollection<ShipPrefab, EnemyObject>& getEnemies() {
 		return mEnemyCollection;
 	}
 
@@ -91,12 +90,25 @@ public:
 
 	Core& getCore() { return theCore; }
 	
-	void addEnemyPrefab(const EnemyPrefab & _enemyPrefab)
+	void addShipPrefab(const ShipPrefab & _enemyPrefab)
 	{
-		EnemyPrefab * prefab = new EnemyPrefab(_enemyPrefab);
+		if (&_enemyPrefab == NULL)
+		{
+			throw My_Exception("addShipPrefab: Can't add NULL Ship Prefab");
+		}
+		ShipPrefab * prefab = new ShipPrefab(_enemyPrefab);
 		mEnemyCollection.addPrefab(prefab);
 	}
-
+	void addBulletPrefab(const BulletPrefab & _bulletPrefab)
+	{
+		if (&_bulletPrefab == NULL)
+		{
+			throw My_Exception("addBulletPrefab: Can't add NULL Bullet Prefab");
+		}
+		BulletPrefab * prefab = new BulletPrefab(_bulletPrefab);
+		mBulletCollection.addPrefab(prefab);
+	}
+	void addPrefab(PREFAB_TYPE prefabType, Prefab & prefab );
 private:
 	struct changeFlagsStruct
 	{
@@ -107,7 +119,7 @@ private:
 	} changeFlags;
 	//All GameObjects
 
-	BaseCollection<EnemyPrefab, EnemyObject> mEnemyCollection;
+	BaseCollection<ShipPrefab, EnemyObject> mEnemyCollection;
 	BaseCollection<BulletPrefab, Bullet> mBulletCollection;
 	BaseCollection<EffectPrefab, EffectObject> mEffectsCollection;
 

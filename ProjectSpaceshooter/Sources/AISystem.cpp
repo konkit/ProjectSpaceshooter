@@ -12,7 +12,7 @@ void AISystem::toCoreAI( EnemyObject* it, GameData& mGameData )
 	it->getSceneNode()->yaw( Ogre::Degree(180.0) );
 
 	//get some random values
-	float currentVelocity  = 200 + (rand()%300-100);
+	float currentVelocity  = float(200 + (rand()%300-100));
 	float currentRotVelocity = 0.0;
 
 	//set speed of enemy
@@ -28,8 +28,8 @@ void AISystem::randomAI( EnemyObject* it, GameData& mGameData )
 	PhysicsComponent& currentPhysicsComponent = it->getPhysicsComponent();
 
 	//get some random values
-	float currentVelocity  = 200 + (rand()%300-100);
-	float currentRotVelocity = 0.4 + (rand()%50-25)/10;
+	float currentVelocity  = float(200 + (rand()%300-100));
+	float currentRotVelocity = float(0.4 + (rand()%50-25)/10);
 
 	//set speed of enemy
 	//currentPhysicsComponent.setVelocityValue(currentVelocity);
@@ -43,15 +43,14 @@ void AISystem::randomAI( EnemyObject* it, GameData& mGameData )
 void AISystem::update( GameData& mGameData, float deltaTime )
 {
 	//For every enemy
-	GameCollectionIterator<EnemyObject> * myEnemyIterator = mGameData.getEnemies().getIterator();
+	GameCollectionIterator<EnemyObject> myEnemyIterator = mGameData.getEnemies().getIterator();
 	EnemyObject* it;
-	while (myEnemyIterator->hasNext())
+	while (myEnemyIterator.hasNext())
 	{
-		it = myEnemyIterator->getNext();
+		it = myEnemyIterator.getNext();
 
 		randomAI(it, mGameData);	
 //		toCoreAI(it, mGameData);
 	}
-	delete myEnemyIterator;
 }
 

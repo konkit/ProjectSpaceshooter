@@ -21,24 +21,22 @@ public:
 		updateOneObject( mGameData.getPlayer(), deltaTime );
 
 		//bullet objects update
-		GameCollectionIterator<Bullet> * myIterator = mGameData.getBullets().getIterator();
+		GameCollectionIterator<Bullet> myIterator = mGameData.getBullets().getIterator();
 		GameObject* it;
-		while (myIterator->hasNext())
+		while (myIterator.hasNext())
 		{
-			it = myIterator->getNext();
+			it = myIterator.getNext();
 			//for every game object
 			updateOneObject(it, deltaTime);
 		}
-		delete myIterator;
 
-		GameCollectionIterator<EnemyObject> * myEnemyIterator = mGameData.getEnemies().getIterator();
-		while (myEnemyIterator->hasNext())
+		GameCollectionIterator<EnemyObject> myEnemyIterator = mGameData.getEnemies().getIterator();
+		while (myEnemyIterator.hasNext())
 		{
-			it = myEnemyIterator->getNext();
+			it = myEnemyIterator.getNext();
 			//for every game object
 			updateOneObject(it, deltaTime);
 		}
-		delete myEnemyIterator;
 	}
 
 	void updateOneObject( GameObject* it, float deltaTime ) {

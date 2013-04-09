@@ -17,10 +17,10 @@ bool Collider::isCollisionOccuring( Collider& coll1, Collider& coll2, Ogre::Vect
 bool Collider::isCollidingOther( Ogre::Vector3 currentPos, Ogre::Vector3 otherPos, float otherRadius )
 {
 	//calculate distance between positions
-	float distance;
+	float distance = 0;
 
 	//calculate sum of radii
-	float radiiSum;
+	float radiiSum = 0;
 
 	//check which one is bigger and decide
 	if( radiiSum > distance ) 

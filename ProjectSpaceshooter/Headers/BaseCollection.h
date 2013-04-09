@@ -36,7 +36,7 @@ public:
 		return mCollection;
 	}
 
-	GameCollectionIterator<TObject> * getIterator()
+	GameCollectionIterator<TObject> getIterator()
 	{
 		return mCollection.getIterator();
 	}
@@ -48,17 +48,16 @@ private:
 
 
 	TPrefab* getPrefab(int prefabID)	{
-		GameCollectionIterator<TPrefab> * it = mPrefabs.getIterator();
+		GameCollectionIterator<TPrefab>  it = mPrefabs.getIterator();
 		TPrefab * tmpPrefab;
-		while(it->hasNext())
+		while(it.hasNext())
 		{
-			tmpPrefab = it->getNext();
+			tmpPrefab = it.getNext();
 			if (tmpPrefab->getPrefabID() == prefabID)
 			{
 				return tmpPrefab;
 			}
 		}
-		delete it;
 
 		using std::string;
 		std::stringstream exceptionString;
@@ -74,15 +73,6 @@ private:
 
 //TYMCZASOWY WORKAROUND - dopoki nie bêdzie ResourceLoadera od Zygiego
 //Inline, bo siê kompilator czepia
-template<>
-inline void BaseCollection<EnemyPrefab, EnemyObject>::loadPrefabs()	{
-	//TODO Iniciajlizowaæ nowe obiekty z plików
-	EnemyPrefab * myEnemy = new EnemyPrefab(1); 
-	addPrefab(myEnemy);
-	myEnemy->setAiType(AI_TYPE::fighter);
-	myEnemy->setMeshName("smallfighter.MESH");
-	myEnemy->setResistance(1000);
-}
 
 template<>
 inline void BaseCollection<BulletPrefab, Bullet>::loadPrefabs()	{

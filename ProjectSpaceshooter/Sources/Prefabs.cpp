@@ -11,35 +11,36 @@ Prefab::~Prefab(void)
 {
 }
 
-void EnemyPrefab::resetPrefab()
+void Prefab::resetPrefab()
 {
-	mResistance       = 0;
-	mEnemyPrefabID    = 0;
-	mMeshName         = "";
+	mPrefabID = 0;
+	mName.clear();
+}
+
+
+void ShipPrefab::resetPrefab()
+{
+//	mResistance       = 0;
 	mMaxVelocity      = 0;
 	mMaxAcceleration  = 0;
 	mMaxAngleVelocity = 0;
-	mMaxHealth        = 0;
-	mScale.x_scale    = 0;
-	mScale.y_scale    = 0;
-	mScale.z_scale    = 0;
-	mRotation.x_rot   = 0;
-	mRotation.y_rot   = 0;
-	mRotation.z_rot   = 0;
-	mMyAI             = AI_TYPE::defender;
 	mWeaponPrefabID   = 0;
-	clearColiders();
+	PrefabWithColider::resetPrefab();
+	PrefabWithMesh::resetPrefab();
 }
 
-EnemyPrefab::EnemyPrefab( unsigned prefabID )
+ShipPrefab::ShipPrefab( unsigned prefabID )
 	: Prefab()
 {
-
+	mPrefabID = prefabID;
 }
 
-void BulletPrefab::resetPrefab()
+BulletPrefab::BulletPrefab( unsigned prefabID )
 {
-	throw std::exception("The method or operation is not implemented.");
+	mPrefabID = prefabID;
+	mAutoAim = false;
+	mMaxVelocity = 0;
+	mVelocityVector = Vector3(0.0, 0.0, 0.0);
 }
 
 BulletPrefab::BulletPrefab()
@@ -47,9 +48,13 @@ BulletPrefab::BulletPrefab()
 	resetPrefab();
 }
 
-void EffectPrefab::resetPrefab()
+void BulletPrefab::resetPrefab()
 {
-	throw std::exception("The method or operation is not implemented.");
+	mAutoAim = false;
+	mBulletPower = 0.0;
+	mMaxVelocity = 0.0;
+	PrefabWithColider::resetPrefab();
+	PrefabWithMesh::resetPrefab();
 }
 
 EffectPrefab::EffectPrefab()
@@ -57,17 +62,32 @@ EffectPrefab::EffectPrefab()
 	resetPrefab();
 }
 
+void EffectPrefab::resetPrefab()
+{
+	mParticleSystemName.clear();
+	Prefab::resetPrefab();
+}
+
 void StaticPrefab::resetPrefab()
 {
-	throw std::exception("The method or operation is not implemented.");
+	PrefabWithColider::resetPrefab();
+	PrefabWithMesh::resetPrefab();
 }
 
 void PrefabWithColider::resetPrefab()
 {
-	throw std::exception("The method or operation is not implemented.");
+	
+	clearColiders();
+	mResistance = 0;
+	mMaxHealth = 0;
+	Prefab::resetPrefab();
 }
+
 
 void PrefabWithMesh::resetPrefab()
 {
-	throw std::exception("The method or operation is not implemented.");
+	mMeshName.clear();
+	mRotation.resetScale();
+	mScale.resetScale();
+	Prefab::resetPrefab();
 }

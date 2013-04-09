@@ -76,11 +76,17 @@ extern "C" {
 
 //#endif
         } 
-		catch( AbstractException& e)	{
+		catch( AbstractException&)	{
 			
 		}
-
-
+		catch(My_Exception& exc)
+		{
+			  MessageBoxA( NULL, exc.what(), "An exception has occurred!", MB_OK | MB_ICONERROR | MB_TASKMODAL);
+		}
+		catch(std::exception& exc)
+		{
+			MessageBoxA( NULL, exc.what(), "An exception has occurred!", MB_OK | MB_ICONERROR | MB_TASKMODAL);
+		}
 
 		FreeConsole();
         return 0;

@@ -166,7 +166,6 @@
     <ClInclude Include="Headers\AISystem.h" />
     <ClInclude Include="Headers\BaseCollection.h" />
     <ClInclude Include="Headers\Bullet.h" />
-    <ClInclude Include="Headers\BulletCollection.h" />
     <ClInclude Include="Headers\BulletPrefabPlant.h" />
     <ClInclude Include="Headers\ColliderComponent.h" />
     <ClInclude Include="Headers\CollisionSystem.h" />
@@ -174,7 +173,6 @@
     <ClInclude Include="Headers\Enemy.h" />
     <ClInclude Include="Headers\EnemyPrefabPlant.h" />
     <ClInclude Include="Headers\EnemySpawner.h" />
-    <ClInclude Include="Headers\EnemyCollection.h" />
     <ClInclude Include="Headers\Exceptions.h" />
     <ClInclude Include="Headers\EffectObject.h" />
     <ClInclude Include="Headers\Game.h" />
@@ -213,7 +211,6 @@
     <ClCompile Include="Sources\BulletPrefabPlant.cpp" />
     <ClCompile Include="Sources\ColliderComponent.cpp" />
     <ClCompile Include="Sources\Enemy.cpp" />
-    <ClCompile Include="Sources\EnemyCollection.cpp" />
     <ClCompile Include="Sources\EnemyPrefabPlant.cpp" />
     <ClCompile Include="Sources\EnemySpawner.cpp" />
     <ClCompile Include="Sources\Game.cpp" />

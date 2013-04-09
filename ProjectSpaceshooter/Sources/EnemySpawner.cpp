@@ -31,13 +31,13 @@ void EnemySpawner::spawnEnemy( GameData * _gameData, unsigned long currentTime )
 
 	if (currentTime > timeToNextSpawn)
 	{
-		GameCollectionIterator<SpawnerInfo> * it = enemyToSpawn.getIterator();
+		GameCollectionIterator<SpawnerInfo> it = enemyToSpawn.getIterator();
 		SpawnerInfo * tmpSpawnInfo;
 		unsigned amountToSpawnNow;
 		unsigned leftToSpawn = onceMomentSpawn;
-		while (it->hasNext() && leftToSpawn > 0)
+		while (it.hasNext() && leftToSpawn > 0)
 		{
-			tmpSpawnInfo = it->getNext();
+			tmpSpawnInfo = it.getNext();
 			amountToSpawnNow =  leftToSpawn >= tmpSpawnInfo->amount ? tmpSpawnInfo->amount : leftToSpawn;
 			leftToSpawn -= amountToSpawnNow;
 			tmpSpawnInfo->amount -= amountToSpawnNow;			
@@ -47,7 +47,6 @@ void EnemySpawner::spawnEnemy( GameData * _gameData, unsigned long currentTime )
 				enemyToSpawn -= tmpSpawnInfo;
 		}
 		timeToNextSpawn = currentTime + spawnFrequency;
-		delete it;
 	}
 
 }
@@ -66,9 +65,9 @@ void EnemySpawner::spawnCountOfEnemy( unsigned amountToSpawnNow, GameData * _gam
 	for(int i = amountToSpawnNow; i > 0; i --)
 	{
 		//EnemyCollection& enemysColl = _gameData->getEnemys();
-		BaseCollection<EnemyPrefab, EnemyObject>& enemiesCollection = _gameData->getEnemies();
+		BaseCollection<ShipPrefab, EnemyObject>& enemiesCollection = _gameData->getEnemies();
 		EnemyObject * tmpEnemy = enemiesCollection.instantiate(_prefabID, _gameData->getSceneManagerFor(GAME_STATES::PLAY));
-		Vector3 newPosition = myPosition + Vector3(50*(i-1),0,0);
+		Vector3 newPosition = myPosition + Vector3(50.0*(i-1), 0.0, 0.0);
 		tmpEnemy->setPosition(newPosition);
 	}
 }

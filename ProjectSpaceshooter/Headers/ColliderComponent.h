@@ -6,7 +6,7 @@ class Collider	{
 public:
 	//sphere collider
 	float radius;
-
+//colider 
 	Collider();
 
 	bool isCollidingOther( Ogre::Vector3 currentPos, Ogre::Vector3 otherPos, float otherRadius );

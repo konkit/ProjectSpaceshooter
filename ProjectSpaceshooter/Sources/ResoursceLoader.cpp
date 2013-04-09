@@ -10,31 +10,30 @@ ResoursceLoader::ResoursceLoader()
 
 }
 
-void ResoursceLoader::loadPrefabs( GameData & _gameData )
+void ResoursceLoader::loadAllPrefabs( GameData & _gameData )
 {
-	loadEnemyPrefabs(_gameData);
+	loadPrefabs(PREFAB_TYPE::EnemyPrefab, enemyPrefabFile, _gameData);
+	loadPrefabs(PREFAB_TYPE::BulletPrefab, bulletPrefabFile, _gameData);
+	//loadPrefabs(PREFAB_TYPE::StaticPrefab, staticPrefabFile, _gameData);
+	//loadPrefabs(PREFAB_TYPE::EffectPrefab, effectPrefabFile, _gameData);
 }
 
-void ResoursceLoader::loadEnemyPrefabs( GameData & _gameData )
+void ResoursceLoader::loadPrefabs(PREFAB_TYPE prefabType, const char * prefabsFile, GameData & _gameData )
 {
-	PredabReader_XML enemyReader("media/prefabs_descriptions/ship_prefabs.xml",PREFAB_TYPE::EnemyPrefab);
-	Prefab * _prefab;
-	EnemyPrefab * _enemyPrefab;
+	PredabReader_XML prefabReader(prefabsFile, prefabType);
 	try{
-	while(enemyReader.hasNext())
+	while(prefabReader.hasNext())
 	{
-		_prefab = enemyReader.getNext();
-		_enemyPrefab = dynamic_cast<EnemyPrefab *>( _prefab);
-		if (_enemyPrefab != NULL)
-		{
-			_gameData.addEnemyPrefab(*_enemyPrefab);
-		} else
-		{
-			My_Exception("loadEnemyPrefabs: Can't convert prefab into enemyPrefab");
-		}
+		_gameData.addPrefab(prefabType, prefabReader.getNext());
 	}
-	}catch(My_Exception excep)
+	}catch(My_Exception& excep)
 	{
 		MessageBoxA( NULL, excep.what(), "An exception has occured!", MB_OK | MB_ICONERROR | MB_TASKMODAL);
 	}
 }
+
+
+const char * ResoursceLoader::bulletPrefabFile = "media/prefabs_descriptions/bullet_prefabs.xml";
+const char * ResoursceLoader::effectPrefabFile = "media/prefabs_descriptions/ship_prefabs.xml";
+const char * ResoursceLoader::staticPrefabFile = "media/prefabs_descriptions/ship_prefabs.xml";
+const char * ResoursceLoader::enemyPrefabFile  = "media/prefabs_descriptions/ship_prefabs.xml";

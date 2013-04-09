@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "PrefabPlant.h"
 #include "EnemyPrefabPlant.h"
+#include "BulletPrefabPlant.h"
+
 #include "Exceptions.h"
 PrefabPlant::PrefabPlant(void)
 	: prefabReady(true)
@@ -53,7 +55,7 @@ PrefabPlant * PrefabPlant::CreatePrefabPlantFor( PREFAB_TYPE prefabType )
 	case PREFAB_TYPE::EnemyPrefab:
 		return new EnemyPrefabPlant;
 	case PREFAB_TYPE::BulletPrefab:
-		break;
+		return new BulletPrefabPlant;
 	case PREFAB_TYPE::StaticPrefab:
 		break;
 	case PREFAB_TYPE::EffectPrefab:
@@ -81,15 +83,22 @@ unsigned int PrefabPlant::ValueToUINT(const wstring &value )
 	return id;
 }
 
+double PrefabPlant::ValueToDouble(const wstring &value )
+{ 
+	wchar_t *pEnd;
+	unsigned int id = static_cast<unsigned int> (wcstod(value.c_str(), &pEnd));
+	return id;
+}
+
 void PrefabWithColider_Plant::_setColider( const wstring & attribute, const wstring & value )
 {
-	if (attribute == PrefabPlant::close)
+	if (attribute == PrefabPlant::closeNode)
 	{
 		if (prefabWithColider == NULL)
 		{
 			throw My_Exception("PrefabWithColider setColider: Can't add colider into nonexistent prefab");
 		}
-		prefabWithColider->addColider(colider);
+		prefabWithColider->addColider(colider_str);
 		clearColider();
 	} else
 	{
@@ -101,14 +110,14 @@ void PrefabWithColider_Plant::_setColiderOffset( const wstring & attribute, cons
 {
 	if (attribute == PrefabPlant::x_pos)
 	{
-		colider.offset.x_pos= ValueToUINT(value);
+		colider_str.offset.x_pos= ValueToUINT(value);
 	} else if (attribute == PrefabPlant::y_pos)
 	{
-		colider.offset.y_pos = ValueToUINT(value);
+		colider_str.offset.y_pos = ValueToUINT(value);
 	} else if (attribute == PrefabPlant::z_pos)
 	{
-		colider.offset.z_pos = ValueToUINT(value);
-	} else if (attribute == PrefabPlant::close)
+		colider_str.offset.z_pos = ValueToUINT(value);
+	} else if (attribute == PrefabPlant::closeNode)
 	{
 		return;
 	}	else
@@ -123,8 +132,8 @@ void PrefabWithColider_Plant::_setColiderRadian( const wstring & attribute, cons
 {
 	if (attribute == PrefabPlant::value)
 	{
-		colider.radian = ValueToUINT(value);
-	} else if (attribute == PrefabPlant::close)
+		colider_str.radian = ValueToUINT(value);
+	} else if (attribute == PrefabPlant::closeNode)
 	{
 		return;
 	} else
@@ -137,8 +146,8 @@ void PrefabWithColider_Plant::_setColiderRadian( const wstring & attribute, cons
 
 void PrefabWithColider_Plant::clearColider()
 {
-	colider.offset.x_pos = colider.offset.y_pos = colider.offset.z_pos = 0;
-	colider.radian = 0;
+	colider_str.offset.x_pos = colider_str.offset.y_pos = colider_str.offset.z_pos = 0;
+	colider_str.radian = 0;
 }
 
 
@@ -151,15 +160,19 @@ PrefabWithColider_Plant::PrefabWithColider_Plant()
 bool PrefabWithColider_Plant::SetMethodToFillColiderProperty( const wstring & name )
 {
 
-	if (name == PrefabPlant::coliders)
+	if (name == PrefabWithColider_Plant::health)
+	{
+		methodToFillColiderProperty = &PrefabWithColider_Plant::_setMaxHealth;
+	}
+	if (name == PrefabWithColider_Plant::coliders)
 	{
 		methodToFillColiderProperty = &PrefabWithColider_Plant::_doNothing;
 	}
-	else if (name == PrefabPlant::colider)
+	else if (name == PrefabWithColider_Plant::colider)
 	{
 		methodToFillColiderProperty = &PrefabWithColider_Plant::_setColider;
 	}	
-	else if (name == PrefabPlant::offset)
+	else if (name == PrefabWithColider_Plant::offset)
 	{
 		if (methodToFillColiderProperty == &PrefabWithColider_Plant::_setColider)
 		{
@@ -169,7 +182,7 @@ bool PrefabWithColider_Plant::SetMethodToFillColiderProperty( const wstring & na
 			throw My_Exception("PrefabWithColider_Plant nextElement: incorrect Prefab format - offset is not inside colider node");
 		}
 	}
-	else if (name == PrefabPlant::radian)
+	else if (name == PrefabWithColider_Plant::radian)
 	{
 		if (methodToFillColiderProperty == &PrefabWithColider_Plant::_setColider)
 		{
@@ -188,6 +201,16 @@ bool PrefabWithColider_Plant::SetMethodToFillColiderProperty( const wstring & na
 PrefabWithColider_Plant::~PrefabWithColider_Plant()
 {
 
+}
+
+void PrefabWithColider_Plant::_setMaxHealth( const wstring & attribute, const wstring & value )
+{
+	if (attribute == PrefabPlant::value)
+	{
+		unsigned int val;
+		val = ValueToUINT(value);
+		prefabWithColider->setMaxHealth(val);
+	};
 }
 
 void PrefabPlant::_doNothing( const wstring & attribute, const wstring & value )
@@ -210,8 +233,39 @@ void PrefabPlant::setPrefab( Prefab * pref )
 	_prefab = pref;
 }
 
+bool PrefabPlant::SetMethodToFillBasicProperty( const wstring & name )
+{
+	if (name == getPrefabNodeName())
+	{
+		methodToFillBasicProperty = &PrefabPlant::_setPrefabID;
+	} else if (name == getPrefabName())
+	{
+		methodToFillBasicProperty = &PrefabPlant::_setPrefabName;
+	} else
+	{
+		return false;
+	}
+		return true;
+}
 
+void PrefabPlant::_setPrefabID( const wstring & attribute, const wstring & value )
+{
+	if (attribute == id)
+	{
+		unsigned int id;
+		id = ValueToUINT(value);
+		_prefab->setPrefabID(id);
+	};
 
+}
+
+void PrefabPlant::_setPrefabName( const wstring & attribute, const wstring & value )
+{
+	if (attribute == name)
+	{
+		_prefab->setName(string(value.begin(), value.end()));
+	}
+}
 
 void PrefabWithMesh_Plant::_setMeshName( const wstring & attribute, const wstring & value )
 {
@@ -228,16 +282,16 @@ void PrefabWithMesh_Plant::_setMeshName( const wstring & attribute, const wstrin
 void PrefabWithMesh_Plant::_setScale( const wstring & attribute, const wstring & value )
 {
 	static scale_struct scale;
-	if (attribute == PrefabPlant::x_scale)
+	if (attribute == x_scale)
 	{
 		scale.x_scale = ValueToUINT(value);
-	} else if (attribute == PrefabPlant::y_scale)
+	} else if (attribute == y_scale)
 	{
 		scale.y_scale = ValueToUINT(value);
-	} else if (attribute == PrefabPlant::z_scale)
+	} else if (attribute == z_scale)
 	{
 		scale.z_scale = ValueToUINT(value);
-	} else if (attribute == PrefabPlant::close)
+	} else if (attribute == closeNode)
 	{
 		if (_prefabWithMesh == NULL)
 		{
@@ -254,16 +308,16 @@ void PrefabWithMesh_Plant::_setScale( const wstring & attribute, const wstring &
 void PrefabWithMesh_Plant::_setRotation( const wstring & attribute, const wstring & value )
 {
 	static rotation_struct rot;
-	if (attribute == PrefabPlant::x_rot)
+	if (attribute == x_rot)
 	{
 		rot.x_rot = ValueToUINT(value);
-	} else if (attribute == PrefabPlant::y_rot)
+	} else if (attribute == y_rot)
 	{
 		rot.y_rot = ValueToUINT(value);
-	} else if (attribute == PrefabPlant::z_rot)
+	} else if (attribute == z_rot)
 	{
 		rot.z_rot = ValueToUINT(value);
-	} else if (attribute == PrefabPlant::close)
+	} else if (attribute == closeNode)
 	{
 		if (_prefabWithMesh == NULL)
 		{
@@ -279,14 +333,14 @@ void PrefabWithMesh_Plant::_setRotation( const wstring & attribute, const wstrin
 
 bool PrefabWithMesh_Plant::SetMethodToFillMeshProperty( const wstring & name )
 {
-	if (name == PrefabPlant::mesh)
+	if (name == PrefabWithMesh_Plant::mesh)
 	{
 		methodToFillMeshProperty = &PrefabWithMesh_Plant::_setMeshName;
-	} else if (name == PrefabPlant::scale)
+	} else if (name == PrefabWithMesh_Plant::scale)
 	{
 		methodToFillMeshProperty = &PrefabWithMesh_Plant::_setScale;
 	}
-	else if (name == PrefabPlant::rotation)
+	else if (name == PrefabWithMesh_Plant::rotation)
 	{
 		methodToFillMeshProperty = &PrefabWithMesh_Plant::_setRotation;
 	} else
@@ -306,32 +360,33 @@ PrefabWithMesh_Plant::~PrefabWithMesh_Plant()
 
 }
 
-
-
-
-const wchar_t * PrefabPlant::max_acceleration = L"max_acceleration";
-const wchar_t * PrefabPlant::max_velocity=L"max_velocity";
+const wchar_t * PrefabPlant::max_acceleration   = L"max_acceleration";
+const wchar_t * PrefabPlant::max_velocity       = L"max_velocity";
 const wchar_t * PrefabPlant::max_angle_velocity = L"max_angle_velocity";
-const wchar_t * PrefabPlant::health			 = L"health";
-const wchar_t * PrefabPlant::scale			 = L"scale";
-const wchar_t * PrefabPlant::rotation		 = L"rotation";
-const wchar_t * PrefabPlant::coliders		 = L"coliders";
-const wchar_t * PrefabPlant::standard_waepon = L"standard_waepon";
-const wchar_t * PrefabPlant::name	= L"name";
-const wchar_t * PrefabPlant::id		= L"id";
-const wchar_t * PrefabPlant::value	= L"value";
-const wchar_t * PrefabPlant::x_scale= L"x_scale";
-const wchar_t * PrefabPlant::y_scale= L"y_scale";
-const wchar_t * PrefabPlant::z_scale= L"z_scale";
-const wchar_t * PrefabPlant::x_rot	= L"x_rot";
-const wchar_t * PrefabPlant::y_rot	= L"y_rot";
-const wchar_t * PrefabPlant::z_rot	= L"z_rot";
-const wchar_t * PrefabPlant::x_pos	= L"x_pos";
-const wchar_t * PrefabPlant::y_pos	= L"y_pos";
-const wchar_t * PrefabPlant::z_pos	= L"z_pos";
-const wchar_t * PrefabPlant::close	= L"close";
+const wchar_t * PrefabPlant::standard_waepon    = L"standard_waepon";
+const wchar_t * PrefabPlant::name	            = L"name";
+const wchar_t * PrefabPlant::id		            = L"id";
+const wchar_t * PrefabPlant::value	            = L"value";
+const wchar_t * PrefabPlant::x_pos	            = L"x_pos";
+const wchar_t * PrefabPlant::y_pos	            = L"y_pos";
+const wchar_t * PrefabPlant::z_pos	            = L"z_pos";
+const wchar_t * PrefabPlant::closeNode	        = L"close";
+const wchar_t * PrefabPlant::yes                = L"yes";
+const wchar_t * PrefabPlant::no                 = L"no";
 
-const wchar_t * PrefabPlant::mesh	= L"mesh";
-const wchar_t * PrefabPlant::colider= L"colider";
-const wchar_t * PrefabPlant::offset = L"offset";
-const wchar_t * PrefabPlant::radian = L"radian";
+
+const wchar_t * PrefabWithMesh_Plant::scale	  = L"scale";
+const wchar_t * PrefabWithMesh_Plant::rotation= L"rotation";
+const wchar_t * PrefabWithMesh_Plant::x_scale = L"x_scale";
+const wchar_t * PrefabWithMesh_Plant::y_scale = L"y_scale";
+const wchar_t * PrefabWithMesh_Plant::z_scale = L"z_scale";
+const wchar_t * PrefabWithMesh_Plant::x_rot	  = L"x_rot";
+const wchar_t * PrefabWithMesh_Plant::y_rot	  = L"y_rot";
+const wchar_t * PrefabWithMesh_Plant::z_rot	  = L"z_rot";
+const wchar_t * PrefabWithMesh_Plant::mesh	  = L"mesh";
+
+const wchar_t * PrefabWithColider_Plant::health		= L"health";
+const wchar_t * PrefabWithColider_Plant::coliders	= L"coliders";
+const wchar_t * PrefabWithColider_Plant::colider    = L"colider";
+const wchar_t * PrefabWithColider_Plant::offset     = L"offset";
+const wchar_t * PrefabWithColider_Plant::radian     = L"radian";
