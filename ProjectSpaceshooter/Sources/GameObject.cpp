@@ -22,4 +22,6 @@ void GameObject::createSceneNode(std::string meshName, Ogre::SceneManager* scene
 	Ogre::Entity * tmp = sceneMgr->createEntity(meshName);
 	mNode = sceneMgr->getRootSceneNode()->createChildSceneNode();
 	mNode->attachObject(tmp);
+
+	
 }

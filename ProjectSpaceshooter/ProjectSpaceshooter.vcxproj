@@ -170,6 +170,7 @@
     <ClInclude Include="Headers\ColliderComponent.h" />
     <ClInclude Include="Headers\CollisionSystem.h" />
     <ClInclude Include="Headers\Core.h" />
+    <ClInclude Include="Headers\DebugDrawer.h" />
     <ClInclude Include="Headers\Enemy.h" />
     <ClInclude Include="Headers\EnemySpawner.h" />
     <ClInclude Include="Headers\EnemyCollection.h" />
@@ -206,6 +207,7 @@
     <ClCompile Include="Sources\AISystem.cpp" />
     <ClCompile Include="Sources\Bullet.cpp" />
     <ClCompile Include="Sources\ColliderComponent.cpp" />
+    <ClCompile Include="Sources\DebugDrawer.cpp" />
     <ClCompile Include="Sources\Enemy.cpp" />
     <ClCompile Include="Sources\EnemySpawner.cpp" />
     <ClCompile Include="Sources\Game.cpp" />

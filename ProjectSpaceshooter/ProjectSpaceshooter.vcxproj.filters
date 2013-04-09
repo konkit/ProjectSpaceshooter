@@ -113,6 +113,9 @@
     <ClInclude Include="Headers\OgreText.h">
       <Filter>Header</Filter>
     </ClInclude>
+    <ClInclude Include="Headers\DebugDrawer.h">
+      <Filter>Header</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header">
@@ -234,6 +237,9 @@
     </ClCompile>
     <ClCompile Include="Sources\AISystem.cpp">
       <Filter>Source\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\DebugDrawer.cpp">
+      <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

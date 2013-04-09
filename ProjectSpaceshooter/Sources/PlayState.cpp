@@ -1,6 +1,8 @@
 #include "GameState.h"
 #include "PlayState.h"
 
+#include "DebugDrawer.h"
+
 PlayState::PlayState(SystemsSet & gameSystems) :GameState()
 {
 	mSceneMgr = gameSystems.ogreManager.getRoot()->createSceneManager(Ogre::ST_GENERIC, "primary");
@@ -68,6 +70,11 @@ PlayState::PlayState(SystemsSet & gameSystems) :GameState()
 	gameSystems.gameData.theCore.setPosition(Ogre::Vector3(-500.0, 0.0, 0.0));
 	gameSystems.gameData.theCore.getSceneNode()->roll(Ogre::Degree(90)); // BARDZO DUZA PROWIZORKA
 
+	//System which draws primitives for debuging purposes
+#ifdef _DEBUG
+	new DebugDrawer(mSceneMgr, 0.5f);
+#endif
+
 	//Temporary explosion
 	//Ogre::ParticleSystem* particleSystem = mSceneMgr->createParticleSystem("explosions", "explosionTemplate");
 
@@ -90,7 +97,15 @@ GAME_STATES PlayState::update( SystemsSet & gameSystems, TimeData& time )
 	mCollisionSystem.update( gameSystems.gameData);
 	mObjectStateSystem.update( gameSystems.gameData, time);
 
+#ifdef _DEBUG
+	DebugDrawer::getSingleton().build();
+#endif
+
 	renderOneFrame(gameSystems.ogreManager);
+
+#ifdef _DEBUG
+	DebugDrawer::getSingleton().clear();
+#endif
 
 	return nextState(gameSystems);
 
