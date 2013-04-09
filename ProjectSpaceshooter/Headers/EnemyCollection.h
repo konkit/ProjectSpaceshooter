@@ -2,9 +2,8 @@
 
 #include "Enemy.h"
 #include "GameCollection.h"
-#include "EnemyCollection.h"
 #include <sstream>
-
+#include <vector>
 
 /** 
   * Collection of enemies
@@ -21,12 +20,12 @@ public:
 
 	void loadPrefabs()	{
 		//TODO Iniciajlizowaæ nowe obiekty z plików
-		EnemyPrefab * myEnemy = new EnemyPrefab(1); 
-		mPrefabs += myEnemy;
-		myEnemy->setAiType(AI_TYPE::fighter);
-		myEnemy->setMeshName("smallfighter.MESH");
-		myEnemy->setResistance(1000);
-		myEnemy->setWeaponPrefabID(1);
+		EnemyPrefab myEnemy(1);
+		myEnemy.setAiType(AI_TYPE::fighter);
+		myEnemy.setMeshName("smallfighter.MESH");
+		myEnemy.setResistance(1000);
+		myEnemy.setWeaponPrefabID(1);
+		addPrefab(myEnemy);
 	}
 
 	//this method receives id of prefab from which it should create new object
@@ -56,29 +55,19 @@ public:
 	{
 		return mCollection.getIterator();
 	}
-
-
+	void addPrefab(EnemyPrefab _enemyPrefab);
+	void setNumberOfPrefabs(int count){mPrefabs.resize(count);}
 
 private:
 	EnemyPrefab * findPrefab(unsigned prefabID)
 	{
-		GameCollectionIterator<EnemyPrefab> * it = mPrefabs.getIterator();
-		EnemyPrefab * tmpPrefab;
-		while(it->hasNext())
-		{
-			tmpPrefab = it->getNext();
-			if (tmpPrefab->getPrefabID() == prefabID)
-			{
-				return tmpPrefab;
-			}
-		}
-		delete it;
+		return &mPrefabs[prefabID];		
 		using std::string;
 		std::stringstream exceptionString;
 		exceptionString << "There are no prefab with id =" << prefabID << " in prefab collection";
 		throw exception(exceptionString.str().c_str());
 	};
 	GameCollection<EnemyObject> mCollection;
-	GameCollection<EnemyPrefab> mPrefabs;
-
+	//GameCollection<EnemyPrefab> mPrefabs;
+	std::vector<EnemyPrefab> mPrefabs;
 };

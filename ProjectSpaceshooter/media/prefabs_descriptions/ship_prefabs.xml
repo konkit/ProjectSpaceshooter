@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ship_prefabs>
+	<max_id id='2' />
+	<ship id='1'>
+		<ship_name name='Basic Ship'  />
+		<mesh name='smallfighter.MESH' />
+		<max_velocity value='100' />
+		<max_acceleration value='10' />
+		<max_angle_velocity value='10' />
+		<health value='1000' />
+		<scale x_scale='1' y_scale='1' z_scale='1' />
+		<rotation x_rot='1' y_rot='1' z_rot='1' />
+		<coliders>
+			<colider>
+				<offset x_pos='0' y_pos='0' z_pos='0' /> 
+				<radian value='10' />
+			</colider>
+		</coliders>
+		<standard_waepon id = '1' />
+ 	</ship>
+	<ship id='2'>
+		<ship_name name='Advance Ship'  />
+		<mesh name='advanceFlighter' />
+		<max_velocity value='120' />
+		<max_acceleration value='13' />
+		<max_angle_velocity value='12' />
+		<health value='4000' />
+		<scale x_scale='1' y_scale='1' z_scale='1' />
+		<rotation x_rot='1' y_rot='1' z_rot='1' />
+		<coliders>
+			<colider>
+				<offset x_pos='0' y_pos='0' z_pos='0' /> 
+				<radian value='5' />
+			</colider>
+		</coliders>
+		<standard_waepon id = '2' />
+ 	</ship>
+</ship_prefabs>

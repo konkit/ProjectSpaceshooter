@@ -10,7 +10,6 @@ GameData::GameData(void)
 	changeFlags.changeToMenu = false;
 	changeFlags.changeToPause = false;
 	changeFlags.changeToPlay = false;
-	mEnemyCollection.loadPrefabs();
 	mBulletCollection.loadPrefabs();
 	mEffectsCollection.loadPrefabs();
 

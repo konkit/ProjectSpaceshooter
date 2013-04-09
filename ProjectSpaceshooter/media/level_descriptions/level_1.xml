@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<level_descripion id='1'>
+	<ambient_color r='0.0' g='0.0' b='0.0' />
+	<lights>
+		<light name='main light'>
+			<position x='0' y='0' z='0' />
+			<direction x='0' y='0' z='0' />
+			<inner_angle value = '90'/>
+			<outer_angle value = '90'/>
+		</light>
+	</lights>
+</level_descripion>

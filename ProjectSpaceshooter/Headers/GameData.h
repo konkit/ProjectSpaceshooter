@@ -91,6 +91,12 @@ public:
 
 	Core& getCore() { return theCore; }
 	
+	void addEnemyPrefab(const EnemyPrefab & _enemyPrefab)
+	{
+		EnemyPrefab * prefab = new EnemyPrefab(_enemyPrefab);
+		mEnemyCollection.addPrefab(prefab);
+	}
+
 private:
 	struct changeFlagsStruct
 	{

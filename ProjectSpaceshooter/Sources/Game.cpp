@@ -1,11 +1,11 @@
 #include "Game.h"
 
-
 Game::Game()
 {
 	
 	initializeGame();
 	mStateMenager.initStateManager(mGameSystems);
+	resurceSystem.loadPrefabs(mGameSystems.gameData);
 }
 
 Game::~Game()
