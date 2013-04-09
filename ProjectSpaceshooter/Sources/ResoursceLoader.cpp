@@ -14,8 +14,8 @@ void ResoursceLoader::loadAllPrefabs( GameData & _gameData )
 {
 	loadPrefabs(PREFAB_TYPE::EnemyPrefab, enemyPrefabFile, _gameData);
 	loadPrefabs(PREFAB_TYPE::BulletPrefab, bulletPrefabFile, _gameData);
-	//loadPrefabs(PREFAB_TYPE::StaticPrefab, staticPrefabFile, _gameData);
-	//loadPrefabs(PREFAB_TYPE::EffectPrefab, effectPrefabFile, _gameData);
+	loadPrefabs(PREFAB_TYPE::StaticPrefab, staticPrefabFile, _gameData);
+	loadPrefabs(PREFAB_TYPE::EffectPrefab, effectPrefabFile, _gameData);
 }
 
 void ResoursceLoader::loadPrefabs(PREFAB_TYPE prefabType, const char * prefabsFile, GameData & _gameData )
@@ -34,6 +34,6 @@ void ResoursceLoader::loadPrefabs(PREFAB_TYPE prefabType, const char * prefabsFi
 
 
 const char * ResoursceLoader::bulletPrefabFile = "media/prefabs_descriptions/bullet_prefabs.xml";
-const char * ResoursceLoader::effectPrefabFile = "media/prefabs_descriptions/ship_prefabs.xml";
-const char * ResoursceLoader::staticPrefabFile = "media/prefabs_descriptions/ship_prefabs.xml";
+const char * ResoursceLoader::effectPrefabFile = "media/prefabs_descriptions/effect_prefabs.xml";
+const char * ResoursceLoader::staticPrefabFile = "media/prefabs_descriptions/static_prefabs.xml";
 const char * ResoursceLoader::enemyPrefabFile  = "media/prefabs_descriptions/ship_prefabs.xml";

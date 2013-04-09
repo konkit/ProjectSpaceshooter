@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<effect_prefabs>
+  <max_id id='1' />
+
+  <effect id='1'>
+    <effect_name name='explosion'/>
+    <particleSystemName name='explosionTemplate'/>
+  </effect>
+</effect_prefabs>

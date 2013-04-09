@@ -108,6 +108,24 @@ public:
 		BulletPrefab * prefab = new BulletPrefab(_bulletPrefab);
 		mBulletCollection.addPrefab(prefab);
 	}
+	void addStaticPrefab(const StaticPrefab & _staticPrefab)
+	{
+		if (&_staticPrefab == NULL)
+		{
+			throw My_Exception("addStaticPrefab: Can't add NULL Static Prefab");
+		}
+		StaticPrefab * prefab = new StaticPrefab(_staticPrefab);
+		mStaticCollection.addPrefab(prefab);
+	}
+	void addEffectPrefab(const EffectPrefab & _effectPrefab)
+	{
+		if (&_effectPrefab == NULL)
+		{
+			throw My_Exception("addEffectPrefab: Can't add NULL Effect Prefab");
+		}
+		EffectPrefab * prefab = new EffectPrefab(_effectPrefab);
+		mEffectsCollection.addPrefab(prefab);
+	}
 	void addPrefab(PREFAB_TYPE prefabType, Prefab & prefab );
 private:
 	struct changeFlagsStruct
@@ -122,8 +140,7 @@ private:
 	BaseCollection<ShipPrefab, EnemyObject> mEnemyCollection;
 	BaseCollection<BulletPrefab, Bullet> mBulletCollection;
 	BaseCollection<EffectPrefab, EffectObject> mEffectsCollection;
-
-	GameCollection<GameObject> mStaticCollection;
+	BaseCollection<StaticPrefab, StaticObject> mStaticCollection;
 
 //	GameObjectsCollection mPhysicCollection;  there will be physics object ex. explosion sphere
 	Player mPlayer;

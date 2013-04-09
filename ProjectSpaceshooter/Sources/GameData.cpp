@@ -3,7 +3,6 @@
 
 #include "GameData.h"
 #include "GameObject.h"
-#include "..\Headers\Exceptions.h"
 
 GameData::GameData(void)
 {
@@ -11,9 +10,6 @@ GameData::GameData(void)
 	changeFlags.changeToMenu = false;
 	changeFlags.changeToPause = false;
 	changeFlags.changeToPlay = false;
-	mBulletCollection.loadPrefabs();
-	mEffectsCollection.loadPrefabs();
-
 }
 
 GameData::~GameData(void)
@@ -68,13 +64,23 @@ void GameData::addPrefab( PREFAB_TYPE prefabType, Prefab & prefab )
 	case PREFAB_TYPE::BulletPrefab:
 		if (typeid(prefab) !=  typeid(BulletPrefab))
 		{
-			throw My_Exception("GameData::addPrefab: Can't convert prefab into ShipPrefab");
+			throw My_Exception("GameData::addPrefab: Can't convert prefab into BulletPrefab");
 		}
 		addBulletPrefab(dynamic_cast<BulletPrefab &>(prefab));
 		break;
 	case PREFAB_TYPE::StaticPrefab:
+		if (typeid(prefab) !=  typeid(StaticPrefab))
+		{
+			throw My_Exception("GameData::addPrefab: Can't convert prefab into StaticPrefab");
+		}
+		addStaticPrefab(dynamic_cast<StaticPrefab &>(prefab));
 		break;
 	case PREFAB_TYPE::EffectPrefab:
+		if (typeid(prefab) !=  typeid(EffectPrefab))
+		{
+			throw My_Exception("GameData::addPrefab: Can't convert prefab into EffectPrefab");
+		}
+		addEffectPrefab(dynamic_cast<EffectPrefab &>(prefab));
 		break;
 	default:
 		break;

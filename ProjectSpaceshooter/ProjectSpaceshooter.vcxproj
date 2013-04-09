@@ -170,6 +170,7 @@
     <ClInclude Include="Headers\ColliderComponent.h" />
     <ClInclude Include="Headers\CollisionSystem.h" />
     <ClInclude Include="Headers\Core.h" />
+    <ClInclude Include="Headers\EffectPrefabPlant.h" />
     <ClInclude Include="Headers\Enemy.h" />
     <ClInclude Include="Headers\EnemyPrefabPlant.h" />
     <ClInclude Include="Headers\EnemySpawner.h" />
@@ -198,6 +199,7 @@
     <ClInclude Include="Headers\ResoursceLoader.h" />
     <ClInclude Include="Headers\StateManager.h" />
     <ClInclude Include="Headers\StaticObject.h" />
+    <ClInclude Include="Headers\StaticPrefabPlant.h" />
     <ClInclude Include="Headers\stdafx.h" />
     <ClInclude Include="Headers\Systems.h" />
     <ClInclude Include="Headers\TimeToLiveComponent.h" />
@@ -210,6 +212,7 @@
     <ClCompile Include="Sources\Bullet.cpp" />
     <ClCompile Include="Sources\BulletPrefabPlant.cpp" />
     <ClCompile Include="Sources\ColliderComponent.cpp" />
+    <ClCompile Include="Sources\EffectPrefabPlant.cpp" />
     <ClCompile Include="Sources\Enemy.cpp" />
     <ClCompile Include="Sources\EnemyPrefabPlant.cpp" />
     <ClCompile Include="Sources\EnemySpawner.cpp" />
@@ -233,6 +236,7 @@
     <ClCompile Include="Sources\ResoursceLoader.cpp" />
     <ClCompile Include="Sources\StateManager.cpp" />
     <ClCompile Include="Sources\StaticObject.cpp" />
+    <ClCompile Include="Sources\StaticPrefabPlant.cpp" />
     <ClCompile Include="Sources\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -251,6 +255,7 @@
     <Xml Include="media\prefabs_descriptions\bullet_prefabs.xml">
       <SubType>Designer</SubType>
     </Xml>
+    <Xml Include="media\prefabs_descriptions\effect_prefabs.xml" />
     <Xml Include="media\prefabs_descriptions\ship_prefabs.xml">
       <SubType>Designer</SubType>
     </Xml>

@@ -1,7 +1,7 @@
 #pragma once
 #include "PrefabPlant.h"
 
-class BulletPrefabPlant : public PrefabWithColider_Plant, public PrefabWithMesh_Plant
+class BulletPrefabPlant : virtual public PrefabWithColider_Plant, virtual public PrefabWithMesh_Plant
 {
 public:
 	BulletPrefabPlant();;

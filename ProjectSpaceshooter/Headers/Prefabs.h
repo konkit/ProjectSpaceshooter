@@ -8,7 +8,8 @@ enum class PREFAB_TYPE
 	EnemyPrefab,
 	BulletPrefab,
 	StaticPrefab,
-	EffectPrefab
+	EffectPrefab,
+	LevelDescription
 };
 
 struct scale_struct

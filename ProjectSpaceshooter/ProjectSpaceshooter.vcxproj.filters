@@ -124,6 +124,12 @@
     <ClInclude Include="Headers\BulletPrefabPlant.h">
       <Filter>Header\PrefabsPlant</Filter>
     </ClInclude>
+    <ClInclude Include="Headers\StaticPrefabPlant.h">
+      <Filter>Header\PrefabsPlant</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\EffectPrefabPlant.h">
+      <Filter>Header\PrefabsPlant</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header">
@@ -272,6 +278,12 @@
     <ClCompile Include="Sources\BulletPrefabPlant.cpp">
       <Filter>Source\PrefabsPlants</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\StaticPrefabPlant.cpp">
+      <Filter>Source\PrefabsPlants</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\EffectPrefabPlant.cpp">
+      <Filter>Source\PrefabsPlants</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="ogre.cfg" />
@@ -285,6 +297,9 @@
       <Filter>PrefabsFiles</Filter>
     </Xml>
     <Xml Include="media\prefabs_descriptions\bullet_prefabs.xml">
+      <Filter>PrefabsFiles</Filter>
+    </Xml>
+    <Xml Include="media\prefabs_descriptions\effect_prefabs.xml">
       <Filter>PrefabsFiles</Filter>
     </Xml>
   </ItemGroup>

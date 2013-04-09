@@ -1,0 +1,39 @@
+material "\naamianBird.MESH/warm_plastic_model_"
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.55408 0.48784 0.46392 0
+			diffuse 0.55408 0.48784 0.46392 0
+			specular 0 0 0 0
+			emissive 0 0 0 0
+		}
+	}
+}
+material "\naamianBird.MESH/warm_plastic_mode_000"
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.55408 0.48784 0.46392 0
+			diffuse 0.55408 0.48784 0.46392 0
+			specular 0 0 0 0
+			emissive 0 0 0 0
+		}
+	}
+}
+material "\naamianBird.MESH/unnamed"
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.55408 0.48784 0.46392 0
+			diffuse 0.55408 0.48784 0.46392 0
+			specular 0 0 0 0
+			emissive 0 0 0
+		}
+	}
+}

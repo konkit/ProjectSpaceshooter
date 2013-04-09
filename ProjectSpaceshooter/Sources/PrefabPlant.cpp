@@ -4,6 +4,8 @@
 #include "BulletPrefabPlant.h"
 
 #include "Exceptions.h"
+#include "StaticPrefabPlant.h"
+#include "EffectPrefabPlant.h"
 PrefabPlant::PrefabPlant(void)
 	: prefabReady(true)
 {
@@ -57,8 +59,10 @@ PrefabPlant * PrefabPlant::CreatePrefabPlantFor( PREFAB_TYPE prefabType )
 	case PREFAB_TYPE::BulletPrefab:
 		return new BulletPrefabPlant;
 	case PREFAB_TYPE::StaticPrefab:
-		break;
+		return new StaticPrefabPlant;
 	case PREFAB_TYPE::EffectPrefab:
+		return new EffectPrefabPlant;
+	case PREFAB_TYPE::LevelDescription:
 		break;
 	default:
 		break;
@@ -86,8 +90,7 @@ unsigned int PrefabPlant::ValueToUINT(const wstring &value )
 double PrefabPlant::ValueToDouble(const wstring &value )
 { 
 	wchar_t *pEnd;
-	unsigned int id = static_cast<unsigned int> (wcstod(value.c_str(), &pEnd));
-	return id;
+	return wcstod(value.c_str(), &pEnd);
 }
 
 void PrefabWithColider_Plant::_setColider( const wstring & attribute, const wstring & value )
@@ -102,7 +105,7 @@ void PrefabWithColider_Plant::_setColider( const wstring & attribute, const wstr
 		clearColider();
 	} else
 	{
-		throw My_Exception("EnemyPrefabPlant _setCollider: Missing attribute type");
+		throw My_Exception("PrefabWithColider _setCollider: Missing attribute type");
 	}
 }
 
@@ -122,7 +125,7 @@ void PrefabWithColider_Plant::_setColiderOffset( const wstring & attribute, cons
 		return;
 	}	else
 	{
-		wstring tmp(L"EnemyPrefabPlant _setColiderOffset: Missing attribute type: ");
+		wstring tmp(L"PrefabWithColider_Plant _setColiderOffset: Missing attribute type: ");
 		tmp += attribute; 
 		throw My_Exception(tmp);
 	}
@@ -163,8 +166,7 @@ bool PrefabWithColider_Plant::SetMethodToFillColiderProperty( const wstring & na
 	if (name == PrefabWithColider_Plant::health)
 	{
 		methodToFillColiderProperty = &PrefabWithColider_Plant::_setMaxHealth;
-	}
-	if (name == PrefabWithColider_Plant::coliders)
+	} else if (name == PrefabWithColider_Plant::coliders)
 	{
 		methodToFillColiderProperty = &PrefabWithColider_Plant::_doNothing;
 	}

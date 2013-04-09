@@ -4,7 +4,7 @@
 	
 	<ship id='1'>
 		<ship_name name='Basic Ship'  />
-		<mesh name='smallfighter.MESH' />
+    <mesh name='smallfighter.MESH' />
 		<max_velocity value='100' />
 		<max_acceleration value='10' />
 		<max_angle_velocity value='10' />
@@ -22,7 +22,7 @@
 	
 	<ship id='2'>
 		<ship_name name='Advance Ship'  />
-		<mesh name='advanceFlighter' />
+		<mesh name='naamianBird.MESH' />
 		<max_velocity value='120' />
 		<max_acceleration value='13' />
 		<max_angle_velocity value='12' />
