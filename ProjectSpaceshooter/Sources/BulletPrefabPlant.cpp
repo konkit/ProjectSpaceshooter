@@ -48,6 +48,7 @@ void BulletPrefabPlant::setMethodToFillProperty( const wstring & name )
 void BulletPrefabPlant::resetPrefab()
 {
 	mBulletPrefab.resetPrefab();
+	prefabReady = false;
 }
 
 const wstring BulletPrefabPlant::getPrefabRootNode()

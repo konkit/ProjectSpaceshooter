@@ -28,4 +28,5 @@ private:
 	int rateOfFire;
 	unsigned long timeSinceLastShot;
 	float mPower;
+	unsigned int bulletPrefabID;
 };

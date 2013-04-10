@@ -28,6 +28,7 @@ const wstring EffectPrefabPlant::getPrefabName()
 void EffectPrefabPlant::resetPrefab()
 {
 	mEffectPrefab.resetPrefab();
+	prefabReady = false;
 }
 
 void EffectPrefabPlant::setMethodToFillProperty( const wstring & name )

@@ -8,6 +8,7 @@ public:
 	void loadAllPrefabs( GameData & _gameData );
 
 private:
+	static const char * weaponPrefabFile;
 	static const char * enemyPrefabFile;
 	static const char * staticPrefabFile;
 	static const char * effectPrefabFile;

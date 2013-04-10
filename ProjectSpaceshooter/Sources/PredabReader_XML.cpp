@@ -262,7 +262,7 @@ bool PredabReader_XML::readToNextPrefab()
 	UINT cwchPrefix;
 	BOOL isEmptyElement = pReader->IsEmptyElement();
 	XmlNodeType nodeType;
-
+	wstring tmp;
 	if (mErrorFlag == true)
 	{
 		return false;
@@ -289,7 +289,7 @@ bool PredabReader_XML::readToNextPrefab()
 				HR(hr);
 				return false;
 			}
-
+			tmp = mPrefabPlant->getPrefabRootNode();
 			//Skip insignificant nodes
 			if (mPrefabPlant->getPrefabRootNode() == pwszLocalName)
 				break;

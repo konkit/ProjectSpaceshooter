@@ -16,6 +16,7 @@ void ResoursceLoader::loadAllPrefabs( GameData & _gameData )
 	loadPrefabs(PREFAB_TYPE::BulletPrefab, bulletPrefabFile, _gameData);
 	loadPrefabs(PREFAB_TYPE::StaticPrefab, staticPrefabFile, _gameData);
 	loadPrefabs(PREFAB_TYPE::EffectPrefab, effectPrefabFile, _gameData);
+	loadPrefabs(PREFAB_TYPE::WeaponPrefab, weaponPrefabFile, _gameData);
 }
 
 void ResoursceLoader::loadPrefabs(PREFAB_TYPE prefabType, const char * prefabsFile, GameData & _gameData )
@@ -33,6 +34,8 @@ void ResoursceLoader::loadPrefabs(PREFAB_TYPE prefabType, const char * prefabsFi
 }
 
 
+
+const char * ResoursceLoader::weaponPrefabFile = "media/prefabs_descriptions/weapon_prefabs.xml";
 const char * ResoursceLoader::bulletPrefabFile = "media/prefabs_descriptions/bullet_prefabs.xml";
 const char * ResoursceLoader::effectPrefabFile = "media/prefabs_descriptions/effect_prefabs.xml";
 const char * ResoursceLoader::staticPrefabFile = "media/prefabs_descriptions/static_prefabs.xml";

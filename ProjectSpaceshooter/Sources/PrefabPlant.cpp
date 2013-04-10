@@ -6,8 +6,9 @@
 #include "Exceptions.h"
 #include "StaticPrefabPlant.h"
 #include "EffectPrefabPlant.h"
+#include "WeaponPrefab_Plant.h"
 PrefabPlant::PrefabPlant(void)
-	: prefabReady(true)
+	: prefabReady(false)
 {
 }
 
@@ -64,6 +65,8 @@ PrefabPlant * PrefabPlant::CreatePrefabPlantFor( PREFAB_TYPE prefabType )
 		return new EffectPrefabPlant;
 	case PREFAB_TYPE::LevelDescription:
 		break;
+	case PREFAB_TYPE::WeaponPrefab:
+		return new WeaponPrefabPlant;
 	default:
 		break;
 	}

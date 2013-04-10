@@ -91,3 +91,19 @@ void PrefabWithMesh::resetPrefab()
 	mScale.resetScale();
 	Prefab::resetPrefab();
 }
+
+void WeaponPrefab::resetPrefab()
+{
+	Prefab::resetPrefab();
+	rateOfFire = 0;
+	bulletPrefabID = 0;
+}
+
+WeaponPrefab::~WeaponPrefab()
+{
+}
+
+WeaponPrefab::WeaponPrefab()
+{
+	resetPrefab();
+}

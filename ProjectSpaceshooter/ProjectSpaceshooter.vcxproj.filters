@@ -133,6 +133,9 @@
     <ClInclude Include="Headers\DebugDrawer.h">
       <Filter>Header</Filter>
     </ClInclude>
+    <ClInclude Include="Headers\WeaponPrefab_Plant.h">
+      <Filter>Header\PrefabsPlant</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header">
@@ -290,6 +293,9 @@
     <ClCompile Include="Sources\EffectPrefabPlant.cpp">
       <Filter>Source\PrefabsPlants</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\WeaponPrefab_Plant.cpp">
+      <Filter>Source\PrefabsPlants</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="ogre.cfg" />
@@ -306,6 +312,9 @@
       <Filter>PrefabsFiles</Filter>
     </Xml>
     <Xml Include="media\prefabs_descriptions\effect_prefabs.xml">
+      <Filter>PrefabsFiles</Filter>
+    </Xml>
+    <Xml Include="media\prefabs_descriptions\weapon_prefabs.xml">
       <Filter>PrefabsFiles</Filter>
     </Xml>
   </ItemGroup>

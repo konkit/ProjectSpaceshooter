@@ -39,6 +39,7 @@ const wstring StaticPrefabPlant::getPrefabName()
 void StaticPrefabPlant::resetPrefab()
 {
 	mStaticPrefab.resetPrefab();
+	prefabReady = false;
 }
 
 void StaticPrefabPlant::setMethodToFillProperty( const wstring & name )

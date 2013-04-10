@@ -204,6 +204,7 @@
     <ClInclude Include="Headers\stdafx.h" />
     <ClInclude Include="Headers\Systems.h" />
     <ClInclude Include="Headers\TimeToLiveComponent.h" />
+    <ClInclude Include="Headers\WeaponPrefab_Plant.h" />
     <ClInclude Include="Headers\WeaponComponent.h" />
     <ClInclude Include="Headers\PredabReader_XML.h" />
   </ItemGroup>
@@ -246,6 +247,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Sources\TimeToLiveComponent.cpp" />
+    <ClCompile Include="Sources\WeaponPrefab_Plant.cpp" />
     <ClCompile Include="Sources\WeaponComponent.cpp" />
     <ClCompile Include="Sources\PredabReader_XML.cpp" />
   </ItemGroup>
@@ -262,6 +264,7 @@
       <SubType>Designer</SubType>
     </Xml>
     <Xml Include="media\prefabs_descriptions\static_prefabs.xml" />
+    <Xml Include="media\prefabs_descriptions\weapon_prefabs.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

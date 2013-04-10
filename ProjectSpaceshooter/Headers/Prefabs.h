@@ -9,6 +9,7 @@ enum class PREFAB_TYPE
 	BulletPrefab,
 	StaticPrefab,
 	EffectPrefab,
+	WeaponPrefab,
 	LevelDescription
 };
 
@@ -240,4 +241,19 @@ private:
 	unsigned		mMaxHealth;
 	unsigned		mWeaponPrefabID;
 
+};
+
+class WeaponPrefab : public Prefab
+{
+public:
+	WeaponPrefab();
+	~WeaponPrefab();
+	void setRateOfFire(unsigned val) { rateOfFire = val; }
+	void setBulletPrefabID(unsigned val) { bulletPrefabID = val; }
+	unsigned getBulletPrefabID() const { return bulletPrefabID; }
+	unsigned getRateOfFire() const { return rateOfFire; }
+	virtual void resetPrefab();
+private:
+	unsigned bulletPrefabID;
+	unsigned rateOfFire;
 };

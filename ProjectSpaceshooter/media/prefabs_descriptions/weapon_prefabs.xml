@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<weapon_prefabs>
+  <max_id id="1"/>
+  <weapon id='1'>
+    <weapon_name name='Rocket Luncher'/>
+    <bullet_prefab id='1'/>
+    <rateOfFire value='10'/>
+  </weapon>
+</weapon_prefabs>
