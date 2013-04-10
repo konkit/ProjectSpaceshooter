@@ -264,7 +264,9 @@
       <SubType>Designer</SubType>
     </Xml>
     <Xml Include="media\prefabs_descriptions\static_prefabs.xml" />
-    <Xml Include="media\prefabs_descriptions\weapon_prefabs.xml" />
+    <Xml Include="media\prefabs_descriptions\weapon_prefabs.xml">
+      <SubType>Designer</SubType>
+    </Xml>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,6 +1,11 @@
 #include "PrefabPlant.h"
 #include "Prefabs.h"
 
+/**
+ * 
+ * 
+ * @author Zyga
+ */
 class WeaponPrefabPlant : public PrefabPlant
 {
 public:

@@ -49,7 +49,7 @@ Prefab & PredabReader_XML::getNext()
 		throw My_Exception("Try to read from broken file");
 	}
 	readyPrefab = false;
-	while (S_OK == (hr = pReader->Read(&nodeType)) && !readyPrefab)
+	while (S_OK == (hr = pReader->Read(&nodeType)) && (!(readyPrefab = mPrefabPlant->IsPrefabReady())))
 	{
 		switch (nodeType)
 		{

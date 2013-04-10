@@ -61,8 +61,11 @@ private:
 
 		using std::string;
 		std::stringstream exceptionString;
-		exceptionString << "There are no prefab with id =" << prefabID << " in prefab collection";
-		throw exception(exceptionString.str().c_str());
+		exceptionString << "There are no prefab with id =" << prefabID << " in prefab collection ";
+		//throw exception(exceptionString.str().c_str());
+		string tmp(exceptionString.str());
+		tmp += dynamic_cast<Prefab*>(mPrefabs.getFirst())->getName();
+		throw exception(tmp.c_str());
 	}
 
 	GameCollection<TObject> mCollection;

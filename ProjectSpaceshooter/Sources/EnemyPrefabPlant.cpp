@@ -27,6 +27,7 @@ void EnemyPrefabPlant::setText( const wstring & text )
 void EnemyPrefabPlant::resetPrefab()
 {
 	_enemyPrefab.resetPrefab();
+	prefabReady = false;
 }
 
 const wstring EnemyPrefabPlant::getPrefabRootNode()
