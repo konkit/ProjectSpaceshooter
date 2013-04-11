@@ -2,21 +2,30 @@
 
 void OgreManager::initOgre()
 {
-	// Create OgreRoot
-	mRoot = OGRE_NEW Ogre::Root();
+#ifdef _DEBUG
+	mPluginsCfg = "plugins_d.cfg";
+#else
+	mPluginsCfg = "plugins.cfg";
+#endif
 
-	// install openGL plugin
-	mGLPlugin = OGRE_NEW Ogre::GLPlugin();
-	mRoot->installPlugin(mGLPlugin);
-
-	mParticlePlugin = OGRE_NEW Ogre::ParticleFXPlugin();
-	mRoot->installPlugin(mParticlePlugin);
+	// construct Ogre::Root
+	mRoot = new Ogre::Root(mPluginsCfg);
 
 	// Load config file and init window
-	mRoot->restoreConfig();
-
-	// Create render window
-	mWindow = mRoot->initialise(true, "Project SpaceShooter");
+	// configure
+	// Show the configuration dialog and initialise the system
+	// You can skip this and use root.restoreConfig() to load configuration
+	// settings if you were sure there are valid ones saved in ogre.cfg
+	if(mRoot->restoreConfig() || mRoot->showConfigDialog())
+	{
+		// If returned true, user clicked OK so initialise
+		// Here we choose to let the system create a default rendering window by passing 'true'
+		mWindow = mRoot->initialise(true, "Project: Spaceshooter");
+	}
+	else
+	{
+		//could not create window so we abort it all and go home
+	}
 
 	loadResources();
 
@@ -24,6 +33,9 @@ void OgreManager::initOgre()
 	Ogre::TextureManager::getSingleton().setDefaultNumMipmaps(5);
 	// initialise all resource groups
 	Ogre::ResourceGroupManager::getSingleton().initialiseAllResourceGroups();
+
+	mTime.reset();
+	lastTime = 0;
 
 	mTime.reset();
 	lastTime = 0;
@@ -48,7 +60,7 @@ void OgreManager::loadResources()
 #else
 	Ogre::String mResourcesCfg = "resources.cfg";
 #endif
-
+	//-------------------------------------------------------------------------------------
 	// set up resources
 	// Load resource paths from config file
 	Ogre::ConfigFile cf;
@@ -71,5 +83,6 @@ void OgreManager::loadResources()
 				archName, typeName, secName);
 		}
 	}
+
 }
 
