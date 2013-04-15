@@ -25,6 +25,7 @@ void ObjectStateUpdateSystem::update( GameData& mGameData, TimeData& time )
 			newBullet->getTTLComponent().setTimeToLive(300);
 			//set speed
 			newBullet->setTargetVelocity( Ogre::Vector3(0.0, 0.0, 1.0) );
+			newBullet->setMaxSpeed();
 
 		//set shooting as false
 		mGameData.getPlayer()->unsetShoot();
