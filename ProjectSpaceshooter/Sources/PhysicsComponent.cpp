@@ -54,8 +54,11 @@ void PhysicsComponent::updateVelocity() {
 	Ogre::Vector3 diffVector = targetVelocity - velocity;
 
 	//scale this vector to be equal to acceleration in magnitude
-	diffVector.normalise();
-	diffVector = diffVector * accelerationValue;
+	if( diffVector.length() > accelerationValue )
+	{
+		diffVector.normalise();
+		diffVector = diffVector * accelerationValue;
+	}
 
 	//change current velocity by this vector
 	velocity += diffVector;
