@@ -263,7 +263,9 @@
     <Xml Include="media\prefabs_descriptions\ship_prefabs.xml">
       <SubType>Designer</SubType>
     </Xml>
-    <Xml Include="media\prefabs_descriptions\static_prefabs.xml" />
+    <Xml Include="media\prefabs_descriptions\static_prefabs.xml">
+      <SubType>Designer</SubType>
+    </Xml>
     <Xml Include="media\prefabs_descriptions\weapon_prefabs.xml">
       <SubType>Designer</SubType>
     </Xml>

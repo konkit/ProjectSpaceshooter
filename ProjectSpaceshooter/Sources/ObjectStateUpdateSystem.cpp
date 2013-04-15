@@ -12,7 +12,6 @@ void ObjectStateUpdateSystem::update( GameData& mGameData, TimeData& time )
 		GameObject* player = mGameData.getPlayer();
 		Ogre::Quaternion playerOrientation = player->getOrientation();
 		Ogre::Vector3 playerPos = player->getPosition();
-		float bulletPower = mGameData.getPlayer()->getCurrentWeapon().getPower();
 
 		Bullet* newBullet = mGameData.getBullets().instantiate(1, mGameData.getSceneManagerFor(GAME_STATES::PLAY));
 			//set player pos

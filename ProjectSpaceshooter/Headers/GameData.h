@@ -76,22 +76,14 @@ public:
 	LevelDescription & getLevelDescription() {return currentLevelDecription;}
 
 	//BulletCollection& getBullets()	{
-	BaseCollection<BulletPrefab, Bullet>& getBullets() {
-		return mBulletCollection;
-	}
-
+	BaseCollection<BulletPrefab, Bullet>& getBullets() {return mBulletCollection;}
 	//EnemyCollection& getEnemys()
-	BaseCollection<ShipPrefab, EnemyObject>& getEnemies() {
-		return mEnemyCollection;
-	}
-
-	BaseCollection<EffectPrefab, EffectObject>& getEffects() {
-		return mEffectsCollection;
-	}
-
-	GameCollection<WeaponPrefab>& getWeaponCollection() { return mWeaponCollection; }
+	BaseCollection<ShipPrefab, EnemyObject>& getEnemies() {return mEnemyCollection;}
+	BaseCollection<EffectPrefab, EffectObject>& getEffects() {return mEffectsCollection;}
 
 	Core& getCore() { return theCore; }
+
+	EnemyObject * instantiateEnemy(unsigned prefabID, AI_TYPE myAi);
 	
 	void addShipPrefab(const ShipPrefab & _enemyPrefab);
 	void addBulletPrefab(const BulletPrefab & _bulletPrefab);
@@ -99,6 +91,15 @@ public:
 	void addEffectPrefab(const EffectPrefab & _effectPrefab);
 	void addWeaponPrefab(const WeaponPrefab & _weaponPrefab);
 	void addPrefab(PREFAB_TYPE prefabType, Prefab & prefab );
+	WeaponPrefab & getWeaponPrefab(unsigned prefabId);
+
+	/** 
+	* Create player based on ship prefab
+	*
+	* @return Player &
+	* @param Ship prefab which is used to create player ship
+	* @author Zyga
+	*/Player & createPlayer(unsigned shipPrefab);
 private:
 	struct changeFlagsStruct
 	{
@@ -113,7 +114,7 @@ private:
 	BaseCollection<BulletPrefab, Bullet> mBulletCollection;
 	BaseCollection<EffectPrefab, EffectObject> mEffectsCollection;
 	BaseCollection<StaticPrefab, StaticObject> mStaticCollection;
-	GameCollection<WeaponPrefab> mWeaponCollection;
+	vector<WeaponPrefab> mWeaponCollection;
 		//	GameObjectsCollection mPhysicCollection;  there will be physics object ex. explosion sphere
 	Player mPlayer;
 	GameObjectTemplates mPrefabCollections;

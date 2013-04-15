@@ -116,13 +116,13 @@ void PrefabWithColider_Plant::_setColiderOffset( const wstring & attribute, cons
 {
 	if (attribute == PrefabPlant::x_pos)
 	{
-		colider_str.offset.x_pos= ValueToUINT(value);
+		colider_str.offset.x= ValueToUINT(value);
 	} else if (attribute == PrefabPlant::y_pos)
 	{
-		colider_str.offset.y_pos = ValueToUINT(value);
+		colider_str.offset.y = ValueToUINT(value);
 	} else if (attribute == PrefabPlant::z_pos)
 	{
-		colider_str.offset.z_pos = ValueToUINT(value);
+		colider_str.offset.z = ValueToUINT(value);
 	} else if (attribute == PrefabPlant::closeNode)
 	{
 		return;
@@ -152,7 +152,7 @@ void PrefabWithColider_Plant::_setColiderRadian( const wstring & attribute, cons
 
 void PrefabWithColider_Plant::clearColider()
 {
-	colider_str.offset.x_pos = colider_str.offset.y_pos = colider_str.offset.z_pos = 0;
+	colider_str.offset.x = colider_str.offset.y = colider_str.offset.z = 0;
 	colider_str.radian = 0;
 }
 
@@ -286,16 +286,16 @@ void PrefabWithMesh_Plant::_setMeshName( const wstring & attribute, const wstrin
 
 void PrefabWithMesh_Plant::_setScale( const wstring & attribute, const wstring & value )
 {
-	static scale_struct scale;
+	static Vector3 scale;
 	if (attribute == x_scale)
 	{
-		scale.x_scale = ValueToUINT(value);
+		scale.x = ValueToUINT(value);
 	} else if (attribute == y_scale)
 	{
-		scale.y_scale = ValueToUINT(value);
+		scale.y = ValueToUINT(value);
 	} else if (attribute == z_scale)
 	{
-		scale.z_scale = ValueToUINT(value);
+		scale.z = ValueToUINT(value);
 	} else if (attribute == closeNode)
 	{
 		if (_prefabWithMesh == NULL)
@@ -303,7 +303,7 @@ void PrefabWithMesh_Plant::_setScale( const wstring & attribute, const wstring &
 			throw("PrefabWithMesh SetScale: try to use uninitialized prefab");
 		}
 		_prefabWithMesh->setScale(scale);
-		scale.x_scale = scale.y_scale = scale.z_scale = 0;
+		scale.x = scale.y = scale.z = 0.0;
 	} else
 	{
 		throw My_Exception("PrefabWithMesh_Plant _setScale: Missing attribute type");
@@ -315,13 +315,13 @@ void PrefabWithMesh_Plant::_setRotation( const wstring & attribute, const wstrin
 	static rotation_struct rot;
 	if (attribute == x_rot)
 	{
-		rot.x_rot = ValueToUINT(value);
+		rot.x_rot = ValueToDouble(value);
 	} else if (attribute == y_rot)
 	{
-		rot.y_rot = ValueToUINT(value);
+		rot.y_rot = ValueToDouble(value);
 	} else if (attribute == z_rot)
 	{
-		rot.z_rot = ValueToUINT(value);
+		rot.z_rot = ValueToDouble(value);
 	} else if (attribute == closeNode)
 	{
 		if (_prefabWithMesh == NULL)

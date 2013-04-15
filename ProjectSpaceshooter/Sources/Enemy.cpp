@@ -6,9 +6,12 @@ ShipPrefab::~ShipPrefab(void)
 }
 
 EnemyObject::EnemyObject( ShipPrefab * objectTemplate, Ogre::SceneManager * _sceneMenager)
-	: GameObject(objectTemplate->getMeshName(), _sceneMenager), mResistance(objectTemplate->getResistance())
-{}
-
+	: mHealthComponent(), mWeapon(objectTemplate->getWeaponPrefabID())
+{
+	
+	mHealthComponent.setResistance(objectTemplate->getResistance());
+	mHealthComponent.setMaxHealth(objectTemplate->getMaxHealth());
+}
 EnemyObject::~EnemyObject()
 {
 

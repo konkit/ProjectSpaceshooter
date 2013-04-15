@@ -38,7 +38,7 @@ public:
 	}
 
 	Collider& getCollider()	{
-		return mCollider;
+		return mColiderList.front();
 	}
 
 	//Manipulations on Ogre::SceneNode
@@ -68,6 +68,8 @@ public:
 		mPhysicsComponent.setTargetVelocity( mNode->getOrientation(), localDirection );
 	}
 
+	void setColider(PrefabWithColider * prefa);
+	void setMesh(PrefabWithMesh * prefab,  Ogre::SceneManager* sceneMgr);
 	void move(Ogre::Vector3 nPos) {		mNode->translate( nPos );	}
 	void rotate(float rotVelocity)	{	mNode->yaw( Ogre::Radian(rotVelocity) ); }
 
@@ -82,7 +84,7 @@ public:
 protected:
 	GameObjectType mObjectType;
 	PhysicsComponent mPhysicsComponent;
-	Collider mCollider;
+	list<Collider> mColiderList;
 
 	Ogre::SceneNode* mNode;
 

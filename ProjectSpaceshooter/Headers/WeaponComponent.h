@@ -4,10 +4,11 @@ class WeaponComponent {
 public:
 	WeaponComponent();
 
-	WeaponComponent(float power);
+	WeaponComponent(int weaponPrefabID);
+	void setWeapon(const WeaponPrefab * prefab);
 
-	void setPower(float newPower);
-	float getPower();
+	unsigned int getWeaponPrefabID() const { return weaponPrefabID; }
+	void setWeaponPrefabID(unsigned int val) { weaponPrefabID = val; }
 
 	/** sets shooting flag to true if time is proper */
 	void setShoot(unsigned long currentTime);
@@ -23,10 +24,10 @@ private:
 
 	//flags
 	bool shooting;
-
 	//weapon data
 	int rateOfFire;
+	string weaponName;
 	unsigned long timeSinceLastShot;
-	float mPower;
+	unsigned int weaponPrefabID;
 	unsigned int bulletPrefabID;
 };

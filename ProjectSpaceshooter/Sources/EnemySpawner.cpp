@@ -66,7 +66,7 @@ void EnemySpawner::spawnCountOfEnemy( unsigned amountToSpawnNow, GameData * _gam
 	{
 		//EnemyCollection& enemysColl = _gameData->getEnemys();
 		BaseCollection<ShipPrefab, EnemyObject>& enemiesCollection = _gameData->getEnemies();
-		EnemyObject * tmpEnemy = enemiesCollection.instantiate(_prefabID, _gameData->getSceneManagerFor(GAME_STATES::PLAY));
+		EnemyObject * tmpEnemy = _gameData->instantiateEnemy(_prefabID, AI_TYPE::fighter);
 		Vector3 newPosition = myPosition + Vector3(50.0*(i-1), 0.0, 0.0);
 		tmpEnemy->setPosition(newPosition);
 	}

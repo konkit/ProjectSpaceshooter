@@ -88,7 +88,7 @@ void PrefabWithMesh::resetPrefab()
 {
 	mMeshName.clear();
 	mRotation.resetScale();
-	mScale.resetScale();
+	mScale = Vector3(0.0, 0.0, 0.0);
 	Prefab::resetPrefab();
 }
 

@@ -8,14 +8,13 @@ using namespace std;
 
 /** 
   *
-  * @author Zygi
+  * @author Zyga
   */
 class EnemyObject : public GameObject
 {
 public:
 	EnemyObject::EnemyObject( ShipPrefab * objectTemplate, Ogre::SceneManager * _sceneMenager);
 	~EnemyObject();
-	unsigned int mResistance;
 
 	void setShoot(unsigned long currentTime)	{
 		mWeapon.setShoot(currentTime);
@@ -46,8 +45,13 @@ public:
 
 		return false;
 	}
+	void setWeapon(const WeaponPrefab * prefab){mWeapon.setWeapon(prefab);}
+	unsigned getWeaponPrefabID() const { return mWeapon.getWeaponPrefabID(); }
+	AI_TYPE getAI() const { return myAI; }
+	void setAI(AI_TYPE val) { myAI = val; }
 private:
 //  AI component
+	AI_TYPE myAI;
 	WeaponComponent mWeapon;
 	HealthComponent mHealthComponent;
 

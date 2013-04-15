@@ -13,42 +13,23 @@ enum class PREFAB_TYPE
 	LevelDescription
 };
 
-struct scale_struct
-{
-	unsigned x_scale; 
-	unsigned y_scale; 
-	unsigned z_scale;
-	scale_struct()
-		:x_scale(0), y_scale(0), z_scale(0){}
-	void resetScale()
-	{
-		x_scale = y_scale = z_scale = 0;
-	}
-};
 
 struct rotation_struct
 {
-	unsigned x_rot; 
-	unsigned y_rot; 
-	unsigned z_rot;
+	float x_rot; 
+	float y_rot; 
+	float z_rot;
 	rotation_struct()
 		: x_rot(0), y_rot(0), z_rot(0) {}
 	void resetScale(){x_rot = y_rot = z_rot = 0;}
 };
-struct offset_struct
-{
-	unsigned x_pos;
-	unsigned y_pos;
-	unsigned z_pos;
-	offset_struct(){x_pos = y_pos = z_pos = 0;}
-};
 
 struct colider_struct
 {
-	offset_struct	offset;
+	Vector3			offset;
 	unsigned		radian;
 	colider_struct()
-		: radian(0) {}
+		: radian(0), offset(0.0, 0.0, 0.0) {}
 };
 
 /**
@@ -84,7 +65,12 @@ public:
 	void setMaxHealth(unsigned val) { mMaxHealth = val; }
 	void setResistance(unsigned val) { mResistance = val; }
 
-	void addColider(colider_struct colider){mColiders.push_back(colider);}
+	void addColider(colider_struct colider)
+	{
+		//Square radian
+		colider.radian *= colider.radian; 
+		mColiders.push_back(colider);
+	}
 	const colider_struct	&			getColider()	const {return mColiders.front();}
 	const std::list<colider_struct> &	getColiderList() const {return mColiders;}
 	unsigned							getMaxHealth() const { return mMaxHealth; }
@@ -111,18 +97,18 @@ public:
 	PrefabWithMesh(){;}
 	~PrefabWithMesh(){;}
 	void setMeshName(string val) { mMeshName = val; }
-	void setScale(scale_struct scale){mScale = scale;}
+	void setScale(Vector3 scale){mScale = scale;}
 	void setRotation(rotation_struct rotation){mRotation = rotation;}
-	const scale_struct		&			getScale()		const {return mScale;}
-	const rotation_struct	&			getRotation()	const {return mRotation;}
-	const std::string		&			getMeshName()	const { return mMeshName; }
+	const Vector3			&	getScale()		const {return mScale;}
+	const rotation_struct	&	getRotation()	const {return mRotation;}
+	const std::string		&	getMeshName()	const { return mMeshName; }
 
 	virtual void resetPrefab();
 
 protected:
 	string			mMeshName;
 	rotation_struct mRotation;
-	scale_struct	mScale;
+	Vector3			mScale;
 
 };
 

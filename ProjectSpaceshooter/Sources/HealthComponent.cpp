@@ -1,7 +1,7 @@
 
 bool HealthComponent::isDead()
 {
-	return health < 0;
+	return health <= 0;
 }
 
 int HealthComponent::getHealth()

@@ -13,8 +13,6 @@ template<class TPrefab, class TObject>
 class BaseCollection
 {
 public:
-	void loadPrefabs();
-
 	TObject* instantiate(int ID, Ogre::SceneManager* sceneMgr)	{
 		//get prefab with id given
 		TPrefab* currentPrefab = getPrefab(ID);
@@ -43,10 +41,6 @@ public:
 	void addPrefab(TPrefab* newPrefab) {
 		mPrefabs += newPrefab;
 	}
-
-private:
-
-
 	TPrefab* getPrefab(int prefabID)	{
 		GameCollectionIterator<TPrefab>  it = mPrefabs.getIterator();
 		TPrefab * tmpPrefab;
@@ -67,6 +61,10 @@ private:
 		tmp += dynamic_cast<Prefab*>(mPrefabs.getFirst())->getName();
 		throw exception(tmp.c_str());
 	}
+
+private:
+
+
 
 	GameCollection<TObject> mCollection;
 	GameCollection<TPrefab> mPrefabs;

@@ -35,7 +35,7 @@ void AISystem::randomAI( EnemyObject* it, GameData& mGameData )
 	//currentPhysicsComponent.setVelocityValue(currentVelocity);
 	//set its vector
 	//currentPhysicsComponent.setVelocity(Ogre::Vector3(0.0, 0.0, 1.0));
-	it->setTargetVelocity( Ogre::Vector3(0.0, 0.0, 1.0) );
+	it->setTargetVelocity( Ogre::Vector3(0.0, 0.0, 0.0) );
 	//set it rotation speed
 	currentPhysicsComponent.setRotVelocity(currentRotVelocity);
 }

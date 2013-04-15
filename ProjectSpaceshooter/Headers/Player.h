@@ -46,6 +46,12 @@ public:
 		return false;
 	}
 
+	void setShip(ShipPrefab * _shipPrefab ) 
+	{
+		throw std::exception("The method or operation is not implemented.");
+	}
+
+
 private:  
 	WeaponComponent mWeapon;
 	HealthComponent mHealthComponent;

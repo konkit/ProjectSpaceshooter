@@ -5,6 +5,7 @@
 #include "GameObject.h"
 
 GameData::GameData(void)
+	: mWeaponCollection(20)
 {
 	changeFlags.changeToHangar = false;
 	changeFlags.changeToMenu = false;
@@ -141,7 +142,37 @@ void GameData::addWeaponPrefab( const WeaponPrefab & _weaponPrefab )
 		throw My_Exception("addWeaponPrefab: Can't add NULL Weapon Prefab");
 	}
 	WeaponPrefab * prefab = new WeaponPrefab(_weaponPrefab);
-	mWeaponCollection.addObject(prefab);
+	unsigned prefabID = _weaponPrefab.getPrefabID(); 
+	if (prefabID > mWeaponCollection.capacity() - 1)
+	{
+		mWeaponCollection.resize(prefabID);
+	} else
+	mWeaponCollection[prefabID] = _weaponPrefab;
+}
+
+EnemyObject * GameData::instantiateEnemy( unsigned prefabID, AI_TYPE myAi)
+{
+	EnemyObject * createdEnemy = mEnemyCollection.instantiate(prefabID, getSceneManagerFor(GAME_STATES::PLAY));
+	if (mWeaponCollection.capacity() - 1 < prefabID)
+	{
+		stringstream exceptionStr;
+		exceptionStr << "There is no weapon prefab with id = " << createdEnemy->getWeaponPrefabID();
+		throw My_Exception(exceptionStr.str());
+	}
+	WeaponPrefab & weapon = mWeaponCollection[createdEnemy->getWeaponPrefabID()];
+	createdEnemy->setWeapon(&weapon);
+	createdEnemy->setAI(myAi);
+	return createdEnemy;
+}
+
+WeaponPrefab & GameData::getWeaponPrefab( unsigned prefabId )
+{
+	return mWeaponCollection[prefabId];
+}
+
+Player & GameData::createPlayer( unsigned shipPrefabID )
+{
+	mPlayer.setShip(mEnemyCollection.getPrefab(shipPrefabID));
 }
 
 
