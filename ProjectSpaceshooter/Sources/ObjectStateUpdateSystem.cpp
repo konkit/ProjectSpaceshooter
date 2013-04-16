@@ -72,5 +72,22 @@ void ObjectStateUpdateSystem::update( GameData& mGameData, TimeData& time )
 		}
 
 	}
+
+	GameCollectionIterator<EffectObject> effectIterator = mGameData.getEffects().getIterator();
+	EffectObject* effectIt;
+	while (effectIterator.hasNext())
+	{
+		effectIt = effectIterator.getNext();
+
+		effectIt->getTTLComponent().decreaseTimeToLive();
+
+		if( effectIt->isDead() == true )	{
+			//remove from collection
+			EffectObject* removedObject = dynamic_cast<EffectObject*> (effectIt);
+			effectIt->getSceneNode()->detachAllObjects();	
+			mGameData.getSceneManagerFor(GAME_STATES::PLAY)->getRootSceneNode()->removeAndDestroyChild( effectIt->getSceneNode()->getName() );
+			mGameData.getEffects().getCollection().deleteObject(removedObject);
+		}
+	}
 }
 
