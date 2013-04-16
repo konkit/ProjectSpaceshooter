@@ -3,12 +3,12 @@
 /************************************************************************/
 Bullet::Bullet() : GameObject()
 {
-	mTTLComponent.setTimeToLive(3000);
+	mTTLComponent.setTimeToLive(300);
 }
 
 Bullet::Bullet( std::string meshName, Ogre::SceneManager* sceneMgr ) : GameObject(meshName, sceneMgr)
 {
-	mTTLComponent.setTimeToLive(3000);
+	mTTLComponent.setTimeToLive(300);
 }
 
 Bullet::Bullet( BulletPrefab * objectTemplate, Ogre::SceneManager * _sceneMenager )
@@ -17,7 +17,7 @@ Bullet::Bullet( BulletPrefab * objectTemplate, Ogre::SceneManager * _sceneMenage
 {
 	mPhysicsComponent.setMaxVelocityValue( objectTemplate->getMaxVelocity() );
 	mPhysicsComponent.setVelocity( Vector3(0.0f, 0.0f, 1.0f));
-	mTTLComponent.setTimeToLive(3000);
+	mTTLComponent.setTimeToLive(300);
 }
 
 TimeToLiveComponent& Bullet::getTTLComponent()
