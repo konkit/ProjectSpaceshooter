@@ -18,7 +18,6 @@ public:
 	~OgreManager()
 	{
 		delete mRoot;
-		delete mGLPlugin;
 	}
 	//function which initializes Ogre
 	//must be run before OIS initialization
@@ -32,7 +31,7 @@ public:
 
 	//get time since last frame in fraction of SECONDS
 	float getDeltaTime()	{
-		float deltaTime = ( mTime.getMilliseconds() - lastTime) / 1000.0f;
+		float deltaTime = ( mTime.getMilliseconds() - lastTime) / 1000.0;
 		lastTime = mTime.getMilliseconds();
 
 		return deltaTime;
@@ -49,11 +48,10 @@ private:
 	Ogre::Root* mRoot;
 	//Name of file with resources
 	Ogre::String mResourcesCfg;
+	//Name of file with plugins
+	Ogre::String mPluginsCfg;
 	//Render window object
 	Ogre::RenderWindow* mWindow;
-	//OpenGL plugin
-	Ogre::GLPlugin* mGLPlugin;
-	Ogre::ParticleFXPlugin* mParticlePlugin;
 	//Timer
 	Ogre::Timer mTime;
 	unsigned long lastTime;

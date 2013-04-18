@@ -87,8 +87,6 @@ restrictions:
 #   endif
 #   undef _OISExport
 #   define _OISExport __attribute__((visibility("default")))
-#elif defined( ANDROID )
-#	define OIS_ANDROID_PLATFORM
 #else //Probably Linux
 #	define OIS_LINUX_PLATFORM
 #	include <unistd.h>
@@ -118,10 +116,10 @@ namespace OIS
 	class Keyboard;
 	class Mouse;
 	class JoyStick;
-    class MultiTouch;
+	class MultiTouch;
 	class KeyListener;
 	class MouseListener;
-    class MultiTouchListener;
+	class MultiTouchListener;
 	class JoyStickListener;
 	class Interface;
 	class ForceFeedback;
@@ -138,7 +136,7 @@ namespace OIS
 	typedef std::map<Object*, FactoryCreator*> FactoryCreatedObject;
 
 	//! Each Input class has a General Type variable, a form of RTTI
-    enum Type
+	enum Type
 	{
 		OISUnknown       = 0,
 		OISKeyboard      = 1,
@@ -154,7 +152,7 @@ namespace OIS
 	//--------     Shared common components    ------------------------//
 
 	//! Base type for all device components (button, axis, etc)
-    enum ComponentType
+	enum ComponentType
 	{
 		OIS_Unknown = 0,
 		OIS_Button  = 1, //ie. Key, mouse button, joy button, etc
