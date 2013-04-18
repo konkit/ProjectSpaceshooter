@@ -52,6 +52,7 @@ public:
 				//c) jakies RTTI ? O_o
 				if(typeName == "enemy")	{
 					currentObject->setDead();
+					itBullet->setDead();
 				}
 			}
 		}

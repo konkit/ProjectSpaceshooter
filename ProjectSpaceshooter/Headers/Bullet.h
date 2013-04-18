@@ -27,6 +27,8 @@ public:
 
 	TimeToLiveComponent& getTTLComponent();
 
+	void setMaxSpeed() { mPhysicsComponent.setMaxSpeed(); }
+
 private:
 	float mPower;
 	GameObject* mOwner;

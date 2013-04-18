@@ -7,13 +7,13 @@ class EffectObject : public GameObject
 public:
 	EffectObject() : GameObject()
 	{
-		mTTLComponent.setTimeToLive(3000);
+		mTTLComponent.setTimeToLive(300);
 	}
 
 	EffectObject( EffectPrefab * objectTemplate, Ogre::SceneManager * _sceneMgr)
 		: GameObject()
 	{
-		mTTLComponent.setTimeToLive(3000);
+		mTTLComponent.setTimeToLive(50);
 
 		static int uniqueID = 0;
 
@@ -26,13 +26,27 @@ public:
 			std::string uniqueName = std::to_string(uniqueID);
 			particleSystem = _sceneMgr->createParticleSystem(uniqueName, objectTemplate->getParticleSystemName() );
 			//particleSystem->fastForward(1.0);
-			particleSystem->setSpeedFactor(3.0);
+			//particleSystem->setSpeedFactor(3.0);
 		mNode = _sceneMgr->getRootSceneNode()->createChildSceneNode();
 		mNode->attachObject( particleSystem );
 	}
 
 	~EffectObject() {
 
+	}
+
+	TimeToLiveComponent& getTTLComponent() {
+		return mTTLComponent;
+	}
+
+	bool isDead()
+	{
+		if( mTTLComponent.isTimeIsUp()==true )
+			return true;
+		if( GameObject::isDead() == true )
+			return true;
+
+		return false;
 	}
 
 private:

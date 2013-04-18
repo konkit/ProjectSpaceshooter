@@ -2,6 +2,9 @@
 
 #include "GameData.h"
 
+#ifdef _DEBUG
+#include "DebugDrawer.h"
+#endif
 
 /** 
   * System governing physics stuff (velocities, accelerations etc)
@@ -46,6 +49,11 @@ public:
 
 		it->rotate( tmpPhysics.getRotVelocity() * deltaTime );
 		it->move( tmpPhysics.getVelocity() * deltaTime );
+
+#ifdef _DEBUG
+		DebugDrawer::getSingleton().drawLine( it->getPosition(), it->getPosition()+tmpPhysics.getTargetVelocity(), Ogre::ColourValue(1.0, 1.0, 0.0, 0.0 ));
+		DebugDrawer::getSingleton().drawLine( it->getPosition(), it->getPosition()+tmpPhysics.getVelocity(), Ogre::ColourValue(1.0, 1.0, 0.0, 0.0 ));
+#endif 
 	}
 
 

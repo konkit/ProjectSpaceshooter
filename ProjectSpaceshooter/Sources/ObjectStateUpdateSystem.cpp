@@ -24,6 +24,7 @@ void ObjectStateUpdateSystem::update( GameData& mGameData, TimeData& time )
 			newBullet->getTTLComponent().setTimeToLive(300);
 			//set speed
 			newBullet->setTargetVelocity( Ogre::Vector3(0.0, 0.0, 1.0) );
+			newBullet->setMaxSpeed();
 
 		//set shooting as false
 		mGameData.getPlayer()->unsetShoot();
@@ -69,6 +70,23 @@ void ObjectStateUpdateSystem::update( GameData& mGameData, TimeData& time )
 			mGameData.getEnemies().getCollection().deleteObject(removedObject);
 		}
 
+	}
+
+	GameCollectionIterator<EffectObject> effectIterator = mGameData.getEffects().getIterator();
+	EffectObject* effectIt;
+	while (effectIterator.hasNext())
+	{
+		effectIt = effectIterator.getNext();
+
+		effectIt->getTTLComponent().decreaseTimeToLive();
+
+		if( effectIt->isDead() == true )	{
+			//remove from collection
+			EffectObject* removedObject = dynamic_cast<EffectObject*> (effectIt);
+			effectIt->getSceneNode()->detachAllObjects();	
+			mGameData.getSceneManagerFor(GAME_STATES::PLAY)->getRootSceneNode()->removeAndDestroyChild( effectIt->getSceneNode()->getName() );
+			mGameData.getEffects().getCollection().deleteObject(removedObject);
+		}
 	}
 }
 
