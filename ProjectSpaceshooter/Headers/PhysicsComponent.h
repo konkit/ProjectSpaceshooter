@@ -1,7 +1,9 @@
 #pragma once
 
 
-/** 
+/** This component is part of movable game objects 
+  * It takes care about velocities, acceleration 
+  * and that sort of physics.
   *
   * @author konkit
   */
@@ -13,19 +15,22 @@ public:
 
 	//sets maximum length of velocity vector
 	void setMaxVelocityValue(float newVelocity);
-	//sets new velocity vector 
+
+	//sets new instantaneous velocity vector 
 	void setVelocity(Ogre::Vector3 const& newVelocity);
-
-	void setRotVelocity(float newRotVelocity);
-
 	Ogre::Vector3 getVelocity();
 
+	//set angular velocity
+	void setRotVelocity(float newRotVelocity);
 	float getRotVelocity();
-
-	void updateVelocity();
 
 	void setTargetVelocity( Ogre::Quaternion orientation,  Ogre::Vector3 localDir );
 	Ogre::Vector3 getTargetVelocity() { return targetVelocity; }
+
+
+	void updateVelocity();
+
+
 
 	void setMaxSpeed() {
 		velocity = targetVelocity;

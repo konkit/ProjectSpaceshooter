@@ -3,6 +3,7 @@
 #include "Prefabs.h"
 #include "WeaponComponent.h"
 #include "HealthComponent.h"
+#include "AIComponent.h"
 
 using namespace std;
 
@@ -37,6 +38,10 @@ public:
 		return mHealthComponent;
 	}
 
+	AIComponent& getAIComponent()	{
+		return mAIComponent;
+	}
+	
 	bool isDead()	{
 		if( mHealthComponent.isDead() == true )
 			return true;
@@ -50,6 +55,7 @@ private:
 //  AI component
 	WeaponComponent mWeapon;
 	HealthComponent mHealthComponent;
+	AIComponent	mAIComponent;
 
 };
 

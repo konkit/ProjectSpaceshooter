@@ -4,6 +4,7 @@
 #include "ColliderComponent.h"
 
 #include <string>
+
 enum  class GameObjectType 
 {
 	player,
@@ -13,16 +14,14 @@ enum  class GameObjectType
 	physicObject
 };
 
-enum class AI_TYPE
-{
-	fighter,
-	defender
-};
+
 
 /** Game object class
   * Game objects represents object in gameworld - enemies, bullets etc.
   * Those are composed from components (physics component, gamelogiccomponent, etc.)
   * This is abstract class - Bullet, Enemy and other classes inherit from this class
+  *
+  * 
   * 
   * @author 
   */

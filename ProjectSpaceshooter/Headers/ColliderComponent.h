@@ -1,6 +1,9 @@
 #pragma once
 
-
+/** Collider component stores data about collider which game object has
+  * 
+  * @author konkit
+  */
 class Collider	{
 
 public:
