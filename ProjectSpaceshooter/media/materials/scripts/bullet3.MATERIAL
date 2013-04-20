@@ -1,0 +1,39 @@
+material "\bullet3.MESH/01 - Default"
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.2 0.2 0.2 0
+			diffuse 0.2 0.2 0.2 0
+			specular 0 0 0 0
+			emissive 0 0 0
+		}
+	}
+}
+material "\bullet3.MESH/01 - Default44"
+{
+	technique
+	{
+		pass
+		{
+			ambient 0,1451	0,3922	0,9608 0
+			diffuse 0,1451	0,3922	0,9608 0
+			specular 0 0 0 0
+			emissive 0 0 0
+		}
+	}
+}
+material "\bullet3.MESH/01 - Default4"
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.254902 0.254902 0.94902 0
+			diffuse 0.254902 0.254902 0.94902 0
+			specular 0 0 0 0
+			emissive 0 0 0
+		}
+	}
+}
