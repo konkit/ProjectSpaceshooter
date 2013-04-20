@@ -83,7 +83,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>..\Libs\include\OGRE\RenderSystems\GL;Headers\;..\Libs\include\OIS;..\Libs\include\OGRE;$(IncludePath)</IncludePath>
+    <IncludePath>..\Libs\include\OGRE\RenderSystems\GL;Headers\;..\Libs\include\;..\Libs\include\OIS;..\Libs\include\OGRE;$(IncludePath)</IncludePath>
     <LibraryPath>..\Libs\lib\$(Configuration);..\Libs\lib\$(Configuration)\opt;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -156,7 +156,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>FreeImage.lib;freetype.lib;OgreMainStatic.lib;OgreRTShaderSystemStatic.lib;OgreTerrainStatic.lib;OIS.lib;zlib.lib;zziplib.lib;RenderSystem_GLStatic.lib;OpenGL32.lib;GLU32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>OgreMain.lib;OIS.lib;opt/Plugin_ParticleFX.lib;xmllite.lib;shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <IgnoreSpecificDefaultLibraries>
       </IgnoreSpecificDefaultLibraries>
     </Link>
