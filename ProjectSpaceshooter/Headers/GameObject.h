@@ -8,10 +8,12 @@
 enum  class GameObjectType 
 {
 	player,
+	core,
 	enemyObject,
 	bulletObject,
 	staticObject,
-	physicObject
+	physicObject,
+	effectObject
 };
 
 
@@ -78,7 +80,7 @@ public:
 		mDeadFlag = true;
 	}
 
-	GameObjectType getType();
+	virtual GameObjectType getType() = 0;
 
 protected:
 	GameObjectType mObjectType;

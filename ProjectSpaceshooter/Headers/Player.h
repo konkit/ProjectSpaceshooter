@@ -46,6 +46,10 @@ public:
 		return false;
 	}
 
+	GameObjectType getType() {
+		return GameObjectType::player;
+	}
+
 private:  
 	WeaponComponent mWeapon;
 	HealthComponent mHealthComponent;

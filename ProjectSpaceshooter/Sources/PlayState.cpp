@@ -5,8 +5,9 @@
 
 #include "DebugDrawer.h"
 
-#define THIRD_PERSON_CAMERA false
-#define TWO_DIMENSION_CAMERA true
+//To zawsze jedno z nich musi byæ true a drugie false
+#define THIRD_PERSON_CAMERA true
+#define TWO_DIMENSION_CAMERA false
 
 PlayState::PlayState(SystemsSet & gameSystems) :GameState()
 {

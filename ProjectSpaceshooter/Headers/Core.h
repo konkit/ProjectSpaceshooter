@@ -14,6 +14,10 @@ public:
 	}
 	Ogre::SceneNode* getSceneNode(){return this->mNode;}
 
+	GameObjectType getType() {
+		return GameObjectType::core;
+	}
+
 private:
 
 

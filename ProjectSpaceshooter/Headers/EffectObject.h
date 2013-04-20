@@ -49,6 +49,10 @@ public:
 		return false;
 	}
 
+	GameObjectType getType() {
+		return GameObjectType::effectObject;
+	}
+
 private:
 	TimeToLiveComponent mTTLComponent;
 };
