@@ -32,8 +32,12 @@ public:
 
 
 
-	void setMaxSpeed() {
+	void setCurrentSpeedToMax() {
 		velocity = targetVelocity;
+	}
+
+	void setAccelerationValue(float newAccelerationValue) {
+		accelerationValue = newAccelerationValue;
 	}
 
 private:

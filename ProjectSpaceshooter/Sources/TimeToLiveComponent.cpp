@@ -1,15 +1,15 @@
 
 bool TimeToLiveComponent::isTimeIsUp()
 {
-	return timeToLive<0;
+	return timeToLive<0.0;
 }
 
-void TimeToLiveComponent::decreaseTimeToLive()
+void TimeToLiveComponent::decreaseTimeToLive(float deltaTime)
 {
-	timeToLive--;
+	timeToLive-=deltaTime;
 }
 
-void TimeToLiveComponent::setTimeToLive( int newTime )
+void TimeToLiveComponent::setTimeToLive( float newTime )
 {
 	timeToLive = newTime;
 }

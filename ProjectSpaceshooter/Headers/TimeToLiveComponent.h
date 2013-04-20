@@ -11,12 +11,12 @@ class TimeToLiveComponent
 public:
 	TimeToLiveComponent();
 
-	void setTimeToLive(int newTime);
+	void setTimeToLive(float newTime);
 
 	/** function running every frame and decreasing time to live */
-	void decreaseTimeToLive();
+	void decreaseTimeToLive(float deltaTime);
 
 	bool isTimeIsUp();
 private:
-	int timeToLive;
+	float timeToLive;
 };

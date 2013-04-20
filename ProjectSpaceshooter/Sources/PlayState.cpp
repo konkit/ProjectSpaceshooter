@@ -1,6 +1,8 @@
 #include "GameState.h"
 #include "PlayState.h"
 
+
+
 #include "DebugDrawer.h"
 
 #define THIRD_PERSON_CAMERA false
@@ -91,12 +93,27 @@ PlayState::PlayState(SystemsSet & gameSystems) :GameState()
 	//attach the particle system to a scene node
 	//Ogre::SceneNode *explosion = mSceneMgr->getRootSceneNode()->createChildSceneNode();
 	//explosion->attachObject(particleSystem);
+
+	numOfFPS = 0;
+	timeToOneSecond = 0.0;
+
 	
 }
 
 
 GAME_STATES PlayState::update( SystemsSet & gameSystems, TimeData& time )
 {
+	timeToOneSecond += time.deltaTime;
+	if( timeToOneSecond > 1.0 ) {
+		currentFPSValue = numOfFPS;
+		numOfFPS = 0;
+		timeToOneSecond = 0.0;
+
+		std::cout<<"FPS : "<<currentFPSValue<<"\n";
+	}
+
+	numOfFPS++;
+
 	//update input from player
 	gameSystems.inputManager.updateInputForGame(gameSystems.gameData, time.deltaTime, time.currentTime);
 	mAISystem.update(gameSystems.gameData, time.deltaTime);

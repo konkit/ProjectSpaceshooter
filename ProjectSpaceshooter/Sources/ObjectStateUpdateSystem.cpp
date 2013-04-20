@@ -22,10 +22,10 @@ void ObjectStateUpdateSystem::update( GameData& mGameData, TimeData& time )
 			//set owner
 			newBullet->setOwner(player);
 			//set time to live
-			newBullet->getTTLComponent().setTimeToLive(300);
+			newBullet->getTTLComponent().setTimeToLive(3.0);
 			//set speed
 			newBullet->setTargetVelocity( Ogre::Vector3(0.0, 0.0, 1.0) );
-			newBullet->setMaxSpeed();
+			newBullet->setCurrentSpeedToMax();
 
 		//set shooting as false
 		mGameData.getPlayer()->unsetShoot();
@@ -41,7 +41,7 @@ void ObjectStateUpdateSystem::update( GameData& mGameData, TimeData& time )
 	{
 		bulletIt = bulletIterator.getNext();
 
-		bulletIt->getTTLComponent().decreaseTimeToLive();
+		bulletIt->getTTLComponent().decreaseTimeToLive(time.deltaTime);
 
 		if( bulletIt->isDead() == true )	{
 			//remove from collection
@@ -79,7 +79,7 @@ void ObjectStateUpdateSystem::update( GameData& mGameData, TimeData& time )
 	{
 		effectIt = effectIterator.getNext();
 
-		effectIt->getTTLComponent().decreaseTimeToLive();
+		effectIt->getTTLComponent().decreaseTimeToLive(time.deltaTime);
 
 		if( effectIt->isDead() == true )	{
 			//remove from collection

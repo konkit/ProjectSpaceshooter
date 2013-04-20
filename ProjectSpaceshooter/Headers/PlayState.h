@@ -18,4 +18,8 @@ private:
 	ObjectStateUpdateSystem mObjectStateSystem;
 	CollisionSystem			mCollisionSystem;
 	AISystem				mAISystem;
+
+
+	int numOfFPS, currentFPSValue;
+	float timeToOneSecond;
 };

@@ -7,13 +7,13 @@ class EffectObject : public GameObject
 public:
 	EffectObject() : GameObject()
 	{
-		mTTLComponent.setTimeToLive(300);
+		mTTLComponent.setTimeToLive(3.00);
 	}
 
 	EffectObject( EffectPrefab * objectTemplate, Ogre::SceneManager * _sceneMgr)
 		: GameObject()
 	{
-		mTTLComponent.setTimeToLive(50);
+		mTTLComponent.setTimeToLive(1.50);
 
 		static int uniqueID = 0;
 

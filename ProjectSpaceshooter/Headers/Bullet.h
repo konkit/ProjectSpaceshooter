@@ -27,7 +27,7 @@ public:
 
 	TimeToLiveComponent& getTTLComponent();
 
-	void setMaxSpeed() { mPhysicsComponent.setMaxSpeed(); }
+	void setCurrentSpeedToMax() { mPhysicsComponent.setCurrentSpeedToMax(); }
 
 private:
 	float mPower;

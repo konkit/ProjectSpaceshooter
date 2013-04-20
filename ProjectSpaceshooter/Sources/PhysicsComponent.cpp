@@ -29,15 +29,13 @@ PhysicsComponent::PhysicsComponent()
 	: velocity(0.0, 0.0, 0.0), 
 	  rotVelocity(0.0),
 	  rotVelocityValue(2.0), 
-	  accelerationValue(50.0),
+	  accelerationValue(5.0),
 	  maxVelocityValue(700.0)
 {
 
 }
 
 void PhysicsComponent::updateVelocity() {
-	//temporary
-	//velocity += acceleration;
 
 	//get difference vector between current velocity and target velocity
 	Ogre::Vector3 diffVector = targetVelocity - velocity;
