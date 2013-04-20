@@ -40,6 +40,11 @@ void Bullet::setOwner( GameObject* owner )
 	mOwner = owner;
 }
 
+GameObject* Bullet::getOwner()
+{
+	return mOwner;
+}
+
 void Bullet::setPower( float newPower )
 {
 	mPower = newPower;

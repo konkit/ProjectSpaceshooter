@@ -116,7 +116,7 @@ GAME_STATES PlayState::update( SystemsSet & gameSystems, TimeData& time )
 
 	//update input from player
 	gameSystems.inputManager.updateInputForGame(gameSystems.gameData, time.deltaTime, time.currentTime);
-	mAISystem.update(gameSystems.gameData, time.deltaTime);
+	mAISystem.update(gameSystems.gameData, time);
 	mPhysicsSystem.update( gameSystems.gameData, time.deltaTime );
 	mCollisionSystem.update( gameSystems.gameData);
 	mObjectStateSystem.update( gameSystems.gameData, time);

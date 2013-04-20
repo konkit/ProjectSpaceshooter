@@ -51,6 +51,10 @@ public:
 
 		return false;
 	}
+
+	GameObjectType getType() {
+		return GameObjectType::enemyObject;
+	}
 private:
 //  AI component
 	WeaponComponent mWeapon;

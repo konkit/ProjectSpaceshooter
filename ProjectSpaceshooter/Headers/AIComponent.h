@@ -22,6 +22,9 @@ enum class AI_TYPE
   */
 class AIComponent {
 public:
+	AIComponent() : mState(AI_STATE::GET_TO_CORE)
+	{}
+
 	void setState( AI_STATE newState ){
 		mState = newState;
 	}
@@ -38,6 +41,7 @@ public:
 	AI_TYPE getType() {
 		return mType;
 	}
+
 
 private:
 	AI_STATE mState;

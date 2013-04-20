@@ -22,12 +22,17 @@ public:
 	void setPower(float newPower);
 
 	void setOwner(GameObject* owner);
+	GameObject* getOwner();
 
 	bool isDead();
 
 	TimeToLiveComponent& getTTLComponent();
 
 	void setCurrentSpeedToMax() { mPhysicsComponent.setCurrentSpeedToMax(); }
+
+	GameObjectType getType() {
+		return GameObjectType::bulletObject;
+	}
 
 private:
 	float mPower;

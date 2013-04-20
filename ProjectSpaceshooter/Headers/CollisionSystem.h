@@ -50,9 +50,12 @@ public:
 				//a) polimorfizm - metoda getType
 				//b) polimorfizm ale jakis niejawny - jakas metoda doSomething( objekt1)
 				//c) jakies RTTI ? O_o
-				if(typeName == "enemy")	{
-					currentObject->setDead();
-					itBullet->setDead();
+				if(typeName == "enemy" &&
+					itBullet->getOwner() != currentObject && 
+					itBullet->getOwner()->getType() != GameObjectType::enemyObject )	
+				{
+						currentObject->setDead();
+						itBullet->setDead();
 				}
 			}
 		}

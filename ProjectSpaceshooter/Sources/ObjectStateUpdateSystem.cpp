@@ -53,12 +53,14 @@ void ObjectStateUpdateSystem::update( GameData& mGameData, TimeData& time )
 
 	}
 
-	//deleting enemies when dead.
+	//parsing through enemies
 	GameCollectionIterator<EnemyObject> enemyIterator = mGameData.getEnemies().getIterator();
 	EnemyObject* enemyIt;
 	while (enemyIterator.hasNext())
 	{
 		enemyIt = enemyIterator.getNext();
+
+		//removing when dead
 		if( enemyIt->isDead() == true )	{
 			//create explosion
 			EffectObject* newExplosion = mGameData.getEffects().instantiate(1, mGameData.getSceneManagerFor(GAME_STATES::PLAY));
@@ -69,6 +71,30 @@ void ObjectStateUpdateSystem::update( GameData& mGameData, TimeData& time )
 			enemyIt->getSceneNode()->detachAllObjects();
 			mGameData.getSceneManagerFor(GAME_STATES::PLAY)->getRootSceneNode()->removeAndDestroyChild( enemyIt->getSceneNode()->getName() );
 			mGameData.getEnemies().getCollection().deleteObject(removedObject);
+		}
+
+		//creating bullets when enemy is shooting
+		if( enemyIt->isShooting() == true)	{
+			//get data required to create new bullet
+			Ogre::Quaternion enemyOrientation = enemyIt->getOrientation();
+			Ogre::Vector3 enemyPos = enemyIt->getPosition();
+			float bulletPower = enemyIt->getCurrentWeapon().getPower();
+
+			Bullet* newBullet = mGameData.getBullets().instantiate(1, mGameData.getSceneManagerFor(GAME_STATES::PLAY));
+				//set player pos
+				newBullet->setPosition(enemyPos);
+				//set player orientation
+				newBullet->setOrientation(enemyOrientation);
+				//set owner
+				newBullet->setOwner(enemyIt);
+				//set time to live
+				newBullet->getTTLComponent().setTimeToLive(3.0);
+				//set speed
+				newBullet->setTargetVelocity( Ogre::Vector3(0.0, 0.0, 1.0) );
+				newBullet->setCurrentSpeedToMax();
+
+			//set shooting as false
+			enemyIt->unsetShoot();
 		}
 
 	}

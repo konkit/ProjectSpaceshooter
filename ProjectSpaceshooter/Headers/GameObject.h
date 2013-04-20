@@ -78,6 +78,8 @@ public:
 		mDeadFlag = true;
 	}
 
+	GameObjectType getType();
+
 protected:
 	GameObjectType mObjectType;
 	PhysicsComponent mPhysicsComponent;
