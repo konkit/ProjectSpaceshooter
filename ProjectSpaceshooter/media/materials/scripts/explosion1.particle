@@ -20,14 +20,14 @@ particle_system Explosion
 		position 0.0 0.0 0.0
 		direction 0.0 0.0 1.0
 		angle 180
-		width 100
-		height 100
-		depth 100
-		emission_rate 166.32
-		velocity_min 117.44
-		velocity_max 147.78
-		time_to_live_min 2
-		time_to_live_max 2
+		width 5
+		height 5
+		depth 5
+		emission_rate 150.67
+		velocity_min 9.46
+		velocity_max 30.8
+		time_to_live_min 1.16
+		time_to_live_max 3.54
 		duration_min 1
 		duration_max 1
 		repeat_delay_min 4
@@ -54,7 +54,7 @@ particle_system Explosion
 
 	affector Scaler
 	{
-		rate 156.47
+		rate 50
 	}
 
 	affector Rotator
