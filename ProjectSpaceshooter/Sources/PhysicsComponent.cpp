@@ -5,9 +5,9 @@ float PhysicsComponent::getRotVelocity()
 	return rotVelocity;
 }
 
-Ogre::Vector3 PhysicsComponent::getVelocity()
+Ogre::Vector3 PhysicsComponent::getCurrentVelocity()
 {
-	return velocity;
+	return currentVelocity;
 }
 
 void PhysicsComponent::setRotVelocity( float newRotVelocity )
@@ -15,9 +15,9 @@ void PhysicsComponent::setRotVelocity( float newRotVelocity )
 	rotVelocity = newRotVelocity * rotVelocityValue;
 }
 
-void PhysicsComponent::setVelocity( Ogre::Vector3 const& newVelocity )
+void PhysicsComponent::setCurrentVelocity( Ogre::Vector3 const& newVelocity )
 {
-	velocity = newVelocity;
+	currentVelocity = newVelocity;
 }
 
 void PhysicsComponent::setMaxVelocityValue( float newVelocity )
@@ -26,7 +26,7 @@ void PhysicsComponent::setMaxVelocityValue( float newVelocity )
 }
 
 PhysicsComponent::PhysicsComponent()
-	: velocity(0.0, 0.0, 0.0), 
+	: currentVelocity(0.0, 0.0, 0.0), 
 	  rotVelocity(0.0),
 	  rotVelocityValue(2.0), 
 	  accelerationValue(5.0),
@@ -38,7 +38,7 @@ PhysicsComponent::PhysicsComponent()
 void PhysicsComponent::updateVelocity() {
 
 	//get difference vector between current velocity and target velocity
-	Ogre::Vector3 diffVector = targetVelocity - velocity;
+	Ogre::Vector3 diffVector = targetVelocity - currentVelocity;
 
 	//scale this vector to be equal to acceleration in magnitude
 	if( diffVector.length() > accelerationValue )
@@ -48,10 +48,15 @@ void PhysicsComponent::updateVelocity() {
 	}
 
 	//change current velocity by this vector
-	velocity += diffVector;
+	currentVelocity += diffVector;
 }
 
 void PhysicsComponent::setTargetVelocity( Ogre::Quaternion orientation, Ogre::Vector3 localDir )
 {
 	targetVelocity = maxVelocityValue * ( orientation * localDir );
+}
+
+void PhysicsComponent::AddVectorToCurrentVelocity( Ogre::Vector3 addedVector )
+{
+	currentVelocity += addedVector;
 }

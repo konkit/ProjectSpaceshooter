@@ -46,27 +46,27 @@ public:
 	void createSceneNode(std::string meshName, Ogre::SceneManager* sceneMgr);
 	Ogre::SceneNode* getSceneNode()	{	return mNode;	}
 
-	void setPosition(Ogre::Vector3 newPos)	
-	{	
+	void setPosition(Ogre::Vector3 newPos)	{	
 		mNode->setPosition(newPos); 
 	}
 
-	Ogre::Vector3 getPosition()	
-	{	
+	Ogre::Vector3 getPosition()	{	
 		return mNode->getPosition(); 
 	}
 
-	void setOrientation(Ogre::Quaternion newOrientation)	
-	{	
+	void setOrientation(Ogre::Quaternion newOrientation)	{	
 		mNode->setOrientation(newOrientation);	
 	}
-	Ogre::Quaternion getOrientation()	
-	{	
+	Ogre::Quaternion getOrientation()	{	
 		return mNode->getOrientation();	
 	}
 
 	void setTargetVelocity( Ogre::Vector3 localDirection ) {
 		mPhysicsComponent.setTargetVelocity( mNode->getOrientation(), localDirection );
+	}
+
+	void addVectorToCurrentVelocity( Ogre::Vector3 addedVector ) {
+		mPhysicsComponent.AddVectorToCurrentVelocity(  mNode->getOrientation() * addedVector  );
 	}
 
 	void move(Ogre::Vector3 nPos) {		mNode->translate( nPos );	}

@@ -17,31 +17,41 @@ public:
 	void setMaxVelocityValue(float newVelocity);
 
 	//sets new instantaneous velocity vector 
-	void setVelocity(Ogre::Vector3 const& newVelocity);
-	Ogre::Vector3 getVelocity();
+	void setCurrentVelocity(Ogre::Vector3 const& newVelocity);
+
+	//gets current instantaneous velocity vector 
+	Ogre::Vector3 getCurrentVelocity();
+
+	//Adds vector to current instantaneous velocity vector
+	//usable for example in shockwave
+	void AddVectorToCurrentVelocity( Ogre::Vector3 addedVector );
 
 	//set angular velocity
 	void setRotVelocity(float newRotVelocity);
+
+	//get angular velocity
 	float getRotVelocity();
 
+	//Sets target velocity vector to which current velocity vector is progressively approaching.
 	void setTargetVelocity( Ogre::Quaternion orientation,  Ogre::Vector3 localDir );
+	//Gets target velocity vector to which current velocity vector is progressively approaching.
 	Ogre::Vector3 getTargetVelocity() { return targetVelocity; }
 
-
+	//Updates currentVelocity vector (acceleration, approaching to target velocity etc.)
 	void updateVelocity();
 
-
-
+	//instantly sets current velocity to target velocity value.
 	void setCurrentSpeedToMax() {
-		velocity = targetVelocity;
+		currentVelocity = targetVelocity;
 	}
 
+	//sets new acceleration value
 	void setAccelerationValue(float newAccelerationValue) {
 		accelerationValue = newAccelerationValue;
 	}
 
 private:
-	Ogre::Vector3 velocity;
+	Ogre::Vector3 currentVelocity;
 	float rotVelocity;
 
 	float maxVelocityValue;

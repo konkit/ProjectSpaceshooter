@@ -48,7 +48,7 @@ public:
 		tmpPhysics.updateVelocity();
 
 		it->rotate( tmpPhysics.getRotVelocity() * deltaTime );
-		it->move( tmpPhysics.getVelocity() * deltaTime );
+		it->move( tmpPhysics.getCurrentVelocity() * deltaTime );
 
 #ifdef _DEBUG
 		DebugDrawer::getSingleton().drawLine( it->getPosition(), it->getPosition()+tmpPhysics.getTargetVelocity(), Ogre::ColourValue(1.0, 1.0, 0.0, 0.0 ));
