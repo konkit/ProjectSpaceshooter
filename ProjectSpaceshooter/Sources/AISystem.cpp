@@ -1,5 +1,6 @@
 #include "AISystem.h"
 
+#include <cmath>
 
 void AISystem::update( GameData& mGameData, TimeData time )
 {
@@ -37,14 +38,28 @@ void AISystem::toCoreAI( EnemyObject* it, GameData& mGameData, TimeData time )
 			return;
 		}
 
+		//get angle between current forward vector and vector to core
+		Ogre::Vector3 forwardVector = it->getOrientation() * Ogre::Vector3(0.0, 0.0, 1.0);
+			forwardVector.normalise();
+		Ogre::Vector3 vectorToCore = corePos - enemyPos;
+			vectorToCore.normalise();
+
+		Ogre::Real angleCos = forwardVector.dotProduct( vectorToCore );
+		float angleToCore = acos(angleCos);
+
+		//TO DO : jak k¹t jest mniejszy od prêdkoœci k¹towej
+
+
 		// set orientation to core ( negative z axis to core ... )
-		it->getSceneNode()->lookAt( currentCore.getPosition(), Ogre::Node::TS_WORLD);
+		//it->getSceneNode()->lookAt( currentCore.getPosition(), Ogre::Node::TS_WORLD);
 		// (... we want positive z axis, so we turn 180 degrees )
-		it->getSceneNode()->yaw( Ogre::Degree(180.0) );
+		//it->getSceneNode()->yaw( Ogre::Degree(180.0) );
+
+
 
 		//get some random values
 		float currentVelocity  = float(200 + (rand()%300-100));
-		float currentRotVelocity = 0.0;
+		float currentRotVelocity = angleToCore;
 
 		currentPhysicsComponent.setMaxVelocityValue(currentVelocity);
 

@@ -26,8 +26,10 @@ public:
 	//usable for example in shockwave
 	void AddVectorToCurrentVelocity( Ogre::Vector3 addedVector );
 
-	//set angular velocity
+	//set angular velocity (it is multiplied inside by maximum rotation velocity)
 	void setRotVelocity(float newRotVelocity);
+	//
+	void forceRotVelocity(float newRotVelocity);
 
 	//get angular velocity
 	float getRotVelocity();

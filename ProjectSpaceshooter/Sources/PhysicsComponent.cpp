@@ -15,6 +15,10 @@ void PhysicsComponent::setRotVelocity( float newRotVelocity )
 	rotVelocity = newRotVelocity * rotVelocityValue;
 }
 
+void PhysicsComponent::forceRotVelocity(float newRotVelocity)	{
+	rotVelocity = newRotVelocity;
+}
+
 void PhysicsComponent::setCurrentVelocity( Ogre::Vector3 const& newVelocity )
 {
 	currentVelocity = newVelocity;
