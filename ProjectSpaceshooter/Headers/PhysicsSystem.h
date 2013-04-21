@@ -52,7 +52,7 @@ public:
 
 #ifdef _DEBUG
 		DebugDrawer::getSingleton().drawLine( it->getPosition(), it->getPosition()+tmpPhysics.getTargetVelocity(), Ogre::ColourValue(1.0, 1.0, 0.0, 0.0 ));
-		DebugDrawer::getSingleton().drawLine( it->getPosition(), it->getPosition()+tmpPhysics.getVelocity(), Ogre::ColourValue(1.0, 1.0, 0.0, 0.0 ));
+		DebugDrawer::getSingleton().drawLine( it->getPosition(), it->getPosition()+tmpPhysics.getCurrentVelocity(), Ogre::ColourValue(1.0, 1.0, 0.0, 0.0 ));
 #endif 
 	}
 
