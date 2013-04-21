@@ -3,7 +3,6 @@
 
 
 
-#include "DebugDrawer.h"
 
 //To zawsze jedno z nich musi byæ true a drugie false
 #define THIRD_PERSON_CAMERA false
@@ -82,7 +81,7 @@ PlayState::PlayState(SystemsSet & gameSystems) :GameState()
 
 	//System which draws primitives for debuging purposes
 #ifdef _DEBUG
-	new DebugDrawer(mSceneMgr, 0.5f);
+	cntDebugDrawer = new DebugDrawer(mSceneMgr, 0.5f);
 #endif
 
 	//Temporary explosion

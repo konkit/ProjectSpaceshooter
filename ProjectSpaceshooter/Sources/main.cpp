@@ -6,6 +6,10 @@
 #include <iostream>
 #include <string>
 
+#ifdef _DEBUG
+	#include <vld.h>
+#endif
+
 void showWin32Console()
 {
 	static const WORD MAX_CONSOLE_LINES = 500;
