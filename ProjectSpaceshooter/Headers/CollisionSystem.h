@@ -51,6 +51,7 @@ public:
 				//b) polimorfizm ale jakis niejawny - jakas metoda doSomething( objekt1)
 				//c) jakies RTTI ? O_o
 				if(typeName == "enemy" &&
+					itBullet->getOwner() != NULL &&
 					itBullet->getOwner() != currentObject && 
 					itBullet->getOwner()->getType() != GameObjectType::enemyObject )	
 				{
