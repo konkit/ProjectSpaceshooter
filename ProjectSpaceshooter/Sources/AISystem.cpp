@@ -71,6 +71,7 @@ void AISystem::toCoreAI( EnemyObject* it, GameData& mGameData, TimeData time )
 	else if ( currentAIComponent.getState() == AI_STATE::SHOOT_AT_CORE ) {
 		//set shoot on the core
 		it->setTargetVelocity( Ogre::Vector3( 0.0, 0.0, 0.0 ) );
+		currentPhysicsComponent.forceRotVelocity(0.0);
 		it->setShoot( time.currentTime );
 	}
 
