@@ -83,60 +83,52 @@ void InputManager::updateInputForGame(GameData& mGameData, float deltaTime, unsi
     if(mKeyboard->isKeyDown(OIS::KC_ESCAPE))
 		throw WindowClosedException();
 
-	if(mKeyboard->isKeyDown(OIS::KC_W) )
-	{
+	if(mKeyboard->isKeyDown(OIS::KC_W) )	{
 		tmpPos.z += 1.0;
 	}
 	
-	if(mKeyboard->isKeyDown(OIS::KC_S) )
-	{
+	if(mKeyboard->isKeyDown(OIS::KC_S) )	{
 		tmpPos.z -= 1.0;
 	}
 
-	if(mKeyboard->isKeyDown(OIS::KC_Q) )
-	{
+	if(mKeyboard->isKeyDown(OIS::KC_Q) )	{
 		tmpPos.x += 1.0;
 	}
 	
-	if(mKeyboard->isKeyDown(OIS::KC_E) )
-	{
+	if(mKeyboard->isKeyDown(OIS::KC_E) )	{
 		tmpPos.x -= 1.0;
 	}
-	if(mKeyboard->isKeyDown(OIS::KC_A) )
-	{
+	if(mKeyboard->isKeyDown(OIS::KC_A) )	{
 		tmpAngle += 1.0;
 	}
-	if(mKeyboard->isKeyDown(OIS::KC_D) )
-	{
+	if(mKeyboard->isKeyDown(OIS::KC_D) )	{
 		tmpAngle -= 1.0;
 	}
 
-	if(mKeyboard->isKeyDown(OIS::KC_SPACE) )
-	{
+	if(mKeyboard->isKeyDown(OIS::KC_SPACE) )	{
 		//set shoot on player
 		mGameData.getPlayer()->setShoot(currentTime);
 	}
 
+	if( mKeyboard->isKeyDown(OIS::KC_H) )	{
+		mGameData.getPlayer()->addVectorToCurrentVelocity( Ogre::Vector3(-25.0, 0.0 ,0.0));
+	}
 
-	
-	if (!mKeyboard->isKeyDown(OIS::KC_P) && (wasP_KeyPressed))
-	{
+
+	if (!mKeyboard->isKeyDown(OIS::KC_P) && (wasP_KeyPressed))	{
 		mGameData.setChangeToPause(true);
 		wasP_KeyPressed = false;
-	} else if (mKeyboard->isKeyDown(OIS::KC_P))
-	{
+	} else if (mKeyboard->isKeyDown(OIS::KC_P))	{
 		wasP_KeyPressed = true;
 	}
 
-	if (!mKeyboard->isKeyDown(OIS::KC_H) && (wasH_KeyPressed))
-	{
+	if (!mKeyboard->isKeyDown(OIS::KC_H) && (wasH_KeyPressed))	{
 		mGameData.setChangeToHangar(true);
 		wasH_KeyPressed = false;
-	} else if (mKeyboard->isKeyDown(OIS::KC_H))
-	{
+	} else if (mKeyboard->isKeyDown(OIS::KC_H))	{
 		wasH_KeyPressed = true;
 	}
-	//mGameData.getPlayer()->getPhysicsComponent().setAcceleration(tmpPos);
+
 	mGameData.getPlayer()->setTargetVelocity( tmpPos );
 	mGameData.getPlayer()->getPhysicsComponent().setRotVelocity(tmpAngle);
 }
