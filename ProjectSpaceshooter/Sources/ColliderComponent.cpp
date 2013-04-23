@@ -1,79 +1,59 @@
-
-bool Collider::isCollisionOccuring( Collider& coll1, Collider& coll2, Ogre::Vector3 pos1, Ogre::Vector3 pos2 )
+//#include "ColliderComponent.h"
+#pragma once
+#include "./../Headers/ColliderComponent.h"
+Collider::Collider()
 {
-	//calculate distance between positions
-	float distance = (pos1 - pos2).length();
 
-	//calculate sum of radii
-	float radiiSum = coll1.mColiders.front().radian + coll2.mColiders.front().radian;
-
-	//check which one is bigger and decide
-	if( radiiSum < distance ) 
-		return false;
-	else
-		return true;
 }
 
-bool Collider::isCollidingOther( Ogre::Vector3 currentPos, Ogre::Vector3 otherPos, float otherRadius )
+bool Collider::isCollisionOccuring(const colider_struct& coll1, const position_struct pos1, const colider_struct& coll2, const position_struct& pos2 )
 {
-	//calculate distance between positions
-	float distance = 0;
-
-	//calculate sum of radii
-	float radiiSum = 0;
-
-	//check which one is bigger and decide
-	if( radiiSum > distance ) 
-		return false;
-	else
-		return true;
-}
-
-
-Collider::Collider( const colider_struct & colider )
-{
-	mColiders.push_front(colider);
-}
-
-Collider::Collider( const list<colider_struct> & colider_list )
-{
-	mColiders = colider_list;
-}
-
-void Collider::addColider( colider_struct & _colider )
-{
-	static Vector3 lastMiddlePointSum(0.0f, 0.0f ,0.0f);
-	static unsigned numberOfColiders = 0;
-	//Square radian
-	_colider.radian * _colider.radian;
-	if (mColiders.empty())
+	Vector3 _pos1 = (pos1.orientation * coll1.offset) + pos1.position;
+	Vector3 _pos2 = (pos2.orientation * coll2.offset) + pos2.position;
+	Vector3 tmp = _pos2 - _pos1;
+	Ogre::Real distance = tmp.squaredLength();
+	Ogre::Real radiusSum = coll1.radius + coll2.radius;
+	radiusSum *= radiusSum;
+	if (radiusSum > distance)
 	{
-		inaccurateColider = _colider;
+		return true;
 	} else
 	{
-		
-		
+		return false;
 	}
-	mColiders.push_back = _colider;
+
 }
 
-const colider_struct & Collider::getFarthestColider( Vector3 offset ) const
+bool Collider::isCollidingWith( const position_struct& currentPos, const Collider& otherColider,const position_struct & otherPos )
+{	
+	if(checkInaccurateColiders(currentPos, otherColider, otherPos))
+		return checkColisionOnColiderList(currentPos, otherColider, otherPos);
+	else
+		return false;
+}
+
+bool inline Collider::checkInaccurateColiders( const position_struct& currentPos,const Collider& otherColider, const position_struct& otherPos )
 {
-	list<colider_struct>::const_iterator it;
-	unsigned maxDistance;
-	unsigned tmpDistance;
-	colider_struct farthest;
-	farthest = mColiders.front();
-	tmpDistance = (farthest.offset -offset).squaredLength();
-	for (it = ++mColiders.begin() ; it != mColiders.end(); it++)
+	return isCollisionOccuring(inaccurateColider, currentPos, otherColider.getInaccurateColider(), otherPos);
+}
+
+bool inline Collider::checkColisionOnColiderList( const position_struct& currentPos,const Collider& otherColider, const position_struct& otherPos )
+{
+	list<colider_struct>::const_iterator my_it, oth_it;
+	list<colider_struct>::const_iterator oth_it_begin = otherColider.getColidersBegin();
+	list<colider_struct>::const_iterator oth_it_end = otherColider.getColidersEnd();
+
+	for (my_it = mColiders.begin(); my_it != mColiders.end(); my_it++)
 	{
-		tmpDistance = (it->offset -offset).squaredLength();
-		if (tmpDistance + it->radian > maxDistance + farthest.radian)
-		{
-			farthest = *it;
-			maxDistance = tmpDistance;
+		for (oth_it = oth_it_begin; oth_it != oth_it_end; oth_it++)
+		{ 
+			if (isCollisionOccuring(*my_it, currentPos, *oth_it, otherPos))
+			{
+				return true;
+			}
 		}
 	}
-	return farthest;
+	return false;
 }
+
 

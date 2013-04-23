@@ -1,18 +1,21 @@
 #include "stdafx.h"
 #include "Enemy.h"
 
-ShipPrefab::~ShipPrefab(void)
+
+
+EnemyObject::~EnemyObject()
 {
+
 }
 
-EnemyObject::EnemyObject( ShipPrefab * objectTemplate, Ogre::SceneManager * _sceneMenager)
-	: mHealthComponent(), mWeapon(objectTemplate->getWeaponPrefabID())
+EnemyObject::EnemyObject( const ShipPrefab * objectTemplate,const WeaponPrefab * weapon,Ogre::SceneManager * _sceneMenager )
+	: GameObject(objectTemplate, _sceneMenager), Ship(objectTemplate, weapon, _sceneMenager), myAI(AI_TYPE::fighter)
 {
-	
-	mHealthComponent.setResistance(objectTemplate->getResistance());
-	mHealthComponent.setMaxHealth(objectTemplate->getMaxHealth());
+
 }
-EnemyObject::~EnemyObject()
+
+EnemyObject::EnemyObject( const ShipPrefab * objectTemplate,const WeaponPrefab * weapon, AI_TYPE _myAi, Ogre::SceneManager * _sceneMenager )
+	: GameObject(objectTemplate, _sceneMenager), Ship(objectTemplate, weapon, _sceneMenager), myAI(_myAi)
 {
 
 }

@@ -5,7 +5,7 @@ const wstring BulletPrefabPlant::rootBulletPrefabsNode(L"bullet_prefabs");
 const wstring BulletPrefabPlant::prefabName(L"bullet");
 const wchar_t * BulletPrefabPlant::bullet_name  = L"bullet_name" ;
 const wchar_t * BulletPrefabPlant::auto_aim     = L"auto_aim";
-const wchar_t * BulletPrefabPlant::bullet_power = L"power";
+const wchar_t * BulletPrefabPlant::bullet_power = L"bullet_power";
 
 BulletPrefabPlant::~BulletPrefabPlant()
 {
@@ -90,8 +90,8 @@ void BulletPrefabPlant::_setBulletPower( const wstring & attribute, const wstrin
 {
 	if (attribute == PrefabPlant::value)
 	{
-		double val;
-		val = ValueToDouble(value);
+		unsigned val;
+		val = ValueToUINT(value);
 		mBulletPrefab.setBulletPower(val);
 	};
 }

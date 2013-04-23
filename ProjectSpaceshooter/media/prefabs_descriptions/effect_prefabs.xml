@@ -5,5 +5,15 @@
   <effect id='1'>
     <effect_name name='explosion'/>
     <particleSystemName name='Explosion'/>
+    <coliders>
+      <inaccurate_colider>
+        <offset x_pos='0' y_pos='0' z_pos='0' />
+        <radius value='5' />
+      </inaccurate_colider>
+      <colider>
+        <offset x_pos='0' y_pos='0' z_pos='0' />
+        <radius value='5' />
+      </colider>
+    </coliders>
   </effect>
 </effect_prefabs>

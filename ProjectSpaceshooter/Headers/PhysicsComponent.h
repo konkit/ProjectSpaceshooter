@@ -1,4 +1,5 @@
 #pragma once
+#include "Prefabs.h"
 
 
 /** 
@@ -10,6 +11,7 @@ class PhysicsComponent
 {
 public:
 	PhysicsComponent();
+	PhysicsComponent(const MovablePrefab * prefab);
 
 	//sets maximum length of velocity vector
 	void setMaxVelocityValue(float newVelocity);
@@ -30,7 +32,7 @@ public:
 	void setMaxSpeed() {
 		velocity = targetVelocity;
 	}
-
+	void setFromPrefab( const MovablePrefab * prefab );
 private:
 	Ogre::Vector3 velocity;
 	float rotVelocity;
@@ -40,4 +42,7 @@ private:
 
 	float accelerationValue;
 	Ogre::Vector3 targetVelocity;
+
+	//@author Zyga
+	float mMaxAngleVelocity; //czy to wgl. jest potrzebne?
 };

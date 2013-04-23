@@ -20,7 +20,7 @@
 class PredabReader_XML
 {
 public:
-	PredabReader_XML(string fileName, PREFAB_TYPE prefabType);
+	PredabReader_XML(string fileName, PREFAB_TYPE prefabType );
 	~PredabReader_XML(void);
 	bool hasNext();
 	Prefab & getNext();

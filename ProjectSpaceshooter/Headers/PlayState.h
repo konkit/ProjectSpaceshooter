@@ -8,6 +8,9 @@ class PlayState : public GameState
 private:
 public:
 	PlayState(SystemsSet & _systems);
+
+	void setCamera( Player* player );
+
 	~PlayState(){};
 	virtual GAME_STATES update( SystemsSet & gameSystems, TimeData& time );
 	void loadLevelDescribe( SystemsSet & gameSystems );

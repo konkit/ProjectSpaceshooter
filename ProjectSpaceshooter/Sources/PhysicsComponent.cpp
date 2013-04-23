@@ -35,6 +35,15 @@ PhysicsComponent::PhysicsComponent()
 
 }
 
+PhysicsComponent::PhysicsComponent(const MovablePrefab * prefab )
+	:	rotVelocity(0.0),
+		rotVelocityValue(2.0)
+{
+	maxVelocityValue = prefab->getMaxVelocity();
+	mMaxAngleVelocity = prefab->getMaxAngleVelocity();
+	accelerationValue = prefab->getMaxAcceleration();
+}
+
 void PhysicsComponent::updateVelocity() {
 	//temporary
 	//velocity += acceleration;
@@ -56,4 +65,11 @@ void PhysicsComponent::updateVelocity() {
 void PhysicsComponent::setTargetVelocity( Ogre::Quaternion orientation, Ogre::Vector3 localDir )
 {
 	targetVelocity = maxVelocityValue * ( orientation * localDir );
+}
+
+void PhysicsComponent::setFromPrefab( const MovablePrefab * prefab )
+{
+	maxVelocityValue = prefab->getMaxVelocity();
+	mMaxAngleVelocity = prefab->getMaxAngleVelocity();
+	accelerationValue = prefab->getMaxAcceleration();
 }

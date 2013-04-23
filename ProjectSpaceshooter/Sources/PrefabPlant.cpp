@@ -112,6 +112,24 @@ void PrefabWithColider_Plant::_setColider( const wstring & attribute, const wstr
 	}
 }
 
+
+void PrefabWithColider_Plant::_setInaccurateColider( const wstring & attribute, const wstring & value )
+{
+	if (attribute == PrefabPlant::closeNode)
+	{
+		if (prefabWithColider == NULL)
+		{
+			throw My_Exception("PrefabWithColider setColider: Can't add colider into nonexistent prefab");
+		}
+		prefabWithColider->setInaccurateColider(colider_str);
+		clearColider();
+	} else
+	{
+		throw My_Exception("PrefabWithColider _setCollider: Missing attribute type");
+	}
+}
+
+
 void PrefabWithColider_Plant::_setColiderOffset( const wstring & attribute, const wstring & value )
 {
 	if (attribute == PrefabPlant::x_pos)
@@ -134,17 +152,18 @@ void PrefabWithColider_Plant::_setColiderOffset( const wstring & attribute, cons
 	}
 }
 
-void PrefabWithColider_Plant::_setColiderRadian( const wstring & attribute, const wstring & value )
+void PrefabWithColider_Plant::_setColiderRadius( const wstring & attribute, const wstring & value )
 {
 	if (attribute == PrefabPlant::value)
 	{
-		colider_str.radian = ValueToUINT(value);
+		colider_str.radius = ValueToUINT(value);
+
 	} else if (attribute == PrefabPlant::closeNode)
 	{
 		return;
 	} else
 	{
-		wstring tmp(L"EnemyPrefabPlant _setColiderRadian: Missing attribute type: ");
+		wstring tmp(L"EnemyPrefabPlant _setColiderRadius: Missing attribute type: ");
 		tmp += attribute; 
 		throw My_Exception(tmp);
 	}
@@ -153,7 +172,7 @@ void PrefabWithColider_Plant::_setColiderRadian( const wstring & attribute, cons
 void PrefabWithColider_Plant::clearColider()
 {
 	colider_str.offset.x = colider_str.offset.y = colider_str.offset.z = 0;
-	colider_str.radian = 0;
+	colider_str.radius = 0;
 }
 
 
@@ -176,10 +195,14 @@ bool PrefabWithColider_Plant::SetMethodToFillColiderProperty( const wstring & na
 	else if (name == PrefabWithColider_Plant::colider)
 	{
 		methodToFillColiderProperty = &PrefabWithColider_Plant::_setColider;
-	}	
+	}
+	else if (name == PrefabWithColider_Plant::inaccurate_colider)
+	{
+		methodToFillColiderProperty = &PrefabWithColider_Plant::_setInaccurateColider;
+	}
 	else if (name == PrefabWithColider_Plant::offset)
 	{
-		if (methodToFillColiderProperty == &PrefabWithColider_Plant::_setColider)
+		if (methodToFillColiderProperty == &PrefabWithColider_Plant::_setColider || methodToFillColiderProperty == &PrefabWithColider_Plant::_setInaccurateColider)
 		{
 			methodToFillColiderProperty = &PrefabWithColider_Plant::_setColiderOffset;
 		} else
@@ -187,14 +210,14 @@ bool PrefabWithColider_Plant::SetMethodToFillColiderProperty( const wstring & na
 			throw My_Exception("PrefabWithColider_Plant nextElement: incorrect Prefab format - offset is not inside colider node");
 		}
 	}
-	else if (name == PrefabWithColider_Plant::radian)
+	else if (name == PrefabWithColider_Plant::radius)
 	{
-		if (methodToFillColiderProperty == &PrefabWithColider_Plant::_setColider)
+		if (methodToFillColiderProperty == &PrefabWithColider_Plant::_setColider || methodToFillColiderProperty == &PrefabWithColider_Plant::_setInaccurateColider)
 		{
-			methodToFillColiderProperty = &PrefabWithColider_Plant::_setColiderRadian;
+			methodToFillColiderProperty = &PrefabWithColider_Plant::_setColiderRadius;
 		} else
 		{
-			throw My_Exception("PrefabWithColider_Plant nextElement: incorrect Prefab format - radian is not inside colider node");
+			throw My_Exception("PrefabWithColider_Plant nextElement: incorrect Prefab format - radius is not inside colider node");
 		}
 	} else
 	{
@@ -394,4 +417,5 @@ const wchar_t * PrefabWithColider_Plant::health		= L"health";
 const wchar_t * PrefabWithColider_Plant::coliders	= L"coliders";
 const wchar_t * PrefabWithColider_Plant::colider    = L"colider";
 const wchar_t * PrefabWithColider_Plant::offset     = L"offset";
-const wchar_t * PrefabWithColider_Plant::radian     = L"radian";
+const wchar_t * PrefabWithColider_Plant::radius     = L"radius";
+const wchar_t * PrefabWithColider_Plant::inaccurate_colider = L"inaccurate_colider";

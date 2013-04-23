@@ -5,7 +5,6 @@
 #include "GameObject.h"
 
 GameData::GameData(void)
-	: mWeaponCollection(20)
 {
 	changeFlags.changeToHangar = false;
 	changeFlags.changeToMenu = false;
@@ -137,44 +136,115 @@ void GameData::addShipPrefab( const ShipPrefab & _enemyPrefab )
 
 void GameData::addWeaponPrefab( const WeaponPrefab & _weaponPrefab )
 {
-	if (&_weaponPrefab == NULL)
+	mEnemyCollection.addWeaponPrefab(_weaponPrefab);
+}
+
+
+
+const WeaponPrefab * GameData::getWeaponPrefab( unsigned prefabId )
+{
+	return mEnemyCollection.getWeaponPrefab(prefabId);
+}
+
+
+GameData::ColidingObjectsIterator GameData::getColidingObjectsIterator()
+{
+	ColidingObjectsIterator tmp;
+	tmp.setPlayer(&mPlayer);
+	tmp.setEnemyIterator(mEnemyCollection.getIterator());
+	tmp.setBulletIterator(mBulletCollection.getIterator());
+	tmp.setEffectIterator(mEffectsCollection.getIterator());
+	tmp.setStaticIterator(mStaticCollection.getIterator());
+	return tmp;
+}
+
+void GameData::setCameraFor( GAME_STATES gameState, Ogre::Camera * camera )
+{
+	switch (gameState)
 	{
-		throw My_Exception("addWeaponPrefab: Can't add NULL Weapon Prefab");
+	case GAME_STATES::PLAY:
+		mCamerasManager.playCamera = camera;
+		break;
+	case GAME_STATES::PAUSE:
+		mCamerasManager.pauseCamera = camera;
+		break;
+	case GAME_STATES::HANGAR:
+		break;
+	case GAME_STATES::LEVEL_BUILDER:
+		break;
+	default:
+		break;
 	}
-	WeaponPrefab * prefab = new WeaponPrefab(_weaponPrefab);
-	unsigned prefabID = _weaponPrefab.getPrefabID(); 
-	if (prefabID > mWeaponCollection.capacity() - 1)
-	{
-		mWeaponCollection.resize(prefabID);
-	} else
-	mWeaponCollection[prefabID] = _weaponPrefab;
 }
 
-EnemyObject * GameData::instantiateEnemy( unsigned prefabID, AI_TYPE myAi)
+
+bool GameData::ColidingObjectsIterator::hasNext()
 {
-	EnemyObject * createdEnemy = mEnemyCollection.instantiate(prefabID, getSceneManagerFor(GAME_STATES::PLAY));
-	if (mWeaponCollection.capacity() - 1 < prefabID)
+	switch (activeIterator)
 	{
-		stringstream exceptionStr;
-		exceptionStr << "There is no weapon prefab with id = " << createdEnemy->getWeaponPrefabID();
-		throw My_Exception(exceptionStr.str());
+	case GameData::ColidingObjectsIterator::iterator::Player:
+		return true;
+	case GameData::ColidingObjectsIterator::iterator::Enemy:
+		if (enemyIT.hasNext())
+		{
+			return true;
+		} else
+		{
+			activeIterator = iterator::Bullet;
+			return hasNext();
+		}
+	case GameData::ColidingObjectsIterator::iterator::Bullet:
+		if (bulletIT.hasNext())
+		{
+			return true;
+		} else
+		{
+			activeIterator = iterator::Static;
+			return hasNext();
+		}
+	case GameData::ColidingObjectsIterator::iterator::Static:
+		if (staticIT.hasNext())
+		{
+			return true;
+		} else
+		{
+			activeIterator = iterator::Effect;
+			return hasNext();
+		}
+	case GameData::ColidingObjectsIterator::iterator::Effect:
+		if (effectIT.hasNext())
+		{
+			return true;
+		} else
+		{
+			activeIterator = iterator::EMPTY;
+			return hasNext();
+		}
+	case GameData::ColidingObjectsIterator::iterator::EMPTY:
+			return false;
+	default:
+		return false;
 	}
-	WeaponPrefab & weapon = mWeaponCollection[createdEnemy->getWeaponPrefabID()];
-	createdEnemy->setWeapon(&weapon);
-	createdEnemy->setAI(myAi);
-	return createdEnemy;
 }
 
-WeaponPrefab & GameData::getWeaponPrefab( unsigned prefabId )
+GameObject_WithColider * GameData::ColidingObjectsIterator::getNext()
 {
-	return mWeaponCollection[prefabId];
+	
+	switch (activeIterator)
+	{
+	case GameData::ColidingObjectsIterator::iterator::Player:
+		activeIterator = iterator::Enemy;
+		return player;
+	case GameData::ColidingObjectsIterator::iterator::Enemy:
+		return enemyIT.getNext();
+	case GameData::ColidingObjectsIterator::iterator::Bullet:
+		return bulletIT.getNext();
+	case GameData::ColidingObjectsIterator::iterator::Static:
+		return staticIT.getNext();
+	case GameData::ColidingObjectsIterator::iterator::Effect:
+		return effectIT.getNext();
+	case GameData::ColidingObjectsIterator::iterator::EMPTY:
+	default:
+		return NULL;
+	}
 }
-
-Player & GameData::createPlayer( unsigned shipPrefabID )
-{
-	mPlayer.setShip(mEnemyCollection.getPrefab(shipPrefabID));
-}
-
-
-
-

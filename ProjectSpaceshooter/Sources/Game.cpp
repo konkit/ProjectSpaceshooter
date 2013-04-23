@@ -1,5 +1,10 @@
 #include "Game.h"
 
+/**
+ * 
+ * 
+ * @author Zyga
+ */
 Game::Game()
 {
 	

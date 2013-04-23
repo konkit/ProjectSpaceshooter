@@ -9,9 +9,13 @@
     <rotation x_rot='1' y_rot='1' z_rot='1' />
     <max_velocity value='500' />
     <coliders>
+      <inaccurate_colider>
+        <offset x_pos='0' y_pos='0' z_pos='0' />
+        <radius value='5' />
+      </inaccurate_colider>
       <colider>
         <offset x_pos='0' y_pos='0' z_pos='0' />
-        <radian value='5' />
+        <radius value='5' />
       </colider>
     </coliders>
   </bullet>

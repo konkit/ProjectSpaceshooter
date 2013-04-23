@@ -8,7 +8,7 @@ protected:
 	Ogre::Camera * mCamera;
 public:
 	Ogre::SceneManager* getSceneMgr(){return mSceneMgr;}
-	GameState(){}
+	GameState() : mCamera(NULL) {}
 	virtual ~GameState(){}
 	virtual GAME_STATES update(SystemsSet & gameSystems, TimeData& time) = 0;
 	void renderOneFrame(OgreManager & _ogreManager);

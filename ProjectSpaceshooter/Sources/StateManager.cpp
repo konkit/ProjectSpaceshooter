@@ -11,7 +11,9 @@ void StateManager::initStateManager( SystemsSet & gameSystems )
 	pause = new PauseState(gameSystems);
 	play = new PlayState(gameSystems);
 	hangar = new HangarState(gameSystems);
-	changeState(GAME_STATES::PLAY, gameSystems);
+	builder = new LevelBuilder(gameSystems);
+
+	changeState(GAME_STATES::LEVEL_BUILDER, gameSystems);
 }
 
 
@@ -20,6 +22,7 @@ StateManager::~StateManager(void)
 	delete pause;
 	delete play;
 	delete hangar;
+	delete builder;
 }
 
 bool StateManager::update( SystemsSet & gameSystems, TimeData& time )
@@ -37,6 +40,7 @@ bool StateManager::update( SystemsSet & gameSystems, TimeData& time )
 void StateManager::changeState(GAME_STATES nextState, SystemsSet & gameSystems)
 {
 	activeState = getStateFor(nextState);
+	gameSystems.gameData.setChangeToLevelBuilder(false);
 	gameSystems.gameData.setChangeToHangar(false);
 	gameSystems.gameData.setChangeToMenu(false);
 	gameSystems.gameData.setChangeToPause(false);
@@ -46,14 +50,17 @@ void StateManager::changeState(GAME_STATES nextState, SystemsSet & gameSystems)
 
 void StateManager::setupViewport( OgreManager & _ogreManager, Ogre::Camera * camera )
 {
-	_ogreManager.getWindowHandle()->removeAllViewports();
-	// Create one viewport, entire window
-	Ogre::Viewport* vp = _ogreManager.getWindowHandle()->addViewport(camera);
-	//Set Background color
-	vp->setBackgroundColour(Ogre::ColourValue(0,0,0));
-	// Alter the camera aspect ratio to match the viewport
-	camera->setAspectRatio(
-		Ogre::Real(vp->getActualWidth()) / Ogre::Real(vp->getActualHeight()));
+	if (camera != NULL)
+	{
+		_ogreManager.getWindowHandle()->removeAllViewports();
+		// Create one viewport, entire window
+		Ogre::Viewport* vp = _ogreManager.getWindowHandle()->addViewport(camera);
+		//Set Background color
+		vp->setBackgroundColour(Ogre::ColourValue(0,0,0));
+		// Alter the camera aspect ratio to match the viewport
+		camera->setAspectRatio(
+			Ogre::Real(vp->getActualWidth()) / Ogre::Real(vp->getActualHeight()));
+	}
 }
 
 GameState * StateManager::getStateFor( GAME_STATES nextState )
@@ -66,8 +73,10 @@ GameState * StateManager::getStateFor( GAME_STATES nextState )
 		return pause;
 	case GAME_STATES::HANGAR:
 		return hangar;
-	default:
+	case GAME_STATES::LEVEL_BUILDER:
 		return builder;
+	default:
+		break;
 	}
 }
 

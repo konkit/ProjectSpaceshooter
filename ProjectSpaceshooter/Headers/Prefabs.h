@@ -1,7 +1,10 @@
 #pragma once
 #include <string>
 #include <list>
+#include "ColliderComponent.h"
+
 using namespace std;
+using Ogre::Vector3;
 
 enum class PREFAB_TYPE
 {
@@ -20,17 +23,11 @@ struct rotation_struct
 	float y_rot; 
 	float z_rot;
 	rotation_struct()
-		: x_rot(0), y_rot(0), z_rot(0) {}
+		: x_rot(0), y_rot(0), z_rot(0) {;}
 	void resetScale(){x_rot = y_rot = z_rot = 0;}
 };
 
-struct colider_struct
-{
-	Vector3			offset;
-	unsigned		radian;
-	colider_struct()
-		: radian(0), offset(0.0, 0.0, 0.0) {}
-};
+
 
 /**
  * 
@@ -52,49 +49,15 @@ protected:
 	string		mName;
 };
 
-
 /**
  * 
  * 
  * @author Zyga
  */
-class PrefabWithColider : virtual public Prefab
+class PrefabWithMesh :  public Prefab
 {
 public:
-	void setColiderList(std::list<colider_struct> coliders){mColiders = coliders;}
-	void setMaxHealth(unsigned val) { mMaxHealth = val; }
-	void setResistance(unsigned val) { mResistance = val; }
-
-	void addColider(colider_struct colider)
-	{
-		//Square radian
-		colider.radian *= colider.radian; 
-		mColiders.push_back(colider);
-	}
-	const colider_struct	&			getColider()	const {return mColiders.front();}
-	const std::list<colider_struct> &	getColiderList() const {return mColiders;}
-	unsigned							getMaxHealth() const { return mMaxHealth; }
-	unsigned							getResistance() const { return mResistance; }
-	
-	void clearColiders() {mColiders.clear();}
-	virtual void resetPrefab();
-
-protected:
-	unsigned mResistance;
-	unsigned mMaxHealth;
-	std::list<colider_struct>	mColiders;
-};
-
-
-/**
- * 
- * 
- * @author Zyga
- */
-class PrefabWithMesh : virtual public Prefab
-{
-public:
-	PrefabWithMesh(){;}
+	PrefabWithMesh(): Prefab(), mScale(0,0,0) {;}
 	~PrefabWithMesh(){;}
 	void setMeshName(string val) { mMeshName = val; }
 	void setScale(Vector3 scale){mScale = scale;}
@@ -112,32 +75,84 @@ protected:
 
 };
 
+/**
+ * 
+ * 
+ * @author Zyga
+ */
+class PrefabWithColider : virtual public PrefabWithMesh
+{
+public:
+	PrefabWithColider() : PrefabWithMesh(), mColiders() {;}
+	void setMaxHealth(unsigned val) { mMaxHealth = val; }
+	void setResistance(unsigned val) { mResistance = val; }
+
+	void addColider(colider_struct colider)
+	{
+		mColiders.addColider(colider);
+	}
+
+	void setInaccurateColider(colider_struct colider)
+	{
+		mColiders.setInaccurateColider(colider);
+	}
+	const Collider & getColider()	const {return mColiders;}
+	unsigned		 getMaxHealth() const { return mMaxHealth; }
+	unsigned		 getResistance() const { return mResistance; }
+	
+	void clearColiders() {mColiders.reset();}
+	virtual void resetPrefab();
+
+protected:
+
+	unsigned mResistance;
+	unsigned mMaxHealth;
+	Collider mColiders;
+};
+
+
+
+
+class MovablePrefab: virtual public PrefabWithMesh
+{
+public:
+	void setMaxVelocity(unsigned velocity){mMaxVelocity = velocity;}
+	void setMaxAcceleration(unsigned acceleration){mMaxAcceleration = acceleration;}
+	void setMaxAngleVelocity(unsigned angleVel){mMaxAngleVelocity = angleVel;}
+	unsigned	 getMaxVelocity()		const {return mMaxVelocity;}
+	unsigned	 getMaxAcceleration()	const {return mMaxAcceleration;}
+	unsigned	 getMaxAngleVelocity()	const {return mMaxAngleVelocity;}
+	void resetPrefab();
+private:
+	unsigned		mMaxVelocity;
+	unsigned		mMaxAcceleration;
+	unsigned		mMaxAngleVelocity;
+};
+
+
 /** 
   *
   * @author konkit
   */
-class BulletPrefab : public PrefabWithColider, public PrefabWithMesh
+class BulletPrefab : public PrefabWithColider, public MovablePrefab
 {
 public:
 	BulletPrefab();
 	BulletPrefab(unsigned prefabID);
 
-	void setBulletPower(float newPower) { mBulletPower = newPower; }
-	void setMaxVelocity(float newMaxVelocity) { mMaxVelocity= newMaxVelocity; }
+	void setBulletPower(unsigned newPower) { mBulletPower = newPower; }
 	void setVelocityVector( Ogre::Vector3 newVector){ mVelocityVector = newVector; }
 	void setAutoAim(bool val) { mAutoAim = val; }
 
 	bool			isAutoAim() const { return mAutoAim; }
-	float			getBulletPower() const { return mBulletPower; }
-	float			getMaxVelocity() const { return mMaxVelocity; }
+	unsigned		getBulletPower() const { return mBulletPower; }
 	Ogre::Vector3	getVelocityVector() const { return mVelocityVector; }
 
 	virtual void resetPrefab();
 
 private:
 	bool		mAutoAim;
-	float		mBulletPower;
-	float		mMaxVelocity;
+	unsigned		mBulletPower;
 
 //Czy to tu jest potrzebne?
 	Ogre::Vector3 mVelocityVector;
@@ -147,7 +162,7 @@ private:
   *
   * @author Zyga
   */
-class StaticPrefab : public PrefabWithColider, public PrefabWithMesh
+class StaticPrefab : public PrefabWithColider
 {
 public:
 	virtual void resetPrefab();
@@ -158,7 +173,7 @@ public:
  * 
  * @author konkit
  */
-class EffectPrefab : public Prefab
+class EffectPrefab : public PrefabWithColider
 {
 public:
 	EffectPrefab();
@@ -194,11 +209,11 @@ private:
   *
   * @author Zyga
   */
-class ShipPrefab: public PrefabWithMesh, public PrefabWithColider
+class ShipPrefab: public PrefabWithColider, public MovablePrefab
 {
 public:
 	ShipPrefab()
-		: Prefab()
+		: PrefabWithMesh(), PrefabWithColider(), MovablePrefab()
 	{
 		resetPrefab();
 	};
@@ -206,25 +221,9 @@ public:
 	~ShipPrefab(void);
 	void resetPrefab();
 	void setWeaponPrefabID(unsigned val) { mWeaponPrefabID = val; }
-	void setMaxVelocity(unsigned velocity){mMaxVelocity = velocity;}
-	void setMaxAcceleration(unsigned acceleration){mMaxAcceleration = acceleration;}
-	void setMaxAngleVelocity(unsigned angleVel){mMaxAngleVelocity = angleVel;}
-	void setMaxHealth(unsigned health){mMaxHealth = health;}
 	
 	unsigned	 getWeaponPrefabID()	const { return mWeaponPrefabID; }
-	unsigned	 getMaxVelocity()		const {return mMaxVelocity;}
-	unsigned	 getMaxAcceleration()	const {return mMaxAcceleration;}
-	unsigned	 getMaxAngleVelocity()	const {return mMaxAngleVelocity;}
-	unsigned	 getMaxHealth()			const {return mMaxHealth;}
-	
-	//void setResistance(unsigned int val) { mResistance = val; }
-	//unsigned int getResistance()		const { return mResistance; }
 private:
-	//unsigned		mResistance;
-	unsigned		mMaxVelocity;
-	unsigned		mMaxAcceleration;
-	unsigned		mMaxAngleVelocity;
-	unsigned		mMaxHealth;
 	unsigned		mWeaponPrefabID;
 
 };

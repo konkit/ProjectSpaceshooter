@@ -4,9 +4,6 @@
     <ClInclude Include="Headers\Game.h">
       <Filter>Header</Filter>
     </ClInclude>
-    <ClInclude Include="Headers\stdafx.h">
-      <Filter>Precompiled Header</Filter>
-    </ClInclude>
     <ClInclude Include="Headers\PhysicsComponent.h">
       <Filter>Header\Components</Filter>
     </ClInclude>
@@ -136,6 +133,12 @@
     <ClInclude Include="Headers\WeaponPrefab_Plant.h">
       <Filter>Header\PrefabsPlant</Filter>
     </ClInclude>
+    <ClInclude Include="Headers\Ship.h">
+      <Filter>Header\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\stdafx.h">
+      <Filter>Precompiled Header</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header">
@@ -143,9 +146,6 @@
     </Filter>
     <Filter Include="Source">
       <UniqueIdentifier>{ab25d64e-869e-46da-86dc-91ed24a56775}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Precompiled Header">
-      <UniqueIdentifier>{ac63aaff-2ebe-4384-8075-54560efc291c}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header\Components">
       <UniqueIdentifier>{5bdc0862-3b8e-40f4-84e1-7d2b67db875e}</UniqueIdentifier>
@@ -186,16 +186,13 @@
     <Filter Include="PrefabsFiles">
       <UniqueIdentifier>{e35d30a9-6bab-4613-92c1-5ae3813a9e04}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Precompiled Header">
+      <UniqueIdentifier>{ac63aaff-2ebe-4384-8075-54560efc291c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\Game.cpp">
       <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\main.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\stdafx.cpp">
-      <Filter>Precompiled Header</Filter>
     </ClCompile>
     <ClCompile Include="Sources\Enemy.cpp">
       <Filter>Source\GameObjects</Filter>
@@ -295,6 +292,15 @@
     </ClCompile>
     <ClCompile Include="Sources\WeaponPrefab_Plant.cpp">
       <Filter>Source\PrefabsPlants</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\main.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Ship.cpp">
+      <Filter>Source\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\stdafx.cpp">
+      <Filter>Precompiled Header</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

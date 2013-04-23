@@ -9,11 +9,11 @@ void ObjectStateUpdateSystem::update( GameData& mGameData, TimeData& time )
 	//creating bullets when player is shooting
 	if( mGameData.getPlayer()->isShooting() == true)	{
 		//get player's data required to create new bullet
-		GameObject* player = mGameData.getPlayer();
+		Ship* player = mGameData.getPlayer();
 		Ogre::Quaternion playerOrientation = player->getOrientation();
 		Ogre::Vector3 playerPos = player->getPosition();
 
-		Bullet* newBullet = mGameData.getBullets().instantiate(1, mGameData.getSceneManagerFor(GAME_STATES::PLAY));
+		Bullet* newBullet = mGameData.instantiateBullet(player->getBulletIDFromActiveWeapon());
 			//set player pos
 			newBullet->setPosition(playerPos);
 			//set player orientation

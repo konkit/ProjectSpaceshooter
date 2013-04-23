@@ -34,6 +34,7 @@ template <class gObject>
 class GameCollectionIterator
 {
 public:
+	GameCollectionIterator<gObject>() : pointerToActual(NULL), pointerToHead(NULL),  isFirstObject(true){}
 	GameCollectionIterator<gObject>(ListElement<gObject> * head)
 		:	pointerToActual(head), pointerToHead(head),  isFirstObject(true)
 	{
@@ -66,7 +67,11 @@ public:
 				pointerToNext = pointerToNext->next;
 			}
 		}
-		return pointerToActual->mObject;
+		if (pointerToActual != NULL)
+		{
+			return pointerToActual->mObject;
+		} else
+			return NULL;
 	}
 	gObject * getActual()
 	{

@@ -1,19 +1,19 @@
 #pragma once
 
+#include "StaticObject.h"
 
-class Core : public GameObject	{
+class Core : public StaticObject
+{
 public:
 	Core() : GameObject()
 	{
 
 	}
-
-	Core(std::string meshName, Ogre::SceneManager* sceneMgr) : GameObject(meshName, sceneMgr)	
+	Core(const PrefabWithColider * prefab, Ogre::SceneManager* sceneMgr)
+		: StaticObject(prefab, sceneMgr)
 	{
 
 	}
-	Ogre::SceneNode* getSceneNode(){return this->mNode;}
-
 private:
 
 

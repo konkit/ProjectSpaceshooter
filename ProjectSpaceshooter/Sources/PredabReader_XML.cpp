@@ -3,7 +3,7 @@
 using namespace std;
 
 
-PredabReader_XML::PredabReader_XML( string fileName, PREFAB_TYPE prefabType )
+PredabReader_XML::PredabReader_XML(string fileName, PREFAB_TYPE prefabType )
 {
 	hr = S_OK;
 	pFileStream = NULL;
@@ -13,7 +13,7 @@ PredabReader_XML::PredabReader_XML( string fileName, PREFAB_TYPE prefabType )
 	openReadingPrefab = false;
 
 	//Open read-only input stream
-	if (FAILED(hr = SHCreateStreamOnFile(fileName.c_str(), STGM_READ, &pFileStream)))
+	if (FAILED(hr = SHCreateStreamOnFile((LPCTSTR) fileName.c_str(), STGM_READ, &pFileStream)))
 	{
 		wprintf(L"Error creating file reader, error is %08.8lx", hr);
 		HR(hr);

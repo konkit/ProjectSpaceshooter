@@ -68,7 +68,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>..\Libs\include\OGRE\RenderSystems\GL;Headers\;..\Libs\include\OGRE;..\Libs\include\OIS;$(IncludePath)</IncludePath>
+    <IncludePath>..\Libs\include\OGRE\RenderSystems\GL;Headers\;..\Libs\include\OGRE;..\Libs\include\OIS;..\Libs\include;$(IncludePath)</IncludePath>
     <LibraryPath>..\Libs\lib\$(Configuration);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -99,7 +99,8 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>FreeImage_d.lib;freetype_d.lib;OgreMainStatic_d.lib;OgreRTShaderSystemStatic_d.lib;OgreTerrainStatic_d.lib;OIS_d.lib;zlib_d.lib;zziplib_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>OgreMain_d.lib;OIS_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\Libs\lib\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -117,10 +118,18 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>OgreMain_d.lib;OIS_d.lib;opt/Plugin_ParticleFX_d.lib;xmllite.lib;shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\Libs\lib\debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <Bscmake>
       <PreserveSbr>true</PreserveSbr>
     </Bscmake>
+    <Lib>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
+    </Lib>
+    <Lib>
+      <AdditionalLibraryDirectories>C:\Users\Zygfryd\Programowanie\C++\ProjectSpaceshooter\Libs\lib\debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -137,6 +146,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>..\Libs\lib\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -198,6 +208,7 @@
     <ClInclude Include="Headers\PrefabPlant.h" />
     <ClInclude Include="Headers\Prefabs.h" />
     <ClInclude Include="Headers\ResoursceLoader.h" />
+    <ClInclude Include="Headers\Ship.h" />
     <ClInclude Include="Headers\StateManager.h" />
     <ClInclude Include="Headers\StaticObject.h" />
     <ClInclude Include="Headers\StaticPrefabPlant.h" />
@@ -237,6 +248,7 @@
     <ClCompile Include="Sources\PrefabPlant.cpp" />
     <ClCompile Include="Sources\Prefabs.cpp" />
     <ClCompile Include="Sources\ResoursceLoader.cpp" />
+    <ClCompile Include="Sources\Ship.cpp" />
     <ClCompile Include="Sources\StateManager.cpp" />
     <ClCompile Include="Sources\StaticObject.cpp" />
     <ClCompile Include="Sources\StaticPrefabPlant.cpp" />

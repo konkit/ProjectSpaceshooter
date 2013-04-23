@@ -31,7 +31,7 @@ public:
 
 	//get time since last frame in fraction of SECONDS
 	float getDeltaTime()	{
-		float deltaTime = ( mTime.getMilliseconds() - lastTime) / 1000.0;
+		float deltaTime = ( mTime.getMilliseconds() - lastTime) / 1000.0f;
 		lastTime = mTime.getMilliseconds();
 
 		return deltaTime;

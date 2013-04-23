@@ -36,7 +36,12 @@ void EffectPrefabPlant::setMethodToFillProperty( const wstring & name )
 	if (SetMethodToFillBasicProperty(name))
 	{
 		methodToFillEffectProperty = methodToFillBasicProperty;
-	} else if (name == particleSystemName)
+	} 
+	else if (SetMethodToFillColiderProperty(name))
+	{
+		methodToFillEffectProperty = methodToFillColiderProperty;
+	}
+	else if (name == particleSystemName)
 	{
 		methodToFillEffectProperty = &EffectPrefabPlant::_setParticleSystemName;
 	} else
@@ -53,6 +58,7 @@ void EffectPrefabPlant::fillPrefabProperty( const wstring & attribute, const wst
 EffectPrefabPlant::EffectPrefabPlant()
 {
 	PrefabPlant::setPrefab(&mEffectPrefab);
+	PrefabWithColider_Plant::setPrefab(&mEffectPrefab);
 	methodToFillEffectProperty = &EffectPrefabPlant::_doNothing;
 }
 

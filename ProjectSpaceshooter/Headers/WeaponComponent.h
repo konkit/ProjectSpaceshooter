@@ -3,8 +3,8 @@
 class WeaponComponent {
 public:
 	WeaponComponent();
-
 	WeaponComponent(int weaponPrefabID);
+	WeaponComponent(const WeaponPrefab * prefab);
 	void setWeapon(const WeaponPrefab * prefab);
 
 	unsigned int getWeaponPrefabID() const { return weaponPrefabID; }
@@ -18,6 +18,7 @@ public:
 
 	/** accessor function checking if shooting flag is set */
 	bool isShooting();
+	unsigned getBulletID() const {return bulletPrefabID;}
 
 private:
 

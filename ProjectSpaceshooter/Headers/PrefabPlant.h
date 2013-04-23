@@ -91,7 +91,8 @@ protected:
 		PrefabPlant::setPrefab(val);
 	}
 	void _setColider(const wstring & attribute, const wstring & value);
-	void _setColiderRadian(const wstring & attribute, const wstring & value);
+	void _setInaccurateColider(const wstring & attribute, const wstring & value);
+	void _setColiderRadius(const wstring & attribute, const wstring & value);
 	void _setColiderOffset(const wstring & attribute, const wstring & value);
 	void _setMaxHealth(const wstring & attribute, const wstring & value);
 	bool SetMethodToFillColiderProperty( const wstring & name );
@@ -99,9 +100,10 @@ protected:
 
 	static const wchar_t * health;
 	static const wchar_t * colider;
+	static const wchar_t * inaccurate_colider;
 	static const wchar_t * coliders;
 	static const wchar_t * offset;
-	static const wchar_t * radian;
+	static const wchar_t * radius;
 private:
 	PrefabWithColider * prefabWithColider;
 	void clearColider();

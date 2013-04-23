@@ -9,28 +9,35 @@
   * 
   * @author konkit 
   */
-class Bullet : public GameObject	{
+class Bullet : public GameObject_WithColider, public GameObject_Movable
+{
 
 public:
 	Bullet();
 
 	Bullet(std::string meshName, Ogre::SceneManager* sceneMgr);
 
-	Bullet::Bullet( BulletPrefab * objectTemplate, Ogre::SceneManager * _sceneMenager);
+	Bullet::Bullet(const BulletPrefab * objectTemplate, Ogre::SceneManager * _sceneMenager);
 
-	float getPower();
-	void setPower(float newPower);
+	unsigned getPower() const { return mPower; }
+	void setPower(unsigned val) { mPower = val; }
 
 	void setOwner(GameObject* owner);
 
-	bool isDead();
-
 	TimeToLiveComponent& getTTLComponent();
 
-	void setMaxSpeed() { mPhysicsComponent.setMaxSpeed(); }
 
+	virtual bool receiveDamage( unsigned int damages ) {return mDeadFlag = true;};
+
+	virtual void hit( GameObject_WithColider * tmp ){tmp->receiveDamage(mPower, getPosition());}
+	bool isDead() 
+	{
+		if( mTTLComponent.isTimeIsUp()==true )
+			return true;
+		return mDeadFlag;
+	}
 private:
-	float mPower;
+	unsigned mPower;
 	GameObject* mOwner;
 	TimeToLiveComponent mTTLComponent;
 };

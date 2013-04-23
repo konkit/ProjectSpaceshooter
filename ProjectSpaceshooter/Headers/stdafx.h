@@ -31,5 +31,5 @@
 #include "Exceptions.h"
 #include "StateManager.h"
 
-
+#include <iostream>
 using Ogre::Vector3;

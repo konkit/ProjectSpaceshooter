@@ -24,3 +24,15 @@ HealthComponent::HealthComponent() : health(100), maxHealth(100)
 
 }
 
+HealthComponent::HealthComponent( PrefabWithColider * prefab )
+{
+	maxHealth = health = prefab->getMaxHealth();
+	resistance = prefab->getResistance();
+}
+
+void HealthComponent::setHealthFromPrefab(const PrefabWithColider * prefab )
+{
+	maxHealth = health = prefab->getMaxHealth();
+	resistance = prefab->getResistance();
+}
+

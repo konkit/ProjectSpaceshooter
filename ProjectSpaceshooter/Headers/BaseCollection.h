@@ -4,6 +4,7 @@
 #include "Bullet.h"
 #include "Enemy.h"
 #include "EffectObject.h"
+#include "Exceptions.h"
 
 /** Class which is base for all collections of Enemies, Bullets etc
   * Its main parts are collection of GameObjects and collection of prefab
@@ -14,11 +15,9 @@ class BaseCollection
 {
 public:
 	TObject* instantiate(int ID, Ogre::SceneManager* sceneMgr)	{
-		//get prefab with id given
-		TPrefab* currentPrefab = getPrefab(ID);
 
 		//create new object from prefab
-		TObject* newObject = new TObject(currentPrefab, sceneMgr);
+		TObject* newObject = new TObject(getPrefab(ID), sceneMgr);
 
 		//add it to the collection
 		mCollection.addObject(newObject);
@@ -39,34 +38,79 @@ public:
 		return mCollection.getIterator();
 	}
 	void addPrefab(TPrefab* newPrefab) {
-		mPrefabs += newPrefab;
-	}
-	TPrefab* getPrefab(int prefabID)	{
-		GameCollectionIterator<TPrefab>  it = mPrefabs.getIterator();
-		TPrefab * tmpPrefab;
-		while(it.hasNext())
+		if (&newPrefab == NULL)
 		{
-			tmpPrefab = it.getNext();
-			if (tmpPrefab->getPrefabID() == prefabID)
-			{
-				return tmpPrefab;
-			}
+			throw My_Exception("addPrefab: Can't add NULL Weapon Prefab");
+		}
+		unsigned prefabID = newPrefab->getPrefabID(); 
+		if (prefabID >= mPrefabs.size())
+		{
+			mPrefabs.resize(prefabID+1);
+		}
+		mPrefabs[prefabID] = *newPrefab;
+	}
+	TPrefab* getPrefab(int prefabID)	
+	{
+		if(prefabID < mPrefabs.size())
+		{
+			return &mPrefabs[prefabID];
 		}
 
 		using std::string;
 		std::stringstream exceptionString;
 		exceptionString << "There are no prefab with id =" << prefabID << " in prefab collection ";
-		//throw exception(exceptionString.str().c_str());
-		string tmp(exceptionString.str());
-		tmp += dynamic_cast<Prefab*>(mPrefabs.getFirst())->getName();
-		throw exception(tmp.c_str());
+		throw exception(exceptionString.str().c_str());
 	}
 
-private:
-
-
+protected:
 
 	GameCollection<TObject> mCollection;
-	GameCollection<TPrefab> mPrefabs;
+	vector<TPrefab> mPrefabs;
 
+};
+
+class EnemyAndShipPrefabsCollections : public BaseCollection<ShipPrefab, EnemyObject>
+{
+public: 
+	EnemyAndShipPrefabsCollections() : mWeaponCollection(20) {}
+ 	EnemyObject * instantiateEnemy(int ID, AI_TYPE myAi, Ogre::SceneManager* sceneMgr)
+	{
+			//get prefab with id given
+			const ShipPrefab* currentPrefab = getPrefab(ID);
+			const WeaponPrefab* weaponPref = &mWeaponCollection[currentPrefab->getWeaponPrefabID()];
+			//create new object from prefab
+			EnemyObject * newObject = new EnemyObject(currentPrefab, weaponPref, myAi, sceneMgr);
+
+			//add it to the collection
+			mCollection.addObject(newObject);
+			return newObject;
+	}
+	vector<WeaponPrefab> getWeaponCollection() const { return mWeaponCollection; }
+	const WeaponPrefab * getWeaponPrefab(unsigned prefabID) const 
+	{ 
+		if (prefabID < mWeaponCollection.size())
+		{
+			return &mWeaponCollection[prefabID];
+		}
+		using std::string;
+		std::stringstream exceptionString;
+		exceptionString << "There are no prefab with id =" << prefabID << " in weapon prefab collection ";
+		throw My_Exception(exceptionString.str().c_str());
+	}
+	void addWeaponPrefab(const WeaponPrefab& _weaponPrefab)
+	{
+		if (&_weaponPrefab == NULL)
+		{
+			throw My_Exception("addWeaponPrefab: Can't add NULL Weapon Prefab");
+		}
+		WeaponPrefab * prefab = new WeaponPrefab(_weaponPrefab);
+		unsigned prefabID = _weaponPrefab.getPrefabID(); 
+		if (prefabID >= mWeaponCollection.size())
+		{
+			mWeaponCollection.resize(prefabID+1);
+		}
+		mWeaponCollection[prefabID] = _weaponPrefab;
+	}
+private:
+	vector<WeaponPrefab> mWeaponCollection;
 };

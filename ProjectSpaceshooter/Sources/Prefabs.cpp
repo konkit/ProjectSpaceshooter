@@ -20,27 +20,26 @@ void Prefab::resetPrefab()
 
 void ShipPrefab::resetPrefab()
 {
-//	mResistance       = 0;
-	mMaxVelocity      = 0;
-	mMaxAcceleration  = 0;
-	mMaxAngleVelocity = 0;
-	mWeaponPrefabID   = 0;
 	PrefabWithColider::resetPrefab();
 	PrefabWithMesh::resetPrefab();
+	MovablePrefab::resetPrefab();
+	mWeaponPrefabID = 0;
 }
 
 ShipPrefab::ShipPrefab( unsigned prefabID )
-	: Prefab()
+	: PrefabWithMesh()
 {
 	mPrefabID = prefabID;
+}
+ShipPrefab::~ShipPrefab(void)
+{
 }
 
 BulletPrefab::BulletPrefab( unsigned prefabID )
 {
 	mPrefabID = prefabID;
 	mAutoAim = false;
-	mMaxVelocity = 0;
-	mVelocityVector = Vector3(0.0, 0.0, 0.0);
+	MovablePrefab::resetPrefab();
 }
 
 BulletPrefab::BulletPrefab()
@@ -52,9 +51,9 @@ void BulletPrefab::resetPrefab()
 {
 	mAutoAim = false;
 	mBulletPower = 0.0;
-	mMaxVelocity = 0.0;
 	PrefabWithColider::resetPrefab();
 	PrefabWithMesh::resetPrefab();
+	MovablePrefab::resetPrefab();
 }
 
 EffectPrefab::EffectPrefab()
@@ -106,4 +105,11 @@ WeaponPrefab::~WeaponPrefab()
 WeaponPrefab::WeaponPrefab()
 {
 	resetPrefab();
+}
+
+void MovablePrefab::resetPrefab()
+{
+	mMaxVelocity      = 0;
+	mMaxAcceleration  = 0;
+	mMaxAngleVelocity = 0;
 }

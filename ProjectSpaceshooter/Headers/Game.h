@@ -1,5 +1,5 @@
 #pragma once
-	
+#include "stdafx.h"	
 #include "StateManager.h"
 #include "ResoursceLoader.h"
 

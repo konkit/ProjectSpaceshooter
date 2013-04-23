@@ -25,7 +25,7 @@ public:
 
 		//bullet objects update
 		GameCollectionIterator<Bullet> myIterator = mGameData.getBullets().getIterator();
-		GameObject* it;
+		GameObject_Movable* it;
 		while (myIterator.hasNext())
 		{
 			it = myIterator.getNext();
@@ -42,7 +42,7 @@ public:
 		}
 	}
 
-	void updateOneObject( GameObject* it, float deltaTime ) {
+	void updateOneObject( GameObject_Movable* it, float deltaTime ) {
 		PhysicsComponent& tmpPhysics = it->getPhysicsComponent();
 
 		tmpPhysics.updateVelocity();

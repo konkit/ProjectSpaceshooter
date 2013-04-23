@@ -2,7 +2,7 @@
 #include "Prefabs.h"
 #include "TimeToLiveComponent.h"
 
-class EffectObject : public GameObject
+class EffectObject : public GameObject_WithColider
 {
 public:
 	EffectObject() : GameObject()
@@ -11,7 +11,7 @@ public:
 	}
 
 	EffectObject( EffectPrefab * objectTemplate, Ogre::SceneManager * _sceneMgr)
-		: GameObject()
+		: GameObject(), GameObject_WithColider(objectTemplate, _sceneMgr)
 	{
 		mTTLComponent.setTimeToLive(50);
 
@@ -43,11 +43,16 @@ public:
 	{
 		if( mTTLComponent.isTimeIsUp()==true )
 			return true;
-		if( GameObject::isDead() == true )
-			return true;
 
 		return false;
 	}
+
+	virtual bool receiveDamage( unsigned int damages, Vector3 fromDirection ) 
+	{
+		return false;
+	}
+
+	virtual bool kill() {return false;}
 
 private:
 	TimeToLiveComponent mTTLComponent;
