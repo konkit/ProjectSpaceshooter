@@ -6,7 +6,7 @@
  * 
  * @author Zyga
  */
-class StaticPrefabPlant : virtual public PrefabWithColider_Plant, virtual public PrefabWithMesh_Plant
+class StaticPrefabPlant : virtual public PrefabWithCollider_Plant, virtual public PrefabWithMesh_Plant
 {
 public:
 	StaticPrefabPlant();

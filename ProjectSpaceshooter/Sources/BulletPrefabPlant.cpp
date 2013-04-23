@@ -9,7 +9,7 @@ const wchar_t * BulletPrefabPlant::bullet_power = L"bullet_power";
 
 BulletPrefabPlant::~BulletPrefabPlant()
 {
-	PrefabWithColider_Plant::setPrefab(static_cast<PrefabWithColider*>(&mBulletPrefab));
+	PrefabWithCollider_Plant::setPrefab(static_cast<PrefabWithCollider*>(&mBulletPrefab));
 	PrefabWithMesh_Plant::setPrefab(static_cast<PrefabWithMesh*>(&mBulletPrefab));
 }
 
@@ -29,9 +29,9 @@ void BulletPrefabPlant::setMethodToFillProperty( const wstring & name )
 	} else if (SetMethodToFillMeshProperty(name))
 	{
 		methodToFillBulletProperty = methodToFillMeshProperty;
-	} else if (SetMethodToFillColiderProperty(name))
+	} else if (SetMethodToFillColliderProperty(name))
 	{
-		methodToFillBulletProperty = methodToFillColiderProperty;
+		methodToFillBulletProperty = methodToFillColliderProperty;
 	} else if (name == auto_aim)
 	{
 		methodToFillBulletProperty = &BulletPrefabPlant::_setAutoAim;
@@ -113,7 +113,7 @@ const wstring BulletPrefabPlant::getPrefabName()
 
 BulletPrefabPlant::BulletPrefabPlant()
 {
-	PrefabWithColider_Plant::setPrefab(&mBulletPrefab);
+	PrefabWithCollider_Plant::setPrefab(&mBulletPrefab);
 	PrefabWithMesh_Plant::setPrefab(&mBulletPrefab);
 }
 

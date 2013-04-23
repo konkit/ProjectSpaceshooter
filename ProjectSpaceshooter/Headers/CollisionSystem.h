@@ -2,7 +2,7 @@
 
 #include "DebugDrawer.h"
 
-//#define ALLCOLIDERS true
+//#define ALLColliderS true
 
 class CollisionSystem	{
 public:
@@ -11,8 +11,8 @@ public:
 	void update(GameData& mGameData)	
 	{
 		GameData::ColidingObjectsIterator it = mGameData.getColidingObjectsIterator();
-		GameObject_WithColider * obj;
-		colider_struct coli;
+		GameObject_WithCollider * obj;
+		Collider_struct coli;
 		position_struct pos;
 
 		while (it.hasNext())
@@ -20,16 +20,16 @@ public:
 			obj = it.getNext();
 			CheckForCollisions(obj, it ,mGameData);
 #ifdef _DEBUG
-			//Collider _colider	= obj->getColider();
-			//coli = _colider.getInaccurateColider();
-			coli = obj->getColider().getInaccurateColider();
+			//Collider _Collider	= obj->getCollider();
+			//coli = _Collider.getInaccurateCollider();
+			coli = obj->getCollider().getInaccurateCollider();
 			pos = obj->getPositionAndOrientation();
 			coli.offset = (pos.orientation * coli.offset) + pos.position;
 			DebugDrawer::getSingleton().drawCircle(coli.offset, coli.radius, 25, Ogre::ColourValue(1.0f, 1.0f, 1.0f) );
 
-#ifdef ALLCOLIDERS
-			list<colider_struct>::const_iterator coli_IT = _colider.getColidersBegin();
-			list<colider_struct>::const_iterator coli_end = _colider.getColidersEnd();
+#ifdef ALLColliderS
+			list<Collider_struct>::const_iterator coli_IT = _Collider.getCollidersBegin();
+			list<Collider_struct>::const_iterator coli_end = _Collider.getCollidersEnd();
 			
 			for ( ; coli_IT != coli_end; coli_IT++)
 			{
@@ -38,15 +38,15 @@ public:
 			coli.offset = (pos.orientation * coli.offset) + pos.position;
 			DebugDrawer::getSingleton().drawCircle(coli.offset, coli.radius, 25, Ogre::ColourValue(1.0f, 0.0f, 0.0f) );
 			}
-#endif // ALLCOLIDERS
+#endif // ALLColliderS
 
 #endif 
 		}
 	}
 
-	void CheckForCollisions( GameObject_WithColider * currentObject, GameData::ColidingObjectsIterator it ,GameData& mGameData)	
+	void CheckForCollisions( GameObject_WithCollider * currentObject, GameData::ColidingObjectsIterator it ,GameData& mGameData)	
 	{	
-		GameObject_WithColider * tmp;
+		GameObject_WithCollider * tmp;
 		while(it.hasNext())
 		{
 			tmp = it.getNext();

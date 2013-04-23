@@ -17,6 +17,7 @@ PredabReader_XML::PredabReader_XML(string fileName, PREFAB_TYPE prefabType )
 	{
 		wprintf(L"Error creating file reader, error is %08.8lx", hr);
 		HR(hr);
+		throw My_Exception(string("Error creating file reader. File = ") + fileName);
 	}
 
 	if (FAILED(hr = CreateXmlReader(__uuidof(IXmlReader), (void**) &pReader, NULL)))

@@ -6,11 +6,6 @@
 
 using namespace std;
 
-enum class AI_TYPE
-{
-	fighter,
-	defender
-};
 /** 
   *
   * @author Zyga
@@ -22,22 +17,6 @@ public:
 	EnemyObject::EnemyObject(const ShipPrefab * objectTemplate,const WeaponPrefab * weapon, AI_TYPE _myAi, Ogre::SceneManager * _sceneMenager);
 	~EnemyObject();
 	unsigned int mResistance;
-
-	void setShoot(unsigned long currentTime)	{
-		mWeapon.setShoot(currentTime);
-	}
-
-	void unsetShoot()	{
-		mWeapon.unsetShoot();
-	}
-
-	bool isShooting()	{
-		return mWeapon.isShooting();
-	}
-
-	WeaponComponent& getCurrentWeapon()	{
-		return mWeapon;
-	}
 
 	AI_TYPE getAI() const { return myAI; }
 	void setAI(AI_TYPE val) { myAI = val; }

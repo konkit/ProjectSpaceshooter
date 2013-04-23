@@ -9,7 +9,7 @@
   * 
   * @author konkit 
   */
-class Bullet : public GameObject_WithColider, public GameObject_Movable
+class Bullet : public GameObject_WithCollider, public GameObject_Movable
 {
 
 public:
@@ -35,7 +35,7 @@ public:
 
 	virtual bool receiveDamage( unsigned int damages ) {return mDeadFlag = true;};
 
-	virtual void hit( GameObject_WithColider * tmp ){tmp->receiveDamage(mPower, getPosition());}
+	virtual void hit( GameObject_WithCollider * tmp ){tmp->receiveDamage(mPower, getPosition());}
 	bool isDead() 
 	{
 		if( mTTLComponent.isTimeIsUp()==true )

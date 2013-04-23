@@ -8,16 +8,16 @@
     <health value='1000'/>
     <scale x_scale='30' y_scale='30' z_scale='30' />
     <rotation x_rot='1' y_rot='1' z_rot='1' />
-    <coliders>
-      <inaccurate_colider>
+    <Colliders>
+      <inaccurate_Collider>
         <offset x_pos='0' y_pos='0' z_pos='0' />
         <radius value='25' />
-      </inaccurate_colider>
-      <colider>
+      </inaccurate_Collider>
+      <Collider>
         <offset x_pos='0' y_pos='0' z_pos='0' />
         <radius value='25' />
-      </colider>
-    </coliders>
+      </Collider>
+    </Colliders>
   </static>
 </static_prefabs>
 

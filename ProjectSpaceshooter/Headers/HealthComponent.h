@@ -9,7 +9,7 @@
 class HealthComponent {
 public:
 	HealthComponent();
-	HealthComponent(PrefabWithColider * prefab);
+	HealthComponent(PrefabWithCollider * prefab);
 
 	void decreaseHealth( int value );
 
@@ -23,7 +23,7 @@ public:
 	void setMaxHealth(int val) { maxHealth = val; }
 	unsigned getResistance() const { return resistance; }
 	void setResistance(unsigned val) { resistance = val; }
-	void setHealthFromPrefab(const PrefabWithColider * prefab);
+	void setHealthFromPrefab(const PrefabWithCollider * prefab);
 
 private:
 	int health;

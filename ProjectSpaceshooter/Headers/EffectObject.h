@@ -2,7 +2,7 @@
 #include "Prefabs.h"
 #include "TimeToLiveComponent.h"
 
-class EffectObject : public GameObject_WithColider
+class EffectObject : public GameObject_WithCollider
 {
 public:
 	EffectObject() : GameObject()
@@ -11,7 +11,7 @@ public:
 	}
 
 	EffectObject( EffectPrefab * objectTemplate, Ogre::SceneManager * _sceneMgr)
-		: GameObject(), GameObject_WithColider(objectTemplate, _sceneMgr)
+		: GameObject(), GameObject_WithCollider(objectTemplate, _sceneMgr)
 	{
 		mTTLComponent.setTimeToLive(1.50);
 

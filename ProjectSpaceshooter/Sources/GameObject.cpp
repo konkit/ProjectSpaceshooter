@@ -55,16 +55,16 @@ position_struct GameObject::getObjectPosition()
 }
 
 
-bool GameObject_WithColider::isColidingWith( GameObject_WithColider * _object )
+bool GameObject_WithCollider::isColidingWith( GameObject_WithCollider * _object )
 {
 	position_struct my_pos = this->getPositionAndOrientation();
 	position_struct oth_pos = _object->getPositionAndOrientation();
-	const Collider & oth_coli = _object->getColider();
-	return mColider.isCollidingWith(my_pos, oth_coli, oth_pos);
+	const Collider & oth_coli = _object->getCollider();
+	return mCollider.isCollidingWith(my_pos, oth_coli, oth_pos);
 }
 
-GameObject_WithColider::GameObject_WithColider(const PrefabWithColider * prefab, Ogre::SceneManager* sceneMgr )
-	: GameObject(prefab, sceneMgr), mColider(prefab->getColider()), mDeadFlag(false)
+GameObject_WithCollider::GameObject_WithCollider(const PrefabWithCollider * prefab, Ogre::SceneManager* sceneMgr )
+	: GameObject(prefab, sceneMgr), mCollider(prefab->getCollider()), mDeadFlag(false)
 {
 
 }
@@ -76,8 +76,8 @@ GameObject_Movable::GameObject_Movable(const MovablePrefab * prefab, Ogre::Scene
 
 }
 
-GameObject_WithHealth::GameObject_WithHealth(const PrefabWithColider * prefab, Ogre::SceneManager* sceneMgr )
-	: GameObject(prefab, sceneMgr), GameObject_WithColider(prefab, sceneMgr), mHealth()
+GameObject_WithHealth::GameObject_WithHealth(const PrefabWithCollider * prefab, Ogre::SceneManager* sceneMgr )
+	: GameObject(prefab, sceneMgr), GameObject_WithCollider(prefab, sceneMgr), mHealth()
 {
 
 }

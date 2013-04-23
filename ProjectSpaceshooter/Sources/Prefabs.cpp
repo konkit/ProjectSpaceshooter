@@ -20,7 +20,7 @@ void Prefab::resetPrefab()
 
 void ShipPrefab::resetPrefab()
 {
-	PrefabWithColider::resetPrefab();
+	PrefabWithCollider::resetPrefab();
 	PrefabWithMesh::resetPrefab();
 	MovablePrefab::resetPrefab();
 	mWeaponPrefabID = 0;
@@ -51,7 +51,7 @@ void BulletPrefab::resetPrefab()
 {
 	mAutoAim = false;
 	mBulletPower = 0.0;
-	PrefabWithColider::resetPrefab();
+	PrefabWithCollider::resetPrefab();
 	PrefabWithMesh::resetPrefab();
 	MovablePrefab::resetPrefab();
 }
@@ -69,14 +69,14 @@ void EffectPrefab::resetPrefab()
 
 void StaticPrefab::resetPrefab()
 {
-	PrefabWithColider::resetPrefab();
+	PrefabWithCollider::resetPrefab();
 	PrefabWithMesh::resetPrefab();
 }
 
-void PrefabWithColider::resetPrefab()
+void PrefabWithCollider::resetPrefab()
 {
 	
-	clearColiders();
+	clearColliders();
 	mResistance = 0;
 	mMaxHealth = 0;
 	Prefab::resetPrefab();

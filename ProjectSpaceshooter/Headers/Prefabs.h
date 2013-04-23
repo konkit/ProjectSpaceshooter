@@ -80,34 +80,34 @@ protected:
  * 
  * @author Zyga
  */
-class PrefabWithColider : virtual public PrefabWithMesh
+class PrefabWithCollider : virtual public PrefabWithMesh
 {
 public:
-	PrefabWithColider() : PrefabWithMesh(), mColiders() {;}
+	PrefabWithCollider() : PrefabWithMesh(), mColliders() {;}
 	void setMaxHealth(unsigned val) { mMaxHealth = val; }
 	void setResistance(unsigned val) { mResistance = val; }
 
-	void addColider(colider_struct colider)
+	void addCollider(Collider_struct Collider)
 	{
-		mColiders.addColider(colider);
+		mColliders.addCollider(Collider);
 	}
 
-	void setInaccurateColider(colider_struct colider)
+	void setInaccurateCollider(Collider_struct Collider)
 	{
-		mColiders.setInaccurateColider(colider);
+		mColliders.setInaccurateCollider(Collider);
 	}
-	const Collider & getColider()	const {return mColiders;}
+	const Collider & getCollider()	const {return mColliders;}
 	unsigned		 getMaxHealth() const { return mMaxHealth; }
 	unsigned		 getResistance() const { return mResistance; }
 	
-	void clearColiders() {mColiders.reset();}
+	void clearColliders() {mColliders.reset();}
 	virtual void resetPrefab();
 
 protected:
 
 	unsigned mResistance;
 	unsigned mMaxHealth;
-	Collider mColiders;
+	Collider mColliders;
 };
 
 
@@ -134,7 +134,7 @@ private:
   *
   * @author konkit
   */
-class BulletPrefab : public PrefabWithColider, public MovablePrefab
+class BulletPrefab : public PrefabWithCollider, public MovablePrefab
 {
 public:
 	BulletPrefab();
@@ -162,7 +162,7 @@ private:
   *
   * @author Zyga
   */
-class StaticPrefab : public PrefabWithColider
+class StaticPrefab : public PrefabWithCollider
 {
 public:
 	virtual void resetPrefab();
@@ -173,7 +173,7 @@ public:
  * 
  * @author konkit
  */
-class EffectPrefab : public PrefabWithColider
+class EffectPrefab : public PrefabWithCollider
 {
 public:
 	EffectPrefab();
@@ -209,11 +209,11 @@ private:
   *
   * @author Zyga
   */
-class ShipPrefab: public PrefabWithColider, public MovablePrefab
+class ShipPrefab: public PrefabWithCollider, public MovablePrefab
 {
 public:
 	ShipPrefab()
-		: PrefabWithMesh(), PrefabWithColider(), MovablePrefab()
+		: PrefabWithMesh(), PrefabWithCollider(), MovablePrefab()
 	{
 		resetPrefab();
 	};

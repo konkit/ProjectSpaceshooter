@@ -77,9 +77,8 @@ void ObjectStateUpdateSystem::update( GameData& mGameData, TimeData& time )
 			//get data required to create new bullet
 			Ogre::Quaternion enemyOrientation = enemyIt->getOrientation();
 			Ogre::Vector3 enemyPos = enemyIt->getPosition();
-			float bulletPower = enemyIt->getCurrentWeapon().getPower();
 
-			Bullet* newBullet = mGameData.getBullets().instantiate(1, mGameData.getSceneManagerFor(GAME_STATES::PLAY));
+			Bullet* newBullet = mGameData.instantiateBullet(enemyIt->getBulletIDFromActiveWeapon());
 				//set player pos
 				newBullet->setPosition(enemyPos);
 				//set player orientation

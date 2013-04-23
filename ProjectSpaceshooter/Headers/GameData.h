@@ -8,6 +8,7 @@
 #include "BaseCollection.h"
 #include "LevelDescription.h"
 #include "Exceptions.h"
+#include <string>
 
 
 
@@ -129,7 +130,7 @@ public:
 	public:
 		ColidingObjectsIterator() : activeIterator(iterator::Player){;}
 		bool hasNext();
-		GameObject_WithColider * getNext();
+		GameObject_WithCollider * getNext();
 	
 		Player * getPlayer() const { return player; }
 		void setPlayer(Player * val) { player = val; }
@@ -192,7 +193,7 @@ private:
 	bool changeToBuilder;
 	} changeFlags;
 	//All GameObjects
-
+	
 	EnemyAndShipPrefabsCollections mEnemyCollection;
 	BaseCollection<BulletPrefab, Bullet> mBulletCollection;
 	BaseCollection<EffectPrefab, EffectObject> mEffectsCollection;

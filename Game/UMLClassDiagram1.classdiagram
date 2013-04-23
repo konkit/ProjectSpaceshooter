@@ -67,7 +67,7 @@
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
-      <class Id="1359f7b6-8169-4f06-bd24-568c8724810e" name="GameObject_WithColider1" isAbstract="false" isLeaf="false" isActiveClass="false">
+      <class Id="1359f7b6-8169-4f06-bd24-568c8724810e" name="GameObject_WithCollider1" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="2318768b-671b-42ea-9eb5-b65a3b37156e" />
         <generalsInternal>
           <generalization Id="1cfaee47-42b2-43af-9e09-6e44e7d2dfc9" isSubstitutable="false">
@@ -82,7 +82,7 @@
         <elementDefinition Id="63d9c0c3-cb7c-4aef-a9f0-862b923975a8" />
         <generalsInternal>
           <generalization Id="32a0534b-32cb-48d3-bb35-3105a4cba87b" isSubstitutable="false">
-            <classMoniker Id="1359f7b6-8169-4f06-bd24-568c8724810e" LastKnownName="GameObject_WithColider1" />
+            <classMoniker Id="1359f7b6-8169-4f06-bd24-568c8724810e" LastKnownName="GameObject_WithCollider1" />
             <elementDefinition Id="8bb1db43-3cfb-47af-baef-11f8de58fb54" />
           </generalization>
         </generalsInternal>
@@ -127,7 +127,7 @@
         <elementDefinition Id="a20cc1e2-0343-46c3-b19f-131cf2e39f0f" />
         <generalsInternal>
           <generalization Id="afa8a14e-c28e-4f6d-a681-413f355bb7f5" isSubstitutable="false">
-            <classMoniker Id="1359f7b6-8169-4f06-bd24-568c8724810e" LastKnownName="GameObject_WithColider1" />
+            <classMoniker Id="1359f7b6-8169-4f06-bd24-568c8724810e" LastKnownName="GameObject_WithCollider1" />
             <elementDefinition Id="2006f196-014e-4121-9117-9049caadac9e" />
           </generalization>
           <generalization Id="1423f760-0c41-4bd6-82b5-9ef806fbfb76" isSubstitutable="false">

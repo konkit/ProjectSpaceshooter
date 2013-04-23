@@ -96,128 +96,128 @@ double PrefabPlant::ValueToDouble(const wstring &value )
 	return wcstod(value.c_str(), &pEnd);
 }
 
-void PrefabWithColider_Plant::_setColider( const wstring & attribute, const wstring & value )
+void PrefabWithCollider_Plant::_setCollider( const wstring & attribute, const wstring & value )
 {
 	if (attribute == PrefabPlant::closeNode)
 	{
-		if (prefabWithColider == NULL)
+		if (prefabWithCollider == NULL)
 		{
-			throw My_Exception("PrefabWithColider setColider: Can't add colider into nonexistent prefab");
+			throw My_Exception("PrefabWithCollider setCollider: Can't add Collider into nonexistent prefab");
 		}
-		prefabWithColider->addColider(colider_str);
-		clearColider();
+		prefabWithCollider->addCollider(Collider_str);
+		clearCollider();
 	} else
 	{
-		throw My_Exception("PrefabWithColider _setCollider: Missing attribute type");
+		throw My_Exception("PrefabWithCollider _setCollider: Missing attribute type");
 	}
 }
 
 
-void PrefabWithColider_Plant::_setInaccurateColider( const wstring & attribute, const wstring & value )
+void PrefabWithCollider_Plant::_setInaccurateCollider( const wstring & attribute, const wstring & value )
 {
 	if (attribute == PrefabPlant::closeNode)
 	{
-		if (prefabWithColider == NULL)
+		if (prefabWithCollider == NULL)
 		{
-			throw My_Exception("PrefabWithColider setColider: Can't add colider into nonexistent prefab");
+			throw My_Exception("PrefabWithCollider setCollider: Can't add Collider into nonexistent prefab");
 		}
-		prefabWithColider->setInaccurateColider(colider_str);
-		clearColider();
+		prefabWithCollider->setInaccurateCollider(Collider_str);
+		clearCollider();
 	} else
 	{
-		throw My_Exception("PrefabWithColider _setCollider: Missing attribute type");
+		throw My_Exception("PrefabWithCollider _setCollider: Missing attribute type");
 	}
 }
 
 
-void PrefabWithColider_Plant::_setColiderOffset( const wstring & attribute, const wstring & value )
+void PrefabWithCollider_Plant::_setColliderOffset( const wstring & attribute, const wstring & value )
 {
 	if (attribute == PrefabPlant::x_pos)
 	{
-		colider_str.offset.x= ValueToUINT(value);
+		Collider_str.offset.x= ValueToUINT(value);
 	} else if (attribute == PrefabPlant::y_pos)
 	{
-		colider_str.offset.y = ValueToUINT(value);
+		Collider_str.offset.y = ValueToUINT(value);
 	} else if (attribute == PrefabPlant::z_pos)
 	{
-		colider_str.offset.z = ValueToUINT(value);
+		Collider_str.offset.z = ValueToUINT(value);
 	} else if (attribute == PrefabPlant::closeNode)
 	{
 		return;
 	}	else
 	{
-		wstring tmp(L"PrefabWithColider_Plant _setColiderOffset: Missing attribute type: ");
+		wstring tmp(L"PrefabWithCollider_Plant _setColliderOffset: Missing attribute type: ");
 		tmp += attribute; 
 		throw My_Exception(tmp);
 	}
 }
 
-void PrefabWithColider_Plant::_setColiderRadius( const wstring & attribute, const wstring & value )
+void PrefabWithCollider_Plant::_setColliderRadius( const wstring & attribute, const wstring & value )
 {
 	if (attribute == PrefabPlant::value)
 	{
-		colider_str.radius = ValueToUINT(value);
+		Collider_str.radius = ValueToUINT(value);
 
 	} else if (attribute == PrefabPlant::closeNode)
 	{
 		return;
 	} else
 	{
-		wstring tmp(L"EnemyPrefabPlant _setColiderRadius: Missing attribute type: ");
+		wstring tmp(L"EnemyPrefabPlant _setColliderRadius: Missing attribute type: ");
 		tmp += attribute; 
 		throw My_Exception(tmp);
 	}
 }
 
-void PrefabWithColider_Plant::clearColider()
+void PrefabWithCollider_Plant::clearCollider()
 {
-	colider_str.offset.x = colider_str.offset.y = colider_str.offset.z = 0;
-	colider_str.radius = 0;
+	Collider_str.offset.x = Collider_str.offset.y = Collider_str.offset.z = 0;
+	Collider_str.radius = 0;
 }
 
 
-PrefabWithColider_Plant::PrefabWithColider_Plant()
-	:prefabWithColider(NULL)
+PrefabWithCollider_Plant::PrefabWithCollider_Plant()
+	:prefabWithCollider(NULL)
 {
-	methodToFillColiderProperty = &PrefabWithColider_Plant::_doNothing;
+	methodToFillColliderProperty = &PrefabWithCollider_Plant::_doNothing;
 }
 
-bool PrefabWithColider_Plant::SetMethodToFillColiderProperty( const wstring & name )
+bool PrefabWithCollider_Plant::SetMethodToFillColliderProperty( const wstring & name )
 {
 
-	if (name == PrefabWithColider_Plant::health)
+	if (name == PrefabWithCollider_Plant::health)
 	{
-		methodToFillColiderProperty = &PrefabWithColider_Plant::_setMaxHealth;
-	} else if (name == PrefabWithColider_Plant::coliders)
+		methodToFillColliderProperty = &PrefabWithCollider_Plant::_setMaxHealth;
+	} else if (name == PrefabWithCollider_Plant::Colliders)
 	{
-		methodToFillColiderProperty = &PrefabWithColider_Plant::_doNothing;
+		methodToFillColliderProperty = &PrefabWithCollider_Plant::_doNothing;
 	}
-	else if (name == PrefabWithColider_Plant::colider)
+	else if (name == PrefabWithCollider_Plant::Collider)
 	{
-		methodToFillColiderProperty = &PrefabWithColider_Plant::_setColider;
+		methodToFillColliderProperty = &PrefabWithCollider_Plant::_setCollider;
 	}
-	else if (name == PrefabWithColider_Plant::inaccurate_colider)
+	else if (name == PrefabWithCollider_Plant::inaccurate_Collider)
 	{
-		methodToFillColiderProperty = &PrefabWithColider_Plant::_setInaccurateColider;
+		methodToFillColliderProperty = &PrefabWithCollider_Plant::_setInaccurateCollider;
 	}
-	else if (name == PrefabWithColider_Plant::offset)
+	else if (name == PrefabWithCollider_Plant::offset)
 	{
-		if (methodToFillColiderProperty == &PrefabWithColider_Plant::_setColider || methodToFillColiderProperty == &PrefabWithColider_Plant::_setInaccurateColider)
+		if (methodToFillColliderProperty == &PrefabWithCollider_Plant::_setCollider || methodToFillColliderProperty == &PrefabWithCollider_Plant::_setInaccurateCollider)
 		{
-			methodToFillColiderProperty = &PrefabWithColider_Plant::_setColiderOffset;
+			methodToFillColliderProperty = &PrefabWithCollider_Plant::_setColliderOffset;
 		} else
 		{
-			throw My_Exception("PrefabWithColider_Plant nextElement: incorrect Prefab format - offset is not inside colider node");
+			throw My_Exception("PrefabWithCollider_Plant nextElement: incorrect Prefab format - offset is not inside Collider node");
 		}
 	}
-	else if (name == PrefabWithColider_Plant::radius)
+	else if (name == PrefabWithCollider_Plant::radius)
 	{
-		if (methodToFillColiderProperty == &PrefabWithColider_Plant::_setColider || methodToFillColiderProperty == &PrefabWithColider_Plant::_setInaccurateColider)
+		if (methodToFillColliderProperty == &PrefabWithCollider_Plant::_setCollider || methodToFillColliderProperty == &PrefabWithCollider_Plant::_setInaccurateCollider)
 		{
-			methodToFillColiderProperty = &PrefabWithColider_Plant::_setColiderRadius;
+			methodToFillColliderProperty = &PrefabWithCollider_Plant::_setColliderRadius;
 		} else
 		{
-			throw My_Exception("PrefabWithColider_Plant nextElement: incorrect Prefab format - radius is not inside colider node");
+			throw My_Exception("PrefabWithCollider_Plant nextElement: incorrect Prefab format - radius is not inside Collider node");
 		}
 	} else
 	{
@@ -226,18 +226,18 @@ bool PrefabWithColider_Plant::SetMethodToFillColiderProperty( const wstring & na
 	return true;
 }
 
-PrefabWithColider_Plant::~PrefabWithColider_Plant()
+PrefabWithCollider_Plant::~PrefabWithCollider_Plant()
 {
 
 }
 
-void PrefabWithColider_Plant::_setMaxHealth( const wstring & attribute, const wstring & value )
+void PrefabWithCollider_Plant::_setMaxHealth( const wstring & attribute, const wstring & value )
 {
 	if (attribute == PrefabPlant::value)
 	{
 		unsigned int val;
 		val = ValueToUINT(value);
-		prefabWithColider->setMaxHealth(val);
+		prefabWithCollider->setMaxHealth(val);
 	};
 }
 
@@ -413,9 +413,9 @@ const wchar_t * PrefabWithMesh_Plant::y_rot	  = L"y_rot";
 const wchar_t * PrefabWithMesh_Plant::z_rot	  = L"z_rot";
 const wchar_t * PrefabWithMesh_Plant::mesh	  = L"mesh";
 
-const wchar_t * PrefabWithColider_Plant::health		= L"health";
-const wchar_t * PrefabWithColider_Plant::coliders	= L"coliders";
-const wchar_t * PrefabWithColider_Plant::colider    = L"colider";
-const wchar_t * PrefabWithColider_Plant::offset     = L"offset";
-const wchar_t * PrefabWithColider_Plant::radius     = L"radius";
-const wchar_t * PrefabWithColider_Plant::inaccurate_colider = L"inaccurate_colider";
+const wchar_t * PrefabWithCollider_Plant::health		= L"health";
+const wchar_t * PrefabWithCollider_Plant::Colliders	= L"Colliders";
+const wchar_t * PrefabWithCollider_Plant::Collider    = L"Collider";
+const wchar_t * PrefabWithCollider_Plant::offset     = L"offset";
+const wchar_t * PrefabWithCollider_Plant::radius     = L"radius";
+const wchar_t * PrefabWithCollider_Plant::inaccurate_Collider = L"inaccurate_Collider";

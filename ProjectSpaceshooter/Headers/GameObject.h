@@ -64,6 +64,8 @@ public:
 		return tmp;
 	}
 
+	void setMesh(const PrefabWithMesh * prefab,  Ogre::SceneManager* sceneMgr);
+	virtual bool isDead() = 0;
 
 	void move(Ogre::Vector3 nPos) {		mNode->translate( nPos );	}
 	void rotate(float rotVelocity)	{	mNode->yaw( Ogre::Radian(rotVelocity) ); }
@@ -75,23 +77,23 @@ protected:
 };
 
 
-class GameObject_WithColider : virtual public GameObject
+class GameObject_WithCollider : virtual public GameObject
 {
 public:
-	GameObject_WithColider() : mDeadFlag(false), mColider()
+	GameObject_WithCollider() : mDeadFlag(false), mCollider()
 	{
-		colider_struct tmp;
+		Collider_struct tmp;
 		tmp.offset = Vector3(0,0,0);
 		tmp.radius = 20;
-		mColider.addColider(tmp);
+		mCollider.addCollider(tmp);
 	}
-	GameObject_WithColider(const PrefabWithColider * prefab, Ogre::SceneManager* sceneMgr);
-	virtual ~GameObject_WithColider(){;}
+	GameObject_WithCollider(const PrefabWithCollider * prefab, Ogre::SceneManager* sceneMgr);
+	virtual ~GameObject_WithCollider(){;}
 
-	void setColiderFromPrefab(const PrefabWithColider * prefab)
+	void setColliderFromPrefab(const PrefabWithCollider * prefab)
 	{
-		mColider.reset();
-		mColider = prefab->getColider();
+		mCollider.reset();
+		mCollider = prefab->getCollider();
 	}
 
 	virtual GameObjectType getType() = 0;
@@ -102,7 +104,7 @@ public:
 	* @param GameObject * tmp - object to hit
 	* @author Zyga
 	*/
-	virtual void hit( GameObject_WithColider * tmp ) {tmp->kill();}
+	virtual void hit( GameObject_WithCollider * tmp ) {tmp->kill();}
 
 	/**
 	* Method take value of damages which should subtract from health
@@ -111,22 +113,23 @@ public:
 	* @param unsigned int damages - value of damages
 	* @author Zyga
 	*/
+
 	virtual bool receiveDamage(unsigned int damages, Vector3 fromDirection){return mDeadFlag = true;}
 	bool isDead(){return mDeadFlag;}
 	virtual bool kill(){mDeadFlag = true; return mDeadFlag;}
-	bool isColidingWith( GameObject_WithColider * _object );
-	const Collider & getColider() const {return mColider;}
+	bool isColidingWith( GameObject_WithCollider * _object );
+	const Collider & getCollider() const {return mCollider;}
 protected:
 	bool mDeadFlag;
 private:
-	Collider mColider;
+	Collider mCollider;
 };
 
-class GameObject_WithHealth : public GameObject_WithColider
+class GameObject_WithHealth : public GameObject_WithCollider
 {
 public:
 	GameObject_WithHealth() : mHealth() {;}
-	GameObject_WithHealth(const PrefabWithColider * prefab, Ogre::SceneManager* sceneMgr);
+	GameObject_WithHealth(const PrefabWithCollider * prefab, Ogre::SceneManager* sceneMgr);
 	virtual ~GameObject_WithHealth() {;}
 	
 	virtual bool receiveDamage( unsigned int damages, Vector3 fromDirection) 
@@ -143,9 +146,9 @@ public:
 		mDeadFlag = true;
 	}
 	
-	void setHealthAndColiderFromPrefab(const PrefabWithColider * prefab)
+	void setHealthAndColliderFromPrefab(const PrefabWithCollider * prefab)
 	{
-		setColiderFromPrefab(prefab);
+		setColliderFromPrefab(prefab);
 		mHealth.setHealthFromPrefab(prefab);
 	}
 
@@ -172,7 +175,12 @@ public:
 	PhysicsComponent& getPhysicsComponent()	{
 		return mPhysicsComponent;
 	}
-	void setMaxSpeed() { mPhysicsComponent.setMaxSpeed(); }
+	void setCurrentSpeedToMax() { mPhysicsComponent.setCurrentSpeedToMax(); }
+	void addVectorToCurrentVelocity(Vector3 recoil) 
+	{
+		throw std::exception("The method or operation is not implemented.");
+	}
+
 protected:
 	PhysicsComponent mPhysicsComponent;
 };

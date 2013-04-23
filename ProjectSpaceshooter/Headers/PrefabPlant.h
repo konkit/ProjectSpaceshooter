@@ -79,35 +79,35 @@ private:
  * 
  * @author Zyga
  */
-class PrefabWithColider_Plant : virtual public PrefabPlant
+class PrefabWithCollider_Plant : virtual public PrefabPlant
 {
 public:
-	PrefabWithColider_Plant();
-	virtual ~PrefabWithColider_Plant();
+	PrefabWithCollider_Plant();
+	virtual ~PrefabWithCollider_Plant();
 protected:
-	void setPrefab(PrefabWithColider * val) 
+	void setPrefab(PrefabWithCollider * val) 
 	{ 
-		prefabWithColider = val; 
+		prefabWithCollider = val; 
 		PrefabPlant::setPrefab(val);
 	}
-	void _setColider(const wstring & attribute, const wstring & value);
-	void _setInaccurateColider(const wstring & attribute, const wstring & value);
-	void _setColiderRadius(const wstring & attribute, const wstring & value);
-	void _setColiderOffset(const wstring & attribute, const wstring & value);
+	void _setCollider(const wstring & attribute, const wstring & value);
+	void _setInaccurateCollider(const wstring & attribute, const wstring & value);
+	void _setColliderRadius(const wstring & attribute, const wstring & value);
+	void _setColliderOffset(const wstring & attribute, const wstring & value);
 	void _setMaxHealth(const wstring & attribute, const wstring & value);
-	bool SetMethodToFillColiderProperty( const wstring & name );
-	void (PrefabWithColider_Plant:: *methodToFillColiderProperty)(const wstring & attribute, const wstring & value);
+	bool SetMethodToFillColliderProperty( const wstring & name );
+	void (PrefabWithCollider_Plant:: *methodToFillColliderProperty)(const wstring & attribute, const wstring & value);
 
 	static const wchar_t * health;
-	static const wchar_t * colider;
-	static const wchar_t * inaccurate_colider;
-	static const wchar_t * coliders;
+	static const wchar_t * Collider;
+	static const wchar_t * inaccurate_Collider;
+	static const wchar_t * Colliders;
 	static const wchar_t * offset;
 	static const wchar_t * radius;
 private:
-	PrefabWithColider * prefabWithColider;
-	void clearColider();
-	colider_struct colider_str;
+	PrefabWithCollider * prefabWithCollider;
+	void clearCollider();
+	Collider_struct Collider_str;
 };
 
 

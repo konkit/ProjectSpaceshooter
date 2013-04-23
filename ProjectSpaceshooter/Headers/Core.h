@@ -9,7 +9,7 @@ public:
 	{
 
 	}
-	Core(const PrefabWithColider * prefab, Ogre::SceneManager* sceneMgr)
+	Core(const PrefabWithCollider * prefab, Ogre::SceneManager* sceneMgr)
 		: StaticObject(prefab, sceneMgr)
 	{
 

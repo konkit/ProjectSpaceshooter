@@ -7,7 +7,7 @@ const wstring StaticPrefabPlant::rootStaticPrefabsNode = L"static_prefabs";
 StaticPrefabPlant::StaticPrefabPlant()
 {
 	PrefabPlant::setPrefab(static_cast<Prefab*>(&mStaticPrefab));
-	PrefabWithColider_Plant::setPrefab(static_cast<PrefabWithColider*>(&mStaticPrefab));
+	PrefabWithCollider_Plant::setPrefab(static_cast<PrefabWithCollider*>(&mStaticPrefab));
 	PrefabWithMesh_Plant::setPrefab(static_cast<PrefabWithMesh*>(&mStaticPrefab)); 
 }
 
@@ -47,9 +47,9 @@ void StaticPrefabPlant::setMethodToFillProperty( const wstring & name )
 	if (SetMethodToFillBasicProperty(name))
 	{
 		methodToFillStaticProperty = methodToFillBasicProperty;
-	} else if(SetMethodToFillColiderProperty(name))
+	} else if(SetMethodToFillColliderProperty(name))
 	{
-		methodToFillStaticProperty = methodToFillColiderProperty;
+		methodToFillStaticProperty = methodToFillColliderProperty;
 	} else if(SetMethodToFillMeshProperty(name))
 	{
 		methodToFillStaticProperty = methodToFillMeshProperty;

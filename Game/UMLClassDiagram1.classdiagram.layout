@@ -62,7 +62,7 @@
       </nodes>
     </associationConnector>
     <classShape Id="9cf9b8ce-0cc0-4daa-afca-3c1dc267e4ef" absoluteBounds="3.625, 4, 2.125, 0.90234373509883881" hideQualifiedName="false" increaseHeight="0" customColor="181, 193, 223">
-      <classMoniker Id="1359f7b6-8169-4f06-bd24-568c8724810e" LastKnownName="GameObject_WithColider1" />
+      <classMoniker Id="1359f7b6-8169-4f06-bd24-568c8724810e" LastKnownName="GameObject_WithCollider1" />
       <nestedChildShapes>
         <AttributeElementListCompartment Id="55b11b8a-18f3-422f-ac48-43ae6cd41b84" absoluteBounds="3.6400000000000006, 4.39, 2.0949999999999998, 0.2011718675494194" name="AttributesCompartment" titleTextColor="Black" itemTextColor="Black" />
         <OperationElementListCompartment Id="f284ff02-bf69-419c-8877-0faa22de1d3e" absoluteBounds="3.6400000000000006, 4.60117186754942, 2.0949999999999998, 0.2011718675494194" name="OperationsCompartment" titleTextColor="Black" itemTextColor="Black" />

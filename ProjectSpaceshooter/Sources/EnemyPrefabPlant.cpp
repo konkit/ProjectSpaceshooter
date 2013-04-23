@@ -10,7 +10,7 @@ const wchar_t * EnemyPrefabPlant::ship_name = L"ship_name";
 EnemyPrefabPlant::EnemyPrefabPlant()
 {
 	PrefabPlant::setPrefab(static_cast<Prefab*>(&_enemyPrefab));
-	PrefabWithColider_Plant::setPrefab(static_cast<PrefabWithColider*>(&_enemyPrefab));
+	PrefabWithCollider_Plant::setPrefab(static_cast<PrefabWithCollider*>(&_enemyPrefab));
 	PrefabWithMesh_Plant::setPrefab(static_cast<PrefabWithMesh*>(&_enemyPrefab)); 
 }
 
@@ -59,9 +59,9 @@ void EnemyPrefabPlant::setMethodToFillProperty( const wstring & name )
 	} else if (SetMethodToFillMeshProperty(name))
 	{
 		methodToFillEnemyProperty = methodToFillMeshProperty;
-	} else if (SetMethodToFillColiderProperty(name))
+	} else if (SetMethodToFillColliderProperty(name))
 	{
-		methodToFillEnemyProperty = methodToFillColiderProperty;
+		methodToFillEnemyProperty = methodToFillColliderProperty;
 	}
 	else if (name == PrefabPlant::standard_waepon)
 	{

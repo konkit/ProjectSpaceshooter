@@ -1,7 +1,7 @@
 #pragma once
 #include "PrefabPlant.h"
 
-class EffectPrefabPlant : public PrefabWithColider_Plant
+class EffectPrefabPlant : public PrefabWithCollider_Plant
 {
 public:
 	EffectPrefabPlant();

@@ -14,6 +14,7 @@ template<class TPrefab, class TObject>
 class BaseCollection
 {
 public:
+	BaseCollection(std::string name) : collName(name) {}
 	TObject* instantiate(int ID, Ogre::SceneManager* sceneMgr)	{
 
 		//create new object from prefab
@@ -58,7 +59,7 @@ public:
 
 		using std::string;
 		std::stringstream exceptionString;
-		exceptionString << "There are no prefab with id =" << prefabID << " in prefab collection ";
+		exceptionString << "There are no prefab with id =" << prefabID << " in prefab collection " << collName;
 		throw exception(exceptionString.str().c_str());
 	}
 
@@ -66,13 +67,13 @@ protected:
 
 	GameCollection<TObject> mCollection;
 	vector<TPrefab> mPrefabs;
-
+	std::string collName;
 };
 
 class EnemyAndShipPrefabsCollections : public BaseCollection<ShipPrefab, EnemyObject>
 {
 public: 
-	EnemyAndShipPrefabsCollections() : mWeaponCollection(20) {}
+	EnemyAndShipPrefabsCollections() : BaseCollection("Enemy And ShipPrefabs Collections"), mWeaponCollection(20) {}
  	EnemyObject * instantiateEnemy(int ID, AI_TYPE myAi, Ogre::SceneManager* sceneMgr)
 	{
 			//get prefab with id given

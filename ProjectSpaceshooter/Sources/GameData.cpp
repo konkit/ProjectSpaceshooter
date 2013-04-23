@@ -3,8 +3,9 @@
 
 #include "GameData.h"
 #include "GameObject.h"
-
+using std::string;
 GameData::GameData(void)
+	:mEffectsCollection("Effect Collection"), mBulletCollection("Bullet Collection"), mStaticCollection("Static Collection")
 {
 	changeFlags.changeToHangar = false;
 	changeFlags.changeToMenu = false;
@@ -227,7 +228,7 @@ bool GameData::ColidingObjectsIterator::hasNext()
 	}
 }
 
-GameObject_WithColider * GameData::ColidingObjectsIterator::getNext()
+GameObject_WithCollider * GameData::ColidingObjectsIterator::getNext()
 {
 	
 	switch (activeIterator)

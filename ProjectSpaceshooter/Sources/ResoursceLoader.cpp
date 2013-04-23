@@ -21,8 +21,8 @@ void ResoursceLoader::loadAllPrefabs( GameData & _gameData )
 
 void ResoursceLoader::loadPrefabs(PREFAB_TYPE prefabType, const char * prefabsFile, GameData & _gameData )
 {
-	PredabReader_XML prefabReader(prefabsFile, prefabType);
 	try{
+	PredabReader_XML prefabReader(prefabsFile, prefabType);
 	while(prefabReader.hasNext())
 	{
 		_gameData.addPrefab(prefabType, prefabReader.getNext());

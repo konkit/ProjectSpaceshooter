@@ -11,13 +11,12 @@ using namespace std;
   * @author konkit
   */
 
-class Collider	{
 
-struct colider_struct
+struct Collider_struct
 {
 	Vector3			offset;
 	unsigned		radius;
-	colider_struct()
+	Collider_struct()
 		: radius(0), offset(0.0, 0.0, 0.0) {}
 };
 
@@ -33,29 +32,29 @@ class Collider
 
 public:
 
-//colider 
+//Collider 
 	Collider();
-	static bool isCollisionOccuring(const colider_struct& coll1, const position_struct pos1, const colider_struct& coll2, const position_struct& pos2 );
-	void addColider(colider_struct & _colider ) {mColiders.push_back(_colider);} 
-	void setInaccurateColider(colider_struct & _colider) {inaccurateColider = _colider;}
-	const colider_struct & getInaccurateColider() const {return inaccurateColider;}
+	static bool isCollisionOccuring(const Collider_struct& coll1, const position_struct pos1, const Collider_struct& coll2, const position_struct& pos2 );
+	void addCollider(Collider_struct & _Collider ) {mColliders.push_back(_Collider);} 
+	void setInaccurateCollider(Collider_struct & _Collider) {inaccurateCollider = _Collider;}
+	const Collider_struct & getInaccurateCollider() const {return inaccurateCollider;}
 
-	list<colider_struct>::const_iterator inline getColidersBegin() const {return mColiders.begin();}
-	list<colider_struct>::const_iterator inline getColidersEnd() const {return mColiders.end();}
-	bool isCollidingWith(const position_struct& currentPos, const Collider& otherColider,const position_struct & otherPos);
+	list<Collider_struct>::const_iterator inline getCollidersBegin() const {return mColliders.begin();}
+	list<Collider_struct>::const_iterator inline getCollidersEnd() const {return mColliders.end();}
+	bool isCollidingWith(const position_struct& currentPos, const Collider& otherCollider,const position_struct & otherPos);
 
 	void reset() 
 	{
-		inaccurateColider.offset = Vector3(0,0,0);
-		inaccurateColider.radius = 0;
-		mColiders.clear();
+		inaccurateCollider.offset = Vector3(0,0,0);
+		inaccurateCollider.radius = 0;
+		mColliders.clear();
 	};
 private:
-	bool inline checkInaccurateColiders( const position_struct& currentPos,const Collider& otherColider, const position_struct& otherPos );
-	bool inline checkColisionOnColiderList( const position_struct& currentPos,const Collider& otherColider, const position_struct& otherPos );
-	list<colider_struct> mColiders;
+	bool inline checkInaccurateColliders( const position_struct& currentPos,const Collider& otherCollider, const position_struct& otherPos );
+	bool inline checkColisionOnColliderList( const position_struct& currentPos,const Collider& otherCollider, const position_struct& otherPos );
+	list<Collider_struct> mColliders;
 	
-	// Here will be big colider sphere, which is enough big to cover all colider
+	// Here will be big Collider sphere, which is enough big to cover all Collider
 	// It's to improve efficient 
-	colider_struct inaccurateColider;
+	Collider_struct inaccurateCollider;
 };

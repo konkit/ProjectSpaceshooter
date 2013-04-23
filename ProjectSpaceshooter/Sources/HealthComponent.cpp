@@ -24,13 +24,13 @@ HealthComponent::HealthComponent() : health(100), maxHealth(100)
 
 }
 
-HealthComponent::HealthComponent( PrefabWithColider * prefab )
+HealthComponent::HealthComponent( PrefabWithCollider * prefab )
 {
 	maxHealth = health = prefab->getMaxHealth();
 	resistance = prefab->getResistance();
 }
 
-void HealthComponent::setHealthFromPrefab(const PrefabWithColider * prefab )
+void HealthComponent::setHealthFromPrefab(const PrefabWithCollider * prefab )
 {
 	maxHealth = health = prefab->getMaxHealth();
 	resistance = prefab->getResistance();

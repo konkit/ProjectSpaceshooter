@@ -30,7 +30,7 @@ public:
 	void setShip(const ShipPrefab * objectTemplate, const WeaponPrefab * weaponPrefab, Ogre::SceneManager * _sceneMenager ) 
 	{
 		setMesh(objectTemplate, _sceneMenager);
-		setHealthAndColiderFromPrefab(objectTemplate);
+		setHealthAndColliderFromPrefab(objectTemplate);
 		setPhysicsFromPrefab(objectTemplate);
 		mWeapon.setWeapon(weaponPrefab);
 	}

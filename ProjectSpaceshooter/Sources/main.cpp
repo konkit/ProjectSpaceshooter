@@ -7,7 +7,7 @@
 #include <string>
 
 #ifdef _DEBUG
-	#include <vld.h>
+	#include "vld.h"
 #endif
 
 void showWin32Console()
@@ -63,11 +63,11 @@ extern "C" {
     int main(int argc, char *argv[])
 #endif
     {
+		showWin32Console();
         // Create application object
         //Application app;
 		Game app;
 
-		showWin32Console();
         try {
             app.run();
         } catch( Ogre::Exception& e ) {

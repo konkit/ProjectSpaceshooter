@@ -13,7 +13,7 @@ Bullet::Bullet( std::string meshName, Ogre::SceneManager* sceneMgr ) : GameObjec
 }
 
 Bullet::Bullet(const BulletPrefab * objectTemplate, Ogre::SceneManager * _sceneMenager )
-	: GameObject(objectTemplate, _sceneMenager), GameObject_WithColider(objectTemplate, _sceneMenager), GameObject_Movable(objectTemplate, _sceneMenager),
+	: GameObject(objectTemplate, _sceneMenager), GameObject_WithCollider(objectTemplate, _sceneMenager), GameObject_Movable(objectTemplate, _sceneMenager),
 		mPower(objectTemplate->getBulletPower())
 {
 	mPhysicsComponent.setMaxVelocityValue( objectTemplate->getMaxVelocity() );
