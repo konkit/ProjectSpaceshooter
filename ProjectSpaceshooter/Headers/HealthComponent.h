@@ -1,6 +1,11 @@
 #pragma once
 #include "Prefabs.h"
 
+
+/** Health Component is responsible for storing data about
+  * health and changing it on demand.
+  *
+  */
 class HealthComponent {
 public:
 	HealthComponent();

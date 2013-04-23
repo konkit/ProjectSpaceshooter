@@ -3,15 +3,23 @@
 #include "ObjectStateUpdateSystem.h"
 #include "CollisionSystem.h"
 #include "AISystem.h"
+
+#include "DebugDrawer.h"
+
 class PlayState : public GameState
 {
 private:
 public:
 	PlayState(SystemsSet & _systems);
+	~PlayState()
+	{
+#ifdef _DEBUG
+	cntDebugDrawer->clear();
+	delete cntDebugDrawer;
+#endif
+	}
 
 	void setCamera( Player* player );
-
-	~PlayState(){};
 	virtual GAME_STATES update( SystemsSet & gameSystems, TimeData& time );
 	void loadLevelDescribe( SystemsSet & gameSystems );
 private:
@@ -21,4 +29,10 @@ private:
 	ObjectStateUpdateSystem mObjectStateSystem;
 	CollisionSystem			mCollisionSystem;
 	AISystem				mAISystem;
+
+
+	int numOfFPS, currentFPSValue;
+	float timeToOneSecond;
+
+	DebugDrawer* cntDebugDrawer;
 };

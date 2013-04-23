@@ -23,9 +23,15 @@ public:
 	void setPower(unsigned val) { mPower = val; }
 
 	void setOwner(GameObject* owner);
+	GameObject* getOwner();
 
 	TimeToLiveComponent& getTTLComponent();
 
+	void setCurrentSpeedToMax() { mPhysicsComponent.setCurrentSpeedToMax(); }
+
+	GameObjectType getType() {
+		return GameObjectType::bulletObject;
+	}
 
 	virtual bool receiveDamage( unsigned int damages ) {return mDeadFlag = true;};
 

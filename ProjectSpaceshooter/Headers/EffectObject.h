@@ -7,13 +7,13 @@ class EffectObject : public GameObject_WithColider
 public:
 	EffectObject() : GameObject()
 	{
-		mTTLComponent.setTimeToLive(300);
+		mTTLComponent.setTimeToLive(3.00);
 	}
 
 	EffectObject( EffectPrefab * objectTemplate, Ogre::SceneManager * _sceneMgr)
 		: GameObject(), GameObject_WithColider(objectTemplate, _sceneMgr)
 	{
-		mTTLComponent.setTimeToLive(50);
+		mTTLComponent.setTimeToLive(1.50);
 
 		static int uniqueID = 0;
 
@@ -45,6 +45,10 @@ public:
 			return true;
 
 		return false;
+	}
+
+	GameObjectType getType() {
+		return GameObjectType::effectObject;
 	}
 
 	virtual bool receiveDamage( unsigned int damages, Vector3 fromDirection ) 

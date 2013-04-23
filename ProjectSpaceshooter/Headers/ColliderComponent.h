@@ -6,6 +6,12 @@
 
 using Ogre::Vector3;
 using namespace std;
+/** Collider component stores data about collider which game object has
+  * 
+  * @author konkit
+  */
+
+class Collider	{
 
 struct colider_struct
 {

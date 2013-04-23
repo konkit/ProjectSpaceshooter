@@ -1,7 +1,6 @@
 #include "GameState.h"
 #include "PlayState.h"
 
-#include "DebugDrawer.h"
 
 
 
@@ -14,7 +13,7 @@ PlayState::PlayState(SystemsSet & gameSystems) :GameState()
 
 	//System which draws primitives for debuging purposes
 #ifdef _DEBUG
-	new DebugDrawer(mSceneMgr, 0.5f);
+	cntDebugDrawer = new DebugDrawer(mSceneMgr, 0.5f);
 #endif
 
 	//Temporary explosion
@@ -26,15 +25,30 @@ PlayState::PlayState(SystemsSet & gameSystems) :GameState()
 	//attach the particle system to a scene node
 	//Ogre::SceneNode *explosion = mSceneMgr->getRootSceneNode()->createChildSceneNode();
 	//explosion->attachObject(particleSystem);
+
+	numOfFPS = 0;
+	timeToOneSecond = 0.0;
+
 	
 }
 
 
 GAME_STATES PlayState::update( SystemsSet & gameSystems, TimeData& time )
 {
+	timeToOneSecond += time.deltaTime;
+	if( timeToOneSecond > 1.0 ) {
+		currentFPSValue = numOfFPS;
+		numOfFPS = 0;
+		timeToOneSecond = 0.0;
+
+		std::cout<<"FPS : "<<currentFPSValue<<"\n";
+	}
+
+	numOfFPS++;
+
 	//update input from player
 	gameSystems.inputManager.updateInputForGame(gameSystems.gameData, time.deltaTime, time.currentTime);
-	mAISystem.update(gameSystems.gameData, time.deltaTime);
+	mAISystem.update(gameSystems.gameData, time);
 	mPhysicsSystem.update( gameSystems.gameData, time.deltaTime );
 	mCollisionSystem.update( gameSystems.gameData);
 	mObjectStateSystem.update( gameSystems.gameData, time);

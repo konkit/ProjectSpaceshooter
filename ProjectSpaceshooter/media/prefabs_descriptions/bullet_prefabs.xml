@@ -2,12 +2,12 @@
 <bullet_prefabs>
   <bullet id='1'>
     <bullet_name name='rocket'  />
-    <mesh name='bullet2.mesh'/>
+    <mesh name='bullet3.mesh'/>
     <bullet_power value='5.0'/>
     <auto_aim value='yes'/>
     <scale x_scale='1' y_scale='1' z_scale='1' />
     <rotation x_rot='1' y_rot='1' z_rot='1' />
-    <max_velocity value='500' />
+    <max_velocity value='1000' />
     <coliders>
       <inaccurate_colider>
         <offset x_pos='0' y_pos='0' z_pos='0' />

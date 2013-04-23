@@ -14,6 +14,10 @@ public:
 	{
 
 	}
+	GameObjectType getType() {
+		return GameObjectType::core;
+	}
+
 private:
 
 

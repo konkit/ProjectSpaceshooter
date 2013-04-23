@@ -6,13 +6,16 @@
 #include "Prefabs.h"
 
 #include <string>
+
 enum  class GameObjectType 
 {
 	player,
+	core,
 	enemyObject,
 	bulletObject,
 	staticObject,
-	physicObject
+	physicObject,
+	effectObject
 };
 
 
@@ -21,6 +24,8 @@ enum  class GameObjectType
   * Game objects represents object in gameworld - enemies, bullets etc.
   * Those are composed from components (physics component, gamelogiccomponent, etc.)
   * This is abstract class - Bullet, Enemy and other classes inherit from this class
+  *
+  * 
   * 
   * @author 
   */
@@ -36,22 +41,18 @@ public:
 	void createSceneNode(std::string meshName, Ogre::SceneManager* sceneMgr);
 	Ogre::SceneNode* getSceneNode()	{	return mNode;	}
 
-	void setPosition(Ogre::Vector3 newPos)	
-	{	
+	void setPosition(Ogre::Vector3 newPos)	{	
 		mNode->setPosition(newPos); 
 	}
 
-	Ogre::Vector3 getPosition()	
-	{	
+	Ogre::Vector3 getPosition()	{	
 		return mNode->getPosition(); 
 	}
 
-	void setOrientation(Ogre::Quaternion newOrientation)	
-	{	
+	void setOrientation(Ogre::Quaternion newOrientation)	{	
 		mNode->setOrientation(newOrientation);	
 	}
-	Ogre::Quaternion getOrientation()	
-	{	
+	Ogre::Quaternion getOrientation()	{	
 		return mNode->getOrientation();	
 	}
 
@@ -63,9 +64,9 @@ public:
 		return tmp;
 	}
 
-	void setColider(PrefabWithColider * prefa);
-	void setMesh(const PrefabWithMesh * prefab,  Ogre::SceneManager* sceneMgr);
-	virtual bool isDead() = 0;
+
+	void move(Ogre::Vector3 nPos) {		mNode->translate( nPos );	}
+	void rotate(float rotVelocity)	{	mNode->yaw( Ogre::Radian(rotVelocity) ); }
 
 	position_struct getObjectPosition(); 
 protected:
@@ -92,6 +93,8 @@ public:
 		mColider.reset();
 		mColider = prefab->getColider();
 	}
+
+	virtual GameObjectType getType() = 0;
 
 	/**
 	* When object is hit by other object, object kill other object or takes him life if this is object is bullet

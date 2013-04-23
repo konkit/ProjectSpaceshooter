@@ -9,15 +9,16 @@ Bullet::Bullet() : GameObject()
 
 Bullet::Bullet( std::string meshName, Ogre::SceneManager* sceneMgr ) : GameObject(meshName, sceneMgr)
 {
-	mTTLComponent.setTimeToLive(300);
+	mTTLComponent.setTimeToLive(3.00);
 }
 
 Bullet::Bullet(const BulletPrefab * objectTemplate, Ogre::SceneManager * _sceneMenager )
 	: GameObject(objectTemplate, _sceneMenager), GameObject_WithColider(objectTemplate, _sceneMenager), GameObject_Movable(objectTemplate, _sceneMenager),
 		mPower(objectTemplate->getBulletPower())
 {
-	
-	mTTLComponent.setTimeToLive(300);
+	mPhysicsComponent.setMaxVelocityValue( objectTemplate->getMaxVelocity() );
+	mPhysicsComponent.setCurrentVelocity( Vector3(0.0f, 0.0f, 1.0f));
+	mTTLComponent.setTimeToLive(3.00);
 }
 
 TimeToLiveComponent& Bullet::getTTLComponent()
@@ -29,4 +30,9 @@ TimeToLiveComponent& Bullet::getTTLComponent()
 void Bullet::setOwner( GameObject* owner )
 {
 	mOwner = owner;
+}
+
+GameObject* Bullet::getOwner()
+{
+	return mOwner;
 }
