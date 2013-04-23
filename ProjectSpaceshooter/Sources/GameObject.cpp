@@ -82,3 +82,26 @@ GameObject_WithHealth::GameObject_WithHealth(const PrefabWithCollider * prefab, 
 
 }
 
+
+std::string ObjectTypeToString( GameObjectType type )
+{
+	switch (type)
+	{
+	case GameObjectType::player:
+		return string("Player");
+	case GameObjectType::core:
+		return string("Core");
+	case GameObjectType::enemyObject:
+		return string("Enemy");
+	case GameObjectType::bulletObject:
+		return string("Bullet");
+	case GameObjectType::staticObject:
+		return string("Static");
+	case GameObjectType::physicObject:
+		return string("Physic");
+	case GameObjectType::effectObject:
+		return string("Effect");
+	default:
+		return string("Unknown Object");
+	}
+}

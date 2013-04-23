@@ -46,17 +46,29 @@ public:
 
 	void CheckForCollisions( GameObject_WithCollider * currentObject, GameData::ColidingObjectsIterator it ,GameData& mGameData)	
 	{	
+		GameObjectType curr, oth;
 		GameObject_WithCollider * tmp;
 		while(it.hasNext())
 		{
 			tmp = it.getNext();
 			if (tmp != currentObject)
 			{
+				curr = currentObject->getType(); 
+				oth =  tmp->getType();
+//				if(curr != GameObjectType::effectObject || oth != GameObjectType::effectObject)
+
 				if (currentObject->isColidingWith(tmp))
 				{
-					currentObject->hit(tmp);
-					tmp->hit(currentObject);
-					std::cout << "Collision detected\n";
+			//		if (curr == GameObjectType::enemyObject && oth == GameObjectType::enemyObject)
+					if (true)
+					{
+						continue;
+					} else
+					{
+						currentObject->hit(tmp);
+						tmp->hit(currentObject);
+						std::cout << "Collision between " << ObjectTypeToString(curr) << " and " << ObjectTypeToString(oth) << endl;
+					}
 				}
 			}
 		}

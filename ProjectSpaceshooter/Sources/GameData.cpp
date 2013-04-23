@@ -101,8 +101,7 @@ void GameData::addEffectPrefab( const EffectPrefab & _effectPrefab )
 	{
 		throw My_Exception("addEffectPrefab: Can't add NULL Effect Prefab");
 	}
-	EffectPrefab * prefab = new EffectPrefab(_effectPrefab);
-	mEffectsCollection.addPrefab(prefab);
+	mEffectsCollection.addPrefab(&_effectPrefab);
 }
 
 void GameData::addStaticPrefab( const StaticPrefab & _staticPrefab )
@@ -111,8 +110,7 @@ void GameData::addStaticPrefab( const StaticPrefab & _staticPrefab )
 	{
 		throw My_Exception("addStaticPrefab: Can't add NULL Static Prefab");
 	}
-	StaticPrefab * prefab = new StaticPrefab(_staticPrefab);
-	mStaticCollection.addPrefab(prefab);
+	mStaticCollection.addPrefab(&_staticPrefab);
 }
 
 void GameData::addBulletPrefab( const BulletPrefab & _bulletPrefab )
@@ -121,8 +119,7 @@ void GameData::addBulletPrefab( const BulletPrefab & _bulletPrefab )
 	{
 		throw My_Exception("addBulletPrefab: Can't add NULL Bullet Prefab");
 	}
-	BulletPrefab * prefab = new BulletPrefab(_bulletPrefab);
-	mBulletCollection.addPrefab(prefab);
+	mBulletCollection.addPrefab(&_bulletPrefab);
 }
 
 void GameData::addShipPrefab( const ShipPrefab & _enemyPrefab )
@@ -131,8 +128,7 @@ void GameData::addShipPrefab( const ShipPrefab & _enemyPrefab )
 	{
 		throw My_Exception("addShipPrefab: Can't add NULL Ship Prefab");
 	}
-	ShipPrefab * prefab = new ShipPrefab(_enemyPrefab);
-	mEnemyCollection.addPrefab(prefab);
+	mEnemyCollection.addPrefab(&_enemyPrefab);
 }
 
 void GameData::addWeaponPrefab( const WeaponPrefab & _weaponPrefab )
@@ -222,6 +218,7 @@ bool GameData::ColidingObjectsIterator::hasNext()
 			return hasNext();
 		}
 	case GameData::ColidingObjectsIterator::iterator::EMPTY:
+			activeIterator = iterator::Player;
 			return false;
 	default:
 		return false;

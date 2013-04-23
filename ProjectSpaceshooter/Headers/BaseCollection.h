@@ -38,7 +38,7 @@ public:
 	{
 		return mCollection.getIterator();
 	}
-	void addPrefab(TPrefab* newPrefab) {
+	void addPrefab(const TPrefab* newPrefab) {
 		if (&newPrefab == NULL)
 		{
 			throw My_Exception("addPrefab: Can't add NULL Weapon Prefab");

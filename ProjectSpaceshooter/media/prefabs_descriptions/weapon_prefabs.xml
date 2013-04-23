@@ -4,6 +4,6 @@
   <weapon id='1'>
     <weapon_name name='Rocket Luncher'/>
     <bullet_prefab id='1'/>
-    <rateOfFire value='10'/>
+    <rateOfFire value='1'/>
   </weapon>
 </weapon_prefabs>

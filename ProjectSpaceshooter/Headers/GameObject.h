@@ -17,8 +17,8 @@ enum  class GameObjectType
 	physicObject,
 	effectObject
 };
-
-
+using std::string;
+string ObjectTypeToString(GameObjectType type);
 
 /** Game object class
   * Game objects represents object in gameworld - enemies, bullets etc.
@@ -104,7 +104,10 @@ public:
 	* @param GameObject * tmp - object to hit
 	* @author Zyga
 	*/
-	virtual void hit( GameObject_WithCollider * tmp ) {tmp->kill();}
+	virtual void hit( GameObject_WithCollider * tmp ) 
+	{
+		tmp->kill();
+	}
 
 	/**
 	* Method take value of damages which should subtract from health

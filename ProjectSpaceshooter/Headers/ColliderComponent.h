@@ -34,6 +34,7 @@ public:
 
 //Collider 
 	Collider();
+	~Collider() {mColliders.clear();}
 	static bool isCollisionOccuring(const Collider_struct& coll1, const position_struct pos1, const Collider_struct& coll2, const position_struct& pos2 );
 	void addCollider(Collider_struct & _Collider ) {mColliders.push_back(_Collider);} 
 	void setInaccurateCollider(Collider_struct & _Collider) {inaccurateCollider = _Collider;}
