@@ -54,6 +54,7 @@ public:
 		accelerationValue = newAccelerationValue;
 	}
 	void setFromPrefab( const MovablePrefab * prefab );
+	unsigned getCurrentVelocityValue();
 private:
 	Ogre::Vector3 currentVelocity;
 	float rotVelocity;

@@ -17,6 +17,13 @@ public:
 	void decreaseTimeToLive(float deltaTime);
 
 	bool isTimeIsUp();
+
+	/** Percent of life time which left to die. Result as 0.## 
+	* @return double
+	* @author Zyga
+	*/
+	double percentOfLeftTime();
 private:
 	float timeToLive;
+	float startTime;
 };

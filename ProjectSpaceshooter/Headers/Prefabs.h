@@ -83,7 +83,7 @@ protected:
 class PrefabWithCollider : virtual public PrefabWithMesh
 {
 public:
-	PrefabWithCollider() : PrefabWithMesh(), mColliders() {;}
+	PrefabWithCollider() : PrefabWithMesh(), mColliders(), mExplosionEffectID(1) {;}
 	void setMaxHealth(unsigned val) { mMaxHealth = val; }
 	void setResistance(unsigned val) { mResistance = val; }
 
@@ -102,12 +102,15 @@ public:
 	
 	void clearColliders() {mColliders.reset();}
 	virtual void resetPrefab();
+	unsigned getExplosionEffectID() const { return mExplosionEffectID; }
+	void setExplosionEffectID(unsigned val) { mExplosionEffectID = val; }
 
 protected:
 
 	unsigned mResistance;
 	unsigned mMaxHealth;
 	Collider mColliders;
+	unsigned mExplosionEffectID;
 };
 
 

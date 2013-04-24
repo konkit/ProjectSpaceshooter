@@ -220,6 +220,7 @@
     <ClInclude Include="Headers\PredabReader_XML.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CollisionSystem.cpp" />
     <ClCompile Include="Sources\AIComponent.cpp" />
     <ClCompile Include="Sources\AISystem.cpp" />
     <ClCompile Include="Sources\Bullet.cpp" />

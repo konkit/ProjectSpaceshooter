@@ -1,9 +1,9 @@
 #include "Ship.h"
 
+using namespace std;
 Ship::Ship()
 	: GameObject(), GameObject_Movable(), GameObject_WithHealth()
 {
-
 }
 
 Ship::Ship(const ShipPrefab * objectTemplate, const WeaponPrefab * weaponPrefab, Ogre::SceneManager * _sceneMenager )
@@ -13,5 +13,4 @@ Ship::Ship(const ShipPrefab * objectTemplate, const WeaponPrefab * weaponPrefab,
 
 Ship::~Ship()
 {
-	;
 }

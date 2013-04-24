@@ -70,10 +70,12 @@ public:
 	void move(Ogre::Vector3 nPos) {		mNode->translate( nPos );	}
 	void rotate(float rotVelocity)	{	mNode->yaw( Ogre::Radian(rotVelocity) ); }
 
-	position_struct getObjectPosition(); 
+	virtual GameObjectType getType() = 0;
+
 protected:
 	GameObjectType mObjectType;
 	Ogre::SceneNode* mNode;
+	static unsigned uniqueID;
 };
 
 
@@ -86,28 +88,19 @@ public:
 		tmp.offset = Vector3(0,0,0);
 		tmp.radius = 20;
 		mCollider.addCollider(tmp);
+		mExpolsionEffectID = 1;
 	}
 	GameObject_WithCollider(const PrefabWithCollider * prefab, Ogre::SceneManager* sceneMgr);
-	virtual ~GameObject_WithCollider(){;}
+	virtual ~GameObject_WithCollider(){}
 
 	void setColliderFromPrefab(const PrefabWithCollider * prefab)
 	{
 		mCollider.reset();
 		mCollider = prefab->getCollider();
+		mExpolsionEffectID = prefab->getExplosionEffectID();
 	}
 
 	virtual GameObjectType getType() = 0;
-
-	/**
-	* When object is hit by other object, object kill other object or takes him life if this is object is bullet
-	* @return void
-	* @param GameObject * tmp - object to hit
-	* @author Zyga
-	*/
-	virtual void hit( GameObject_WithCollider * tmp ) 
-	{
-		tmp->kill();
-	}
 
 	/**
 	* Method take value of damages which should subtract from health
@@ -117,15 +110,20 @@ public:
 	* @author Zyga
 	*/
 
-	virtual bool receiveDamage(unsigned int damages, Vector3 fromDirection){return mDeadFlag = true;}
+	virtual bool receiveDamage(unsigned int damages, Vector3 fromDirection = Vector3(0,0,0)){return mDeadFlag = true;}
 	bool isDead(){return mDeadFlag;}
-	virtual bool kill(){mDeadFlag = true; return mDeadFlag;}
+	bool kill() {return mDeadFlag = true;}
+
 	bool isColidingWith( GameObject_WithCollider * _object );
 	const Collider & getCollider() const {return mCollider;}
+	unsigned getExpolsionEffectID() const { return mExpolsionEffectID; }
+	void setExpolsionEffectID(unsigned val) { mExpolsionEffectID = val; }
+	
 protected:
 	bool mDeadFlag;
 private:
 	Collider mCollider;
+	unsigned mExpolsionEffectID;
 };
 
 class GameObject_WithHealth : public GameObject_WithCollider
@@ -138,6 +136,7 @@ public:
 	virtual bool receiveDamage( unsigned int damages, Vector3 fromDirection) 
 	{
 		mHealth.decreaseHealth(damages);
+		std::cout << ObjectTypeToString(getType()) << ": remained health = " << mHealth.getHealth() << endl;
 		return mDeadFlag = mHealth.isDead();
 	}
 

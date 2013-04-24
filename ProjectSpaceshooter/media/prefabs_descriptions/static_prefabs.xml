@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <static_prefabs>
-  <max_id id='1' />
+  <max_id id='2' />
   
   <static id='1'>
     <static_name name='sun'/>
@@ -16,6 +16,24 @@
       <Collider>
         <offset x_pos='0' y_pos='0' z_pos='0' />
         <radius value='25' />
+      </Collider>
+    </Colliders>
+  </static>
+
+  <static id='2'>
+    <static_name name='TheCore'/>
+    <mesh name='core2.MESH'/>
+    <health value='100'/>
+    <scale x_scale='35' y_scale='35' z_scale='35' />
+    <rotation x_rot='1' y_rot='0' z_rot='90' />
+    <Colliders>
+      <inaccurate_Collider>
+        <offset x_pos='0' y_pos='0' z_pos='0' />
+        <radius value='40' />
+      </inaccurate_Collider>
+      <Collider>
+        <offset x_pos='0' y_pos='0' z_pos='0' />
+        <radius value='40' />
       </Collider>
     </Colliders>
   </static>

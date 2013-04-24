@@ -67,7 +67,7 @@ void LevelBuilder::buildPlayScene( SystemsSet & gameSystems, TimeData& time )
 
 	//Init player's sceneNode
 	Player * player = gameSystems.gameData.createPlayerFromPrefab(1);	
-	setCameraForPlayer(gameSystems);
+	createCameraNodeForPlayer(gameSystems);
 
 
 	StaticObject *stat = mGameData->instantiateStatic(1);
@@ -89,14 +89,12 @@ void LevelBuilder::buildPlayScene( SystemsSet & gameSystems, TimeData& time )
 	//Ogre::Light* spotLight = mSceneMgr->createLight("AdditionalLight");
 	//spotLight->setPosition(50,50,-200);
 	//spotLight->setPowerScale(400.0);
-
+	
 	//Create tmp Core
-	gameSystems.gameData.theCore.createSceneNode("core2.MESH", _sceneManager);
-	gameSystems.gameData.theCore.getSceneNode()->scale(35.0, 35.0, 35.0);
-	gameSystems.gameData.theCore.setPosition(Ogre::Vector3(-500.0, 0.0, 0.0));
-	gameSystems.gameData.theCore.getSceneNode()->roll(Ogre::Degree(90)); // BARDZO DUZA PROWIZORKA
+	Core * core = mGameData->createCore(2);
+	core->setPosition(Vector3(-500,0,0));
 }
-void LevelBuilder::setCameraForPlayer(SystemsSet & gameSystems)
+void LevelBuilder::createCameraNodeForPlayer(SystemsSet & gameSystems)
 {
 	Ogre::Camera * _camera = gameSystems.gameData.getCameraFor(GAME_STATES::PLAY);
 	Player * player = gameSystems.gameData.getPlayer();

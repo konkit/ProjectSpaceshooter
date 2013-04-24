@@ -137,6 +137,30 @@ void GameData::addWeaponPrefab( const WeaponPrefab & _weaponPrefab )
 }
 
 
+void GameData::removeGameObject( GameObject_WithCollider * removedObject )
+{
+	GameObjectType objectType = removedObject->getType();
+	switch (objectType)
+	{
+	case GameObjectType::enemyObject:
+		mEnemyCollection.getCollection().deleteObject(dynamic_cast<EnemyObject *>(removedObject));
+		break;
+	case GameObjectType::bulletObject:
+		mBulletCollection.getCollection().deleteObject(dynamic_cast<Bullet *>(removedObject));
+		break;
+	case GameObjectType::core:
+		theCore = NULL; // There is no break; in ths place, because TheCore is a staticObject, and The Core is removed like static
+	case GameObjectType::staticObject:
+		mStaticCollection.getCollection().deleteObject(dynamic_cast<StaticObject*>(removedObject));
+		break;
+	case GameObjectType::effectObject:
+		mEffectsCollection.getCollection().deleteObject(dynamic_cast<EffectObject*>(removedObject));
+		break;
+	default:
+		break;
+	}
+}
+
 
 const WeaponPrefab * GameData::getWeaponPrefab( unsigned prefabId )
 {
@@ -177,72 +201,86 @@ void GameData::setCameraFor( GAME_STATES gameState, Ogre::Camera * camera )
 
 bool GameData::ColidingObjectsIterator::hasNext()
 {
-	switch (activeIterator)
+	if(activeIterator == iterator::Player && player == NULL)
+		moveToNextIterator();
+	if (activeIterator != iterator::EMPTY)
 	{
-	case GameData::ColidingObjectsIterator::iterator::Player:
 		return true;
-	case GameData::ColidingObjectsIterator::iterator::Enemy:
-		if (enemyIT.hasNext())
-		{
-			return true;
-		} else
-		{
-			activeIterator = iterator::Bullet;
-			return hasNext();
-		}
-	case GameData::ColidingObjectsIterator::iterator::Bullet:
-		if (bulletIT.hasNext())
-		{
-			return true;
-		} else
-		{
-			activeIterator = iterator::Static;
-			return hasNext();
-		}
-	case GameData::ColidingObjectsIterator::iterator::Static:
-		if (staticIT.hasNext())
-		{
-			return true;
-		} else
-		{
-			activeIterator = iterator::Effect;
-			return hasNext();
-		}
-	case GameData::ColidingObjectsIterator::iterator::Effect:
-		if (effectIT.hasNext())
-		{
-			return true;
-		} else
-		{
-			activeIterator = iterator::EMPTY;
-			return hasNext();
-		}
-	case GameData::ColidingObjectsIterator::iterator::EMPTY:
-			activeIterator = iterator::Player;
-			return false;
-	default:
+	} else
+	{
 		return false;
 	}
 }
 
 GameObject_WithCollider * GameData::ColidingObjectsIterator::getNext()
 {
-	
+	GameObject_WithCollider * tmp;
+
+	if(activeIterator == iterator::Player && player == NULL)
+		moveToNextIterator();
+
+	switch (activeIterator)
+	{
+	case GameData::ColidingObjectsIterator::iterator::Player:
+		tmp = player;
+		break;
+	case GameData::ColidingObjectsIterator::iterator::Enemy:
+		tmp = enemyIT.getNext();
+		break;
+	case GameData::ColidingObjectsIterator::iterator::Bullet:
+		tmp = bulletIT.getNext();
+		break;
+	case GameData::ColidingObjectsIterator::iterator::Static:
+		tmp = staticIT.getNext();
+		break;
+	case GameData::ColidingObjectsIterator::iterator::Effect:
+		tmp = effectIT.getNext();
+		break;
+	case GameData::ColidingObjectsIterator::iterator::EMPTY:
+	default:
+		return NULL;
+	}
+	moveToNextIterator();
+	return tmp;
+}
+
+void GameData::ColidingObjectsIterator::moveToNextIterator()
+{
 	switch (activeIterator)
 	{
 	case GameData::ColidingObjectsIterator::iterator::Player:
 		activeIterator = iterator::Enemy;
-		return player;
 	case GameData::ColidingObjectsIterator::iterator::Enemy:
-		return enemyIT.getNext();
+		if (!enemyIT.hasNext())
+		{
+			activeIterator = iterator::Bullet;
+			moveToNextIterator();
+		} 
+		return;
 	case GameData::ColidingObjectsIterator::iterator::Bullet:
-		return bulletIT.getNext();
+		if (!bulletIT.hasNext())
+		{
+			activeIterator = iterator::Static;
+			moveToNextIterator();
+		}
+		return;
 	case GameData::ColidingObjectsIterator::iterator::Static:
-		return staticIT.getNext();
+		if (!staticIT.hasNext())
+		{
+			activeIterator = iterator::Effect;
+			moveToNextIterator();
+		}
+		return;
 	case GameData::ColidingObjectsIterator::iterator::Effect:
-		return effectIT.getNext();
+		if (!effectIT.hasNext())
+		{
+			activeIterator = iterator::EMPTY;
+			moveToNextIterator();
+		}
+		return;
 	case GameData::ColidingObjectsIterator::iterator::EMPTY:
+		return;
 	default:
-		return NULL;
+		return;
 	}
 }

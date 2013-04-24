@@ -34,9 +34,9 @@ template <class gObject>
 class GameCollectionIterator
 {
 public:
-	GameCollectionIterator<gObject>() : pointerToActual(NULL), pointerToHead(NULL),  isFirstObject(true){}
+	GameCollectionIterator<gObject>() : pointerToActual(NULL), pointerToHead(NULL),  isFirstObject(true), pointerToNext(NULL){}
 	GameCollectionIterator<gObject>(ListElement<gObject> * head)
-		:	pointerToActual(head), pointerToHead(head),  isFirstObject(true)
+		:	pointerToActual(head), pointerToHead(head),  isFirstObject(true), pointerToNext(NULL)
 	{
 		if (pointerToActual != NULL)
 		{

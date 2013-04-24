@@ -10,14 +10,14 @@ public:
 
 	}
 	Core(const PrefabWithCollider * prefab, Ogre::SceneManager* sceneMgr)
-		: StaticObject(prefab, sceneMgr)
+		: GameObject(prefab, sceneMgr), StaticObject(prefab, sceneMgr)
 	{
 
 	}
 	GameObjectType getType() {
 		return GameObjectType::core;
 	}
-
+	virtual ~Core() {;}
 private:
 
 

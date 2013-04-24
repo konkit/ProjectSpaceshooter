@@ -18,7 +18,7 @@ void WeaponComponent::setShoot( unsigned long currentTime )
 	}
 }
 
-WeaponComponent::WeaponComponent() : shooting(false), rateOfFire(150), timeSinceLastShot(0)
+WeaponComponent::WeaponComponent() : shooting(false), rateOfFire(150), timeSinceLastShot(0), bulletPrefabID(1)
 {
 
 }

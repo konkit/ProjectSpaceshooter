@@ -1,6 +1,7 @@
 #pragma once
 #include "Prefabs.h"
 
+using namespace std;
 class StaticObject : public GameObject_WithHealth
 {
 public:

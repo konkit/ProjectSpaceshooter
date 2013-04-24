@@ -23,7 +23,11 @@ void AISystem::toCoreAI( EnemyObject* it, GameData& mGameData, TimeData time )
 	PhysicsComponent& currentPhysicsComponent = it->getPhysicsComponent();
 	Core& currentCore = mGameData.getCore();
 
-
+	if (&currentCore == NULL)
+	{
+		randomAI(it, mGameData);
+		return;
+	}
 
 	if( currentAIComponent.getState() == AI_STATE::GET_TO_CORE )
 	{
@@ -92,7 +96,7 @@ void AISystem::randomAI( EnemyObject* it, GameData& mGameData )
 	currentPhysicsComponent.setMaxVelocityValue(currentVelocity);
 	//set its vector
 	//currentPhysicsComponent.setVelocity(Ogre::Vector3(0.0, 0.0, 1.0));
-	it->setTargetVelocity( Ogre::Vector3(0.0, 0.0, 0.0) );
+	it->setTargetVelocity( Ogre::Vector3(0.0, 0.0, 0.5) );
 	//set it rotation speed
 	currentPhysicsComponent.setRotVelocity(currentRotVelocity);
 }

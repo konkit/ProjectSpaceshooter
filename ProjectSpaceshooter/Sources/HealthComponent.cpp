@@ -24,7 +24,7 @@ HealthComponent::HealthComponent() : health(100), maxHealth(100)
 
 }
 
-HealthComponent::HealthComponent( PrefabWithCollider * prefab )
+HealthComponent::HealthComponent(const PrefabWithCollider * prefab )
 {
 	maxHealth = health = prefab->getMaxHealth();
 	resistance = prefab->getResistance();

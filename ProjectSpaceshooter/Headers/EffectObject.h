@@ -2,23 +2,20 @@
 #include "Prefabs.h"
 #include "TimeToLiveComponent.h"
 
+using namespace std;;
 class EffectObject : public GameObject_WithCollider
 {
 public:
-	EffectObject() : GameObject()
+	EffectObject() : GameObject(), power(200)
 	{
 		mTTLComponent.setTimeToLive(3.00);
 	}
 
 	EffectObject( EffectPrefab * objectTemplate, Ogre::SceneManager * _sceneMgr)
-		: GameObject(), GameObject_WithCollider(objectTemplate, _sceneMgr)
+		: GameObject(), GameObject_WithCollider(objectTemplate, _sceneMgr), power(200)
 	{
 		mTTLComponent.setTimeToLive(1.50);
-
-		static int uniqueID = 0;
-
 		uniqueID++;
-
 		//Custom settings of SceneNode because of being a Particle System, not a Entity (mesh)
 
 		//Creation of particle system
@@ -31,8 +28,8 @@ public:
 		mNode->attachObject( particleSystem );
 	}
 
-	~EffectObject() {
-
+	~EffectObject()
+	{
 	}
 
 	TimeToLiveComponent& getTTLComponent() {
@@ -56,8 +53,12 @@ public:
 		return false;
 	}
 
-	virtual bool kill() {return false;}
-
+	unsigned getPower() 
+	{
+		return unsigned((double) power * mTTLComponent.percentOfLeftTime());
+	}
+	void setPower(unsigned val) { power = val; }
 private:
 	TimeToLiveComponent mTTLComponent;
+	unsigned power;
 };

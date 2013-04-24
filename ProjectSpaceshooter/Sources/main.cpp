@@ -67,7 +67,7 @@ extern "C" {
         // Create application object
         //Application app;
 		Game app;
-
+		
         try {
             app.run();
         } catch( Ogre::Exception& e ) {
@@ -91,7 +91,6 @@ extern "C" {
 		{
 			MessageBoxA( NULL, exc.what(), "An exception has occurred!", MB_OK | MB_ICONERROR | MB_TASKMODAL);
 		}
-
 		FreeConsole();
         return 0;
     }

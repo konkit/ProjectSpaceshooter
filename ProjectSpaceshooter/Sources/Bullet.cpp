@@ -5,11 +5,13 @@
 Bullet::Bullet() : GameObject()
 {
 	mTTLComponent.setTimeToLive(300);
+	cout << "Create bullet object\n";
 }
 
 Bullet::Bullet( std::string meshName, Ogre::SceneManager* sceneMgr ) : GameObject(meshName, sceneMgr)
 {
 	mTTLComponent.setTimeToLive(3.00);
+	cout << "Create bullet object\n";
 }
 
 Bullet::Bullet(const BulletPrefab * objectTemplate, Ogre::SceneManager * _sceneMenager )
@@ -27,12 +29,7 @@ TimeToLiveComponent& Bullet::getTTLComponent()
 }
 
 
-void Bullet::setOwner( GameObject* owner )
+Bullet::~Bullet()
 {
-	mOwner = owner;
-}
-
-GameObject* Bullet::getOwner()
-{
-	return mOwner;
+	cout << "Destroy bullet object\n";
 }

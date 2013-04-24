@@ -25,6 +25,10 @@ public:
 		return newObject;
 	}
 
+	void addObjectToCollection(TObject * object)
+	{
+		mCollection.addObject(object);
+	}
 	void operator-=(TObject * enemyToRemove)
 	{
 		mCollection -= enemyToRemove;
@@ -104,7 +108,6 @@ public:
 		{
 			throw My_Exception("addWeaponPrefab: Can't add NULL Weapon Prefab");
 		}
-		WeaponPrefab * prefab = new WeaponPrefab(_weaponPrefab);
 		unsigned prefabID = _weaponPrefab.getPrefabID(); 
 		if (prefabID >= mWeaponCollection.size())
 		{

@@ -312,13 +312,13 @@ void PrefabWithMesh_Plant::_setScale( const wstring & attribute, const wstring &
 	static Vector3 scale;
 	if (attribute == x_scale)
 	{
-		scale.x = ValueToUINT(value);
+		scale.x = ValueToDouble(value);
 	} else if (attribute == y_scale)
 	{
-		scale.y = ValueToUINT(value);
+		scale.y = ValueToDouble(value);
 	} else if (attribute == z_scale)
 	{
-		scale.z = ValueToUINT(value);
+		scale.z = ValueToDouble(value);
 	} else if (attribute == closeNode)
 	{
 		if (_prefabWithMesh == NULL)

@@ -25,5 +25,6 @@ public:
 	  * @param time - time data which is needed for example in shooting
 	  */
 	void update(GameData& mGameData, TimeData& time);
-
+	void removeDeadObjects( GameData& mGameData);
+	void createExplosionFor( GameObject_WithCollider * removedObject, GameData& mGameData );
 };

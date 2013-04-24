@@ -60,9 +60,6 @@ public:
 	Ogre::SceneNode* shipNode;
 	Ogre::Entity* bulletEntity;
 
-	//PROWIZORKA - to bêdzie chyba te¿ jakoœ wczytywane z pliku nie ?
-	Core theCore;
-		
 	GameData();
 	~GameData();
 
@@ -107,7 +104,7 @@ public:
 	EnemyAndShipPrefabsCollections& getEnemies() {return mEnemyCollection;}
 	BaseCollection<EffectPrefab, EffectObject>& getEffects() {return mEffectsCollection;}
 
-	Core& getCore() { return theCore; }
+	Core& getCore() { return *theCore; }
 
 	EnemyObject * instantiateEnemy(unsigned prefabID ,AI_TYPE myAi, GAME_STATES state = GAME_STATES::PLAY)
 	{
@@ -131,13 +128,18 @@ public:
 		ColidingObjectsIterator() : activeIterator(iterator::Player){;}
 		bool hasNext();
 		GameObject_WithCollider * getNext();
-	
+		
 		Player * getPlayer() const { return player; }
 		void setPlayer(Player * val) { player = val; }
-		void  setEnemyIterator(const GameCollectionIterator<EnemyObject> & val) { enemyIT = val; }
+		void setEnemyIterator(const GameCollectionIterator<EnemyObject> & val) { enemyIT = val; }
 		void setBulletIterator(const GameCollectionIterator<Bullet> & val) { bulletIT = val; }
 		void setEffectIterator(const GameCollectionIterator<EffectObject> & val) { effectIT = val; }
 		void setStaticIterator(const GameCollectionIterator<StaticObject> & val) { staticIT = val; }
+		void skipPlayer()
+		{
+			if (activeIterator == iterator::Player)
+				moveToNextIterator();
+		}
 	private:
 		enum class iterator
 		{
@@ -149,8 +151,10 @@ public:
 			EMPTY
 		} activeIterator;
 		
+		void moveToNextIterator();
+
 		Player * player;
-		
+
 		GameCollectionIterator<EnemyObject> enemyIT;
 		GameCollectionIterator<Bullet> bulletIT;
 		GameCollectionIterator<StaticObject> staticIT;
@@ -162,7 +166,17 @@ public:
 	{
 		return mStaticCollection.instantiate(prefabID, getSceneManagerFor(state));
 	}
-
+	EffectObject * instantiateEffect( int prefabID, GAME_STATES state = GAME_STATES::PLAY)
+	{
+		return mEffectsCollection.instantiate(prefabID, getSceneManagerFor(state));
+	}
+	Core * createCore(int staticPrefabID, GAME_STATES state = GAME_STATES::PLAY)
+	{
+		const StaticPrefab * staticPref = mStaticCollection.getPrefab(staticPrefabID);
+		theCore = new Core(staticPref, getSceneManagerFor(state));
+		mStaticCollection.addObjectToCollection(theCore);
+		return theCore;
+	}
 	Ogre::Camera * getCameraFor(GAME_STATES state)
 	{
 		switch (state)
@@ -182,7 +196,7 @@ public:
 	}
 
 	void setCameraFor(GAME_STATES gameState, Ogre::Camera * camera);
-
+	void removeGameObject( GameObject_WithCollider * removedObject );
 private:
 	struct changeFlagsStruct
 	{
@@ -200,6 +214,7 @@ private:
 	BaseCollection<StaticPrefab, StaticObject> mStaticCollection;
 
 	Player mPlayer;
+	Core * theCore;
 	GameObjectTemplates mPrefabCollections;
 	StateScenesManager_Struct mStateScenesManager;
 	CameraManager_Struct mCamerasManager;

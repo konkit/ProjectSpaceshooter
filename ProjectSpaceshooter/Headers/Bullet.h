@@ -19,11 +19,12 @@ public:
 
 	Bullet::Bullet(const BulletPrefab * objectTemplate, Ogre::SceneManager * _sceneMenager);
 
+	~Bullet();
 	unsigned getPower() const { return mPower; }
 	void setPower(unsigned val) { mPower = val; }
 
-	void setOwner(GameObject* owner);
-	GameObject* getOwner();
+	void setOwner(Ship* owner) {mOwner = owner;}
+	Ship* getOwner() {return mOwner;}
 
 	TimeToLiveComponent& getTTLComponent();
 
@@ -33,17 +34,18 @@ public:
 		return GameObjectType::bulletObject;
 	}
 
-	virtual bool receiveDamage( unsigned int damages ) {return mDeadFlag = true;};
 
-	virtual void hit( GameObject_WithCollider * tmp ){tmp->receiveDamage(mPower, getPosition());}
 	bool isDead() 
 	{
 		if( mTTLComponent.isTimeIsUp()==true )
 			return true;
 		return mDeadFlag;
 	}
+
+//	virtual bool receiveDamage( unsigned int damages, Vector3 fromDirection = Vector3(0,0,0 )) {mDeadFlag = false;}
+
 private:
 	unsigned mPower;
-	GameObject* mOwner;
+	Ship* mOwner;
 	TimeToLiveComponent mTTLComponent;
 };

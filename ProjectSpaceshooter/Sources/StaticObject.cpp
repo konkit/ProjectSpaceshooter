@@ -9,4 +9,5 @@ StaticObject::StaticObject(void)
 
 StaticObject::~StaticObject(void)
 {
+
 }

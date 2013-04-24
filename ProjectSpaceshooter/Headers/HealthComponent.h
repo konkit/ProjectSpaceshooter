@@ -9,7 +9,7 @@
 class HealthComponent {
 public:
 	HealthComponent();
-	HealthComponent(PrefabWithCollider * prefab);
+	HealthComponent(const PrefabWithCollider * prefab);
 
 	void decreaseHealth( int value );
 

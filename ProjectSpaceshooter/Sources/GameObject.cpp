@@ -1,10 +1,12 @@
 #include "stdafx.h"
 #include "GameObject.h"
 
+using namespace std;
+
+unsigned GameObject::uniqueID = 0;
 
 GameObject::GameObject() : mNode(NULL)
 {
-
 }
 
 GameObject::GameObject(std::string meshName, Ogre::SceneManager* sceneMgr) : mNode(NULL)
@@ -19,17 +21,20 @@ GameObject::GameObject(const PrefabWithMesh * prefab, Ogre::SceneManager* sceneM
 
 GameObject::~GameObject(void)
 {
-	//delete mNode; Czy to tu ma byæ?
+	Ogre::SceneNode* parent = dynamic_cast<Ogre::SceneNode*>(mNode->getParent());
+	if (parent != NULL)
+	{
+		parent->removeAndDestroyChild(mNode->getName());
+	}
 }
 
 //Creates scene node for gameobject with given mesh name and within scenenode
 void GameObject::createSceneNode(std::string meshName, Ogre::SceneManager* sceneMgr)	{
 	//init SceneNode
 	Ogre::Entity * tmp = sceneMgr->createEntity(meshName);
-	mNode = sceneMgr->getRootSceneNode()->createChildSceneNode();
+	uniqueID++;
+	mNode = sceneMgr->getRootSceneNode()->createChildSceneNode(std::to_string(uniqueID));
 	mNode->attachObject(tmp);
-
-	
 }
 
 
@@ -46,14 +51,6 @@ void GameObject::setMesh(const PrefabWithMesh * prefab , Ogre::SceneManager* sce
 }
 
 
-position_struct GameObject::getObjectPosition()
-{
-	position_struct tmp;
-	tmp.position = mNode->getPosition();
-	tmp.orientation = mNode->getOrientation();
-	return tmp;
-}
-
 
 bool GameObject_WithCollider::isColidingWith( GameObject_WithCollider * _object )
 {
@@ -64,7 +61,7 @@ bool GameObject_WithCollider::isColidingWith( GameObject_WithCollider * _object 
 }
 
 GameObject_WithCollider::GameObject_WithCollider(const PrefabWithCollider * prefab, Ogre::SceneManager* sceneMgr )
-	: GameObject(prefab, sceneMgr), mCollider(prefab->getCollider()), mDeadFlag(false)
+	: GameObject(prefab, sceneMgr), mCollider(prefab->getCollider()), mDeadFlag(false), mExpolsionEffectID(prefab->getExplosionEffectID())
 {
 
 }
@@ -77,7 +74,7 @@ GameObject_Movable::GameObject_Movable(const MovablePrefab * prefab, Ogre::Scene
 }
 
 GameObject_WithHealth::GameObject_WithHealth(const PrefabWithCollider * prefab, Ogre::SceneManager* sceneMgr )
-	: GameObject(prefab, sceneMgr), GameObject_WithCollider(prefab, sceneMgr), mHealth()
+	: GameObject(prefab, sceneMgr), GameObject_WithCollider(prefab, sceneMgr), mHealth(prefab)
 {
 
 }

@@ -34,17 +34,19 @@ PhysicsComponent::PhysicsComponent()
 	  rotVelocity(0.0),
 	  rotVelocityValue(2.0), 
 	  accelerationValue(5.0),
-	  maxVelocityValue(700.0)
+	  maxVelocityValue(700.0),
+	  targetVelocity(0,0,0)
 {
 
 }
 
 PhysicsComponent::PhysicsComponent(const MovablePrefab * prefab )
-	:	rotVelocity(0.0),
-		rotVelocityValue(2.0)
+	:   currentVelocity(0.0, 0.0, 0.0),	
+	    rotVelocity(0.0),
+	   targetVelocity(0,0,0)
 {
 	maxVelocityValue = prefab->getMaxVelocity();
-	mMaxAngleVelocity = prefab->getMaxAngleVelocity();
+	rotVelocityValue = prefab->getMaxAngleVelocity();
 	accelerationValue = prefab->getMaxAcceleration();
 }
 
@@ -76,7 +78,16 @@ void PhysicsComponent::AddVectorToCurrentVelocity( Ogre::Vector3 addedVector )
 
 void PhysicsComponent::setFromPrefab( const MovablePrefab * prefab )
 {
+	currentVelocity = Vector3(0.0, 0.0, 0.0);	
+	targetVelocity  = Vector3(0.0, 0.0, 0.0);
+	rotVelocity = 0.0;
+	rotVelocityValue = prefab->getMaxAngleVelocity();
 	maxVelocityValue = prefab->getMaxVelocity();
-	mMaxAngleVelocity = prefab->getMaxAngleVelocity();
 	accelerationValue = prefab->getMaxAcceleration();
+
+}
+
+unsigned PhysicsComponent::getCurrentVelocityValue()
+{
+	return maxVelocityValue; // TODO Change to current Value
 }
