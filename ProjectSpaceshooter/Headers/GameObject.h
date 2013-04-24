@@ -181,7 +181,7 @@ public:
 	void setCurrentSpeedToMax() { mPhysicsComponent.setCurrentSpeedToMax(); }
 	void addVectorToCurrentVelocity(Vector3 recoil) 
 	{
-		throw std::exception("The method or operation is not implemented.");
+		mPhysicsComponent.AddVectorToCurrentVelocity(recoil);
 	}
 
 protected:
