@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "StateManager.h"
-#include "..\GameOver.h"
+
 
 StateManager::StateManager()
 {

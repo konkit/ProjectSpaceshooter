@@ -32,11 +32,7 @@
 #include "StateManager.h"
 
 #include <iostream>
-using Ogre::Vector3;
 
-struct TimeData
-{
-	float deltaTime;
-	unsigned long currentTime;
-};
 #include "GameData.h"
+#include "TimeUtility.h"
+using Ogre::Vector3;

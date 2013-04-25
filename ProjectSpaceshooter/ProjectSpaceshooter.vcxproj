@@ -216,6 +216,7 @@
     <ClInclude Include="Headers\stdafx.h" />
     <ClInclude Include="Headers\Systems.h" />
     <ClInclude Include="Headers\TimeToLiveComponent.h" />
+    <ClInclude Include="Headers\TimeUtility.h" />
     <ClInclude Include="Headers\WeaponPrefab_Plant.h" />
     <ClInclude Include="Headers\WeaponComponent.h" />
     <ClInclude Include="Headers\PredabReader_XML.h" />
@@ -235,6 +236,7 @@
     <ClCompile Include="Sources\Game.cpp" />
     <ClCompile Include="Sources\GameData.cpp" />
     <ClCompile Include="Sources\GameObject.cpp" />
+    <ClCompile Include="Sources\GameOver.cpp" />
     <ClCompile Include="Sources\GameState.cpp" />
     <ClCompile Include="Sources\GameStateMain.cpp" />
     <ClCompile Include="Sources\HangarState.cpp" />

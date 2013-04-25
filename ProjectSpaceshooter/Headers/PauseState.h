@@ -1,4 +1,5 @@
 #pragma once
+#include "TimeUtility.h"
 
 /**
 * It's class for updating systems for pause

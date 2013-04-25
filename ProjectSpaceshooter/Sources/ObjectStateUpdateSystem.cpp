@@ -9,7 +9,7 @@ void ObjectStateUpdateSystem::update( GameData& mGameData, TimeData& time )
 	//creating bullets when player is shooting
 
 	removeDeadObjects(mGameData);
-
+	
 	if( mGameData.getPlayer()->isShooting() == true)	
 	{
 		//get player's data required to create new bullet

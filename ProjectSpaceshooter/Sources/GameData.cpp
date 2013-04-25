@@ -15,6 +15,7 @@ GameData::GameData(void)
 
 GameData::~GameData(void)
 {
+	delete mPlayer;
 }
 
 Ogre::SceneManager * GameData::getSceneManagerFor( GAME_STATES gameState )
@@ -200,10 +201,28 @@ void GameData::setCameraFor( GAME_STATES gameState, Ogre::Camera * camera )
 	}
 }
 
-Player * GameData::destroyPlayer()
+void GameData::destroyPlayer()
 {
 	delete mPlayer;
 	mPlayer = NULL;
+}
+
+bool GameData::isPlayerDead()
+{
+	if (mPlayer != NULL)
+	{
+		return mPlayer->isDead();
+	}
+	else true;
+}
+
+bool GameData::isCoreDead()
+{
+	if (theCore != NULL)
+	{
+		return theCore->isDead();
+	}
+	return true;
 }
 
 

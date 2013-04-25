@@ -22,19 +22,8 @@ public:
 	GameObjectType getType() {
 		return GameObjectType::player;
 	}
-	Ogre::SceneNode * createCameraNode();
-	void detachCamera();
-	void attachCamera(Ogre::Camera * cam);
-private:
-	Ogre::SceneNode * mCameraNode;
-	Ogre::Camera * my_cam;
-};
 
-Ogre::SceneNode * Player::createCameraNode()
-{
-	mCameraNode = mNode->createChildSceneNode("CameraNode");
-	return mCameraNode;
-}
+
 
 void Player::attachCamera( Ogre::Camera * cam )
 {
@@ -47,4 +36,18 @@ void Player::detachCamera()
 	mCameraNode->detachObject(my_cam);
 }
 
+Ogre::SceneNode * getCameraNode() 
+{
+	return mCameraNode;
+}
 
+
+private:
+	Ogre::SceneNode * Player::createCameraNode()
+	{
+		mCameraNode = mNode->createChildSceneNode("My_Camera");
+		return mCameraNode;
+	}
+	Ogre::SceneNode * mCameraNode;
+	Ogre::Camera * my_cam;
+};

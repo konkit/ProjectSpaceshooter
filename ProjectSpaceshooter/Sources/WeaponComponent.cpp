@@ -36,6 +36,8 @@ WeaponComponent::WeaponComponent(const WeaponPrefab * prefab )
 
 void WeaponComponent::setWeapon(const WeaponPrefab * prefab )
 {
+	shooting = false;
+	timeSinceLastShot = 0;
 	rateOfFire = prefab->getRateOfFire();
 	bulletPrefabID = prefab->getBulletPrefabID();
 	weaponName = prefab->getName();

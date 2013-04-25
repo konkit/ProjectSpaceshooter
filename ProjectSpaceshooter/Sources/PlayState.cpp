@@ -13,7 +13,7 @@ PlayState::PlayState(SystemsSet & gameSystems) :GameState()
 
     //System which draws primitives for debuging purposes
 #ifdef _DEBUG
-    cntDebugDrawer = new DebugDrawer(mSceneMgr, 0.5f);
+    gameSystems.cntDebugDrawer = new DebugDrawer(mSceneMgr, 0.5f);
 #endif
 
     //Temporary explosion
@@ -79,7 +79,12 @@ void PlayState::createCamera()
 
 GAME_STATES PlayState::nextState( SystemsSet &gameSystems )
 {
-    if(gameSystems.gameData.isSetPauseFlag())
+	GameData & gameData = gameSystems.gameData;
+	if (gameData.isPlayerDead() || gameData.isCoreDead())
+	{
+	
+		return GAME_STATES::GAME_OVER;
+	} else if(gameSystems.gameData.isSetPauseFlag())
     {
         return GAME_STATES::PAUSE;
     } else

@@ -1,3 +1,4 @@
+#pragma once
 #include "GameState.h"
 
 class GameOver : public GameState

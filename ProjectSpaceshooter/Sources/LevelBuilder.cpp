@@ -98,11 +98,11 @@ void LevelBuilder::attachCameraToPlayer(SystemsSet & gameSystems)
 {
 	Ogre::Camera * _camera = gameSystems.gameData.getCameraFor(GAME_STATES::PLAY);
 	Player * player = gameSystems.gameData.getPlayer();
-	Ogre::SceneNode *cameraNode = player->createCameraNode();
+	Ogre::SceneNode *cameraNode = player->getCameraNode();
 	//Create camera
 	//Third person perspective camera
 	if( THIRD_PERSON_CAMERA == true ) {
-		player->attachCamera();			
+		player->attachCamera(_camera);			
 		cameraNode->setPosition(Ogre::Vector3(0.0,20.0,-60.0));
 		_camera->lookAt(Ogre::Vector3(0,0,100));
 	}

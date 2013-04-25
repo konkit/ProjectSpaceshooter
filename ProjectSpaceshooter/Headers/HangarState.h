@@ -1,5 +1,6 @@
 #pragma once
 #include "GameState.h"
+#include "TimeUtility.h"
 class HangarState : public GameState
 {
 public:

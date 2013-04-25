@@ -77,8 +77,8 @@ bool CollisionSystem::isBulletAndOwner( GameObject_WithCollider * currentObject,
 		Bullet * bullet = dynamic_cast<Bullet *>(currentObject);
 		if(isShip(othType))
 		{
-			Ship * owner = bullet->getOwner();
-			if (owner->getType() == othType)
+			GameObjectType ownerType = bullet->getOwnerType();
+			if (ownerType == othType)
 			{
 				return true;
 			}
@@ -194,6 +194,11 @@ bool CollisionSystem::collisionBetweenShips( GameObject_WithCollider * currentOb
 
 	if (isShip(currType) && isShip(othType))
 	{
+// TODO: remove this when enemy stop colliding both
+		if (currType == othType)
+		{
+			return true;
+		}
 		currentObject->kill();
 		otherObject->kill();
 		return true;

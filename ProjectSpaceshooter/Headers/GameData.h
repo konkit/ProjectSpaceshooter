@@ -82,7 +82,7 @@ public:
 		mPlayer = new Player(ship, weapon, getSceneManagerFor(state));
 		return mPlayer;
 	}
-	Player * destroyPlayer();
+	void destroyPlayer();
 	bool isSetPauseFlag() { return changeFlags.changeToPause;}
 	bool isSetPlayFlag()  { return changeFlags.changeToPlay;}
 	bool isSetHangarFlag(){ return changeFlags.changeToHangar;}
@@ -201,6 +201,9 @@ public:
 
 	void setCameraFor(GAME_STATES gameState, Ogre::Camera * camera);
 	void removeGameObject( GameObject_WithCollider * removedObject );
+
+	bool isPlayerDead();
+	bool isCoreDead();
 private:
 	struct changeFlagsStruct
 	{

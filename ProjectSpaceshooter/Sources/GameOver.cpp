@@ -1,27 +1,33 @@
 #include "GameOver.h"
 
-GameOver::GameOver( SystemsSet & gameSystems )
-	: deadCamera(false)
-{
-	mCamera = gameSystems.gameData.getCameraFor(GAME_STATES::PLAY);
-	gameSystems.gameData.setCameraFor(GAME_STATES::GAME_OVER, mCamera);
-}
+
 
 GameOver::~GameOver()
 {
 
 }
+
 GAME_STATES GameOver::update( SystemsSet & gameSystems, TimeData& time )
 {
 	if (!deadCamera)
 	{
 		setDeadCamera(gameSystems);
 	}
+	gameSystems.inputManager.updateInputForPause(gameSystems.gameData);
 	gameSystems.mAISystem.update(gameSystems.gameData, time);
 	gameSystems.mPhysicsSystem.update( gameSystems.gameData, time.deltaTime );
 	gameSystems.mCollisionSystem.update( gameSystems.gameData);
 	gameSystems.mObjectStateSystem.update( gameSystems.gameData, time);
+#ifdef _DEBUG
+	DebugDrawer::getSingleton().build();
+#endif
+
 	renderOneFrame(gameSystems.ogreManager);
+
+#ifdef _DEBUG
+	DebugDrawer::getSingleton().clear();
+#endif
+	return nextState(gameSystems);
 }
 
 void GameOver::createCamera()
@@ -41,9 +47,16 @@ void GameOver::setDeadCamera( SystemsSet &gameSystems )
 	Ogre::Camera * camera = gameData.getCameraFor(GAME_STATES::PLAY);
 	player->detachCamera();
 	Vector3 position = player->getPosition();
-	camera->setPosition(position + Vector3(30.0,30.0,0.0));
+	camera->setPosition(position + Vector3(70.0,30.0,-70.0));
 	camera->lookAt(position);
 	deadCamera = true;
+}
+
+GameOver::GameOver( SystemsSet & gameSystems )
+	: deadCamera(false)
+{
+	mCamera = gameSystems.gameData.getCameraFor(GAME_STATES::PLAY);
+	gameSystems.gameData.setCameraFor(GAME_STATES::GAME_OVER, mCamera);
 }
 
 

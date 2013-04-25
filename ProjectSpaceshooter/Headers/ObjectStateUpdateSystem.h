@@ -2,6 +2,7 @@
 
 #include "Bullet.h"
 #include "EffectObject.h"
+#include "TimeUtility.h"
 
 //Name is to be changed - chill out :D
 //I really had no idea for descriptive name for this class

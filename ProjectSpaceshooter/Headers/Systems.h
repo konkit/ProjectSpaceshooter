@@ -16,5 +16,18 @@ struct SystemsSet
 	ObjectStateUpdateSystem mObjectStateSystem;
 	CollisionSystem			mCollisionSystem;
 	AISystem				mAISystem;
+#ifdef _DEBUG
+	DebugDrawer  *          cntDebugDrawer;
+#endif // _DEBUG
+	~SystemsSet()
+	{
+#ifdef _DEBUG
+		if (cntDebugDrawer != NULL)
+		{
+			cntDebugDrawer->clear();
+			delete cntDebugDrawer;
+		}
+#endif // _DEBUG
+	}
 };
 
