@@ -33,3 +33,10 @@
 
 #include <iostream>
 using Ogre::Vector3;
+
+struct TimeData
+{
+	float deltaTime;
+	unsigned long currentTime;
+};
+#include "GameData.h"

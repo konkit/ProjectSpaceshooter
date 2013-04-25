@@ -6,7 +6,7 @@
 
 class CollisionSystem	{
 public:
-	CollisionSystem() : COLLISION_DAMAGE(400){}
+	CollisionSystem() : COLLISION_DAMAGE(20){}
 	//Method which resolves collisions
 	//collisions are resolved a posteriori
 	void update(GameData& mGameData);

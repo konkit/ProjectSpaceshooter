@@ -2,7 +2,6 @@
 
 #include "Bullet.h"
 #include "EffectObject.h"
-#include "Systems.h"
 
 //Name is to be changed - chill out :D
 //I really had no idea for descriptive name for this class
@@ -25,6 +24,7 @@ public:
 	  * @param time - time data which is needed for example in shooting
 	  */
 	void update(GameData& mGameData, TimeData& time);
+	void destroyPlayer(GameData& mGameData);
 	void removeDeadObjects( GameData& mGameData);
 	void createExplosionFor( GameObject_WithCollider * removedObject, GameData& mGameData );
 };

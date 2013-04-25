@@ -25,10 +25,7 @@ public:
 private:
 	void createCamera();
 	GAME_STATES nextState( SystemsSet &gameSystems );
-	PhysicsSystem			mPhysicsSystem;
-	ObjectStateUpdateSystem mObjectStateSystem;
-	CollisionSystem			mCollisionSystem;
-	AISystem				mAISystem;
+
 
 
 	int numOfFPS, currentFPSValue;

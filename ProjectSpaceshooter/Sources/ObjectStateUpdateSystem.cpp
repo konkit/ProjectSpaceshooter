@@ -119,3 +119,16 @@ void ObjectStateUpdateSystem::createExplosionFor( GameObject_WithCollider * remo
 	return;
 }
 
+void ObjectStateUpdateSystem::destroyPlayer( GameData& mGameData)
+{
+	Player * player = mGameData.getPlayer();
+	if (player != NULL)
+	{
+		createExplosionFor(player, mGameData);
+		mGameData.destroyPlayer();
+	} else
+	{
+		throw My_Exception("Try to remove unexisted player");
+	}
+}
+

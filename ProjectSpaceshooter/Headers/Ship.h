@@ -35,6 +35,10 @@ public:
 		mWeapon.setWeapon(weaponPrefab);
 	}
 
+	virtual GameObjectType getType();
+
+	virtual bool receiveDamage( unsigned int damages, Vector3 fromDirection = Vector3(0,0,0 ) );
+
 private:  
 	WeaponComponent mWeapon;
 };

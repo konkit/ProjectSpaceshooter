@@ -15,5 +15,5 @@ private:
 	virtual void createCamera();
 	virtual GAME_STATES nextState( SystemsSet & gameSystems );
 	void buildPlayScene( SystemsSet & gameSystems, TimeData& time );
-	void createCameraNodeForPlayer(SystemsSet & gameSystems);
+	void attachCameraToPlayer(SystemsSet & gameSystems);
 };

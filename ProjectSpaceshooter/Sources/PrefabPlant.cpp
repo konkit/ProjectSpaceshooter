@@ -83,6 +83,7 @@ bool PrefabPlant::IsPrefabReady()
 	return prefabReady;
 }
 
+
 unsigned int PrefabPlant::ValueToUINT(const wstring &value )
 { 
 	wchar_t *pEnd;
@@ -134,13 +135,13 @@ void PrefabWithCollider_Plant::_setColliderOffset( const wstring & attribute, co
 {
 	if (attribute == PrefabPlant::x_pos)
 	{
-		Collider_str.offset.x= ValueToUINT(value);
+		Collider_str.offset.x= ValueToDouble(value);
 	} else if (attribute == PrefabPlant::y_pos)
 	{
-		Collider_str.offset.y = ValueToUINT(value);
+		Collider_str.offset.y = ValueToDouble(value);
 	} else if (attribute == PrefabPlant::z_pos)
 	{
-		Collider_str.offset.z = ValueToUINT(value);
+		Collider_str.offset.z = ValueToDouble(value);
 	} else if (attribute == PrefabPlant::closeNode)
 	{
 		return;

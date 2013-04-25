@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "StateManager.h"
+#include "..\GameOver.h"
 
 StateManager::StateManager()
 {
@@ -12,7 +13,7 @@ void StateManager::initStateManager( SystemsSet & gameSystems )
 	play = new PlayState(gameSystems);
 	hangar = new HangarState(gameSystems);
 	builder = new LevelBuilder(gameSystems);
-
+	gameOver = new GameOver(gameSystems); 
 	changeState(GAME_STATES::LEVEL_BUILDER, gameSystems);
 }
 
@@ -23,6 +24,7 @@ StateManager::~StateManager(void)
 	delete play;
 	delete hangar;
 	delete builder;
+	delete gameOver;
 }
 
 bool StateManager::update( SystemsSet & gameSystems, TimeData& time )
@@ -50,7 +52,7 @@ void StateManager::changeState(GAME_STATES nextState, SystemsSet & gameSystems)
 
 void StateManager::setupViewport( OgreManager & _ogreManager, Ogre::Camera * camera )
 {
-	if (camera != NULL)
+	if (camera != NULL && (camera != _ogreManager.getActiveCamera()))
 	{
 		_ogreManager.getWindowHandle()->removeAllViewports();
 		// Create one viewport, entire window
@@ -60,6 +62,7 @@ void StateManager::setupViewport( OgreManager & _ogreManager, Ogre::Camera * cam
 		// Alter the camera aspect ratio to match the viewport
 		camera->setAspectRatio(
 			Ogre::Real(vp->getActualWidth()) / Ogre::Real(vp->getActualHeight()));
+		_ogreManager.setActiveCamera(camera);
 	}
 }
 
@@ -75,6 +78,8 @@ GameState * StateManager::getStateFor( GAME_STATES nextState )
 		return hangar;
 	case GAME_STATES::LEVEL_BUILDER:
 		return builder;
+	case GAME_STATES::GAME_OVER:
+		return gameOver;
 	default:
 		break;
 	}
