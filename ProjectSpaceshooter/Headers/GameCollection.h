@@ -131,6 +131,10 @@ public:
 		if (prevIt != 0)
 		{
 			prevIt->next = it->next;
+			if (it == mListTail)
+			{
+				mListTail = prevIt;
+			}
 		} else
 		{
 			mListHead = it->next;
@@ -155,24 +159,7 @@ public:
 	}
 	void operator-=(gObject * deletedObject)
 	{
-		ListElement<gObject> * item = mListHead;
-		ListElement<gObject> * prevIt = 0;
-		while (item->mObject != deletedObject && item!= 0)
-		{
-			prevIt = item;
-			item = item->next;
-		}
-		if(item == 0)
-			return; // TODO throw an exception
-		if (prevIt != 0)
-		{
-			prevIt->next = item->next;
-		} else
-		{
-			mListHead = item->next;
-		}
-		delete item; // Deleted struct have destructor to delate pointed object;
-		return;
+		deleteObject(deletedObject);
 	}
 	void operator+=(gObject * newObject)
 	{
