@@ -23,8 +23,8 @@ public:
 	unsigned getPower() const { return mPower; }
 	void setPower(unsigned val) { mPower = val; }
 
-	void setOwner(Ship* owner) {mOwner = owner;}
-	Ship* getOwner() {return mOwner;}
+	void setOwner(Ship* owner) {mOwnerType = owner->getType();}
+	GameObjectType getOwnerType() {return mOwnerType;}
 
 	TimeToLiveComponent& getTTLComponent();
 
@@ -46,6 +46,6 @@ public:
 
 private:
 	unsigned mPower;
-	Ship* mOwner;
+	GameObjectType mOwnerType;
 	TimeToLiveComponent mTTLComponent;
 };

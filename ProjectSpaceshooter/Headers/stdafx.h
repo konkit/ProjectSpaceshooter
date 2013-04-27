@@ -32,4 +32,7 @@
 #include "StateManager.h"
 
 #include <iostream>
+
+#include "GameData.h"
+#include "TimeUtility.h"
 using Ogre::Vector3;

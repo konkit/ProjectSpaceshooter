@@ -15,6 +15,7 @@ GameData::GameData(void)
 
 GameData::~GameData(void)
 {
+	delete mPlayer;
 }
 
 Ogre::SceneManager * GameData::getSceneManagerFor( GAME_STATES gameState )
@@ -171,7 +172,7 @@ const WeaponPrefab * GameData::getWeaponPrefab( unsigned prefabId )
 GameData::ColidingObjectsIterator GameData::getColidingObjectsIterator()
 {
 	ColidingObjectsIterator tmp;
-	tmp.setPlayer(&mPlayer);
+	tmp.setPlayer(mPlayer);
 	tmp.setEnemyIterator(mEnemyCollection.getIterator());
 	tmp.setBulletIterator(mBulletCollection.getIterator());
 	tmp.setEffectIterator(mEffectsCollection.getIterator());
@@ -193,9 +194,35 @@ void GameData::setCameraFor( GAME_STATES gameState, Ogre::Camera * camera )
 		break;
 	case GAME_STATES::LEVEL_BUILDER:
 		break;
+	case GAME_STATES::GAME_OVER:
+		mCamerasManager.gameOverCamera = camera;
 	default:
 		break;
 	}
+}
+
+void GameData::destroyPlayer()
+{
+	delete mPlayer;
+	mPlayer = NULL;
+}
+
+bool GameData::isPlayerDead()
+{
+	if (mPlayer != NULL)
+	{
+		return mPlayer->isDead();
+	}
+	else true;
+}
+
+bool GameData::isCoreDead()
+{
+	if (theCore != NULL)
+	{
+		return theCore->isDead();
+	}
+	return true;
 }
 
 

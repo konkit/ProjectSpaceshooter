@@ -111,7 +111,7 @@ void InputManager::updateInputForGame(GameData& mGameData, float deltaTime, unsi
 	}
 
 	if( mKeyboard->isKeyDown(OIS::KC_H) )	{
-		mGameData.getPlayer()->addVectorToCurrentVelocity( Ogre::Vector3(-25.0, 0.0 ,0.0));
+		mGameData.getPlayer()->addRecoilVectorToCurrentVelocity( Ogre::Vector3(-25.0, 0.0 ,0.0));
 	}
 
 

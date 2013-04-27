@@ -9,7 +9,7 @@ void ObjectStateUpdateSystem::update( GameData& mGameData, TimeData& time )
 	//creating bullets when player is shooting
 
 	removeDeadObjects(mGameData);
-
+	
 	if( mGameData.getPlayer()->isShooting() == true)	
 	{
 		//get player's data required to create new bullet
@@ -117,5 +117,18 @@ void ObjectStateUpdateSystem::createExplosionFor( GameObject_WithCollider * remo
 	EffectObject * effect = mGameData.instantiateEffect(effectId);
 	effect->setPosition(removedObject->getPosition());
 	return;
+}
+
+void ObjectStateUpdateSystem::destroyPlayer( GameData& mGameData)
+{
+	Player * player = mGameData.getPlayer();
+	if (player != NULL)
+	{
+		createExplosionFor(player, mGameData);
+		mGameData.destroyPlayer();
+	} else
+	{
+		throw My_Exception("Try to remove unexisted player");
+	}
 }
 

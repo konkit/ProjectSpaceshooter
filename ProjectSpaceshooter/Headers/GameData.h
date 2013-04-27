@@ -17,7 +17,8 @@ enum class GAME_STATES
 	PLAY,
 	PAUSE,
 	HANGAR,
-	LEVEL_BUILDER
+	LEVEL_BUILDER,
+	GAME_OVER,
 };
 
 /** Class which stores gameobjects and all data required by systems to do their job
@@ -47,6 +48,7 @@ struct CameraManager_Struct
 	Ogre::Camera * playCamera;
 	Ogre::Camera * pauseCamera;
 	Ogre::Camera * hangarSceneCamera;
+	Ogre::Camera * gameOverCamera;
 };
 /** GameData class
   * Stores all information about GameWorld
@@ -64,7 +66,7 @@ public:
 	~GameData();
 
 	/** Accessor functions */
-	Player* getPlayer()	{return &mPlayer;}
+	Player* getPlayer()	{return mPlayer;}
 
 	/** 
 	* Create player based on ship prefab
@@ -77,10 +79,10 @@ public:
 	{
 		const ShipPrefab * ship = mEnemyCollection.getPrefab(prefabID);
 		const WeaponPrefab * weapon = mEnemyCollection.getWeaponPrefab(ship->getWeaponPrefabID());
-		mPlayer.setShip(ship, weapon, getSceneManagerFor(state));
-		return &mPlayer;
+		mPlayer = new Player(ship, weapon, getSceneManagerFor(state));
+		return mPlayer;
 	}
-
+	void destroyPlayer();
 	bool isSetPauseFlag() { return changeFlags.changeToPause;}
 	bool isSetPlayFlag()  { return changeFlags.changeToPlay;}
 	bool isSetHangarFlag(){ return changeFlags.changeToHangar;}
@@ -189,6 +191,8 @@ public:
 			break;
 		case GAME_STATES::LEVEL_BUILDER:
 			break;
+		case GAME_STATES::GAME_OVER:
+			return mCamerasManager.gameOverCamera;
 		default:
 			break;
 		}
@@ -197,6 +201,9 @@ public:
 
 	void setCameraFor(GAME_STATES gameState, Ogre::Camera * camera);
 	void removeGameObject( GameObject_WithCollider * removedObject );
+
+	bool isPlayerDead();
+	bool isCoreDead();
 private:
 	struct changeFlagsStruct
 	{
@@ -213,7 +220,7 @@ private:
 	BaseCollection<EffectPrefab, EffectObject> mEffectsCollection;
 	BaseCollection<StaticPrefab, StaticObject> mStaticCollection;
 
-	Player mPlayer;
+	Player* mPlayer;
 	Core * theCore;
 	GameObjectTemplates mPrefabCollections;
 	StateScenesManager_Struct mStateScenesManager;

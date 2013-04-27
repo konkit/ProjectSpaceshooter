@@ -58,9 +58,6 @@
     <ClInclude Include="Headers\GameObject.h">
       <Filter>Header\GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="Headers\StaticObject.h">
-      <Filter>Header\GameObjects</Filter>
-    </ClInclude>
     <ClInclude Include="Headers\Player.h">
       <Filter>Header\GameObjects</Filter>
     </ClInclude>
@@ -138,6 +135,15 @@
     </ClInclude>
     <ClInclude Include="Headers\stdafx.h">
       <Filter>Precompiled Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\StaticObject.h">
+      <Filter>Header\PrefabsPlant</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\GameOver.h">
+      <Filter>Header\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\TimeUtility.h">
+      <Filter>Header</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -302,8 +308,11 @@
     <ClCompile Include="Sources\stdafx.cpp">
       <Filter>Precompiled Header</Filter>
     </ClCompile>
-    <ClCompile Include="CollisionSystem.cpp">
+    <ClCompile Include="Sources\CollisionSystem.cpp">
       <Filter>Source\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\GameOver.cpp">
+      <Filter>Source\States</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

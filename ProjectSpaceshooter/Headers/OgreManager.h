@@ -42,8 +42,10 @@ public:
 		return mTime.getMilliseconds();
 	}
 
-
+	Ogre::Camera * getActiveCamera() const { return activeCamera; }
+	void setActiveCamera(Ogre::Camera * val) { activeCamera = val; }
 private:
+	Ogre::Camera * activeCamera;
 	//Root object of Ogre
 	Ogre::Root* mRoot;
 	//Name of file with resources

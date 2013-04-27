@@ -1,15 +1,20 @@
 #pragma once
 #include "GameState.h"
-#include "TimeUtility.h"
-class HangarState : public GameState
+
+class GameOver : public GameState
 {
 public:
-	HangarState(SystemsSet & gameSystems);
-	~HangarState(){};
+	GameOver( SystemsSet & gameSystems );
+	virtual ~GameOver();
 
 	virtual GAME_STATES update( SystemsSet & gameSystems, TimeData& time );
 
-private:
+	void setDeadCamera( SystemsSet &gameSystems );
+
 	virtual void createCamera();
+
 	virtual GAME_STATES nextState( SystemsSet & gameSystems );
+	bool deadCamera;
+private:
+
 };

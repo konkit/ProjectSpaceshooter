@@ -23,7 +23,7 @@
   <static id='2'>
     <static_name name='TheCore'/>
     <mesh name='core2.MESH'/>
-    <health value='100'/>
+    <health value='10000'/>
     <scale x_scale='35' y_scale='35' z_scale='35' />
     <rotation x_rot='1' y_rot='0' z_rot='90' />
     <Colliders>

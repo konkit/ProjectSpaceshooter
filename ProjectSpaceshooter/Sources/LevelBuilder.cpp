@@ -67,7 +67,7 @@ void LevelBuilder::buildPlayScene( SystemsSet & gameSystems, TimeData& time )
 
 	//Init player's sceneNode
 	Player * player = gameSystems.gameData.createPlayerFromPrefab(1);	
-	createCameraNodeForPlayer(gameSystems);
+	attachCameraToPlayer(gameSystems);
 
 
 	StaticObject *stat = mGameData->instantiateStatic(1);
@@ -94,15 +94,15 @@ void LevelBuilder::buildPlayScene( SystemsSet & gameSystems, TimeData& time )
 	Core * core = mGameData->createCore(2);
 	core->setPosition(Vector3(-500,0,0));
 }
-void LevelBuilder::createCameraNodeForPlayer(SystemsSet & gameSystems)
+void LevelBuilder::attachCameraToPlayer(SystemsSet & gameSystems)
 {
 	Ogre::Camera * _camera = gameSystems.gameData.getCameraFor(GAME_STATES::PLAY);
 	Player * player = gameSystems.gameData.getPlayer();
+	Ogre::SceneNode *cameraNode = player->getCameraNode();
 	//Create camera
 	//Third person perspective camera
 	if( THIRD_PERSON_CAMERA == true ) {
-		Ogre::SceneNode *cameraNode = player->getSceneNode()->createChildSceneNode();
-		cameraNode->attachObject(_camera);			
+		player->attachCamera(_camera);			
 		cameraNode->setPosition(Ogre::Vector3(0.0,20.0,-60.0));
 		_camera->lookAt(Ogre::Vector3(0,0,100));
 	}
@@ -113,8 +113,7 @@ void LevelBuilder::createCameraNodeForPlayer(SystemsSet & gameSystems)
 		//		cameraNode->setPosition(Ogre::Vector3(0.0, 2000.0, 0.0));
 		//		mCamera->lookAt(Ogre::Vector3(0.01, 0.01, 0.01));
 		//2D like camera tied to player
-		Ogre::SceneNode *cameraNode = player->getSceneNode()->createChildSceneNode();
-		cameraNode->attachObject(_camera);			
+		player->attachCamera(_camera);			
 		cameraNode->setPosition(Ogre::Vector3(0.0,2000.0,-25.0));
 		_camera->lookAt(Ogre::Vector3(0.001,0.001,0.01));
 	}

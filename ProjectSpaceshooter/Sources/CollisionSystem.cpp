@@ -1,3 +1,4 @@
+#include "CollisionSystem.h"
 
 void CollisionSystem::update( GameData& mGameData )
 {
@@ -76,8 +77,8 @@ bool CollisionSystem::isBulletAndOwner( GameObject_WithCollider * currentObject,
 		Bullet * bullet = dynamic_cast<Bullet *>(currentObject);
 		if(isShip(othType))
 		{
-			Ship * owner = bullet->getOwner();
-			if (owner->getType() == othType)
+			GameObjectType ownerType = bullet->getOwnerType();
+			if (ownerType == othType)
 			{
 				return true;
 			}
@@ -193,6 +194,11 @@ bool CollisionSystem::collisionBetweenShips( GameObject_WithCollider * currentOb
 
 	if (isShip(currType) && isShip(othType))
 	{
+// TODO: remove this when enemy stop colliding both
+		if (currType == othType)
+		{
+			return true;
+		}
 		currentObject->kill();
 		otherObject->kill();
 		return true;
@@ -223,7 +229,8 @@ void CollisionSystem::drawColiderDebug( GameObject_WithCollider * obj )
 		coli = *coli_IT;
 		pos = obj->getPositionAndOrientation();
 		coli.offset = (pos.orientation * coli.offset) + pos.position;
-		DebugDrawer::getSingleton().drawCircle(coli.offset, coli.radius, 25, Ogre::ColourValue(1.0f, 0.0f, 0.0f) );
+		DebugDrawer::getSingleton().drawCircle(coli.offset, coli.radius, 25, Ogre::ColourValue(0.6f, 0.0f, 0.0f) );
+//		DebugDrawer::getSingleton().drawSphere(coli.offset, coli.radius, Ogre::ColourValue(0.7f, 0.7f, 0.0f), false);
 	}
 #endif // ALLColliderS
 }

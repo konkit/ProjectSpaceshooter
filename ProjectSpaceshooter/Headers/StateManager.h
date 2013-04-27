@@ -5,6 +5,7 @@
 #include "PauseState.h"
 #include "HangarState.h"
 #include "LevelBuilder.h"
+#include "GameOver.h"
 
 class StateManager
 {
@@ -24,5 +25,6 @@ private:
 	GameState * play;
 	GameState * hangar;
 	GameState * builder;
+	GameState * gameOver;
 };
 

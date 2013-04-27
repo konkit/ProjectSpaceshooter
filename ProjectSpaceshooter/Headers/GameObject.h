@@ -133,7 +133,7 @@ public:
 	GameObject_WithHealth(const PrefabWithCollider * prefab, Ogre::SceneManager* sceneMgr);
 	virtual ~GameObject_WithHealth() {;}
 	
-	virtual bool receiveDamage( unsigned int damages, Vector3 fromDirection) 
+	virtual bool receiveDamage( unsigned int damages, Vector3 fromDirection = Vector3(0,0,0)) 
 	{
 		mHealth.decreaseHealth(damages);
 		std::cout << ObjectTypeToString(getType()) << ": remained health = " << mHealth.getHealth() << endl;
@@ -178,7 +178,7 @@ public:
 		return mPhysicsComponent;
 	}
 	void setCurrentSpeedToMax() { mPhysicsComponent.setCurrentSpeedToMax(); }
-	void addVectorToCurrentVelocity(Vector3 recoil) 
+	void addRecoilVectorToCurrentVelocity(Vector3 recoil) 
 	{
 		mPhysicsComponent.AddVectorToCurrentVelocity(recoil);
 	}

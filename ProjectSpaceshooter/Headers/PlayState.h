@@ -5,6 +5,7 @@
 #include "AISystem.h"
 
 #include "DebugDrawer.h"
+#include "TimeUtility.h"
 
 class PlayState : public GameState
 {
@@ -13,10 +14,6 @@ public:
 	PlayState(SystemsSet & _systems);
 	~PlayState()
 	{
-#ifdef _DEBUG
-	cntDebugDrawer->clear();
-	delete cntDebugDrawer;
-#endif
 	}
 
 	void setCamera( Player* player );
@@ -25,14 +22,9 @@ public:
 private:
 	void createCamera();
 	GAME_STATES nextState( SystemsSet &gameSystems );
-	PhysicsSystem			mPhysicsSystem;
-	ObjectStateUpdateSystem mObjectStateSystem;
-	CollisionSystem			mCollisionSystem;
-	AISystem				mAISystem;
+
 
 
 	int numOfFPS, currentFPSValue;
 	float timeToOneSecond;
-
-	DebugDrawer* cntDebugDrawer;
 };
