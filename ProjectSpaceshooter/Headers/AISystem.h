@@ -23,6 +23,7 @@ public:
 		void turnAround( EnemyObject* it, Core& cntCore, PhysicsComponent& cntPhys, TimeData time );
 		void flyAndShootAtCore( EnemyObject* it, Core& cntCore, PhysicsComponent& cntPhys, TimeData time );
 
+	float getAngleToTarget(EnemyObject* it, GameObject* target );
 
 private:
 

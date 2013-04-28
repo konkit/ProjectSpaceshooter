@@ -12,7 +12,7 @@ Ogre::Vector3 PhysicsComponent::getCurrentVelocity()
 
 void PhysicsComponent::setRotVelocity( float newRotVelocity )
 {
-	rotVelocity = newRotVelocity * rotVelocityValue;
+	rotVelocity = newRotVelocity > rotVelocityValue ? rotVelocityValue : newRotVelocity;
 }
 
 void PhysicsComponent::forceRotVelocity(float newRotVelocity)	{
