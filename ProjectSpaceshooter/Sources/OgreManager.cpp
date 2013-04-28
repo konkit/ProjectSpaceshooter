@@ -24,7 +24,7 @@ void OgreManager::initOgre()
 	}
 	else
 	{
-		//could not create window so we abort it all and go home
+		//could not create window so we can all go home now ...
 	}
 
 	loadResources();

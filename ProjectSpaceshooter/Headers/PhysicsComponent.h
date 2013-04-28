@@ -17,6 +17,10 @@ public:
 
 	//sets maximum length of velocity vector
 	void setMaxVelocityValue(float newVelocity);
+	float getMaxVelocityValue()	{
+		return maxVelocityValue;
+	}
+
 
 	//sets new instantaneous velocity vector 
 	void setCurrentVelocity(Ogre::Vector3 const& newVelocity);
