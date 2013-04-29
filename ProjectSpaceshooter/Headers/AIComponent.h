@@ -4,7 +4,8 @@
 enum class AI_STATE
 {
 	GET_TO_CORE,
-	SHOOT_AT_CORE
+	SHOOT_AT_CORE,
+	TURN_AROUND,
 };
 
 enum class AI_TYPE
