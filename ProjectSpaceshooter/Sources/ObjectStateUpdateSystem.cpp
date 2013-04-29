@@ -109,11 +109,15 @@ void ObjectStateUpdateSystem::removeDeadObjects( GameData& mGameData)
 void ObjectStateUpdateSystem::createExplosionFor( GameObject_WithCollider * removedObject, GameData& mGameData )
 {
 	GameObjectType objectType = removedObject->getType();
-	if (objectType == GameObjectType::effectObject || objectType == GameObjectType::bulletObject)
+	if (objectType == GameObjectType::effectObject)
 	{
 		return;
 	}
 	unsigned effectId = removedObject->getExpolsionEffectID();
+	if (effectId == 0)
+	{
+		return; // Some objects may not have own explosion effect
+	}
 	EffectObject * effect = mGameData.instantiateEffect(effectId);
 	effect->setPosition(removedObject->getPosition());
 	return;
@@ -128,7 +132,7 @@ void ObjectStateUpdateSystem::destroyPlayer( GameData& mGameData)
 		mGameData.destroyPlayer();
 	} else
 	{
-		throw My_Exception("Try to remove unexisted player");
+		throw My_Exception("Try to remove nonexistent player");
 	}
 }
 

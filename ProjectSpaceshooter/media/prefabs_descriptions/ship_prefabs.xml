@@ -7,8 +7,9 @@
     <mesh name='smallfighter.MESH' />
 		<max_velocity value='700' />
 		<max_acceleration value='5' />
-		<max_angle_velocity value='2' />
-		<health value='300' />
+		<max_angle_velocity value='1' />
+    <explosion_id id='1'/>
+    <health value='300' />
 		<scale x_scale='1' y_scale='1' z_scale='1' />
 		<rotation x_rot='0' y_rot='0' z_rot='0' />
 		<Colliders>
@@ -31,6 +32,7 @@
 		<max_acceleration value='13' />
 		<max_angle_velocity value='12' />
 		<health value='4000' />
+    <explosion_id id='1'/>
 		<scale x_scale='0.5' y_scale='0.5' z_scale='0.5' />
 		<rotation x_rot='1' y_rot='1' z_rot='1' />
 		<Colliders>

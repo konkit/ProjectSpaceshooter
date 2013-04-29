@@ -1,19 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <effect_prefabs>
-  <max_id id='1' />
+	<max_id id='2' />
 
-  <effect id='1'>
-    <effect_name name='explosion'/>
-    <particleSystemName name='Explosion'/>
-    <Colliders>
-      <inaccurate_Collider>
-        <offset x_pos='0' y_pos='0' z_pos='0' />
-        <radius value='5' />
-      </inaccurate_Collider>
-      <Collider>
-        <offset x_pos='0' y_pos='0' z_pos='0' />
-        <radius value='5' />
-      </Collider>
-    </Colliders>
-  </effect>
+	<effect id='1'>
+		<effect_name name='Explosion'/>
+		<ttl value='1.5'/>
+		<effect_power value='200'/>
+		<particleSystemName name='Explosion'/>
+		<Colliders>
+			<inaccurate_Collider>
+				<offset x_pos='0' y_pos='0' z_pos='0' />
+				<radius value='5' />
+			</inaccurate_Collider>
+			<Collider>
+				<offset x_pos='0' y_pos='0' z_pos='0' />
+				<radius value='5' />
+			</Collider>
+		</Colliders>
+	</effect>
+	<effect id='2'>
+		<effect_name name='SuperNova'/>
+		<ttl value='10'/>
+		<effect_power value='400'/>
+		<particleSystemName name='Supernova'/>
+		<Colliders>
+			<inaccurate_Collider>
+				<offset x_pos='0' y_pos='0' z_pos='0' />
+				<radius value='5' />
+			</inaccurate_Collider>
+			<Collider>
+				<offset x_pos='0' y_pos='0' z_pos='0' />
+				<radius value='5' />
+			</Collider>
+		</Colliders>
+	</effect>
 </effect_prefabs>

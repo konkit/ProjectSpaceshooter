@@ -95,6 +95,7 @@ protected:
 	void _setColliderRadius(const wstring & attribute, const wstring & value);
 	void _setColliderOffset(const wstring & attribute, const wstring & value);
 	void _setMaxHealth(const wstring & attribute, const wstring & value);
+	void _setExplosionID(const wstring & attribute, const wstring & value);
 	bool SetMethodToFillColliderProperty( const wstring & name );
 	void (PrefabWithCollider_Plant:: *methodToFillColliderProperty)(const wstring & attribute, const wstring & value);
 
@@ -104,6 +105,7 @@ protected:
 	static const wchar_t * Colliders;
 	static const wchar_t * offset;
 	static const wchar_t * radius;
+	static const wchar_t * explosion_id;
 private:
 	PrefabWithCollider * prefabWithCollider;
 	void clearCollider();

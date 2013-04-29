@@ -112,6 +112,14 @@ public:
 	{
 			return mEnemyCollection.instantiateEnemy(prefabID, myAi, getSceneManagerFor(state));
 	}
+	/**
+	* 
+	*
+	* @return Bullet *
+	* @param unsigned prefabID
+	* @param GAME_STATES state
+	* @author Zyga
+	*/
 	Bullet * instantiateBullet(unsigned prefabID, GAME_STATES state = GAME_STATES::PLAY)
 	{
 		return mBulletCollection.instantiate(prefabID, getSceneManagerFor(state));

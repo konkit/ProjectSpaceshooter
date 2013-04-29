@@ -6,15 +6,15 @@ using namespace std;;
 class EffectObject : public GameObject_WithCollider
 {
 public:
-	EffectObject() : GameObject(), power(200)
+	EffectObject() : GameObject(), power(0)
 	{
 		mTTLComponent.setTimeToLive(3.00);
 	}
 
 	EffectObject( EffectPrefab * objectTemplate, Ogre::SceneManager * _sceneMgr)
-		: GameObject(), GameObject_WithCollider(objectTemplate, _sceneMgr), power(200)
+		: GameObject(), GameObject_WithCollider(objectTemplate, _sceneMgr), power(objectTemplate->getPower())
 	{
-		mTTLComponent.setTimeToLive(1.50);
+		mTTLComponent.setTimeToLive(objectTemplate->getTTL());
 		uniqueID++;
 		//Custom settings of SceneNode because of being a Particle System, not a Entity (mesh)
 

@@ -151,13 +151,16 @@ public:
 	unsigned		getBulletPower() const { return mBulletPower; }
 	Ogre::Vector3	getVelocityVector() const { return mVelocityVector; }
 
+	
+	double getTTL() const { return TTL; }
+	void setTTL(double val) { TTL = val; }
 	virtual void resetPrefab();
 
 private:
 	bool		mAutoAim;
-	unsigned		mBulletPower;
-
-//Czy to tu jest potrzebne?
+	unsigned	mBulletPower;
+	double		TTL;
+	//Czy to tu jest potrzebne?
 	Ogre::Vector3 mVelocityVector;
 };
 
@@ -193,8 +196,14 @@ public:
 		return mParticleSystemName;
 	}
 
-	virtual void resetPrefab();
+	unsigned getPower() const { return power; }
+	void setPower(unsigned val) { power = val; }
 
+	unsigned getTTL() const { return TTL; }
+	void setTTL(unsigned val) { TTL = val; }
+
+
+	virtual void resetPrefab();
 	//void setParticleSystem( Ogre::ParticleSystem newParticleSystem) {
 	//	mParticleSystem = newParticleSystem;
 	//}
@@ -205,6 +214,8 @@ public:
 
 private:
 	std::string mParticleSystemName;
+	unsigned power;
+	double TTL;
 	//Ogre::ParticleSystem* mParticleSystem;
 };
 

@@ -145,6 +145,9 @@
     <ClInclude Include="Headers\TimeUtility.h">
       <Filter>Header</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header">
@@ -194,6 +197,9 @@
     </Filter>
     <Filter Include="Precompiled Header">
       <UniqueIdentifier>{ac63aaff-2ebe-4384-8075-54560efc291c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{07890d05-b692-4ca5-bf0b-35964a47f642}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -317,7 +323,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ogre.cfg" />
-    <None Include="resources_d.cfg" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="media\prefabs_descriptions\static_prefabs.xml">
@@ -335,5 +340,15 @@
     <Xml Include="media\prefabs_descriptions\weapon_prefabs.xml">
       <Filter>PrefabsFiles</Filter>
     </Xml>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ProjectSpaceshooter.rc">
+      <Filter>Resources</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="icon1.ico">
+      <Filter>Resources</Filter>
+    </Image>
   </ItemGroup>
 </Project>

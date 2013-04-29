@@ -220,6 +220,7 @@
     <ClInclude Include="Headers\WeaponPrefab_Plant.h" />
     <ClInclude Include="Headers\WeaponComponent.h" />
     <ClInclude Include="Headers\PredabReader_XML.h" />
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\AIComponent.cpp" />
@@ -269,13 +270,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ogre.cfg" />
-    <None Include="resources_d.cfg" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="media\prefabs_descriptions\bullet_prefabs.xml">
       <SubType>Designer</SubType>
     </Xml>
-    <Xml Include="media\prefabs_descriptions\effect_prefabs.xml" />
+    <Xml Include="media\prefabs_descriptions\effect_prefabs.xml">
+      <SubType>Designer</SubType>
+    </Xml>
     <Xml Include="media\prefabs_descriptions\ship_prefabs.xml">
       <SubType>Designer</SubType>
     </Xml>
@@ -285,6 +287,12 @@
     <Xml Include="media\prefabs_descriptions\weapon_prefabs.xml">
       <SubType>Designer</SubType>
     </Xml>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ProjectSpaceshooter.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="icon1.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

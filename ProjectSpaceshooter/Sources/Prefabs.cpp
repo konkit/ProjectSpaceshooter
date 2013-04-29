@@ -59,11 +59,13 @@ void BulletPrefab::resetPrefab()
 EffectPrefab::EffectPrefab()
 {
 	resetPrefab();
+	power = 200;
 }
 
 void EffectPrefab::resetPrefab()
 {
 	mParticleSystemName.clear();
+	power = 200;
 	Prefab::resetPrefab();
 }
 

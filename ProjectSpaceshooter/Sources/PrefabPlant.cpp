@@ -220,6 +220,9 @@ bool PrefabWithCollider_Plant::SetMethodToFillColliderProperty( const wstring & 
 		{
 			throw My_Exception("PrefabWithCollider_Plant nextElement: incorrect Prefab format - radius is not inside Collider node");
 		}
+	} else if (name == PrefabWithCollider_Plant::explosion_id)
+	{
+		methodToFillColliderProperty = &PrefabWithCollider_Plant::_setExplosionID;
 	} else
 	{
 		return false;
@@ -239,6 +242,16 @@ void PrefabWithCollider_Plant::_setMaxHealth( const wstring & attribute, const w
 		unsigned int val;
 		val = ValueToUINT(value);
 		prefabWithCollider->setMaxHealth(val);
+	};
+}
+
+void PrefabWithCollider_Plant::_setExplosionID( const wstring & attribute, const wstring & value )
+{
+	if (attribute == PrefabPlant::id)
+	{
+		unsigned int val;
+		val = ValueToUINT(value);
+		prefabWithCollider->setExplosionEffectID(val);
 	};
 }
 
@@ -414,9 +427,10 @@ const wchar_t * PrefabWithMesh_Plant::y_rot	  = L"y_rot";
 const wchar_t * PrefabWithMesh_Plant::z_rot	  = L"z_rot";
 const wchar_t * PrefabWithMesh_Plant::mesh	  = L"mesh";
 
-const wchar_t * PrefabWithCollider_Plant::health		= L"health";
-const wchar_t * PrefabWithCollider_Plant::Colliders	= L"Colliders";
-const wchar_t * PrefabWithCollider_Plant::Collider    = L"Collider";
-const wchar_t * PrefabWithCollider_Plant::offset     = L"offset";
-const wchar_t * PrefabWithCollider_Plant::radius     = L"radius";
+const wchar_t * PrefabWithCollider_Plant::health		      = L"health";
+const wchar_t * PrefabWithCollider_Plant::Colliders	          = L"Colliders";
+const wchar_t * PrefabWithCollider_Plant::Collider            = L"Collider";
+const wchar_t * PrefabWithCollider_Plant::offset              = L"offset";
+const wchar_t * PrefabWithCollider_Plant::radius              = L"radius";
 const wchar_t * PrefabWithCollider_Plant::inaccurate_Collider = L"inaccurate_Collider";
+const wchar_t * PrefabWithCollider_Plant::explosion_id        = L"explosion_id";

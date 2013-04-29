@@ -6,6 +6,7 @@
     <static_name name='sun'/>
     <mesh name='sun.MESH'/>
     <health value='1000'/>
+    <explosion_id id='2'/>
     <scale x_scale='30' y_scale='30' z_scale='30' />
     <rotation x_rot='1' y_rot='1' z_rot='1' />
     <Colliders>
@@ -23,17 +24,18 @@
   <static id='2'>
     <static_name name='TheCore'/>
     <mesh name='core2.MESH'/>
-    <health value='10000'/>
+    <explosion_id id='1'/>
+    <health value='100000'/>
     <scale x_scale='35' y_scale='35' z_scale='35' />
     <rotation x_rot='1' y_rot='0' z_rot='90' />
     <Colliders>
       <inaccurate_Collider>
         <offset x_pos='0' y_pos='0' z_pos='0' />
-        <radius value='40' />
+        <radius value='300' />
       </inaccurate_Collider>
       <Collider>
         <offset x_pos='0' y_pos='0' z_pos='0' />
-        <radius value='40' />
+        <radius value='300' />
       </Collider>
     </Colliders>
   </static>

@@ -1,6 +1,6 @@
 particle_system Explosion
 {
-	material Particles/Fireball.001
+	material Flare.000
 	particle_width 50.0
 	particle_height 50.0
 	quota 25

@@ -20,6 +20,7 @@ private:
 	void _setShipName(const wstring & attribute, const wstring & value);
 	void _setAutoAim(const wstring & attribute, const wstring & value);
 	void _setBulletPower(const wstring & attribute, const wstring & value);
+	void _setTTL(const wstring & attribute, const wstring & value);
 
 	//--------------------------------------------------------------------------------------
 
@@ -34,6 +35,6 @@ private:
 	static const wchar_t * bullet_name;
 	static const wchar_t * auto_aim;
 	static const wchar_t * bullet_power;
-	
+	static const wchar_t * ttl;
 
 };

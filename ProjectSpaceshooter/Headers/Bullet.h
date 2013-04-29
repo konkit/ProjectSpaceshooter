@@ -13,9 +13,6 @@ class Bullet : public GameObject_WithCollider, public GameObject_Movable
 {
 
 public:
-	Bullet();
-
-	Bullet(std::string meshName, Ogre::SceneManager* sceneMgr);
 
 	Bullet::Bullet(const BulletPrefab * objectTemplate, Ogre::SceneManager * _sceneMenager);
 
@@ -42,10 +39,12 @@ public:
 		return mDeadFlag;
 	}
 
+	unsigned getPrefabID() const {return prefabID;}
 //	virtual bool receiveDamage( unsigned int damages, Vector3 fromDirection = Vector3(0,0,0 )) {mDeadFlag = false;}
 
 private:
 	unsigned mPower;
+	unsigned prefabID;
 	GameObjectType mOwnerType;
 	TimeToLiveComponent mTTLComponent;
 };

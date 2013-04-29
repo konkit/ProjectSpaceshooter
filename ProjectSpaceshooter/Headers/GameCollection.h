@@ -1,5 +1,6 @@
 #pragma once
 
+
 //HOW TO USE ITERATOR
 //
 //GameObjectsCollectionIterator<GameObject> * myIterator = myCollection.getIterator();
@@ -187,7 +188,12 @@ public:
 		}
 		mListHead = mListTail = NULL;
 	}
-
+	gObject * detachFirst()
+	{
+	}
+	gObject * detach(GameCollectionIterator<gObject> & it)
+	{
+	}
 	gObject * getFirst() {return mListHead->mObject;}
 	//Required delete iterator after used
 	GameCollectionIterator<gObject> getIterator()
@@ -198,3 +204,4 @@ private:
 	ListElement<gObject> * mListHead;
 	ListElement<gObject> * mListTail;
 };
+

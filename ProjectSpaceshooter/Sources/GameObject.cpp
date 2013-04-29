@@ -21,10 +21,13 @@ GameObject::GameObject(const PrefabWithMesh * prefab, Ogre::SceneManager* sceneM
 
 GameObject::~GameObject(void)
 {
-	Ogre::SceneNode* parent = dynamic_cast<Ogre::SceneNode*>(mNode->getParent());
-	if (parent != NULL)
+	if(mNode != NULL)
 	{
-		parent->removeAndDestroyChild(mNode->getName());
+		Ogre::SceneNode* parent = dynamic_cast<Ogre::SceneNode*>(mNode->getParent());
+		if (parent != NULL)
+		{
+			parent->removeAndDestroyChild(mNode->getName());
+		}
 	}
 }
 

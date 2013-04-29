@@ -2,8 +2,9 @@
 <weapon_prefabs>
   <max_id id="1"/>
   <weapon id='1'>
+    <explosion_id id='1'/>
     <weapon_name name='Rocket Luncher'/>
     <bullet_prefab id='1'/>
-    <rateOfFire value='250'/>
+    <rateOfFire value='400'/>
   </weapon>
 </weapon_prefabs>

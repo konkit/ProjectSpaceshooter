@@ -118,3 +118,35 @@ public:
 private:
 	vector<WeaponPrefab> mWeaponCollection;
 };
+
+class BulletCollection : public BaseCollection<BulletPrefab, Bullet>
+{
+
+	//Wywo³anie tego musi byæ po wczytaniu prefabów - ¿eby wiedzieæ jak wielki ma byæ wektor
+	void initializeBullet(Ogre::SceneManager * sceneManager)
+	{
+		for(int i = 1; i <= mPrefabs.size(); i++)
+		{
+			for (int j = 0; j < preCreatedCount; j++)
+			{
+				BulletPrefab * prefab = getPrefab(i);
+				Bullet * tmp =  new Bullet(prefab, sceneManager);
+				createdBullet[i].addObject(tmp); 
+			}
+		}
+	}
+	Bullet * instantiate(unsigned prefabID)
+	{
+		Bullet * tmp = createdBullet[prefabID].detachFirst();
+		mCollection.addObject(tmp);
+		return tmp;
+	}
+	void destroyBullet(GameCollectionIterator<Bullet> &it)
+	{
+		Bullet *tmp = mCollection.detach(it); // U¿ywam it ¿eby nie traciæ czasu na ponowne wyszukiwanie obiektu na liœæie, a tak u¿yjê danych zapisanych w iteratorze
+//		createdBullet[tmp->getPrefabID].addObject(tmp);
+	}
+private:
+	const int preCreatedCount;
+	std::vector<GameCollection<Bullet>> createdBullet;
+};

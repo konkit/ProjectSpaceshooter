@@ -25,6 +25,9 @@ public:
 
 private:
 	void _setParticleSystemName(const wstring & attribute, const wstring & value);
+	void _setTTL(const wstring & attribute, const wstring & value);
+	void _setEffectPower(const wstring & attribute, const wstring & value);
+
 
 	void (EffectPrefabPlant:: *methodToFillEffectProperty)(const wstring & attribute, const wstring & value);
 
@@ -32,6 +35,8 @@ private:
 	static const wstring prefabName;
 	static const wchar_t * effect_name;
 	static const wchar_t * particleSystemName;
+	static const wchar_t * ttl;
+	static const wchar_t * effect_power;
 
 	EffectPrefab mEffectPrefab;
 };

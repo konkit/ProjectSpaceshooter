@@ -44,6 +44,12 @@ void EffectPrefabPlant::setMethodToFillProperty( const wstring & name )
 	else if (name == particleSystemName)
 	{
 		methodToFillEffectProperty = &EffectPrefabPlant::_setParticleSystemName;
+	} else if (name == ttl)
+	{
+		methodToFillEffectProperty = &EffectPrefabPlant::_setTTL;
+	} else if (name == effect_power)
+	{
+		methodToFillEffectProperty = &EffectPrefabPlant::_setEffectPower;
 	} else
 	{
 		methodToFillEffectProperty = &EffectPrefabPlant::_doNothing;
@@ -80,6 +86,26 @@ void EffectPrefabPlant::_setParticleSystemName( const wstring & attribute, const
 	}
 }
 
+void EffectPrefabPlant::_setTTL( const wstring & attribute, const wstring & value )
+{
+	if (attribute == PrefabPlant::value)
+	{
+		double val;
+		val = ValueToDouble(value);
+		mEffectPrefab.setTTL(val);
+	};
+}
+
+void EffectPrefabPlant::_setEffectPower( const wstring & attribute, const wstring & value )
+{
+	if (attribute == PrefabPlant::value)
+	{
+		unsigned val;
+		val = ValueToUINT(value);
+		mEffectPrefab.setPower(val);
+	};
+}
+
 const wchar_t * EffectPrefabPlant::particleSystemName = L"particleSystemName";
 
 const wchar_t * EffectPrefabPlant::effect_name = L"effect_name";
@@ -87,3 +113,6 @@ const wchar_t * EffectPrefabPlant::effect_name = L"effect_name";
 const wstring EffectPrefabPlant::prefabName = L"effect";
 
 const wstring EffectPrefabPlant::rootEffectPrefabsNode = L"effect_prefabs";
+
+const wchar_t * EffectPrefabPlant::ttl = L"ttl";
+const wchar_t * EffectPrefabPlant::effect_power = L"effect_power";
