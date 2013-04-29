@@ -75,12 +75,16 @@ void AISystem::toCoreFlyingAI( EnemyObject* it, GameData& mGameData,  TimeData t
 		randomAI(it, mGameData);
 		return;
 	}
-
+	
+#ifdef _DEBUG
 	std::cout<<"Distance from core = "<<it->getPosition().distance( cntCore.getPosition() )<<std::endl;
+#endif
 
 	if( cntAI.getState() == AI_STATE::GET_TO_CORE )
 	{
+#ifdef _DEBUG
 		std::cout<<"Get to core state \n";
+#endif
 
 		//change state if needed
 		if( it->getPosition().squaredDistance( cntCore.getPosition() ) < 1700.0*1700.0 )
@@ -93,7 +97,9 @@ void AISystem::toCoreFlyingAI( EnemyObject* it, GameData& mGameData,  TimeData t
 		//do what is needed
 		getToTheCore(it, cntCore);
 	}	else if ( cntAI.getState() == AI_STATE::SHOOT_AT_CORE ) {
+#ifdef _DEBUG
 		std::cout<<"shoot at core state \n";
+#endif
 
 		if( it->getPosition().squaredDistance( cntCore.getPosition() ) < 1250.0*1250.0 )
 		{
@@ -104,7 +110,9 @@ void AISystem::toCoreFlyingAI( EnemyObject* it, GameData& mGameData,  TimeData t
 
 		flyAndShootAtCore(it, cntCore, cntPhys, time);
 	}	else if ( cntAI.getState() == AI_STATE::TURN_AROUND )	{
+#ifdef _DEBUG
 		std::cout<<"turn around state \n";
+#endif
 
 		if( it->getPosition().squaredDistance( cntCore.getPosition() ) > 1750.0*1750.0 )
 		{
