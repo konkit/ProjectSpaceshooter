@@ -22,13 +22,17 @@ void ResoursceLoader::loadAllPrefabs( GameData & _gameData )
 void ResoursceLoader::loadPrefabs(PREFAB_TYPE prefabType, const char * prefabsFile, GameData & _gameData )
 {
 	try{
-	PredabReader_XML prefabReader(prefabsFile, prefabType);
+	XML_Reader_Lite xmlReader(prefabsFile);
+	PrefabPlant * _prefabPlant = PrefabPlant::CreatePrefabPlantFor(prefabType);
+	GameObjectReader prefabReader(_prefabPlant, &xmlReader);
 	while(prefabReader.hasNext())
 	{
 		_gameData.addPrefab(prefabType, prefabReader.getNext());
 	}
+	PrefabPlant::DeletePrefabPlant(_prefabPlant);
 	}catch(My_Exception& excep)
 	{
+
 		MessageBoxA( NULL, excep.what(), "An exception has occured!", MB_OK | MB_ICONERROR | MB_TASKMODAL);
 	}
 }

@@ -1,17 +1,16 @@
 #include "PredabReader_XML.h"
+#include "Exceptions.h"
 
 using namespace std;
 
 
-PredabReader_XML::PredabReader_XML(string fileName, PREFAB_TYPE prefabType )
+XML_Reader_Lite::XML_Reader_Lite(string fileName)
 {
 	hr = S_OK;
 	pFileStream = NULL;
 	pReader = NULL;
 	mErrorFlag = false;
-	readyPrefab = false;
-	openReadingPrefab = false;
-
+	
 	//Open read-only input stream
 	if (FAILED(hr = SHCreateStreamOnFile((LPCTSTR) fileName.c_str(), STGM_READ, &pFileStream)))
 	{
@@ -37,59 +36,18 @@ PredabReader_XML::PredabReader_XML(string fileName, PREFAB_TYPE prefabType )
 		wprintf(L"Error setting input for reader, error is %08.8lx", hr);
 		HR(hr);
 	}
-	mPrefabPlant = PrefabPlant::CreatePrefabPlantFor(prefabType);
 }
 
 
-
-Prefab & PredabReader_XML::getNext()
-{
-	XmlNodeType nodeType;
-	if (mErrorFlag == true)
-	{
-		throw My_Exception("Try to read from broken file");
-	}
-	readyPrefab = false;
-	while (S_OK == (hr = pReader->Read(&nodeType)) && (!(readyPrefab = mPrefabPlant->IsPrefabReady())))
-	{
-		switch (nodeType)
-		{
-		case XmlNodeType_XmlDeclaration:
-			break;
-		case XmlNodeType_Element:
-			readXml_Element();
-			break;
-		case XmlNodeType_EndElement:
-			readXML_EndElement();
-			break;
-		case XmlNodeType_Whitespace:
-			break;
-		case XmlNodeType_Text:
-			readXML_Text();
-			break;
-		case XmlNodeType_CDATA:
-		case XmlNodeType_ProcessingInstruction:
-		case XmlNodeType_Comment:
-		case XmlNodeType_DocumentType:
-		default:
-				break;
-		}
-
-	}
-	return mPrefabPlant->getCreatedPrefab();
-}
-
-PredabReader_XML::~PredabReader_XML( void )
+XML_Reader_Lite::~XML_Reader_Lite( void )
 {
 	if(pFileStream)
 		pFileStream->Release();
 	if(pReader)
 		pReader->Release();
-
-	PrefabPlant::DeletePrefabPlant(mPrefabPlant);
 }
 
-bool PredabReader_XML::CHKHR( HRESULT state )
+bool XML_Reader_Lite::CHKHR( HRESULT state )
 {
 	if (FAILED(hr))
 	{
@@ -99,13 +57,13 @@ bool PredabReader_XML::CHKHR( HRESULT state )
 	return mErrorFlag;
 }
 
-bool PredabReader_XML::HR( HRESULT state )
+bool XML_Reader_Lite::HR( HRESULT state )
 {
 	CleanUp();
 	return mErrorFlag = true;
 }
 
-bool PredabReader_XML::CleanUp()
+bool XML_Reader_Lite::CleanUp()
 {
 	if(pFileStream)
 		pFileStream->Release();
@@ -118,15 +76,15 @@ bool PredabReader_XML::CleanUp()
 	return true;
 }
 
-void PredabReader_XML::readXml_Element()
+XML_Element XML_Reader_Lite::readXml_Element()
 {
+	XML_Element tmp;
 	const WCHAR* pwszPrefix;
 	const WCHAR* pwszLocalName;
-	UINT cwchPrefix;
-	BOOL isEmptyElement = pReader->IsEmptyElement();
+	tmp.isEmptyElement = pReader->IsEmptyElement();
 
 	
-	if (FAILED(hr = pReader->GetPrefix(&pwszPrefix, &cwchPrefix)))
+	if (FAILED(hr = pReader->GetPrefix(&pwszPrefix, &tmp.cwchPrefix)))
 	{
 		wprintf(L"Error getting prefix, error is %08.8lx", hr);
 		HR(hr);
@@ -136,203 +94,185 @@ void PredabReader_XML::readXml_Element()
 		wprintf(L"Error getting local name, error is %08.8lx", hr);
 		HR(hr);
 	}
-
-	if (mPrefabPlant->getPrefabNodeName() == pwszLocalName && openReadingPrefab)
-	{
-		throw My_Exception("XML Reader: Declarate Prefab in prefab.");
-	}
-
-	if (cwchPrefix > 0)
-		mPrefabPlant->nextElement(pwszPrefix, pwszLocalName);
-	else
-		mPrefabPlant->nextElement(pwszLocalName);
-
-	if (FAILED(hr = readAttributes()))
-	{
-		wprintf(L"Error reading attributes, error is %08.8lx", hr);
-		HR(hr);
-	}
-	if(isEmptyElement)
-		mPrefabPlant->closeElement(pwszLocalName);
+	tmp.pwszPrefix = pwszPrefix;
+	tmp.pwszLocalName = pwszLocalName;
+	return tmp;
 }
 
-void PredabReader_XML::readXML_EndElement()
+
+
+XML_Element XML_Reader_Lite::readXML_Text()
 {
-	const WCHAR* pwszPrefix;
-	const WCHAR* pwszLocalName;
-	UINT cwchPrefix;
-	if (FAILED(hr = pReader->GetPrefix(&pwszPrefix, &cwchPrefix)))
-	{
-		wprintf(L"Error getting prefix, error is %08.8lx", hr);
-		HR(hr);
-	}
-	if (FAILED(hr = pReader->GetLocalName(&pwszLocalName, NULL)))
-	{
-		wprintf(L"Error getting local name, error is %08.8lx", hr);
-		HR(hr);
-	}
-
-	//Skip insignificant node
-	if (mPrefabPlant->getPrefabRootNode() == pwszLocalName)
-		return;
-	if (mPrefabPlant->getPrefabNodeName() == pwszLocalName)
-	{
-		openReadingPrefab = false;
-		readyPrefab = mPrefabPlant->IsPrefabReady();
-	}
-
-	if (cwchPrefix > 0)
-		mPrefabPlant->closeElement(pwszPrefix, pwszLocalName);
-	else
-		mPrefabPlant->closeElement(pwszLocalName);
-}
-
-void PredabReader_XML::readXML_Text()
-{
+	XML_Element tmp;
 	const WCHAR* pwszValue;
 	if (FAILED(hr = pReader->GetValue(&pwszValue, NULL)))
 	{
 		wprintf(L"Error getting value, error is %08.8lx", hr);
 		HR(hr);
 	}
-		mPrefabPlant->setAttribute(NULL, pwszValue);
+	tmp.pwszLocalName = pwszValue;
+	return tmp;
 }
 
-HRESULT PredabReader_XML::readAttributes()
-{
-	const WCHAR* pwszPrefix;
-	const WCHAR* pwszLocalName;
-	const WCHAR* pwszValue;
-	HRESULT hr = pReader->MoveToFirstAttribute();
 
-	if (S_FALSE == hr)
-		return hr;
-	if (S_OK != hr)
-	{
-		wprintf(L"Error moving to first attribute, error is %08.8lx", hr);
-		return hr;
-	}
-	else
-	{
-		while (TRUE)
-		{
-			if (!pReader->IsDefault())
-			{
-				UINT cwchPrefix;
-				if (FAILED(hr = pReader->GetPrefix(&pwszPrefix, &cwchPrefix)))
-				{
-					wprintf(L"Error getting prefix, error is %08.8lx", hr);
-					return hr;
-				}
-				if (FAILED(hr = pReader->GetLocalName(&pwszLocalName, NULL)))
-				{
-					wprintf(L"Error getting local name, error is %08.8lx", hr);
-					return hr;
-				}
-				if (FAILED(hr = pReader->GetValue(&pwszValue, NULL)))
-				{
-					wprintf(L"Error getting value, error is %08.8lx", hr);
-					return hr;
-				}
-				if (cwchPrefix > 0)
-					mPrefabPlant->setAttribute(pwszPrefix, pwszLocalName, pwszValue);
-				else
-					mPrefabPlant->setAttribute(pwszLocalName, pwszValue);
-			}
-
-			if (S_OK != pReader->MoveToNextAttribute())
-				break;
-		}
-	}
-	return hr;
-}
-
-bool PredabReader_XML::hasNext()
+bool XML_Reader_Lite::hasNextElement()
 {
 	if (mErrorFlag || FAILED(hr))
 	{
 		return false;
 	}
-	return readToNextPrefab();
+	first_attribute = true; // It open reading next element, so next will be readed first attribute
+	return SUCCEEDED(hr = pReader->Read(&nodeType));
 }
 
-bool PredabReader_XML::readToNextPrefab()
+XML_Element XML_Reader_Lite::getNextElement()
 {
-	const WCHAR* pwszPrefix;
-	const WCHAR* pwszLocalName;
-	UINT cwchPrefix;
-	BOOL isEmptyElement = pReader->IsEmptyElement();
-	XmlNodeType nodeType;
-	wstring tmp;
+	XML_Element tmp;
 	if (mErrorFlag == true)
 	{
-		return false;
+		throw My_Exception("Try to read from broken file");
 	}
-	resetPrefab();
-
-	while (S_OK == (hr = pReader->Read(&nodeType)) && !readyPrefab)
+	if(S_OK == hr)
 	{
 		switch (nodeType)
 		{
 		case XmlNodeType_XmlDeclaration:
 			break;
 		case XmlNodeType_Element:
-
-			if (FAILED(hr = pReader->GetPrefix(&pwszPrefix, &cwchPrefix)))
-			{
-				wprintf(L"Error getting prefix, error is %08.8lx", hr);
-				HR(hr);
-				return false;
-			}
-			if (FAILED(hr = pReader->GetLocalName(&pwszLocalName, NULL)))
-			{
-				wprintf(L"Error getting local name, error is %08.8lx", hr);
-				HR(hr);
-				return false;
-			}
-			tmp = mPrefabPlant->getPrefabRootNode();
-			//Skip insignificant nodes
-			if (mPrefabPlant->getPrefabRootNode() == pwszLocalName)
-				break;
-			if(!wcscmp(L"max_id",pwszLocalName))
-				break;
-
-			if (mPrefabPlant->getPrefabNodeName() != pwszLocalName)
-				break;
-			
-			if (mPrefabPlant->getPrefabNodeName() == pwszLocalName && openReadingPrefab)
-			{
-				throw My_Exception("XML Reader: Declarate Prefab in prefab.");
-			} else
-			{
-				openReadingPrefab = true;
-			}
-
-			if (cwchPrefix > 0)
-				mPrefabPlant->nextElement(pwszPrefix, pwszLocalName);
-			else
-				mPrefabPlant->nextElement(pwszLocalName);
-
-			if (FAILED(hr = readAttributes()))
-			{
-				wprintf(L"Error reading attributes, error is %08.8lx", hr);
-				HR(hr);
-			}
-			if(isEmptyElement)
-				throw My_Exception("XML Reader: There is empty prefab in file, stopped parsing");
-
-			return SUCCEEDED(hr);
-
+		case XmlNodeType_EndElement:
+			tmp = readXml_Element();
+			break;
+		case XmlNodeType_Whitespace:
+			break;
+		case XmlNodeType_Text:
+			tmp = readXML_Text();
+			break;
+		case XmlNodeType_CDATA:
+		case XmlNodeType_ProcessingInstruction:
+		case XmlNodeType_Comment:
+		case XmlNodeType_DocumentType:
 		default:
 			break;
 		}
-
+		tmp.nodeType = nodeType;
+		return tmp;
 	}
+	return XML_Element();
+}
+
+bool XML_Reader_Lite::hasNextAttribute()
+{
+	if (first_attribute)
+	{
+		hr_attr = pReader->MoveToFirstAttribute();
+		first_attribute = false;
+	} else
+	{
+		hr_attr = pReader->MoveToNextAttribute();
+	}
+	if (S_OK == hr_attr)
+		return true;
+	else
 		return false;
 }
 
-void PredabReader_XML::resetPrefab()
+XML_Attribute XML_Reader_Lite::getNextAttribute()
 {
-	mPrefabPlant->resetPrefab();
-	readyPrefab = false;
+	XML_Attribute tmp;
+	const WCHAR* pwszPrefix;
+	const WCHAR* pwszLocalName;
+	const WCHAR* pwszValue;
+	UINT cwchPrefix;
+	
+
+	if (S_FALSE == hr_attr)
+		return tmp;
+	else
+	{
+		if (!pReader->IsDefault())
+		{
+			if (FAILED(hr = pReader->GetPrefix(&pwszPrefix, &cwchPrefix)))
+			{
+				throw My_Exception("Error getting prefix, error is " + std::to_string(hr));
+			}
+			if (FAILED(hr = pReader->GetLocalName(&pwszLocalName, NULL)))
+			{
+				throw My_Exception("Error getting local name, error is " + std::to_string(hr));
+			}
+			if (FAILED(hr = pReader->GetValue(&pwszValue, NULL)))
+			{
+				throw My_Exception("Error getting value, error is "  + std::to_string(hr));
+			}
+		}
+		tmp.pwszLocalName = pwszLocalName;
+		tmp.pwszPrefix = pwszPrefix;
+		tmp.pwszValue = pwszValue;
+		tmp.cwchPrefix = cwchPrefix;
+		return tmp;
+	}
+}
+
+
+//----------------------------------------------------------------------------------------
+
+
+GameObjectReader::GameObjectReader( PrefabPlant * _gameObjectPlant, XML_Reader * _XMLReader )
+{
+	mGameObjectPlant = _gameObjectPlant;
+	mXMLReader = _XMLReader;
+}
+
+bool GameObjectReader::hasNext()
+{
+	resetPrefab();
+	XML_Element element;
+	XML_Attribute attribute;
+	while (!mReadyPrefab && mXMLReader->hasNextElement())
+	{
+		element = mXMLReader->getNextElement();
+		if (element.nodeType == XmlNodeType_Element)
+		{
+			mGameObjectPlant->nextElement(element.pwszLocalName);
+			while (mXMLReader->hasNextAttribute())
+			{
+				attribute = mXMLReader->getNextAttribute();
+				if (attribute.cwchPrefix > 0)
+				{
+					mGameObjectPlant->setAttribute(attribute.pwszPrefix, attribute.pwszLocalName, attribute.pwszValue);
+				} else
+				{
+					mGameObjectPlant->setAttribute(attribute.pwszLocalName, attribute.pwszValue);
+				}
+			}
+			if (element.isEmptyElement)
+			{
+				mGameObjectPlant->closeElement(element.pwszLocalName);
+			}
+		} else if (element.nodeType == XmlNodeType_EndElement)
+		{
+			if (element.pwszLocalName == mGameObjectPlant->getPrefabRootNode())
+			{
+				return false;
+			} 
+			mGameObjectPlant->closeElement(element.pwszLocalName);
+			if (element.pwszLocalName == mGameObjectPlant->getPrefabNodeName())
+			{
+				mReadyPrefab = mGameObjectPlant->IsPrefabReady();
+				break;
+			}
+		}
+
+	}
+	return mReadyPrefab;
+}
+
+Prefab & GameObjectReader::getNext()
+{
+	return mGameObjectPlant->getCreatedPrefab();
+}
+
+void GameObjectReader::resetPrefab()
+{
+	mGameObjectPlant->resetPrefab();
+	mReadyPrefab = false;
 }

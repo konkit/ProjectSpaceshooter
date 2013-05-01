@@ -19,8 +19,11 @@ PrefabPlant::~PrefabPlant(void)
 
 void PrefabPlant::nextElement( const wstring & name )
 {
-	elements.push(name);
-	setMethodToFillProperty(name);
+	if (name != getPrefabRootNode())
+	{
+		elements.push(name);
+		setMethodToFillProperty(name);
+	}
 }
 
 
