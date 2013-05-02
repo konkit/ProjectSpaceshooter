@@ -6,7 +6,7 @@
 
 class CollisionSystem	{
 public:
-	CollisionSystem() : COLLISION_DAMAGE(20){}
+	CollisionSystem() : COLLISION_DAMAGE(5){}
 	//Method which resolves collisions
 	//collisions are resolved a posteriori
 	void update(GameData& mGameData);
@@ -20,10 +20,28 @@ public:
 	const unsigned COLLISION_DAMAGE;
 private:
 	bool collisionWithStatic( GameObject_WithCollider * currentObject, GameObject_WithCollider * otherObject );
+
+
 	bool collisionWithBullet( GameObject_WithCollider * currentObject, GameObject_WithCollider * otherObject );
 	bool collisionWithExplosion( GameObject_WithCollider * currentObject, GameObject_WithCollider * otherObject );
 	bool collisionBetweenShips( GameObject_WithCollider * currentObject, GameObject_WithCollider * otherObject );
 
 	bool inline isShip( GameObjectType currType );
+	
+	/**
+	* Check if type is equal static object or core
+	* @return Return true if object is Static object or is the Core
+	* @param GameObjectType currType
+	* @author Zyga
+	*/
+	bool inline isStaticObject( GameObjectType currType );
+
+	/**
+	* Check if it is collision between bullet and bullet owner
+	* @return True if type of bullet owner is the same as type of second parameter
+	* @param GameObject_WithCollider * currentObject
+	* @param GameObject_WithCollider * otherObject
+	* @author Zyga
+	*/
 	bool isBulletAndOwner( GameObject_WithCollider * currentObject, GameObject_WithCollider * otherObject );
 };

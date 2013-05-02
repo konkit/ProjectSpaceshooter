@@ -29,7 +29,7 @@ void CollisionSystem::CheckForCollisions( GameObject_WithCollider * currentObjec
 			oth =  otherObject->getType();
 
 			if(!(curr == GameObjectType::effectObject && oth == GameObjectType::effectObject)) // Checking collision between two effect haven't sense because nothing happened
-				if(!isBulletAndOwner(currentObject, otherObject))
+				if(!isBulletAndOwner(currentObject, otherObject)) // Don't check collision if it is collision between bullet and bullet owner
 					if (currentObject->isColidingWith(otherObject))
 					{
 						servCollisionBetween(currentObject, otherObject);
@@ -43,16 +43,16 @@ void CollisionSystem::CheckForCollisions( GameObject_WithCollider * currentObjec
 
 void CollisionSystem::servCollisionBetween( GameObject_WithCollider * currentObject, GameObject_WithCollider * otherObject )
 {
-	if (collisionWithStatic(currentObject, otherObject))
+	if (collisionWithBullet(currentObject, otherObject))
 	{
 		return;
-	} else if(collisionWithBullet(currentObject, otherObject))
+	} else if(collisionBetweenShips(currentObject, otherObject))
 	{
 		return;
 	} else if(collisionWithExplosion(currentObject, otherObject))
 	{
 		return;	
-	} else if(collisionBetweenShips(currentObject, otherObject))
+	} else if(collisionWithStatic(currentObject, otherObject))
 		return;
 	return;
 }
@@ -66,8 +66,8 @@ bool CollisionSystem::isBulletAndOwner( GameObject_WithCollider * currentObject,
 
 	if (currType == GameObjectType::bulletObject || othType == GameObjectType::bulletObject)
 	{
-		//switch object, I assume that Bullet Object is in variable currentObject
-		if (currType != GameObjectType::staticObject)
+		//switch object, I assume that Bullet Object is in variable 'currentObject'
+		if (currType != GameObjectType::bulletObject)
 		{
 			tmp = currentObject;			tmptype  = currType;
 			currentObject = otherObject;	currType = othType;
@@ -94,17 +94,17 @@ bool CollisionSystem::collisionWithStatic( GameObject_WithCollider * currentObje
 	currType = currentObject->getType();
 	othType = otherObject->getType();
 	GameObject_WithCollider * tmp;
-	if (currType == GameObjectType::staticObject || othType == GameObjectType::staticObject)
+	if (isStaticObject(currType) || isStaticObject(othType))
 	{
-		//switch object, I assume that Static Object is in variable currentObject
-		if (currType != GameObjectType::staticObject)
+		//switch object, I assume that Static Object is in variable 'currentObject'
+		if (!isStaticObject(currType))
 		{
 			tmp = currentObject;			tmptype  = currType;
 			currentObject = otherObject;	currType = othType;
 			otherObject = tmp;				othType  = tmptype;
 		} 
 
-		if (othType == GameObjectType::staticObject)
+		if (isStaticObject(othType))
 		{
 			currentObject->kill();
 			otherObject->kill();
@@ -114,7 +114,7 @@ bool CollisionSystem::collisionWithStatic( GameObject_WithCollider * currentObje
 			unsigned velocity;
 			ship = dynamic_cast<Ship*>(otherObject);
 			velocity = ship->getPhysicsComponent().getCurrentVelocityValue();
-			currentObject->receiveDamage(COLLISION_DAMAGE * velocity);
+			currentObject->receiveDamage(COLLISION_DAMAGE * velocity / 10);
 			otherObject->kill();
 		} else
 		{
@@ -136,7 +136,7 @@ bool CollisionSystem::collisionWithBullet( GameObject_WithCollider * currentObje
 
 	if (currType == GameObjectType::bulletObject || othType == GameObjectType::bulletObject)
 	{
-		//switch object, I assume that Bullet Object is in variable currentObject
+		//switch object, I assume that Bullet Object is in variable 'currentObject'
 		if (currType != GameObjectType::bulletObject)
 		{
 			tmp = currentObject;			tmptype  = currType;
@@ -238,6 +238,11 @@ void CollisionSystem::drawColiderDebug( GameObject_WithCollider * obj )
 bool CollisionSystem::isShip( GameObjectType currType )
 {
 	return currType == GameObjectType::enemyObject || currType == GameObjectType::player;
+}
+
+bool CollisionSystem::isStaticObject( GameObjectType currType )
+{
+	return (currType == GameObjectType::staticObject || currType == GameObjectType::core);
 }
 
 

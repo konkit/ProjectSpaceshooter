@@ -43,6 +43,10 @@ public:
 	}
 
 	void updateOneObject( GameObject_Movable* it, float deltaTime ) {
+		if (it == NULL) //TODO
+		{
+			return;
+		}
 		PhysicsComponent& tmpPhysics = it->getPhysicsComponent();
 
 		tmpPhysics.updateVelocity();

@@ -77,7 +77,7 @@ void AISystem::toCoreFlyingAI( EnemyObject* it, GameData& mGameData,  TimeData t
 	}
 	
 #ifdef _DEBUG
-	std::cout<<"Distance from core = "<<it->getPosition().distance( cntCore.getPosition() )<<std::endl;
+//	std::cout<<"Distance from core = "<<it->getPosition().distance( cntCore.getPosition() )<<std::endl;
 #endif
 
 	if( cntAI.getState() == AI_STATE::GET_TO_CORE )

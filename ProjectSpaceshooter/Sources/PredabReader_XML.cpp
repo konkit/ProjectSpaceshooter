@@ -3,6 +3,7 @@
 
 using namespace std;
 
+#ifdef _WIN32
 
 XML_Reader_Lite::XML_Reader_Lite(string fileName)
 {
@@ -84,7 +85,7 @@ XML_Element XML_Reader_Lite::readXml_Element()
 	tmp.isEmptyElement = pReader->IsEmptyElement();
 
 	
-	if (FAILED(hr = pReader->GetPrefix(&pwszPrefix, &tmp.cwchPrefix)))
+	if (FAILED(hr = pReader->GetPrefix(&pwszPrefix, &tmp.countPrefix)))
 	{
 		wprintf(L"Error getting prefix, error is %08.8lx", hr);
 		HR(hr);
@@ -94,8 +95,8 @@ XML_Element XML_Reader_Lite::readXml_Element()
 		wprintf(L"Error getting local name, error is %08.8lx", hr);
 		HR(hr);
 	}
-	tmp.pwszPrefix = pwszPrefix;
-	tmp.pwszLocalName = pwszLocalName;
+	tmp.prefix = pwszPrefix;
+	tmp.elementName = pwszLocalName;
 	return tmp;
 }
 
@@ -110,18 +111,18 @@ XML_Element XML_Reader_Lite::readXML_Text()
 		wprintf(L"Error getting value, error is %08.8lx", hr);
 		HR(hr);
 	}
-	tmp.pwszLocalName = pwszValue;
+	tmp.elementName = pwszValue;
 	return tmp;
 }
 
 
-bool XML_Reader_Lite::hasNextElement()
+bool XML_Reader_Lite::readToNextElement()
 {
 	if (mErrorFlag || FAILED(hr))
 	{
 		return false;
 	}
-	first_attribute = true; // It open reading next element, so next will be readed first attribute
+	first_attribute = true; // This method will move XML parser to next XML node, so attribute will be read from first attribute
 	return SUCCEEDED(hr = pReader->Read(&nodeType));
 }
 
@@ -160,8 +161,9 @@ XML_Element XML_Reader_Lite::getNextElement()
 	return XML_Element();
 }
 
-bool XML_Reader_Lite::hasNextAttribute()
+bool XML_Reader_Lite::readToNextAttribute()
 {
+	// This method assume that after move to next element 'first_attribute' is set to 'true'
 	if (first_attribute)
 	{
 		hr_attr = pReader->MoveToFirstAttribute();
@@ -204,17 +206,37 @@ XML_Attribute XML_Reader_Lite::getNextAttribute()
 				throw My_Exception("Error getting value, error is "  + std::to_string(hr));
 			}
 		}
-		tmp.pwszLocalName = pwszLocalName;
-		tmp.pwszPrefix = pwszPrefix;
-		tmp.pwszValue = pwszValue;
-		tmp.cwchPrefix = cwchPrefix;
+		tmp.attributeName = pwszLocalName;
+		tmp.prefix = pwszPrefix;
+		tmp.attributeValue = pwszValue;
+		tmp.countPrefix = cwchPrefix;
 		return tmp;
 	}
 }
 
-
+#endif
 //----------------------------------------------------------------------------------------
+#ifdef __linux__
+bool Linux_XML_Reader::readToNextElement()
+{
+	throw std::exception("The method or operation is not implemented.");
+}
 
+XML_Element Linux_XML_Reader::getNextElement()
+{
+	throw std::exception("The method or operation is not implemented.");
+}
+
+bool Linux_XML_Reader::readToNextAttribute()
+{
+	throw std::exception("The method or operation is not implemented.");
+}
+
+XML_Attribute Linux_XML_Reader::getNextAttribute()
+{
+	throw std::exception("The method or operation is not implemented.");
+}
+#endif
 
 GameObjectReader::GameObjectReader( PrefabPlant * _gameObjectPlant, XML_Reader * _XMLReader )
 {
@@ -227,35 +249,35 @@ bool GameObjectReader::hasNext()
 	resetPrefab();
 	XML_Element element;
 	XML_Attribute attribute;
-	while (!mReadyPrefab && mXMLReader->hasNextElement())
+	while (!mReadyPrefab && mXMLReader->readToNextElement())
 	{
 		element = mXMLReader->getNextElement();
 		if (element.nodeType == XmlNodeType_Element)
 		{
-			mGameObjectPlant->nextElement(element.pwszLocalName);
-			while (mXMLReader->hasNextAttribute())
+			mGameObjectPlant->nextElement(element.elementName);
+			while (mXMLReader->readToNextAttribute())
 			{
 				attribute = mXMLReader->getNextAttribute();
-				if (attribute.cwchPrefix > 0)
+				if (attribute.countPrefix > 0)
 				{
-					mGameObjectPlant->setAttribute(attribute.pwszPrefix, attribute.pwszLocalName, attribute.pwszValue);
+					mGameObjectPlant->setAttribute(attribute.prefix, attribute.attributeName, attribute.attributeValue);
 				} else
 				{
-					mGameObjectPlant->setAttribute(attribute.pwszLocalName, attribute.pwszValue);
+					mGameObjectPlant->setAttribute(attribute.attributeName, attribute.attributeValue);
 				}
 			}
 			if (element.isEmptyElement)
 			{
-				mGameObjectPlant->closeElement(element.pwszLocalName);
+				mGameObjectPlant->closeElement(element.elementName);
 			}
 		} else if (element.nodeType == XmlNodeType_EndElement)
 		{
-			if (element.pwszLocalName == mGameObjectPlant->getPrefabRootNode())
+			if (element.elementName == mGameObjectPlant->getPrefabRootNode())
 			{
 				return false;
 			} 
-			mGameObjectPlant->closeElement(element.pwszLocalName);
-			if (element.pwszLocalName == mGameObjectPlant->getPrefabNodeName())
+			mGameObjectPlant->closeElement(element.elementName);
+			if (element.elementName == mGameObjectPlant->getPrefabNodeName())
 			{
 				mReadyPrefab = mGameObjectPlant->IsPrefabReady();
 				break;
@@ -276,3 +298,4 @@ void GameObjectReader::resetPrefab()
 	mGameObjectPlant->resetPrefab();
 	mReadyPrefab = false;
 }
+

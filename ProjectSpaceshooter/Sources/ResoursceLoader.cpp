@@ -33,7 +33,7 @@ void ResoursceLoader::loadPrefabs(PREFAB_TYPE prefabType, const char * prefabsFi
 	}catch(My_Exception& excep)
 	{
 
-		MessageBoxA( NULL, excep.what(), "An exception has occured!", MB_OK | MB_ICONERROR | MB_TASKMODAL);
+		MessageBoxA( NULL, excep.what(), "An exception has occurred!", MB_OK | MB_ICONERROR | MB_TASKMODAL);
 	}
 }
 

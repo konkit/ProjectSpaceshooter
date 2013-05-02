@@ -25,6 +25,13 @@ public:
 	  * @param time - time data which is needed for example in shooting
 	  */
 	void update(GameData& mGameData, TimeData& time);
+
+	void updateShooting( GameData &mGameData );
+
+	void updateObjectWithTTL( GameData &mGameData, TimeData &time );
+
+	void serveShooting( Ship * shooter, GameData &mGameData );
+
 	void destroyPlayer(GameData& mGameData);
 	void removeDeadObjects( GameData& mGameData);
 	void createExplosionFor( GameObject_WithCollider * removedObject, GameData& mGameData );

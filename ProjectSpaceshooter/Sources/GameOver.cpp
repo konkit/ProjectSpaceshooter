@@ -12,6 +12,7 @@ GAME_STATES GameOver::update( SystemsSet & gameSystems, TimeData& time )
 	if (!deadCamera)
 	{
 		setDeadCamera(gameSystems);
+		gameSystems.mObjectStateSystem.destroyPlayer(gameSystems.gameData);
 	}
 	gameSystems.inputManager.updateInputForPause(gameSystems.gameData);
 	gameSystems.mAISystem.update(gameSystems.gameData, time);

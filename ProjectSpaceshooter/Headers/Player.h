@@ -17,7 +17,7 @@ public:
 	{
 		createCameraNode();
 	}
-	~Player(){}
+	virtual ~Player(){}
 	void setShip(const ShipPrefab * objectTemplate,const WeaponPrefab * weapon, Ogre::SceneManager * _sceneMenager)  {Ship::setShip(objectTemplate, weapon, _sceneMenager);}
 	GameObjectType getType() {
 		return GameObjectType::player;

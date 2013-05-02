@@ -5,7 +5,7 @@
 	<effect id='1'>
 		<effect_name name='Explosion'/>
 		<ttl value='1.5'/>
-		<effect_power value='200'/>
+		<effect_power value='10'/>
 		<particleSystemName name='Explosion'/>
 		<Colliders>
 			<inaccurate_Collider>
@@ -21,7 +21,7 @@
 	<effect id='2'>
 		<effect_name name='SuperNova'/>
 		<ttl value='10'/>
-		<effect_power value='400'/>
+		<effect_power value='10'/>
 		<particleSystemName name='Supernova'/>
 		<Colliders>
 			<inaccurate_Collider>
