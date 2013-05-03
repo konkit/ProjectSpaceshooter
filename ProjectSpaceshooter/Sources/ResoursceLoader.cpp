@@ -25,6 +25,7 @@ void ResoursceLoader::loadPrefabs(PREFAB_TYPE prefabType, const char * prefabsFi
 	XML_Reader_Lite xmlReader(prefabsFile);
 	PrefabPlant * _prefabPlant = PrefabPlant::CreatePrefabPlantFor(prefabType);
 	GameObjectReader prefabReader(_prefabPlant, &xmlReader);
+	_gameData.setCountOfPrefabs(prefabType, prefabReader.countOfPrefabs());
 	while(prefabReader.hasNext())
 	{
 		_gameData.addPrefab(prefabType, prefabReader.getNext());

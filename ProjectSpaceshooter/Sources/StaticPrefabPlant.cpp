@@ -42,31 +42,32 @@ void StaticPrefabPlant::resetPrefab()
 	prefabReady = false;
 }
 
-void StaticPrefabPlant::setMethodToFillProperty( const wstring & name )
-{
-	if (SetMethodToFillBasicProperty(name))
-	{
-		methodToFillStaticProperty = methodToFillBasicProperty;
-	} else if(SetMethodToFillColliderProperty(name))
-	{
-		methodToFillStaticProperty = methodToFillColliderProperty;
-	} else if(SetMethodToFillMeshProperty(name))
-	{
-		methodToFillStaticProperty = methodToFillMeshProperty;
-	} else
-	{
-		methodToFillStaticProperty = &StaticPrefabPlant::_doNothing;
-	}
-}
-
-void StaticPrefabPlant::fillPrefabProperty( const wstring & attribute, const wstring & value )
-{
-	(this->*methodToFillStaticProperty)(attribute,value);
-}
-
 StaticPrefabPlant::~StaticPrefabPlant()
 {
 
+}
+
+bool StaticPrefabPlant::setAttribute( const wstring & attribute, const wstring & value )
+{
+	const wstring & name = elements.top();
+	if (PrefabPlant::setAttribute(attribute, value)) // Try to set properties in 'PrefabPlant'
+	{
+		return true;	// When succeed return true because property was set 
+	} else if(PrefabWithCollider_Plant::setAttribute(attribute, value))
+	{
+		return true; 
+	} else if(PrefabWithMesh_Plant::setAttribute(attribute, value))
+	{
+		return true;
+	} else
+	{
+		return false;
+	}
+}
+
+bool StaticPrefabPlant::setAttribute( const wstring & prefix, const wstring & attribute, const wstring & value )
+{
+	return setAttribute(attribute, value);
 }
 
 

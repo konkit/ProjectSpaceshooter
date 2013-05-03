@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <bullet_prefabs>
+  <max_id id='1'/>
   <bullet id='1'>
     <bullet_name name='rocket'  />
     <mesh name='bullet3.mesh'/>

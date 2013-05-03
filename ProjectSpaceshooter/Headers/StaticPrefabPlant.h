@@ -10,9 +10,7 @@ class StaticPrefabPlant : virtual public PrefabWithCollider_Plant, virtual publi
 {
 public:
 	StaticPrefabPlant();
-	~StaticPrefabPlant();
-
-	virtual void setText( const wstring & text );
+	virtual ~StaticPrefabPlant();
 
 	virtual Prefab & getCreatedPrefab();
 
@@ -24,12 +22,13 @@ public:
 
 	virtual void resetPrefab();
 
-	virtual void setMethodToFillProperty( const wstring & name );
+	virtual bool setAttribute( const wstring & attribute, const wstring & value );
+
+	virtual bool setAttribute( const wstring & prefix, const wstring & attribute, const wstring & value );
+
+	virtual void setText( const wstring & text );
 
 private:
-	virtual void fillPrefabProperty( const wstring & attribute, const wstring & value );
-
-	void (StaticPrefabPlant:: *methodToFillStaticProperty)(const wstring & attribute, const wstring & value);
 	
 	static const wstring rootStaticPrefabsNode;
 	static const wstring prefabName;

@@ -7,6 +7,21 @@
 #include "StaticPrefabPlant.h"
 #include "EffectPrefabPlant.h"
 #include "WeaponPrefab_Plant.h"
+
+
+unsigned int ValueToUINT(const wstring &value )
+{ 
+	wchar_t *pEnd;
+	unsigned int id = static_cast<unsigned int> (wcstol(value.c_str(), &pEnd, 10));
+	return id;
+}
+
+double ValueToDouble(const wstring &value )
+{ 
+	wchar_t *pEnd;
+	return wcstod(value.c_str(), &pEnd);
+}
+
 PrefabPlant::PrefabPlant(void)
 	: prefabReady(false)
 {
@@ -22,7 +37,6 @@ void PrefabPlant::nextElement( const wstring & name )
 	if (name != getPrefabRootNode())
 	{
 		elements.push(name);
-		setMethodToFillProperty(name);
 	}
 }
 
@@ -34,20 +48,19 @@ void PrefabPlant::nextElement( const wstring & name, const wstring & prefix )
 
 void PrefabPlant::closeElement( const wstring & name )
 {
+	setAttribute(L"close", L"");
+	
 	if(elements.empty() || elements.top() != name)
 		throw My_Exception("Close XML Element: XML document don't meet standard");
 	else
 		elements.pop();
 
-	fillPrefabProperty(L"close", L"");
 
 	if (elements.empty())
 	{
 		prefabReady = true;
-	} else
-	{
-		setMethodToFillProperty(elements.top());
-	}}
+	} 
+}
 
 void PrefabPlant::closeElement( const wstring & prefix, const wstring & name )
 {
@@ -87,18 +100,7 @@ bool PrefabPlant::IsPrefabReady()
 }
 
 
-unsigned int PrefabPlant::ValueToUINT(const wstring &value )
-{ 
-	wchar_t *pEnd;
-	unsigned int id = static_cast<unsigned int> (wcstol(value.c_str(), &pEnd, 10));
-	return id;
-}
 
-double PrefabPlant::ValueToDouble(const wstring &value )
-{ 
-	wchar_t *pEnd;
-	return wcstod(value.c_str(), &pEnd);
-}
 
 void PrefabWithCollider_Plant::_setCollider( const wstring & attribute, const wstring & value )
 {
@@ -183,55 +185,8 @@ void PrefabWithCollider_Plant::clearCollider()
 PrefabWithCollider_Plant::PrefabWithCollider_Plant()
 	:prefabWithCollider(NULL)
 {
-	methodToFillColliderProperty = &PrefabWithCollider_Plant::_doNothing;
 }
 
-bool PrefabWithCollider_Plant::SetMethodToFillColliderProperty( const wstring & name )
-{
-
-	if (name == PrefabWithCollider_Plant::health)
-	{
-		methodToFillColliderProperty = &PrefabWithCollider_Plant::_setMaxHealth;
-	} else if (name == PrefabWithCollider_Plant::Colliders)
-	{
-		methodToFillColliderProperty = &PrefabWithCollider_Plant::_doNothing;
-	}
-	else if (name == PrefabWithCollider_Plant::Collider)
-	{
-		methodToFillColliderProperty = &PrefabWithCollider_Plant::_setCollider;
-	}
-	else if (name == PrefabWithCollider_Plant::inaccurate_Collider)
-	{
-		methodToFillColliderProperty = &PrefabWithCollider_Plant::_setInaccurateCollider;
-	}
-	else if (name == PrefabWithCollider_Plant::offset)
-	{
-		if (methodToFillColliderProperty == &PrefabWithCollider_Plant::_setCollider || methodToFillColliderProperty == &PrefabWithCollider_Plant::_setInaccurateCollider)
-		{
-			methodToFillColliderProperty = &PrefabWithCollider_Plant::_setColliderOffset;
-		} else
-		{
-			throw My_Exception("PrefabWithCollider_Plant nextElement: incorrect Prefab format - offset is not inside Collider node");
-		}
-	}
-	else if (name == PrefabWithCollider_Plant::radius)
-	{
-		if (methodToFillColliderProperty == &PrefabWithCollider_Plant::_setCollider || methodToFillColliderProperty == &PrefabWithCollider_Plant::_setInaccurateCollider)
-		{
-			methodToFillColliderProperty = &PrefabWithCollider_Plant::_setColliderRadius;
-		} else
-		{
-			throw My_Exception("PrefabWithCollider_Plant nextElement: incorrect Prefab format - radius is not inside Collider node");
-		}
-	} else if (name == PrefabWithCollider_Plant::explosion_id)
-	{
-		methodToFillColliderProperty = &PrefabWithCollider_Plant::_setExplosionID;
-	} else
-	{
-		return false;
-	}
-	return true;
-}
 
 PrefabWithCollider_Plant::~PrefabWithCollider_Plant()
 {
@@ -258,19 +213,85 @@ void PrefabWithCollider_Plant::_setExplosionID( const wstring & attribute, const
 	};
 }
 
+bool PrefabWithCollider_Plant::setAttribute( const wstring & attribute, const wstring & value )
+{
+	if (elements.size() < 2)
+	{
+		return false; // Because next line can't execute if there is less then one element on stack
+					  // If there are less then 2 element on stack it can be Prefab property
+	}
+
+	wstring stack_top = elements.top(); 
+	//There is required to know value which is below top of stack
+	elements.pop();
+	const wstring & stack_prev = elements.top();
+	elements.push(stack_top);
+
+	if (stack_top == PrefabWithCollider_Plant::health)
+	{
+		_setMaxHealth(attribute, value);
+	} else if (stack_top == PrefabWithCollider_Plant::Colliders)
+	{
+		return true;
+	}
+	else if (stack_top == PrefabWithCollider_Plant::Collider)
+	{
+		_setCollider(attribute, value);
+	}
+	else if (stack_top == PrefabWithCollider_Plant::inaccurate_Collider)
+	{
+		_setInaccurateCollider(attribute, value);
+	}
+	else if (stack_top == PrefabWithCollider_Plant::offset)
+	{
+		if (stack_prev == Collider || stack_prev == inaccurate_Collider) // TODO
+		{
+			_setColliderOffset(attribute, value);
+		}
+	}
+	else if (stack_top == PrefabWithCollider_Plant::radius)
+	{
+		_setColliderRadius(attribute, value);
+	} else if (stack_top == PrefabWithCollider_Plant::explosion_id)
+	{
+		_setExplosionID(attribute, value);
+	} else
+	{
+		return false;
+	}
+	return true;
+	
+}
+
+bool PrefabWithCollider_Plant::setAttribute( const wstring & prefix, const wstring & attribute, const wstring & value )
+{
+	return PrefabWithCollider_Plant::setAttribute(attribute, value);
+}
+
 void PrefabPlant::_doNothing( const wstring & attribute, const wstring & value )
 {
 	return;
 }
 
-void PrefabPlant::setAttribute( const wstring & attribute, const wstring & value )
+bool PrefabPlant::setAttribute( const wstring & attribute, const wstring & value )
 {
-	fillPrefabProperty(attribute, value);
+	wstring name = elements.top();
+	if (name == getPrefabNodeName())
+	{
+		_setPrefabID(attribute, value);
+	} else if (name == getPrefabName())
+	{
+		_setPrefabName(attribute, value);
+	} else
+	{
+		return false;
+	}
+	return true;
 }
 
-void PrefabPlant::setAttribute( const wstring & prefix, const wstring & attribute, const wstring & value )
+bool PrefabPlant::setAttribute( const wstring & prefix, const wstring & attribute, const wstring & value )
 {
-	setAttribute(attribute,value);
+	return setAttribute(attribute,value);
 }
 
 void PrefabPlant::setPrefab( Prefab * pref )
@@ -278,20 +299,6 @@ void PrefabPlant::setPrefab( Prefab * pref )
 	_prefab = pref;
 }
 
-bool PrefabPlant::SetMethodToFillBasicProperty( const wstring & name )
-{
-	if (name == getPrefabNodeName())
-	{
-		methodToFillBasicProperty = &PrefabPlant::_setPrefabID;
-	} else if (name == getPrefabName())
-	{
-		methodToFillBasicProperty = &PrefabPlant::_setPrefabName;
-	} else
-	{
-		return false;
-	}
-		return true;
-}
 
 void PrefabPlant::_setPrefabID( const wstring & attribute, const wstring & value )
 {
@@ -376,33 +383,41 @@ void PrefabWithMesh_Plant::_setRotation( const wstring & attribute, const wstrin
 	}
 }
 
-bool PrefabWithMesh_Plant::SetMethodToFillMeshProperty( const wstring & name )
-{
-	if (name == PrefabWithMesh_Plant::mesh)
-	{
-		methodToFillMeshProperty = &PrefabWithMesh_Plant::_setMeshName;
-	} else if (name == PrefabWithMesh_Plant::scale)
-	{
-		methodToFillMeshProperty = &PrefabWithMesh_Plant::_setScale;
-	}
-	else if (name == PrefabWithMesh_Plant::rotation)
-	{
-		methodToFillMeshProperty = &PrefabWithMesh_Plant::_setRotation;
-	} else
-	{
-		return false;
-	}
-		return true;
-}
+
 
 PrefabWithMesh_Plant::PrefabWithMesh_Plant()
 {
-	methodToFillMeshProperty = &PrefabWithMesh_Plant::_doNothing;
 }
 
 PrefabWithMesh_Plant::~PrefabWithMesh_Plant()
 {
 
+}
+
+bool PrefabWithMesh_Plant::setAttribute( const wstring & attribute, const wstring & value )
+{
+	wstring name = elements.top();
+
+	if (name == PrefabWithMesh_Plant::mesh)
+	{
+		_setMeshName(attribute, value);
+	} else if (name == PrefabWithMesh_Plant::scale)
+	{
+		_setScale(attribute, value);
+	}
+	else if (name == PrefabWithMesh_Plant::rotation)
+	{
+		_setRotation(attribute, value);
+	} else
+	{
+		return false;
+	}
+	return true;
+}
+
+bool PrefabWithMesh_Plant::setAttribute( const wstring & prefix, const wstring & attribute, const wstring & value )
+{
+	return setAttribute(attribute, value);
 }
 
 const wchar_t * PrefabPlant::max_acceleration   = L"max_acceleration";

@@ -12,20 +12,14 @@ public:
 	virtual const wstring getPrefabRootNode();
 	virtual const wstring getPrefabNodeName();
 	virtual const wstring getPrefabName();
-	void setMethodToFillProperty( const wstring & name );
-
+	virtual bool setAttribute( const wstring & attribute, const wstring & value );
+	virtual bool setAttribute( const wstring & prefix, const wstring & attribute, const wstring & value );
 private:
-	void fillPrefabProperty(const wstring & attribute, const wstring & value );
 	void _setMaxVelocity(const wstring & attribute, const wstring & value);
 	void _setShipName(const wstring & attribute, const wstring & value);
 	void _setAutoAim(const wstring & attribute, const wstring & value);
 	void _setBulletPower(const wstring & attribute, const wstring & value);
 	void _setTTL(const wstring & attribute, const wstring & value);
-
-	//--------------------------------------------------------------------------------------
-
-
-	void (BulletPrefabPlant:: *methodToFillBulletProperty)(const wstring & attribute, const wstring & value);
 
 
 	static const wstring rootBulletPrefabsNode;

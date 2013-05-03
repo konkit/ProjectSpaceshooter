@@ -118,12 +118,13 @@ XML_Element XML_Reader_Lite::readXML_Text()
 
 bool XML_Reader_Lite::readToNextElement()
 {
-	if (mErrorFlag || FAILED(hr))
+	if (mErrorFlag == true || hr != S_OK)
 	{
 		return false;
 	}
 	first_attribute = true; // This method will move XML parser to next XML node, so attribute will be read from first attribute
-	return SUCCEEDED(hr = pReader->Read(&nodeType));
+	hr = pReader->Read(&nodeType);
+	return hr == S_OK;
 }
 
 XML_Element XML_Reader_Lite::getNextElement()
@@ -249,7 +250,12 @@ bool GameObjectReader::hasNext()
 	resetPrefab();
 	XML_Element element;
 	XML_Attribute attribute;
-	while (!mReadyPrefab && mXMLReader->readToNextElement())
+
+	// It there is no more object's to read return.
+	if (!readToNextObject())
+		return false;
+
+	do 
 	{
 		element = mXMLReader->getNextElement();
 		if (element.nodeType == XmlNodeType_Element)
@@ -283,8 +289,7 @@ bool GameObjectReader::hasNext()
 				break;
 			}
 		}
-
-	}
+	} while (!mReadyPrefab && mXMLReader->readToNextElement());
 	return mReadyPrefab;
 }
 
@@ -297,5 +302,42 @@ void GameObjectReader::resetPrefab()
 {
 	mGameObjectPlant->resetPrefab();
 	mReadyPrefab = false;
+}
+
+bool GameObjectReader::readToNextObject()
+{
+	XML_Element element;
+	while (mXMLReader->readToNextElement())
+	{
+		element = mXMLReader->getNextElement();
+		if (element.nodeType == XmlNodeType_Element && element.elementName == mGameObjectPlant->getPrefabNodeName())
+			{
+				return true;
+			} 
+	}
+	return false;
+}
+
+unsigned GameObjectReader::countOfPrefabs()
+{
+	XML_Element element;
+	XML_Attribute attribute;
+	while (mXMLReader->readToNextElement())
+	{
+		element = mXMLReader->getNextElement();
+		if (element.nodeType == XmlNodeType_Element && wstring(element.elementName) == wstring(L"max_id"))
+		{
+			while(mXMLReader->readToNextAttribute())
+			{
+				attribute = mXMLReader->getNextAttribute();
+				if (attribute.attributeName == wstring(L"id"))
+				{
+					return ValueToUINT(attribute.attributeValue);
+				}
+			}
+			throw My_Exception("There isn't attribute 'id' in max_id node");
+		} 
+	}
+	throw My_Exception("There isn't max_id in this file");
 }
 

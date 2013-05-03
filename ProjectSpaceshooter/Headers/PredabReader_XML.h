@@ -130,7 +130,7 @@ private:
 	string mFileName;
 	bool mErrorFlag;
 	XmlNodeType nodeType;
-	HRESULT STDMETHODCALLTYPE hr_attr;
+	HRESULT hr_attr;
 	bool first_attribute;
 };
 #endif
@@ -183,10 +183,12 @@ public:
 	* Get read gameObject.
 	* @return Return gameObject which is read from file
 	* @author Zyga
-	*/
+	*/	
 	Prefab & getNext();
+	unsigned countOfPrefabs();
 private:
 	void resetPrefab();
+	bool readToNextObject();
 	bool mReadyPrefab;
 	PrefabPlant * mGameObjectPlant;
 	XML_Reader * mXMLReader;

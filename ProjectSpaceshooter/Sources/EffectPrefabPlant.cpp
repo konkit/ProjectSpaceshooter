@@ -31,41 +31,10 @@ void EffectPrefabPlant::resetPrefab()
 	prefabReady = false;
 }
 
-void EffectPrefabPlant::setMethodToFillProperty( const wstring & name )
-{
-	if (SetMethodToFillBasicProperty(name))
-	{
-		methodToFillEffectProperty = methodToFillBasicProperty;
-	} 
-	else if (SetMethodToFillColliderProperty(name))
-	{
-		methodToFillEffectProperty = methodToFillColliderProperty;
-	}
-	else if (name == particleSystemName)
-	{
-		methodToFillEffectProperty = &EffectPrefabPlant::_setParticleSystemName;
-	} else if (name == ttl)
-	{
-		methodToFillEffectProperty = &EffectPrefabPlant::_setTTL;
-	} else if (name == effect_power)
-	{
-		methodToFillEffectProperty = &EffectPrefabPlant::_setEffectPower;
-	} else
-	{
-		methodToFillEffectProperty = &EffectPrefabPlant::_doNothing;
-	}
-}
-
-void EffectPrefabPlant::fillPrefabProperty( const wstring & attribute, const wstring & value )
-{
-	(this->*methodToFillEffectProperty)(attribute, value);
-}
-
 EffectPrefabPlant::EffectPrefabPlant()
 {
 	PrefabPlant::setPrefab(&mEffectPrefab);
 	PrefabWithCollider_Plant::setPrefab(&mEffectPrefab);
-	methodToFillEffectProperty = &EffectPrefabPlant::_doNothing;
 }
 
 EffectPrefabPlant::~EffectPrefabPlant()
@@ -106,13 +75,42 @@ void EffectPrefabPlant::_setEffectPower( const wstring & attribute, const wstrin
 	};
 }
 
+bool EffectPrefabPlant::setAttribute( const wstring & attribute, const wstring & value )
+{
+	const wstring & stack_top = elements.top();
+
+	if (PrefabPlant::setAttribute(attribute,value))
+	{
+		return true;
+	} 
+	else if (PrefabWithCollider_Plant::setAttribute(attribute, value))
+	{
+		return true;
+	}
+	else if (stack_top == particleSystemName)
+	{
+		_setParticleSystemName(attribute,value);
+	} else if (stack_top == ttl)
+	{
+		_setTTL(attribute,value);
+	} else if (stack_top == effect_power)
+	{
+		_setEffectPower(attribute,value);
+	} else
+	{
+		return false;
+	}
+}
+
+bool EffectPrefabPlant::setAttribute( const wstring & prefix, const wstring & attribute, const wstring & value )
+{
+	throw std::exception("The method or operation is not implemented.");
+}
+
+
 const wchar_t * EffectPrefabPlant::particleSystemName = L"particleSystemName";
-
 const wchar_t * EffectPrefabPlant::effect_name = L"effect_name";
-
-const wstring EffectPrefabPlant::prefabName = L"effect";
-
-const wstring EffectPrefabPlant::rootEffectPrefabsNode = L"effect_prefabs";
-
+const wstring   EffectPrefabPlant::prefabName = L"effect";
+const wstring   EffectPrefabPlant::rootEffectPrefabsNode = L"effect_prefabs";
 const wchar_t * EffectPrefabPlant::ttl = L"ttl";
 const wchar_t * EffectPrefabPlant::effect_power = L"effect_power";

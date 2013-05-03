@@ -66,6 +66,10 @@ public:
 		exceptionString << "There are no prefab with id =" << prefabID << " in prefab collection " << collName;
 		throw exception(exceptionString.str().c_str());
 	}
+	void setCountOfPrefab(unsigned max_id)
+	{
+		mPrefabs.resize(max_id);
+	}
 
 protected:
 
@@ -115,6 +119,9 @@ public:
 		}
 		mWeaponCollection[prefabID] = _weaponPrefab;
 	}
+
+	void setCountOfWeaponPrefab(unsigned max_id){ mWeaponCollection.resize(max_id);}
+	void setCountOfShipPrefab(unsigned max_id){ mPrefabs.resize(max_id);}
 private:
 	vector<WeaponPrefab> mWeaponCollection;
 };

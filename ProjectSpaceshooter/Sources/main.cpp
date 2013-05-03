@@ -63,7 +63,12 @@ extern "C" {
     int main(int argc, char *argv[])
 #endif
     {
+
+
+#ifdef _DEBUG
 		showWin32Console();
+#endif // _DEBUG
+
         // Create application object
         //Application app;
 		Game app;

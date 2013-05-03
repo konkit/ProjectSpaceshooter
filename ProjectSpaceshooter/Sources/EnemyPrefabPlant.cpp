@@ -40,40 +40,6 @@ const wstring EnemyPrefabPlant::getPrefabNodeName()
 	return wstring(prefabName);
 }
 
-void EnemyPrefabPlant::setMethodToFillProperty( const wstring & name )
-{
-	if (SetMethodToFillBasicProperty(name))
-	{
-		methodToFillEnemyProperty = methodToFillBasicProperty;
-	} else if (name == PrefabPlant::max_velocity)
-	{
-		methodToFillEnemyProperty = &EnemyPrefabPlant::_setMaxVelocity;
-	}
-	else if (name == PrefabPlant::max_acceleration)
-	{
-		methodToFillEnemyProperty = &EnemyPrefabPlant::_setMaxAcceleration;
-	}
-	else if (name == PrefabPlant::max_angle_velocity)
-	{
-		methodToFillEnemyProperty = &EnemyPrefabPlant::_setMaxAngleVellocity;
-	} else if (SetMethodToFillMeshProperty(name))
-	{
-		methodToFillEnemyProperty = methodToFillMeshProperty;
-	} else if (SetMethodToFillColliderProperty(name))
-	{
-		methodToFillEnemyProperty = methodToFillColliderProperty;
-	}
-	else if (name == PrefabPlant::standard_waepon)
-	{
-		methodToFillEnemyProperty = &EnemyPrefabPlant::_setWaeponPrefab;
-	}	
-	else
-	{
-		methodToFillEnemyProperty = &EnemyPrefabPlant::_doNothing;
-	}
-
-}
-
 
 Prefab & EnemyPrefabPlant::getCreatedPrefab()
 {
@@ -111,7 +77,7 @@ void EnemyPrefabPlant::_setMaxAcceleration( const wstring & attribute, const wst
 	};
 }
 
-void EnemyPrefabPlant::_setMaxAngleVellocity( const wstring & attribute, const wstring & value )
+void EnemyPrefabPlant::_setMaxAngleVelocity( const wstring & attribute, const wstring & value )
 {
 	if (attribute == PrefabPlant::value)
 	{
@@ -121,15 +87,49 @@ void EnemyPrefabPlant::_setMaxAngleVellocity( const wstring & attribute, const w
 	};
 }
 
-
-void EnemyPrefabPlant::fillPrefabProperty(const wstring & attribute, const wstring & value )
-{
-	(this->*methodToFillEnemyProperty)(attribute, value);
-}
-
 const wstring EnemyPrefabPlant::getPrefabName()
 {
 	return wstring(ship_name);
+}
+
+bool EnemyPrefabPlant::setAttribute( const wstring & attribute, const wstring & value )
+{
+	const wstring & stack_top = elements.top();
+	if (PrefabPlant::setAttribute(attribute, value))
+	{
+		return true;
+	} else if (stack_top == PrefabPlant::max_velocity)
+	{
+		_setMaxVelocity(attribute, value);
+	}
+	else if (stack_top == PrefabPlant::max_acceleration)
+	{
+		_setMaxAcceleration(attribute, value);
+	}
+	else if (stack_top == PrefabPlant::max_angle_velocity)
+	{
+		_setMaxAngleVelocity(attribute, value);
+	} else if (PrefabWithMesh_Plant::setAttribute(attribute, value))
+	{
+		return true;
+	} else if (PrefabWithCollider_Plant::setAttribute(attribute, value))
+	{
+		return true;
+	}
+	else if (stack_top == PrefabPlant::standard_waepon)
+	{
+		_setWaeponPrefab(attribute, value);
+	}	
+	else
+	{
+		return false;
+	}
+
+}
+
+bool EnemyPrefabPlant::setAttribute( const wstring & prefix, const wstring & attribute, const wstring & value )
+{
+	return setAttribute(attribute, value);
 }
 
 

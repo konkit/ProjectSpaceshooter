@@ -5,6 +5,9 @@
 
 using namespace std;
 
+unsigned int ValueToUINT(const wstring &value );
+double ValueToDouble(const wstring &value );
+
 /**
  * 
  * 
@@ -19,12 +22,12 @@ public:
 	static PrefabPlant * CreatePrefabPlantFor(PREFAB_TYPE prefabType);
 	static void DeletePrefabPlant(PrefabPlant * _prefabPlant);
 	
-	virtual void nextElement(const wstring & name);
-	virtual void nextElement(const wstring & prefix, const wstring & name);
-	virtual void closeElement(const wstring & name) ;
-	virtual void closeElement(const wstring & prefix, const wstring & name);
-	virtual void setAttribute(const wstring & attribute, const wstring & value);
-	virtual void setAttribute(const wstring & prefix, const wstring & attribute, const wstring & value);
+	void nextElement(const wstring & name);
+	void nextElement(const wstring & prefix, const wstring & name);
+	void closeElement(const wstring & name) ;
+	void closeElement(const wstring & prefix, const wstring & name);
+	virtual bool setAttribute(const wstring & attribute, const wstring & value);
+	virtual bool setAttribute(const wstring & prefix, const wstring & attribute, const wstring & value);
 	virtual void setText(const wstring & text) = 0;
 
 	virtual Prefab & getCreatedPrefab() = 0;
@@ -40,16 +43,10 @@ public:
 	void setPrefab(Prefab * pref);
 
 protected:
-	virtual void setMethodToFillProperty( const wstring & name ) = 0;
-	virtual void fillPrefabProperty(const wstring & attribute, const wstring & value ) = 0;
-
+	
 	void _doNothing(const wstring & attribute, const wstring & value);
 	void _setPrefabID(const wstring & attribute, const wstring & value);
 	void _setPrefabName(const wstring & attribute, const wstring & value);
-	bool SetMethodToFillBasicProperty( const wstring & name );
-	void (PrefabPlant:: *methodToFillBasicProperty)(const wstring & attribute, const wstring & value);
-	unsigned int ValueToUINT(const wstring &value);
-	double ValueToDouble(const wstring &value );
 	bool prefabReady;
 	stack<wstring> elements;
 
@@ -84,6 +81,8 @@ class PrefabWithCollider_Plant : virtual public PrefabPlant
 public:
 	PrefabWithCollider_Plant();
 	virtual ~PrefabWithCollider_Plant();
+	virtual bool setAttribute( const wstring & attribute, const wstring & value );
+	virtual bool setAttribute( const wstring & prefix, const wstring & attribute, const wstring & value );
 protected:
 	void setPrefab(PrefabWithCollider * val) 
 	{ 
@@ -96,8 +95,6 @@ protected:
 	void _setColliderOffset(const wstring & attribute, const wstring & value);
 	void _setMaxHealth(const wstring & attribute, const wstring & value);
 	void _setExplosionID(const wstring & attribute, const wstring & value);
-	bool SetMethodToFillColliderProperty( const wstring & name );
-	void (PrefabWithCollider_Plant:: *methodToFillColliderProperty)(const wstring & attribute, const wstring & value);
 
 	static const wchar_t * health;
 	static const wchar_t * Collider;
@@ -109,6 +106,7 @@ protected:
 private:
 	PrefabWithCollider * prefabWithCollider;
 	void clearCollider();
+
 	Collider_struct Collider_str;
 };
 
@@ -123,7 +121,10 @@ class PrefabWithMesh_Plant : virtual public PrefabPlant
 public:
 	PrefabWithMesh_Plant();
 	virtual ~PrefabWithMesh_Plant();
-	bool SetMethodToFillMeshProperty( const wstring & name );
+
+	virtual bool setAttribute( const wstring & attribute, const wstring & value );
+	virtual bool setAttribute( const wstring & prefix, const wstring & attribute, const wstring & value );
+
 protected:
 	void setPrefab(PrefabWithMesh * val) 
 	{
@@ -133,14 +134,15 @@ protected:
 	void _setMeshName(const wstring & attribute, const wstring & value);
 	void _setScale(const wstring & attribute, const wstring & value);
 	void _setRotation(const wstring & attribute, const wstring & value);
+
+
 	static const wchar_t * x_scale;
 	static const wchar_t * y_scale;
 	static const wchar_t * z_scale;
 	static const wchar_t * x_rot;
 	static const wchar_t * y_rot;
 	static const wchar_t * z_rot;
-	void (PrefabWithMesh_Plant:: *methodToFillMeshProperty)(const wstring & attribute, const wstring & value);
-
+	
 	static const wchar_t * mesh;
 	static const wchar_t * scale;
 	static const wchar_t * rotation;

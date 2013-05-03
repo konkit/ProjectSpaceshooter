@@ -20,36 +20,6 @@ void BulletPrefabPlant::setText( const wstring & text )
 	throw std::exception("The method or operation is not implemented.");
 }
 
-void BulletPrefabPlant::setMethodToFillProperty( const wstring & name )
-{
-	if (SetMethodToFillBasicProperty(name))
-	{
-		methodToFillBulletProperty = methodToFillBasicProperty;
-	} else if (name == PrefabPlant::max_velocity)
-	{
-		methodToFillBulletProperty = &BulletPrefabPlant::_setMaxVelocity;
-	} else if (SetMethodToFillMeshProperty(name))
-	{
-		methodToFillBulletProperty = methodToFillMeshProperty;
-	} else if (SetMethodToFillColliderProperty(name))
-	{
-		methodToFillBulletProperty = methodToFillColliderProperty;
-	} else if (name == auto_aim)
-	{
-		methodToFillBulletProperty = &BulletPrefabPlant::_setAutoAim;
-	} else if(name == bullet_power) 
-	{
-		 methodToFillBulletProperty = &BulletPrefabPlant::_setBulletPower;
-	} else if(name == ttl) 
-	{
-		methodToFillBulletProperty = &BulletPrefabPlant::_setTTL;
-	}else
-	{
-		methodToFillBulletProperty = &BulletPrefabPlant::_doNothing;
-	}
-
-}
-
 void BulletPrefabPlant::resetPrefab()
 {
 	mBulletPrefab.resetPrefab();
@@ -69,11 +39,6 @@ const wstring BulletPrefabPlant::getPrefabNodeName()
 Prefab & BulletPrefabPlant::getCreatedPrefab()
 {
 	return static_cast<Prefab &>(mBulletPrefab);
-}
-
-void BulletPrefabPlant::fillPrefabProperty( const wstring & attribute, const wstring & value )
-{
-	(this->*methodToFillBulletProperty)(attribute,value);
 }
 
 void BulletPrefabPlant::_setAutoAim( const wstring & attribute, const wstring & value )
@@ -130,6 +95,43 @@ void BulletPrefabPlant::_setTTL( const wstring & attribute, const wstring & valu
 		val = ValueToDouble(value);
 		mBulletPrefab.setTTL(val);
 	};
+}
+
+bool BulletPrefabPlant::setAttribute( const wstring & attribute, const wstring & value )
+{
+	const  wstring & stack_top = elements.top();
+
+	if (PrefabPlant::setAttribute(attribute, value))
+	{
+		return true;
+	} else if (stack_top == PrefabPlant::max_velocity)
+	{
+		_setMaxVelocity(attribute, value);
+	} else if (PrefabWithMesh_Plant::setAttribute(attribute,value))
+	{
+		return true;
+	} else if (PrefabWithCollider_Plant::setAttribute(attribute, value))
+	{
+		return true;
+	} else if (stack_top == auto_aim)
+	{
+		_setAutoAim(attribute, value);
+	} else if(stack_top == bullet_power) 
+	{
+		_setBulletPower(attribute, value);
+	} else if(stack_top == ttl) 
+	{
+		_setTTL(attribute, value);
+	}else
+	{
+		return false;
+	}
+
+}
+
+bool BulletPrefabPlant::setAttribute( const wstring & prefix, const wstring & attribute, const wstring & value )
+{
+	throw std::exception("The method or operation is not implemented.");
 }
 
 

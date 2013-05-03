@@ -212,6 +212,7 @@ public:
 
 	bool isPlayerDead();
 	bool isCoreDead();
+	void setCountOfPrefabs( PREFAB_TYPE prefabType, unsigned count );
 private:
 	struct changeFlagsStruct
 	{

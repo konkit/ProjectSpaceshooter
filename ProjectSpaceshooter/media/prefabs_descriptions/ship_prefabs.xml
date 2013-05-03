@@ -7,7 +7,7 @@
     <mesh name='smallfighter.MESH' />
 		<max_velocity value='700' />
 		<max_acceleration value='10' />
-		<max_angle_velocity value='1' />
+		<max_angle_velocity value='3' />
     <explosion_id id='1'/>
     <health value='300' />
 		<scale x_scale='1' y_scale='1' z_scale='1' />

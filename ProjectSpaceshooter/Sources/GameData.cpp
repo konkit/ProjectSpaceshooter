@@ -225,6 +225,30 @@ bool GameData::isCoreDead()
 	return true;
 }
 
+void GameData::setCountOfPrefabs( PREFAB_TYPE prefabType, unsigned count )
+{
+	switch (prefabType)
+	{
+	case PREFAB_TYPE::EnemyPrefab:
+		mEnemyCollection.setCountOfShipPrefab(count);
+		break;
+	case PREFAB_TYPE::BulletPrefab:
+		mBulletCollection.setCountOfPrefab(count);
+		break;
+	case PREFAB_TYPE::StaticPrefab:
+		mStaticCollection.setCountOfPrefab(count);
+		break;
+	case PREFAB_TYPE::EffectPrefab:
+		mEffectsCollection.setCountOfPrefab(count);
+		break;
+	case PREFAB_TYPE::WeaponPrefab:
+		mEnemyCollection.setCountOfWeaponPrefab(count);
+		break;
+	default:
+		break;
+	}
+}
+
 
 bool GameData::ColidingObjectsIterator::hasNext()
 {

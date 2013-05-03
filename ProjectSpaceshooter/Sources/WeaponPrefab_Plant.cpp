@@ -3,7 +3,6 @@
 WeaponPrefabPlant::WeaponPrefabPlant()
 {
 	mWeaponPrefab.resetPrefab();
-	methodToFillWeaponProperty = &WeaponPrefabPlant::_doNothing;
 	PrefabPlant::setPrefab(&mWeaponPrefab);
 }
 
@@ -37,29 +36,6 @@ void WeaponPrefabPlant::resetPrefab()
 {
 	mWeaponPrefab.resetPrefab();
 	prefabReady = false;
-	methodToFillWeaponProperty = &WeaponPrefabPlant::_doNothing;
-}
-
-void WeaponPrefabPlant::setMethodToFillProperty( const wstring & name )
-{
-	if (SetMethodToFillBasicProperty(name))
-	{
-		methodToFillWeaponProperty = methodToFillBasicProperty;
-	} else if (name == bullet_prefab)
-	{
-		methodToFillWeaponProperty = &WeaponPrefabPlant::_setBulletPrefabID;
-	} else if(name == rateOfFire)
-	{
-		methodToFillWeaponProperty = &WeaponPrefabPlant::_setRateOfFire;
-	} else
-	{
-		methodToFillWeaponProperty = &WeaponPrefabPlant::_doNothing;
-	}
-}
-
-void WeaponPrefabPlant::fillPrefabProperty( const wstring & attribute, const wstring & value )
-{
-	(this->*methodToFillWeaponProperty)(attribute, value);
 }
 
 void WeaponPrefabPlant::_setRateOfFire( const wstring & attribute, const wstring & value )
@@ -88,6 +64,30 @@ void WeaponPrefabPlant::_setBulletPrefabID( const wstring & attribute, const wst
 		unsigned id = ValueToUINT(value);
 		mWeaponPrefab.setBulletPrefabID(id);
 	}
+}
+
+bool WeaponPrefabPlant::setAttribute( const wstring & attribute, const wstring & value )
+{
+	const wstring & name = elements.top();
+	//Try to fill fields in 'PrefabPlant' part
+	if (PrefabPlant::setAttribute(attribute,value))
+	{
+		return true;
+	} else if (name == bullet_prefab)
+	{
+		_setBulletPrefabID(attribute, value);
+	} else if(name == rateOfFire)
+	{
+		_setRateOfFire(attribute, value);
+	} else
+	{
+		return false;
+	}
+}
+
+bool WeaponPrefabPlant::setAttribute( const wstring & prefix, const wstring & attribute, const wstring & value )
+{
+	return setAttribute(attribute, value);
 }
 
 const wstring WeaponPrefabPlant::prefabName(L"weapon");
