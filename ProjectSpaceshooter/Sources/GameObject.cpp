@@ -73,7 +73,19 @@ GameObject_WithCollider::GameObject_WithCollider(const PrefabWithCollider * pref
 GameObject_Movable::GameObject_Movable(const MovablePrefab * prefab, Ogre::SceneManager* sceneMgr )
 	:GameObject(prefab, sceneMgr), mPhysicsComponent(prefab)
 {
+	createThrusters(sceneMgr);
+}
 
+void GameObject_Movable::createThrusters( Ogre::SceneManager * _sceneMenager )
+{
+	string name("Thrusters");
+	name = name + std::to_string(uniqueID);
+	mThrousterNode = mNode->createChildSceneNode(name);
+	Ogre::ParticleSystem* particleSystem;
+	name = "particle " + std::to_string(uniqueID);
+	particleSystem = _sceneMenager->createParticleSystem(name, "thrusters");
+	mThrousterNode->attachObject( particleSystem );
+	mThrousterNode->translate(0,0,-10);
 }
 
 GameObject_WithHealth::GameObject_WithHealth(const PrefabWithCollider * prefab, Ogre::SceneManager* sceneMgr )

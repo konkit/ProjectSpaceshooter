@@ -33,13 +33,15 @@ public:
 		setHealthAndColliderFromPrefab(objectTemplate);
 		setPhysicsFromPrefab(objectTemplate);
 		mWeapon.setWeapon(weaponPrefab);
+		createThrusters(_sceneMenager);
 	}
 
 	virtual GameObjectType getType();
 
 	virtual bool receiveDamage( unsigned int damages, Vector3 fromDirection = Vector3(0,0,0 ) );
-
+	
 private:  
+
 	WeaponComponent mWeapon;
 };
 

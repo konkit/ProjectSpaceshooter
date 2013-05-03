@@ -48,6 +48,11 @@ private:
 		mCameraNode = mNode->createChildSceneNode("My_Camera");
 		return mCameraNode;
 	}
+
+
+
+
 	Ogre::SceneNode * mCameraNode;
+
 	Ogre::Camera * my_cam;
 };
