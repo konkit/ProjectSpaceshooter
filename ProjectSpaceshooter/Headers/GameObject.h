@@ -176,6 +176,11 @@ public:
 	void setTargetVelocity( Ogre::Vector3 localDirection ) {
 		mPhysicsComponent.setTargetVelocity( mNode->getOrientation(), localDirection );
 	}
+	void setMovement(bool forward, bool backward, bool left, bool right)	{
+		mPhysicsComponent.setMovement( mNode->getOrientation(), forward, backward, left, right);
+	}
+
+
 	PhysicsComponent& getPhysicsComponent()	{
 		return mPhysicsComponent;
 	}

@@ -35,7 +35,42 @@ public:
 	//set angular velocity (it is multiplied inside by maximum rotation velocity)
 	void setRotVelocity(float newRotVelocity);
 	//
+	float getTargetRotVelocity()	{
+		return targetRotVelocity;
+	}
+
+
 	void forceRotVelocity(float newRotVelocity);
+
+	void setMovement(Ogre::Quaternion orientation,bool forward, bool backward, bool left, bool right)	{
+		Ogre::Vector3 dir = Ogre::Vector3(0.0, 0.0, 0.0);
+		if( forward == true)	
+			dir.z += 1.0;
+		if( backward == true)
+			dir.z -= 1.0;
+		if( right == true)
+			dir.x += 1.0;
+		if( left == true)
+			dir.x -= 1.0;
+		
+		setTargetVelocity( orientation, dir );
+	}
+
+	void setRotation(bool clockwise, bool counterClockwise)	{
+		float angle = 0.0;
+
+		if( clockwise == true )
+			angle -= rotVelocityValue;
+
+		if( counterClockwise == true )	
+			angle += rotVelocityValue;
+		
+		if( clockwise == false && counterClockwise == false)
+			angle = 0.0f;
+
+		setRotVelocity(angle);
+	}
+
 
 	//get angular velocity
 	float getRotVelocity();
@@ -59,6 +94,7 @@ public:
 	}
 	void setFromPrefab( const MovablePrefab * prefab );
 	unsigned getCurrentVelocityValue();
+
 private:
 	Ogre::Vector3 currentVelocity;
 	float rotVelocity;
@@ -67,7 +103,10 @@ private:
 	float rotVelocityValue;
 
 	float accelerationValue;
+	float rotAcceleration;
+
 	Ogre::Vector3 targetVelocity;
+	float targetRotVelocity;
 
 	//@author Zyga
 	float mMaxAngleVelocity; //czy to wgl. jest potrzebne?
