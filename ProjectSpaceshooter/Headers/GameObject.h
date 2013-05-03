@@ -172,7 +172,18 @@ public:
 	}
 
 	void move(Ogre::Vector3 nPos) {		mNode->translate( nPos );	}
-	void rotate(float rotVelocity)	{	mNode->yaw( Ogre::Radian(rotVelocity) ); }
+	void rotate(float rotVelocityDelta, float rotVelocityValue)	{	
+		Ogre::Radian yaw = mNode->getOrientation().getYaw();
+		float roll = rotVelocityValue * -10.0;
+		Ogre::Radian rollRad =  Ogre::Radian( Ogre::Degree(roll) );
+
+		mNode->resetOrientation();
+
+		Ogre::Quaternion targetRoll( rollRad, Ogre::Vector3::UNIT_Z );
+		Ogre::Quaternion targetYaw( yaw + Ogre::Radian( rotVelocityDelta), Ogre::Vector3::UNIT_Y );
+
+		mNode->setOrientation( targetYaw * targetRoll );
+	}
 	void setTargetVelocity( Ogre::Vector3 localDirection ) {
 		mPhysicsComponent.setTargetVelocity( mNode->getOrientation(), localDirection );
 	}
