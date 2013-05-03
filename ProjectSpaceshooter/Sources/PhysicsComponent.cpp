@@ -12,7 +12,8 @@ Ogre::Vector3 PhysicsComponent::getCurrentVelocity()
 
 void PhysicsComponent::setRotVelocity( float newRotVelocity )
 {
-	rotVelocity = newRotVelocity > rotVelocityValue ? rotVelocityValue : newRotVelocity;
+	//rotVelocity = newRotVelocity > rotVelocityValue ? rotVelocityValue : newRotVelocity;
+	targetRotVelocity = newRotVelocity;
 }
 
 void PhysicsComponent::forceRotVelocity(float newRotVelocity)	{
@@ -34,8 +35,10 @@ PhysicsComponent::PhysicsComponent()
 	  rotVelocity(0.0),
 	  rotVelocityValue(2.0), 
 	  accelerationValue(5.0),
+	  rotAcceleration(0.05),
 	  maxVelocityValue(700.0),
-	  targetVelocity(0,0,0)
+	  targetVelocity(0,0,0),
+	  targetRotVelocity(0.0)
 {
 
 }
@@ -43,7 +46,8 @@ PhysicsComponent::PhysicsComponent()
 PhysicsComponent::PhysicsComponent(const MovablePrefab * prefab )
 	:   currentVelocity(0.0, 0.0, 0.0),	
 	    rotVelocity(0.0),
-	   targetVelocity(0,0,0)
+	   targetVelocity(0,0,0),
+	   rotAcceleration(0.05)
 {
 	maxVelocityValue = prefab->getMaxVelocity();
 	rotVelocityValue = prefab->getMaxAngleVelocity();
@@ -64,6 +68,19 @@ void PhysicsComponent::updateVelocity() {
 
 	//change current velocity by this vector
 	currentVelocity += diffVector;
+
+	//Calculating rotation velocity
+	float diffRotVelocity = targetRotVelocity - rotVelocity;
+
+	if( abs(diffRotVelocity) < abs(rotAcceleration) )	{
+		rotVelocity += diffRotVelocity;
+	} else 
+	if( diffRotVelocity > 0.01 )	{
+		rotVelocity += rotAcceleration;
+	} else if( diffRotVelocity < -0.01) {
+		rotVelocity -= rotAcceleration;
+	}
+
 }
 
 void PhysicsComponent::setTargetVelocity( Ogre::Quaternion orientation, Ogre::Vector3 localDir )

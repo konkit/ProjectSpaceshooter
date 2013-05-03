@@ -51,7 +51,7 @@ public:
 
 		tmpPhysics.updateVelocity();
 
-		it->rotate( tmpPhysics.getRotVelocity() * deltaTime );
+		it->rotate( tmpPhysics.getRotVelocity(), deltaTime );
 		it->move( tmpPhysics.getCurrentVelocity() * deltaTime );
 
 #ifdef _DEBUG

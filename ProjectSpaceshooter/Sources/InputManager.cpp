@@ -83,27 +83,43 @@ void InputManager::updateInputForGame(GameData& mGameData, float deltaTime, unsi
     if(mKeyboard->isKeyDown(OIS::KC_ESCAPE))
 		throw WindowClosedException();
 
+	bool forward = false, 
+		backward = false, 
+		left = false, 
+		right = false, 
+		clockwise = false, 
+		cntclockwise = false;
+
 	if(mKeyboard->isKeyDown(OIS::KC_W) )	{
-		tmpPos.z += 1.0;
+		//tmpPos.z += 1.0;
+		forward = true;
 	}
 	
 	if(mKeyboard->isKeyDown(OIS::KC_S) )	{
-		tmpPos.z -= 1.0;
+		//tmpPos.z -= 1.0;
+		backward = true;
 	}
 
 	if(mKeyboard->isKeyDown(OIS::KC_Q) )	{
-		tmpPos.x += 1.0;
+		//tmpPos.x += 1.0;
+		left = true;
 	}
 	
 	if(mKeyboard->isKeyDown(OIS::KC_E) )	{
-		tmpPos.x -= 1.0;
+		//tmpPos.x -= 1.0;
+		right = true;
 	}
 	if(mKeyboard->isKeyDown(OIS::KC_A) )	{
-		tmpAngle += 1.0;
+		//tmpAngle += 1.0;
+		cntclockwise = true;
 	}
 	if(mKeyboard->isKeyDown(OIS::KC_D) )	{
-		tmpAngle -= 1.0;
+		//tmpAngle -= 1.0;
+		clockwise = true;
 	}
+
+	mGameData.getPlayer()->setMovement(forward, backward, left, right);
+	mGameData.getPlayer()->getPhysicsComponent().setRotation(clockwise, cntclockwise);
 
 	if(mKeyboard->isKeyDown(OIS::KC_SPACE) )	{
 		//set shoot on player
@@ -129,8 +145,8 @@ void InputManager::updateInputForGame(GameData& mGameData, float deltaTime, unsi
 		wasH_KeyPressed = true;
 	}
 
-	mGameData.getPlayer()->setTargetVelocity( tmpPos );
-	mGameData.getPlayer()->getPhysicsComponent().setRotVelocity(tmpAngle);
+	//mGameData.getPlayer()->setTargetVelocity( tmpPos );
+	//mGameData.getPlayer()->getPhysicsComponent().setRotVelocity(tmpAngle);
 }
 
 void InputManager::updateInputForPause( GameData& mGameData )
