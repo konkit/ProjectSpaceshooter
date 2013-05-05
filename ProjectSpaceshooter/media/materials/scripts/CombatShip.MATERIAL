@@ -1,0 +1,141 @@
+material "\CombatShip.MESH/nave"
+{
+	technique
+	{
+		pass
+		{
+			ambient 1 1 1 1
+			diffuse 0.631373 0.631373 0.631373 0
+			specular 0 0 0 0
+			emissive 0 0 0
+
+			texture_unit
+			{
+				texture nave.jpg
+				tex_coord_set 0
+				colour_op modulate
+				scale 1 1
+				scroll 0 0
+				rotate 0
+			}
+		}
+	}
+}
+material "\CombatShip.MESH/alfa"
+{
+	technique
+	{
+		pass
+		{
+			ambient 1 1 1 1
+			diffuse 0.631373 0.631373 0.631373 0
+			specular 0 0 0 0
+			emissive 0 0 0
+
+			scene_blend alpha_blend
+			depth_write off
+
+			texture_unit
+			{
+				texture nave.jpg
+				tex_coord_set 0
+				colour_op modulate
+				scale 1 1
+				scroll 0 0
+				rotate 0
+			}
+		}
+	}
+}
+material "\CombatShip.MESH/misil"
+{
+	technique
+	{
+		pass
+		{
+			ambient 1 1 1 1
+			diffuse 0.588 0.588 0.588 0
+			specular 0 0 0 0
+			emissive 0 0 0
+
+			texture_unit
+			{
+				texture misil.jpg
+				tex_coord_set 0
+				colour_op modulate
+				scale 1 1
+				scroll 0 0
+				rotate 0
+			}
+		}
+	}
+}
+material "\CombatShip.MESH/soporte"
+{
+	technique
+	{
+		pass
+		{
+			ambient 1 1 1 1
+			diffuse 0.588 0.588 0.588 0
+			specular 0 0 0 0
+			emissive 0 0 0
+
+			texture_unit
+			{
+				texture soporte.jpg
+				tex_coord_set 0
+				colour_op modulate
+				scale 1 1
+				scroll 0 0
+				rotate 0
+			}
+		}
+	}
+}
+material "\CombatShip.MESH/canon"
+{
+	technique
+	{
+		pass
+		{
+			ambient 1 1 1 1
+			diffuse 0.588 0.588 0.588 0
+			specular 0 0 0 0
+			emissive 0 0 0
+
+			texture_unit
+			{
+				texture gun.jpg
+				tex_coord_set 0
+				colour_op modulate
+				scale 1 1
+				scroll 0 0
+				rotate 0
+			}
+		}
+	}
+}
+material "\CombatShip.MESH/dentro"
+{
+	technique
+	{
+		pass
+		{
+			ambient 1 1 1 1
+			diffuse 0.290196 0.290196 0.290196 0
+			specular 0 0 0 0
+			emissive 0 0 0
+
+			texture_unit
+			{
+				texture dentro.jpg
+				tex_coord_set 0
+				colour_op modulate
+				scale 1 1
+				scroll 0 0
+				rotate 0
+			}
+		}
+	}
+}

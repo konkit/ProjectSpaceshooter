@@ -27,7 +27,7 @@ bool Ship::receiveDamage( unsigned int damages, Vector3 fromDirection /*= Vector
 	{
 		Vector3 recoil = getPosition() - fromDirection;
 			recoil.normalise();
-			recoil = recoil * (damages * 10) * (-1);
+			recoil = recoil * (damages*8);
 			addRecoilVectorToCurrentVelocity(recoil);
 	}
 	return isDead;

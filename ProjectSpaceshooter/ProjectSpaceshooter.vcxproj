@@ -183,7 +183,7 @@
     <ClInclude Include="Headers\EffectPrefabPlant.h" />
     <ClInclude Include="Headers\DebugDrawer.h" />
     <ClInclude Include="Headers\Enemy.h" />
-    <ClInclude Include="Headers\EnemyPrefabPlant.h" />
+    <ClInclude Include="Headers\ShipPrefabPlant.h" />
     <ClInclude Include="Headers\EnemySpawner.h" />
     <ClInclude Include="Headers\Exceptions.h" />
     <ClInclude Include="Headers\EffectObject.h" />
@@ -232,7 +232,7 @@
     <ClCompile Include="Sources\EffectPrefabPlant.cpp" />
     <ClCompile Include="Sources\DebugDrawer.cpp" />
     <ClCompile Include="Sources\Enemy.cpp" />
-    <ClCompile Include="Sources\EnemyPrefabPlant.cpp" />
+    <ClCompile Include="Sources\ShipPrefabPlant.cpp" />
     <ClCompile Include="Sources\EnemySpawner.cpp" />
     <ClCompile Include="Sources\Game.cpp" />
     <ClCompile Include="Sources\GameData.cpp" />

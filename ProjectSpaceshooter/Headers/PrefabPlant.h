@@ -60,11 +60,10 @@ protected:
 	static const wchar_t * closeNode;
 	static const wchar_t * yes;
 	static const wchar_t * no;
+	static const wchar_t * offset;
 
 //---------- Element names --------------------------
-	static const wchar_t * max_velocity;
-	static const wchar_t * max_acceleration;
-	static const wchar_t * max_angle_velocity;
+
 	static const wchar_t * standard_waepon;
 
 private:
@@ -100,7 +99,7 @@ protected:
 	static const wchar_t * Collider;
 	static const wchar_t * inaccurate_Collider;
 	static const wchar_t * Colliders;
-	static const wchar_t * offset;
+
 	static const wchar_t * radius;
 	static const wchar_t * explosion_id;
 private:
@@ -135,7 +134,6 @@ protected:
 	void _setScale(const wstring & attribute, const wstring & value);
 	void _setRotation(const wstring & attribute, const wstring & value);
 
-
 	static const wchar_t * x_scale;
 	static const wchar_t * y_scale;
 	static const wchar_t * z_scale;
@@ -149,4 +147,35 @@ protected:
 
 private:
 	PrefabWithMesh * _prefabWithMesh;
+};
+
+class MovablePrefab_Plant : virtual public PrefabPlant
+{
+public:
+	MovablePrefab_Plant(){};
+	virtual ~MovablePrefab_Plant(){};
+
+	virtual bool setAttribute( const wstring & attribute, const wstring & value );
+	virtual bool setAttribute( const wstring & prefix, const wstring & attribute, const wstring & value );
+
+protected:
+	void setPrefab(MovablePrefab * val) 
+	{
+		_MovablePrefab = val;
+		PrefabPlant::setPrefab(val);
+	}
+	void _setMaxAcceleration(const wstring & attribute, const wstring & value);
+	void _setMaxAngleVelocity(const wstring & attribute, const wstring & value);
+	void _setMaxVelocity(const wstring & attribute, const wstring & value);
+	void _setThrusterName(const wstring & attribute, const wstring & value);
+	void _setThrusterOffset(const wstring & attribute, const wstring & value);
+
+private:
+	static const wchar_t * thruster;
+	static const wchar_t * thrusterName;
+	static const wchar_t * max_velocity;
+	static const wchar_t * max_acceleration;
+	static const wchar_t * max_angle_velocity;
+	MovablePrefab * _MovablePrefab;
+	Vector3 thr_offset;
 };

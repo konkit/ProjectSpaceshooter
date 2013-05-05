@@ -206,8 +206,8 @@ public:
 	{
 		mPhysicsComponent.AddVectorToCurrentVelocity(recoil);
 	}
-	void createThrusters( Ogre::SceneManager * _sceneMenager );
+	void createThrusters(const MovablePrefab * _prefab, Ogre::SceneManager * _sceneMenager );
 protected:
 	PhysicsComponent mPhysicsComponent;
-	Ogre::SceneNode * mThrousterNode;
+	Ogre::SceneNode * mThrusterNode;
 };

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ship_prefabs>
-	<max_id id='2' />
+	<max_id id='10' />
 	
 	<ship id='1'>
 		<ship_name name='Basic Ship'  />
@@ -17,35 +17,105 @@
         <offset x_pos='0' y_pos='0' z_pos='0' />
         <radius value='10' />
       </inaccurate_Collider>
-			<Collider>
-				<offset x_pos='0' y_pos='0' z_pos='0' /> 
-				<radius value='10' />
-			</Collider>
 		</Colliders>
 		<standard_waepon id = '1' />
+    <thruster>
+      <thruster_particle name ='thrusters'/>
+      <offset x_pos='0' y_pos='0' z_pos='-10' />
+    </thruster>
 	</ship>
-	
-	<ship id='2'>
-		<ship_name name='Advance Ship'  />
-		<mesh name='naamianBird.MESH' />
-		<max_velocity value='120' />
-		<max_acceleration value='13' />
-		<max_angle_velocity value='12' />
-		<health value='4000' />
+
+  <ship id='2'>
+    <ship_name name='Space Frigate'  />
+    <mesh name='SpaceFrigate.MESH' />
+    <max_velocity value='700' />
+    <max_acceleration value='10' />
+    <max_angle_velocity value='3' />
     <explosion_id id='1'/>
-		<scale x_scale='0.5' y_scale='0.5' z_scale='0.5' />
-		<rotation x_rot='1' y_rot='1' z_rot='1' />
-		<Colliders>
+    <health value='300' />
+    <scale x_scale='1' y_scale='1' z_scale='1' />
+    <rotation x_rot='0' y_rot='0' z_rot='0' />
+    <Colliders>
       <inaccurate_Collider>
         <offset x_pos='0' y_pos='0' z_pos='0' />
-        <radius value='5' />
+        <radius value='15' />
       </inaccurate_Collider>
-			<Collider>
-				<offset x_pos='0' y_pos='0' z_pos='0' /> 
-				<radius value='5' />
-			</Collider>
-		</Colliders>
-		<standard_waepon id = '2' />
-	</ship>
+    </Colliders>
+    <standard_waepon id = '1' />
+    <thruster>
+      <thruster_particle name ='thrusters'/>
+      <offset x_pos='0' y_pos='-2' z_pos='-26' />
+    </thruster>
+  </ship>
+
+  <ship id='5'>
+    <ship_name name='SpaceCrusier'  />
+    <mesh name='SpaceCrusier.MESH' />
+    <max_velocity value='400' />
+    <max_acceleration value='10' />
+    <max_angle_velocity value='3' />
+    <explosion_id id='1'/>
+    <health value='300' />
+    <scale x_scale='1' y_scale='1' z_scale='1' />
+    <rotation x_rot='0' y_rot='0' z_rot='0' />
+    <Colliders>
+      <inaccurate_Collider>
+        <offset x_pos='0' y_pos='0' z_pos='0' />
+        <radius value='30' />
+      </inaccurate_Collider>
+    </Colliders>
+    <standard_waepon id = '1' />
+    <thruster>
+      <thruster_particle name ='SpaceCrusier_thr'/>
+      <offset x_pos='0' y_pos='0' z_pos='-30' />
+    </thruster>
+  </ship>
+
+
+  <ship id='4'>
+    <ship_name name='Combat Ship'  />
+    <mesh name='DarkFighter.MESH' />
+    <max_velocity value='600' />
+    <max_acceleration value='13' />
+    <max_angle_velocity value='12' />
+    <health value='4000' />
+    <explosion_id id='1'/>
+    <scale x_scale='1' y_scale='1' z_scale='1' />
+    <rotation x_rot='1' y_rot='1' z_rot='1' />
+    <Colliders>
+      <inaccurate_Collider>
+        <offset x_pos='0' y_pos='0' z_pos='0' />
+        <radius value='40' />
+      </inaccurate_Collider>
+    </Colliders>
+    <standard_waepon id = '1' />
+    <thruster>
+      <thruster_particle name ='thrusters'/>
+      <offset x_pos='0' y_pos='-7' z_pos='-35' />
+    </thruster>
+  </ship>
+
+  <ship id='3'>
+    <ship_name name='Combat Ship'  />
+    <mesh name='CombatShip.MESH' />
+    <max_velocity value='400' />
+    <max_acceleration value='13' />
+    <max_angle_velocity value='12' />
+    <health value='4000' />
+    <explosion_id id='1'/>
+    <scale x_scale='1' y_scale='1' z_scale='1' />
+    <rotation x_rot='1' y_rot='1' z_rot='1' />
+    <Colliders>
+      <inaccurate_Collider>
+        <offset x_pos='0' y_pos='0' z_pos='0' />
+        <radius value='33' />
+      </inaccurate_Collider>
+    </Colliders>
+    <standard_waepon id = '1' />
+    <thruster>
+      <thruster_particle name ='thrusters'/>
+      <offset x_pos='0' y_pos='0' z_pos='-12' />
+    </thruster>
+  </ship>
 	
 </ship_prefabs>

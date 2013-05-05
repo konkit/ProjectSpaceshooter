@@ -47,7 +47,8 @@ PhysicsComponent::PhysicsComponent(const MovablePrefab * prefab )
 	:   currentVelocity(0.0, 0.0, 0.0),	
 	    rotVelocity(0.0),
 	   targetVelocity(0,0,0),
-	   rotAcceleration(0.05)
+	   rotAcceleration(0.05),
+	   targetRotVelocity(0.0)
 {
 	maxVelocityValue = prefab->getMaxVelocity();
 	rotVelocityValue = prefab->getMaxAngleVelocity();

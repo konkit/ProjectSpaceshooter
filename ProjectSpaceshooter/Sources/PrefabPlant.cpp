@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "PrefabPlant.h"
-#include "EnemyPrefabPlant.h"
+#include "ShipPrefabPlant.h"
 #include "BulletPrefabPlant.h"
 
 #include "Exceptions.h"
@@ -72,7 +72,7 @@ PrefabPlant * PrefabPlant::CreatePrefabPlantFor( PREFAB_TYPE prefabType )
 	switch (prefabType)
 	{
 	case PREFAB_TYPE::EnemyPrefab:
-		return new EnemyPrefabPlant;
+		return new ShipPrefabPlant;
 	case PREFAB_TYPE::BulletPrefab:
 		return new BulletPrefabPlant;
 	case PREFAB_TYPE::StaticPrefab:
@@ -244,7 +244,7 @@ bool PrefabWithCollider_Plant::setAttribute( const wstring & attribute, const ws
 	}
 	else if (stack_top == PrefabWithCollider_Plant::offset)
 	{
-		if (stack_prev == Collider || stack_prev == inaccurate_Collider) // TODO
+		if (stack_prev == Collider || stack_prev == inaccurate_Collider) 
 		{
 			_setColliderOffset(attribute, value);
 		}
@@ -420,9 +420,134 @@ bool PrefabWithMesh_Plant::setAttribute( const wstring & prefix, const wstring &
 	return setAttribute(attribute, value);
 }
 
-const wchar_t * PrefabPlant::max_acceleration   = L"max_acceleration";
-const wchar_t * PrefabPlant::max_velocity       = L"max_velocity";
-const wchar_t * PrefabPlant::max_angle_velocity = L"max_angle_velocity";
+void MovablePrefab_Plant::_setMaxVelocity( const wstring & attribute, const wstring & value )
+{
+	if (attribute == PrefabPlant::value)
+	{
+		double val;
+		val = ValueToDouble(value);
+		_MovablePrefab->setMaxVelocity(val);
+	};
+}
+
+void MovablePrefab_Plant::_setMaxAcceleration( const wstring & attribute, const wstring & value )
+{
+	if (attribute == PrefabPlant::value)
+	{
+		double val;
+		val = ValueToDouble(value);
+		_MovablePrefab->setMaxAcceleration(val);
+	};
+}
+
+void MovablePrefab_Plant::_setMaxAngleVelocity( const wstring & attribute, const wstring & value )
+{
+	if (attribute == PrefabPlant::value)
+	{
+		double val;
+		val = ValueToDouble(value);
+		_MovablePrefab->setMaxAngleVelocity(val);
+	};
+}
+
+void MovablePrefab_Plant::_setThrusterName( const wstring & attribute, const wstring & value )
+{
+	if (attribute == name)
+	{
+		if (value == L"no" || value == L"NO" || value == L"")
+		{
+			_MovablePrefab->setThrusterName("");
+		} else
+		{
+			_MovablePrefab->setThrusterName(string(value.begin(), value.end()));
+		}
+	} else if (attribute == closeNode)
+	{
+		return;
+	} else
+	{
+		wstring tmp(L"MovablePrefab_Plant _setThrusterName: Missing attribute type: ");
+		tmp += attribute; 
+		throw My_Exception(tmp);
+	}
+}
+
+void MovablePrefab_Plant::_setThrusterOffset( const wstring & attribute, const wstring & value )
+{
+	if (attribute == PrefabPlant::x_pos)
+	{
+		thr_offset.x= ValueToDouble(value);
+	} else if (attribute == PrefabPlant::y_pos)
+	{
+		thr_offset.y = ValueToDouble(value);
+	} else if (attribute == PrefabPlant::z_pos)
+	{
+		thr_offset.z = ValueToDouble(value);
+	} else if (attribute == PrefabPlant::closeNode)
+	{
+		_MovablePrefab->setThrusterOffset(thr_offset);
+	}	else
+	{
+		wstring tmp(L"MovablePrefab_Plant _setThrusterOffset: Missing attribute type: ");
+		tmp += attribute; 
+		throw My_Exception(tmp);
+	}
+}
+
+bool MovablePrefab_Plant::setAttribute( const wstring & attribute, const wstring & value )
+{
+	if (elements.size() < 2)
+	{
+		return false; // Because next line can't execute if there is less then one element on stack
+		// If there are less then 2 element on stack it can be Prefab property
+	}
+
+	wstring stack_top = elements.top(); 
+	//There is required to know value which is below top of stack
+	elements.pop();
+	const wstring & stack_prev = elements.top();
+	elements.push(stack_top);
+
+	if (stack_top == max_velocity)
+	{
+		_setMaxVelocity(attribute, value);
+	}
+	else if (stack_top == max_acceleration)
+	{
+		_setMaxAcceleration(attribute, value);
+	}
+	else if (stack_top == max_angle_velocity)
+	{
+		_setMaxAngleVelocity(attribute, value);
+	} else if (stack_prev == thruster && stack_top == offset)
+	{
+		_setThrusterOffset(attribute, value);
+	} else if(stack_top == thrusterName)
+	{
+		_setThrusterName(attribute, value);
+	} else
+	{
+		return false;
+	}
+	return true;
+}
+
+bool MovablePrefab_Plant::setAttribute( const wstring & prefix, const wstring & attribute, const wstring & value )
+{
+	return setAttribute(attribute, value);
+}
+
+
+
+
+
+
+const wchar_t * MovablePrefab_Plant::thrusterName       = L"thruster_particle";
+const wchar_t * MovablePrefab_Plant::thruster           = L"thruster";
+const wchar_t * MovablePrefab_Plant::max_acceleration   = L"max_acceleration";
+const wchar_t * MovablePrefab_Plant::max_velocity       = L"max_velocity";
+const wchar_t * MovablePrefab_Plant::max_angle_velocity = L"max_angle_velocity";
+
 const wchar_t * PrefabPlant::standard_waepon    = L"standard_waepon";
 const wchar_t * PrefabPlant::name	            = L"name";
 const wchar_t * PrefabPlant::id		            = L"id";
@@ -433,6 +558,7 @@ const wchar_t * PrefabPlant::z_pos	            = L"z_pos";
 const wchar_t * PrefabPlant::closeNode	        = L"close";
 const wchar_t * PrefabPlant::yes                = L"yes";
 const wchar_t * PrefabPlant::no                 = L"no";
+const wchar_t * PrefabPlant::offset             = L"offset";
 
 
 const wchar_t * PrefabWithMesh_Plant::scale	  = L"scale";
@@ -448,7 +574,6 @@ const wchar_t * PrefabWithMesh_Plant::mesh	  = L"mesh";
 const wchar_t * PrefabWithCollider_Plant::health		      = L"health";
 const wchar_t * PrefabWithCollider_Plant::Colliders	          = L"Colliders";
 const wchar_t * PrefabWithCollider_Plant::Collider            = L"Collider";
-const wchar_t * PrefabWithCollider_Plant::offset              = L"offset";
 const wchar_t * PrefabWithCollider_Plant::radius              = L"radius";
 const wchar_t * PrefabWithCollider_Plant::inaccurate_Collider = L"inaccurate_Collider";
 const wchar_t * PrefabWithCollider_Plant::explosion_id        = L"explosion_id";

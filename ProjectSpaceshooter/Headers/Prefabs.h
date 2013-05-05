@@ -125,11 +125,17 @@ public:
 	unsigned	 getMaxVelocity()		const {return mMaxVelocity;}
 	unsigned	 getMaxAcceleration()	const {return mMaxAcceleration;}
 	unsigned	 getMaxAngleVelocity()	const {return mMaxAngleVelocity;}
-	void resetPrefab();
+	std::string getThrusterName() const { return thrusterName; }
+	void setThrusterName(std::string val) { thrusterName = val; }
+	Ogre::Vector3 getThrusterOffset() const { return thrusterOffset; }
+	void setThrusterOffset(Ogre::Vector3 val) { thrusterOffset = val; }
+	void		 resetPrefab();
 private:
-	unsigned		mMaxVelocity;
-	unsigned		mMaxAcceleration;
-	unsigned		mMaxAngleVelocity;
+	unsigned	mMaxVelocity;
+	unsigned	mMaxAcceleration;
+	unsigned	mMaxAngleVelocity;
+	string		thrusterName;
+	Vector3		thrusterOffset;
 };
 
 

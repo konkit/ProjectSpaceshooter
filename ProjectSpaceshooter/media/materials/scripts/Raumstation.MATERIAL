@@ -1,0 +1,137 @@
+material "\Raumstation.MESH/GlassGreen"
+{
+	technique
+	{
+		pass
+		{
+			ambient 1 1 1 1
+			diffuse 1 1 1 1
+			specular 0 0 0 0
+			emissive 0 0 0
+		}
+	}
+}
+material "\Raumstation.MESH/Metal_Black_Plain"
+{
+	technique
+	{
+		pass
+		{
+			ambient 1 1 1 1
+			diffuse 0.439216 0.439216 0.439216 0
+			specular 0 0 0 0
+			emissive 0 0 0
+		}
+	}
+}
+material "\Raumstation.MESH/Reflection_Chrom"
+{
+	technique
+	{
+		pass
+		{
+			ambient 1 1 1 1
+			diffuse 0.486275 0.486275 0.486275 0
+			specular 0 0 0 0
+			emissive 0 0 0
+		}
+	}
+}
+material "\Raumstation.MESH/Metal_Chrome"
+{
+	technique
+	{
+		pass
+		{
+			ambient 1 1 1 1
+			diffuse 0.439216 0.439216 0.439216 0
+			specular 0 0 0 0
+			emissive 0 0 0
+		}
+	}
+}
+material "\Raumstation.MESH/Space_Panels"
+{
+	technique
+	{
+		pass
+		{
+			ambient 1 1 1 1
+			diffuse 0.4 0.4 0.4 0
+			specular 0 0 0 0
+			emissive 0 0 0
+
+			texture_unit
+			{
+				texture fx3_Panels_9F.jpg
+				tex_coord_set 0
+				colour_op modulate
+				scale 1 1
+				scroll 0 0
+				rotate 0
+			}
+		}
+	}
+}
+material "\Raumstation.MESH/Metal_PlateOX"
+{
+	technique
+	{
+		pass
+		{
+			ambient 1 1 1 1
+			diffuse 0.439216 0.439216 0.439216 0
+			specular 0 0 0 0
+			emissive 0 0 0
+
+			texture_unit
+			{
+				texture PLATEOX2.JPG
+				tex_coord_set 0
+				colour_op modulate
+				scale 1 1
+				scroll 0 0
+				rotate 0
+			}
+		}
+	}
+}
+material "\Raumstation.MESH/Reflection_Ch1"
+{
+	technique
+	{
+		pass
+		{
+			ambient 1 1 1 1
+			diffuse 0.486275 0.486275 0.486275 0
+			specular 0 0 0 0
+			emissive 0 0 0
+		}
+	}
+}
+material "\Raumstation.MESH/Metal_Grey_Plain"
+{
+	technique
+	{
+		pass
+		{
+			ambient 1 1 1 1
+			diffuse 0.439216 0.439216 0.439216 0
+			specular 0 0 0 0
+			emissive 0 0 0
+		}
+	}
+}
+material "\Raumstation.MESH/Finishes.Flooring.VCT.Grid"
+{
+	technique
+	{
+		pass
+		{
+			ambient 1 1 1 1
+			diffuse 1 1 1 1
+			specular 0 0 0 0
+			emissive 0 0 0
+		}
+	}
+}

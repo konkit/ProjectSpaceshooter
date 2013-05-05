@@ -34,10 +34,12 @@ GameObject::~GameObject(void)
 //Creates scene node for gameobject with given mesh name and within scenenode
 void GameObject::createSceneNode(std::string meshName, Ogre::SceneManager* sceneMgr)	{
 	//init SceneNode
-	Ogre::Entity * tmp = sceneMgr->createEntity(meshName);
 	uniqueID++;
 	mNode = sceneMgr->getRootSceneNode()->createChildSceneNode(std::to_string(uniqueID));
-	mNode->attachObject(tmp);
+	if (meshName != "")
+	{	Ogre::Entity * tmp = sceneMgr->createEntity(meshName);
+		mNode->attachObject(tmp);
+	}	
 }
 
 
@@ -71,21 +73,25 @@ GameObject_WithCollider::GameObject_WithCollider(const PrefabWithCollider * pref
 
 
 GameObject_Movable::GameObject_Movable(const MovablePrefab * prefab, Ogre::SceneManager* sceneMgr )
-	:GameObject(prefab, sceneMgr), mPhysicsComponent(prefab)
+	:GameObject(prefab, sceneMgr), mPhysicsComponent(prefab), mThrusterNode(NULL)
 {
-	createThrusters(sceneMgr);
+	createThrusters(prefab, sceneMgr);
 }
 
-void GameObject_Movable::createThrusters( Ogre::SceneManager * _sceneMenager )
+void GameObject_Movable::createThrusters( const MovablePrefab * _prefab, Ogre::SceneManager * _sceneMenager )
 {
-	string name("Thrusters");
-	name = name + std::to_string(uniqueID);
-	mThrousterNode = mNode->createChildSceneNode(name);
-	Ogre::ParticleSystem* particleSystem;
-	name = "particle " + std::to_string(uniqueID);
-	particleSystem = _sceneMenager->createParticleSystem(name, "thrusters");
-	mThrousterNode->attachObject( particleSystem );
-	mThrousterNode->translate(0,0,-10);
+	string throuserTemplate = _prefab->getThrusterName();
+	if (throuserTemplate != "" )
+	{
+		string name("Thrusters");
+		name = name + std::to_string(uniqueID);
+		mThrusterNode = mNode->createChildSceneNode(name);
+		Ogre::ParticleSystem* particleSystem;
+		name = "particle " + std::to_string(uniqueID);
+		particleSystem = _sceneMenager->createParticleSystem(name, throuserTemplate);
+		mThrusterNode->attachObject( particleSystem );
+		mThrusterNode->translate(_prefab->getThrusterOffset());
+	}
 }
 
 GameObject_WithHealth::GameObject_WithHealth(const PrefabWithCollider * prefab, Ogre::SceneManager* sceneMgr )

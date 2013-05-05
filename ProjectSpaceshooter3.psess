@@ -74,6 +74,9 @@
     <Report>
       <Path>ProjectSpaceshooter130429(1).vspx</Path>
     </Report>
+    <Report>
+      <Path>ProjectSpaceshooter130505.vspx</Path>
+    </Report>
   </Reports>
   <Launches>
     <ProjBinary>

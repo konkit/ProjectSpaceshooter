@@ -1,7 +1,7 @@
 #pragma once
 #include "PrefabPlant.h"
 
-class BulletPrefabPlant : virtual public PrefabWithCollider_Plant, virtual public PrefabWithMesh_Plant
+class BulletPrefabPlant : virtual public PrefabWithCollider_Plant, virtual public PrefabWithMesh_Plant, virtual public MovablePrefab_Plant
 {
 public:
 	BulletPrefabPlant();;
@@ -15,7 +15,6 @@ public:
 	virtual bool setAttribute( const wstring & attribute, const wstring & value );
 	virtual bool setAttribute( const wstring & prefix, const wstring & attribute, const wstring & value );
 private:
-	void _setMaxVelocity(const wstring & attribute, const wstring & value);
 	void _setShipName(const wstring & attribute, const wstring & value);
 	void _setAutoAim(const wstring & attribute, const wstring & value);
 	void _setBulletPower(const wstring & attribute, const wstring & value);

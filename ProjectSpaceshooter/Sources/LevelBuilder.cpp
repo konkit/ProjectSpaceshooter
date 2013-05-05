@@ -38,12 +38,28 @@ void LevelBuilder::loadLevelDescribe( SystemsSet & gameSystems )
 	newStage->setStageNumber(1);
 	newStage->setMissionType(missionType::destroyAllEnemy);
 
-	EnemySpawner * newSpawner = new EnemySpawner(Vector3(100,0,400),10, 3);
-	newSpawner->addEnemyToSpawn(1,3);
+
+	EnemySpawner * newSpawner = new EnemySpawner(Vector3(2000,0,400),20, 3);
+	newSpawner->addEnemyToSpawn(2,8);
 	newStage->addSpawner(newSpawner);
 
-	newSpawner = new EnemySpawner(Vector3(-100,0,400),10,5);
-	newSpawner->addEnemyToSpawn(1,4);
+	newSpawner = new EnemySpawner(Vector3(-400,0,-4000),10,3);
+	newSpawner->addEnemyToSpawn(1,7);
+	newSpawner->setSpawnerDelaySinceStageStart(0);
+	newStage->addSpawner(newSpawner);
+
+	newSpawner = new EnemySpawner(Vector3(-100,0,4000),10,3);
+	newSpawner->addEnemyToSpawn(3,7);
+	newSpawner->setSpawnerDelaySinceStageStart(10);
+	newStage->addSpawner(newSpawner);
+
+	newSpawner = new EnemySpawner(Vector3(-800,0,1300),30,4);
+	newSpawner->addEnemyToSpawn(4,7); 
+	newSpawner->setSpawnerDelaySinceStageStart(19);
+	newStage->addSpawner(newSpawner);
+
+	newSpawner = new EnemySpawner(Vector3(-1400,0,-1700),20,4);
+	newSpawner->addEnemyToSpawn(5,7);
 	newSpawner->setSpawnerDelaySinceStageStart(10);
 	newStage->addSpawner(newSpawner);
 
@@ -71,8 +87,20 @@ void LevelBuilder::buildPlayScene( SystemsSet & gameSystems, TimeData& time )
 
 
 	StaticObject *stat = mGameData->instantiateStatic(1);
-	stat->setPosition(Vector3(100, 0,100));
+	stat->setPosition(Vector3(3400, 0, 300));
+	
+	stat = mGameData->instantiateStatic(1);
+	stat->setPosition(Vector3(2400, 0, 1800));
 
+	stat = mGameData->instantiateStatic(4);
+	stat->setPosition(Vector3(-1400, 0, -3300));
+
+	stat = mGameData->instantiateStatic(3);
+	stat->setPosition(Vector3(600, 0, -400));
+	stat = mGameData->instantiateStatic(3);
+	stat->setPosition(Vector3(-700, 0, 300));
+	stat = mGameData->instantiateStatic(3);
+	stat->setPosition(Vector3(870, 0, 170));
 	// Set ambient light
 	_sceneManager->setAmbientLight(Ogre::ColourValue(1.0, 1.0, 1.0));
 

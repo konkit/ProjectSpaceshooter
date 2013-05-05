@@ -1,0 +1,23 @@
+material "\DarkFighter.MESH/dark_fighter_6"
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.588 0.588 0.588 0
+			diffuse 0.588 0.588 0.588 0
+			specular 0 0 0 0
+			emissive 0 0 0
+
+			texture_unit
+			{
+				texture color_6.jpg
+				tex_coord_set 0
+				colour_op modulate
+				scale 1 1
+				scroll 0 0
+				rotate 0
+			}
+		}
+	}
+}

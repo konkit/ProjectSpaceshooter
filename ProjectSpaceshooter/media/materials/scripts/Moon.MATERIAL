@@ -1,0 +1,23 @@
+material "\Moon.MESH/Material #25"
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.588 0.588 0.588 0
+			diffuse 0.588 0.588 0.588 0
+			specular 0 0 0 0
+			emissive 0 0 0
+
+			texture_unit
+			{
+				texture moon_8k_color_brim16.jpg
+				tex_coord_set 0
+				colour_op modulate
+				scale 1 1
+				scroll 0 0
+				rotate 0
+			}
+		}
+	}
+}

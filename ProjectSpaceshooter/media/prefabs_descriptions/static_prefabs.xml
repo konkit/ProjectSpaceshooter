@@ -1,14 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <static_prefabs>
-  <max_id id='2' />
-  
-  <static id='1'>
-    <static_name name='sun'/>
-    <mesh name='sun.MESH'/>
+  <max_id id='10' />
+
+  <static id='4'>
+    <static_name name='Moon'/>
+    <mesh name='Moon.MESH'/>
     <health value='10000'/>
     <explosion_id id='2'/>
-    <scale x_scale='30' y_scale='30' z_scale='30' />
-    <rotation x_rot='1' y_rot='1' z_rot='1' />
+    <scale x_scale='1' y_scale='1' z_scale='1' />
+    <rotation x_rot='0' y_rot='0' z_rot='0' />
+    <Colliders>
+      <inaccurate_Collider>
+        <offset x_pos='0' y_pos='0' z_pos='0' />
+        <radius value='150' />
+      </inaccurate_Collider>
+    </Colliders>
+  </static>
+  
+  <static id='3'>
+    <static_name name='satellite'/>
+    <mesh name='Satelite001.MESH'/>
+    <health value='10000'/>
+    <explosion_id id='1'/>
+    <scale x_scale='1' y_scale='1' z_scale='1' />
+    <rotation x_rot='0' y_rot='0' z_rot='0' />
     <Colliders>
       <inaccurate_Collider>
         <offset x_pos='0' y_pos='0' z_pos='0' />
@@ -18,6 +33,21 @@
         <offset x_pos='0' y_pos='0' z_pos='0' />
         <radius value='40' />
       </Collider>
+    </Colliders>
+  </static>
+  
+  <static id='1'>
+    <static_name name='Sun'/>
+    <mesh name='Sun.MESH'/>
+    <health value='10000'/>
+    <explosion_id id='2'/>
+    <scale x_scale='90' y_scale='90' z_scale='90' />
+    <rotation x_rot='0' y_rot='0' z_rot='0' />
+    <Colliders>
+      <inaccurate_Collider>
+        <offset x_pos='0' y_pos='0' z_pos='0' />
+        <radius value='100' />
+      </inaccurate_Collider>
     </Colliders>
   </static>
 
@@ -33,10 +63,6 @@
         <offset x_pos='0' y_pos='0' z_pos='0' />
         <radius value='300' />
       </inaccurate_Collider>
-      <Collider>
-        <offset x_pos='0' y_pos='0' z_pos='0' />
-        <radius value='300' />
-      </Collider>
     </Colliders>
   </static>
 </static_prefabs>

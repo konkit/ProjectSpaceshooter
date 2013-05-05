@@ -66,16 +66,6 @@ void BulletPrefabPlant::_setBulletPower( const wstring & attribute, const wstrin
 	};
 }
 
-void BulletPrefabPlant::_setMaxVelocity( const wstring & attribute, const wstring & value )
-{
-	if (attribute == PrefabPlant::value)
-	{
-		double val;
-		val = ValueToDouble(value);
-		mBulletPrefab.setMaxVelocity(val);
-	};
-}
-
 const wstring BulletPrefabPlant::getPrefabName()
 {
 	return wstring(bullet_name);
@@ -85,6 +75,7 @@ BulletPrefabPlant::BulletPrefabPlant()
 {
 	PrefabWithCollider_Plant::setPrefab(&mBulletPrefab);
 	PrefabWithMesh_Plant::setPrefab(&mBulletPrefab);
+	MovablePrefab_Plant::setPrefab(&mBulletPrefab);
 }
 
 void BulletPrefabPlant::_setTTL( const wstring & attribute, const wstring & value )
@@ -104,9 +95,9 @@ bool BulletPrefabPlant::setAttribute( const wstring & attribute, const wstring &
 	if (PrefabPlant::setAttribute(attribute, value))
 	{
 		return true;
-	} else if (stack_top == PrefabPlant::max_velocity)
+	} else if (MovablePrefab_Plant::setAttribute(attribute, value))
 	{
-		_setMaxVelocity(attribute, value);
+		return true;
 	} else if (PrefabWithMesh_Plant::setAttribute(attribute,value))
 	{
 		return true;

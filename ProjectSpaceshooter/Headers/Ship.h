@@ -33,7 +33,7 @@ public:
 		setHealthAndColliderFromPrefab(objectTemplate);
 		setPhysicsFromPrefab(objectTemplate);
 		mWeapon.setWeapon(weaponPrefab);
-		createThrusters(_sceneMenager);
+		createThrusters(objectTemplate,_sceneMenager);
 	}
 
 	virtual GameObjectType getType();
