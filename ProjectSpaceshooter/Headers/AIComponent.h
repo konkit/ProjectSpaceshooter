@@ -1,6 +1,5 @@
 #pragma once
 
-
 enum class AI_STATE
 {
 	GET_TO_CORE,
@@ -43,6 +42,8 @@ public:
 		return mType;
 	}
 
+
+	Ogre::Vector3 cntTarget;
 
 private:
 	AI_STATE mState;

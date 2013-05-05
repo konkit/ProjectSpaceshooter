@@ -12,8 +12,8 @@ void AISystem::update( GameData& mGameData, TimeData time )
 		it = myEnemyIterator.getNext();
 
 //		randomAI(it, mGameData);	
-//		toCoreAI(it, mGameData, time);
-		toCoreFlyingAI(it, mGameData, time);
+		toCoreAI2(it, mGameData, time);
+//		toCoreFlyingAI(it, mGameData, time);
 	}
 }
 
@@ -50,7 +50,7 @@ void AISystem::toCoreAI( EnemyObject* it, GameData& mGameData, TimeData time )
 	if( cntAI.getState() == AI_STATE::GET_TO_CORE )
 	{
 		//change state if needed
-		if( it->getPosition().squaredDistance( cntCore.getPosition() ) < 400.0*400.0 )
+		if( it->getPosition().squaredDistance( cntCore.getPosition() ) < 1000.0*1000.0 )
 		{
 			//change state to shoot at core
 			cntAI.setState(AI_STATE::SHOOT_AT_CORE);
@@ -65,7 +65,8 @@ void AISystem::toCoreAI( EnemyObject* it, GameData& mGameData, TimeData time )
 	}
 }
 
-void AISystem::toCoreFlyingAI( EnemyObject* it, GameData& mGameData,  TimeData time )	{
+void AISystem::toCoreAI2( EnemyObject* it, GameData& mGameData, TimeData time )
+{
 	AIComponent& cntAI = it->getAIComponent();
 	PhysicsComponent& cntPhys = it->getPhysicsComponent();
 	Core& cntCore = mGameData.getCore();
@@ -75,68 +76,90 @@ void AISystem::toCoreFlyingAI( EnemyObject* it, GameData& mGameData,  TimeData t
 		randomAI(it, mGameData);
 		return;
 	}
-	
-#ifdef _DEBUG
-//	std::cout<<"Distance from core = "<<it->getPosition().distance( cntCore.getPosition() )<<std::endl;
-#endif
 
-	if( cntAI.getState() == AI_STATE::GET_TO_CORE )
-	{
-#ifdef _DEBUG
-		std::cout<<"Get to core state \n";
-#endif
 
+	if( cntAI.getState() == AI_STATE::GET_TO_CORE )	{
 		//change state if needed
-		if( it->getPosition().squaredDistance( cntCore.getPosition() ) < 1700.0*1700.0 )
+		if( it->getPosition().squaredDistance( cntCore.getPosition() ) < 2000.0*2000.0 )
 		{
 			//change state to shoot at core
 			cntAI.setState(AI_STATE::SHOOT_AT_CORE);
 			return;
 		}
 
-		//do what is needed
-		getToTheCore(it, cntCore);
-	}	else if ( cntAI.getState() == AI_STATE::SHOOT_AT_CORE ) {
-#ifdef _DEBUG
-		std::cout<<"shoot at core state \n";
-#endif
+		//move towards core
+		Ogre::Vector3 vectorToTarget = cntCore.getPosition() - it->getPosition();
+			vectorToTarget.normalise();
 
-		if( it->getPosition().squaredDistance( cntCore.getPosition() ) < 1250.0*1250.0 )
+		it->getPhysicsComponent().setTargetVelocity(Ogre::Quaternion(), vectorToTarget);	
+
+		
+		
+	} else if ( cntAI.getState() == AI_STATE::SHOOT_AT_CORE ) {
+		//change state if needed
+		if( it->getPosition().squaredDistance( cntCore.getPosition() ) < 1000.0*1000.0 )
 		{
 			//change state to shoot at core
 			cntAI.setState(AI_STATE::TURN_AROUND);
+
+			Ogre::Vector3 vectorToTarget = cntCore.getPosition() - it->getPosition();
+				vectorToTarget.normalise();
+
+			Ogre::Vector3 perpendicularVector = vectorToTarget.crossProduct( Ogre::Vector3::UNIT_Y );
+
+			cntAI.cntTarget = cntCore.getPosition() + perpendicularVector * 2500.0;
+
 			return;
 		}
 
-		flyAndShootAtCore(it, cntCore, cntPhys, time);
-	}	else if ( cntAI.getState() == AI_STATE::TURN_AROUND )	{
-#ifdef _DEBUG
-		std::cout<<"turn around state \n";
-#endif
+		//move towards core
+		Ogre::Vector3 vectorToTarget = cntCore.getPosition() - it->getPosition();
+			vectorToTarget.normalise();
 
-		if( it->getPosition().squaredDistance( cntCore.getPosition() ) > 1750.0*1750.0 )
+		it->getPhysicsComponent().setTargetVelocity(Ogre::Quaternion(), vectorToTarget);
+
+		Ogre::Quaternion newOrient = Ogre::Vector3::UNIT_Z.getRotationTo(vectorToTarget);
+		it->setOrientation( newOrient );
+
+		it->setShoot(time.currentTime);
+	} else if( cntAI.getState() == AI_STATE::TURN_AROUND )	{
+		//change state if needed
+		if( it->getPosition().squaredDistance( cntCore.getPosition() ) > 2000.0*2000.0 )
 		{
 			//change state to shoot at core
 			cntAI.setState(AI_STATE::GET_TO_CORE);
 			return;
 		}
 
-		turnAround(it, cntCore, cntPhys, time);
+		//move away the core
+		Ogre::Vector3 vectorToTarget = cntAI.cntTarget - it->getPosition();
+			vectorToTarget.normalise();
+
+		it->getPhysicsComponent().setTargetVelocity(Ogre::Quaternion(), vectorToTarget);
 	}
+
 }
+
+
 
 
 
 void AISystem::getToTheCore( EnemyObject* it, Core& cntCore)	{
 	//count angle to core
 	float angleToCore = getAngleToTarget(it, &cntCore);
-
-	//TO DO : jak k¹t jest mniejszy od prêdkoœci k¹towej
-
-	//set speed of enemy
+	float rotVelocityValue = it->getPhysicsComponent().getRotVelocityValue();
+	
+	if( abs(angleToCore) > abs( rotVelocityValue ) )	{
+		if( angleToCore * rotVelocityValue < 0.0 )	{
+			it->getPhysicsComponent().forceRotVelocity(-rotVelocityValue);
+		} else {
+			it->getPhysicsComponent().forceRotVelocity(rotVelocityValue);
+		}
+	} else {
+		it->getPhysicsComponent().forceRotVelocity(angleToCore);
+	}
+	
 	it->setTargetVelocity(Ogre::Vector3(0.0, 0.0, 1.0));
-	//set it rotation speed
-	it->getPhysicsComponent().setRotVelocity(angleToCore);
 }
 
 
@@ -144,47 +167,23 @@ void AISystem::getToTheCore( EnemyObject* it, Core& cntCore)	{
 void AISystem::stopAndShootAtCore(EnemyObject* it, Core& cntCore, PhysicsComponent& cntPhys, TimeData time)	{
 	//count angle to core
 	float angleToCore = getAngleToTarget(it, &cntCore);
+	float rotVelocityValue = it->getPhysicsComponent().getRotVelocityValue();
 
-	//set shoot on the core
-	it->setTargetVelocity( Ogre::Vector3( 0.0, 0.0, 0.0 ) );
-	cntPhys.setRotVelocity(angleToCore);
+	if( abs(angleToCore) > abs( rotVelocityValue ) )	{
+		if( angleToCore * rotVelocityValue < 0.0 )	{
+			it->getPhysicsComponent().forceRotVelocity(-rotVelocityValue);
+		} else {
+			it->getPhysicsComponent().forceRotVelocity(rotVelocityValue);
+		}
+	} else {
+		it->getPhysicsComponent().forceRotVelocity(angleToCore);
+	}
+	
+	it->setTargetVelocity(Ogre::Vector3(0.0, 0.0, 0.0));
+	//SHOOT !
 	it->setShoot( time.currentTime );
 }
 
-
-void AISystem::flyAndShootAtCore(EnemyObject* it, Core& cntCore, PhysicsComponent& cntPhys, TimeData time)	{
-	//count angle to core
-	float angleToCore = getAngleToTarget(it, &cntCore);
-
-	//set speed of enemy
-	it->setTargetVelocity(Ogre::Vector3(0.0, 0.0, 1.0));
-	//set it rotation speed
-	cntPhys.setRotVelocity(angleToCore);
-
-	//set shoot on the core
-	if( abs(angleToCore) < 3.1415/12 )	{
-		it->setShoot( time.currentTime );
-	}
-}
-
-
-void AISystem::turnAround(EnemyObject* it, Core& cntCore, PhysicsComponent& cntPhys, TimeData time)	{
-	//count angle to core
-	float angleToCore = getAngleToTarget(it, &cntCore);
-
-	if( abs(angleToCore) >= 3.1415/1.75 )	{
-		cntPhys.setRotVelocity(0.0);
-	} else {
-		cntPhys.setRotVelocity(-1.0);
-	}
-
-
-	//cntPhys.setMaxVelocityValue(currentVelocity);
-	//std::cout<<cntPhys.getMaxVelocityValue()<<"\n";
-
-	//set speed of enemy
-	it->setTargetVelocity(Ogre::Vector3(0.0, 0.0, 1.0));
-}
 
 float AISystem::getAngleToTarget(EnemyObject* it, GameObject* target )	{
 	Ogre::Vector3 enemyPos = it->getPosition();
@@ -197,6 +196,12 @@ float AISystem::getAngleToTarget(EnemyObject* it, GameObject* target )	{
 		vectorToCore.normalise();
 
 	Ogre::Real angleCos = forwardVector.dotProduct( vectorToCore );
+
+	if( angleCos < -1.0)
+		angleCos = -0.9999999;
+	else if( angleCos > 1.0)	
+		angleCos = 0.99999999;
+
 	float angleToCore = acos(angleCos);
 
 	return angleToCore;

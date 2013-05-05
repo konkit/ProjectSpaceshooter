@@ -25,6 +25,8 @@ public:
 
 	float getAngleToTarget(EnemyObject* it, GameObject* target );
 
+	void toCoreAI2( EnemyObject* it, GameData& mGameData,  TimeData time);
+
 private:
 
 
