@@ -47,7 +47,7 @@ PhysicsComponent::PhysicsComponent(const MovablePrefab * prefab )
 	:   currentVelocity(0.0, 0.0, 0.0),	
 	    rotVelocity(0.0),
 	   targetVelocity(0,0,0),
-	   rotAcceleration(0.05),
+	   rotAcceleration(2.00),
 	   targetRotVelocity(0.0)
 {
 	maxVelocityValue = prefab->getMaxVelocity();
@@ -55,16 +55,16 @@ PhysicsComponent::PhysicsComponent(const MovablePrefab * prefab )
 	accelerationValue = prefab->getMaxAcceleration();
 }
 
-void PhysicsComponent::updateVelocity() {
+void PhysicsComponent::updateVelocity(float deltaTime) {
 
 	//get difference vector between current velocity and target velocity
 	Ogre::Vector3 diffVector = targetVelocity - currentVelocity;
 
 	//scale this vector to be equal to acceleration in magnitude
-	if( diffVector.length() > accelerationValue )
+	if( diffVector.length() > ( accelerationValue * deltaTime ) )
 	{
 		diffVector.normalise();
-		diffVector = diffVector * accelerationValue;
+		diffVector = diffVector * ( accelerationValue * deltaTime );
 	}
 
 	//change current velocity by this vector
@@ -73,14 +73,16 @@ void PhysicsComponent::updateVelocity() {
 	//Calculating rotation velocity
 	float diffRotVelocity = targetRotVelocity - rotVelocity;
 
-	if( abs(diffRotVelocity) < abs(rotAcceleration) )	{
+	if( abs(diffRotVelocity) < abs(rotAcceleration * deltaTime) )	{
 		rotVelocity += diffRotVelocity;
 	} else 
-	if( diffRotVelocity > 0.01 )	{
-		rotVelocity += rotAcceleration;
-	} else if( diffRotVelocity < -0.01) {
-		rotVelocity -= rotAcceleration;
+	if( diffRotVelocity > 0.00001 )	{
+		rotVelocity += rotAcceleration * deltaTime;
+	} else if( diffRotVelocity < -0.00001) {
+		rotVelocity -= rotAcceleration * deltaTime;
 	}
+
+
 
 }
 

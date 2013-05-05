@@ -81,7 +81,7 @@ public:
 	Ogre::Vector3 getTargetVelocity() { return targetVelocity; }
 
 	//Updates currentVelocity vector (acceleration, approaching to target velocity etc.)
-	void updateVelocity();
+	void updateVelocity(float deltaTime);
 
 	//instantly sets current velocity to target velocity value.
 	void setCurrentSpeedToMax() {

@@ -49,7 +49,7 @@ public:
 		}
 		PhysicsComponent& tmpPhysics = it->getPhysicsComponent();
 
-		tmpPhysics.updateVelocity();
+		tmpPhysics.updateVelocity(deltaTime);
 
 		it->rotate( tmpPhysics.getRotVelocity(), deltaTime );
 		it->move( tmpPhysics.getCurrentVelocity() * deltaTime );
