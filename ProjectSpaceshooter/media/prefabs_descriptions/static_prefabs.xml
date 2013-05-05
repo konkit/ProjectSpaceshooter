@@ -38,7 +38,7 @@
   
   <static id='1'>
     <static_name name='Sun'/>
-    <mesh name='Sun.MESH'/>
+    <mesh name='sun.MESH'/>
     <health value='10000'/>
     <explosion_id id='2'/>
     <scale x_scale='90' y_scale='90' z_scale='90' />

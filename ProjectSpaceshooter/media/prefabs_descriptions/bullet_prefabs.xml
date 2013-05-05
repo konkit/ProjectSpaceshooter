@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <bullet_prefabs>
-  <max_id id='1'/>
+  <max_id id='2'/>
   <bullet id='1'>
     <bullet_name name='rocket'  />
     <mesh name='bullet3.mesh'/>
@@ -16,10 +16,30 @@
         <offset x_pos='0' y_pos='0' z_pos='0' />
         <radius value='5' />
       </inaccurate_Collider>
-      <Collider>
+    </Colliders>
+    <thruster>
+      <thruster_particle name ='thrusters'/>
+      <offset x_pos='0' y_pos='0' z_pos='-10' />
+    </thruster>
+  </bullet>
+  <bullet id='2'>
+    <bullet_name name='ballBullet'  />
+    <mesh name='bulletBall.mesh'/>
+    <bullet_power value='30.0'/>
+    <explosion_id id='1'/>
+    <ttl value='200'/>
+    <auto_aim value='no'/>
+    <scale x_scale='1' y_scale='1' z_scale='1' />
+    <rotation x_rot='1' y_rot='1' z_rot='1' />
+    <max_velocity value='4000' />
+    <Colliders>
+      <inaccurate_Collider>
         <offset x_pos='0' y_pos='0' z_pos='0' />
         <radius value='5' />
-      </Collider>
+      </inaccurate_Collider>
     </Colliders>
+    <thruster>
+      <thruster_particle name =''/>
+    </thruster>
   </bullet>
 </bullet_prefabs>

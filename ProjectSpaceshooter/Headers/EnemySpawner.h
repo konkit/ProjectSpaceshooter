@@ -6,6 +6,7 @@ struct SpawnerInfo
 {
 	unsigned prefabID;
 	unsigned amount;
+	unsigned spawnEffectID;
 };
 
 /** 
@@ -17,11 +18,10 @@ class EnemySpawner
 public:
 	EnemySpawner(Ogre::Vector3 spawnerPosition ,unsigned _spawnFrequency, unsigned _onceSpawn);
 	~EnemySpawner(void);
-	void addEnemyToSpawn(unsigned prefabID, unsigned number);
+	void addEnemyToSpawn(unsigned prefabID, unsigned number, unsigned _spawnEffectID = 3);
 	void spawnEnemy(GameData * _gameData, unsigned long currentTime);
 	void setSpawnerDelaySinceStageStart(unsigned delay_in_seconds) {delaySinceSageStart = 1000 * delay_in_seconds;}
-	void spawnCountOfEnemy( unsigned amountToSpawnNow, GameData * _gameData, unsigned _prefabID );
-
+	void spawnCountOfEnemy(const SpawnerInfo& enemyToSpawnNow, GameData * _gameData );
 	void initSpawnDelaySinceStart( unsigned long currentTime );
 
 private:

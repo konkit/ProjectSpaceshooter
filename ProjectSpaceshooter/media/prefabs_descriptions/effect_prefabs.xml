@@ -12,10 +12,6 @@
 				<offset x_pos='0' y_pos='0' z_pos='0' />
 				<radius value='5' />
 			</inaccurate_Collider>
-			<Collider>
-				<offset x_pos='0' y_pos='0' z_pos='0' />
-				<radius value='5' />
-			</Collider>
 		</Colliders>
 	</effect>
 	<effect id='2'>
@@ -28,10 +24,19 @@
 				<offset x_pos='0' y_pos='0' z_pos='0' />
 				<radius value='5' />
 			</inaccurate_Collider>
-			<Collider>
-				<offset x_pos='0' y_pos='0' z_pos='0' />
-				<radius value='5' />
-			</Collider>
 		</Colliders>
 	</effect>
+  
+  <effect id='3'>
+    <effect_name name='SpawnPortal'/>
+    <ttl value='10'/>
+    <effect_power value='0'/>
+    <particleSystemName name='SpawnPortal'/>
+    <Colliders>
+      <inaccurate_Collider>
+        <offset x_pos='0' y_pos='0' z_pos='0' />
+        <radius value='0' />
+      </inaccurate_Collider>
+    </Colliders>
+  </effect>
 </effect_prefabs>
