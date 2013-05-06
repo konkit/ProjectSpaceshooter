@@ -148,6 +148,15 @@
     <ClInclude Include="Headers\ShipPrefabPlant.h">
       <Filter>Header\PrefabsPlant</Filter>
     </ClInclude>
+    <ClInclude Include="Headers\randomAI.h">
+      <Filter>Header\AI stuff</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\FlyToCore1.h">
+      <Filter>Header\AI stuff</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\AIStrategy.h">
+      <Filter>Header\AI stuff</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header">
@@ -200,6 +209,9 @@
     </Filter>
     <Filter Include="Resources">
       <UniqueIdentifier>{07890d05-b692-4ca5-bf0b-35964a47f642}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header\AI stuff">
+      <UniqueIdentifier>{1209dcdf-e1a5-42fe-b7ab-1ec663a6dca4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

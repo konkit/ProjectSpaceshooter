@@ -69,6 +69,21 @@ void PhysicsComponent::updateVelocity(float deltaTime) {
 
 	//change current velocity by this vector
 	currentVelocity += diffVector;
+}
+
+void PhysicsComponent::updateVelocityAndRotation(float deltaTime)	{
+	//get difference vector between current velocity and target velocity
+	Ogre::Vector3 diffVector = targetVelocity - currentVelocity;
+
+	//scale this vector to be equal to acceleration in magnitude
+	if( diffVector.length() > ( accelerationValue * deltaTime ) )
+	{
+		diffVector.normalise();
+		diffVector = diffVector * ( accelerationValue * deltaTime );
+	}
+
+	//change current velocity by this vector
+	currentVelocity += diffVector;
 
 	//Calculating rotation velocity
 	float diffRotVelocity = targetRotVelocity - rotVelocity;
@@ -82,9 +97,8 @@ void PhysicsComponent::updateVelocity(float deltaTime) {
 		rotVelocity -= rotAcceleration * deltaTime;
 	}
 
-
-
 }
+
 
 void PhysicsComponent::setTargetVelocity( Ogre::Quaternion orientation, Ogre::Vector3 localDir )
 {

@@ -82,6 +82,8 @@ public:
 
 	//Updates currentVelocity vector (acceleration, approaching to target velocity etc.)
 	void updateVelocity(float deltaTime);
+	void updateVelocityAndRotation(float deltaTime);
+
 
 	//instantly sets current velocity to target velocity value.
 	void setCurrentSpeedToMax() {
@@ -94,6 +96,11 @@ public:
 	}
 	void setFromPrefab( const MovablePrefab * prefab );
 	unsigned getCurrentVelocityValue();
+
+	float getRotVelocityValue()	{
+		return rotVelocityValue;
+	}
+
 
 private:
 	Ogre::Vector3 currentVelocity;

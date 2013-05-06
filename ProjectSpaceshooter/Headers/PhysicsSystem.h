@@ -33,12 +33,27 @@ public:
 			updateOneObject(it, deltaTime);
 		}
 
+		//Muszê uprz¹tn¹æ nieco tutaj tak¿e narazie przeciwnikami steruje AISystem
 		GameCollectionIterator<EnemyObject> myEnemyIterator = mGameData.getEnemies().getIterator();
 		while (myEnemyIterator.hasNext())
 		{
 			it = myEnemyIterator.getNext();
 			//for every game object
-			updateOneObject(it, deltaTime);
+				if (it == NULL) //TODO
+				{
+					return;
+				}
+				PhysicsComponent& tmpPhysics = it->getPhysicsComponent();
+
+				tmpPhysics.updateVelocity(deltaTime);
+
+				it->rotate( tmpPhysics.getRotVelocity(), deltaTime );
+				it->move( tmpPhysics.getCurrentVelocity() * deltaTime );
+
+				#ifdef _DEBUG
+						DebugDrawer::getSingleton().drawLine( it->getPosition(), it->getPosition()+tmpPhysics.getTargetVelocity(), Ogre::ColourValue(1.0, 1.0, 0.0, 0.0 ));
+						DebugDrawer::getSingleton().drawLine( it->getPosition(), it->getPosition()+tmpPhysics.getCurrentVelocity(), Ogre::ColourValue(1.0, 1.0, 0.0, 0.0 ));
+				#endif 
 		}
 	}
 
@@ -49,7 +64,7 @@ public:
 		}
 		PhysicsComponent& tmpPhysics = it->getPhysicsComponent();
 
-		tmpPhysics.updateVelocity(deltaTime);
+		tmpPhysics.updateVelocityAndRotation(deltaTime);
 
 		it->rotate( tmpPhysics.getRotVelocity(), deltaTime );
 		it->move( tmpPhysics.getCurrentVelocity() * deltaTime );
