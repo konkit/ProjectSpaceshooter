@@ -38,6 +38,10 @@ void GameOver::createCamera()
 
 GAME_STATES GameOver::nextState( SystemsSet & gameSystems )
 {
+	if (gameSystems.gameData.isSetPlayFlag())
+	{
+		return GAME_STATES::LEVEL_BUILDER;
+	}
 	return GAME_STATES::GAME_OVER;
 }
 

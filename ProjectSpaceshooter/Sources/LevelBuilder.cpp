@@ -20,10 +20,10 @@ LevelBuilder::~LevelBuilder()
 
 GAME_STATES LevelBuilder::update( SystemsSet & gameSystems, TimeData& time )
 {
+	gameSystems.gameData.clearPlayData();
 	loadLevelDescribe(gameSystems);
 	buildPlayScene(gameSystems, time);
 	return nextState(gameSystems);
-	
 }
 
 void LevelBuilder::loadLevelDescribe( SystemsSet & gameSystems )
@@ -84,7 +84,10 @@ void LevelBuilder::buildPlayScene( SystemsSet & gameSystems, TimeData& time )
 	//Init player's sceneNode
 	Player * player = gameSystems.gameData.createPlayerFromPrefab(1);	
 	attachCameraToPlayer(gameSystems);
-
+	const WeaponPrefab * weapon = gameSystems.gameData.getWeaponPrefab(2);
+	player->addWeapon(weapon);
+	weapon = gameSystems.gameData.getWeaponPrefab(3);
+	player->addWeapon(weapon);
 
 	StaticObject *stat = mGameData->instantiateStatic(1);
 	stat->setPosition(Vector3(3400, 0, 300));

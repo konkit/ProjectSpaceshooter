@@ -145,6 +145,61 @@ void InputManager::updateInputForGame(GameData& mGameData, float deltaTime, unsi
 		wasH_KeyPressed = true;
 	}
 
+	Player * player = mGameData.getPlayer();
+	if (!mKeyboard->isKeyDown(OIS::KC_1) && (was1_KeyPressed))	{
+		player->changeWeaponTo(1);
+		was1_KeyPressed = false;
+	} else if (mKeyboard->isKeyDown(OIS::KC_1))	{
+		was1_KeyPressed = true;
+	}
+	if (!mKeyboard->isKeyDown(OIS::KC_2) && (was2_KeyPressed))	{
+		player->changeWeaponTo(2);
+		was2_KeyPressed = false;
+	} else if (mKeyboard->isKeyDown(OIS::KC_2))	{
+		was2_KeyPressed = true;
+	}
+	if (!mKeyboard->isKeyDown(OIS::KC_3) && (was3_KeyPressed))	{
+		player->changeWeaponTo(3);
+		was3_KeyPressed = false;
+	} else if (mKeyboard->isKeyDown(OIS::KC_3))	{
+		was3_KeyPressed = true;
+	}
+	if (!mKeyboard->isKeyDown(OIS::KC_4) && (was4_KeyPressed))	{
+		player->changeWeaponTo(4);
+		was4_KeyPressed = false;
+	} else if (mKeyboard->isKeyDown(OIS::KC_4))	{
+		was4_KeyPressed = true;
+	}
+	if (!mKeyboard->isKeyDown(OIS::KC_5) && (was5_KeyPressed))	{
+		player->changeWeaponTo(5);
+		was5_KeyPressed = false;
+	} else if (mKeyboard->isKeyDown(OIS::KC_5))	{
+		was5_KeyPressed = true;
+	}
+	if (!mKeyboard->isKeyDown(OIS::KC_6) && (was6_KeyPressed))	{
+		player->changeWeaponTo(6);
+		was6_KeyPressed = false;
+	} else if (mKeyboard->isKeyDown(OIS::KC_6))	{
+		was6_KeyPressed = true;
+	}
+	if (!mKeyboard->isKeyDown(OIS::KC_7) && (was7_KeyPressed))	{
+		player->changeWeaponTo(7);
+		was7_KeyPressed = false;
+	} else if (mKeyboard->isKeyDown(OIS::KC_7))	{
+		was7_KeyPressed = true;
+	}
+	if (!mKeyboard->isKeyDown(OIS::KC_8) && (was8_KeyPressed))	{
+		player->changeWeaponTo(8);
+		was8_KeyPressed = false;
+	} else if (mKeyboard->isKeyDown(OIS::KC_8))	{
+		was8_KeyPressed = true;
+	}
+	if (!mKeyboard->isKeyDown(OIS::KC_9) && (was9_KeyPressed))	{
+		player->changeWeaponTo(9);
+		was9_KeyPressed = false;
+	} else if (mKeyboard->isKeyDown(OIS::KC_9))	{
+		was9_KeyPressed = true;
+	}
 	//mGameData.getPlayer()->setTargetVelocity( tmpPos );
 	//mGameData.getPlayer()->getPhysicsComponent().setRotVelocity(tmpAngle);
 }
@@ -175,5 +230,14 @@ void InputManager::updateInputForPause( GameData& mGameData )
 	} else if (mKeyboard->isKeyDown(OIS::KC_P))
 	{
 		wasP_KeyPressed = true;
+	}
+
+	if (!mKeyboard->isKeyDown(OIS::KC_R) && (wasR_KeyPressed))
+	{
+		mGameData.setChangeToPlay(true);
+		wasR_KeyPressed = false;
+	} else if (mKeyboard->isKeyDown(OIS::KC_R))
+	{
+		wasR_KeyPressed = true;
 	}
 }

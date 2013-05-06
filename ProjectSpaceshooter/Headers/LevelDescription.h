@@ -22,8 +22,8 @@ struct Light
 
 struct StaticObjectDescribe
 {
-	string meshName;
-	unsigned int resistance;
+	unsigned int prefabID;
+	Vector3 position;
 };
 
 /** 
@@ -70,7 +70,7 @@ public:
 	{
 		levelStageCollection += _newStage;
 	}
-//	string resourceGroupName; Bêdzie potrzebne do wybierania zasobów dla konkretnego levelu
+	void clearLevelDescription();
 	Ogre::ColourValue ambientColour;
 	GameCollection<Light> lightsCollections;
 	GameCollection<StaticObjectDescribe> staticObjectList;
