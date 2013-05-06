@@ -11,12 +11,27 @@ void AISystem::update( GameData& mGameData, TimeData time )
 	{
 		it = myEnemyIterator.getNext();
 
-//		randomAI(it, mGameData);	
-		toCoreAI2(it, mGameData, time);
-//		toCoreFlyingAI(it, mGameData, time);
+		// select AI behaviour 
+
+		//flyToCore1.update(it, mGameData, time);
+
+		AIStrategy* currentStrategy = getAIStrategy( it->getAIComponent().getType() );
+		currentStrategy->update(it, mGameData, time);
 	}
 }
 
+AIStrategy* AISystem::getAIStrategy( AI_TYPE type )	{
+	//temporary, to be changed
+	if( type == AI_TYPE::fighter )	{
+		return &flyToCore1;
+	} else if( type == AI_TYPE::defender )	{
+		return &flyToCore1;
+	}
+}
+
+
+
+/*
 
 void AISystem::randomAI( EnemyObject* it, GameData& mGameData )
 {
@@ -243,3 +258,5 @@ float AISystem::getAngleToTarget(EnemyObject* it, GameObject* target )	{
 
 	return angleToCore;
 }
+
+*/
