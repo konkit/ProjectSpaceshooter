@@ -4,6 +4,11 @@
 
 void AISystem::update( GameData& mGameData, TimeData time )
 {
+	if ( &mGameData.getCore() == NULL)
+	{
+		return;
+	}
+
 	//For every enemy
 	GameCollectionIterator<EnemyObject> myEnemyIterator = mGameData.getEnemies().getIterator();
 	EnemyObject* it;

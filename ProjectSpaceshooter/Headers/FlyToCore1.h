@@ -9,15 +9,7 @@ public:
 	{
 		AIComponent& cntAI = it->getAIComponent();
 		PhysicsComponent& cntPhys = it->getPhysicsComponent();
-		Core& cntCore = mGameData.getCore();
-
-		/*
-		if (&cntCore == NULL)
-		{
-			randomAI(it, mGameData);
-			return;
-		}
-		*/
+		Core& cntCore = mGameData.getCore();		
 
 		if( cntAI.getState() == AI_STATE::GET_TO_CORE )	{
 			getToCore(it, mGameData, time);		
@@ -143,6 +135,23 @@ public:
 
 		Ogre::Quaternion newOrient = Ogre::Vector3::UNIT_Z.getRotationTo(cntVelocity);
 		it->setOrientation( newOrient );
+	}
+
+	virtual void flyRandomly( EnemyObject* it, GameData& mGameData, TimeData time  )
+	{
+		PhysicsComponent& currentPhysicsComponent = it->getPhysicsComponent();
+
+		//get some random values
+		float currentVelocity  = float(200 + (rand()%300-100));
+		float currentRotVelocity = float(0.4 + (rand()%50-25)/10);
+
+		//set speed of enemy
+		currentPhysicsComponent.setMaxVelocityValue(currentVelocity);
+		//set its vector
+		//currentPhysicsComponent.setVelocity(Ogre::Vector3(0.0, 0.0, 1.0));
+		it->setTargetVelocity( Ogre::Vector3(0.0, 0.0, 0.5) );
+		//set it rotation speed
+		currentPhysicsComponent.setRotVelocity(currentRotVelocity);
 	}
 
 
