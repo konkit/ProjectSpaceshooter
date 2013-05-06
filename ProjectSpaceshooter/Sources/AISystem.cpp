@@ -27,11 +27,17 @@ void AISystem::update( GameData& mGameData, TimeData time )
 
 AIStrategy* AISystem::getAIStrategy( AI_TYPE type )	{
 	//temporary, to be changed
+	return &flyToCore1;
+	/*
 	if( type == AI_TYPE::fighter )	{
 		return &flyToCore1;
 	} else if( type == AI_TYPE::defender )	{
 		return &flyToCore1;
+	} else {
+		throw My_Exception("Unknown ai type ");
 	}
+	*/
+
 }
 
 
