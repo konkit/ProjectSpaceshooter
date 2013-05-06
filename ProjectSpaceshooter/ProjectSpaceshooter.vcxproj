@@ -173,6 +173,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Headers\AIComponent.h" />
+    <ClInclude Include="Headers\AIStrategy.h" />
     <ClInclude Include="Headers\AISystem.h" />
     <ClInclude Include="Headers\BaseCollection.h" />
     <ClInclude Include="Headers\Bullet.h" />
@@ -183,6 +184,8 @@
     <ClInclude Include="Headers\EffectPrefabPlant.h" />
     <ClInclude Include="Headers\DebugDrawer.h" />
     <ClInclude Include="Headers\Enemy.h" />
+    <ClInclude Include="Headers\FlyToCore1.h" />
+    <ClInclude Include="Headers\randomAI.h" />
     <ClInclude Include="Headers\ShipPrefabPlant.h" />
     <ClInclude Include="Headers\EnemySpawner.h" />
     <ClInclude Include="Headers\Exceptions.h" />
