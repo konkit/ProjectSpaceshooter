@@ -2,6 +2,7 @@
 
 #include "AIStrategy.h"
 
+/* AI mode where enemy is moving in random circles */
 class RandomAIStrategy : public AIStrategy {
 
 public:

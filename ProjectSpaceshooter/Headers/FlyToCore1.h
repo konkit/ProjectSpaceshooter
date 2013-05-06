@@ -2,6 +2,8 @@
 
 #include "AIStrategy.h"
 
+/**
+  * AI mode where enemy is in constant motion, shooting at core and turning around */
 class FlyToCoreAIStrategy1 : public AIStrategy	{
 
 public:
