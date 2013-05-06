@@ -18,7 +18,7 @@
         <radius value='10' />
       </inaccurate_Collider>
 		</Colliders>
-		<standard_waepon id = '1' />
+		<standard_waepon id = '3' />
     <thruster>
       <thruster_particle name ='thrusters'/>
       <offset x_pos='0' y_pos='0' z_pos='-10' />

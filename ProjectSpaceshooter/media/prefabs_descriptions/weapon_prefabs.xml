@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <weapon_prefabs>
-  <max_id id="2"/>
+  <max_id id="3"/>
   <weapon id='1'>
     <weapon_name name='Rocket Luncher'/>
     <bullet_prefab id='1'/>
@@ -9,6 +9,11 @@
   <weapon id='2'>
     <weapon_name name='Gatling'/>
     <bullet_prefab id='2'/>
+    <rateOfFire value='200'/>
+  </weapon>
+  <weapon id='3'>
+    <weapon_name name='Laser'/>
+    <bullet_prefab id='3'/>
     <rateOfFire value='200'/>
   </weapon>
 </weapon_prefabs>
