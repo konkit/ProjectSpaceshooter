@@ -35,5 +35,7 @@ void Game::initializeGame()
 	mGameSystems.ogreManager.initOgre();
 	//Initialize OIS
 	mGameSystems.inputManager.initOIS( mGameSystems.ogreManager.getWindowHandle() );
+	//Initialize CEGUI
+	mGameSystems.mguiSystem.init();
 }
 

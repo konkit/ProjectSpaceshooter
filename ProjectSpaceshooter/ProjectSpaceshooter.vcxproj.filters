@@ -157,6 +157,10 @@
     <ClInclude Include="Headers\AIStrategy.h">
       <Filter>Header\AI stuff</Filter>
     </ClInclude>
+    <ClInclude Include="Headers\ogre2d.h" />
+    <ClInclude Include="Headers\GUISystem.h">
+      <Filter>Header\Systems</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header">
@@ -331,6 +335,9 @@
     </ClCompile>
     <ClCompile Include="Sources\ShipPrefabPlant.cpp">
       <Filter>Source\PrefabsPlants</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\ogre2d.cpp">
+      <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

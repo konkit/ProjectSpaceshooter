@@ -6,6 +6,7 @@
 #include "ObjectStateUpdateSystem.h"
 #include "CollisionSystem.h"
 #include "AISystem.h"
+#include "GUISystem.h"
 
 struct SystemsSet
 {
@@ -16,6 +17,8 @@ struct SystemsSet
 	ObjectStateUpdateSystem mObjectStateSystem;
 	CollisionSystem			mCollisionSystem;
 	AISystem				mAISystem;
+	GUISystem	mguiSystem;
+
 #ifdef _DEBUG
 	DebugDrawer  *          cntDebugDrawer;
 #endif // _DEBUG
