@@ -11,13 +11,15 @@
 class Player : public Ship
 {
 public:
-	Player() {;}
 	Player(const ShipPrefab * objectTemplate,const WeaponPrefab * weapon, Ogre::SceneManager * _sceneMenager)
 		: GameObject(objectTemplate, _sceneMenager), Ship(objectTemplate,weapon, _sceneMenager)
 	{
 		createCameraNode();
 	}
-	virtual ~Player(){}
+	virtual ~Player()
+	{
+		detachCamera();
+	}
 	void setShip(const ShipPrefab * objectTemplate,const WeaponPrefab * weapon, Ogre::SceneManager * _sceneMenager)  {Ship::setShip(objectTemplate, weapon, _sceneMenager);}
 	GameObjectType getType() {
 		return GameObjectType::player;

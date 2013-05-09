@@ -251,12 +251,12 @@ void GameData::setCountOfPrefabs( PREFAB_TYPE prefabType, unsigned count )
 
 void GameData::clearPlayData()
 {
-	//mEnemyCollection.getCollection().clearCollection();
-	//mBulletCollection.getCollection().clearCollection();
-	//mStaticCollection.getCollection().clearCollection();
-	//mEffectsCollection.getCollection().clearCollection();
-	//destroyPlayer();
-	//mStateScenesManager.playSceneManager->clearScene();
+	mEnemyCollection.getCollection().clearCollection();
+	mBulletCollection.getCollection().clearCollection();
+	mStaticCollection.getCollection().clearCollection();
+	mEffectsCollection.getCollection().clearCollection();
+	destroyPlayer();
+	mStateScenesManager.playSceneManager->destroyAllLights();
 
 }
 

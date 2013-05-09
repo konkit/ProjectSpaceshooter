@@ -18,7 +18,7 @@ particle_system LaserExplosion
 	emitter Point
 	{
 		position 0.0 0.0 0.0
-		direction 0.706788837909698 -0.0299864932894707 0.706788837909698
+		direction 0.0 0.0 -1.0
 		angle 60
 		emission_rate 300
 		velocity_min 30
