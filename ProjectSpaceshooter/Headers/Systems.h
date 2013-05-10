@@ -17,7 +17,7 @@ struct SystemsSet
 	ObjectStateUpdateSystem mObjectStateSystem;
 	CollisionSystem			mCollisionSystem;
 	AISystem				mAISystem;
-	GUISystem	mguiSystem;
+	GUISystem		mGUISystem;
 
 #ifdef _DEBUG
 	DebugDrawer  *          cntDebugDrawer;

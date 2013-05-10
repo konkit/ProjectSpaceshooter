@@ -157,9 +157,11 @@
     <ClInclude Include="Headers\AIStrategy.h">
       <Filter>Header\AI stuff</Filter>
     </ClInclude>
-    <ClInclude Include="Headers\ogre2d.h" />
     <ClInclude Include="Headers\GUISystem.h">
-      <Filter>Header\Systems</Filter>
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\ogre2d.h">
+      <Filter>Header</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
