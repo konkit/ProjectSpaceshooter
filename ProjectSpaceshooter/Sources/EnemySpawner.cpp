@@ -17,11 +17,12 @@ EnemySpawner::~EnemySpawner(void)
 {
 }
 
-void EnemySpawner::addEnemyToSpawn( unsigned prefabID, unsigned number )
+void EnemySpawner::addEnemyToSpawn( unsigned prefabID, unsigned number, unsigned _spawnEffectID )
 {
 	SpawnerInfo * tmpStruct =  new SpawnerInfo;
 	tmpStruct->prefabID = prefabID;
 	tmpStruct->amount = number;
+	tmpStruct->spawnEffectID = _spawnEffectID;
 	enemyToSpawn += tmpStruct;
 }
 
@@ -33,6 +34,7 @@ void EnemySpawner::spawnEnemy( GameData * _gameData, unsigned long currentTime )
 	{
 		GameCollectionIterator<SpawnerInfo> it = enemyToSpawn.getIterator();
 		SpawnerInfo * tmpSpawnInfo;
+		SpawnerInfo enemyToSpawnNow;
 		unsigned amountToSpawnNow;
 		unsigned leftToSpawn = onceMomentSpawn;
 		while (it.hasNext() && leftToSpawn > 0)
@@ -41,7 +43,10 @@ void EnemySpawner::spawnEnemy( GameData * _gameData, unsigned long currentTime )
 			amountToSpawnNow =  leftToSpawn >= tmpSpawnInfo->amount ? tmpSpawnInfo->amount : leftToSpawn;
 			leftToSpawn -= amountToSpawnNow;
 			tmpSpawnInfo->amount -= amountToSpawnNow;			
-			spawnCountOfEnemy(amountToSpawnNow, _gameData, tmpSpawnInfo->prefabID);
+			enemyToSpawnNow.amount = amountToSpawnNow;
+			enemyToSpawnNow.prefabID = tmpSpawnInfo->prefabID;
+			enemyToSpawnNow.spawnEffectID = tmpSpawnInfo->spawnEffectID;
+			spawnCountOfEnemy(enemyToSpawnNow, _gameData);
 
 			if (tmpSpawnInfo->amount == 0) //Delete empty spawn slot
 				enemyToSpawn -= tmpSpawnInfo;
@@ -60,15 +65,17 @@ void EnemySpawner::initSpawnDelaySinceStart( unsigned long currentTime )
 	}
 }
 
-void EnemySpawner::spawnCountOfEnemy( unsigned amountToSpawnNow, GameData * _gameData, unsigned _prefabID )
+void EnemySpawner::spawnCountOfEnemy(const SpawnerInfo& enemyToSpawnNow, GameData * _gameData )
 {
-	for(int i = amountToSpawnNow; i > 0; i --)
+	for(int i = enemyToSpawnNow.amount; i > 0; i --)
 	{
 		//EnemyCollection& enemysColl = _gameData->getEnemys();
 		BaseCollection<ShipPrefab, EnemyObject>& enemiesCollection = _gameData->getEnemies();
-		EnemyObject * tmpEnemy = _gameData->instantiateEnemy(_prefabID, AI_TYPE::fighter);
-		Vector3 newPosition = myPosition + Vector3(100.0*(i-1), 0.0, 0.0);
+		EnemyObject * tmpEnemy = _gameData->instantiateEnemy(enemyToSpawnNow.prefabID, AI_TYPE::fighter);
+		Vector3 newPosition = myPosition + Vector3(200.0*(i-1), 0.0, 0.0);
 		tmpEnemy->setPosition(newPosition);
+		EffectObject * spawnEffect = _gameData->instantiateEffect(enemyToSpawnNow.spawnEffectID);
+		spawnEffect->setPosition(newPosition);
 	}
 }
 

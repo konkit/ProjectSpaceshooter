@@ -1,4 +1,11 @@
 #include "stdafx.h"
-#include "..\Headers\LevelDescription.h"
+#include "LevelDescription.h"
 
 
+
+void LevelDescription::clearLevelDescription()
+{
+	levelStageCollection.clearCollection();
+	staticObjectList.clearCollection();
+	lightsCollections.clearCollection();
+}

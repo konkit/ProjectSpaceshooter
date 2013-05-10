@@ -1,4 +1,4 @@
-material Special.001
+material Classic.000
 {
 	technique
 	{
@@ -10,7 +10,7 @@ material Special.001
 
 			texture_unit
 			{
-				texture Special.001.png
+				texture Classic.000.png
 			}
 		}
 	}

@@ -5,7 +5,7 @@
 #include "GameObject.h"
 using std::string;
 GameData::GameData(void)
-	:mEffectsCollection("Effect Collection"), mBulletCollection("Bullet Collection"), mStaticCollection("Static Collection")
+	:mEffectsCollection("Effect Collection"), mBulletCollection("Bullet Collection"), mStaticCollection("Static Collection"), mPlayer(NULL)
 {
 	changeFlags.changeToHangar = false;
 	changeFlags.changeToMenu = false;
@@ -247,6 +247,17 @@ void GameData::setCountOfPrefabs( PREFAB_TYPE prefabType, unsigned count )
 	default:
 		break;
 	}
+}
+
+void GameData::clearPlayData()
+{
+	mEnemyCollection.getCollection().clearCollection();
+	mBulletCollection.getCollection().clearCollection();
+	mStaticCollection.getCollection().clearCollection();
+	mEffectsCollection.getCollection().clearCollection();
+	destroyPlayer();
+	mStateScenesManager.playSceneManager->destroyAllLights();
+
 }
 
 

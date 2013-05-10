@@ -2,13 +2,16 @@
 
 using namespace std;
 Ship::Ship()
-	: GameObject(), GameObject_Movable(), GameObject_WithHealth()
+	: GameObject(), GameObject_Movable(), GameObject_WithHealth(), myWeapons(10), numerOfWeapons(0)
 {
 }
 
 Ship::Ship(const ShipPrefab * objectTemplate, const WeaponPrefab * weaponPrefab, Ogre::SceneManager * _sceneMenager )
-	: GameObject(objectTemplate, _sceneMenager), GameObject_WithHealth(objectTemplate, _sceneMenager), GameObject_Movable(objectTemplate, _sceneMenager), mWeapon(weaponPrefab)
+	: GameObject(objectTemplate, _sceneMenager), GameObject_WithHealth(objectTemplate, _sceneMenager), GameObject_Movable(objectTemplate, _sceneMenager), myWeapons(10)
 {
+	myWeapons[0].setWeapon(weaponPrefab);
+	mActiveWeapon = &myWeapons[0];
+	numerOfWeapons = 1;
 }
 
 Ship::~Ship()
@@ -31,4 +34,19 @@ bool Ship::receiveDamage( unsigned int damages, Vector3 fromDirection /*= Vector
 			addRecoilVectorToCurrentVelocity(recoil);
 	}
 	return isDead;
+}
+
+void Ship::addWeapon( const WeaponPrefab * weaponPrefab )
+{
+	myWeapons[numerOfWeapons].setWeapon(weaponPrefab);
+	numerOfWeapons++;
+}
+
+void Ship::changeWeaponTo( char weaponNumber )
+{
+	if (weaponNumber <= numerOfWeapons)
+	{
+		mActiveWeapon = &myWeapons[weaponNumber-1];
+	}
+	return;
 }

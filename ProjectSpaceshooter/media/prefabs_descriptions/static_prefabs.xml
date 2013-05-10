@@ -38,15 +38,15 @@
   
   <static id='1'>
     <static_name name='Sun'/>
-    <mesh name='Sun.MESH'/>
-    <health value='10000'/>
+    <mesh name='sun.MESH'/>
+    <health value='1000'/>
     <explosion_id id='2'/>
     <scale x_scale='90' y_scale='90' z_scale='90' />
     <rotation x_rot='0' y_rot='0' z_rot='0' />
     <Colliders>
       <inaccurate_Collider>
         <offset x_pos='0' y_pos='0' z_pos='0' />
-        <radius value='100' />
+        <radius value='120' />
       </inaccurate_Collider>
     </Colliders>
   </static>

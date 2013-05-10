@@ -20,7 +20,7 @@ particle_system Supernova
 		position 0.0 0.0 0.0
 		direction 0.987001836299896 -0.14938947558403 -0.0592467524111271
 		angle 180
-		emission_rate 500
+		emission_rate 1000
 		velocity_min 70
 		velocity_max 70
 		time_to_live_min 10

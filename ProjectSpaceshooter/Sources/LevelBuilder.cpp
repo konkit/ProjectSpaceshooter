@@ -20,10 +20,10 @@ LevelBuilder::~LevelBuilder()
 
 GAME_STATES LevelBuilder::update( SystemsSet & gameSystems, TimeData& time )
 {
+	gameSystems.gameData.clearPlayData();
 	loadLevelDescribe(gameSystems);
 	buildPlayScene(gameSystems, time);
 	return nextState(gameSystems);
-	
 }
 
 void LevelBuilder::loadLevelDescribe( SystemsSet & gameSystems )
@@ -83,8 +83,12 @@ void LevelBuilder::buildPlayScene( SystemsSet & gameSystems, TimeData& time )
 
 	//Init player's sceneNode
 	Player * player = gameSystems.gameData.createPlayerFromPrefab(1);	
+	player->setPosition(Vector3(0,0,0));
 	attachCameraToPlayer(gameSystems);
-
+	const WeaponPrefab * weapon = gameSystems.gameData.getWeaponPrefab(2);
+	player->addWeapon(weapon);
+	weapon = gameSystems.gameData.getWeaponPrefab(3);
+	player->addWeapon(weapon);
 
 	StaticObject *stat = mGameData->instantiateStatic(1);
 	stat->setPosition(Vector3(3400, 0, 300));
@@ -127,6 +131,7 @@ void LevelBuilder::attachCameraToPlayer(SystemsSet & gameSystems)
 	Ogre::Camera * _camera = gameSystems.gameData.getCameraFor(GAME_STATES::PLAY);
 	Player * player = gameSystems.gameData.getPlayer();
 	Ogre::SceneNode *cameraNode = player->getCameraNode();
+	_camera->setPosition(0,0,0);
 	//Create camera
 	//Third person perspective camera
 	if( THIRD_PERSON_CAMERA == true ) {
