@@ -47,6 +47,7 @@ void ObjectStateUpdateSystem::createExplosionFor( GameObject_WithCollider * remo
 	}
 	EffectObject * effect = mGameData.instantiateEffect(effectId);
 	effect->setPosition(removedObject->getPosition());
+	effect->setOrientation(removedObject->getOrientation());
 	return;
 }
 
