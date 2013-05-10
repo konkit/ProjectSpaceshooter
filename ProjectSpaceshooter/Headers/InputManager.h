@@ -4,7 +4,7 @@
 #include "Exceptions.h"
 
 
-
+#define SHOW_CURSOR true	//If system cursor should be displayed
 
 /** Class reading input from system and acting appropriately on GameData
   *

@@ -15,6 +15,11 @@ void InputManager::initOIS(Ogre::RenderWindow* window)
     mWindow->getCustomAttribute("WINDOW", &windowHnd);
     windowHndStr << windowHnd;
 		pl.insert(std::make_pair(std::string("WINDOW"), windowHndStr.str()));
+
+		if( SHOW_CURSOR == true )	{
+			pl.insert(std::make_pair(std::string("w32_mouse"), std::string("DISCL_FOREGROUND" )));
+			pl.insert(std::make_pair(std::string("w32_mouse"), std::string("DISCL_NONEXCLUSIVE")));
+		}
  
     mInputManager = OIS::InputManager::createInputSystem( pl );
  
