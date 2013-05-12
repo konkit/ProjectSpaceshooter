@@ -17,17 +17,17 @@
 class GUISystem	{
 
 public:
-	
-
-
+	//init - run at start
 	void init( Ogre::SceneManager* mSceneMgr)  	{
-		ogre2dManager = new Ogre2dManager;
-		ogre2dManager->init(mSceneMgr, Ogre::RENDER_QUEUE_OVERLAY, true);
+		//2D graphics
+			ogre2dManager = new Ogre2dManager;
+			ogre2dManager->init(mSceneMgr, Ogre::RENDER_QUEUE_OVERLAY, true);
 
-		//This function loads image (in example from folder media/materials/textures/ )
-		Ogre::TextureManager::getSingleton().load("radar_background.png",Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+			//This function loads image (in example from folder media/materials/textures/ )
+			Ogre::TextureManager::getSingleton().load("radar_background.png",Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+		//End 2D graphics
 
-		//My own overlay play
+		//Text Stuff
 			loadFont("arial.ttf");
 
 			// get the resource manager
@@ -48,20 +48,24 @@ public:
 			//create text areas
 			playerVelocityText = createText( "playerVelocity1", 0, 25 );
 			fpsNumber = createText( "fps1", 0, 5);
+		//END text stuff
 	}
 
+	//display - run every frame
 	void display( GameData& mGameData, TimeData _time ){
-		//This function displays this texture
+
+		//2D image stuff
 		ogre2dManager->spriteBltFull("radar_background.png", 0.6, 1.0, 1.0, 0.5);
 
+		//Text stuff
+		//display player velocity as text (actualize text contents)
 		std::stringstream playerVelocityString;
 			playerVelocityString<<"Velocity : "<<mGameData.getPlayer()->getPhysicsComponent().getCurrentVelocity();
-
 		playerVelocityText->setCaption( playerVelocityString.str() );
 
+		//display FPS as text 
 		std::stringstream fpsString;
 			fpsString<<"FPS : "<<_time.currentFPSValue;
-
 		fpsNumber->setCaption( fpsString.str() );
 
 		// Show the overlay
@@ -77,6 +81,21 @@ public:
 		delete ogre2dManager;
 	}
 
+	
+
+
+private:
+	Ogre2dManager* ogre2dManager;
+
+	//My own overlay play
+	Ogre::Overlay* overlay;
+	Ogre::OverlayManager* overlayManager;
+	Ogre::OverlayContainer* panel;
+
+	Ogre::TextAreaOverlayElement* playerVelocityText;
+	Ogre::TextAreaOverlayElement* fpsNumber;
+
+	//load font
 	void loadFont(std::string fontFilename)	{
 		Ogre::ResourceGroupManager &resGroupMgr = Ogre::ResourceGroupManager::getSingleton();
 			// tell it to look at this location
@@ -97,6 +116,7 @@ public:
 			font->load();
 	}
 
+	//create text area object, attach it to panel and return it (so it can be saved and have the text actualized)
 	Ogre::TextAreaOverlayElement* createText(std::string elementID, int posX, int posY )	{
 		// Create a text area
 		Ogre::TextAreaOverlayElement* textArea = static_cast<Ogre::TextAreaOverlayElement*>(
@@ -114,16 +134,4 @@ public:
 
 		return textArea;
 	}
-
-
-private:
-	Ogre2dManager* ogre2dManager;
-
-	//My own overlay play
-	Ogre::Overlay* overlay;
-	Ogre::OverlayManager* overlayManager;
-	Ogre::OverlayContainer* panel;
-
-	Ogre::TextAreaOverlayElement* playerVelocityText;
-	Ogre::TextAreaOverlayElement* fpsNumber;
 };
