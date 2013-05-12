@@ -38,11 +38,11 @@ GAME_STATES PlayState::update( SystemsSet & gameSystems, TimeData& time )
 {
     timeToOneSecond += time.deltaTime;
     if( timeToOneSecond > 1.0 ) {
-        currentFPSValue = numOfFPS;
+        time.currentFPSValue = numOfFPS;
         numOfFPS = 0;
         timeToOneSecond = 0.0;
 
-        std::cout<<"FPS : "<<currentFPSValue<<"\n";
+        std::cout<<"FPS : "<<time.currentFPSValue<<"\n";
     }
 
     numOfFPS++;
@@ -54,7 +54,7 @@ GAME_STATES PlayState::update( SystemsSet & gameSystems, TimeData& time )
     gameSystems.mCollisionSystem.update( gameSystems.gameData);
     gameSystems.mObjectStateSystem.update( gameSystems.gameData, time);
 
-	gameSystems.mGUISystem.display();
+	gameSystems.mGUISystem.display(gameSystems.gameData, time);
 
 #ifdef _DEBUG
     DebugDrawer::getSingleton().build();

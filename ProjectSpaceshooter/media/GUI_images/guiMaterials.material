@@ -1,0 +1,27 @@
+material "grayBackground"
+{
+	technique
+	{
+		pass
+		{
+			lighting off
+ 
+			ambient 1 1 1 0.5
+			diffuse 1 1 1 0.5
+			specular 0 0 0 0
+			emissive 0 0 0
+			
+			scene_blend alpha_blend
+			depth_write off
+ 
+
+
+			texture_unit
+			{
+				texture gray_background.png
+				tex_coord_set 0
+				colour_op modulate
+			}
+		}
+	}
+}
