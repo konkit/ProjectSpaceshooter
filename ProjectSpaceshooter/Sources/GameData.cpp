@@ -11,11 +11,13 @@ GameData::GameData(void)
 	changeFlags.changeToMenu = false;
 	changeFlags.changeToPause = false;
 	changeFlags.changeToPlay = false;
+	currentLevelDecription = NULL;
 }
 
 GameData::~GameData(void)
 {
 	delete mPlayer;
+	delete currentLevelDecription;
 }
 
 Ogre::SceneManager * GameData::getSceneManagerFor( GAME_STATES gameState )
@@ -257,6 +259,7 @@ void GameData::clearPlayData()
 	mEffectsCollection.getCollection().clearCollection();
 	destroyPlayer();
 	mStateScenesManager.playSceneManager->destroyAllLights();
+	delete currentLevelDecription;
 
 }
 

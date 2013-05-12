@@ -98,7 +98,19 @@ public:
 	Ogre::SceneManager * getSceneManagerFor(GAME_STATES gameState);
 	void setSceneMenagerFor(GAME_STATES gameState, Ogre::SceneManager * sceneManagerForState);
 
-	LevelDescription & getLevelDescription() {return currentLevelDecription;}
+	LevelDescription & createLevelDescription() 
+	{
+		currentLevelDecription = new LevelDescription();
+		return *currentLevelDecription;
+	}
+	LevelDescription & getLevelDescription() 
+	{
+		return *currentLevelDecription;
+	}
+	void removeLevelDescription()
+	{
+		delete currentLevelDecription;
+	}
 
 	//BulletCollection& getBullets()	{
 	BaseCollection<BulletPrefab, Bullet>& getBullets() {return mBulletCollection;}
@@ -235,5 +247,5 @@ private:
 	GameObjectTemplates mPrefabCollections;
 	StateScenesManager_Struct mStateScenesManager;
 	CameraManager_Struct mCamerasManager;
-	LevelDescription currentLevelDecription;
+	LevelDescription * currentLevelDecription;
 };

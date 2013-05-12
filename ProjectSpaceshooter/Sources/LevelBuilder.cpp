@@ -28,7 +28,7 @@ GAME_STATES LevelBuilder::update( SystemsSet & gameSystems, TimeData& time )
 
 void LevelBuilder::loadLevelDescribe( SystemsSet & gameSystems )
 {
-	LevelDescription & _levelDescription = gameSystems.gameData.getLevelDescription();
+	LevelDescription & _levelDescription = gameSystems.gameData.createLevelDescription();
 	_levelDescription.ambientColour = Ogre::ColourValue(1.0f,1.0f,1.0f);
 	Light * newLight = new Light;
 	newLight->position = Vector3(100,100,100);
