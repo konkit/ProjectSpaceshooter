@@ -117,6 +117,10 @@ public:
 	//EnemyCollection& getEnemys()
 	EnemyAndShipPrefabsCollections& getEnemies() {return mEnemyCollection;}
 	BaseCollection<EffectPrefab, EffectObject>& getEffects() {return mEffectsCollection;}
+	BaseCollection<StaticPrefab, StaticObject>& getStatics()	{
+		return mStaticCollection;
+	}
+
 
 	Core& getCore() { return *theCore; }
 
