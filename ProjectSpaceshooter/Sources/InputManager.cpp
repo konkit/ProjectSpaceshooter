@@ -95,17 +95,17 @@ void InputManager::updateInputForGame(GameData& mGameData, float deltaTime, unsi
 		clockwise = false, 
 		cntclockwise = false;
 
-	if(mKeyboard->isKeyDown(OIS::KC_W) )	{
+	if(mKeyboard->isKeyDown(OIS::KC_W) || mKeyboard->isKeyDown(OIS::KC_UP))	{
 		//tmpPos.z += 1.0;
 		forward = true;
 	}
 	
-	if(mKeyboard->isKeyDown(OIS::KC_S) )	{
+	if(mKeyboard->isKeyDown(OIS::KC_S)  || mKeyboard->isKeyDown(OIS::KC_DOWN))	{
 		//tmpPos.z -= 1.0;
 		backward = true;
 	}
 
-	if(mKeyboard->isKeyDown(OIS::KC_Q) )	{
+	if(mKeyboard->isKeyDown(OIS::KC_Q))	{
 		//tmpPos.x += 1.0;
 		left = true;
 	}
@@ -114,11 +114,11 @@ void InputManager::updateInputForGame(GameData& mGameData, float deltaTime, unsi
 		//tmpPos.x -= 1.0;
 		right = true;
 	}
-	if(mKeyboard->isKeyDown(OIS::KC_A) )	{
+	if(mKeyboard->isKeyDown(OIS::KC_A) || (mKeyboard->isKeyDown(OIS::KC_LEFT)) )	{
 		//tmpAngle += 1.0;
 		cntclockwise = true;
 	}
-	if(mKeyboard->isKeyDown(OIS::KC_D) )	{
+	if(mKeyboard->isKeyDown(OIS::KC_D) || mKeyboard->isKeyDown(OIS::KC_RIGHT))	{
 		//tmpAngle -= 1.0;
 		clockwise = true;
 	}
@@ -151,6 +151,14 @@ void InputManager::updateInputForGame(GameData& mGameData, float deltaTime, unsi
 	}
 
 	Player * player = mGameData.getPlayer();
+	//Switching Camera
+	if (!mKeyboard->isKeyDown(OIS::KC_C) && (wasC_KeyPressed))	{
+		player->switchCameraToNextHandler();
+		wasC_KeyPressed = false;
+	} else if (mKeyboard->isKeyDown(OIS::KC_C))	{
+		wasC_KeyPressed = true;
+	}
+	//Switching weapon
 	if (!mKeyboard->isKeyDown(OIS::KC_1) && (was1_KeyPressed))	{
 		player->changeWeaponTo(1);
 		was1_KeyPressed = false;
@@ -223,9 +231,6 @@ void InputManager::updateInputForPause( GameData& mGameData )
 	mMouse->capture();
 		
 	if(mKeyboard->isKeyDown(OIS::KC_ESCAPE))
-		throw WindowClosedException();
-
-	if(mKeyboard->isKeyDown(OIS::KC_Q) )
 		throw WindowClosedException();
 
 	if (!mKeyboard->isKeyDown(OIS::KC_P) && (wasP_KeyPressed))

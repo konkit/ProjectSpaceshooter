@@ -238,6 +238,7 @@
     <ClCompile Include="Sources\DebugDrawer.cpp" />
     <ClCompile Include="Sources\Enemy.cpp" />
     <ClCompile Include="Sources\ogre2d.cpp" />
+    <ClCompile Include="Sources\Player.cpp" />
     <ClCompile Include="Sources\ShipPrefabPlant.cpp" />
     <ClCompile Include="Sources\EnemySpawner.cpp" />
     <ClCompile Include="Sources\Game.cpp" />

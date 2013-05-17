@@ -136,9 +136,9 @@ public:
 	virtual bool receiveDamage( unsigned int damages, Vector3 fromDirection = Vector3(0,0,0)) 
 	{
 		mHealth.decreaseHealth(damages);
-#ifdef _DEBUG
-		std::cout << ObjectTypeToString(getType()) << ": remained health = " << mHealth.getHealth() << endl;
-#endif
+//#ifdef _DEBUG
+//		std::cout << ObjectTypeToString(getType()) << ": remained health = " << mHealth.getHealth() << endl;
+//#endif
 		return mDeadFlag = mHealth.isDead();
 	}
 

@@ -33,9 +33,9 @@ void CollisionSystem::CheckForCollisions( GameObject_WithCollider * currentObjec
 					if (currentObject->isColidingWith(otherObject))
 					{
 						servCollisionBetween(currentObject, otherObject);
-#ifdef _DEBUG
-						std::cout << "Collision between " << ObjectTypeToString(curr) << " and " << ObjectTypeToString(oth) << endl;
-#endif			
+//#ifdef _DEBUG
+//						std::cout << "Collision between " << ObjectTypeToString(curr) << " and " << ObjectTypeToString(oth) << endl;
+//#endif			
 					}
 		}
 	}

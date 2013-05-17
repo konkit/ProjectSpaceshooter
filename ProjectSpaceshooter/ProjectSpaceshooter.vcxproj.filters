@@ -341,6 +341,9 @@
     <ClCompile Include="Sources\ogre2d.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\Player.cpp">
+      <Filter>Source\GameObjects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="ogre.cfg" />

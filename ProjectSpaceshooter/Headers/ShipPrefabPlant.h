@@ -18,11 +18,16 @@ public:
 	virtual bool setAttribute( const wstring & prefix, const wstring & attribute, const wstring & value );
 private:
 	void _setWaeponPrefab(const wstring & attribute, const wstring & value);
-
+	void _setCameraHandler(const wstring & attribute, const wstring & value);
+	void _setCameraHandlerOffset( const wstring & attribute, const wstring & value );
+	void _setCameraHandlerLookAt( const wstring & attribute, const wstring & value );
 	static const wstring rootEnemyPrefabsNode;
 	static const wstring prefabName;
 	static const wchar_t * ship_name;
+	static const wchar_t * lookAt;
+	static const wchar_t * camera;
+	static const wchar_t * cameraHandlers;
 
-	ShipPrefab _enemyPrefab;
-	
+	ShipPrefab _shipPrefab;
+	cameraHandler _cameraHandler;
 };

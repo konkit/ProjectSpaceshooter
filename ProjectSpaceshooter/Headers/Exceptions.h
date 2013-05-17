@@ -22,5 +22,15 @@ public:
 
 
 private:
+};
 
+class ParserException : public My_Exception
+{
+public:
+	ParserException(std::string errorMessage)
+		: My_Exception(errorMessage)
+	{};
+	ParserException(std::wstring errorMessage)
+		: My_Exception(errorMessage)
+	{};
 };

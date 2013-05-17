@@ -42,7 +42,7 @@ GAME_STATES PlayState::update( SystemsSet & gameSystems, TimeData& time )
         numOfFPS = 0;
         timeToOneSecond = 0.0;
 
-        std::cout<<"FPS : "<<time.currentFPSValue<<"\n";
+  //      std::cout<<"FPS : "<<time.currentFPSValue<<"\n";
     }
 
     numOfFPS++;

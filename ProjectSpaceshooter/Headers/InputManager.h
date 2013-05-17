@@ -18,6 +18,7 @@ public:
 		wasP_KeyPressed = false;
 		wasH_KeyPressed = false;
 		wasR_KeyPressed = false;
+		wasC_KeyPressed = false;
 		was1_KeyPressed = false;
 		was2_KeyPressed = false;
 		was3_KeyPressed = false;
@@ -54,9 +55,9 @@ private:
 	bool was7_KeyPressed;
 	bool was8_KeyPressed;
 	bool was9_KeyPressed;
+	bool wasC_KeyPressed;
 	// Derived WindowEventListener
 	// Callback functions run when certain event occurs
 	virtual void windowResized(Ogre::RenderWindow* rw);
 	virtual void windowClosed(Ogre::RenderWindow* rw);
 };
-
