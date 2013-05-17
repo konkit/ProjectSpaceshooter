@@ -79,7 +79,7 @@ GAME_STATES LevelBuilder::nextState( SystemsSet & gameSystems )
 void LevelBuilder::buildPlayScene( SystemsSet & gameSystems, TimeData& time )
 {
 	Ogre::SceneManager * _sceneManager = mGameData->getSceneManagerFor(GAME_STATES::PLAY);
-	_sceneManager->setSkyBox(true, "zygaBOX");
+	_sceneManager->setSkyBox(true, "starfieldBOX");
 
 	//Init player's sceneNode
 	Player * player = gameSystems.gameData.createPlayerFromPrefab(1);	
