@@ -101,8 +101,8 @@ void ObjectStateUpdateSystem::serveShooting( Ship * shooter, GameData &mGameData
 		//set time to live
 		newBullet->getTTLComponent().setTimeToLive(3.0);
 		//set speed
-		newBullet->setTargetVelocity( Ogre::Vector3(0.0, 0.0, 1.0) );
-		newBullet->setCurrentSpeedToMax();
+		newBullet->setTargetVelocityValue( 1.0 );
+		newBullet->setCurrentSpeedToMax(newBullet->getForwardVector() );
 
 		//set shooting as false
 		shooter->unsetShoot();

@@ -36,34 +36,30 @@ public:
 	void setRotVelocity(float newRotVelocity);
 	//
 	float getTargetRotVelocity()	{
-		return targetRotVelocity;
+		return targetRotVelocityValue;
 	}
 
 
 	void forceRotVelocity(float newRotVelocity);
 
 	void setMovement(Ogre::Quaternion orientation,bool forward, bool backward, bool left, bool right)	{
-		Ogre::Vector3 dir = Ogre::Vector3(0.0, 0.0, 0.0);
+		float value;
 		if( forward == true)	
-			dir.z += 1.0;
+			value = 1.0;
 		if( backward == true)
-			dir.z -= 1.0;
-		if( right == true)
-			dir.x += 1.0;
-		if( left == true)
-			dir.x -= 1.0;
+			value = -1.0;
 		
-		setTargetVelocity( orientation, dir );
+		setTargetVelocityValue( value );
 	}
 
 	void setRotation(bool clockwise, bool counterClockwise)	{
 		float angle = 0.0;
 
 		if( clockwise == true )
-			angle -= rotVelocityValue;
+			angle -= maxRotVelocityValue;
 
 		if( counterClockwise == true )	
-			angle += rotVelocityValue;
+			angle += maxRotVelocityValue;
 		
 		if( clockwise == false && counterClockwise == false)
 			angle = 0.0f;
@@ -76,18 +72,18 @@ public:
 	float getRotVelocity();
 
 	//Sets target velocity vector to which current velocity vector is progressively approaching.
-	void setTargetVelocity( Ogre::Quaternion orientation,  Ogre::Vector3 localDir );
+	void setTargetVelocityValue( float value );
 	//Gets target velocity vector to which current velocity vector is progressively approaching.
-	Ogre::Vector3 getTargetVelocity() { return targetVelocity; }
+	float getTargetVelocityValue() { return targetVelocityValue; }
 
 	//Updates currentVelocity vector (acceleration, approaching to target velocity etc.)
-	void updateVelocity(float deltaTime);
-	void updateVelocityAndRotation(float deltaTime);
+	void updateVelocity(Ogre::Vector3 forwardVector,float  deltaTime);
+	void updateRotation(float deltaTime);
 
 
 	//instantly sets current velocity to target velocity value.
-	void setCurrentSpeedToMax() {
-		currentVelocity = targetVelocity;
+	void setCurrentSpeedToMax(Ogre::Vector3 forwardVector) {
+		currentVelocity = forwardVector * maxVelocityValue;
 	}
 
 	//sets new acceleration value
@@ -104,16 +100,16 @@ public:
 
 private:
 	Ogre::Vector3 currentVelocity;
-	float rotVelocity;
-
-	float maxVelocityValue;
 	float rotVelocityValue;
 
-	float accelerationValue;
-	float rotAcceleration;
+	float maxVelocityValue;
+	float maxRotVelocityValue;
 
-	Ogre::Vector3 targetVelocity;
-	float targetRotVelocity;
+	float accelerationValue;
+	float rotAccelerationValue;
+
+	float targetVelocityValue;
+	float targetRotVelocityValue;
 
 	//@author Zyga
 	float mMaxAngleVelocity; //czy to wgl. jest potrzebne?

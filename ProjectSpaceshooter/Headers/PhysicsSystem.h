@@ -45,7 +45,7 @@ public:
 				}
 				PhysicsComponent& tmpPhysics = it->getPhysicsComponent();
 
-				tmpPhysics.updateVelocity(deltaTime);
+				tmpPhysics.updateVelocity(it->getForwardVector(), deltaTime);
 
 				it->rotate( tmpPhysics.getRotVelocity(), deltaTime );
 				it->move( tmpPhysics.getCurrentVelocity() * deltaTime );
@@ -64,7 +64,8 @@ public:
 		}
 		PhysicsComponent& tmpPhysics = it->getPhysicsComponent();
 
-		tmpPhysics.updateVelocityAndRotation(deltaTime);
+		tmpPhysics.updateVelocity(it->getForwardVector(), deltaTime);
+		tmpPhysics.updateRotation(deltaTime);
 
 		it->rotate( tmpPhysics.getRotVelocity(), deltaTime );
 		it->move( tmpPhysics.getCurrentVelocity() * deltaTime );

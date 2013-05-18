@@ -25,7 +25,7 @@ public:
 
 	TimeToLiveComponent& getTTLComponent();
 
-	void setCurrentSpeedToMax() { mPhysicsComponent.setCurrentSpeedToMax(); }
+	void setCurrentSpeedToMax(Ogre::Vector3 forwardVector) { mPhysicsComponent.setCurrentSpeedToMax(forwardVector); }
 
 	GameObjectType getType() {
 		return GameObjectType::bulletObject;
