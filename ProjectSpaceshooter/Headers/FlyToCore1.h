@@ -153,7 +153,7 @@ public:
 		//currentPhysicsComponent.setVelocity(Ogre::Vector3(0.0, 0.0, 1.0));
 		it->setTargetVelocityValue( 0.5 );
 		//set it rotation speed
-		currentPhysicsComponent.setRotVelocity(currentRotVelocity);
+		currentPhysicsComponent.setTargetRotVelocity(currentRotVelocity);
 	}
 
 

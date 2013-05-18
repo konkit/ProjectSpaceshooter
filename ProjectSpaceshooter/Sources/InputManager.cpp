@@ -94,25 +94,20 @@ void InputManager::updateInputForGame(GameData& mGameData, float deltaTime, unsi
 		cntclockwise = false;
 
 	if(mKeyboard->isKeyDown(OIS::KC_W) )	{
-		//tmpPos.z += 1.0;
 		forward = true;
 	}
-	
 	if(mKeyboard->isKeyDown(OIS::KC_S) )	{
-		//tmpPos.z -= 1.0;
 		backward = true;
 	}
 	if(mKeyboard->isKeyDown(OIS::KC_A) )	{
-		//tmpAngle += 1.0;
 		cntclockwise = true;
 	}
 	if(mKeyboard->isKeyDown(OIS::KC_D) )	{
-		//tmpAngle -= 1.0;
 		clockwise = true;
 	}
 
 	mGameData.getPlayer()->setMovement(forward, backward);
-	mGameData.getPlayer()->getPhysicsComponent().setRotation(clockwise, cntclockwise);
+	mGameData.getPlayer()->setRotation(clockwise, cntclockwise);
 
 	if(mKeyboard->isKeyDown(OIS::KC_SPACE) )	{
 		//set shoot on player

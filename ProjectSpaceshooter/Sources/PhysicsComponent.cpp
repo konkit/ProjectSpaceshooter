@@ -1,34 +1,5 @@
+#include "PhysicsComponent.h"
 
-
-float PhysicsComponent::getRotVelocity()
-{
-	return rotVelocityValue;
-}
-
-Ogre::Vector3 PhysicsComponent::getCurrentVelocity()
-{
-	return currentVelocity;
-}
-
-void PhysicsComponent::setRotVelocity( float newRotVelocity )
-{
-	//rotVelocity = newRotVelocity > rotVelocityValue ? rotVelocityValue : newRotVelocity;
-	targetRotVelocityValue = newRotVelocity;
-}
-
-void PhysicsComponent::forceRotVelocity(float newRotVelocity)	{
-	rotVelocityValue = newRotVelocity;
-}
-
-void PhysicsComponent::setCurrentVelocity( Ogre::Vector3 const& newVelocity )
-{
-	currentVelocity = newVelocity;
-}
-
-void PhysicsComponent::setMaxVelocityValue( float newVelocity )
-{
-	maxVelocityValue = newVelocity;
-}
 
 PhysicsComponent::PhysicsComponent()
 	: currentVelocity(0.0, 0.0, 0.0), 
@@ -54,6 +25,34 @@ PhysicsComponent::PhysicsComponent(const MovablePrefab * prefab )
 	maxRotVelocityValue = prefab->getMaxAngleVelocity();
 	accelerationValue = prefab->getMaxAcceleration();
 }
+
+float PhysicsComponent::getRotVelocityValue()
+{
+	return rotVelocityValue;
+}
+
+Ogre::Vector3 PhysicsComponent::getCurrentVelocity()
+{
+	return currentVelocity;
+}
+
+void PhysicsComponent::setTargetRotVelocity( float newRotVelocity )
+{
+	//rotVelocity = newRotVelocity > rotVelocityValue ? rotVelocityValue : newRotVelocity;
+	targetRotVelocityValue = newRotVelocity * maxRotVelocityValue;
+}
+
+void PhysicsComponent::setCurrentVelocity( Ogre::Vector3 const& newVelocity )
+{
+	currentVelocity = newVelocity;
+}
+
+void PhysicsComponent::setMaxVelocityValue( float newVelocity )
+{
+	maxVelocityValue = newVelocity;
+}
+
+
 
 void PhysicsComponent::updateVelocity(Ogre::Vector3 forwardVector, float deltaTime) {
 
@@ -108,7 +107,7 @@ void PhysicsComponent::setFromPrefab( const MovablePrefab * prefab )
 
 }
 
-unsigned PhysicsComponent::getCurrentVelocityValue()
+unsigned PhysicsComponent::getCurrentVelocityMagnitude()
 {
-	return maxVelocityValue; // TODO Change to current Value
+	return currentVelocity.squaredLength();
 }

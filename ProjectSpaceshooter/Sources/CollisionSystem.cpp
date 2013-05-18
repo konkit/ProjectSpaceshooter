@@ -113,7 +113,7 @@ bool CollisionSystem::collisionWithStatic( GameObject_WithCollider * currentObje
 			Ship * ship;
 			unsigned velocity;
 			ship = dynamic_cast<Ship*>(otherObject);
-			velocity = ship->getPhysicsComponent().getCurrentVelocityValue();
+			velocity = ship->getPhysicsComponent().getCurrentVelocityMagnitude();
 			currentObject->receiveDamage(COLLISION_DAMAGE * velocity / 10);
 			otherObject->kill();
 		} else
