@@ -107,7 +107,7 @@ void PhysicsComponent::setFromPrefab( const MovablePrefab * prefab )
 
 }
 
-unsigned PhysicsComponent::getCurrentVelocityMagnitude()
+float PhysicsComponent::getCurrentVelocityMagnitude()
 {
-	return currentVelocity.squaredLength();
+	return currentVelocity.length();
 }

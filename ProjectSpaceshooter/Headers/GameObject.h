@@ -197,14 +197,17 @@ public:
 	void setTargetVelocityValue( float value ) {
 		mPhysicsComponent.setTargetVelocityValue( value );
 	}
-	void setMovement(bool forward, bool backward)	{
+	void setMovement(bool forward, bool backward, float deltaTime)	{
 		float value;
 		if( forward == true)	
-			value = 1.0;
+			//value = 1.0;
+			value = 1000.0 * deltaTime;
 		if( backward == true)
-			value = -1.0;
+			//value = -1.0;
+			value = -1000.0 * deltaTime;
 		
-		mPhysicsComponent.setTargetVelocityValue( value );
+		//mPhysicsComponent.setTargetVelocityValue( value );
+		mPhysicsComponent.increaseTargetVelocityValue(value);
 	}
 
 	void setRotation(bool clockwise, bool counterClockwise)	{

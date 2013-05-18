@@ -37,7 +37,7 @@ public:
 	// returns current absolute, world-coordinate velocity vector
 	Ogre::Vector3 getCurrentVelocity();
 	// returns length of velocity vector
-	unsigned getCurrentVelocityMagnitude();
+	float getCurrentVelocityMagnitude();
 
 
 	//Target velocity functions
@@ -46,6 +46,12 @@ public:
 	void setTargetVelocityValue( float value );
 	// gets target velocity value to which current velocity is approaching every update
 	float getTargetVelocityValue() { return targetVelocityValue; }
+	// increase target velocity value by some value
+	void increaseTargetVelocityValue(float value)	{	
+		if( abs(targetVelocityValue ) < maxVelocityValue )
+			targetVelocityValue += value;
+	}
+
 
 
 	//Acceleration functions

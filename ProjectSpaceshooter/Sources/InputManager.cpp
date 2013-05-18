@@ -106,7 +106,7 @@ void InputManager::updateInputForGame(GameData& mGameData, float deltaTime, unsi
 		clockwise = true;
 	}
 
-	mGameData.getPlayer()->setMovement(forward, backward);
+	mGameData.getPlayer()->setMovement(forward, backward, deltaTime);
 	mGameData.getPlayer()->setRotation(clockwise, cntclockwise);
 
 	if(mKeyboard->isKeyDown(OIS::KC_SPACE) )	{
