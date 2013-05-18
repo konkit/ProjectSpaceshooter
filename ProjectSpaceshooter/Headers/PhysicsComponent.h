@@ -42,7 +42,7 @@ public:
 
 	void forceRotVelocity(float newRotVelocity);
 
-	void setMovement(Ogre::Quaternion orientation,bool forward, bool backward, bool left, bool right)	{
+	void setMovement(bool forward, bool backward)	{
 		float value;
 		if( forward == true)	
 			value = 1.0;

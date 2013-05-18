@@ -197,8 +197,8 @@ public:
 	void setTargetVelocityValue( float value ) {
 		mPhysicsComponent.setTargetVelocityValue( value );
 	}
-	void setMovement(bool forward, bool backward, bool left, bool right)	{
-		mPhysicsComponent.setMovement( mNode->getOrientation(), forward, backward, left, right);
+	void setMovement(bool forward, bool backward)	{
+		mPhysicsComponent.setMovement( forward, backward);
 	}
 
 
