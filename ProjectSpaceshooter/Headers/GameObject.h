@@ -71,7 +71,7 @@ public:
 	void rotate(float rotVelocity)	{	mNode->yaw( Ogre::Radian(rotVelocity) ); }
 
 	virtual GameObjectType getType() = 0;
-
+	void setVisible( bool visibility ) {mNode->setVisible(visibility);}
 protected:
 	GameObjectType mObjectType;
 	Ogre::SceneNode* mNode;

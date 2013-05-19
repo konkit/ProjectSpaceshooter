@@ -19,16 +19,18 @@ void ObjectStateUpdateSystem::update( GameData& mGameData, TimeData& time )
 
 void ObjectStateUpdateSystem::removeDeadObjects( GameData& mGameData)
 {
+	static int counter = 0;
 	auto iterator = mGameData.getColidingObjectsIterator();
 	GameObject_WithCollider * removedObject;
 	iterator.skipPlayer();
+	counter++;
 	while (iterator.hasNext())
 	{
 		removedObject = iterator.getNext();
 		if (removedObject->isDead())
 		{
 			createExplosionFor(removedObject, mGameData);
-			mGameData.removeGameObject(removedObject);
+			mGameData.removeGameObject(iterator);
 		}
 	}
 }

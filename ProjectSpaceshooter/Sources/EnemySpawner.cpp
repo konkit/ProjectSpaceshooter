@@ -49,7 +49,7 @@ void EnemySpawner::spawnEnemy( GameData * _gameData, unsigned long currentTime )
 			spawnCountOfEnemy(enemyToSpawnNow, _gameData);
 
 			if (tmpSpawnInfo->amount == 0) //Delete empty spawn slot
-				enemyToSpawn -= tmpSpawnInfo;
+				enemyToSpawn.deleteObject(it);
 		}
 		timeToNextSpawn = currentTime + spawnFrequency;
 	}

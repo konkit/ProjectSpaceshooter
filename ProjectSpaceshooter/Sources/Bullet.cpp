@@ -9,7 +9,8 @@ Bullet::Bullet(const BulletPrefab * objectTemplate, Ogre::SceneManager * _sceneM
 {
 	mPhysicsComponent.setMaxVelocityValue( objectTemplate->getMaxVelocity() );
 	mPhysicsComponent.setCurrentVelocity( Vector3(0.0f, 0.0f, 1.0f));
-	mTTLComponent.setTimeToLive(objectTemplate->getTTL());
+	startTTL = objectTemplate->getTTL();
+	mTTLComponent.setTimeToLive(startTTL);
 	prefabID = objectTemplate->getPrefabID();
 }
 
@@ -22,3 +23,4 @@ TimeToLiveComponent& Bullet::getTTLComponent()
 Bullet::~Bullet()
 {
 }
+
