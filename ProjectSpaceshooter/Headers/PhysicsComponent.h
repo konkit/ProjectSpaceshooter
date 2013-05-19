@@ -12,109 +12,112 @@
 class PhysicsComponent
 {
 public:
+	//Constructors, init functions, etc.
 	PhysicsComponent();
 	PhysicsComponent(const MovablePrefab * prefab);
 
-	//sets maximum length of velocity vector
+	void setFromPrefab( const MovablePrefab * prefab );
+	
+	////////////////////////////////////////////////////////////////////////////////
+	// Movement functions                   
+	////////////////////////////////////////////////////////////////////////////////
+
+	//Maximum speed functions
+
+	// sets maximum speed to specified values
 	void setMaxVelocityValue(float newVelocity);
-	float getMaxVelocityValue()	{
-		return maxVelocityValue;
+	// returns current maximum speed of object
+	float getMaxVelocityValue()	{	return maxVelocityValue;}
+
+
+	//World coordinate velocity vector accessor functions
+
+	// sets absolute, world-coordinate velocity to specified vector value
+	void setCurrentVelocity(Ogre::Vector3 const& newVelocity);
+	// returns current absolute, world-coordinate velocity vector
+	Ogre::Vector3 getCurrentVelocity();
+	// returns length of velocity vector
+	float getCurrentVelocityMagnitude();
+
+
+	//Target velocity functions
+
+	// sets target velocity value to which current velocity is approaching every update
+	void setTargetVelocityValue( float value );
+	// gets target velocity value to which current velocity is approaching every update
+	float getTargetVelocityValue() { return targetVelocityValue; }
+	// increase target velocity value by some value
+	void increaseTargetVelocityValue(float value)	{	
+		if( abs(targetVelocityValue + value ) < maxVelocityValue  )
+			targetVelocityValue += value;
 	}
 
 
-	//sets new instantaneous velocity vector 
-	void setCurrentVelocity(Ogre::Vector3 const& newVelocity);
 
-	//gets current instantaneous velocity vector 
-	Ogre::Vector3 getCurrentVelocity();
+	//Acceleration functions
+
+	//Sets new acceleration value - value which velocity is changing every update
+	void setAccelerationValue(float newAccelerationValue) {
+		accelerationValue = newAccelerationValue;
+	}
+
+
+	//Other movement functions 
 
 	//Adds vector to current instantaneous velocity vector
 	//usable for example in shockwave
 	void AddVectorToCurrentVelocity( Ogre::Vector3 addedVector );
 
-	//set angular velocity (it is multiplied inside by maximum rotation velocity)
-	void setRotVelocity(float newRotVelocity);
-	//
-	float getTargetRotVelocity()	{
-		return targetRotVelocity;
+	//instantly sets current velocity to max velocity value.
+	void setCurrentSpeedToMax(Ogre::Vector3 forwardVector) {
+		currentVelocity = forwardVector * maxVelocityValue;
 	}
 
-
-	void forceRotVelocity(float newRotVelocity);
-
-	void setMovement(Ogre::Quaternion orientation,bool forward, bool backward, bool left, bool right)	{
-		Ogre::Vector3 dir = Ogre::Vector3(0.0, 0.0, 0.0);
-		if( forward == true)	
-			dir.z += 1.0;
-		if( backward == true)
-			dir.z -= 1.0;
-		if( right == true)
-			dir.x += 1.0;
-		if( left == true)
-			dir.x -= 1.0;
-		
-		setTargetVelocity( orientation, dir );
-	}
-
-	void setRotation(bool clockwise, bool counterClockwise)	{
-		float angle = 0.0;
-
-		if( clockwise == true )
-			angle -= rotVelocityValue;
-
-		if( counterClockwise == true )	
-			angle += rotVelocityValue;
-		
-		if( clockwise == false && counterClockwise == false)
-			angle = 0.0f;
-
-		setRotVelocity(angle);
-	}
+	//Updates velocity vector (acceleration etc.)
+	void updateVelocity(Ogre::Vector3 forwardVector,float  deltaTime);
 
 
-	//get angular velocity
-	float getRotVelocity();
+	
 
-	//Sets target velocity vector to which current velocity vector is progressively approaching.
-	void setTargetVelocity( Ogre::Quaternion orientation,  Ogre::Vector3 localDir );
-	//Gets target velocity vector to which current velocity vector is progressively approaching.
-	Ogre::Vector3 getTargetVelocity() { return targetVelocity; }
+	//////////////////////////////////////////////////////////////////////////////////
+	// Rotation functions                  
+	////////////////////////////////////////////////////////////////////////////////
 
-	//Updates currentVelocity vector (acceleration, approaching to target velocity etc.)
-	void updateVelocity(float deltaTime);
-	void updateVelocityAndRotation(float deltaTime);
+	//target rotation velocity functions
+
+	// sets new target rotation value - rotation velocity is approaching to this value every update
+	void setTargetRotVelocity(float newRotVelocity);
+	// gets current target rotation value - rotation velocity is approaching to this value every update
+	float getTargetRotVelocity() {	return targetRotVelocityValue;	}
 
 
-	//instantly sets current velocity to target velocity value.
-	void setCurrentSpeedToMax() {
-		currentVelocity = targetVelocity;
-	}
+	//absolute rotation velocity functions
+	
+	//returns actual rotation velocity value
+	float getRotVelocityValue();
 
-	//sets new acceleration value
-	void setAccelerationValue(float newAccelerationValue) {
-		accelerationValue = newAccelerationValue;
-	}
-	void setFromPrefab( const MovablePrefab * prefab );
-	unsigned getCurrentVelocityValue();
 
-	float getRotVelocityValue()	{
-		return rotVelocityValue;
-	}
+	//other rotation functions
+
+	//Updates rotation velocity (acceleration etc.)
+	void updateRotation(float deltaTime);
+
 
 
 private:
+	//world coordinates velocities
 	Ogre::Vector3 currentVelocity;
-	float rotVelocity;
-
-	float maxVelocityValue;
 	float rotVelocityValue;
 
+	//maximum values of velocities
+	float maxVelocityValue;
+	float maxRotVelocityValue;
+
+	//acceleration values
 	float accelerationValue;
-	float rotAcceleration;
+	float rotAccelerationValue;
 
-	Ogre::Vector3 targetVelocity;
-	float targetRotVelocity;
-
-	//@author Zyga
-	float mMaxAngleVelocity; //czy to wgl. jest potrzebne?
+	//target values
+	float targetVelocityValue;
+	float targetRotVelocityValue;
 };

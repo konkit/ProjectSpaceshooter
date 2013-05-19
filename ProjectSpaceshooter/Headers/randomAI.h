@@ -18,8 +18,8 @@ public:
 		currentPhysicsComponent.setMaxVelocityValue(currentVelocity);
 		//set its vector
 		//currentPhysicsComponent.setVelocity(Ogre::Vector3(0.0, 0.0, 1.0));
-		it->setTargetVelocity( Ogre::Vector3(0.0, 0.0, 0.5) );
+		it->setTargetVelocityValue( 0.5 );
 		//set it rotation speed
-		currentPhysicsComponent.setRotVelocity(currentRotVelocity);
+		currentPhysicsComponent.setTargetRotVelocity(currentRotVelocity);
 	}
 };

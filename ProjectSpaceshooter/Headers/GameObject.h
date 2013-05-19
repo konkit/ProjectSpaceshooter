@@ -55,6 +55,10 @@ public:
 	Ogre::Quaternion getOrientation()	{	
 		return mNode->getOrientation();	
 	}
+	Ogre::Vector3 getForwardVector()	{
+		return mNode->getOrientation() * Ogre::Vector3(0.0, 0.0, 1.0);
+	}
+
 
 	position_struct getPositionAndOrientation() const 
 	{
@@ -190,18 +194,37 @@ public:
 		//set new quaternion
 		mNode->setOrientation( targetYaw * targetRoll );
 	}
-	void setTargetVelocity( Ogre::Vector3 localDirection ) {
-		mPhysicsComponent.setTargetVelocity( mNode->getOrientation(), localDirection );
+	void setTargetVelocityValue( float value ) {
+		mPhysicsComponent.setTargetVelocityValue( value );
 	}
-	void setMovement(bool forward, bool backward, bool left, bool right)	{
-		mPhysicsComponent.setMovement( mNode->getOrientation(), forward, backward, left, right);
+	void setMovement(bool forward, bool backward, float deltaTime)	{
+		float value;
+		if( forward == true)	
+			//value = 1.0;
+			value = 1000.0 * deltaTime;
+		if( backward == true)
+			//value = -1.0;
+			value = -1000.0 * deltaTime;
+		
+		//mPhysicsComponent.setTargetVelocityValue( value );
+		mPhysicsComponent.increaseTargetVelocityValue(value);
+	}
+
+	void setRotation(bool clockwise, bool counterClockwise)	{
+		float value;
+		if( counterClockwise == true)	
+			value = 1.0;
+		if( clockwise == true)
+			value = -1.0;
+
+		mPhysicsComponent.setTargetRotVelocity( value );
 	}
 
 
 	PhysicsComponent& getPhysicsComponent()	{
 		return mPhysicsComponent;
 	}
-	void setCurrentSpeedToMax() { mPhysicsComponent.setCurrentSpeedToMax(); }
+	void setCurrentSpeedToMax(Ogre::Vector3 forwardVector) { mPhysicsComponent.setCurrentSpeedToMax(forwardVector); }
 	void addRecoilVectorToCurrentVelocity(Vector3 recoil) 
 	{
 		mPhysicsComponent.AddVectorToCurrentVelocity(recoil);

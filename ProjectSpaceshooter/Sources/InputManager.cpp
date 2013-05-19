@@ -90,41 +90,24 @@ void InputManager::updateInputForGame(GameData& mGameData, float deltaTime, unsi
 
 	bool forward = false, 
 		backward = false, 
-		left = false, 
-		right = false, 
 		clockwise = false, 
 		cntclockwise = false;
 
 	if(mKeyboard->isKeyDown(OIS::KC_W) || mKeyboard->isKeyDown(OIS::KC_UP))	{
-		//tmpPos.z += 1.0;
 		forward = true;
 	}
-	
 	if(mKeyboard->isKeyDown(OIS::KC_S)  || mKeyboard->isKeyDown(OIS::KC_DOWN))	{
-		//tmpPos.z -= 1.0;
 		backward = true;
 	}
-
-	if(mKeyboard->isKeyDown(OIS::KC_Q))	{
-		//tmpPos.x += 1.0;
-		left = true;
-	}
-	
-	if(mKeyboard->isKeyDown(OIS::KC_E) )	{
-		//tmpPos.x -= 1.0;
-		right = true;
-	}
 	if(mKeyboard->isKeyDown(OIS::KC_A) || (mKeyboard->isKeyDown(OIS::KC_LEFT)) )	{
-		//tmpAngle += 1.0;
 		cntclockwise = true;
 	}
 	if(mKeyboard->isKeyDown(OIS::KC_D) || mKeyboard->isKeyDown(OIS::KC_RIGHT))	{
-		//tmpAngle -= 1.0;
 		clockwise = true;
 	}
 
-	mGameData.getPlayer()->setMovement(forward, backward, left, right);
-	mGameData.getPlayer()->getPhysicsComponent().setRotation(clockwise, cntclockwise);
+	mGameData.getPlayer()->setMovement(forward, backward, deltaTime);
+	mGameData.getPlayer()->setRotation(clockwise, cntclockwise);
 
 	if(mKeyboard->isKeyDown(OIS::KC_SPACE) )	{
 		//set shoot on player

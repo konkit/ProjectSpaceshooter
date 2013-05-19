@@ -16,6 +16,7 @@
 #define DOT_WIDTH 0.0075
 #define DOT_HEIGHT 0.01
 
+
 class GUISystem	{
 
 public:
@@ -143,7 +144,9 @@ public:
 		//Text stuff
 		//display player velocity as text (actualize text contents)
 		std::stringstream playerVelocityString;
-			playerVelocityString<<"Velocity : "<<mGameData.getPlayer()->getPhysicsComponent().getCurrentVelocity();
+			playerVelocityString<<"Velocity : "
+				<<mGameData.getPlayer()->getPhysicsComponent().getCurrentVelocityMagnitude()
+				<<", target velocity : "<<mGameData.getPlayer()->getPhysicsComponent().getTargetVelocityValue();
 		playerVelocityText->setCaption( playerVelocityString.str() );
 
 		//display FPS as text 

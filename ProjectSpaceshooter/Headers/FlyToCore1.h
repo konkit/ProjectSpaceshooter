@@ -40,11 +40,11 @@ public:
 		Ogre::Vector3 vectorToTarget = cntCore.getPosition() - it->getPosition();
 			vectorToTarget.normalise();
 
-		it->getPhysicsComponent().setTargetVelocity(Ogre::Quaternion(), vectorToTarget);	
+		it->getPhysicsComponent().setTargetVelocityValue( 1.0 );	
 
 		Ogre::Vector3 cntVelocity = it->getPhysicsComponent().getCurrentVelocity();
 
-		Ogre::Quaternion newOrient = Ogre::Vector3::UNIT_Z.getRotationTo(cntVelocity);
+		Ogre::Quaternion newOrient = Ogre::Vector3::UNIT_Z.getRotationTo(vectorToTarget);
 		it->setOrientation( newOrient );
 	}
 
@@ -73,7 +73,7 @@ public:
 		Ogre::Vector3 vectorToTarget = cntCore.getPosition() - it->getPosition();
 			vectorToTarget.normalise();
 
-		it->getPhysicsComponent().setTargetVelocity(Ogre::Quaternion(), vectorToTarget);
+		it->getPhysicsComponent().setTargetVelocityValue( 1.0 );
 
 		Ogre::Quaternion newOrient = Ogre::Vector3::UNIT_Z.getRotationTo(vectorToTarget);
 		it->setOrientation( newOrient );
@@ -106,11 +106,11 @@ public:
 		Ogre::Vector3 vectorToTarget = cntAI.cntTarget - it->getPosition();
 			vectorToTarget.normalise();
 
-		it->getPhysicsComponent().setTargetVelocity(Ogre::Quaternion(), vectorToTarget);
+		it->getPhysicsComponent().setTargetVelocityValue(1.0);
 
 		Ogre::Vector3 cntVelocity = it->getPhysicsComponent().getCurrentVelocity();
 
-		Ogre::Quaternion newOrient = Ogre::Vector3::UNIT_Z.getRotationTo(cntVelocity);
+		Ogre::Quaternion newOrient = Ogre::Vector3::UNIT_Z.getRotationTo(vectorToTarget);
 		it->setOrientation( newOrient );
 	}
 
@@ -131,11 +131,11 @@ public:
 		Ogre::Vector3 vectorToTarget = cntAI.cntTarget - it->getPosition();
 			vectorToTarget.normalise();
 
-		it->getPhysicsComponent().setTargetVelocity(Ogre::Quaternion(), vectorToTarget);
+		it->getPhysicsComponent().setTargetVelocityValue(1.0);
 
 		Ogre::Vector3 cntVelocity = it->getPhysicsComponent().getCurrentVelocity();
 
-		Ogre::Quaternion newOrient = Ogre::Vector3::UNIT_Z.getRotationTo(cntVelocity);
+		Ogre::Quaternion newOrient = Ogre::Vector3::UNIT_Z.getRotationTo(vectorToTarget);
 		it->setOrientation( newOrient );
 	}
 
@@ -151,9 +151,9 @@ public:
 		currentPhysicsComponent.setMaxVelocityValue(currentVelocity);
 		//set its vector
 		//currentPhysicsComponent.setVelocity(Ogre::Vector3(0.0, 0.0, 1.0));
-		it->setTargetVelocity( Ogre::Vector3(0.0, 0.0, 0.5) );
+		it->setTargetVelocityValue( 0.5 );
 		//set it rotation speed
-		currentPhysicsComponent.setRotVelocity(currentRotVelocity);
+		currentPhysicsComponent.setTargetRotVelocity(currentRotVelocity);
 	}
 
 
