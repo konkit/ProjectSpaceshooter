@@ -356,6 +356,9 @@
     <ClCompile Include="Sources\BulletCollection.cpp">
       <Filter>Source\GameCollections</Filter>
     </ClCompile>
+    <ClCompile Include="GUISystem.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="ogre.cfg" />

@@ -233,6 +233,7 @@
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="GUISystem.cpp" />
     <ClCompile Include="Sources\AIComponent.cpp" />
     <ClCompile Include="Sources\AISystem.cpp" />
     <ClCompile Include="Sources\Bullet.cpp" />
