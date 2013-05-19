@@ -25,3 +25,5 @@ ProjectSpaceshooter/Release/*
 *.orig
 /ogre.cfg
 Libs/
+Libs32.rar
+Libs32/
