@@ -48,7 +48,7 @@ public:
 	float getTargetVelocityValue() { return targetVelocityValue; }
 	// increase target velocity value by some value
 	void increaseTargetVelocityValue(float value)	{	
-		if( abs(targetVelocityValue ) < maxVelocityValue )
+		if( abs(targetVelocityValue + value ) < maxVelocityValue  )
 			targetVelocityValue += value;
 	}
 
