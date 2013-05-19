@@ -227,6 +227,7 @@ public:
 	void setCurrentSpeedToMax(Ogre::Vector3 forwardVector) { mPhysicsComponent.setCurrentSpeedToMax(forwardVector); }
 	void addRecoilVectorToCurrentVelocity(Vector3 recoil) 
 	{
+		recoil.y = 0; // To avoid vertical movement
 		mPhysicsComponent.AddVectorToCurrentVelocity(recoil);
 	}
 	void createThrusters(const MovablePrefab * _prefab, Ogre::SceneManager * _sceneMenager );
