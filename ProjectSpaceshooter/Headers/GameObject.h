@@ -160,6 +160,16 @@ public:
 		mHealth.setHealthFromPrefab(prefab);
 	}
 
+	int getHealthValue()	{
+		return mHealth.getHealth();
+	}
+
+	int getMaxHealthValue()	{
+		return mHealth.getMaxHealth();
+	}
+
+
+
 private:
 	HealthComponent mHealth;
 };

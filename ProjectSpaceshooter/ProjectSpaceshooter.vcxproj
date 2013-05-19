@@ -189,6 +189,8 @@
     <ClInclude Include="Headers\Enemy.h" />
     <ClInclude Include="Headers\FlyToCore1.h" />
     <ClInclude Include="Headers\GUISystem.h" />
+    <ClInclude Include="Headers\GUI_Radar.h" />
+    <ClInclude Include="Headers\MessageConsole.h" />
     <ClInclude Include="Headers\ogre2d.h" />
     <ClInclude Include="Headers\randomAI.h" />
     <ClInclude Include="Headers\ShipPrefabPlant.h" />
@@ -208,7 +210,6 @@
     <ClInclude Include="Headers\LevelDescription.h" />
     <ClInclude Include="Headers\ObjectStateUpdateSystem.h" />
     <ClInclude Include="Headers\OgreManager.h" />
-    <ClInclude Include="Headers\OgreText.h" />
     <ClInclude Include="Headers\PauseState.h" />
     <ClInclude Include="Headers\PhysicsComponent.h" />
     <ClInclude Include="Headers\PhysicsSystem.h" />
