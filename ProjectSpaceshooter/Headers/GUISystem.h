@@ -85,10 +85,11 @@ public:
 		playerData->setCaption( playerDataString.str() );
 
 		//draw message console
+		mConsole = &mGameData.getMessageConsole();
 		std::stringstream messageConsoleString;
 			messageConsoleString
 				<<"Log :\n"
-				<<mConsole.getMessages();
+				<<mConsole->getMessages();
 		mMessageConsole->setCaption( messageConsoleString.str() );
 
 		// Show the overlay
@@ -119,7 +120,7 @@ private:
 	Ogre::TextAreaOverlayElement* mMessageConsole;
 
 	Radar mRadar;
-	MessageConsole mConsole;
+	MessageConsole* mConsole;
 
 	//load font
 	void loadFont(std::string fontFilename)	{

@@ -166,6 +166,12 @@
     <ClInclude Include="Headers\MessageConsole.h">
       <Filter>Header\Systems\GUI stuff</Filter>
     </ClInclude>
+    <ClInclude Include="Headers\GUI_Radar.h">
+      <Filter>Header\Systems\GUI stuff</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\GUISystem.h">
+      <Filter>Header\Systems\GUI stuff</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header">

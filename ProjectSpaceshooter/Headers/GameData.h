@@ -12,6 +12,8 @@
 #include "Exceptions.h"
 #include <string>
 
+#include "MessageConsole.h"
+
 
 
 enum class GAME_STATES
@@ -241,6 +243,12 @@ public:
 	void setCountOfPrefabs( PREFAB_TYPE prefabType, unsigned count );
 	void clearPlayData();
 	void initializeDataPulls();
+
+	//Message console in GUI
+	MessageConsole& getMessageConsole()	{
+		return mMessageConsole;
+	}
+
 private:
 	struct changeFlagsStruct
 	{
@@ -263,4 +271,7 @@ private:
 	StateScenesManager_Struct mStateScenesManager;
 	CameraManager_Struct mCamerasManager;
 	LevelDescription * currentLevelDecription;
+
+	//GUI data
+	MessageConsole mMessageConsole;
 };
