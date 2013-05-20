@@ -97,9 +97,6 @@
     <ClInclude Include="Headers\EffectObject.h">
       <Filter>Header\GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="Headers\OgreText.h">
-      <Filter>Header</Filter>
-    </ClInclude>
     <ClInclude Include="Headers\PredabReader_XML.h">
       <Filter>Header\Systems</Filter>
     </ClInclude>
@@ -157,9 +154,6 @@
     <ClInclude Include="Headers\AIStrategy.h">
       <Filter>Header\AI stuff</Filter>
     </ClInclude>
-    <ClInclude Include="Headers\GUISystem.h">
-      <Filter>Header</Filter>
-    </ClInclude>
     <ClInclude Include="Headers\ogre2d.h">
       <Filter>Header</Filter>
     </ClInclude>
@@ -168,6 +162,15 @@
     </ClInclude>
     <ClInclude Include="Headers\EnemyAndShipPrefabCollection.h">
       <Filter>Header\GameCollections</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\MessageConsole.h">
+      <Filter>Header\Systems\GUI stuff</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\GUI_Radar.h">
+      <Filter>Header\Systems\GUI stuff</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\GUISystem.h">
+      <Filter>Header\Systems\GUI stuff</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -224,6 +227,9 @@
     </Filter>
     <Filter Include="Header\AI stuff">
       <UniqueIdentifier>{1209dcdf-e1a5-42fe-b7ab-1ec663a6dca4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header\Systems\GUI stuff">
+      <UniqueIdentifier>{5dab7fde-c0fe-43fa-9547-36f867661960}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

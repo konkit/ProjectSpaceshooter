@@ -12,6 +12,8 @@
 #include "Exceptions.h"
 #include <string>
 
+#include "MessageConsole.h"
+
 
 
 enum class GAME_STATES
@@ -255,6 +257,10 @@ public:
 	void initializeDataPulls();
 	HangarManipulator & getHangarManipulator() { return mHangarManipulator; }
 	void setHangarManipulator(HangarManipulator val) { mHangarManipulator = val; }
+	MessageConsole& getMessageConsole()	{
+		return mMessageConsole;
+	}
+
 private:
 	struct changeFlagsStruct
 	{
@@ -278,4 +284,6 @@ private:
 	CameraManager_Struct mCamerasManager;
 	LevelDescription * currentLevelDecription;
 	HangarManipulator mHangarManipulator;
+	//GUI data
+	MessageConsole mMessageConsole;
 };
