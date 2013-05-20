@@ -211,7 +211,7 @@ public:
 	}
 
 	void setRotation(bool clockwise, bool counterClockwise)	{
-		float value;
+		float value = 0.0;
 		if( counterClockwise == true)	
 			value = 1.0;
 		if( clockwise == true)
