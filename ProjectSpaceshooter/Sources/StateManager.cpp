@@ -14,7 +14,7 @@ void StateManager::initStateManager( SystemsSet & gameSystems )
 	hangar = new HangarState(gameSystems);
 	builder = new LevelBuilder(gameSystems);
 	gameOver = new GameOver(gameSystems); 
-	changeState(GAME_STATES::LEVEL_BUILDER, gameSystems);
+	changeState(GAME_STATES::HANGAR, gameSystems);
 }
 
 

@@ -60,12 +60,20 @@
       <thruster_particle name ='thrusters'/>
       <offset x_pos='0' y_pos='-2' z_pos='-26' />
     </thruster>
-    <cameraHandlers>
+    <camera_handlers>
       <camera name ='following'>
-        <offset x_pos='0' y_pos='0' z_pos='0' />
-        <lookAt x_pos='0' y_pos='0' z_pos='0' />
+        <offset x_pos='0' y_pos='25' z_pos='-90' />
+        <lookAt x_pos='0' y_pos='0' z_pos='110' />
       </camera>
-    </cameraHandlers>
+      <camera name ='top'>
+        <offset x_pos='0' y_pos='500' z_pos='0' />
+        <lookAt x_pos='0' y_pos='0' z_pos='1' />
+      </camera>
+      <camera name ='top'>
+        <offset x_pos='0' y_pos='300' z_pos='-300' />
+        <lookAt x_pos='0' y_pos='0' z_pos='400' />
+      </camera>
+    </camera_handlers>
   </ship>
 
   <ship id='5'>
@@ -89,12 +97,20 @@
       <thruster_particle name ='SpaceCrusier_thr'/>
       <offset x_pos='0' y_pos='0' z_pos='-30' />
     </thruster>
-    <cameraHandlers>
+    <camera_handlers>
       <camera name ='following'>
-        <offset x_pos='0' y_pos='0' z_pos='0' />
-        <lookAt x_pos='0' y_pos='0' z_pos='0' />
+        <offset x_pos='0' y_pos='25' z_pos='-100' />
+        <lookAt x_pos='0' y_pos='0' z_pos='100' />
       </camera>
-    </cameraHandlers>
+      <camera name ='top'>
+        <offset x_pos='0' y_pos='500' z_pos='0' />
+        <lookAt x_pos='0' y_pos='0' z_pos='1' />
+      </camera>
+      <camera name ='top'>
+        <offset x_pos='0' y_pos='300' z_pos='-300' />
+        <lookAt x_pos='0' y_pos='0' z_pos='400' />
+      </camera>
+    </camera_handlers>
   </ship>
 
 
@@ -119,12 +135,20 @@
       <thruster_particle name ='thrusters'/>
       <offset x_pos='0' y_pos='-7' z_pos='-35' />
     </thruster>
-    <cameraHandlers>
+    <camera_handlers>
       <camera name ='following'>
-        <offset x_pos='0' y_pos='0' z_pos='0' />
-        <lookAt x_pos='0' y_pos='0' z_pos='0' />
+        <offset x_pos='0' y_pos='25' z_pos='-105' />
+        <lookAt x_pos='0' y_pos='0' z_pos='110' />
       </camera>
-    </cameraHandlers>
+      <camera name ='top'>
+        <offset x_pos='0' y_pos='500' z_pos='0' />
+        <lookAt x_pos='0' y_pos='0' z_pos='1' />
+      </camera>
+      <camera name ='top'>
+        <offset x_pos='0' y_pos='300' z_pos='-300' />
+        <lookAt x_pos='0' y_pos='0' z_pos='400' />
+      </camera>
+    </camera_handlers>
   </ship>
 
   <ship id='3'>
@@ -148,12 +172,20 @@
       <thruster_particle name ='thrusters'/>
       <offset x_pos='0' y_pos='0' z_pos='-12' />
     </thruster>
-    <cameraHandlers>
+    <camera_handlers>
       <camera name ='following'>
-        <offset x_pos='0' y_pos='0' z_pos='0' />
-        <lookAt x_pos='0' y_pos='0' z_pos='0' />
+        <offset x_pos='0' y_pos='30' z_pos='-90' />
+        <lookAt x_pos='0' y_pos='0' z_pos='100' />
       </camera>
-    </cameraHandlers>
+      <camera name ='top'>
+        <offset x_pos='0' y_pos='500' z_pos='0' />
+        <lookAt x_pos='0' y_pos='0' z_pos='1' />
+      </camera>
+      <camera name ='top'>
+        <offset x_pos='0' y_pos='300' z_pos='-300' />
+        <lookAt x_pos='0' y_pos='0' z_pos='400' />
+      </camera>
+    </camera_handlers>
   </ship>
 	
 </ship_prefabs>

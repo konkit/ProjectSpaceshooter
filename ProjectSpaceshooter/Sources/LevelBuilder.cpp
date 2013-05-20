@@ -82,7 +82,8 @@ void LevelBuilder::buildPlayScene( SystemsSet & gameSystems, TimeData& time )
 	_sceneManager->setSkyBox(true, "starfieldBOX");
 
 	//Init player's sceneNode
-	Player * player = gameSystems.gameData.createPlayerFromPrefab(1);	
+	unsigned prefabID = gameSystems.gameData.getHangarManipulator().shipPrefab;
+	Player * player = gameSystems.gameData.createPlayerFromPrefab(prefabID);	
 	player->setPosition(Vector3(1000,0,0));
 	attachCameraToPlayer(gameSystems);
 	const WeaponPrefab * weapon = gameSystems.gameData.getWeaponPrefab(2);

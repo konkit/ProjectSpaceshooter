@@ -6,6 +6,7 @@ PauseState::PauseState( SystemsSet & gameSystems )
 {
 	mSceneMgr = gameSystems.ogreManager.getRoot()->createSceneManager(Ogre::ST_GENERIC, "pause");
 	createCamera();
+	gameSystems.gameData.setCameraFor(GAME_STATES::PAUSE, mCamera);
 
 	Ogre::Entity* ogreHead = mSceneMgr->createEntity("Head", "smallfighter.MESH");
 	Ogre::Plane plane;

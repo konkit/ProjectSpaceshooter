@@ -62,17 +62,17 @@ public:
 				return &mPrefabs[prefabID];
 			else
 			{
-				throw PrefabException("There is no pefab with id = " + to_string(prefabID), PrefabExceptionType::NO_PREFAB);
+				throw PrefabException("There is no prefab with id = " + to_string(prefabID), PrefabExceptionType::NO_PREFAB);
 			}
 		}
 
-		throw PrefabException("There is no pefab with id = " + to_string(prefabID), PrefabExceptionType::NO_PREFAB);
+		throw PrefabException("There is no prefab with id = " + to_string(prefabID), PrefabExceptionType::NO_PREFAB);
 	}
 	void setCountOfPrefab(unsigned max_id)
 	{
 		mPrefabs.resize(max_id);
 	}
-
+	unsigned getNumberOfPrefabs(){ return mPrefabs.size() -1;}
 protected:
 
 	GameCollection<TObject> mCollection;

@@ -28,6 +28,9 @@ public:
 		was7_KeyPressed = false;
 		was8_KeyPressed = false;
 		was9_KeyPressed = false;
+		wasLeft_KeyPressed  = false;
+		wasRight_KeyPressed = false;
+		wasEnter_KeyPressed = false;
 	}
 
 	//initialize OIS 
@@ -36,6 +39,7 @@ public:
 	//update data (temporarily just camera coords)
 	void updateInputForGame(GameData& mGameData, float deltaTime, unsigned long currentTime);
 	void updateInputForPause(GameData& mGameData);
+	void updateInputForHangar(GameData& mGameData);
 
 private:
 	// OIS Input devices
@@ -56,6 +60,9 @@ private:
 	bool was8_KeyPressed;
 	bool was9_KeyPressed;
 	bool wasC_KeyPressed;
+	bool wasLeft_KeyPressed;
+	bool wasRight_KeyPressed;
+	bool wasEnter_KeyPressed;
 	// Derived WindowEventListener
 	// Callback functions run when certain event occurs
 	virtual void windowResized(Ogre::RenderWindow* rw);

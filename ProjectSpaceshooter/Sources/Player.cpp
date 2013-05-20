@@ -35,16 +35,22 @@ void Player::detachCamera()
 
 void Player::attachCamera( Ogre::Camera * cam )
 {
-	my_cam = cam;
-	my_cam->setPosition(0.0, 0.0, 0.0);
-	Ogre::Quaternion quat;
-	my_cam->setOrientation(quat);
-	mCameraNode->setOrientation(quat);
-	mCameraNode->attachObject(cam);
-	mCameraNode->setPosition(mActiveCameraDataIt->offset);
-	mCameraNode->lookAt(mActiveCameraDataIt->lookAt, Ogre::Node::TS_PARENT);
-	quat.FromAngleAxis(Ogre::Degree(-180), Vector3::UNIT_Z);
-	mCameraNode->rotate(quat);
+	try
+	{
+		my_cam = cam;
+		my_cam->setPosition(0.0, 0.0, 0.0);
+		Ogre::Quaternion quat;
+		my_cam->setOrientation(quat);
+		mCameraNode->setOrientation(quat);
+		mCameraNode->attachObject(cam);
+		mCameraNode->setPosition(mActiveCameraDataIt->offset);
+		mCameraNode->lookAt(mActiveCameraDataIt->lookAt, Ogre::Node::TS_PARENT);
+		quat.FromAngleAxis(Ogre::Degree(-180), Vector3::UNIT_Z);
+		mCameraNode->rotate(quat);
+	} catch(...)
+	{
+		throw My_Exception("There is no camera handler in this ship");
+	}
 }
 
 GameObjectType Player::getType()

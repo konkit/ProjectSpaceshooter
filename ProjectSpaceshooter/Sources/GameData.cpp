@@ -226,6 +226,7 @@ void GameData::setCameraFor( GAME_STATES gameState, Ogre::Camera * camera )
 		mCamerasManager.pauseCamera = camera;
 		break;
 	case GAME_STATES::HANGAR:
+		mCamerasManager.hangarSceneCamera = camera;
 		break;
 	case GAME_STATES::LEVEL_BUILDER:
 		break;

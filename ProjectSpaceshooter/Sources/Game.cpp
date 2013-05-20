@@ -9,8 +9,8 @@ Game::Game()
 {
 	
 	initializeGame();
-	mStateMenager.initStateManager(mGameSystems);
 	resurceSystem.loadAllPrefabs(mGameSystems.gameData);
+	mStateMenager.initStateManager(mGameSystems);
 	mGameSystems.gameData.initializeDataPulls();
 }
 

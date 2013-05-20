@@ -234,3 +234,47 @@ void InputManager::updateInputForPause( GameData& mGameData )
 		wasR_KeyPressed = true;
 	}
 }
+
+void InputManager::updateInputForHangar( GameData& mGameData )
+{
+	// Pump window messages for nice behavior
+	Ogre::WindowEventUtilities::messagePump();
+
+	if(mWindow->isClosed())
+	{
+		throw WindowClosedException();
+	}
+
+	mKeyboard->capture();
+	mMouse->capture();
+
+	if(mKeyboard->isKeyDown(OIS::KC_ESCAPE))
+		throw WindowClosedException();
+
+	HangarManipulator & manip = mGameData.getHangarManipulator();
+	if (!(mKeyboard->isKeyDown(OIS::KC_ESCAPE) || mKeyboard->isKeyDown(OIS::KC_SPACE)) && (wasEnter_KeyPressed))
+	{
+		manip.acceptModel = true;
+		wasEnter_KeyPressed = false;
+	} else if (mKeyboard->isKeyDown(OIS::KC_ESCAPE) || mKeyboard->isKeyDown(OIS::KC_SPACE))
+	{
+		wasEnter_KeyPressed = true;
+	}
+
+	if (!(mKeyboard->isKeyDown(OIS::KC_LEFT) || mKeyboard->isKeyDown(OIS::KC_A)) && (wasLeft_KeyPressed))
+	{
+		manip.moveToPrev = true;
+		wasLeft_KeyPressed = false;
+	} else if (mKeyboard->isKeyDown(OIS::KC_LEFT) || mKeyboard->isKeyDown(OIS::KC_A))
+	{
+		wasLeft_KeyPressed = true;
+	}
+	if (!(mKeyboard->isKeyDown(OIS::KC_RIGHT) || mKeyboard->isKeyDown(OIS::KC_D)) && (wasRight_KeyPressed))
+	{
+		manip.moveToNext = true;
+		wasRight_KeyPressed = false;
+	} else if (mKeyboard->isKeyDown(OIS::KC_RIGHT) || mKeyboard->isKeyDown(OIS::KC_D))
+	{
+		wasRight_KeyPressed = true;
+	}
+}

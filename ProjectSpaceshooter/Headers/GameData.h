@@ -52,6 +52,17 @@ struct CameraManager_Struct
 	Ogre::Camera * hangarSceneCamera;
 	Ogre::Camera * gameOverCamera;
 };
+
+struct HangarManipulator
+{
+	unsigned activeShip;
+	unsigned shipPrefab;
+	bool moveToNext;
+	bool moveToPrev;
+	bool acceptModel;
+	HangarManipulator() : activeShip(0), moveToNext(false), moveToPrev(false), acceptModel(false){}
+};
+
 /** GameData class
   * Stores all information about GameWorld
   * including GameObjects (Enemies, Bullets, etc)
@@ -222,6 +233,7 @@ public:
 		case GAME_STATES::PAUSE:
 			return mCamerasManager.pauseCamera;
 		case GAME_STATES::HANGAR:
+			return mCamerasManager.hangarSceneCamera;
 			break;
 		case GAME_STATES::LEVEL_BUILDER:
 			break;
@@ -241,6 +253,8 @@ public:
 	void setCountOfPrefabs( PREFAB_TYPE prefabType, unsigned count );
 	void clearPlayData();
 	void initializeDataPulls();
+	HangarManipulator & getHangarManipulator() { return mHangarManipulator; }
+	void setHangarManipulator(HangarManipulator val) { mHangarManipulator = val; }
 private:
 	struct changeFlagsStruct
 	{
@@ -263,4 +277,5 @@ private:
 	StateScenesManager_Struct mStateScenesManager;
 	CameraManager_Struct mCamerasManager;
 	LevelDescription * currentLevelDecription;
+	HangarManipulator mHangarManipulator;
 };

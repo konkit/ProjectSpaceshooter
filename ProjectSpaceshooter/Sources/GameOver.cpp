@@ -41,7 +41,7 @@ GAME_STATES GameOver::nextState( SystemsSet & gameSystems )
 	if (gameSystems.gameData.isSetPlayFlag())
 	{
 		deadCamera = false;
-		return GAME_STATES::LEVEL_BUILDER;
+		return GAME_STATES::HANGAR;
 	}
 	return GAME_STATES::GAME_OVER;
 }
