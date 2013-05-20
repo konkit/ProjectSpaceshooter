@@ -40,11 +40,17 @@ public:
 	}
 
 	unsigned getPrefabID() const {return prefabID;}
-//	virtual bool receiveDamage( unsigned int damages, Vector3 fromDirection = Vector3(0,0,0 )) {mDeadFlag = false;}
-
+	//	virtual bool receiveDamage( unsigned int damages, Vector3 fromDirection = Vector3(0,0,0 )) {mDeadFlag = false;}
+	void resetBullet()
+	{
+		mTTLComponent.setTimeToLive(startTTL);
+		mDeadFlag = false;
+	}
 private:
 	unsigned mPower;
 	unsigned prefabID;
+	float startTTL;
 	GameObjectType mOwnerType;
 	TimeToLiveComponent mTTLComponent;
+
 };

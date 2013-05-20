@@ -180,6 +180,7 @@
     <ClInclude Include="Headers\AISystem.h" />
     <ClInclude Include="Headers\BaseCollection.h" />
     <ClInclude Include="Headers\Bullet.h" />
+    <ClInclude Include="Headers\BulletCollection.h" />
     <ClInclude Include="Headers\BulletPrefabPlant.h" />
     <ClInclude Include="Headers\ColliderComponent.h" />
     <ClInclude Include="Headers\CollisionSystem.h" />
@@ -187,6 +188,7 @@
     <ClInclude Include="Headers\EffectPrefabPlant.h" />
     <ClInclude Include="Headers\DebugDrawer.h" />
     <ClInclude Include="Headers\Enemy.h" />
+    <ClInclude Include="Headers\EnemyAndShipPrefabCollection.h" />
     <ClInclude Include="Headers\FlyToCore1.h" />
     <ClInclude Include="Headers\GUISystem.h" />
     <ClInclude Include="Headers\GUI_Radar.h" />
@@ -232,16 +234,20 @@
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="GUISystem.cpp" />
     <ClCompile Include="Sources\AIComponent.cpp" />
     <ClCompile Include="Sources\AISystem.cpp" />
     <ClCompile Include="Sources\Bullet.cpp" />
+    <ClCompile Include="Sources\BulletCollection.cpp" />
     <ClCompile Include="Sources\BulletPrefabPlant.cpp" />
     <ClCompile Include="Sources\ColliderComponent.cpp" />
     <ClCompile Include="Sources\CollisionSystem.cpp" />
     <ClCompile Include="Sources\EffectPrefabPlant.cpp" />
     <ClCompile Include="Sources\DebugDrawer.cpp" />
     <ClCompile Include="Sources\Enemy.cpp" />
+    <ClCompile Include="Sources\EnemyAndShipPrefabCollection.cpp" />
     <ClCompile Include="Sources\ogre2d.cpp" />
+    <ClCompile Include="Sources\Player.cpp" />
     <ClCompile Include="Sources\ShipPrefabPlant.cpp" />
     <ClCompile Include="Sources\EnemySpawner.cpp" />
     <ClCompile Include="Sources\Game.cpp" />

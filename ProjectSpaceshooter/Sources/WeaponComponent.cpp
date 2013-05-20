@@ -14,7 +14,7 @@ void WeaponComponent::setShoot( unsigned long currentTime )
 	if( timeSinceLastShot + rateOfFire < currentTime )	{
 		shooting = true;
 		timeSinceLastShot = currentTime;
-		std::cout<<"Player = set shoot "<<std::endl;
+//		std::cout<<"Player = set shoot "<<std::endl;
 	}
 }
 

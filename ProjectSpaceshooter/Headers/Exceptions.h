@@ -1,5 +1,5 @@
 #pragma once
-
+	
 
 class AbstractException	{
 
@@ -22,5 +22,45 @@ public:
 
 
 private:
+};
 
+class ParserException : public My_Exception
+{
+public:
+	ParserException(std::string errorMessage)
+		: My_Exception(errorMessage)
+	{};
+	ParserException(std::wstring errorMessage)
+		: My_Exception(errorMessage)
+	{};
+};
+
+class IteratorException : public My_Exception
+{
+public:
+	IteratorException(std::string errorMessage)
+		: My_Exception(errorMessage)
+	{};
+	IteratorException(std::wstring errorMessage)
+		: My_Exception(errorMessage)
+	{};
+};
+
+enum class PrefabExceptionType
+{
+	NO_PREFAB
+};
+class PrefabException : public My_Exception
+{
+public:
+	PrefabException(std::string errorMessage, PrefabExceptionType type)
+		: My_Exception(errorMessage), myType(type)
+	{};
+	PrefabException(std::wstring errorMessage, PrefabExceptionType type)
+		: My_Exception(errorMessage), myType(type)
+	{};
+	PrefabExceptionType getType() const { return myType; }
+private:
+	PrefabExceptionType myType;
+	
 };

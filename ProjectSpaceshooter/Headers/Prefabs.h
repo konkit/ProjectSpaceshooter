@@ -27,6 +27,17 @@ struct rotation_struct
 	void resetScale(){x_rot = y_rot = z_rot = 0;}
 };
 
+struct cameraHandler
+{
+	string name;
+	Vector3 offset;
+	Vector3 lookAt;
+	void resetCameraHandler()
+	{
+		name = "";
+		offset = lookAt = Vector3(0,0,0);
+	}
+};
 
 
 /**
@@ -241,11 +252,12 @@ public:
 	~ShipPrefab(void);
 	void resetPrefab();
 	void setWeaponPrefabID(unsigned val) { mWeaponPrefabID = val; }
-	
+	void addCameraHandler(const cameraHandler & newHandler){ mCameraHandlers.push_back(newHandler);}
+	const list<cameraHandler> & getCameraHandlersList() const {return mCameraHandlers;} 
 	unsigned	 getWeaponPrefabID()	const { return mWeaponPrefabID; }
 private:
 	unsigned		mWeaponPrefabID;
-
+	list<cameraHandler> mCameraHandlers;
 };
 
 class WeaponPrefab : public Prefab

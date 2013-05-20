@@ -1,6 +1,7 @@
 #pragma once
 
 
+#pragma once
 //HOW TO USE ITERATOR
 //
 //GameObjectsCollectionIterator<GameObject> * myIterator = myCollection.getIterator();
@@ -26,6 +27,8 @@ struct ListElement
 	}
 };
 
+template<typename gObject>
+class GameCollection;
 
 /** 
   *
@@ -35,9 +38,9 @@ template <class gObject>
 class GameCollectionIterator
 {
 public:
-	GameCollectionIterator<gObject>() : pointerToActual(NULL), pointerToHead(NULL),  isFirstObject(true), pointerToNext(NULL){}
+	GameCollectionIterator<gObject>() : pointerToActual(NULL), pointerToHead(NULL),  isFirstObject(true), pointerToNext(NULL), pointerToPrev(NULL){}
 	GameCollectionIterator<gObject>(ListElement<gObject> * head)
-		:	pointerToActual(head), pointerToHead(head),  isFirstObject(true), pointerToNext(NULL)
+		:	pointerToActual(head), pointerToHead(head),  isFirstObject(true), pointerToNext(NULL), pointerToPrev(NULL)
 	{
 		if (pointerToActual != NULL)
 		{
@@ -49,11 +52,15 @@ public:
 	bool hasNext()
 	{
 		if (pointerToActual == NULL)
-			return false;
-		else if (isFirstObject)
+		{
+			if(pointerToNext != NULL)
+				return true;
+			else 
+				return false;
+		}else if (isFirstObject)
 			return true; 
 		else
-			return pointerToNext != 0 ? true : false;
+			return pointerToNext != NULL ? true : false;
 	};
 	gObject * getNext() 
 	{
@@ -62,6 +69,7 @@ public:
 			isFirstObject = false;
 		} else
 		{
+			pointerToPrev = pointerToActual;
 			pointerToActual = pointerToNext;
 			if (pointerToNext != NULL)
 			{
@@ -85,13 +93,19 @@ public:
 	void resetIterator()
 	{
 		pointerToActual = pointerToNext = pointerToHead;
+		pointerToPrev = NULL;
 	}
-
+	void removedActual()
+	{
+		pointerToActual = pointerToPrev;
+	}
 private:
 	ListElement<gObject> * pointerToActual;
 	ListElement<gObject> * pointerToNext;
 	ListElement<gObject> * pointerToHead;
+	ListElement<gObject> * pointerToPrev;
 	bool isFirstObject;
+	friend class GameCollection<gObject>;
 };
 
 
@@ -143,6 +157,27 @@ public:
 		delete it; // Deleted struct have destructor to delate pointed object;
 		return;
 	};
+	void deleteObject(GameCollectionIterator<gObject> & _it)
+	{
+		ListElement<gObject> * it = _it.pointerToActual;
+		ListElement<gObject> * prevIt = _it.pointerToPrev;
+		if(it == 0)
+			return; // TODO throw an exception
+		if (prevIt != 0)
+		{
+			prevIt->next = it->next;
+			if (it == mListTail)
+			{
+				mListTail = prevIt;
+			}
+		} else
+		{
+			mListHead = it->next;
+		}
+		delete it; // Deleted struct have destructor to delate pointed object;
+		_it.removedActual();
+		return;
+	};
 	void addObject(gObject * newObject)
 	{
 		ListElement<gObject> * tmp = new ListElement<gObject>;
@@ -159,6 +194,10 @@ public:
 		return;
 	}
 	void operator-=(gObject * deletedObject)
+	{
+		deleteObject(deletedObject);
+	}
+	void operator-=(GameCollectionIterator<gObject> & it)
 	{
 		deleteObject(deletedObject);
 	}
@@ -188,14 +227,74 @@ public:
 		}
 		mListHead = mListTail = NULL;
 	}
+
 	gObject * detachFirst()
 	{
+		ListElement<gObject> * it = mListHead;
+		if(it == 0)
+			throw My_Exception("Try to remove from empty gameCollection");
+		mListHead = it->next;
+		gObject * tmp;
+		tmp = it->mObject;
+		it->mObject = NULL;
+		delete it;
+		return tmp;
 	}
-	gObject * detach(GameCollectionIterator<gObject> & it)
+
+	gObject * detachObject(GameCollectionIterator<gObject> & _it)
 	{
+		ListElement<gObject> * it = _it.pointerToActual;
+		ListElement<gObject> * prevIt = _it.pointerToPrev;
+		if(it == 0)
+			throw My_Exception("Try to remove from empty gameCollection");
+		if (prevIt != 0)
+		{
+			prevIt->next = it->next;
+			if (it == mListTail)
+			{
+				mListTail = prevIt;
+			}
+		} else
+		{
+			mListHead = it->next;
+		}
+		_it.removedActual();
+		gObject * tmp;
+		tmp = it->mObject;
+		it->mObject = NULL;
+		delete it;
+		return tmp;
 	}
+	gObject * detachObject(gObject * deletedObject)
+	{
+		ListElement<gObject> * it = mListHead;
+		ListElement<gObject> * prevIt = 0;
+		while (it->mObject != deletedObject && it!= 0)
+		{
+			prevIt = it;
+			it = it->next;
+		}
+		if(it == 0)
+			throw My_Exception("Try to remove from empty gameCollection");
+		if (prevIt != 0)
+		{
+			prevIt->next = it->next;
+			if (it == mListTail)
+			{
+				mListTail = prevIt;
+			}
+		} else
+		{
+			mListHead = it->next;
+		}
+	
+		gObject * tmp;
+		tmp = it->mObject;
+		it->mObject = NULL;
+		delete it;
+		return tmp;
+	};
 	gObject * getFirst() {return mListHead->mObject;}
-	//Required delete iterator after used
 	GameCollectionIterator<gObject> getIterator()
 	{
 		return GameCollectionIterator<gObject>(mListHead);
@@ -203,5 +302,11 @@ public:
 private:
 	ListElement<gObject> * mListHead;
 	ListElement<gObject> * mListTail;
+
 };
+
+
+
+
+
 

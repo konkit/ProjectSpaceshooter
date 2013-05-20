@@ -242,16 +242,15 @@ bool PrefabWithCollider_Plant::setAttribute( const wstring & attribute, const ws
 	{
 		_setInaccurateCollider(attribute, value);
 	}
-	else if (stack_top == PrefabWithCollider_Plant::offset)
+	else if (stack_prev == Collider || stack_prev == inaccurate_Collider) 
 	{
-		if (stack_prev == Collider || stack_prev == inaccurate_Collider) 
+		if(stack_top == PrefabWithCollider_Plant::offset)
 		{
 			_setColliderOffset(attribute, value);
+		} else if (stack_top == PrefabWithCollider_Plant::radius)
+		{
+			_setColliderRadius(attribute, value);
 		}
-	}
-	else if (stack_top == PrefabWithCollider_Plant::radius)
-	{
-		_setColliderRadius(attribute, value);
 	} else if (stack_top == PrefabWithCollider_Plant::explosion_id)
 	{
 		_setExplosionID(attribute, value);
@@ -507,7 +506,6 @@ bool MovablePrefab_Plant::setAttribute( const wstring & attribute, const wstring
 	elements.pop();
 	const wstring & stack_prev = elements.top();
 	elements.push(stack_top);
-
 	if (stack_top == max_velocity)
 	{
 		_setMaxVelocity(attribute, value);

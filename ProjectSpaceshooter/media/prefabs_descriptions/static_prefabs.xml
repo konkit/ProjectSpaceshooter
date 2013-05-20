@@ -54,14 +54,28 @@
   <static id='2'>
     <static_name name='TheCore'/>
     <mesh name='core2.MESH'/>
-    <explosion_id id='1'/>
-    <health value='10000000'/>
+    <explosion_id id='2'/>
+    <health value='1000000'/>
     <scale x_scale='35' y_scale='35' z_scale='35' />
     <rotation x_rot='1' y_rot='0' z_rot='90' />
     <Colliders>
       <inaccurate_Collider>
         <offset x_pos='0' y_pos='0' z_pos='0' />
         <radius value='300' />
+      </inaccurate_Collider>
+    </Colliders>
+  </static>
+  <static id='6'>
+    <static_name name='Hangar'/>
+    <mesh name='Hangar.MESH'/>
+    <explosion_id id='1'/>
+    <health value='10000000'/>
+    <scale x_scale='1' y_scale='1' z_scale='1' />
+    <rotation x_rot='0' y_rot='0' z_rot='-90' />
+    <Colliders>
+      <inaccurate_Collider>
+        <offset x_pos='0' y_pos='0' z_pos='0' />
+        <radius value='0' />
       </inaccurate_Collider>
     </Colliders>
   </static>

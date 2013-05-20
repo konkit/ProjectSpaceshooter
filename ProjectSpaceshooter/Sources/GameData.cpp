@@ -3,19 +3,22 @@
 
 #include "GameData.h"
 #include "GameObject.h"
+#include "Exceptions.h"
 using std::string;
 GameData::GameData(void)
-	:mEffectsCollection("Effect Collection"), mBulletCollection("Bullet Collection"), mStaticCollection("Static Collection"), mPlayer(NULL)
+	:mEffectsCollection("Effect Collection"), mBulletCollection(), mStaticCollection("Static Collection"), mPlayer(NULL)
 {
 	changeFlags.changeToHangar = false;
 	changeFlags.changeToMenu = false;
 	changeFlags.changeToPause = false;
 	changeFlags.changeToPlay = false;
+	currentLevelDecription = NULL;
 }
 
 GameData::~GameData(void)
 {
 	delete mPlayer;
+	delete currentLevelDecription;
 }
 
 Ogre::SceneManager * GameData::getSceneManagerFor( GAME_STATES gameState )
@@ -137,6 +140,38 @@ void GameData::addWeaponPrefab( const WeaponPrefab & _weaponPrefab )
 	mEnemyCollection.addWeaponPrefab(_weaponPrefab);
 }
 
+void GameData::removeGameObject( ColidingObjectsIterator & removedObjectIterator )
+{
+	GameObjectType objectType;
+	try
+	{
+		objectType = removedObjectIterator.getPointedObjectType();
+	}
+	catch (IteratorException &  e)
+	{
+		throw My_Exception(string(e.what()) + "in GameData::removeGameObject");
+	}
+
+	switch (objectType)
+	{
+	case GameObjectType::enemyObject:
+		mEnemyCollection.getCollection().deleteObject(removedObjectIterator.getEnemyIT());
+		break;
+	case GameObjectType::bulletObject:
+		mBulletCollection.destroyBullet(removedObjectIterator.getBulletIT());
+		break;
+	case GameObjectType::core:
+		theCore = NULL; // There is no break; in ths place, because TheCore is a staticObject, and The Core is removed like static
+	case GameObjectType::staticObject:
+		mStaticCollection.getCollection().deleteObject(removedObjectIterator.getStaticIT());
+		break;
+	case GameObjectType::effectObject:
+		mEffectsCollection.getCollection().deleteObject(removedObjectIterator.getEffectIT());
+		break;
+	default:
+		throw My_Exception("Incorrect game object type in GameData::removeGameObject");
+	}
+}
 
 void GameData::removeGameObject( GameObject_WithCollider * removedObject )
 {
@@ -144,18 +179,18 @@ void GameData::removeGameObject( GameObject_WithCollider * removedObject )
 	switch (objectType)
 	{
 	case GameObjectType::enemyObject:
-		mEnemyCollection.getCollection().deleteObject(dynamic_cast<EnemyObject *>(removedObject));
+		mEnemyCollection.getCollection().deleteObject(static_cast<EnemyObject *>(removedObject));
 		break;
 	case GameObjectType::bulletObject:
-		mBulletCollection.getCollection().deleteObject(dynamic_cast<Bullet *>(removedObject));
+		mBulletCollection.destroyBullet(static_cast<Bullet *>(removedObject));
 		break;
 	case GameObjectType::core:
 		theCore = NULL; // There is no break; in ths place, because TheCore is a staticObject, and The Core is removed like static
 	case GameObjectType::staticObject:
-		mStaticCollection.getCollection().deleteObject(dynamic_cast<StaticObject*>(removedObject));
+		mStaticCollection.getCollection().deleteObject(static_cast<StaticObject*>(removedObject));
 		break;
 	case GameObjectType::effectObject:
-		mEffectsCollection.getCollection().deleteObject(dynamic_cast<EffectObject*>(removedObject));
+		mEffectsCollection.getCollection().deleteObject(static_cast<EffectObject*>(removedObject));
 		break;
 	default:
 		break;
@@ -252,12 +287,18 @@ void GameData::setCountOfPrefabs( PREFAB_TYPE prefabType, unsigned count )
 void GameData::clearPlayData()
 {
 	mEnemyCollection.getCollection().clearCollection();
-	mBulletCollection.getCollection().clearCollection();
+	mBulletCollection.clearCollection();
 	mStaticCollection.getCollection().clearCollection();
 	mEffectsCollection.getCollection().clearCollection();
 	destroyPlayer();
 	mStateScenesManager.playSceneManager->destroyAllLights();
+	delete currentLevelDecription;
 
+}
+
+void GameData::initializeDataPulls()
+{
+	mBulletCollection.initializeBullet(mStateScenesManager.playSceneManager);
 }
 
 
@@ -285,18 +326,23 @@ GameObject_WithCollider * GameData::ColidingObjectsIterator::getNext()
 	{
 	case GameData::ColidingObjectsIterator::iterator::Player:
 		tmp = player;
+		lastElementType = GameObjectType::player;
 		break;
 	case GameData::ColidingObjectsIterator::iterator::Enemy:
 		tmp = enemyIT.getNext();
+		lastElementType = GameObjectType::enemyObject;
 		break;
 	case GameData::ColidingObjectsIterator::iterator::Bullet:
 		tmp = bulletIT.getNext();
+		lastElementType = GameObjectType::bulletObject;
 		break;
 	case GameData::ColidingObjectsIterator::iterator::Static:
 		tmp = staticIT.getNext();
+		lastElementType = GameObjectType::staticObject;
 		break;
 	case GameData::ColidingObjectsIterator::iterator::Effect:
 		tmp = effectIT.getNext();
+		lastElementType = GameObjectType::effectObject;
 		break;
 	case GameData::ColidingObjectsIterator::iterator::EMPTY:
 	default:
@@ -345,4 +391,9 @@ void GameData::ColidingObjectsIterator::moveToNextIterator()
 	default:
 		return;
 	}
+}
+
+GameObjectType GameData::ColidingObjectsIterator::getPointedObjectType()
+{
+	return lastElementType;
 }

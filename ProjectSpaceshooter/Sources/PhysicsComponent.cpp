@@ -109,5 +109,8 @@ void PhysicsComponent::setFromPrefab( const MovablePrefab * prefab )
 
 float PhysicsComponent::getCurrentVelocityMagnitude()
 {
-	return currentVelocity.length();
+
+	//return currentVelocity.length();
+	//Avoid expensive square but it not ideal yet
+	return targetVelocityValue;
 }

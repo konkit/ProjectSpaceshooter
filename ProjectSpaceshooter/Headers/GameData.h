@@ -6,6 +6,8 @@
 #include "Core.h"
 
 #include "BaseCollection.h"
+#include "EnemyAndShipPrefabCollection.h"
+#include "BulletCollection.h"
 #include "LevelDescription.h"
 #include "Exceptions.h"
 #include <string>
@@ -98,7 +100,19 @@ public:
 	Ogre::SceneManager * getSceneManagerFor(GAME_STATES gameState);
 	void setSceneMenagerFor(GAME_STATES gameState, Ogre::SceneManager * sceneManagerForState);
 
-	LevelDescription & getLevelDescription() {return currentLevelDecription;}
+	LevelDescription & createLevelDescription() 
+	{
+		currentLevelDecription = new LevelDescription();
+		return *currentLevelDecription;
+	}
+	LevelDescription & getLevelDescription() 
+	{
+		return *currentLevelDecription;
+	}
+	void removeLevelDescription()
+	{
+		delete currentLevelDecription;
+	}
 
 	//BulletCollection& getBullets()	{
 	BaseCollection<BulletPrefab, Bullet>& getBullets() {return mBulletCollection;}
@@ -154,6 +168,13 @@ public:
 			if (activeIterator == iterator::Player)
 				moveToNextIterator();
 		}
+		
+		GameObjectType getPointedObjectType();
+		GameCollectionIterator<EnemyObject>	&	getEnemyIT()  { return enemyIT; }
+		GameCollectionIterator<Bullet>		&	getBulletIT() { return bulletIT; }
+		GameCollectionIterator<StaticObject>&	getStaticIT() { return staticIT; }
+		GameCollectionIterator<EffectObject>&	getEffectIT() { return effectIT; }
+
 	private:
 		enum class iterator
 		{
@@ -166,13 +187,14 @@ public:
 		} activeIterator;
 		
 		void moveToNextIterator();
-
 		Player * player;
 
 		GameCollectionIterator<EnemyObject> enemyIT;
 		GameCollectionIterator<Bullet> bulletIT;
-		GameCollectionIterator<StaticObject> staticIT;
 		GameCollectionIterator<EffectObject> effectIT;
+		GameCollectionIterator<StaticObject> staticIT;
+		GameObjectType lastElementType;
+
 	};
 
 	ColidingObjectsIterator getColidingObjectsIterator();
@@ -213,11 +235,12 @@ public:
 
 	void setCameraFor(GAME_STATES gameState, Ogre::Camera * camera);
 	void removeGameObject( GameObject_WithCollider * removedObject );
-
+	void removeGameObject( ColidingObjectsIterator & removedObjectIterator );
 	bool isPlayerDead();
 	bool isCoreDead();
 	void setCountOfPrefabs( PREFAB_TYPE prefabType, unsigned count );
 	void clearPlayData();
+	void initializeDataPulls();
 private:
 	struct changeFlagsStruct
 	{
@@ -230,7 +253,7 @@ private:
 	//All GameObjects
 	
 	EnemyAndShipPrefabsCollections mEnemyCollection;
-	BaseCollection<BulletPrefab, Bullet> mBulletCollection;
+	BulletCollection mBulletCollection;
 	BaseCollection<EffectPrefab, EffectObject> mEffectsCollection;
 	BaseCollection<StaticPrefab, StaticObject> mStaticCollection;
 
@@ -239,5 +262,5 @@ private:
 	GameObjectTemplates mPrefabCollections;
 	StateScenesManager_Struct mStateScenesManager;
 	CameraManager_Struct mCamerasManager;
-	LevelDescription currentLevelDecription;
+	LevelDescription * currentLevelDecription;
 };

@@ -24,6 +24,7 @@ void ShipPrefab::resetPrefab()
 	PrefabWithMesh::resetPrefab();
 	MovablePrefab::resetPrefab();
 	mWeaponPrefabID = 0;
+	mCameraHandlers.clear();
 }
 
 ShipPrefab::ShipPrefab( unsigned prefabID )

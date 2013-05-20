@@ -75,7 +75,7 @@ public:
 	void rotate(float rotVelocity)	{	mNode->yaw( Ogre::Radian(rotVelocity) ); }
 
 	virtual GameObjectType getType() = 0;
-
+	void setVisible( bool visibility ) {mNode->setVisible(visibility);}
 protected:
 	GameObjectType mObjectType;
 	Ogre::SceneNode* mNode;
@@ -140,9 +140,9 @@ public:
 	virtual bool receiveDamage( unsigned int damages, Vector3 fromDirection = Vector3(0,0,0)) 
 	{
 		mHealth.decreaseHealth(damages);
-#ifdef _DEBUG
-		std::cout << ObjectTypeToString(getType()) << ": remained health = " << mHealth.getHealth() << endl;
-#endif
+//#ifdef _DEBUG
+//		std::cout << ObjectTypeToString(getType()) << ": remained health = " << mHealth.getHealth() << endl;
+//#endif
 		return mDeadFlag = mHealth.isDead();
 	}
 
@@ -221,7 +221,7 @@ public:
 	}
 
 	void setRotation(bool clockwise, bool counterClockwise)	{
-		float value;
+		float value = 0.0;
 		if( counterClockwise == true)	
 			value = 1.0;
 		if( clockwise == true)
@@ -237,6 +237,7 @@ public:
 	void setCurrentSpeedToMax(Ogre::Vector3 forwardVector) { mPhysicsComponent.setCurrentSpeedToMax(forwardVector); }
 	void addRecoilVectorToCurrentVelocity(Vector3 recoil) 
 	{
+		recoil.y = 0; // To avoid vertical movement
 		mPhysicsComponent.AddVectorToCurrentVelocity(recoil);
 	}
 	void createThrusters(const MovablePrefab * _prefab, Ogre::SceneManager * _sceneMenager );

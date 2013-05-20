@@ -28,7 +28,7 @@ GAME_STATES LevelBuilder::update( SystemsSet & gameSystems, TimeData& time )
 
 void LevelBuilder::loadLevelDescribe( SystemsSet & gameSystems )
 {
-	LevelDescription & _levelDescription = gameSystems.gameData.getLevelDescription();
+	LevelDescription & _levelDescription = gameSystems.gameData.createLevelDescription();
 	_levelDescription.ambientColour = Ogre::ColourValue(1.0f,1.0f,1.0f);
 	Light * newLight = new Light;
 	newLight->position = Vector3(100,100,100);
@@ -79,11 +79,11 @@ GAME_STATES LevelBuilder::nextState( SystemsSet & gameSystems )
 void LevelBuilder::buildPlayScene( SystemsSet & gameSystems, TimeData& time )
 {
 	Ogre::SceneManager * _sceneManager = mGameData->getSceneManagerFor(GAME_STATES::PLAY);
-	_sceneManager->setSkyBox(true, "zygaBOX");
+	_sceneManager->setSkyBox(true, "starfieldBOX");
 
 	//Init player's sceneNode
 	Player * player = gameSystems.gameData.createPlayerFromPrefab(1);	
-	player->setPosition(Vector3(0,0,0));
+	player->setPosition(Vector3(1000,0,0));
 	attachCameraToPlayer(gameSystems);
 	const WeaponPrefab * weapon = gameSystems.gameData.getWeaponPrefab(2);
 	player->addWeapon(weapon);
@@ -131,23 +131,5 @@ void LevelBuilder::attachCameraToPlayer(SystemsSet & gameSystems)
 	Ogre::Camera * _camera = gameSystems.gameData.getCameraFor(GAME_STATES::PLAY);
 	Player * player = gameSystems.gameData.getPlayer();
 	Ogre::SceneNode *cameraNode = player->getCameraNode();
-	_camera->setPosition(0,0,0);
-	//Create camera
-	//Third person perspective camera
-	if( THIRD_PERSON_CAMERA == true ) {
-		player->attachCamera(_camera);			
-		cameraNode->setPosition(Ogre::Vector3(0.0,20.0,-60.0));
-		_camera->lookAt(Ogre::Vector3(0,0,100));
-	}
-	else if ( TWO_DIMENSION_CAMERA == true ) {
-		//2D like camera
-		//	Ogre::SceneNode *cameraNode = mSceneMgr->getRootSceneNode()->createChildSceneNode();
-		//		cameraNode->attachObject(mCamera);
-		//		cameraNode->setPosition(Ogre::Vector3(0.0, 2000.0, 0.0));
-		//		mCamera->lookAt(Ogre::Vector3(0.01, 0.01, 0.01));
-		//2D like camera tied to player
-		player->attachCamera(_camera);			
-		cameraNode->setPosition(Ogre::Vector3(0.0,2000.0,-25.0));
-		_camera->lookAt(Ogre::Vector3(0.001,0.001,0.01));
-	}
+	player->attachCamera(_camera);
 }
