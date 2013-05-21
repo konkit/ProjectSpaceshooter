@@ -20,11 +20,16 @@
 
 
 
-
+// Systems which governs displaying of GUI
 class GUISystem	{
 public:
-
+	//init GUI- run at creation of state
 	void init( Ogre::SceneManager* mSceneMgr, GAME_STATES cntState)	{
+		//Load Font
+			Ogre::FontManager &fontMgr = Ogre::FontManager::getSingleton();
+			Ogre::ResourcePtr font = fontMgr.getByName("MyFont");
+			font->load();
+
 		if( cntState == GAME_STATES::PLAY )	{
 			playGUI.init(mSceneMgr);
 		} else if( cntState == GAME_STATES::HANGAR )	{
@@ -34,6 +39,7 @@ public:
 		}
 	}
 
+	//display the GUI - run every frame
 	void display(  GameData& mGameData, TimeData _time, GAME_STATES cntState )	{
 		if( cntState == GAME_STATES::PLAY )	{
 			playGUI.display(mGameData, _time);
@@ -48,17 +54,13 @@ public:
 			playGUI.hide();
 			hangarGUI.hide();
 		}
-
 	}
-
-
 
 private:
 	PlayGUI playGUI;
 	HangarGUI hangarGUI;
 	GameOverGUI gameOverGUI;
 };
-
 
 
 
