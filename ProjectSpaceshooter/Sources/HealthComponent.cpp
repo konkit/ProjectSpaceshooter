@@ -1,3 +1,4 @@
+#include "HealthComponent.h"
 
 bool HealthComponent::isDead()
 {
@@ -9,7 +10,7 @@ int HealthComponent::getHealth()
 	return health;
 }
 
-void HealthComponent::restoreToMax()
+void HealthComponent::restoreHealthToMax()
 {
 	health = maxHealth;
 }

@@ -190,6 +190,7 @@
     <ClInclude Include="Headers\Enemy.h" />
     <ClInclude Include="Headers\EnemyAndShipPrefabCollection.h" />
     <ClInclude Include="Headers\FlyToCore1.h" />
+    <ClInclude Include="Headers\GUI_AbstractInstance.h" />
     <ClInclude Include="Headers\GUI_GameOver.h" />
     <ClInclude Include="Headers\GUI_System.h" />
     <ClInclude Include="Headers\GUI_Radar.h" />

@@ -20,7 +20,8 @@
 
 
 
-// Systems which governs displaying of GUI
+/** Systems which governs displaying of GUI
+  */
 class GUISystem	{
 public:
 	//init GUI- run at creation of state
@@ -46,11 +47,11 @@ public:
 			hangarGUI.hide();
 			gameOverGUI.hide();
 		} else if( cntState == GAME_STATES::HANGAR )	{
-			hangarGUI.display(mGameData, _time);
+			hangarGUI.display();
 			playGUI.hide();
 			gameOverGUI.hide();
 		} else if( cntState == GAME_STATES::GAME_OVER )	{
-			gameOverGUI.display(mGameData, _time);
+			gameOverGUI.display();
 			playGUI.hide();
 			hangarGUI.hide();
 		}

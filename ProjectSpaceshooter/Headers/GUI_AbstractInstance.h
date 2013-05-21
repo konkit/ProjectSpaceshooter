@@ -9,12 +9,12 @@ public:
 	//init - run at start
 	void init(std::string guiName)  	{
 		//Get overlay object
-			Ogre::OverlayManager* overlayManager = & Ogre::OverlayManager::getSingleton();
+			overlayManager = & Ogre::OverlayManager::getSingleton();
 			overlay = overlayManager->getByName(guiName);
 	}
 
 	//display - run every frame
-	void display( GameData& mGameData, TimeData _time ){
+	void display(){
 		// Show the overlay
 			overlay->show();
 	}
@@ -24,8 +24,9 @@ public:
 		overlay->hide();
 	}
 	
-private:
+protected:
 	//overlay object
+	Ogre::OverlayManager* overlayManager;
 	Ogre::Overlay* overlay;
 };
 

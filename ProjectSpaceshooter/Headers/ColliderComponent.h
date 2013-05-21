@@ -6,6 +6,8 @@
 
 using Ogre::Vector3;
 using namespace std;
+
+
 /** Collider component stores data about collider which game object has
   * 
   * @author konkit
@@ -27,11 +29,11 @@ struct position_struct
 	Ogre::Quaternion orientation;
 	position_struct() : position(0,0,0), orientation(){;}
 };
-class Collider
-{
+
+
+class Collider	{
 
 public:
-
 //Collider 
 	Collider();
 	~Collider() {mColliders.clear();}

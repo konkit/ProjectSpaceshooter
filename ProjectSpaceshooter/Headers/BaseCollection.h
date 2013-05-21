@@ -9,6 +9,7 @@
 /** Class which is base for all collections of Enemies, Bullets etc
   * Its main parts are collection of GameObjects and collection of prefab
   *
+  * @author konkit
   */
 template<class TPrefab, class TObject>
 class BaseCollection

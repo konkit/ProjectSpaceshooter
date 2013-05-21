@@ -11,14 +11,18 @@ class TimeToLiveComponent
 public:
 	TimeToLiveComponent();
 
+	/** sets the time after which object will be destroyed */
 	void setTimeToLive(float newTime);
 
 	/** function running every frame and decreasing time to live */
 	void decreaseTimeToLive(float deltaTime);
 
+	/** checks if time to destruction has left 
+	* @return bool
+	*/
 	bool isTimeIsUp();
 
-	/** Percent of life time which left to die. Result as 0.## 
+	/** Percentage of life time which left to die. Result as 0.## 
 	* @return double
 	* @author Zyga
 	*/

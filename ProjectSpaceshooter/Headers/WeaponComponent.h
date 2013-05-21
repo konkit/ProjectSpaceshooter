@@ -1,5 +1,6 @@
 #pragma once
 
+/** Component storing data about current weapon */
 class WeaponComponent {
 public:
 	WeaponComponent();
@@ -21,8 +22,6 @@ public:
 	unsigned getBulletID() const {return bulletPrefabID;}
 
 private:
-
-
 	//flags
 	bool shooting;
 	//weapon data
