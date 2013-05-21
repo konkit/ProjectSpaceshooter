@@ -30,7 +30,7 @@ PlayState::PlayState(SystemsSet & gameSystems) :GameState()
     timeToOneSecond = 0.0;
 
     //Initialize GUI system
-	gameSystems.mGUISystem.init( mSceneMgr );
+	gameSystems.mGUISystem.init( mSceneMgr, GAME_STATES::PLAY );
 }
 
 
@@ -54,7 +54,7 @@ GAME_STATES PlayState::update( SystemsSet & gameSystems, TimeData& time )
     gameSystems.mCollisionSystem.update( gameSystems.gameData);
     gameSystems.mObjectStateSystem.update( gameSystems.gameData, time);
 
-	gameSystems.mGUISystem.display(gameSystems.gameData, time);
+	gameSystems.mGUISystem.display(gameSystems.gameData, time, GAME_STATES::PLAY);
 
 #ifdef _DEBUG
     DebugDrawer::getSingleton().build();

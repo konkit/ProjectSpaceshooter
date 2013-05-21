@@ -192,8 +192,10 @@
     <ClInclude Include="Headers\FlyToCore1.h" />
     <ClInclude Include="Headers\GUISystem.h" />
     <ClInclude Include="Headers\GUI_Radar.h" />
+    <ClInclude Include="Headers\HangarGUI.h" />
     <ClInclude Include="Headers\MessageConsole.h" />
     <ClInclude Include="Headers\ogre2d.h" />
+    <ClInclude Include="Headers\PlayGUI.h" />
     <ClInclude Include="Headers\randomAI.h" />
     <ClInclude Include="Headers\ShipPrefabPlant.h" />
     <ClInclude Include="Headers\EnemySpawner.h" />

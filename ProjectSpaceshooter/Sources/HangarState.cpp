@@ -50,6 +50,9 @@ HangarState::HangarState( SystemsSet & gameSystems )
 	}
 	manip.activeShip = 1;
 	manip.shipPrefab = shipsPads[1].prefabID;
+
+	//Initialize GUI system
+	gameSystems.mGUISystem.init( mSceneMgr, GAME_STATES::HANGAR );
 }
 
 
@@ -57,6 +60,9 @@ GAME_STATES HangarState::update( SystemsSet & gameSystems, TimeData& time )
 {
 	gameSystems.inputManager.updateInputForHangar(gameSystems.gameData);
 	updateCameraPosition(gameSystems, time);
+
+	gameSystems.mGUISystem.display(gameSystems.gameData, time, GAME_STATES::HANGAR);
+
 	renderOneFrame(gameSystems.ogreManager);
 	return nextState(gameSystems);
 }

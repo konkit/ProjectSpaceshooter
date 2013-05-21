@@ -172,6 +172,12 @@
     <ClInclude Include="Headers\GUISystem.h">
       <Filter>Header\Systems\GUI stuff</Filter>
     </ClInclude>
+    <ClInclude Include="Headers\HangarGUI.h">
+      <Filter>Header\Systems\GUI stuff</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\PlayGUI.h">
+      <Filter>Header\Systems\GUI stuff</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header">
