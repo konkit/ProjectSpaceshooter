@@ -1,6 +1,6 @@
 #pragma once
 
-
+#include <ctime>
 
 #define MESSAGE_CONSOLE_CAPACITY 5
 
@@ -31,11 +31,20 @@ public:
 
 
 	void addNewMessage(std::string newMessage)	{
+		//get time
+		time_t mTime = time(0);
+		tm* now = localtime( &mTime );
+		char buf[80];
+		strftime(buf, sizeof(buf), "%X", now);
+
+		std::string timeString(buf);
+			
+
 		for(int i=0; i<MESSAGE_CONSOLE_CAPACITY-1; i++)	{
 			messages[i] = messages[i+1];
 		}
 
-		messages[MESSAGE_CONSOLE_CAPACITY-1] = newMessage;
+		messages[MESSAGE_CONSOLE_CAPACITY-1] = timeString + ": " + newMessage;
 	}
 
 private:
