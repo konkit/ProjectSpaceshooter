@@ -12,7 +12,7 @@
 #include "Exceptions.h"
 #include <string>
 
-#include "MessageConsole.h"
+#include "GUI_MessageConsole.h"
 
 
 

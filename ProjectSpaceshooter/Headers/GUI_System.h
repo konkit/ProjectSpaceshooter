@@ -11,11 +11,11 @@
 #include <sstream>
 
 #include "GUI_Radar.h"
-#include "MessageConsole.h"
+#include "GUI_MessageConsole.h"
 
-#include "PlayGUI.h"
-#include "HangarGUI.h"
-#include "GameOverGUI.h"
+#include "GUI_Play.h"
+#include "GUI_Hangar.h"
+#include "GUI_GameOver.h"
 
 
 

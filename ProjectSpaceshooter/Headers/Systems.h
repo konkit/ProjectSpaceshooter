@@ -6,7 +6,7 @@
 #include "ObjectStateUpdateSystem.h"
 #include "CollisionSystem.h"
 #include "AISystem.h"
-#include "GUISystem.h"
+#include "GUI_System.h"
 
 struct SystemsSet
 {

@@ -163,22 +163,22 @@
     <ClInclude Include="Headers\EnemyAndShipPrefabCollection.h">
       <Filter>Header\GameCollections</Filter>
     </ClInclude>
-    <ClInclude Include="Headers\MessageConsole.h">
-      <Filter>Header\Systems\GUI stuff</Filter>
-    </ClInclude>
     <ClInclude Include="Headers\GUI_Radar.h">
       <Filter>Header\Systems\GUI stuff</Filter>
     </ClInclude>
-    <ClInclude Include="Headers\GUISystem.h">
+    <ClInclude Include="Headers\GUI_GameOver.h">
       <Filter>Header\Systems\GUI stuff</Filter>
     </ClInclude>
-    <ClInclude Include="Headers\HangarGUI.h">
+    <ClInclude Include="Headers\GUI_Play.h">
       <Filter>Header\Systems\GUI stuff</Filter>
     </ClInclude>
-    <ClInclude Include="Headers\PlayGUI.h">
+    <ClInclude Include="Headers\GUI_Hangar.h">
       <Filter>Header\Systems\GUI stuff</Filter>
     </ClInclude>
-    <ClInclude Include="Headers\GameOverGUI.h">
+    <ClInclude Include="Headers\GUI_System.h">
+      <Filter>Header\Systems\GUI stuff</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\GUI_MessageConsole.h">
       <Filter>Header\Systems\GUI stuff</Filter>
     </ClInclude>
   </ItemGroup>

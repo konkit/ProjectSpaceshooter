@@ -11,7 +11,7 @@
 #include <sstream>
 
 #include "GUI_Radar.h"
-#include "MessageConsole.h"
+#include "GUI_MessageConsole.h"
 
 #define FONT_FOLDER "fonts/"
 #define FONT_FILE_NAME "arial.ttf"
