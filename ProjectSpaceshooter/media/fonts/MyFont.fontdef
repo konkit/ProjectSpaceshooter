@@ -1,0 +1,7 @@
+MyFont
+{
+	type truetype
+	source arial.ttf
+	size 26
+	resolution 96
+}
