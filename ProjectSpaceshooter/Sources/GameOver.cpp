@@ -19,6 +19,9 @@ GAME_STATES GameOver::update( SystemsSet & gameSystems, TimeData& time )
 	gameSystems.mPhysicsSystem.update( gameSystems.gameData, time.deltaTime );
 	gameSystems.mCollisionSystem.update( gameSystems.gameData);
 	gameSystems.mObjectStateSystem.update( gameSystems.gameData, time);
+
+	gameSystems.mGUISystem.display(gameSystems.gameData, time, GAME_STATES::GAME_OVER);
+
 #ifdef _DEBUG
 	DebugDrawer::getSingleton().build();
 #endif
@@ -63,6 +66,7 @@ GameOver::GameOver( SystemsSet & gameSystems )
 {
 	mCamera = gameSystems.gameData.getCameraFor(GAME_STATES::PLAY);
 	gameSystems.gameData.setCameraFor(GAME_STATES::GAME_OVER, mCamera);
+		gameSystems.mGUISystem.init( mSceneMgr, GAME_STATES::GAME_OVER);
 }
 
 

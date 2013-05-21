@@ -1,7 +1,7 @@
 #pragma once
 
-class HangarGUI
-{
+
+class GameOverGUI	{
 public:
 
 	//init - run at start
@@ -18,7 +18,7 @@ public:
 
 			//Get overlay object
 			Ogre::OverlayManager* overlayManager = & Ogre::OverlayManager::getSingleton();
-			overlay = overlayManager->getByName("HangarGUI");
+			overlay = overlayManager->getByName("GameOverGUI");
 	}
 
 	//display - run every frame
@@ -33,7 +33,7 @@ public:
 
 
 
-	~HangarGUI()	{
+	~GameOverGUI()	{
 		//ogre2dManager->end();
 		//delete ogre2dManager;
 	}

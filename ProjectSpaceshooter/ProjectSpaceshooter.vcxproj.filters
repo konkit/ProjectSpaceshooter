@@ -178,6 +178,9 @@
     <ClInclude Include="Headers\PlayGUI.h">
       <Filter>Header\Systems\GUI stuff</Filter>
     </ClInclude>
+    <ClInclude Include="Headers\GameOverGUI.h">
+      <Filter>Header\Systems\GUI stuff</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header">

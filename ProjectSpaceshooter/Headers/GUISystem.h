@@ -15,6 +15,7 @@
 
 #include "PlayGUI.h"
 #include "HangarGUI.h"
+#include "GameOverGUI.h"
 
 
 
@@ -28,6 +29,8 @@ public:
 			playGUI.init(mSceneMgr);
 		} else if( cntState == GAME_STATES::HANGAR )	{
 			hangarGUI.init(mSceneMgr);
+		} else if( cntState == GAME_STATES::GAME_OVER )	{
+			gameOverGUI.init(mSceneMgr);
 		}
 	}
 
@@ -35,10 +38,17 @@ public:
 		if( cntState == GAME_STATES::PLAY )	{
 			playGUI.display(mGameData, _time);
 			hangarGUI.hide();
+			gameOverGUI.hide();
 		} else if( cntState == GAME_STATES::HANGAR )	{
 			hangarGUI.display(mGameData, _time);
 			playGUI.hide();
+			gameOverGUI.hide();
+		} else if( cntState == GAME_STATES::GAME_OVER )	{
+			gameOverGUI.display(mGameData, _time);
+			playGUI.hide();
+			hangarGUI.hide();
 		}
+
 	}
 
 
@@ -46,6 +56,7 @@ public:
 private:
 	PlayGUI playGUI;
 	HangarGUI hangarGUI;
+	GameOverGUI gameOverGUI;
 };
 
 

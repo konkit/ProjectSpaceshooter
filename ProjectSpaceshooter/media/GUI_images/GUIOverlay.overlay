@@ -89,3 +89,45 @@ HangarGUI
 
 
 
+GameOverGUI
+{
+	container Panel(GameOverPanel1)
+	{
+		metrics_mode pixels
+		left 300
+		top 150
+		width 200
+		height 75
+	
+		container TextArea(GameOverText1)
+		{
+			metrics_mode pixels
+			left 0
+			top 5
+			width 100
+			height 75
+			char_height 50
+			font_name MyFont
+			colour_bottom 0.3 0.5 0.3
+			colour_top 0.5 0.7 0.5
+			caption Game Over
+		}
+		
+		container TextArea(GameOverText2)
+		{
+			metrics_mode pixels
+			left 0
+			top 350
+			width 100
+			height 75
+			char_height 26
+			font_name MyFont
+			colour_bottom 0.3 0.5 0.3
+			colour_top 0.5 0.7 0.5
+			caption Press r to return to hangar
+		}
+	}
+}
+
+
+
