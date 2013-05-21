@@ -34,10 +34,14 @@ public:
 	void display(  GameData& mGameData, TimeData _time, GAME_STATES cntState )	{
 		if( cntState == GAME_STATES::PLAY )	{
 			playGUI.display(mGameData, _time);
+			hangarGUI.hide();
 		} else if( cntState == GAME_STATES::HANGAR )	{
 			hangarGUI.display(mGameData, _time);
+			playGUI.hide();
 		}
 	}
+
+
 
 private:
 	PlayGUI playGUI;

@@ -16,21 +16,14 @@ PlayState::PlayState(SystemsSet & gameSystems) :GameState()
     gameSystems.cntDebugDrawer = new DebugDrawer(mSceneMgr, 0.5f);
 #endif
 
-    //Temporary explosion
-    //Ogre::ParticleSystem* particleSystem = mSceneMgr->createParticleSystem("explosions", "explosionTemplate");
-
-    //fast forward 1 second to the point where the particle has been emitted
-    //particleSystem->fastForward(1.0);
-
-    //attach the particle system to a scene node
-    //Ogre::SceneNode *explosion = mSceneMgr->getRootSceneNode()->createChildSceneNode();
-    //explosion->attachObject(particleSystem);
-
     numOfFPS = 0;
     timeToOneSecond = 0.0;
 
     //Initialize GUI system
 	gameSystems.mGUISystem.init( mSceneMgr, GAME_STATES::PLAY );
+
+	gameSystems.gameData.getMessageConsole().addNewMessage("All systems running");
+	gameSystems.gameData.getMessageConsole().addNewMessage("Blast 'em all!");
 }
 
 

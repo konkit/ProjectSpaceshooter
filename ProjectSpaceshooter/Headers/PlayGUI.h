@@ -78,6 +78,10 @@ public:
 			overlay->show();
 	}
 
+	void hide()	{
+		overlay->hide();
+	}
+
 
 	~PlayGUI()	{
 		ogre2dManager->end();

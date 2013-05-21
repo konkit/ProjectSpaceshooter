@@ -27,6 +27,11 @@ public:
 			overlay->show();
 	}
 
+	void hide()	{
+		overlay->hide();
+	}
+
+
 
 	~HangarGUI()	{
 		ogre2dManager->end();
