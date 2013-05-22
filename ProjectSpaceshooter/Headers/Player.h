@@ -9,20 +9,34 @@
 class Player : public Ship
 {
 public:
+	/** Loads data of effect from prefab */
 	Player(const ShipPrefab * objectTemplate,const WeaponPrefab * weapon, Ogre::SceneManager * _sceneMenager);
 	virtual ~Player();
+
+	/** Sets ship stats with data from prefab */
 	void setShip(const ShipPrefab * objectTemplate,const WeaponPrefab * weapon, Ogre::SceneManager * _sceneMenager);
 	GameObjectType getType();
 
-Ogre::SceneNode * getCameraNode();
+	/** Returns camera node attached to player
+	  * @return Ogre::SceneNode - node of camera
+	  */
+	Ogre::SceneNode * getCameraNode();
 
-void createCameraNodesAndChoseActivCameraNode( const ShipPrefab * objectTemplate );
+	/**    */
+	void createCameraNodesAndChoseActivCameraNode( const ShipPrefab * objectTemplate );
 
-void createCameraNodes( const ShipPrefab * objectTemplate );
+	/**    */
+	void createCameraNodes( const ShipPrefab * objectTemplate );
 
-void switchCameraToNextHandler();
-void detachCamera();
-void attachCamera( Ogre::Camera * cam );
+	/**    */
+	void switchCameraToNextHandler();
+
+	/**    */
+	void detachCamera();
+
+	/**    */
+	void attachCamera( Ogre::Camera * cam );
+
 private:
 	Ogre::SceneNode * mCameraNode;
 	list<cameraHandler>::iterator mActiveCameraDataIt;

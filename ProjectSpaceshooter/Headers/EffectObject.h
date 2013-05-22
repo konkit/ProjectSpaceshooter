@@ -3,14 +3,22 @@
 #include "TimeToLiveComponent.h"
 
 using namespace std;;
+
+/** GameObject representing explosions and other special effects
+  *
+  * @author 
+  */
+
 class EffectObject : public GameObject_WithCollider
 {
 public:
+	/** Sets initial values */
 	EffectObject() : GameObject(), power(0)
 	{
 		mTTLComponent.setTimeToLive(3.00);
 	}
 
+	/** Loads data of effect from prefab */
 	EffectObject( EffectPrefab * objectTemplate, Ogre::SceneManager * _sceneMgr)
 		: GameObject(), GameObject_WithCollider(objectTemplate, _sceneMgr), power(objectTemplate->getPower())
 	{
@@ -29,13 +37,18 @@ public:
 	}
 
 	~EffectObject()
-	{
-	}
+	{	}
 
+	/** returns Time To Live component 
+	  * @return TimeToLiveComponent
+	  */
 	TimeToLiveComponent& getTTLComponent() {
 		return mTTLComponent;
 	}
 
+	/** checks if effect should dissapear
+	  * @return bool - true if dead
+	  */
 	bool isDead()
 	{
 		if( mTTLComponent.isTimeIsUp()==true )
@@ -44,20 +57,30 @@ public:
 		return false;
 	}
 
+	/** implementation of getType virtual method from GameObject class 
+	  * @return GameObjectType - type of this object (in this case: effectObject)
+	  */
 	GameObjectType getType() {
 		return GameObjectType::effectObject;
 	}
+
 
 	virtual bool receiveDamage( unsigned int damages, Vector3 fromDirection ) 
 	{
 		return false;
 	}
 
+	/** returns power of the damage dealt within area of this effect
+	  * @return unsigned power of damage of effect
+	  */
 	unsigned getPower() 
 	{
 		return unsigned((double) power * mTTLComponent.percentOfLeftTime());
 	}
+
+	/** sets new power of effect */
 	void setPower(unsigned val) { power = val; }
+
 private:
 	TimeToLiveComponent mTTLComponent;
 	unsigned power;

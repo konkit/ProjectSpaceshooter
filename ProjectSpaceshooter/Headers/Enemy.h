@@ -6,7 +6,7 @@
 
 using namespace std;
 
-/** 
+/** Class of enemy game object
   *
   * @author Zyga
   */

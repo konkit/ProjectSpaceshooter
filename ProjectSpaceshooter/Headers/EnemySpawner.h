@@ -9,7 +9,8 @@ struct SpawnerInfo
 	unsigned spawnEffectID;
 };
 
-/** 
+/** Enemy spawner class
+  * It governs creation of Enemies in waves in time intervals
   *
   * @author Zygi
   */
