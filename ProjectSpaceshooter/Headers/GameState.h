@@ -1,6 +1,9 @@
 #pragma once
 #include "Systems.h"
 #include "TimeUtility.h"
+
+/** Basic GameState class
+*/
 class GameState
 {
 protected:

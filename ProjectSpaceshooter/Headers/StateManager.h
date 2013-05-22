@@ -7,6 +7,9 @@
 #include "LevelBuilder.h"
 #include "GameOver.h"
 
+
+/** State manager - governs changes of game states 
+*/
 class StateManager
 {
 public:

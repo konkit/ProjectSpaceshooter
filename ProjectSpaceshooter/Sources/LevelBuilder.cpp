@@ -21,12 +21,12 @@ LevelBuilder::~LevelBuilder()
 GAME_STATES LevelBuilder::update( SystemsSet & gameSystems, TimeData& time )
 {
 	gameSystems.gameData.clearPlayData();
-	loadLevelDescribe(gameSystems);
+	loadLevelDescription(gameSystems);
 	buildPlayScene(gameSystems, time);
 	return nextState(gameSystems);
 }
 
-void LevelBuilder::loadLevelDescribe( SystemsSet & gameSystems )
+void LevelBuilder::loadLevelDescription( SystemsSet & gameSystems )
 {
 	LevelDescription & _levelDescription = gameSystems.gameData.createLevelDescription();
 	_levelDescription.ambientColour = Ogre::ColourValue(1.0f,1.0f,1.0f);

@@ -49,7 +49,7 @@ public:
 	/** returns current target position 
 	* @return Ogre::Vector3
 	*/
-	Ogre::Vector3 getCurrentTargetPos(Ogre::Vector3 newPos)	{	return cntTargetPos;	}
+	Ogre::Vector3 getCurrentTargetPos()	{	return cntTargetPos;	}
 private:
 	/** state of AI (FSM one - shooting, evading etc) */
 	AI_STATE mState;

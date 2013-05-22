@@ -64,7 +64,7 @@ public:
 
 			Ogre::Vector3 perpendicularVector = vectorToTarget.crossProduct( Ogre::Vector3::UNIT_Y );
 
-			cntAI.cntTarget = cntCore.getPosition() + perpendicularVector * 2500.0;
+			cntAI.setCurrentTargetPos( cntCore.getPosition() + perpendicularVector * 2500.0 );
 
 			return;
 		}
@@ -87,7 +87,7 @@ public:
 		Core& cntCore = mGameData.getCore();
 
 		//change state if needed
-		if( it->getPosition().squaredDistance( cntAI.cntTarget ) < 100.0*100.0 )
+		if( it->getPosition().squaredDistance( cntAI.getCurrentTargetPos() ) < 100.0*100.0 )
 		{
 			//change state to shoot at core
 			cntAI.setState(AI_STATE::TURN_AROUND);
@@ -97,13 +97,13 @@ public:
 
 			Ogre::Vector3 perpendicularVector =  vectorToTarget.crossProduct( Ogre::Vector3::UNIT_Y );
 
-			cntAI.cntTarget = cntAI.cntTarget + perpendicularVector * 2500.0;
+			cntAI.setCurrentTargetPos( cntAI.getCurrentTargetPos() + perpendicularVector * 2500.0 );
 
 			return;
 		}
 
 		//move away the core
-		Ogre::Vector3 vectorToTarget = cntAI.cntTarget - it->getPosition();
+		Ogre::Vector3 vectorToTarget = cntAI.getCurrentTargetPos() - it->getPosition();
 			vectorToTarget.normalise();
 
 		it->getPhysicsComponent().setTargetVelocityValue(1.0);
@@ -120,7 +120,7 @@ public:
 		Core& cntCore = mGameData.getCore();
 
 		//change state if needed
-		if( it->getPosition().squaredDistance( cntAI.cntTarget ) < 100.0*100.0 )
+		if( it->getPosition().squaredDistance( cntAI.getCurrentTargetPos() ) < 100.0*100.0 )
 		{
 			//change state to shoot at core
 			cntAI.setState(AI_STATE::GET_TO_CORE);
@@ -128,7 +128,7 @@ public:
 		}
 
 		//move away the core
-		Ogre::Vector3 vectorToTarget = cntAI.cntTarget - it->getPosition();
+		Ogre::Vector3 vectorToTarget = cntAI.getCurrentTargetPos() - it->getPosition();
 			vectorToTarget.normalise();
 
 		it->getPhysicsComponent().setTargetVelocityValue(1.0);

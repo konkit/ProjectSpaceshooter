@@ -10,17 +10,18 @@ PauseState::PauseState( SystemsSet & gameSystems )
 
 	Ogre::Entity* ogreHead = mSceneMgr->createEntity("Head", "smallfighter.MESH");
 	Ogre::Plane plane;
-	plane.d = 2500;
-	plane.normal = Ogre::Vector3::UNIT_Y;
+		plane.d = 2500;
+		plane.normal = Ogre::Vector3::UNIT_Y;
+
 	//mSceneMgr->setSkyPlane(true, plane, "Examples/SpaceSkyPlane", 1000, 45);
 	mSceneMgr->setSkyBox(true, "Examples/SpaceSkyBox");
 	//create sceneNode for player
 	Ogre::SceneNode * shipNode = mSceneMgr->getRootSceneNode()->createChildSceneNode();
-	//attach model to that node
-	shipNode->attachObject(ogreHead);
-	//save node in player's GraphicsComponent
-	shipNode->yaw(Ogre::Degree(10));
-	shipNode->roll(Ogre::Degree(10));
+		//attach model to that node
+		shipNode->attachObject(ogreHead);
+		//save node in player's GraphicsComponent
+		shipNode->yaw(Ogre::Degree(10));
+		shipNode->roll(Ogre::Degree(10));
 	// Set ambient light
 	mSceneMgr->setAmbientLight(Ogre::ColourValue(0.5, 0.5, 0.5));
 
