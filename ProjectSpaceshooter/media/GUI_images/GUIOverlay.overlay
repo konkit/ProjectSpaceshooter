@@ -113,6 +113,20 @@ GameOverGUI
 			caption Game Over
 		}
 		
+		container TextArea(PlayerScoreText)
+		{
+			metrics_mode pixels
+			left 0
+			top 300
+			width 100
+			height 75
+			char_height 30
+			font_name MyFont
+			colour_bottom 0.3 0.5 0.3
+			colour_top 0.5 0.7 0.5
+			caption Player score :
+		}
+		
 		container TextArea(GameOverText2)
 		{
 			metrics_mode pixels

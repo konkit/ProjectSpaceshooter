@@ -45,7 +45,7 @@ GAME_STATES GameOver::nextState( SystemsSet & gameSystems )
 	{
 		deadCamera = false;
 		return GAME_STATES::HANGAR;
-		gameSystems.gameData.resetScore();
+		gameSystems.gameData.getPlayer()->resetScore();
 	}
 	return GAME_STATES::GAME_OVER;
 }

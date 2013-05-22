@@ -150,6 +150,12 @@ bool CollisionSystem::collisionWithBullet( GameObject_WithCollider * currentObje
 			unsigned damages = bullet->getPower();
 			currentObject->receiveDamage(damages); // Value is irrelevant because bullet immediately explode
 			otherObject->receiveDamage(damages, currentObject->getPosition()); // Don't care if it's other bullet - he explode;
+
+			//If player shot this bullet, then score is added
+			if( otherObject->isDead() == true && bullet->getOwnerType() == GameObjectType::player)	{
+				dynamic_cast<Player*>( bullet->getOwner() )->addScore( SCORE_FOR_KILL );
+			}
+
 		} 
 		return true;
 	} else

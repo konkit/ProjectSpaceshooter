@@ -37,9 +37,26 @@ public:
 	/**    */
 	void attachCamera( Ogre::Camera * cam );
 
+	
+	//score manipulators
+		int getScore()	{
+			return score;
+		}
+
+		void resetScore()	{
+			score = 0;
+		}
+
+		void addScore(int value)	{
+			score += value;
+		}
+
 private:
 	Ogre::SceneNode * mCameraNode;
 	list<cameraHandler>::iterator mActiveCameraDataIt;
 	Ogre::Camera * my_cam;
 	list<cameraHandler> myCameraHandlers;
+
+	//score of the player
+	int score;
 };

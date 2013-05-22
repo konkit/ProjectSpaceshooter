@@ -51,7 +51,7 @@ public:
 			playGUI.hide();
 			gameOverGUI.hide();
 		} else if( cntState == GAME_STATES::GAME_OVER )	{
-			gameOverGUI.display();
+			gameOverGUI.display(mGameData, _time);
 			playGUI.hide();
 			hangarGUI.hide();
 		}

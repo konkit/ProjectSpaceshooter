@@ -10,7 +10,27 @@ public:
 	//init - run at start
 	void init( Ogre::SceneManager* mSceneMgr)  	{
 		AbstractInstanceGUI::init("GameOverGUI");
+
+		Ogre::OverlayContainer* playerDataPanel = static_cast<Ogre::OverlayContainer*>( overlayManager->getOverlayElement("GameOverPanel1") );
+		playerScore = playerDataPanel->getChild("PlayerScoreText");
+	}
+
+	void display( GameData& mGameData, TimeData _time ){
+
+		//display player score
+			std::stringstream playerScoreString;
+				playerScoreString
+					<<"Player score : "<<mGameData.getPlayer()->getScore();
+			playerScore->setCaption( playerScoreString.str() );
+
+		// Invoking parent class display function
+		AbstractInstanceGUI::display();
 	}
 
 	//rest is in parent class
+
+
+private:
+	//Text pointers
+	Ogre::OverlayElement* playerScore;
 };

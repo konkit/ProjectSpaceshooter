@@ -59,7 +59,7 @@ void ObjectStateUpdateSystem::destroyPlayer( GameData& mGameData)
 	if (player != NULL)
 	{
 		createExplosionFor(player, mGameData);
-		mGameData.destroyPlayer();
+		player->setVisible(false);
 	} else
 	{
 		throw My_Exception("Try to remove nonexistent player");

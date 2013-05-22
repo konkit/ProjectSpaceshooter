@@ -4,6 +4,8 @@
 
 //#define ALLCOLLIDERS true
 
+#define SCORE_FOR_KILL 100
+
 /** System which detects and resolves collisions 
   *
   * @author Zyga

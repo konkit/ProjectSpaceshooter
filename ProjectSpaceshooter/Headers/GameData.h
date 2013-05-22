@@ -270,18 +270,6 @@ public:
 		return mMessageConsole;
 	}
 
-	//score manipulators
-		int getScore()	{
-			return score;
-		}
-
-		void resetScore()	{
-			score = 0;
-		}
-
-		void addScore(int value)	{
-			score += value;
-		}
 
 private:
 	struct changeFlagsStruct

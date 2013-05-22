@@ -25,13 +25,22 @@ public:
 	/** sets new power of bullet */
 	void setPower(unsigned val) { mPower = val; }
 
-	/** sets owner of bullet */
-	void setOwner(Ship* owner) {mOwnerType = owner->getType();}
+	/** sets owner type of bullet */
+	void setOwner(Ship* owner) {
+		mOwner = owner;
+		mOwnerType = owner->getType();
+	}
 
-	/** returns type of bullet 
+	/** returns type of the bullet owner
 	  * @return GameObjectType - type of owner object of bullet (player, enemy, etc...)
 	  */
 	GameObjectType getOwnerType() {return mOwnerType;}
+
+	/** returns owner of the bullet */
+	GameObject* getOwner()	{
+		return mOwner;
+	}
+
 
 	/** returns Time To Live component 
 	  * @return TimeToLiveComponent
@@ -76,6 +85,7 @@ private:
 	unsigned prefabID;
 	float startTTL;
 	GameObjectType mOwnerType;
+	GameObject* mOwner;
 	TimeToLiveComponent mTTLComponent;
 
 };

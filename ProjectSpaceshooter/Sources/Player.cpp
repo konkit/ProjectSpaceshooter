@@ -68,7 +68,7 @@ Player::~Player()
 	detachCamera();
 }
 
-Player::Player( const ShipPrefab * objectTemplate,const WeaponPrefab * weapon, Ogre::SceneManager * _sceneMenager ) : GameObject(objectTemplate, _sceneMenager), Ship(objectTemplate,weapon, _sceneMenager)
+Player::Player( const ShipPrefab * objectTemplate,const WeaponPrefab * weapon, Ogre::SceneManager * _sceneMenager ) : GameObject(objectTemplate, _sceneMenager), Ship(objectTemplate,weapon, _sceneMenager), score(0)
 {
 	createCameraNodesAndChoseActivCameraNode(objectTemplate);
 }

@@ -53,12 +53,17 @@ public:
 			mRadar.display(mGameData, _time);			
 
 		//Text stuff
+			//Some references to speed up everything
+			Player& playerRef = *(mGameData.getPlayer());
+
 			//Set text of player data textArea
 			std::stringstream playerDataString;
 				playerDataString
-					<<"Velocity : "<<mGameData.getPlayer()->getPhysicsComponent().getCurrentVelocityMagnitude()
-					<<"\nTarget velocity : "<<mGameData.getPlayer()->getPhysicsComponent().getTargetVelocityValue()
-					<<"\nHealth : "<<mGameData.getPlayer()->getHealthValue()<<" / "<<mGameData.getPlayer()->getMaxHealthValue()
+					<<"Velocity : "<<playerRef.getPhysicsComponent().getCurrentVelocityMagnitude()
+					<<"\nTarget velocity : "<<playerRef.getPhysicsComponent().getTargetVelocityValue()
+					<<"\nHealth : "<<playerRef.getHealthValue()<<" / "<<playerRef.getMaxHealthValue()
+					<<"\nCore Health : "<<mGameData.getCore().getHealthValue()
+					<<"\nScore : "<<playerRef.getScore()
 					<<"\n"
 					<<"\nFPS : "<<_time.currentFPSValue;
 			playerData->setCaption( playerDataString.str() );
