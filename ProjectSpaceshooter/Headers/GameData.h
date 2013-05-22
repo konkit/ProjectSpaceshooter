@@ -217,7 +217,6 @@ public:
 		GameCollectionIterator<EffectObject> effectIT;
 		GameCollectionIterator<StaticObject> staticIT;
 		GameObjectType lastElementType;
-
 	};
 
 	ColidingObjectsIterator getColidingObjectsIterator();
@@ -271,6 +270,19 @@ public:
 		return mMessageConsole;
 	}
 
+	//score manipulators
+		int getScore()	{
+			return score;
+		}
+
+		void resetScore()	{
+			score = 0;
+		}
+
+		void addScore(int value)	{
+			score += value;
+		}
+
 private:
 	struct changeFlagsStruct
 	{
@@ -296,4 +308,7 @@ private:
 	HangarManipulator mHangarManipulator;
 	//GUI data
 	MessageConsole mMessageConsole;
+
+	//score of player
+	int score;
 };

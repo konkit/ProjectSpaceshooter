@@ -6,7 +6,7 @@
 #include "Exceptions.h"
 using std::string;
 GameData::GameData(void)
-	:mEffectsCollection("Effect Collection"), mBulletCollection(), mStaticCollection("Static Collection"), mPlayer(NULL)
+	:mEffectsCollection("Effect Collection"), mBulletCollection(), mStaticCollection("Static Collection"), mPlayer(NULL), score(0)
 {
 	changeFlags.changeToHangar = false;
 	changeFlags.changeToMenu = false;
