@@ -51,20 +51,20 @@ HangarGUI
 {
 	container Panel(ChooseShipTextPanel)
 	{
-		metrics_mode pixels
-		left 300
-		top 150
+		metrics_mode relative
+		left 0.35
+		top 0.3
 		width 200
 		height 75
 	
 		container TextArea(HangarText1)
 		{
-			metrics_mode pixels
+			metrics_mode relative
 			left 0
-			top 5
-			width 100
-			height 75
-			char_height 50
+			top 0
+			width 0.2
+			height 0.1
+			char_height 0.05
 			font_name MyFont
 			colour_bottom 0.3 0.5 0.3
 			colour_top 0.5 0.7 0.5
@@ -73,12 +73,12 @@ HangarGUI
 		
 		container TextArea(HangarText2)
 		{
-			metrics_mode pixels
+			metrics_mode relative
 			left 0
-			top 350
-			width 100
-			height 75
-			char_height 26
+			top 0.3
+			width 0.2
+			height 0.1
+			char_height 0.03
 			font_name MyFont
 			colour_bottom 0.3 0.5 0.3
 			colour_top 0.5 0.7 0.5
@@ -93,20 +93,20 @@ GameOverGUI
 {
 	container Panel(GameOverPanel1)
 	{
-		metrics_mode pixels
-		left 300
-		top 150
+		metrics_mode relative
+		left 0.35
+		top 0.3
 		width 200
 		height 75
 	
 		container TextArea(GameOverText1)
 		{
-			metrics_mode pixels
+			metrics_mode relative
 			left 0
-			top 5
-			width 100
-			height 75
-			char_height 50
+			top 0
+			width 0.2
+			height 0.1
+			char_height 0.05
 			font_name MyFont
 			colour_bottom 0.3 0.5 0.3
 			colour_top 0.5 0.7 0.5
@@ -115,12 +115,12 @@ GameOverGUI
 		
 		container TextArea(PlayerScoreText)
 		{
-			metrics_mode pixels
+			metrics_mode relative
 			left 0
-			top 300
-			width 100
-			height 75
-			char_height 30
+			top 0.3
+			width 0.2
+			height 0.1
+			char_height 0.03
 			font_name MyFont
 			colour_bottom 0.3 0.5 0.3
 			colour_top 0.5 0.7 0.5
@@ -129,12 +129,12 @@ GameOverGUI
 		
 		container TextArea(GameOverText2)
 		{
-			metrics_mode pixels
+			metrics_mode relative
 			left 0
-			top 350
-			width 100
-			height 75
-			char_height 26
+			top 0.4
+			width 0.2
+			height 0.1
+			char_height 0.03
 			font_name MyFont
 			colour_bottom 0.3 0.5 0.3
 			colour_top 0.5 0.7 0.5
