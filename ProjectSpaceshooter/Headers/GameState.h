@@ -11,11 +11,15 @@ protected:
 	Ogre::SceneManager* mSceneMgr;
 	Ogre::Camera * mCamera;
 public:
-	Ogre::SceneManager* getSceneMgr(){return mSceneMgr;}
 	GameState() : mCamera(NULL) {}
 	virtual ~GameState(){}
+
+	Ogre::SceneManager* getSceneMgr(){return mSceneMgr;}
+
 	virtual GAME_STATES update(SystemsSet & gameSystems, TimeData& time) = 0;
+
 	void renderOneFrame(OgreManager & _ogreManager);
+
 	Ogre::Camera * getCamera() {return mCamera;}
 private:
 	virtual	void createCamera() = 0;

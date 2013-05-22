@@ -127,24 +127,33 @@ public:
 		delete currentLevelDecription;
 	}
 
-	//BulletCollection& getBullets()	{
 	BaseCollection<BulletPrefab, Bullet>& getBullets() {return mBulletCollection;}
-	//EnemyCollection& getEnemys()
 	EnemyAndShipPrefabsCollections& getEnemies() {return mEnemyCollection;}
 	BaseCollection<EffectPrefab, EffectObject>& getEffects() {return mEffectsCollection;}
 	BaseCollection<StaticPrefab, StaticObject>& getStatics()	{
 		return mStaticCollection;
 	}
 
-
 	Core& getCore() { return *theCore; }
 
+	/**
+	* Method which creates new Enemy in collection
+	* it also returns this newly created enemy so it can be further modified
+	*
+	* @return EnemyObject *
+	* @param unsigned prefabID
+	* @param AI_TYPE myAi - type of AI (attacker, defender, etc)
+	* @param GAME_STATES state
+	* @author Zyga
+	*/
 	EnemyObject * instantiateEnemy(unsigned prefabID ,AI_TYPE myAi, GAME_STATES state = GAME_STATES::PLAY)
 	{
 			return mEnemyCollection.instantiateEnemy(prefabID, myAi, getSceneManagerFor(state));
 	}
+
 	/**
-	* 
+	* Method which creates new Bullet in collection
+	* it also returns this newly created bullet so it can be further modified
 	*
 	* @return Bullet *
 	* @param unsigned prefabID
@@ -155,6 +164,7 @@ public:
 	{
 		return mBulletCollection.instantiate(prefabID, getSceneManagerFor(state));
 	}
+
 	void addShipPrefab(const ShipPrefab & _enemyPrefab);
 	void addBulletPrefab(const BulletPrefab & _bulletPrefab);
 	void addStaticPrefab(const StaticPrefab & _staticPrefab);

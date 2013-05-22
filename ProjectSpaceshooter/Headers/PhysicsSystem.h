@@ -33,7 +33,7 @@ public:
 			updateOneObject(it, deltaTime);
 		}
 
-		//Muszê uprz¹tn¹æ nieco tutaj tak¿e narazie przeciwnikami steruje AISystem
+		// Enemy objects update
 		GameCollectionIterator<EnemyObject> myEnemyIterator = mGameData.getEnemies().getIterator();
 		while (myEnemyIterator.hasNext())
 		{
@@ -45,6 +45,8 @@ public:
 				}
 				PhysicsComponent& tmpPhysics = it->getPhysicsComponent();
 
+				// rotation velocity of enemies is fully controled by AI
+				// so there only velocity is updated
 				tmpPhysics.updateVelocity(it->getForwardVector(), deltaTime);
 
 				it->rotate( tmpPhysics.getRotVelocityValue(), deltaTime );
@@ -57,6 +59,9 @@ public:
 		}
 	}
 
+	/** method which updates one game object 
+	  * it updates velocity as well as rotation 
+	  */
 	void updateOneObject( GameObject_Movable* it, float deltaTime ) {
 		if (it == NULL) //TODO
 		{

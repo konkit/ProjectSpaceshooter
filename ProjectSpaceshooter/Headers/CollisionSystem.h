@@ -4,6 +4,10 @@
 
 //#define ALLCOLLIDERS true
 
+/** System which detects and resolves collisions 
+  *
+  * @author Zyga
+  */
 class CollisionSystem	{
 public:
 	CollisionSystem() : COLLISION_DAMAGE(5){}

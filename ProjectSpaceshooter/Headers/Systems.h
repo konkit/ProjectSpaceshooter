@@ -8,6 +8,10 @@
 #include "AISystem.h"
 #include "GUI_System.h"
 
+/** Struct storing all systems in the game
+  *
+  * @author
+  */
 struct SystemsSet
 {
 	InputManager  inputManager;
