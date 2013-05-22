@@ -4,8 +4,13 @@
 #define DOT_HEIGHT 0.01
 #define RADAR_DOT  0.02
 
+/** This class draws 2d radar on screen (with all enemies, statics, etc) 
+  * it gets data from GameData class
+  * @author konkit
+  */
 class Radar	{
 public:
+	/** initialize the radar, run on the beginning */
 	void init(Ogre2dManager* _ogre2dManager)	{
 		ogre2dManager = _ogre2dManager;
 
@@ -18,6 +23,7 @@ public:
 		//End 2D graphics
 	}
 
+	/** display radar on screen, run every frame */
 	void display(GameData& mGameData, TimeData _time)	{
 		//Draw radar background
 			ogre2dManager->spriteBltFull("radar3.png", 0.6, 1.0, 1.0, 0.5);
@@ -35,32 +41,10 @@ public:
 			{
 				it = myStaticsIterator.getNext();
 
-				Ogre::Vector3 toStatic =
-					 ( it->getPosition() - mGameData.getPlayer()->getPosition() );
-
-				if( toStatic.squaredLength() > 2000.0 * 2000.0)	{
-					continue;
-				}
-
-				toStatic.x = -toStatic.x;
-
-				toStatic = mGameData.getPlayer()->getOrientation() * toStatic;
-
-				float offsetX = toStatic.x / ( DOT_DISTANCE_SCALE * 4);
-				float offsetZ = toStatic.z / ( DOT_DISTANCE_SCALE * 4);
-
 				if( it == &mGameData.getCore() )	{
-					ogre2dManager->spriteBltFull("Core.png", 
-					0.8  + offsetX - RADAR_DOT, 
-					0.75 + offsetZ + RADAR_DOT,
-					0.8  + offsetX + RADAR_DOT, 
-					0.75 + offsetZ - RADAR_DOT);
+					drawEntity("Core.png", it, mGameData);
 				} else {
-					ogre2dManager->spriteBltFull("Static.png", 
-					0.8  + offsetX - DOT_WIDTH , 
-					0.75 + offsetZ + DOT_HEIGHT,
-					0.8  + offsetX + DOT_WIDTH, 
-					0.75 + offsetZ - DOT_HEIGHT );
+					drawEntity("Static.png", it, mGameData);
 				}
 			}
 
@@ -70,25 +54,7 @@ public:
 			{
 				it = myEnemyIterator.getNext();
 
-				Ogre::Vector3 toStatic =
-					 ( it->getPosition() - mGameData.getPlayer()->getPosition() );
-
-				if( toStatic.squaredLength() > 2000.0 * 2000.0)	{
-					continue;
-				}
-
-				toStatic.x = -toStatic.x;
-
-				toStatic = mGameData.getPlayer()->getOrientation() * toStatic;
-
-				float offsetX = toStatic.x / ( DOT_DISTANCE_SCALE * 4);
-				float offsetZ = toStatic.z / ( DOT_DISTANCE_SCALE * 4);
-				
-				ogre2dManager->spriteBltFull("Enemy.png", 
-					0.8  + offsetX - DOT_WIDTH , 
-					0.75 + offsetZ + DOT_HEIGHT,
-					0.8  + offsetX + DOT_WIDTH, 
-					0.75 + offsetZ - DOT_HEIGHT );
+				drawEntity("Enemy.png", it, mGameData);
 			}
 	}
 
@@ -105,5 +71,28 @@ public:
 private:
 	Ogre2dManager* ogre2dManager;
 
+	/** calculate position of gameobject and map it to a position on radar */
+	void drawEntity(std::string imageName, GameObject* it, GameData& mGameData)	{
+		const float DOT_DISTANCE_SCALE = 2500.0f;
 
+		Ogre::Vector3 toObject =
+				( it->getPosition() - mGameData.getPlayer()->getPosition() );
+
+		if( toObject.squaredLength() > 2000.0 * 2000.0)	{
+			return;
+		}
+
+		toObject.x = -toObject.x;
+
+		toObject = mGameData.getPlayer()->getOrientation() * toObject;
+
+		float offsetX = toObject.x / ( DOT_DISTANCE_SCALE * 4);
+		float offsetZ = toObject.z / ( DOT_DISTANCE_SCALE * 4);
+				
+		ogre2dManager->spriteBltFull(imageName, 
+			0.8  + offsetX - DOT_WIDTH , 
+			0.75 + offsetZ + DOT_HEIGHT,
+			0.8  + offsetX + DOT_WIDTH, 
+			0.75 + offsetZ - DOT_HEIGHT );
+	}
 };
