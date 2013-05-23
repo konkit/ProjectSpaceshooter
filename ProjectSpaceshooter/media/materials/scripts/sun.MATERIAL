@@ -4,7 +4,7 @@ material "\sun.MESH/None__sun_png"
 	{
 		pass
 		{
-			ambient 1 1 1 1
+			ambient 0.5 0.5 0.5 0.5
 			diffuse 0.8 0.8 0.8 0
 			specular 0 0 0 0
 			emissive 0 0 0

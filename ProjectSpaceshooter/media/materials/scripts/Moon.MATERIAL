@@ -4,7 +4,7 @@ material "\Moon.MESH/Material #25"
 	{
 		pass
 		{
-			ambient 0.588 0.588 0.588 0
+			ambient 0.288 0.288 0.288 0
 			diffuse 0.588 0.588 0.588 0
 			specular 0 0 0 0
 			emissive 0 0 0
