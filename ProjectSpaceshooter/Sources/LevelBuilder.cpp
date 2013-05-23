@@ -79,7 +79,7 @@ GAME_STATES LevelBuilder::nextState( SystemsSet & gameSystems )
 void LevelBuilder::buildPlayScene( SystemsSet & gameSystems, TimeData& time )
 {
 	Ogre::SceneManager * _sceneManager = mGameData->getSceneManagerFor(GAME_STATES::PLAY);
-	_sceneManager->setSkyBox(true, "starfieldBOX");
+	_sceneManager->setSkyBox(true, "Sky2");
 
 	//Init player's sceneNode
 	unsigned prefabID = gameSystems.gameData.getHangarManipulator().shipPrefab;

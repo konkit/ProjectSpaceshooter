@@ -1,0 +1,16 @@
+material Sky2
+{
+		technique
+		{
+			pass
+			{
+				lighting off
+				depth_write off
+				texture_unit
+				{
+					cubic_texture Sky2.png separateUV
+					tex_address_mode clamp
+				}
+			}
+		}
+}
