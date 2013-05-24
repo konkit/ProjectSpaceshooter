@@ -1,6 +1,8 @@
 #pragma once
 
 #include "AIStrategy.h"
+#include "Exceptions.h"
+
 
 /* AI mode where enemy is moving in random circles */
 class RandomAIStrategy : public AIStrategy {
@@ -9,6 +11,12 @@ public:
 	virtual void update( EnemyObject* it, GameData& mGameData, TimeData time  )
 	{
 		PhysicsComponent& currentPhysicsComponent = it->getPhysicsComponent();
+
+		//Check if EnemyObject even exists
+		if( it == NULL )	{
+			throw EnemyNullException();
+		}
+
 
 		//get some random values
 		float currentVelocity  = float(200 + (rand()%300-100));

@@ -254,7 +254,7 @@ public:
 	  * target velocity value is increased or decreased
 	  */
 	void setMovement(bool forward, bool backward, float deltaTime)	{
-		float value;
+		float value = 0.0;
 		if( forward == true)	
 			value = 1000.0 * deltaTime;
 		if( backward == true)

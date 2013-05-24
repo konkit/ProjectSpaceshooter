@@ -1,17 +1,29 @@
 #pragma once
 
 #include "AIStrategy.h"
+#include "Exceptions.h"
 
 /**
-  * AI mode where enemy is in constant motion, shooting at core and turning around */
+  * AI mode where enemy is in constant motion, shooting at core and turning around 
+  */
 class FlyToCoreAIStrategy1 : public AIStrategy	{
 
 public:
 	virtual void update( EnemyObject* it, GameData& mGameData, TimeData time )
 	{
+		//Check if EnemyObject even exists
+		if( it == NULL )	{
+			throw EnemyNullException();
+		}
+
 		AIComponent& cntAI = it->getAIComponent();
 		PhysicsComponent& cntPhys = it->getPhysicsComponent();
-		Core& cntCore = mGameData.getCore();		
+		Core& cntCore = mGameData.getCore();
+
+		//Check if Core even exists
+		if( &cntCore == NULL )	{
+			throw CoreNullException();
+		}
 
 		if( cntAI.getState() == AI_STATE::GET_TO_CORE )	{
 			getToCore(it, mGameData, time);		
@@ -24,6 +36,7 @@ public:
 		}
 	}
 
+private:
 	void getToCore(EnemyObject* it, GameData& mGameData, TimeData time){
 		AIComponent& cntAI = it->getAIComponent();
 		PhysicsComponent& cntPhys = it->getPhysicsComponent();
