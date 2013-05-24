@@ -47,6 +47,11 @@ public:
 		messages[MESSAGE_CONSOLE_CAPACITY-1] = timeString + ": " + newMessage;
 	}
 
+	void operator<<(std::string newMessage)	{
+		addNewMessage(newMessage);
+	}
+
+
 private:
 	std::string messages[MESSAGE_CONSOLE_CAPACITY];
 };

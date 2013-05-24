@@ -14,7 +14,7 @@ void AISystem::update( GameData& mGameData, TimeData time )
 		// select AI behaviour 
 		AIStrategy* currentStrategy = getAIStrategy( it->getAIComponent().getType() );
 
-
+		//update the AI with given strategy
 		try {
 			currentStrategy->update(it, mGameData, time);
 		} catch (CoreNullException e)	{
