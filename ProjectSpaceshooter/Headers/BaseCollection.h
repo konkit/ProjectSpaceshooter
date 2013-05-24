@@ -16,6 +16,10 @@ class BaseCollection
 {
 public:
 	BaseCollection(std::string name) : collName(name) {}
+
+	/** Create new object with data from prefab with given ID
+	  * @return created object
+	  */
 	TObject* instantiate(int ID, Ogre::SceneManager* sceneMgr)	{
 
 		//create new object from prefab
@@ -26,23 +30,30 @@ public:
 		return newObject;
 	}
 
+	/** Add object to collection  */
 	void addObjectToCollection(TObject * object)
 	{
 		mCollection.addObject(object);
 	}
+
+	/** remove object from collection	  */
 	void operator-=(TObject * enemyToRemove)
 	{
 		mCollection -= enemyToRemove;
 	}
 
+	/** returns collection */
 	GameCollection<TObject>& getCollection()	{
 		return mCollection;
 	}
 
+	/** returns iterator for collection */
 	GameCollectionIterator<TObject> getIterator()
 	{
 		return mCollection.getIterator();
 	}
+
+	/** adds new prefab to prefab collection */
 	void addPrefab(const TPrefab* newPrefab) {
 		if (&newPrefab == NULL)
 		{
@@ -55,6 +66,8 @@ public:
 		}
 		mPrefabs[prefabID] = *newPrefab;
 	}
+
+	/** returns prefab with given ID */
 	TPrefab* getPrefab(int prefabID)	
 	{
 		if(prefabID < mPrefabs.size())
@@ -69,13 +82,18 @@ public:
 
 		throw PrefabException("There is no prefab with id = " + to_string(prefabID), PrefabExceptionType::NO_PREFAB);
 	}
+
+	/** Set capacity of prefab collection to given */
 	void setCountOfPrefab(unsigned max_id)
 	{
 		mPrefabs.resize(max_id);
 	}
-	unsigned getNumberOfPrefabs(){ return mPrefabs.size() -1;}
-protected:
 
+	/** returns size of prefab collection */
+	unsigned getNumberOfPrefabs(){ return mPrefabs.size() -1;}
+
+
+protected:
 	GameCollection<TObject> mCollection;
 	vector<TPrefab> mPrefabs;
 	std::string collName;
