@@ -4,13 +4,18 @@
 
 #define MESSAGE_CONSOLE_CAPACITY 5
 
+
+/** Class storing data about messages displayed on GUI
+  *
+  * @author Konkit
+  */
 class MessageConsole	{
 public:
 	MessageConsole()	{
 		addNewMessage("Boot completed");
 	}
 
-
+	/** Returns string with all messages separated with '\n' */
 	std::string getMessages()	{
 		std::string result;
 
@@ -21,6 +26,7 @@ public:
 		return result;
 	}
 
+	/**returns one message with given number */
 	std::string getMessage(int num)	{
 		if( num < 0 || num > MESSAGE_CONSOLE_CAPACITY )	{
 			throw My_Exception("Array out of bounds \n");
@@ -29,7 +35,7 @@ public:
 		return messages[num];
 	}
 
-
+	/** adds new message with current time to the message console */
 	void addNewMessage(std::string newMessage)	{
 		//get time
 		time_t mTime = time(0);
@@ -47,6 +53,7 @@ public:
 		messages[MESSAGE_CONSOLE_CAPACITY-1] = timeString + ": " + newMessage;
 	}
 
+	/** adds new message with current time to the message console */
 	void operator<<(std::string newMessage)	{
 		addNewMessage(newMessage);
 	}
