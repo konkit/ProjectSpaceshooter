@@ -25,6 +25,8 @@ enum class GAME_STATES
 	GAME_OVER,
 };
 
+
+
 /** Class which stores gameobjects and all data required by systems to do their job
   * In other words - class storing prefabs -
   * - for quick instantiation of already configured objects
@@ -35,6 +37,8 @@ struct GameObjectTemplates
 {
 	GameCollection<ShipPrefab> enemyPrefabCollection;
 };
+
+
 
 /** Structure storage SceneManagers for each GameState
   *
@@ -65,6 +69,8 @@ struct HangarManipulator
 	HangarManipulator() : activeShip(0), moveToNext(false), moveToPrev(false), acceptModel(false){}
 };
 
+
+
 /** GameData class
   * Stores all information about GameWorld
   * including GameObjects (Enemies, Bullets, etc)
@@ -90,13 +96,13 @@ public:
 	* @param Ship prefab which is used to create player ship
 	* @author Zyga
 	*/
-	Player * createPlayerFromPrefab(unsigned prefabID, GAME_STATES state = GAME_STATES::PLAY)
-	{
+	Player * createPlayerFromPrefab(unsigned prefabID, GAME_STATES state = GAME_STATES::PLAY)	{
 		const ShipPrefab * ship = mEnemyCollection.getPrefab(prefabID);
 		const WeaponPrefab * weapon = mEnemyCollection.getWeaponPrefab(ship->getWeaponPrefabID());
 		mPlayer = new Player(ship, weapon, getSceneManagerFor(state));
 		return mPlayer;
 	}
+
 	void destroyPlayer();
 	bool isSetPauseFlag() { return changeFlags.changeToPause;}
 	bool isSetPlayFlag()  { return changeFlags.changeToPlay;}

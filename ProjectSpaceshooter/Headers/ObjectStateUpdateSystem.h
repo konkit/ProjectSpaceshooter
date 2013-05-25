@@ -26,13 +26,21 @@ public:
 	  */
 	void update(GameData& mGameData, TimeData& time);
 
+	/** Check if any object is dead and remove it */
+	void removeDeadObjects( GameData& mGameData);
+
+	/** Check if any object is shooting, if yes then shoot */
 	void updateShooting( GameData &mGameData );
 
+	/** Decrease Time To Live */
 	void updateObjectWithTTL( GameData &mGameData, TimeData &time );
 
+	/** Create bullet shot by given ship */
 	void serveShooting( Ship * shooter, GameData &mGameData );
 
+	/** Make player dead    */
 	void destroyPlayer(GameData& mGameData);
-	void removeDeadObjects( GameData& mGameData);
+	
+	/** Create explosion when some objects are destroyed    */
 	void createExplosionFor( GameObject_WithCollider * removedObject, GameData& mGameData );
 };

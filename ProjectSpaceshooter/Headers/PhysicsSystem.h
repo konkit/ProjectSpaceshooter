@@ -61,6 +61,8 @@ public:
 
 	/** method which updates one game object 
 	  * it updates velocity as well as rotation 
+	  * @param Movable object which will be updated
+	  * @param deltaTime 
 	  */
 	void updateOneObject( GameObject_Movable* it, float deltaTime ) {
 		if (it == NULL) //TODO
