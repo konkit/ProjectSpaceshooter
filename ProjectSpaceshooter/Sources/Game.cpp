@@ -11,7 +11,7 @@ Game::Game()
 	initializeGame();
 	resurceSystem.loadAllPrefabs(mGameSystems.gameData);
 	mStateMenager.initStateManager(mGameSystems);
-	mGameSystems.gameData.initializeDataPulls();
+	mGameSystems.gameData.initializeDataPools();
 }
 
 Game::~Game()
