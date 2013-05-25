@@ -2,7 +2,14 @@
 
 #define DOT_WIDTH 0.0075
 #define DOT_HEIGHT 0.01
-#define RADAR_DOT  0.02
+#define CORE_DOT  0.02
+struct DotSize
+{
+	float dotWidht;
+	float dotHeigh;
+};
+
+
 
 /** This class draws 2d radar on screen (with all enemies, statics, etc) 
   * it gets data from GameData class
@@ -33,7 +40,8 @@ public:
 			ogre2dManager->spriteBltFull("Player.png", 0.8-DOT_WIDTH , 0.75+DOT_HEIGHT, 0.8+DOT_WIDTH, 0.75-DOT_HEIGHT);
 			
 			const float DOT_DISTANCE_SCALE = 2500.0f;
-
+			const DotSize coreDot = {CORE_DOT, CORE_DOT};
+			const DotSize stdDot = {DOT_WIDTH, DOT_HEIGHT};
 			//Draw static
 			GameObject* it;
 			GameCollectionIterator<StaticObject> myStaticsIterator = mGameData.getStatics().getIterator();
@@ -42,9 +50,9 @@ public:
 				it = myStaticsIterator.getNext();
 
 				if( it == &mGameData.getCore() )	{
-					drawEntity("Core.png", it, mGameData);
+					drawEntity("Core.png", it, mGameData, coreDot);
 				} else {
-					drawEntity("Static.png", it, mGameData);
+					drawEntity("Static.png", it, mGameData, stdDot);
 				}
 			}
 
@@ -54,7 +62,7 @@ public:
 			{
 				it = myEnemyIterator.getNext();
 
-				drawEntity("Enemy.png", it, mGameData);
+				drawEntity("Enemy.png", it, mGameData, stdDot);
 			}
 	}
 
@@ -72,7 +80,7 @@ private:
 	Ogre2dManager* ogre2dManager;
 
 	/** calculate position of gameobject and map it to a position on radar */
-	void drawEntity(std::string imageName, GameObject* it, GameData& mGameData)	{
+	void drawEntity(std::string imageName, GameObject* it, GameData& mGameData, const DotSize & dotSize)	{
 		const float DOT_DISTANCE_SCALE = 2500.0f;
 
 		Ogre::Vector3 toObject =
@@ -90,9 +98,9 @@ private:
 		float offsetZ = toObject.z / ( DOT_DISTANCE_SCALE * 4);
 				
 		ogre2dManager->spriteBltFull(imageName, 
-			0.8  + offsetX - DOT_WIDTH , 
-			0.75 + offsetZ + DOT_HEIGHT,
-			0.8  + offsetX + DOT_WIDTH, 
-			0.75 + offsetZ - DOT_HEIGHT );
+			0.8  + offsetX - dotSize.dotWidht , 
+			0.75 + offsetZ + dotSize.dotHeigh,
+			0.8  + offsetX + dotSize.dotWidht, 
+			0.75 + offsetZ - dotSize.dotHeigh );
 	}
 };

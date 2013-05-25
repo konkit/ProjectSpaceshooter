@@ -196,6 +196,7 @@
     <ClInclude Include="Headers\GUI_Radar.h" />
     <ClInclude Include="Headers\GUI_Hangar.h" />
     <ClInclude Include="Headers\GUI_MessageConsole.h" />
+    <ClInclude Include="Headers\LevelMenager.h" />
     <ClInclude Include="Headers\ogre2d.h" />
     <ClInclude Include="Headers\GUI_Play.h" />
     <ClInclude Include="Headers\randomAI.h" />
@@ -250,6 +251,7 @@
     <ClCompile Include="Sources\DebugDrawer.cpp" />
     <ClCompile Include="Sources\Enemy.cpp" />
     <ClCompile Include="Sources\EnemyAndShipPrefabCollection.cpp" />
+    <ClCompile Include="Sources\LevelMenager.cpp" />
     <ClCompile Include="Sources\ogre2d.cpp" />
     <ClCompile Include="Sources\Player.cpp" />
     <ClCompile Include="Sources\ShipPrefabPlant.cpp" />

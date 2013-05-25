@@ -184,6 +184,7 @@
     <ClInclude Include="Headers\GUI_AbstractInstance.h">
       <Filter>Header\Systems\GUI stuff</Filter>
     </ClInclude>
+    <ClInclude Include="Headers\LevelMenager.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header">
@@ -377,6 +378,7 @@
     <ClCompile Include="GUISystem.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\LevelMenager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ogre.cfg" />

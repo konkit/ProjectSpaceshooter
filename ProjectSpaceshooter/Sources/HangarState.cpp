@@ -10,7 +10,7 @@ HangarState::HangarState( SystemsSet & gameSystems )
 	gameSystems.gameData.setCameraFor(GAME_STATES::HANGAR, mCamera);
 
 
-	mSceneMgr->setSkyBox(true, "starfieldBOX");
+	mSceneMgr->setSkyBox(true, "Sky2");
 
 	mSceneMgr->setAmbientLight(Ogre::ColourValue(0.5, 0.5, 0.5));
 	// Create a light

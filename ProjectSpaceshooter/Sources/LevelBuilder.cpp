@@ -101,11 +101,22 @@ void LevelBuilder::buildPlayScene( SystemsSet & gameSystems, TimeData& time )
 	stat->setPosition(Vector3(-1400, 0, -3300));
 
 	stat = mGameData->instantiateStatic(3);
-	stat->setPosition(Vector3(600, 0, -400));
+	stat->setPosition(Vector3(-2400, 300, -1200));
 	stat = mGameData->instantiateStatic(3);
-	stat->setPosition(Vector3(-700, 0, 300));
-	stat = mGameData->instantiateStatic(3);
-	stat->setPosition(Vector3(870, 0, 170));
+	stat->setPosition(Vector3(-4700, 0, 930));
+	stat = mGameData->instantiateStatic(1);
+	stat->setPosition(Vector3(10600, 0, -400));
+	stat = mGameData->instantiateStatic(1);
+	stat->setPosition(Vector3(-4870, 0, 700));
+	stat = mGameData->instantiateStatic(1);
+	stat->setPosition(Vector3(-20300, -400, 3300));
+	stat = mGameData->instantiateStatic(4);
+	stat->setPosition(Vector3(2870, 600, 2170));
+
+
+
+
+
 	// Set ambient light
 	_sceneManager->setAmbientLight(Ogre::ColourValue(1.0, 1.0, 1.0));
 
