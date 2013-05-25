@@ -80,9 +80,6 @@ struct HangarManipulator
 class GameData
 {
 public:
-	Ogre::SceneNode* shipNode;
-	Ogre::Entity* bulletEntity;
-
 	GameData();
 	~GameData();
 
@@ -104,19 +101,25 @@ public:
 	}
 
 	void destroyPlayer();
+
+	/** Flags getters */
 	bool isSetPauseFlag() { return changeFlags.changeToPause;}
 	bool isSetPlayFlag()  { return changeFlags.changeToPlay;}
 	bool isSetHangarFlag(){ return changeFlags.changeToHangar;}
 	bool isSetMenuFlag()  { return changeFlags.changeToMenu;}
 	bool isSetLevelBuilderFlag() {return changeFlags.changeToBuilder;}
 
+	/** Flags setters */
 	void setChangeToPause(bool flag) {changeFlags.changeToPause  = flag;} 
 	void setChangeToPlay (bool flag) {changeFlags.changeToPlay   = flag;} 
 	void setChangeToMenu (bool flag) {changeFlags.changeToMenu   = flag;} 
 	void setChangeToHangar(bool flag){changeFlags.changeToHangar = flag;}
 	void setChangeToLevelBuilder(bool flag){changeFlags.changeToBuilder = flag;}
 	
+	/** Returns scene manager associated with particular gamestate */
 	Ogre::SceneManager * getSceneManagerFor(GAME_STATES gameState);
+
+	/** Saves particular scene manager as associated with given game state */
 	void setSceneMenagerFor(GAME_STATES gameState, Ogre::SceneManager * sceneManagerForState);
 
 	LevelDescription & createLevelDescription() 
@@ -124,15 +127,18 @@ public:
 		currentLevelDecription = new LevelDescription();
 		return *currentLevelDecription;
 	}
+
 	LevelDescription & getLevelDescription() 
 	{
 		return *currentLevelDecription;
 	}
+
 	void removeLevelDescription()
 	{
 		delete currentLevelDecription;
 	}
 
+	/** Collections getters */
 	BaseCollection<BulletPrefab, Bullet>& getBullets() {return mBulletCollection;}
 	EnemyAndShipPrefabsCollections& getEnemies() {return mEnemyCollection;}
 	BaseCollection<EffectPrefab, EffectObject>& getEffects() {return mEffectsCollection;}
@@ -140,6 +146,7 @@ public:
 		return mStaticCollection;
 	}
 
+	/** Returns the Core */
 	Core& getCore() { return *theCore; }
 
 	/**
@@ -171,14 +178,18 @@ public:
 		return mBulletCollection.instantiate(prefabID, getSceneManagerFor(state));
 	}
 
+	/** Methods which adds new prefabs */
 	void addShipPrefab(const ShipPrefab & _enemyPrefab);
 	void addBulletPrefab(const BulletPrefab & _bulletPrefab);
 	void addStaticPrefab(const StaticPrefab & _staticPrefab);
 	void addEffectPrefab(const EffectPrefab & _effectPrefab);
 	void addWeaponPrefab(const WeaponPrefab & _weaponPrefab);
 	void addPrefab(PREFAB_TYPE prefabType, Prefab & prefab );
+
+	/** returns weapon prefab with given ID */
 	const WeaponPrefab * getWeaponPrefab(unsigned prefabId);
 	
+	/** The iterator for colliding objects */
 	class ColidingObjectsIterator
 	{
 	public:
@@ -226,14 +237,20 @@ public:
 	};
 
 	ColidingObjectsIterator getColidingObjectsIterator();
+
+	/** Creates new static object */
 	StaticObject * instantiateStatic( int prefabID, GAME_STATES state = GAME_STATES::PLAY)
 	{
 		return mStaticCollection.instantiate(prefabID, getSceneManagerFor(state));
 	}
+
+	/** Creates new effect object */
 	EffectObject * instantiateEffect( int prefabID, GAME_STATES state = GAME_STATES::PLAY)
 	{
 		return mEffectsCollection.instantiate(prefabID, getSceneManagerFor(state));
 	}
+
+	/** Creates new core */
 	Core * createCore(int staticPrefabID, GAME_STATES state = GAME_STATES::PLAY)
 	{
 		const StaticPrefab * staticPref = mStaticCollection.getPrefab(staticPrefabID);
@@ -241,6 +258,8 @@ public:
 		mStaticCollection.addObjectToCollection(theCore);
 		return theCore;
 	}
+
+	/** Returns camera for particular game state  */
 	Ogre::Camera * getCameraFor(GAME_STATES state)
 	{
 		switch (state)
@@ -269,7 +288,7 @@ public:
 	bool isCoreDead();
 	void setCountOfPrefabs( PREFAB_TYPE prefabType, unsigned count );
 	void clearPlayData();
-	void initializeDataPulls();
+	void initializeDataPools();
 	HangarManipulator & getHangarManipulator() { return mHangarManipulator; }
 	void setHangarManipulator(HangarManipulator val) { mHangarManipulator = val; }
 	MessageConsole& getMessageConsole()	{
