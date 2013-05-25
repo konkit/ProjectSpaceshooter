@@ -81,6 +81,10 @@ public:
 	/** sets new power of effect */
 	void setPower(unsigned val) { power = val; }
 
+	friend ostream& operator<< ( ostream & stream, EffectObject& object)	{
+		return stream<<"Effect ("<<object.getPosition()<<") ";
+	}
+
 private:
 	TimeToLiveComponent mTTLComponent;
 	unsigned power;

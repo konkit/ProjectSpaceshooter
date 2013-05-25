@@ -26,4 +26,8 @@ public:
 
 	/** virtual destructor of the core */
 	virtual ~Core() {;}
+
+	friend ostream& operator<< ( ostream & stream, Core& object)	{
+		return stream<<"Core ("<<object.getPosition()<<") ";
+	}
 };

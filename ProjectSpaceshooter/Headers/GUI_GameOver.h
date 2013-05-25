@@ -2,12 +2,15 @@
 
 #include "GUI_AbstractInstance.h"
 
-// GUI displayed during game over state
-// while it just displays text, it doesnt do much more than parent gui class
+/** GUI displayed during game over state
+  * while it just displays text, it doesnt do much more than parent gui class
+  *
+  * @author Konkit
+  */
 class GameOverGUI : public AbstractInstanceGUI
 {
 public:
-	//init - run at start
+	/** init - run at start */
 	void init( Ogre::SceneManager* mSceneMgr)  	{
 		AbstractInstanceGUI::init("GameOverGUI");
 
@@ -15,6 +18,7 @@ public:
 		playerScore = playerDataPanel->getChild("PlayerScoreText");
 	}
 
+	/** display - run every frame */
 	void display( GameData& mGameData, TimeData _time ){
 
 		//display player score
@@ -26,9 +30,6 @@ public:
 		// Invoking parent class display function
 		AbstractInstanceGUI::display();
 	}
-
-	//rest is in parent class
-
 
 private:
 	//Text pointers

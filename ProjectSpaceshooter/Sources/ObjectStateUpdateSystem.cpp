@@ -2,10 +2,6 @@
 
 void ObjectStateUpdateSystem::update( GameData& mGameData, TimeData& time )
 {
-	//for every gameobject
-	//if one needs to be removed - remove it
-	//if one needs to be created - create it
-
 	removeDeadObjects(mGameData);
 	
 	updateShooting(mGameData);
@@ -14,7 +10,6 @@ void ObjectStateUpdateSystem::update( GameData& mGameData, TimeData& time )
 	mGameData.getLevelDescription().spawn(mGameData, time.currentTime);
 
 	updateObjectWithTTL(mGameData, time);
-
 }
 
 void ObjectStateUpdateSystem::removeDeadObjects( GameData& mGameData)
@@ -32,6 +27,25 @@ void ObjectStateUpdateSystem::removeDeadObjects( GameData& mGameData)
 			createExplosionFor(removedObject, mGameData);
 			mGameData.removeGameObject(iterator);
 		}
+	}
+}
+
+void ObjectStateUpdateSystem::updateShooting( GameData &mGameData )
+{
+	//creating bullets when player is shooting
+	Player * player = mGameData.getPlayer();
+	if (player != NULL)
+	{
+		serveShooting(player, mGameData);
+	}
+
+	//parsing through enemies
+	GameCollectionIterator<EnemyObject> enemyIterator = mGameData.getEnemies().getIterator();
+	EnemyObject* enemyIt;
+	while (enemyIterator.hasNext())
+	{
+		enemyIt = enemyIterator.getNext();
+		serveShooting(enemyIt, mGameData);
 	}
 }
 
@@ -66,24 +80,7 @@ void ObjectStateUpdateSystem::destroyPlayer( GameData& mGameData)
 	}
 }
 
-void ObjectStateUpdateSystem::updateShooting( GameData &mGameData )
-{
-	//creating bullets when player is shooting
-	Player * player = mGameData.getPlayer();
-	if (player != NULL)
-	{
-		serveShooting(player, mGameData);
-	}
 
-	//parsing through enemies
-	GameCollectionIterator<EnemyObject> enemyIterator = mGameData.getEnemies().getIterator();
-	EnemyObject* enemyIt;
-	while (enemyIterator.hasNext())
-	{
-		enemyIt = enemyIterator.getNext();
-		serveShooting(enemyIt, mGameData);
-	}
-}
 
 void ObjectStateUpdateSystem::serveShooting( Ship * shooter, GameData &mGameData )
 {

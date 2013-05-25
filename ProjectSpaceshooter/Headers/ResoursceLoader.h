@@ -1,13 +1,24 @@
 #pragma once
+
+
+/** Class which governs loading prefabs from external source
+  * in this case - XML files
+  *
+  * @author
+  */
 class ResoursceLoader
 {
 public:
 	ResoursceLoader();
 	~ResoursceLoader();
-	void loadPrefabs(PREFAB_TYPE prefabType, const char * prefabsFile, GameData & _gameData );
+
+	/** Load all XML files  */
 	void loadAllPrefabs( GameData & _gameData );
 
 private:
+	/** Loads one XML file with given filename and prefab type  */
+	void loadPrefabs(PREFAB_TYPE prefabType, const char * prefabsFile, GameData & _gameData );
+
 	static const char * weaponPrefabFile;
 	static const char * enemyPrefabFile;
 	static const char * staticPrefabFile;

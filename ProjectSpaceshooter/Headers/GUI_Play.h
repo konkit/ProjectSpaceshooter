@@ -20,13 +20,15 @@
 
 
 
-// Play state GUI class
-// 
+/** Play state GUI class
+  * 
+  * @author Konkit
+  */
 class PlayGUI : public 	AbstractInstanceGUI
 {
 
 public:
-	//init - run at start
+	/** init - run at start */
 	void init( Ogre::SceneManager* mSceneMgr)  	{
 		AbstractInstanceGUI::init("GUIOverlay");
 
@@ -46,7 +48,7 @@ public:
 			mMessageConsole = messageLogPanel->getChild("MessageLogText");
 	}
 
-	//display - run every frame
+	/** display - run every frame */
 	void display( GameData& mGameData, TimeData _time ){
 		//Radar
 			//Draw radar
@@ -89,14 +91,14 @@ public:
 
 
 private:
-	//Manager of system of displaying 2d objects
+	/** Manager of system of displaying 2d objects */
 	Ogre2dManager* ogre2dManager;
 
-	//Text pointers
+	/** Text pointers */
 	Ogre::OverlayElement* playerData;
 	Ogre::OverlayElement* mMessageConsole;
 
-	//custom GUI objects
+	/** custom GUI objects */
 	Radar mRadar;
 	MessageConsole* mConsole;
 };

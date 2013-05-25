@@ -80,6 +80,11 @@ public:
 		mTTLComponent.setTimeToLive(startTTL);
 		mDeadFlag = false;
 	}
+
+	friend ostream& operator<< ( ostream & stream, Bullet& object)	{
+		return stream<<"Bullet ("<<object.getPosition()<<") ";
+	}
+
 private:
 	unsigned mPower;
 	unsigned prefabID;

@@ -13,8 +13,8 @@
 class CollisionSystem	{
 public:
 	CollisionSystem() : COLLISION_DAMAGE(5){}
-	//Method which resolves collisions
-	//collisions are resolved a posteriori
+
+	/** Method which resolves collisions in a posteriori way */
 	void update(GameData& mGameData);
 
 	void drawColiderDebug( GameObject_WithCollider * obj );
@@ -25,6 +25,7 @@ public:
 	//It is a damages resulting collision with object having weight
 	const unsigned COLLISION_DAMAGE;
 private:
+
 	bool collisionWithStatic( GameObject_WithCollider * currentObject, GameObject_WithCollider * otherObject );
 
 

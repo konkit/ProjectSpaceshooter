@@ -49,6 +49,10 @@ public:
 	GameObjectType getType() {
 		return GameObjectType::enemyObject;
 	}
+
+	friend ostream& operator<< ( ostream & stream, EnemyObject& object)	{
+		return stream<<"Enemy ("<<object.getPosition()<<") ";
+	}
 private:
 //  AI component
 	AI_TYPE myAI;

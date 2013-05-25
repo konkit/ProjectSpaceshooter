@@ -1,14 +1,20 @@
 #include "ResoursceLoader.h"
 #include "PredabReader_XML.h"
-ResoursceLoader::~ResoursceLoader()
-{
 
-}
+
+const char * ResoursceLoader::weaponPrefabFile = "media/prefabs_descriptions/weapon_prefabs.xml";
+const char * ResoursceLoader::bulletPrefabFile = "media/prefabs_descriptions/bullet_prefabs.xml";
+const char * ResoursceLoader::effectPrefabFile = "media/prefabs_descriptions/effect_prefabs.xml";
+const char * ResoursceLoader::staticPrefabFile = "media/prefabs_descriptions/static_prefabs.xml";
+const char * ResoursceLoader::enemyPrefabFile  = "media/prefabs_descriptions/ship_prefabs.xml";
+
+
 
 ResoursceLoader::ResoursceLoader()
-{
-
-}
+{}
+				
+ResoursceLoader::~ResoursceLoader()
+{}
 
 void ResoursceLoader::loadAllPrefabs( GameData & _gameData )
 {
@@ -40,8 +46,3 @@ void ResoursceLoader::loadPrefabs(PREFAB_TYPE prefabType, const char * prefabsFi
 
 
 
-const char * ResoursceLoader::weaponPrefabFile = "media/prefabs_descriptions/weapon_prefabs.xml";
-const char * ResoursceLoader::bulletPrefabFile = "media/prefabs_descriptions/bullet_prefabs.xml";
-const char * ResoursceLoader::effectPrefabFile = "media/prefabs_descriptions/effect_prefabs.xml";
-const char * ResoursceLoader::staticPrefabFile = "media/prefabs_descriptions/static_prefabs.xml";
-const char * ResoursceLoader::enemyPrefabFile  = "media/prefabs_descriptions/ship_prefabs.xml";

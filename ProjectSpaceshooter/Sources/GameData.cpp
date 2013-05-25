@@ -297,7 +297,7 @@ void GameData::clearPlayData()
 
 }
 
-void GameData::initializeDataPulls()
+void GameData::initializeDataPools()
 {
 	mBulletCollection.initializeBullet(mStateScenesManager.playSceneManager);
 }

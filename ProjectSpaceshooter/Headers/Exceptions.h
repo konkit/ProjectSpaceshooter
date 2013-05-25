@@ -64,3 +64,7 @@ private:
 	PrefabExceptionType myType;
 	
 };
+
+//Game object Exceptions
+class EnemyNullException : My_Exception {};
+class CoreNullException : My_Exception {};

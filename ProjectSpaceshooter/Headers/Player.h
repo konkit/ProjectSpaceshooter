@@ -51,6 +51,9 @@ public:
 			score += value;
 		}
 
+	friend ostream& operator<< ( ostream & stream, Player& object)	{
+		return stream<<"Player ("<<object.getPosition()<<") ";
+	}
 private:
 	Ogre::SceneNode * mCameraNode;
 	list<cameraHandler>::iterator mActiveCameraDataIt;

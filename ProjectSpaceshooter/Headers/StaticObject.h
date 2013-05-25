@@ -23,5 +23,9 @@ public:
 
 	/** implementation of getType virtual method from GameObject class */
 	virtual GameObjectType getType() {return GameObjectType::staticObject;}
+
+	friend ostream& operator<< ( ostream & stream, StaticObject& object)	{
+		return stream<<"Static ("<<object.getPosition()<<") ";
+	}
 };
 

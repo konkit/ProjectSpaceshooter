@@ -13,7 +13,7 @@ void BulletCollection::destroyBullet( Bullet * it )
 {
 	Bullet *tmp = mCollection.detachObject(it); 
 	tmp->setVisible(false);
-	createdBullet[tmp->getPrefabID()].addObject(tmp);
+	dataPool[tmp->getPrefabID()].addObject(tmp);
 	return;
 }
 
@@ -21,13 +21,13 @@ void BulletCollection::destroyBullet( GameCollectionIterator<Bullet> &it )
 {
 	Bullet *tmp = mCollection.detachObject(it); 
 	tmp->setVisible(false);
-	createdBullet[tmp->getPrefabID()].addObject(tmp);
+	dataPool[tmp->getPrefabID()].addObject(tmp);
 	return;
 }
 
 Bullet * BulletCollection::instantiate( unsigned prefabID, Ogre::SceneManager* sceneMgr )
 {
-	Bullet * tmp = createdBullet[prefabID].detachFirst();
+	Bullet * tmp = dataPool[prefabID].detachFirst();
 	if (tmp != NULL)
 	{
 		tmp->setVisible(true);
@@ -44,7 +44,7 @@ Bullet * BulletCollection::instantiate( unsigned prefabID, Ogre::SceneManager* s
 void BulletCollection::initializeBullet( Ogre::SceneManager * sceneManager )
 {
 	playSceneManager = sceneManager;
-	createdBullet.resize(mPrefabs.size());
+	dataPool.resize(mPrefabs.size());
 	for(int i = 1; i < mPrefabs.size(); i++)
 	{
 		BulletPrefab * prefab;
@@ -64,7 +64,7 @@ void BulletCollection::initializeBullet( Ogre::SceneManager * sceneManager )
 
 			Bullet * tmp =  new Bullet(prefab, sceneManager);
 			tmp->setVisible(false);
-			createdBullet[i].addObject(tmp); 
+			dataPool[i].addObject(tmp); 
 		}
 	}
 }
