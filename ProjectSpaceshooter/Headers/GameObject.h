@@ -124,7 +124,7 @@ public:
 
 	/**
 	* Method take value of damages which should subtract from health
-	* If object don't have health, he died immediately
+	* If object don't have health component, he died immediately
 	* @return bool - if object die return true
 	* @param unsigned int damages - value of damages
 	* @author Zyga

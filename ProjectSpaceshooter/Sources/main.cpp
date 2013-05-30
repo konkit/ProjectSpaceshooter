@@ -5,6 +5,7 @@
 #include <io.h>
 #include <iostream>
 #include <string>
+#include "Exceptions.h"
 
 #ifdef _DEBUG
 	#include "vld.h"
@@ -66,7 +67,7 @@ extern "C" {
 
 
 #ifdef _DEBUG
-		showWin32Console();
+//		showWin32Console();
 #endif // _DEBUG
 
         // Create application object
@@ -88,13 +89,11 @@ extern "C" {
 		catch( AbstractException&)	{
 			
 		}
-		catch(My_Exception& exc)
-		{
-			  MessageBoxA( NULL, exc.what(), "An exception has occurred!", MB_OK | MB_ICONERROR | MB_TASKMODAL);
-		}
+	
 		catch(std::exception& exc)
 		{
-			MessageBoxA( NULL, exc.what(), "An exception has occurred!", MB_OK | MB_ICONERROR | MB_TASKMODAL);
+			ErrMsg  err;
+			err << exc;
 		}
 		FreeConsole();
         return 0;

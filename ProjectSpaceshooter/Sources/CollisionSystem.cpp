@@ -74,7 +74,7 @@ bool CollisionSystem::isBulletAndOwner( GameObject_WithCollider * currentObject,
 			otherObject = tmp;				othType  = tmptype;
 		} 
 
-		Bullet * bullet = dynamic_cast<Bullet *>(currentObject);
+		Bullet * bullet = static_cast<Bullet *>(currentObject);
 		if(isShip(othType))
 		{
 			GameObjectType ownerType = bullet->getOwnerType();
@@ -112,7 +112,7 @@ bool CollisionSystem::collisionWithStatic( GameObject_WithCollider * currentObje
 		{
 			Ship * ship;
 			unsigned velocity;
-			ship = dynamic_cast<Ship*>(otherObject);
+			ship = static_cast<Ship*>(otherObject);
 			velocity = ship->getPhysicsComponent().getCurrentVelocityMagnitude();
 			currentObject->receiveDamage(COLLISION_DAMAGE * velocity / 10);
 			otherObject->kill();
@@ -146,13 +146,13 @@ bool CollisionSystem::collisionWithBullet( GameObject_WithCollider * currentObje
 
 		if (othType != GameObjectType::effectObject)
 		{
-			Bullet * bullet = dynamic_cast<Bullet *>(currentObject);
+			Bullet * bullet = static_cast<Bullet *>(currentObject);
 			unsigned damages = bullet->getPower();
 			currentObject->receiveDamage(damages); // Value is irrelevant because bullet immediately explode
-			otherObject->receiveDamage(damages, currentObject->getPosition()); // Don't care if it's other bullet - he explode;
+			bool isDead = otherObject->receiveDamage(damages, currentObject->getPosition()); // Don't care if it's other bullet - he explode;
 
 			//If player shot this bullet, then score is added
-			if( otherObject->isDead() == true && bullet->getOwnerType() == GameObjectType::player)	{
+			if(isDead == true && bullet->getOwnerType() == GameObjectType::player && othType != GameObjectType::bulletObject)	{
 				dynamic_cast<Player*>( bullet->getOwner() )->addScore( SCORE_FOR_KILL );
 			}
 
@@ -181,7 +181,7 @@ bool CollisionSystem::collisionWithExplosion( GameObject_WithCollider * currentO
 			otherObject = tmp;				othType  = tmptype;
 		} 
 
-		EffectObject * effect = dynamic_cast<EffectObject *>(currentObject);
+		EffectObject * effect = static_cast<EffectObject *>(currentObject);
 		unsigned damages = effect->getPower();
 		otherObject->receiveDamage(damages); // It can't be other explosion because collision between explosion isn't checked
 		return true;

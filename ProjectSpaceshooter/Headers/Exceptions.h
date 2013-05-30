@@ -68,3 +68,13 @@ private:
 //Game object Exceptions
 class EnemyNullException : My_Exception {};
 class CoreNullException : My_Exception {};
+
+class ErrMsg
+{
+public:
+	void operator << ( exception & expt)
+	{
+		MessageBoxA( NULL, expt.what(), "An exception has occurred!", MB_OK | MB_ICONERROR | MB_TASKMODAL);
+		return ;
+	}
+};
