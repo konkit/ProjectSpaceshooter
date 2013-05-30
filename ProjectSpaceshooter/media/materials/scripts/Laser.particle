@@ -8,7 +8,7 @@ particle_system Laser
 	sorted false
 	local_space true
 	iteration_interval 0.0
-	nonvisible_update_timeout 0.01
+	nonvisible_update_timeout 0.00
 	billboard_type point
 	billboard_origin bottom_center
 	billboard_rotation_type texcoord
