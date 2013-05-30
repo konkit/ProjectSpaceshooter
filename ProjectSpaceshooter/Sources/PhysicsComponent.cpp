@@ -112,5 +112,5 @@ float PhysicsComponent::getCurrentVelocityMagnitude()
 
 	//return currentVelocity.length();
 	//Avoid expensive square but it not ideal yet
-	return targetVelocityValue;
+	return currentVelocity.length();
 }
