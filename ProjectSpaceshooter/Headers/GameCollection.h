@@ -199,7 +199,7 @@ public:
 	}
 	void operator-=(GameCollectionIterator<gObject> & it)
 	{
-		deleteObject(deletedObject);
+		deleteObject(it);
 	}
 	void operator+=(gObject * newObject)
 	{
@@ -299,6 +299,11 @@ public:
 	{
 		return GameCollectionIterator<gObject>(mListHead);
 	} 
+
+	bool isEmpty()	{
+		return ( mListHead == NULL ) ;
+	}
+
 private:
 	ListElement<gObject> * mListHead;
 	ListElement<gObject> * mListTail;

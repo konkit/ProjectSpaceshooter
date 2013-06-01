@@ -92,6 +92,9 @@ public:
 	/** returns size of prefab collection */
 	unsigned getNumberOfPrefabs(){ return mPrefabs.size() -1;}
 
+	bool isEmpty()	{
+		return mCollection.isEmpty();
+	}
 
 protected:
 	GameCollection<TObject> mCollection;
