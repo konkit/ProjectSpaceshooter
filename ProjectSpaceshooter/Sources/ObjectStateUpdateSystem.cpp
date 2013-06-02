@@ -6,8 +6,12 @@ void ObjectStateUpdateSystem::update( GameData& mGameData, TimeData& time )
 	
 	updateShooting(mGameData);
 
-	//spawning enemies
-	mGameData.getLevelDescription().spawn(mGameData, time.currentTime);
+	//spawn waves
+	mWaveManager.update(mGameData, time.currentTime);
+
+	//spawn from spawners
+	//mGameData.spawnEnemiesInCurrentLevel(time.currentTime);
+
 
 	updateObjectWithTTL(mGameData, time);
 }

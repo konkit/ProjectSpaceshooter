@@ -140,7 +140,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions>-Zm250  %(AdditionalOptions)</AdditionalOptions>
-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <ForcedIncludeFiles>stdafx.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
@@ -237,6 +237,7 @@
     <ClInclude Include="Headers\Systems.h" />
     <ClInclude Include="Headers\TimeToLiveComponent.h" />
     <ClInclude Include="Headers\TimeUtility.h" />
+    <ClInclude Include="Headers\WaveManager.h" />
     <ClInclude Include="Headers\WeaponPrefab_Plant.h" />
     <ClInclude Include="Headers\WeaponComponent.h" />
     <ClInclude Include="Headers\PredabReader_XML.h" />

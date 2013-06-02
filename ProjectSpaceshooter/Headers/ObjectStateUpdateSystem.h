@@ -4,6 +4,8 @@
 #include "EffectObject.h"
 #include "TimeUtility.h"
 
+#include "WaveManager.h"
+
 //Name is to be changed - chill out :D
 //I really had no idea for descriptive name for this class
 
@@ -43,4 +45,7 @@ public:
 	
 	/** Create explosion when some objects are destroyed    */
 	void createExplosionFor( GameObject_WithCollider * removedObject, GameData& mGameData );
+
+private:
+	WaveManager mWaveManager;
 };

@@ -185,6 +185,9 @@
       <Filter>Header\Systems\GUI stuff</Filter>
     </ClInclude>
     <ClInclude Include="Headers\LevelMenager.h" />
+    <ClInclude Include="Headers\WaveManager.h">
+      <Filter>Source\Systems</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header">

@@ -92,7 +92,7 @@ public:
 	/** returns size of prefab collection */
 	unsigned getNumberOfPrefabs(){ return mPrefabs.size() -1;}
 
-	bool isEmpty()	{
+	bool isCollectionEmpty()	{
 		return mCollection.isEmpty();
 	}
 

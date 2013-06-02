@@ -12,6 +12,7 @@
 #include "Exceptions.h"
 #include <string>
 
+
 #include "GUI_MessageConsole.h"
 
 
@@ -132,6 +133,11 @@ public:
 	{
 		return *currentLevelDecription;
 	}
+	
+	void spawnEnemiesInCurrentLevel(unsigned currentTime) {
+		currentLevelDecription->spawn(*this, currentTime);
+	}
+
 
 	void removeLevelDescription()
 	{

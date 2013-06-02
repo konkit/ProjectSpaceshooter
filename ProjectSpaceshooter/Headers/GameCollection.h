@@ -118,7 +118,7 @@ class GameCollection
 {
 public:
 	GameCollection<gObject>()
-		:mListHead(0), mListTail(0)
+		:mListHead(NULL), mListTail(NULL)
 	{
 	}
 
@@ -301,7 +301,7 @@ public:
 	} 
 
 	bool isEmpty()	{
-		return ( mListHead == NULL ) ;
+		return mListHead == NULL;
 	}
 
 private:
