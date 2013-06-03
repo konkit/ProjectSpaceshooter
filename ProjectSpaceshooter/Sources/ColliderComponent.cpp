@@ -24,16 +24,6 @@ bool Collider::isCollisionOccuring(const Collider_struct& coll1, const position_
 
 }
 
-
-/**
-* Check if there is collision between this collider and other collider. First is checking inaccurate collider, next is checking each accurate colider, but if there is less then 2 accurate collider, accuratecolider isn't
-* checked;
-* @return bool
-* @param const position_struct & currentPos
-* @param const Collider & otherCollider
-* @param const position_struct & otherPos
-* @author Zyga
-*/
 bool Collider::isCollidingWith( const position_struct& currentPos, const Collider& otherCollider,const position_struct & otherPos )
 {	
 	if(checkInaccurateColliders(currentPos, otherCollider, otherPos))

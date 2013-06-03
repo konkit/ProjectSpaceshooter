@@ -11,58 +11,119 @@
 class PhysicsComponent
 {
 public:
-	//Constructors, init functions, etc.
+	/**
+	* Constructors, init functions, etc.
+	* @author konkit
+	*/
 	PhysicsComponent();
+	/**
+	* Constructors, init functions, etc.
+	* @param prefab initialized with this prefab
+	* @author konkit
+	*/
 	PhysicsComponent(const MovablePrefab * prefab);
 
+	/**
+	*
+	* @param prefab 
+	* @author konkit
+	*/
 	void setFromPrefab( const MovablePrefab * prefab );
 	
 	////////////////////////////////////////////////////////////////////////////////
 	// Movement functions                   
 	////////////////////////////////////////////////////////////////////////////////
 
-	//Maximum speed functions
-		/** sets maximum speed to specified values */
+		/**
+		* Maximum speed functions
+		* @param newVelocity sets maximum speed to specified values  
+		* @author konkit
+		*/
 		void setMaxVelocityValue(float newVelocity);
-		/** returns current maximum speed of object */
+		/**
+		* @return current maximum speed of object 
+		* @author konkit
+		*/
 		float getMaxVelocityValue()	{	return maxVelocityValue;}
 
 	//World coordinate velocity vector accessor functions
-		/** sets absolute, world-coordinate velocity to specified vector value */
+
+		/**
+		* sets absolute, world-coordinate velocity to specified vector value
+		* @param newVelocity 
+		* @author konkit
+		*/
 		void setCurrentVelocity(Ogre::Vector3 const& newVelocity);
-		/** returns current absolute, world-coordinate velocity vector */
+		/**
+		* @return current absolute, world-coordinate velocity vector
+		* @author konkit
+		*/
 		Ogre::Vector3 getCurrentVelocity();
-		/** returns length of velocity vector */
+		/**
+		* @return length of velocity vector 
+		* @author konkit
+		*/
 		float getCurrentVelocityMagnitude();
 
 	//Target velocity functions
-		/** sets target velocity value to which current velocity is approaching every update */
+
+		/**
+		* sets target velocity value to which current velocity is approaching every update 
+		* @param value 
+		* @author konkit
+		*/
 		void setTargetVelocityValue( float value );
-		/** gets target velocity value to which current velocity is approaching every update */
+		/**
+		* gets target velocity value to which current velocity is approaching every update 
+		* @author konkit
+		*/
 		float getTargetVelocityValue() { return targetVelocityValue; }
-		/** increase target velocity value by some value */
+		/**
+		* increase target velocity value by some value 
+		* @param value 
+		* @author konkit
+		*/
 		void increaseTargetVelocityValue(float value)	{	
 			if( abs(targetVelocityValue + value ) < maxVelocityValue  )
 				targetVelocityValue += value;
 		}
 
 	//Acceleration functions
-		/** Sets new acceleration value - value which velocity is changing every update */
+
+		/**
+		* Sets new acceleration value - value which velocity is changing every update s
+		* @param newAccelerationValue 
+		* @author konkit
+		*/
 		void setAccelerationValue(float newAccelerationValue) {
 			accelerationValue = newAccelerationValue;
 		}
 
 	//Other movement functions 
-		/** Adds vector to current instantaneous velocity vector */
-		/** usable for example in shockwave */
+
+		/**
+		* Adds vector to current instantaneous velocity vector 
+		* usable for example in shockwave 
+		* @param addedVector 
+		* @author konkit
+		*/
 		void AddVectorToCurrentVelocity( Ogre::Vector3 addedVector );
 
-		/** instantly sets current velocity to max velocity value. */
+		/**
+		* instantly sets current velocity to max velocity value.
+		* @param forwardVector 
+		* @author konkit
+		*/
 		void setCurrentSpeedToMax(Ogre::Vector3 forwardVector) {
 			currentVelocity = forwardVector * maxVelocityValue;
 		}
 
-		/** Updates velocity vector (acceleration etc.) */
+		/**
+		* Updates velocity vector (acceleration etc.)
+		* @param forwardVector 
+		* @param deltaTime 
+		* @author Zyga
+		*/
 		void updateVelocity(Ogre::Vector3 forwardVector,float  deltaTime);
 
 
@@ -73,17 +134,34 @@ public:
 	////////////////////////////////////////////////////////////////////////////////
 
 	//target rotation velocity functions
-		/** sets new target rotation value - rotation velocity is approaching to this value every update */
+
+		/**
+		* sets new target rotation value - rotation velocity is approaching to this value every update 
+		* @param newRotVelocity 
+		* @author konkit
+		*/
 		void setTargetRotVelocity(float newRotVelocity);
-		/** gets current target rotation value - rotation velocity is approaching to this value every update */
+		/**
+		* gets current target rotation value - rotation velocity is approaching to this value every update 
+		* @author konkit
+		*/
 		float getTargetRotVelocity() {	return targetRotVelocityValue;	}
 
 	//absolute rotation velocity functions
-		/** returns actual rotation velocity value */
+
+		/**
+		* @return actual rotation velocity value
+		* @author konkit
+		*/
 		float getRotVelocityValue();
 
 	//other rotation functions
-		/** Updates rotation velocity (acceleration etc.) */
+
+		/**
+		* Updates rotation velocity (acceleration etc.)
+		* @param deltaTime 
+		* @author Zyga
+		*/
 		void updateRotation(float deltaTime);
 
 

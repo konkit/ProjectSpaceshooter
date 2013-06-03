@@ -184,9 +184,11 @@
     <ClInclude Include="Headers\GUI_AbstractInstance.h">
       <Filter>Header\Systems\GUI stuff</Filter>
     </ClInclude>
-    <ClInclude Include="Headers\LevelMenager.h" />
     <ClInclude Include="Headers\WaveManager.h">
       <Filter>Source\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\LevelMenager.h">
+      <Filter>Header\Systems</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -381,7 +383,9 @@
     <ClCompile Include="GUISystem.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\LevelMenager.cpp" />
+    <ClCompile Include="Sources\LevelMenager.cpp">
+      <Filter>Source\Systems</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="ogre.cfg" />
