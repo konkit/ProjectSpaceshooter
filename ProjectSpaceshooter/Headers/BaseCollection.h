@@ -15,11 +15,21 @@ template<class TPrefab, class TObject>
 class BaseCollection
 {
 public:
+	/**
+	 * 
+	 * @param name 
+	 * @author konkit
+	 */
 	BaseCollection(std::string name) : collName(name) {}
 
-	/** Create new object with data from prefab with given ID
-	  * @return created object
-	  */
+
+	/**
+	 * Create new object with data from prefab with given ID
+	 * @return created object
+	 * @param ID 
+	 * @param sceneMgr 
+	 * @author konkit
+	 */
 	TObject* instantiate(int ID, Ogre::SceneManager* sceneMgr)	{
 
 		//create new object from prefab
@@ -30,30 +40,48 @@ public:
 		return newObject;
 	}
 
-	/** Add object to collection  */
+	/**
+	 * Add object to collection 
+	 * @param object 
+	 * @author konkit
+	 */
 	void addObjectToCollection(TObject * object)
 	{
 		mCollection.addObject(object);
 	}
 
-	/** remove object from collection	  */
+	/**
+	 * remove object from collection
+	 * @param enemyToRemove 
+	 * @author konkit
+	 */
 	void operator-=(TObject * enemyToRemove)
 	{
 		mCollection -= enemyToRemove;
 	}
 
-	/** returns collection */
+	/**
+	 * @return collection
+	 * @author konkit
+	 */
 	GameCollection<TObject>& getCollection()	{
 		return mCollection;
 	}
 
-	/** returns iterator for collection */
+	/**
+	 * @return iterator for collection 
+	 * @author konkit
+	 */
 	GameCollectionIterator<TObject> getIterator()
 	{
 		return mCollection.getIterator();
 	}
 
-	/** adds new prefab to prefab collection */
+	/**
+	 * adds new prefab to prefab collection 
+	 * @param newPrefab 
+	 * @author konkit
+	 */
 	void addPrefab(const TPrefab* newPrefab) {
 		if (&newPrefab == NULL)
 		{
@@ -67,7 +95,11 @@ public:
 		mPrefabs[prefabID] = *newPrefab;
 	}
 
-	/** returns prefab with given ID */
+	/**
+	 * @return prefab with given ID 
+	 * @param prefabID 
+	 * @author konkit
+	 */
 	TPrefab* getPrefab(int prefabID)	
 	{
 		if(prefabID < mPrefabs.size())
@@ -83,15 +115,26 @@ public:
 		throw PrefabException("There is no prefab with id = " + to_string(prefabID), PrefabExceptionType::NO_PREFAB);
 	}
 
-	/** Set capacity of prefab collection to given */
+	/**
+	 * Set capacity of prefab collection to given
+	 * @param max_id 
+	 * @author Zyga
+	 */
 	void setCountOfPrefab(unsigned max_id)
 	{
 		mPrefabs.resize(max_id);
 	}
 
-	/** returns size of prefab collection */
+	/**
+	 * @return returns size of prefab collection
+	 * @author Zyga
+	 */
 	unsigned getNumberOfPrefabs(){ return mPrefabs.size() -1;}
 
+	/**
+	 * @return true if there isn't any objects in collection
+	 * @author konkit
+	 */
 	bool isCollectionEmpty()	{
 		return mCollection.isEmpty();
 	}

@@ -1,7 +1,5 @@
 #pragma once
 
-
-#pragma once
 //HOW TO USE ITERATOR
 //
 //GameObjectsCollectionIterator<GameObject> * myIterator = myCollection.getIterator();
@@ -12,9 +10,10 @@
 //}
 
 
+
 /** 
-  *
-  * @author Zygi
+  * 
+  * @author Zyga
   */
 template <class gObject>
 struct ListElement
@@ -31,14 +30,30 @@ template<typename gObject>
 class GameCollection;
 
 /** 
-  *
-  * @author Zygi
+  * Game iterator, used to move forward the game collection.
+  * It offer two main method hasNext checking if there are next object in collection,
+  * and getNext which move to next object, and return it.
+  * Iterator also stores the pointer to previous list element so it can be used to remove
+  * object from collection without looking for object.
+  * You can use iterator like STL iterator e.g.
+  *		for(it = col.getIterator(); it.hasNext(); it++) { fun(*it); it->doSth;}
+  * or in old way
+  *		while(it.hasNext()) {obj = it.getNext();)
+  * @author Zyga
   */
 template <class gObject>
 class GameCollectionIterator
 {
 public:
+	/**
+	 * Constructor which create empty iterator. 
+	 * @author Zyga
+	 */	
 	GameCollectionIterator<gObject>() : pointerToActual(NULL), pointerToHead(NULL),  isFirstObject(true), pointerToNext(NULL), pointerToPrev(NULL){}
+	/**
+	 * Constructor which which point to first object in collection. 
+	 * @author Zyga
+	 */		
 	GameCollectionIterator<gObject>(ListElement<gObject> * head)
 		:	pointerToActual(head), pointerToHead(head),  isFirstObject(true), pointerToNext(NULL), pointerToPrev(NULL)
 	{
@@ -47,8 +62,15 @@ public:
 			pointerToNext = pointerToActual->next;
 		}
 	};
+
 	~GameCollectionIterator<gObject>(){}
 
+	/**
+	 * 
+	 *
+	 * @return 
+	 * @author Zyga
+	 */
 	bool hasNext()
 	{
 		if (pointerToActual == NULL)
@@ -62,6 +84,13 @@ public:
 		else
 			return pointerToNext != NULL ? true : false;
 	};
+	
+	/**
+	 * 
+	 *
+	 * @return 
+	 * @author Zyga
+	 */
 	gObject * getNext() 
 	{
 		if (isFirstObject)
@@ -82,6 +111,13 @@ public:
 		} else
 			return NULL;
 	}
+	
+	/**
+	 * 
+	 *
+	 * @return 
+	 * @author Zyga
+	 */
 	gObject * getActual()
 	{
 		if(pointerToActual == NULL)
@@ -90,14 +126,52 @@ public:
 			return pointerToActual->mObject;
 	}
 
+	/**
+	 * 
+	 *
+	 * @return 
+	 * @author Zyga
+	 */
 	void resetIterator()
 	{
 		pointerToActual = pointerToNext = pointerToHead;
 		pointerToPrev = NULL;
 	}
+
+	/**
+	 * 
+	 *
+	 * @return 
+	 * @author Zyga
+	 */
 	void removedActual()
 	{
 		pointerToActual = pointerToPrev;
+	}
+	gObject & operator * ()
+	{
+		if(pointerToActual != NULL)
+
+			return *(pointerToActual->mObject);
+		else
+			throw(std::exception("There isn't actual pointed object"));
+	}
+	gObject * operator -> ()
+	{
+		if(pointerToActual != NULL)
+
+			return pointerToActual->mObject;
+		else
+			return false;
+	}
+	void operator ++(int)
+	{
+		pointerToPrev = pointerToActual;
+		pointerToActual = pointerToNext;
+		if (pointerToNext != NULL)
+		{
+			pointerToNext = pointerToNext->next;
+		}		
 	}
 private:
 	ListElement<gObject> * pointerToActual;
@@ -132,6 +206,13 @@ public:
 			tmp = mListHead;
 		}
 	}
+	/**
+	 * 
+	 *
+	 * @return 
+	 * @param deletedObject 
+	 * @author Zyga
+	 */
 	void deleteObject(gObject * deletedObject)
 	{
 		ListElement<gObject> * it = mListHead;
@@ -157,6 +238,13 @@ public:
 		delete it; // Deleted struct have destructor to delate pointed object;
 		return;
 	};
+	/**
+	 * 
+	 *
+	 * @return 
+	 * @param _it 
+	 * @author Zyga
+	 */
 	void deleteObject(GameCollectionIterator<gObject> & _it)
 	{
 		ListElement<gObject> * it = _it.pointerToActual;
@@ -178,6 +266,13 @@ public:
 		_it.removedActual();
 		return;
 	};
+	/**
+	 * 
+	 *
+	 * @return 
+	 * @param newObject 
+	 * @author Zyga
+	 */
 	void addObject(gObject * newObject)
 	{
 		ListElement<gObject> * tmp = new ListElement<gObject>;
@@ -193,10 +288,24 @@ public:
 		mListTail = tmp;
 		return;
 	}
+	/**
+	 * 
+	 *
+	 * @return 
+	 * @param deletedObject 
+	 * @author Zyga
+	 */
 	void operator-=(gObject * deletedObject)
 	{
 		deleteObject(deletedObject);
 	}
+	/**
+	 * 
+	 *
+	 * @return 
+	 * @param it 
+	 * @author Zyga
+	 */
 	void operator-=(GameCollectionIterator<gObject> & it)
 	{
 		deleteObject(it);
@@ -216,6 +325,12 @@ public:
 		mListTail = tmp;
 		return;
 	}
+	/**
+	 * 
+	 *
+	 * @return 
+	 * @author Zyga
+	 */
 	void clearCollection()
 	{
 		ListElement<gObject> * tmp = mListHead;
@@ -228,6 +343,12 @@ public:
 		mListHead = mListTail = NULL;
 	}
 
+	/**
+	 * 
+	 *
+	 * @return 
+	 * @author Zyga
+	 */
 	gObject * detachFirst()
 	{
 		ListElement<gObject> * it = mListHead;
@@ -241,6 +362,13 @@ public:
 		return tmp;
 	}
 
+	/**
+	 * 
+	 *
+	 * @return 
+	 * @param _it 
+	 * @author Zyga
+	 */
 	gObject * detachObject(GameCollectionIterator<gObject> & _it)
 	{
 		ListElement<gObject> * it = _it.pointerToActual;
@@ -265,6 +393,13 @@ public:
 		delete it;
 		return tmp;
 	}
+	/**
+	 * 
+	 *
+	 * @return 
+	 * @param deletedObject 
+	 * @author Zyga
+	 */
 	gObject * detachObject(gObject * deletedObject)
 	{
 		ListElement<gObject> * it = mListHead;
@@ -294,12 +429,30 @@ public:
 		delete it;
 		return tmp;
 	};
+	/**
+	 * 
+	 *
+	 * @return 
+	 * @author Zyga
+	 */
 	gObject * getFirst() {return mListHead->mObject;}
+	/**
+	 * 
+	 *
+	 * @return 
+	 * @author Zyga
+	 */
 	GameCollectionIterator<gObject> getIterator()
 	{
 		return GameCollectionIterator<gObject>(mListHead);
 	} 
 
+	/**
+	 * 
+	 *
+	 * @return 
+	 * @author konkit
+	 */
 	bool isEmpty()	{
 		return mListHead == NULL;
 	}

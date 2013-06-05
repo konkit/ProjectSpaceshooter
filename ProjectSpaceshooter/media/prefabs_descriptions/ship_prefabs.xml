@@ -57,7 +57,7 @@
     </Colliders>
     <standard_waepon id = '3' />
     <thruster>
-      <thruster_particle name ='thrusters'/>
+      <thruster_particle name ='thrusters_blue'/>
       <offset x_pos='0' y_pos='-2' z_pos='-26' />
     </thruster>
     <camera_handlers>
