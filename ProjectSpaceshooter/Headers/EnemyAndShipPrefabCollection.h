@@ -9,18 +9,14 @@
 class EnemyAndShipPrefabsCollections : public BaseCollection<ShipPrefab, EnemyObject>
 {
 public: 
-	/** constructor */
-	/**
-	 * 
+	/** constructor
 	 *
 	 * @return 
 	 * @author Zyga
 	 */
 	EnemyAndShipPrefabsCollections();
 
-	/** Create enemy from prefab with given ID and add it to collection */
-	/**
-	 * 
+	/** Create enemy from prefab with given ID and add it to collection
 	 *
 	 * @return 
 	 * @param ID 
@@ -30,18 +26,13 @@ public:
 	 */
 	EnemyObject * instantiateEnemy(int ID, AI_TYPE myAi, Ogre::SceneManager* sceneMgr);
 
-	/** Returns weapon collection */
-	/**
-	 * 
-	 *
+	/** Returns weapon collection 
 	 * @return 
 	 * @author Zyga
 	 */
 	vector<WeaponPrefab> getWeaponCollection() const;
 
-	/** returns weapon prefab with given ID */
-	/**
-	 * 
+	/** returns weapon prefab with given ID 
 	 *
 	 * @return 
 	 * @param prefabID 
@@ -49,9 +40,7 @@ public:
 	 */
 	const WeaponPrefab * getWeaponPrefab(unsigned prefabID) const;
 
-	/** save new prefab to collection */
-	/**
-	 * 
+	/** save new prefab to collection
 	 *
 	 * @return 
 	 * @param _weaponPrefab 
@@ -59,9 +48,7 @@ public:
 	 */
 	void addWeaponPrefab(const WeaponPrefab& _weaponPrefab);
 
-	/** set new size of weapon prefab collection */
-	/**
-	 * 
+	/** set new size of weapon prefab collection 
 	 *
 	 * @return 
 	 * @param max_id 
@@ -69,9 +56,7 @@ public:
 	 */
 	void setCountOfWeaponPrefab(unsigned max_id);
 
-	/** set new size of ship prefab collection */
-	/**
-	 * 
+	/** set new size of ship prefab collection 
 	 *
 	 * @return 
 	 * @param max_id 

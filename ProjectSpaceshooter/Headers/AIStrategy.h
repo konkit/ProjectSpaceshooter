@@ -5,7 +5,9 @@
 /**
   * Abstract class for strategy pattern for Artificial Intelligence
   * Subclasses of this class implements update method which governs the behaviour 
-  * of the enemy */
+  * of the enemy 
+  * @author konkit
+  */
 class AIStrategy	{
 
 public:

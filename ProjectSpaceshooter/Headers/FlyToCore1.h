@@ -5,6 +5,7 @@
 
 /**
   * AI mode where enemy is in constant motion, shooting at core and turning around 
+  * @author konkit
   */
 class FlyToCoreAIStrategy1 : public AIStrategy	{
 

@@ -10,14 +10,15 @@
 class HealthComponent {
 public:
 	/**
-	* 
+	* Basic constructor - sets example values
 	*
 	* @return 
 	* @author konkit
 	*/
 	HealthComponent();
+
 	/**
-	* 
+	* Sets values (health, max health, resistance) from given prefab
 	*
 	* @return 
 	* @param prefab 

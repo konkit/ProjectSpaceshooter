@@ -4,7 +4,9 @@
 #include "Exceptions.h"
 
 
-/* AI mode where enemy is moving in random circles */
+/* AI mode where enemy is moving in random circles 
+ * @author konkit
+ */
 class RandomAIStrategy : public AIStrategy {
 
 public:

@@ -16,7 +16,8 @@ class BaseCollection
 {
 public:
 	/**
-	 * 
+	 * Basic constructor - creates collection with given name 
+	 *
 	 * @param name 
 	 * @author konkit
 	 */

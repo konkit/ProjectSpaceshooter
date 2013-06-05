@@ -7,7 +7,7 @@
 
 /** System which steers enemies.
   * 
-  * @author 
+  * @author konkit
   */
 
 class AISystem	{

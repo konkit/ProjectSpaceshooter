@@ -11,18 +11,14 @@
 class BulletCollection : public BaseCollection<BulletPrefab, Bullet>
 {
 public:
-	/** Basic constructor, sets initial values of precreated count */
-	/**
-	 * 
+	/** Basic constructor, sets initial values of precreated count 
 	 *
 	 * @return 
 	 * @author Zyga
 	 */
 	BulletCollection();
 
-	/** create bullets in datapool */
-	/**
-	 * 
+	/** create bullets in datapool 
 	 *
 	 * @return 
 	 * @param sceneManager 
@@ -30,26 +26,23 @@ public:
 	 */
 	void initializeBullet(Ogre::SceneManager * sceneManager);
 
-	/** get free bullet from datapool and copy it to collection */
-	/**
-	 * 
+	/** get free bullet from datapool and copy it to collection
 	 *
-	 * @return 
+	 * @return
 	 * @param prefabID 
 	 * @param sceneMgr 
 	 * @author Zyga
 	 */
 	Bullet * instantiate(unsigned prefabID, Ogre::SceneManager* sceneMgr);
 
-	/** remove bullet from collection and return it to datapool */
-	/**
-	 * 
+	/** remove bullet from collection and return it to datapool
 	 *
 	 * @return 
 	 * @param it 
 	 * @author Zyga
 	 */
 	void destroyBullet(GameCollectionIterator<Bullet> &it);
+
 	/**
 	 * 
 	 *
@@ -59,9 +52,7 @@ public:
 	 */
 	void destroyBullet(Bullet * it);
 
-	/** clears the whole collection */
-	/**
-	 * 
+	/** clears the whole collection 
 	 *
 	 * @return 
 	 * @author Zyga
