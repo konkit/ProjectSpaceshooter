@@ -3,7 +3,8 @@
 #include "TimeUtility.h"
 
 /** Basic GameState class
-*/
+  * @author Zyga
+  */
 class GameState
 {
 protected:

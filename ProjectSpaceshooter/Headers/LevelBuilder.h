@@ -3,8 +3,8 @@
 
 
 /** Level builder state - loads level from file
- * @author 
- */
+  * @author Zyga
+  */
 class LevelBuilder : public GameState
 {
 public:

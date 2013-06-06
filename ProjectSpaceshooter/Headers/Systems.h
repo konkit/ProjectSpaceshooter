@@ -10,7 +10,7 @@
 
 /** Struct storing all systems in the game
   *
-  * @author
+  * @author Zyga
   */
 struct SystemsSet
 {

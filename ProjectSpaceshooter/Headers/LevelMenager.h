@@ -2,6 +2,10 @@
 #include "GameData.h"
 #include "LevelDescription.h"
 
+/** Level manager class
+  *
+  * @author Zyga
+  */
 class LevelMenager
 {
 public:

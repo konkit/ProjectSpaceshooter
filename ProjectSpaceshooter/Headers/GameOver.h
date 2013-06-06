@@ -1,9 +1,9 @@
 #pragma once
 #include "GameState.h"
 
-/** Gameover state - in use when player is dead 
-*
-*/
+/** Gameover state - in use when player is dead. Shows explosion of player and score. 
+  * @author Zyga
+  */
 class GameOver : public GameState
 {
 public:

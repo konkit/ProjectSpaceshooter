@@ -8,7 +8,7 @@
 
 /** Class reading input from system and acting appropriately on GameData
   *
-  * @author 
+  * @author konkit
   */
 class InputManager : public Ogre::WindowEventListener
 {

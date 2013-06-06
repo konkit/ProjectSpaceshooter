@@ -39,13 +39,30 @@ public:
 	virtual ~EnemyObject();
 	unsigned int mResistance;
 
+	/** Returns type of the AI
+	  * @return AI type
+	  * @author konkit
+	  */
 	AI_TYPE getAI() const { return myAI; }
+	
+	/** Sets new AI type
+	  * @param val - new AI type
+	  * @author Konkit
+	  */
 	void setAI(AI_TYPE val) { myAI = val; }
+
+	/** Returns AI component from this game object
+	  * @return AI component
+	  * @author konkit
+	  */
 	AIComponent& getAIComponent()	{
 		return mAIComponent;
 	}
 	
-
+	/** Returns type of the game object (in this case enemy)
+	  * @return game object type
+	  * @author konkit
+	  */
 	GameObjectType getType() {
 		return GameObjectType::enemyObject;
 	}

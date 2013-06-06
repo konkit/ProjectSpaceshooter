@@ -7,6 +7,10 @@ struct shipPad_Struct
 	unsigned prefabID;
 	Vector3  position;
 };
+
+/** State, when player is able to choose a ship
+  * @author Zyga
+  */
 class HangarState : public GameState
 {
 public:

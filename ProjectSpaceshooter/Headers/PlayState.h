@@ -9,8 +9,8 @@
 
 
 /** Play state - state of normal game ( flying, shooting, etc )
- * @author
- */
+  * @author Zyga
+  */
 class PlayState : public GameState
 {
 private:

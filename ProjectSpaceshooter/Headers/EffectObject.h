@@ -6,7 +6,7 @@ using namespace std;;
 
 /** GameObject representing explosions and other special effects
   *
-  * @author 
+  * @author Zyga
   */
 
 class EffectObject : public GameObject_WithCollider
@@ -18,7 +18,10 @@ public:
 		mTTLComponent.setTimeToLive(3.00);
 	}
 
-	/** Loads data of effect from prefab */
+	/** Loads data of effect from prefab 
+	  * @param objectTemplate - pointer to prefab object which stores data about object
+	  * @param _sceneMgr - Ogre::SceneManager object for this current state
+*/
 	EffectObject( EffectPrefab * objectTemplate, Ogre::SceneManager * _sceneMgr)
 		: GameObject(), GameObject_WithCollider(objectTemplate, _sceneMgr), power(objectTemplate->getPower())
 	{

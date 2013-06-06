@@ -6,7 +6,7 @@ using namespace std;
 /** Just static, not movable gameobject
   * It has health component so it can be destroyed
   *
-  * @author
+  * @author Konkit
   */
 class StaticObject : public GameObject_WithHealth
 {

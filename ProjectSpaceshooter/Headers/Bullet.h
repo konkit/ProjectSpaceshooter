@@ -11,7 +11,6 @@
   */
 class Bullet : public GameObject_WithCollider, public GameObject_Movable
 {
-
 public:
 	/** Loads data of effect from prefab */
 	Bullet::Bullet(const BulletPrefab * objectTemplate, Ogre::SceneManager * _sceneMenager);
@@ -22,7 +21,9 @@ public:
 	  */
 	unsigned getPower() const { return mPower; }
 
-	/** sets new power of bullet */
+	/** sets new power of bullet 
+	  * @param val - new value of power of bullet
+	  */
 	void setPower(unsigned val) { mPower = val; }
 
 	/** sets owner type of bullet */
@@ -36,7 +37,9 @@ public:
 	  */
 	GameObjectType getOwnerType() {return mOwnerType;}
 
-	/** returns owner of the bullet */
+	/** returns owner of the bullet
+	  * @return owner of the object
+	  */
 	GameObject* getOwner()	{
 		return mOwner;
 	}
@@ -47,7 +50,9 @@ public:
 	  */
 	TimeToLiveComponent& getTTLComponent();
 
-	/** sets speed of bullet to max speed */
+	/** sets speed of bullet to max speed 
+	  * @param forwardVector - unit vector poining in forward direction of object
+	  */
 	void setCurrentSpeedToMax(Ogre::Vector3 forwardVector) { mPhysicsComponent.setCurrentSpeedToMax(forwardVector); }
 
 	/** implementation of getType virtual method from GameObject class 
@@ -81,6 +86,7 @@ public:
 		mDeadFlag = false;
 	}
 
+	/** overloaded operator << for ostream - usually in debug purposes */
 	friend ostream& operator<< ( ostream & stream, Bullet& object)	{
 		return stream<<"Bullet ("<<object.getPosition()<<") ";
 	}

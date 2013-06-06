@@ -32,7 +32,7 @@ enum class GAME_STATES
   * In other words - class storing prefabs -
   * - for quick instantiation of already configured objects
   *
-  * @author Zygi
+  * @author Zyga
   */
 struct GameObjectTemplates
 {
@@ -43,7 +43,7 @@ struct GameObjectTemplates
 
 /** Structure storage SceneManagers for each GameState
   *
-  * @author Zygi
+  * @author Zyga
   */
 struct StateScenesManager_Struct
 {
@@ -76,7 +76,7 @@ struct HangarManipulator
   * Stores all information about GameWorld
   * including GameObjects (Enemies, Bullets, etc)
   *
-  * @author 
+  * @author Zyga
   */
 class GameData
 {

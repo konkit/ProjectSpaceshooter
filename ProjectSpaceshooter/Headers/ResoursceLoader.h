@@ -4,7 +4,7 @@
 /** Class which governs loading prefabs from external source
   * in this case - XML files
   *
-  * @author
+  * @author Zyga
   */
 class ResoursceLoader
 {

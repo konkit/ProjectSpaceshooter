@@ -2,10 +2,10 @@
 #include "TimeUtility.h"
 
 /**
-* It's class for updating systems for pause
-*
-* @author Zyga
-*/
+  * It's class for updating systems for pause
+  *
+  * @author Zyga
+  */
 class PauseState : public GameState
 {
 public:

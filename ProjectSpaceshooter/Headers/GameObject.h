@@ -27,7 +27,7 @@ string ObjectTypeToString(GameObjectType type);
   * Those are composed from components (physics component, gamelogiccomponent, etc.)
   * This is abstract class - Bullet, Enemy and other classes inherit from this class
   *
-  * @author 
+  * @author Zyga
   */
 class GameObject 
 {
@@ -97,7 +97,7 @@ protected:
 /** Game object with collider component
   * this object takes part in collision detection 
   *
-  * @author
+  * @author Zyga
   */
 class GameObject_WithCollider : virtual public GameObject
 {
@@ -150,7 +150,7 @@ private:
   * this object can be destroyed if health is below zero
   * collisions with this objects affects the health
   *
-  * @author
+  * @author Zyga
   */
 class GameObject_WithHealth : public GameObject_WithCollider
 {
@@ -205,7 +205,7 @@ private:
 /** Game object with physics component
   * Such objects are movable in game - have certain velocity vector, acceleration etc.
   *
-  * @author
+  * @author konkit
   */
 class GameObject_Movable : virtual public GameObject
 {

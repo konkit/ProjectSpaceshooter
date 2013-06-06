@@ -9,7 +9,8 @@
 
 
 /** State manager - governs changes of game states 
-*/
+  * @author Zyga
+  */
 class StateManager
 {
 public:
