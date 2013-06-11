@@ -1,4 +1,4 @@
-#include "PredabReader_XML.h"
+#include "XML_Reader.h"
 #include "Exceptions.h"
 
 using namespace std;
@@ -278,7 +278,7 @@ bool GameObjectReader::hasNext()
 			}
 		} else if (element.nodeType == XmlNodeType_EndElement)
 		{
-			if (element.elementName == mGameObjectPlant->getPrefabRootNode())
+			if (element.elementName == mGameObjectPlant->getPrefabRootNodeName())
 			{
 				return false;
 			} 

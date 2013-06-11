@@ -10,7 +10,7 @@ Prefab & EffectPrefabPlant::getCreatedPrefab()
 	return mEffectPrefab;
 }
 
-const wstring EffectPrefabPlant::getPrefabRootNode()
+const wstring EffectPrefabPlant::getPrefabRootNodeName()
 {
 	return wstring(rootEffectPrefabsNode);
 }

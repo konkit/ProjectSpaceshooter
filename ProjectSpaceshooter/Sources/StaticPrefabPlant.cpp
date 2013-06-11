@@ -21,7 +21,7 @@ Prefab & StaticPrefabPlant::getCreatedPrefab()
 	return mStaticPrefab;
 }
 
-const wstring StaticPrefabPlant::getPrefabRootNode()
+const wstring StaticPrefabPlant::getPrefabRootNodeName()
 {
 	return wstring(rootStaticPrefabsNode);
 }

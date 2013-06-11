@@ -12,7 +12,11 @@ public:
 	ResoursceLoader();
 	~ResoursceLoader();
 
-	/** Load all XML files  */
+	/**
+	 * Load all XML files 
+	 * @param _gameData Store loaded prefabs
+	 * @author Zyga
+	 */
 	void loadAllPrefabs( GameData & _gameData );
 
 private:

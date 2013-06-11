@@ -17,7 +17,7 @@ Prefab & WeaponPrefabPlant::getCreatedPrefab()
 	return mWeaponPrefab;
 }
 
-const wstring WeaponPrefabPlant::getPrefabRootNode()
+const wstring WeaponPrefabPlant::getPrefabRootNodeName()
 {
 	return rootWeaponPrefabsNode;
 }

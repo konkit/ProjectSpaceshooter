@@ -240,7 +240,7 @@
     <ClInclude Include="Headers\WaveManager.h" />
     <ClInclude Include="Headers\WeaponPrefab_Plant.h" />
     <ClInclude Include="Headers\WeaponComponent.h" />
-    <ClInclude Include="Headers\PredabReader_XML.h" />
+    <ClInclude Include="Headers\XML_Reader.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
@@ -293,7 +293,7 @@
     <ClCompile Include="Sources\TimeToLiveComponent.cpp" />
     <ClCompile Include="Sources\WeaponPrefab_Plant.cpp" />
     <ClCompile Include="Sources\WeaponComponent.cpp" />
-    <ClCompile Include="Sources\PredabReader_XML.cpp" />
+    <ClCompile Include="Sources\XML_Reader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ogre.cfg" />

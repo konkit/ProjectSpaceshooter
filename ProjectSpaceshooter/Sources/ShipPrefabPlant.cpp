@@ -35,7 +35,7 @@ void ShipPrefabPlant::resetPrefab()
 	_cameraHandler.resetCameraHandler();	
 }
 
-const wstring ShipPrefabPlant::getPrefabRootNode()
+const wstring ShipPrefabPlant::getPrefabRootNodeName()
 {
 	return wstring(rootEnemyPrefabsNode);
 }

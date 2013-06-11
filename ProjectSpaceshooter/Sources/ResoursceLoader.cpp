@@ -1,5 +1,5 @@
 #include "ResoursceLoader.h"
-#include "PredabReader_XML.h"
+#include "XML_Reader.h"
 
 
 const char * ResoursceLoader::weaponPrefabFile = "media/prefabs_descriptions/weapon_prefabs.xml";

@@ -6,6 +6,9 @@
 using namespace std;
 using Ogre::Vector3;
 
+/**
+ * @author Zyga
+ */
 enum class PREFAB_TYPE
 {
 	EnemyPrefab,
@@ -16,7 +19,9 @@ enum class PREFAB_TYPE
 	LevelDescription
 };
 
-
+/**
+ * @author Zyga
+ */
 struct rotation_struct
 {
 	float x_rot; 
@@ -27,6 +32,9 @@ struct rotation_struct
 	void resetScale(){x_rot = y_rot = z_rot = 0;}
 };
 
+/**
+ * @author Zyga
+ */
 struct cameraHandler
 {
 	string name;
@@ -41,8 +49,6 @@ struct cameraHandler
 
 
 /**
- * 
- * 
  * @author Zyga
  */
 class Prefab
@@ -60,9 +66,7 @@ protected:
 	string		mName;
 };
 
-/**
- * 
- * 
+/** 
  * @author Zyga
  */
 class PrefabWithMesh :  public Prefab
@@ -87,8 +91,6 @@ protected:
 };
 
 /**
- * 
- * 
  * @author Zyga
  */
 class PrefabWithCollider : virtual public PrefabWithMesh
@@ -126,7 +128,9 @@ protected:
 
 
 
-
+/**
+ * @author Zyga
+ */
 class MovablePrefab: virtual public PrefabWithMesh
 {
 public:
@@ -151,7 +155,6 @@ private:
 
 
 /** 
-  *
   * @author konkit
   */
 class BulletPrefab : public PrefabWithCollider, public MovablePrefab
@@ -182,7 +185,6 @@ private:
 };
 
 /** 
-  *
   * @author Zyga
   */
 class StaticPrefab : public PrefabWithCollider
@@ -192,8 +194,6 @@ public:
 };
 
 /**
- * 
- * 
  * @author konkit
  */
 class EffectPrefab : public PrefabWithCollider
@@ -237,7 +237,6 @@ private:
 };
 
 /** 
-  *
   * @author Zyga
   */
 class ShipPrefab: public PrefabWithCollider, public MovablePrefab
@@ -260,6 +259,9 @@ private:
 	list<cameraHandler> mCameraHandlers;
 };
 
+/**
+ * @author Zyga
+ */
 class WeaponPrefab : public Prefab
 {
 public:

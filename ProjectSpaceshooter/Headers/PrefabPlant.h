@@ -5,41 +5,151 @@
 
 using namespace std;
 
+/**
+ * @return Value converted to int
+ * @param value 
+ * @author Zyga
+ */
 unsigned int ValueToUINT(const wstring &value );
+/**
+ * @return  Value converted to double
+ * @param value 
+ * @author Zyga
+ */
 double ValueToDouble(const wstring &value );
 
 /**
- * 
- * 
+ * Base abstract class to each prefab plant.
+ * Prefab plant are used to parse XML nodes into prefabs
  * @author Zyga
  */
 class PrefabPlant
 {
 public:
+
+	/**
+	 * @author Zyga
+	 */
 	PrefabPlant(void);
+	
+	/**
+	 * @author Zyga
+	 */
 	virtual ~PrefabPlant(void);
 	
+	/**
+	 * Factory method used to create prefab plant matching to given type. 
+	 * It require to delete prefab plant by DeletePrefabPlant method to avoid memory leaks.
+	 * @param prefabType Type of prefab which will be created.
+	 * @author Zyga
+	 */
 	static PrefabPlant * CreatePrefabPlantFor(PREFAB_TYPE prefabType);
+	
+	/**
+	 * @param _prefabPlant Plant to destroy
+	 * @author Zyga
+	 */
 	static void DeletePrefabPlant(PrefabPlant * _prefabPlant);
 	
+	/**
+	 * Open next XML node and prepare to read its attributes
+	 * @param name XML node name
+	 * @author Zyga
+	 */
 	void nextElement(const wstring & name);
+	
+	/**
+	 * Open next XML node and prepare to read its attributes
+	 * @param name XML node name
+	 * @author Zyga
+	 */
 	void nextElement(const wstring & prefix, const wstring & name);
+	
+	/**
+	 * Close XML node having given name. If given node isn't actually processed node throw exception
+	 * @param name XML node name
+	 * @author Zyga
+	 */
 	void closeElement(const wstring & name) ;
+
+	/**
+	 * Close XML node having given name. If given node isn't actually processed node throw exception
+	 * @param name XML node name
+	 * @author Zyga
+	 */
 	void closeElement(const wstring & prefix, const wstring & name);
+	
+	/**
+	 * Set attribute contained by last read node.  
+	 * @return True if this plant can set property with this attribute.
+	 * @param attribute Attribute to set.
+	 * @param value Value to set in prefab.
+	 * @author Zyga
+	 */
 	virtual bool setAttribute(const wstring & attribute, const wstring & value);
+	
+	/**
+	 * Set attribute contained by last read node.  
+	 * @return True if this plant can set property with this attribute.
+	 * @param prefix 
+	 * @param attribute Attribute to set.
+	 * @param value Value to set in prefab.
+	 * @author Zyga
+	 */
 	virtual bool setAttribute(const wstring & prefix, const wstring & attribute, const wstring & value);
+
+	/**
+	 * Set XML text (<node> TEXT </node>)
+	 * @param text XML text to set.
+	 * @author Zyga
+	 */
 	virtual void setText(const wstring & text) = 0;
 
+	/**
+	 * @return Created prefab. 
+	 * @author Zyga
+	 */
 	virtual Prefab & getCreatedPrefab() = 0;
 	
-	virtual const wstring getPrefabRootNode() = 0; 
+	/**
+	 * @return Name which is used to open XML document. 
+	 * @author Zyga
+	 */
+	virtual const wstring getPrefabRootNodeName() = 0; 
+
+	/**
+	 * @return Name of XML node describing prefab.
+	 * @author Zyga
+	 */
 	virtual const wstring getPrefabNodeName() = 0;
+
+	/**
+	 * Return name of property "name" which describe prefab 
+	 * @return "bullet_name"
+	 * @author Zyga
+	 */
 	virtual const wstring getPrefabName() = 0;
 	
+	/**
+	 * Reset all fields in prefab.
+	 * Called before reading next prefab.
+	 * @return 
+	 * @author Zyga
+	 */
 	virtual void resetPrefab() = 0;
+
+	/**
+	 * @return True if there isn't any opened XML nodes
+	 * @author Zyga
+	 */
 	bool IsPrefabReady();
 
-	//Method to set pointer to prefab which is precessing
+	/**
+	 * Method to set pointer to prefab which is precessing
+	 * @return 
+	 * @param pref 
+	 * @author Zyga
+	 */
 	void setPrefab(Prefab * pref);
 
 protected:
@@ -71,8 +181,6 @@ private:
 };
 
 /**
- * 
- * 
  * @author Zyga
  */
 class PrefabWithCollider_Plant : virtual public PrefabPlant
@@ -111,8 +219,6 @@ private:
 
 
 /**
- * 
- * 
  * @author Zyga
  */
 class PrefabWithMesh_Plant : virtual public PrefabPlant
@@ -149,6 +255,9 @@ private:
 	PrefabWithMesh * _prefabWithMesh;
 };
 
+/**
+ * @author Zyga
+ */
 class MovablePrefab_Plant : virtual public PrefabPlant
 {
 public:

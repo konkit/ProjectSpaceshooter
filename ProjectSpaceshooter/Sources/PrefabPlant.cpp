@@ -34,7 +34,7 @@ PrefabPlant::~PrefabPlant(void)
 
 void PrefabPlant::nextElement( const wstring & name )
 {
-	if (name != getPrefabRootNode())
+	if (name != getPrefabRootNodeName())
 	{
 		elements.push(name);
 	}

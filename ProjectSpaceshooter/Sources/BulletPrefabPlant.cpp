@@ -26,7 +26,7 @@ void BulletPrefabPlant::resetPrefab()
 	prefabReady = false;
 }
 
-const wstring BulletPrefabPlant::getPrefabRootNode()
+const wstring BulletPrefabPlant::getPrefabRootNodeName()
 {
 	return wstring(rootBulletPrefabsNode);
 }

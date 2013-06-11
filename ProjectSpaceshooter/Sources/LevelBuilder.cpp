@@ -101,7 +101,7 @@ void LevelBuilder::buildPlayScene( SystemsSet & gameSystems, TimeData& time )
 	stat->setPosition(Vector3(-1400, 0, -3300));
 
 	stat = mGameData->instantiateStatic(3);
-	stat->setPosition(Vector3(-2400, 300, -1200));
+	stat->setPosition(Vector3(-2400, 0, -1200));
 	stat = mGameData->instantiateStatic(3);
 	stat->setPosition(Vector3(-4700, 0, 930));
 	stat = mGameData->instantiateStatic(1);
@@ -111,7 +111,7 @@ void LevelBuilder::buildPlayScene( SystemsSet & gameSystems, TimeData& time )
 	stat = mGameData->instantiateStatic(1);
 	stat->setPosition(Vector3(-20300, -400, 3300));
 	stat = mGameData->instantiateStatic(4);
-	stat->setPosition(Vector3(2870, 600, 2170));
+	stat->setPosition(Vector3(2870, 700, 2170));
 
 
 

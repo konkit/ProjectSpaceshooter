@@ -185,6 +185,11 @@ public:
 	* @author Zyga
 	*/	
 	Prefab & getNext();
+
+	/**
+	 * @return Numbers of prefabs which is stored in file. It is saved as first line after root node in XML
+	 * @author Zyga
+	 */
 	unsigned countOfPrefabs();
 private:
 	void resetPrefab();
