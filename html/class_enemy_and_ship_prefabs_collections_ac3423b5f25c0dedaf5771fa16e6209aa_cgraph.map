@@ -1,0 +1,4 @@
+<map id="EnemyAndShipPrefabsCollections::instantiateEnemy" name="EnemyAndShipPrefabsCollections::instantiateEnemy">
+<area shape="rect" id="node2" href="$class_base_collection.html#a984b0e4042a8565bbfa72b5c334c3303" title="BaseCollection\&lt; ShipPrefab,\l EnemyObject \&gt;::getPrefab" alt="" coords="275,5,463,46"/>
+<area shape="rect" id="node3" href="$class_game_collection.html#aff7bc13a1d76d3b763f0bf72665988f3" title="GameCollection::addObject" alt="" coords="279,71,460,97"/>
+</map>

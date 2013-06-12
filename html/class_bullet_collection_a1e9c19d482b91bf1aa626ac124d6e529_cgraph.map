@@ -1,0 +1,5 @@
+<map id="BulletCollection::destroyBullet" name="BulletCollection::destroyBullet">
+<area shape="rect" id="node2" href="$class_game_collection.html#a471eae8eed1d0d7eb759a0d79332af41" title="GameCollection::detachObject" alt="" coords="217,5,415,32"/>
+<area shape="rect" id="node3" href="$class_game_object.html#a728e700b1d541fbd912aa5fef11bb55b" title="GameObject::setVisible" alt="" coords="236,56,396,83"/>
+<area shape="rect" id="node4" href="$class_bullet.html#aeb947fb717a62ed06202e763a38a4125" title="Bullet::getPrefabID" alt="" coords="251,107,381,133"/>
+</map>

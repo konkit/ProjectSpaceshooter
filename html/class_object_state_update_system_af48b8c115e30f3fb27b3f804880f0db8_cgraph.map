@@ -1,0 +1,9 @@
+<map id="ObjectStateUpdateSystem::updateObjectWithTTL" name="ObjectStateUpdateSystem::updateObjectWithTTL">
+<area shape="rect" id="node2" href="$class_game_data.html#af050c8932ed3a3d31b315f95451be05e" title="GameData::getBullets" alt="" coords="261,5,411,32"/>
+<area shape="rect" id="node3" href="$class_base_collection.html#af9ebbd03b2fbac988a3d6d28a695f5f6" title="BaseCollection::getIterator" alt="" coords="249,56,423,83"/>
+<area shape="rect" id="node4" href="$class_game_collection_iterator.html#acc40b6fd7f123d428d0c41ac23e2da0e" title="GameCollectionIterator\l::hasNext" alt="" coords="259,107,413,149"/>
+<area shape="rect" id="node5" href="$class_game_collection_iterator.html#a4a923549421dedbaf354998087ccc9af" title="GameCollectionIterator\l::getNext" alt="" coords="259,173,413,214"/>
+<area shape="rect" id="node6" href="$class_bullet.html#a01f4052a7e9a3f64a85fb1fc6b808522" title="Bullet::getTTLComponent" alt="" coords="252,239,420,265"/>
+<area shape="rect" id="node7" href="$class_time_to_live_component.html#ad5af7a75361acbb4ec2294ed021c9610" title="TimeToLiveComponent\l::decreaseTimeToLive" alt="" coords="260,290,412,331"/>
+<area shape="rect" id="node8" href="$class_effect_object.html#a1cfd94ee86701dd05e6da2c2b916db48" title="EffectObject::getTTLComponent" alt="" coords="233,356,439,383"/>
+</map>

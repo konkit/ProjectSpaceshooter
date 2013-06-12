@@ -1,0 +1,7 @@
+<map id="PhysicsComponent::setTargetRotVelocity" name="PhysicsComponent::setTargetRotVelocity">
+<area shape="rect" id="node2" href="$class_game_object___movable.html#a2511a22ba24b0b1f427c616227ab0a1c" title="GameObject_Movable\l::setRotation" alt="" coords="265,5,415,46"/>
+<area shape="rect" id="node3" href="$class_random_a_i_strategy.html#a34dcf93630fb30e52919a3f0efe79db9" title="RandomAIStrategy::update" alt="" coords="251,71,429,97"/>
+<area shape="rect" id="node4" href="$class_a_i_system.html#a91f024ecddbea09dd36ea060cd7086e5" title="AISystem::update" alt="" coords="478,71,605,97"/>
+<area shape="rect" id="node5" href="$class_game_over.html#a64d52330d484e1dc112c95ae67778453" title="GameOver::update" alt="" coords="653,45,784,72"/>
+<area shape="rect" id="node6" href="$class_play_state.html#acf33f9330f484b8c3cbb621b68c1893b" title="PlayState::update" alt="" coords="655,96,782,123"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="StaticPrefabPlant" name="StaticPrefabPlant">
+<area shape="rect" id="node2" href="$class_prefab_with_collider___plant.html" title="PrefabWithCollider\l_Plant" alt="" coords="5,81,133,122"/>
+<area shape="rect" id="node3" href="$class_prefab_plant.html" title="PrefabPlant" alt="" coords="107,5,196,32"/>
+<area shape="rect" id="node4" href="$class_prefab_with_mesh___plant.html" title="PrefabWithMesh_Plant" alt="" coords="159,88,313,115"/>
+</map>

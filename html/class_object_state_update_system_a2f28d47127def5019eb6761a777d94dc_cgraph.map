@@ -1,0 +1,10 @@
+<map id="ObjectStateUpdateSystem::createExplosionFor" name="ObjectStateUpdateSystem::createExplosionFor">
+<area shape="rect" id="node2" href="$class_game_object___with_collider.html#a7f61c728f44ae3b70ab0475ce8c3cca8" title="GameObject_WithCollider\l::getType" alt="" coords="239,5,411,46"/>
+<area shape="rect" id="node3" href="$class_game_data.html#a00c829cb9fdcfb047f9d026732429c98" title="GameData::instantiateEffect" alt="" coords="233,71,418,97"/>
+<area shape="rect" id="node6" href="$class_game_object.html#ac09a0cdd22cd82d9602a3954e4cf6a8b" title="GameObject::setPosition" alt="" coords="241,121,409,148"/>
+<area shape="rect" id="node7" href="$class_game_object.html#aeb015b71783689a67c23c4921d8b95a8" title="GameObject::getPosition" alt="" coords="241,172,409,199"/>
+<area shape="rect" id="node8" href="$class_game_object.html#a4c13fccbbad22b1855f258c70b7142b6" title="GameObject::setOrientation" alt="" coords="233,223,417,249"/>
+<area shape="rect" id="node9" href="$class_game_object.html#a8060a6b1168cc5d8ff99322cefdbb457" title="GameObject::getOrientation" alt="" coords="233,273,417,300"/>
+<area shape="rect" id="node4" href="$class_base_collection.html#acecb0904c4b29612f0853d4ddc14ec3c" title="BaseCollection::instantiate" alt="" coords="486,45,663,72"/>
+<area shape="rect" id="node5" href="$class_game_data.html#a32edc3fe64e100c1eff915a766605911" title="GameData::getSceneManagerFor" alt="" coords="467,96,683,123"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="GameData::instantiateBullet" name="GameData::instantiateBullet">
+<area shape="rect" id="node2" href="$class_bullet_collection.html#ad759d92237be66549f93714e4fad5099" title="BulletCollection::instantiate" alt="" coords="258,93,438,120"/>
+<area shape="rect" id="node8" href="$class_game_data.html#a32edc3fe64e100c1eff915a766605911" title="GameData::getSceneManagerFor" alt="" coords="240,144,456,171"/>
+<area shape="rect" id="node3" href="$class_game_object.html#a728e700b1d541fbd912aa5fef11bb55b" title="GameObject::setVisible" alt="" coords="521,5,681,32"/>
+<area shape="rect" id="node4" href="$class_base_collection.html#a984b0e4042a8565bbfa72b5c334c3303" title="BaseCollection\&lt; BulletPrefab,\l Bullet \&gt;::getPrefab" alt="" coords="504,57,699,98"/>
+<area shape="rect" id="node5" href="$class_bullet.html#aca48cc4207babfbd633131a13a65342b" title="Bullet::resetBullet" alt="" coords="539,123,664,149"/>
+<area shape="rect" id="node7" href="$class_game_collection.html#aff7bc13a1d76d3b763f0bf72665988f3" title="GameCollection::addObject" alt="" coords="511,173,692,200"/>
+<area shape="rect" id="node6" href="$class_time_to_live_component.html#a7c6a5df997d852b2ff0a4cd8fee44c73" title="TimeToLiveComponent\l::setTimeToLive" alt="" coords="747,115,899,157"/>
+</map>

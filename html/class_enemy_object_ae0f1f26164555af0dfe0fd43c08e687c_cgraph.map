@@ -1,0 +1,4 @@
+<map id="EnemyObject::EnemyObject" name="EnemyObject::EnemyObject">
+<area shape="rect" id="node2" href="$class_physics_component.html#a99165c96202bac41d50efa5bf0c6e6e7" title="PhysicsComponent::setFrom\lPrefab" alt="" coords="243,5,434,46"/>
+<area shape="rect" id="node3" href="$class_a_i_component.html#adb1eca0721e1585aca10afb92aee88e1" title="AIComponent::setType" alt="" coords="261,71,416,97"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="Radar::display" name="Radar::display">
+<area shape="rect" id="node2" href="$class_ogre2d_manager.html#a7509ca589334721687a3ef8d1cd901a9" title="Buffers a sprite to be sent to the screen at render time." alt="" coords="161,5,351,32"/>
+<area shape="rect" id="node3" href="$class_base_collection.html#af9ebbd03b2fbac988a3d6d28a695f5f6" title="BaseCollection::getIterator" alt="" coords="169,56,343,83"/>
+<area shape="rect" id="node4" href="$class_game_collection_iterator.html#acc40b6fd7f123d428d0c41ac23e2da0e" title="GameCollectionIterator\l::hasNext" alt="" coords="179,107,333,149"/>
+<area shape="rect" id="node5" href="$class_game_collection_iterator.html#a4a923549421dedbaf354998087ccc9af" title="GameCollectionIterator\l::getNext" alt="" coords="179,173,333,214"/>
+<area shape="rect" id="node6" href="$class_game_data.html#af18d34662a92415d86130e2dce80b031" title="GameData::getCore" alt="" coords="187,239,325,265"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="GameData" name="GameData">
+<area shape="rect" id="node2" href="$class_core.html" title="Core" alt="" coords="74,173,123,200"/>
+<area shape="rect" id="node3" href="$class_game_object.html" title="GameObject" alt="" coords="51,96,145,123"/>
+<area shape="rect" id="node4" href="$class_collider.html" title="Collider" alt="" coords="5,5,69,32"/>
+<area shape="rect" id="node5" href="$class_physics_component.html" title="PhysicsComponent" alt="" coords="94,5,228,32"/>
+</map>

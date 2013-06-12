@@ -1,0 +1,5 @@
+<map id="BaseCollection::getPrefab" name="BaseCollection::getPrefab">
+<area shape="rect" id="node2" href="$class_base_collection.html#acecb0904c4b29612f0853d4ddc14ec3c" title="BaseCollection\&lt; BulletPrefab,\l Bullet \&gt;::instantiate" alt="" coords="227,5,421,46"/>
+<area shape="rect" id="node3" href="$class_game_data.html#a7eef851803a954dc0f755586a65535db" title="GameData::createPlayerFrom\lPrefab" alt="" coords="227,70,421,111"/>
+<area shape="rect" id="node4" href="$class_game_data.html#a9aea069f741033f2cb6e617471606580" title="GameData::createCore" alt="" coords="247,136,401,163"/>
+</map>

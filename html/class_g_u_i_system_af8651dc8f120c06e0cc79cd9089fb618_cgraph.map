@@ -1,0 +1,8 @@
+<map id="GUISystem::init" name="GUISystem::init">
+<area shape="rect" id="node2" href="$class_play_g_u_i.html#afed731583c379b71a72d71fd302fc93b" title="PlayGUI::init" alt="" coords="186,107,281,133"/>
+<area shape="rect" id="node6" href="$class_hangar_g_u_i.html#a60967021494977adda11451c91364fbe" title="HangarGUI::init" alt="" coords="178,5,289,32"/>
+<area shape="rect" id="node7" href="$class_game_over_g_u_i.html#af1ddee8520add0fa3fdd4adcf13ce4dd" title="GameOverGUI::init" alt="" coords="168,56,299,83"/>
+<area shape="rect" id="node3" href="$class_abstract_instance_g_u_i.html#a779186108b4878b9397a23dc0c7adb66" title="AbstractInstanceGUI\l::init" alt="" coords="347,41,490,82"/>
+<area shape="rect" id="node4" href="$class_ogre2d_manager.html#a38d59dca9507355880dab91a598b244d" title="Initializes this 2d Manager." alt="" coords="349,107,488,133"/>
+<area shape="rect" id="node5" href="$class_radar.html#aed64403837491fa949aa62c30284fc8a" title="Radar::init" alt="" coords="378,157,459,184"/>
+</map>

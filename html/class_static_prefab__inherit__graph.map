@@ -1,0 +1,5 @@
+<map id="StaticPrefab" name="StaticPrefab">
+<area shape="rect" id="node2" href="$class_prefab_with_collider.html" title="PrefabWithCollider" alt="" coords="5,155,133,181"/>
+<area shape="rect" id="node3" href="$class_prefab_with_mesh.html" title="PrefabWithMesh" alt="" coords="10,80,128,107"/>
+<area shape="rect" id="node4" href="$class_prefab.html" title="Prefab" alt="" coords="40,5,99,32"/>
+</map>

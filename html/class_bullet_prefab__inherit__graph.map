@@ -1,0 +1,6 @@
+<map id="BulletPrefab" name="BulletPrefab">
+<area shape="rect" id="node2" href="$class_prefab_with_collider.html" title="PrefabWithCollider" alt="" coords="5,155,133,181"/>
+<area shape="rect" id="node3" href="$class_prefab_with_mesh.html" title="PrefabWithMesh" alt="" coords="81,80,199,107"/>
+<area shape="rect" id="node5" href="$class_movable_prefab.html" title="MovablePrefab" alt="" coords="159,155,265,181"/>
+<area shape="rect" id="node4" href="$class_prefab.html" title="Prefab" alt="" coords="111,5,169,32"/>
+</map>

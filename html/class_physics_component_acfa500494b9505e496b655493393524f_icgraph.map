@@ -1,0 +1,4 @@
+<map id="PhysicsComponent::AddVectorToCurrentVelocity" name="PhysicsComponent::AddVectorToCurrentVelocity">
+<area shape="rect" id="node2" href="$class_game_object___movable.html#ac614a476037d40fbd537d61126ab7ec6" title="GameObject_Movable\l::addRecoilVectorToCurrent\lVelocity" alt="" coords="259,5,440,61"/>
+<area shape="rect" id="node3" href="$class_ship.html#a55db40e89d2025ff1cb2d1b3d45f5a47" title="Ship::receiveDamage" alt="" coords="488,20,632,47"/>
+</map>

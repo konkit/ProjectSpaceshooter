@@ -1,0 +1,5 @@
+<map id="GameOverGUI::display" name="GameOverGUI::display">
+<area shape="rect" id="node2" href="$class_game_data.html#a20d4db44a3e2b3e8b4000c3b08be8921" title="GameData::getPlayer" alt="" coords="208,5,355,32"/>
+<area shape="rect" id="node3" href="$class_player.html#a97e5447778ae6c384eedc532dcd8431d" title="Player::getScore" alt="" coords="222,56,341,83"/>
+<area shape="rect" id="node4" href="$class_abstract_instance_g_u_i.html#a1223d11086b5acaf39f9011f18d45f70" title="AbstractInstanceGUI\l::display" alt="" coords="210,107,353,149"/>
+</map>

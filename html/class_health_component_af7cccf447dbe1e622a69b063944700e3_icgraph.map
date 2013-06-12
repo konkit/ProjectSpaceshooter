@@ -1,0 +1,8 @@
+<map id="HealthComponent::getHealth" name="HealthComponent::getHealth">
+<area shape="rect" id="node2" href="$class_game_object___with_health.html#af4ac971a774dcfe1958cc8677db1fd9a" title="GameObject_WithHealth\l::getHealthValue" alt="" coords="243,49,410,90"/>
+<area shape="rect" id="node3" href="$class_play_g_u_i.html#a516a7b9ca1dc51550e63f39fb84a6875" title="PlayGUI::display" alt="" coords="459,56,578,83"/>
+<area shape="rect" id="node4" href="$class_g_u_i_system.html#a2ba02837f249191059f56b81e7a9effe" title="GUISystem::display" alt="" coords="627,56,765,83"/>
+<area shape="rect" id="node5" href="$class_game_over.html#a64d52330d484e1dc112c95ae67778453" title="GameOver::update" alt="" coords="819,5,949,32"/>
+<area shape="rect" id="node6" href="$class_hangar_state.html#a3ab4d2e724ffddab362716d125f05f03" title="HangarState::update" alt="" coords="813,56,955,83"/>
+<area shape="rect" id="node7" href="$class_play_state.html#acf33f9330f484b8c3cbb621b68c1893b" title="PlayState::update" alt="" coords="821,107,947,133"/>
+</map>

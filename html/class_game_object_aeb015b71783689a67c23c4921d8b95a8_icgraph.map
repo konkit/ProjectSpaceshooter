@@ -1,0 +1,12 @@
+<map id="GameObject::getPosition" name="GameObject::getPosition">
+<area shape="rect" id="node2" href="$class_game_over.html#ab4d6e9021a708d598be52033fec54059" title="GameOver::setDeadCamera" alt="" coords="675,5,859,32"/>
+<area shape="rect" id="node4" href="$class_object_state_update_system.html#a2f28d47127def5019eb6761a777d94dc" title="ObjectStateUpdateSystem\l::createExplosionFor" alt="" coords="222,85,399,126"/>
+<area shape="rect" id="node9" href="$class_object_state_update_system.html#ac639d673ed6e5703cdc9aaf45c35d290" title="ObjectStateUpdateSystem\l::serveShooting" alt="" coords="222,150,399,191"/>
+<area shape="rect" id="node11" href="$class_ship.html#a55db40e89d2025ff1cb2d1b3d45f5a47" title="Ship::receiveDamage" alt="" coords="239,216,383,243"/>
+<area shape="rect" id="node3" href="$class_game_over.html#a64d52330d484e1dc112c95ae67778453" title="GameOver::update" alt="" coords="907,64,1037,91"/>
+<area shape="rect" id="node5" href="$class_object_state_update_system.html#aaa05f0e04a44794611ebeb9f1225be4d" title="ObjectStateUpdateSystem\l::removeDeadObjects" alt="" coords="449,113,626,154"/>
+<area shape="rect" id="node8" href="$class_object_state_update_system.html#a83358503b907280494563f00e2bc6825" title="ObjectStateUpdateSystem\l::destroyPlayer" alt="" coords="678,57,855,98"/>
+<area shape="rect" id="node6" href="$class_object_state_update_system.html#a7d8a65d69420019061a71e928fbe52ee" title="ObjectStateUpdateSystem\l::update" alt="" coords="678,122,855,163"/>
+<area shape="rect" id="node7" href="$class_play_state.html#acf33f9330f484b8c3cbb621b68c1893b" title="PlayState::update" alt="" coords="909,129,1035,156"/>
+<area shape="rect" id="node10" href="$class_object_state_update_system.html#aceee500b403166228c4495af2d41c383" title="ObjectStateUpdateSystem\l::updateShooting" alt="" coords="449,178,626,219"/>
+</map>

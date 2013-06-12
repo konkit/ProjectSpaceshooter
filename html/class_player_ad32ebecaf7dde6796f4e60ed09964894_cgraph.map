@@ -1,0 +1,4 @@
+<map id="Player::Player" name="Player::Player">
+<area shape="rect" id="node2" href="$class_player.html#a1facb4e919f15fd35d5103843bd474d9" title="Player::createCameraNodes\lAndChoseActivCameraNode" alt="" coords="158,5,343,46"/>
+<area shape="rect" id="node3" href="$class_player.html#ac6b3d8c649beee68f505ecc066e4e4ab" title="Player::createCameraNodes" alt="" coords="393,12,578,39"/>
+</map>

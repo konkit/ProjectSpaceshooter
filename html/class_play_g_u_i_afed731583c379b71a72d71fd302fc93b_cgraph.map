@@ -1,0 +1,5 @@
+<map id="PlayGUI::init" name="PlayGUI::init">
+<area shape="rect" id="node2" href="$class_abstract_instance_g_u_i.html#a779186108b4878b9397a23dc0c7adb66" title="AbstractInstanceGUI\l::init" alt="" coords="150,5,293,46"/>
+<area shape="rect" id="node3" href="$class_ogre2d_manager.html#a38d59dca9507355880dab91a598b244d" title="Initializes this 2d Manager." alt="" coords="152,71,291,97"/>
+<area shape="rect" id="node4" href="$class_radar.html#aed64403837491fa949aa62c30284fc8a" title="Radar::init" alt="" coords="181,121,262,148"/>
+</map>

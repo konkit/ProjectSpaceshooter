@@ -1,0 +1,7 @@
+<map id="PrefabWithCollider_Plant" name="PrefabWithCollider_Plant">
+<area shape="rect" id="node3" href="$class_bullet_prefab_plant.html" title="BulletPrefabPlant" alt="" coords="5,171,128,197"/>
+<area shape="rect" id="node4" href="$class_effect_prefab_plant.html" title="EffectPrefabPlant" alt="" coords="152,171,275,197"/>
+<area shape="rect" id="node5" href="$class_ship_prefab_plant.html" title="ShipPrefabPlant" alt="" coords="299,171,413,197"/>
+<area shape="rect" id="node6" href="$class_static_prefab_plant.html" title="StaticPrefabPlant" alt="" coords="437,171,560,197"/>
+<area shape="rect" id="node2" href="$class_prefab_plant.html" title="PrefabPlant" alt="" coords="239,5,328,32"/>
+</map>

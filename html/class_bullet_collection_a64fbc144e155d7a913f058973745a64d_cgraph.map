@@ -1,0 +1,9 @@
+<map id="BulletCollection::clearCollection" name="BulletCollection::clearCollection">
+<area shape="rect" id="node2" href="$class_game_collection.html#adfb17e18085a3323ea28db67615c9fec" title="GameCollection::getIterator" alt="" coords="259,5,439,32"/>
+<area shape="rect" id="node3" href="$class_game_collection_iterator.html#acc40b6fd7f123d428d0c41ac23e2da0e" title="GameCollectionIterator\l::hasNext" alt="" coords="272,57,427,98"/>
+<area shape="rect" id="node4" href="$class_game_collection_iterator.html#a4a923549421dedbaf354998087ccc9af" title="GameCollectionIterator\l::getNext" alt="" coords="272,122,427,163"/>
+<area shape="rect" id="node5" href="$class_bullet_collection.html#afacde2b5a4bf0c2451542ce1ca3affdd" title="BulletCollection::destroy\lBullet" alt="" coords="268,187,431,229"/>
+<area shape="rect" id="node6" href="$class_game_collection.html#a471eae8eed1d0d7eb759a0d79332af41" title="GameCollection::detachObject" alt="" coords="489,144,687,171"/>
+<area shape="rect" id="node7" href="$class_game_object.html#a728e700b1d541fbd912aa5fef11bb55b" title="GameObject::setVisible" alt="" coords="508,195,668,221"/>
+<area shape="rect" id="node8" href="$class_bullet.html#aeb947fb717a62ed06202e763a38a4125" title="Bullet::getPrefabID" alt="" coords="523,245,653,272"/>
+</map>

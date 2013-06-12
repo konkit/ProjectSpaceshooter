@@ -1,0 +1,9 @@
+<map id="Ship::receiveDamage" name="Ship::receiveDamage">
+<area shape="rect" id="node2" href="$class_game_object___with_health.html#abe82304ba02b77a02053ec382205f351" title="GameObject_WithHealth\l::isDead" alt="" coords="205,5,371,46"/>
+<area shape="rect" id="node3" href="$class_game_object___with_health.html#aad208a9bbdee05ca4ea0b0a261f5f415" title="GameObject_WithHealth\l::receiveDamage" alt="" coords="205,70,371,111"/>
+<area shape="rect" id="node6" href="$class_game_object.html#aeb015b71783689a67c23c4921d8b95a8" title="GameObject::getPosition" alt="" coords="204,136,372,163"/>
+<area shape="rect" id="node7" href="$class_game_object___movable.html#ac614a476037d40fbd537d61126ab7ec6" title="GameObject_Movable\l::addRecoilVectorToCurrent\lVelocity" alt="" coords="197,187,379,243"/>
+<area shape="rect" id="node4" href="$class_health_component.html#a607a3a211ece5b9688a246636aeae9e9" title="HealthComponent::decrease\lHealth" alt="" coords="436,41,623,82"/>
+<area shape="rect" id="node5" href="$class_health_component.html#a09902b00eab67aa3bb3d7fae75a9bb61" title="HealthComponent::isDead" alt="" coords="443,107,616,133"/>
+<area shape="rect" id="node8" href="$class_physics_component.html#acfa500494b9505e496b655493393524f" title="PhysicsComponent::AddVector\lToCurrentVelocity" alt="" coords="427,194,631,235"/>
+</map>

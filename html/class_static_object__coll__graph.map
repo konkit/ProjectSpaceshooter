@@ -1,0 +1,5 @@
+<map id="StaticObject" name="StaticObject">
+<area shape="rect" id="node2" href="$class_game_object___with_health.html" title="GameObject_WithHealth" alt="" coords="7,155,173,181"/>
+<area shape="rect" id="node3" href="$class_game_object___with_collider.html" title="GameObject_WithCollider" alt="" coords="5,80,176,107"/>
+<area shape="rect" id="node4" href="$class_game_object.html" title="GameObject" alt="" coords="43,5,137,32"/>
+</map>

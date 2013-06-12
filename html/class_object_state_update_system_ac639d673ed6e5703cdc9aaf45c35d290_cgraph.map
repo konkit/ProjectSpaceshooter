@@ -1,0 +1,28 @@
+<map id="ObjectStateUpdateSystem::serveShooting" name="ObjectStateUpdateSystem::serveShooting">
+<area shape="rect" id="node2" href="$class_ship.html#aa0b4ac35fca8fd3fe9462071d08212d1" title="Ship::isShooting" alt="" coords="276,5,393,32"/>
+<area shape="rect" id="node4" href="$class_game_object.html#a8060a6b1168cc5d8ff99322cefdbb457" title="GameObject::getOrientation" alt="" coords="243,56,427,83"/>
+<area shape="rect" id="node5" href="$class_game_object.html#aeb015b71783689a67c23c4921d8b95a8" title="GameObject::getPosition" alt="" coords="251,107,419,133"/>
+<area shape="rect" id="node6" href="$class_game_data.html#a4ea32c37c3309685d0135aebe4ccb97b" title="GameData::instantiateBullet" alt="" coords="242,157,427,184"/>
+<area shape="rect" id="node14" href="$class_ship.html#aee1ae0f0dbdc9ec44b4437b6ce0d7f13" title="Ship::getBulletIDFromActive\lWeapon" alt="" coords="243,209,427,250"/>
+<area shape="rect" id="node16" href="$class_game_object.html#ac09a0cdd22cd82d9602a3954e4cf6a8b" title="GameObject::setPosition" alt="" coords="251,275,419,301"/>
+<area shape="rect" id="node17" href="$class_game_object.html#a4c13fccbbad22b1855f258c70b7142b6" title="GameObject::setOrientation" alt="" coords="243,325,427,352"/>
+<area shape="rect" id="node18" href="$class_bullet.html#a387bb0c7681105c906d392bf6b899a40" title="Bullet::setOwner" alt="" coords="275,376,394,403"/>
+<area shape="rect" id="node20" href="$class_bullet.html#a01f4052a7e9a3f64a85fb1fc6b808522" title="Bullet::getTTLComponent" alt="" coords="251,427,419,453"/>
+<area shape="rect" id="node11" href="$class_time_to_live_component.html#a7c6a5df997d852b2ff0a4cd8fee44c73" title="TimeToLiveComponent\l::setTimeToLive" alt="" coords="992,329,1144,370"/>
+<area shape="rect" id="node21" href="$class_game_object___movable.html#a66552e4cb71738b2d03cec247eacb8a2" title="GameObject_Movable\l::setTargetVelocityValue" alt="" coords="253,529,417,570"/>
+<area shape="rect" id="node23" href="$class_bullet.html#a201ddb483d3be22feaac9a740a7723e6" title="Bullet::setCurrentSpeedToMax" alt="" coords="235,595,434,621"/>
+<area shape="rect" id="node25" href="$class_game_object.html#aea633e11afb98d0b56e34deb8198cbcf" title="GameObject::getForwardVector" alt="" coords="232,645,437,672"/>
+<area shape="rect" id="node26" href="$class_ship.html#a65285b03e2aa4d4c0f8e1d1fd27a4122" title="Ship::unsetShoot" alt="" coords="273,696,396,723"/>
+<area shape="rect" id="node3" href="$class_weapon_component.html#a9f9d5abbba12fd683ec7632c286f6738" title="WeaponComponent::isShooting" alt="" coords="491,5,696,32"/>
+<area shape="rect" id="node7" href="$class_bullet_collection.html#ad759d92237be66549f93714e4fad5099" title="BulletCollection::instantiate" alt="" coords="503,136,683,163"/>
+<area shape="rect" id="node13" href="$class_game_data.html#a32edc3fe64e100c1eff915a766605911" title="GameData::getSceneManagerFor" alt="" coords="485,187,701,213"/>
+<area shape="rect" id="node8" href="$class_game_object.html#a728e700b1d541fbd912aa5fef11bb55b" title="GameObject::setVisible" alt="" coords="767,77,927,104"/>
+<area shape="rect" id="node9" href="$class_base_collection.html#a984b0e4042a8565bbfa72b5c334c3303" title="BaseCollection\&lt; BulletPrefab,\l Bullet \&gt;::getPrefab" alt="" coords="749,129,944,170"/>
+<area shape="rect" id="node10" href="$class_bullet.html#aca48cc4207babfbd633131a13a65342b" title="Bullet::resetBullet" alt="" coords="784,195,909,221"/>
+<area shape="rect" id="node12" href="$class_game_collection.html#aff7bc13a1d76d3b763f0bf72665988f3" title="GameCollection::addObject" alt="" coords="756,245,937,272"/>
+<area shape="rect" id="node15" href="$class_weapon_component.html#adddca4ec4c88e3941ea7cb82a9aa5a0e" title="WeaponComponent::getBulletID" alt="" coords="490,237,697,264"/>
+<area shape="rect" id="node19" href="$class_ship.html#acb2f91684f21c8ebee6eb646e57b8bf0" title="Ship::getType" alt="" coords="542,376,645,403"/>
+<area shape="rect" id="node22" href="$class_physics_component.html#aa3d0f0ebad06d8d7770d735102f84999" title="PhysicsComponent::setTarget\lVelocityValue" alt="" coords="495,529,692,570"/>
+<area shape="rect" id="node24" href="$class_physics_component.html#a587c76cbcce00a9bcd529793329a37bd" title="PhysicsComponent::setCurrent\lSpeedToMax" alt="" coords="492,594,695,635"/>
+<area shape="rect" id="node27" href="$class_weapon_component.html#a400dd7b8e16e688b83f479396952bd6b" title="WeaponComponent::unsetShoot" alt="" coords="488,696,699,723"/>
+</map>

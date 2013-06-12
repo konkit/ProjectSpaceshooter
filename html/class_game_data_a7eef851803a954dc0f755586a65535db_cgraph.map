@@ -1,0 +1,5 @@
+<map id="GameData::createPlayerFromPrefab" name="GameData::createPlayerFromPrefab">
+<area shape="rect" id="node2" href="$class_base_collection.html#a984b0e4042a8565bbfa72b5c334c3303" title="BaseCollection::getPrefab" alt="" coords="273,5,445,32"/>
+<area shape="rect" id="node3" href="$class_enemy_and_ship_prefabs_collections.html#ae9f0006a9d9fdff634a3f0133e95b57a" title="EnemyAndShipPrefabsCollections\l::getWeaponPrefab" alt="" coords="249,57,469,98"/>
+<area shape="rect" id="node4" href="$class_game_data.html#a32edc3fe64e100c1eff915a766605911" title="GameData::getSceneManagerFor" alt="" coords="251,123,467,149"/>
+</map>

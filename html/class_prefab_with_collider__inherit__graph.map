@@ -1,0 +1,8 @@
+<map id="PrefabWithCollider" name="PrefabWithCollider">
+<area shape="rect" id="node4" href="$class_bullet_prefab.html" title="BulletPrefab" alt="" coords="5,229,96,256"/>
+<area shape="rect" id="node5" href="$class_effect_prefab.html" title="EffectPrefab" alt="" coords="121,229,212,256"/>
+<area shape="rect" id="node6" href="$class_ship_prefab.html" title="ShipPrefab" alt="" coords="237,229,323,256"/>
+<area shape="rect" id="node7" href="$class_static_prefab.html" title="StaticPrefab" alt="" coords="347,229,440,256"/>
+<area shape="rect" id="node2" href="$class_prefab_with_mesh.html" title="PrefabWithMesh" alt="" coords="163,80,281,107"/>
+<area shape="rect" id="node3" href="$class_prefab.html" title="Prefab" alt="" coords="193,5,252,32"/>
+</map>

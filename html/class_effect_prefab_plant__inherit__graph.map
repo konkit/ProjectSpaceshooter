@@ -1,0 +1,4 @@
+<map id="EffectPrefabPlant" name="EffectPrefabPlant">
+<area shape="rect" id="node2" href="$class_prefab_with_collider___plant.html" title="PrefabWithCollider\l_Plant" alt="" coords="5,81,133,122"/>
+<area shape="rect" id="node3" href="$class_prefab_plant.html" title="PrefabPlant" alt="" coords="25,5,113,32"/>
+</map>

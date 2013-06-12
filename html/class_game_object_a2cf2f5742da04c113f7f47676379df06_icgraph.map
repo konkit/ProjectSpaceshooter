@@ -1,0 +1,4 @@
+<map id="GameObject::setMesh" name="GameObject::setMesh">
+<area shape="rect" id="node2" href="$class_ship.html#a427a7750a9db4fd36dbde30b5de822b0" title="Ship::setShip" alt="" coords="209,5,309,32"/>
+<area shape="rect" id="node3" href="$class_player.html#ab6c613ea31bfa8a517ba1a5e46c5310a" title="Player::setShip" alt="" coords="358,5,469,32"/>
+</map>

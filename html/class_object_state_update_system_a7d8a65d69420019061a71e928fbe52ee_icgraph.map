@@ -1,0 +1,4 @@
+<map id="ObjectStateUpdateSystem::update" name="ObjectStateUpdateSystem::update">
+<area shape="rect" id="node2" href="$class_game_over.html#a64d52330d484e1dc112c95ae67778453" title="GameOver::update" alt="" coords="232,5,363,32"/>
+<area shape="rect" id="node3" href="$class_play_state.html#acf33f9330f484b8c3cbb621b68c1893b" title="PlayState::update" alt="" coords="234,56,361,83"/>
+</map>

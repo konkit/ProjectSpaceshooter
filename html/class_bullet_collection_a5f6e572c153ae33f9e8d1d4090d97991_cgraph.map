@@ -1,0 +1,4 @@
+<map id="BulletCollection::initializeBullet" name="BulletCollection::initializeBullet">
+<area shape="rect" id="node2" href="$class_base_collection.html#a984b0e4042a8565bbfa72b5c334c3303" title="BaseCollection\&lt; BulletPrefab,\l Bullet \&gt;::getPrefab" alt="" coords="221,5,416,46"/>
+<area shape="rect" id="node3" href="$class_game_object.html#a728e700b1d541fbd912aa5fef11bb55b" title="GameObject::setVisible" alt="" coords="239,71,399,97"/>
+</map>

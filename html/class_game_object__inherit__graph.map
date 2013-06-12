@@ -1,0 +1,12 @@
+<map id="GameObject" name="GameObject">
+<area shape="rect" id="node2" href="$class_game_object___movable.html" title="GameObject_Movable" alt="" coords="5,80,155,107"/>
+<area shape="rect" id="node7" href="$class_game_object___with_collider.html" title="GameObject_WithCollider" alt="" coords="179,80,351,107"/>
+<area shape="rect" id="node3" href="$class_bullet.html" title="Bullet" alt="" coords="118,155,172,181"/>
+<area shape="rect" id="node4" href="$class_ship.html" title="Ship" alt="" coords="149,229,197,256"/>
+<area shape="rect" id="node5" href="$class_enemy_object.html" title="EnemyObject" alt="" coords="71,304,172,331"/>
+<area shape="rect" id="node6" href="$class_player.html" title="Player" alt="" coords="196,304,255,331"/>
+<area shape="rect" id="node8" href="$class_effect_object.html" title="EffectObject" alt="" coords="197,155,291,181"/>
+<area shape="rect" id="node9" href="$class_game_object___with_health.html" title="GameObject_WithHealth" alt="" coords="315,155,481,181"/>
+<area shape="rect" id="node10" href="$class_static_object.html" title="StaticObject" alt="" coords="351,229,445,256"/>
+<area shape="rect" id="node11" href="$class_core.html" title="Core" alt="" coords="374,304,423,331"/>
+</map>

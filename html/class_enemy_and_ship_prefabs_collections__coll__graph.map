@@ -1,0 +1,4 @@
+<map id="EnemyAndShipPrefabsCollections" name="EnemyAndShipPrefabsCollections">
+<area shape="rect" id="node2" href="$class_base_collection.html" title="BaseCollection\&lt; ShipPrefab,\l EnemyObject \&gt;" alt="" coords="99,97,287,138"/>
+<area shape="rect" id="node3" href="$class_game_collection.html" title="GameCollection\&lt; EnemyObject \&gt;" alt="" coords="5,5,221,32"/>
+</map>

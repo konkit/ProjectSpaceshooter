@@ -1,0 +1,4 @@
+<map id="HealthComponent::decreaseHealth" name="HealthComponent::decreaseHealth">
+<area shape="rect" id="node2" href="$class_game_object___with_health.html#aad208a9bbdee05ca4ea0b0a261f5f415" title="GameObject_WithHealth\l::receiveDamage" alt="" coords="241,5,407,46"/>
+<area shape="rect" id="node3" href="$class_ship.html#a55db40e89d2025ff1cb2d1b3d45f5a47" title="Ship::receiveDamage" alt="" coords="456,12,600,39"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="Player::resetScore" name="Player::resetScore">
+<area shape="rect" id="node2" href="$class_game_over.html#a327589cce2b6f3a5241b6c739d469b6d" title="GameOver::nextState" alt="" coords="184,5,331,32"/>
+<area shape="rect" id="node3" href="$class_game_over.html#a64d52330d484e1dc112c95ae67778453" title="GameOver::update" alt="" coords="379,5,509,32"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="Ship::setShip" name="Ship::setShip">
+<area shape="rect" id="node2" href="$class_game_object.html#a2cf2f5742da04c113f7f47676379df06" title="GameObject::setMesh" alt="" coords="187,5,341,32"/>
+<area shape="rect" id="node3" href="$class_game_object___with_health.html#aab3d9a96ea3b4cf3d98104f67e348c22" title="GameObject_WithHealth\l::setHealthAndColliderFromPrefab" alt="" coords="155,57,373,98"/>
+<area shape="rect" id="node5" href="$class_game_object___movable.html#a9a36cb53bd80df063e428aecb240c9d0" title="GameObject_Movable\l::setPhysicsFromPrefab" alt="" coords="183,122,345,163"/>
+<area shape="rect" id="node4" href="$class_health_component.html#a264f6ff6612293bb379644e2bd10aee7" title="HealthComponent::setHealth\lFromPrefab" alt="" coords="423,57,611,98"/>
+<area shape="rect" id="node6" href="$class_physics_component.html#a99165c96202bac41d50efa5bf0c6e6e7" title="PhysicsComponent::setFrom\lPrefab" alt="" coords="422,122,613,163"/>
+</map>

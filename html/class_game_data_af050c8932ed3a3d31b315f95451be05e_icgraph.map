@@ -1,0 +1,7 @@
+<map id="GameData::getBullets" name="GameData::getBullets">
+<area shape="rect" id="node2" href="$class_physics_system.html#afc117111b25705a5f077b3cd20455696" title="PhysicsSystem::update" alt="" coords="441,5,602,32"/>
+<area shape="rect" id="node5" href="$class_object_state_update_system.html#af48b8c115e30f3fb27b3f804880f0db8" title="ObjectStateUpdateSystem\l::updateObjectWithTTL" alt="" coords="206,57,383,98"/>
+<area shape="rect" id="node3" href="$class_game_over.html#a64d52330d484e1dc112c95ae67778453" title="GameOver::update" alt="" coords="659,8,789,35"/>
+<area shape="rect" id="node4" href="$class_play_state.html#acf33f9330f484b8c3cbb621b68c1893b" title="PlayState::update" alt="" coords="661,60,787,87"/>
+<area shape="rect" id="node6" href="$class_object_state_update_system.html#a7d8a65d69420019061a71e928fbe52ee" title="ObjectStateUpdateSystem\l::update" alt="" coords="433,57,610,98"/>
+</map>

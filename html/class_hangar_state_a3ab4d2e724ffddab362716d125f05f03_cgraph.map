@@ -1,0 +1,22 @@
+<map id="HangarState::update" name="HangarState::update">
+<area shape="rect" id="node2" href="$class_g_u_i_system.html#a2ba02837f249191059f56b81e7a9effe" title="GUISystem::display" alt="" coords="195,155,333,181"/>
+<area shape="rect" id="node3" href="$class_play_g_u_i.html#a516a7b9ca1dc51550e63f39fb84a6875" title="PlayGUI::display" alt="" coords="399,209,518,236"/>
+<area shape="rect" id="node20" href="$class_abstract_instance_g_u_i.html#a7a74e8c468d355fced57d664e20e9dfe" title="AbstractInstanceGUI\l::hide" alt="" coords="387,261,530,302"/>
+<area shape="rect" id="node19" href="$class_abstract_instance_g_u_i.html#a1223d11086b5acaf39f9011f18d45f70" title="AbstractInstanceGUI\l::display" alt="" coords="617,5,759,46"/>
+<area shape="rect" id="node21" href="$class_game_over_g_u_i.html#a11f1e247271c7010d71193ba46657b0e" title="GameOverGUI::display" alt="" coords="381,96,536,123"/>
+<area shape="rect" id="node4" href="$class_radar.html#a716472ba790acf57c1e4b62155acdf10" title="Radar::display" alt="" coords="635,289,741,316"/>
+<area shape="rect" id="node10" href="$class_game_data.html#a20d4db44a3e2b3e8b4000c3b08be8921" title="GameData::getPlayer" alt="" coords="615,71,761,97"/>
+<area shape="rect" id="node11" href="$class_physics_component.html#a1179b14fae0a79c9cdd99282154cb707" title="PhysicsComponent::getCurrent\lVelocityMagnitude" alt="" coords="587,391,789,433"/>
+<area shape="rect" id="node12" href="$class_physics_component.html#acc3c028574e79e261fe0956191dacb4b" title="PhysicsComponent::getTarget\lVelocityValue" alt="" coords="589,457,787,498"/>
+<area shape="rect" id="node13" href="$class_game_object___with_health.html#af4ac971a774dcfe1958cc8677db1fd9a" title="GameObject_WithHealth\l::getHealthValue" alt="" coords="605,522,771,563"/>
+<area shape="rect" id="node15" href="$class_game_object___with_health.html#a692a728cae7cec873f505de6105f9ae3" title="GameObject_WithHealth\l::getMaxHealthValue" alt="" coords="605,173,771,214"/>
+<area shape="rect" id="node9" href="$class_game_data.html#af18d34662a92415d86130e2dce80b031" title="GameData::getCore" alt="" coords="878,391,1015,417"/>
+<area shape="rect" id="node17" href="$class_player.html#a97e5447778ae6c384eedc532dcd8431d" title="Player::getScore" alt="" coords="629,121,747,148"/>
+<area shape="rect" id="node18" href="$class_message_console.html#aa566a46e6a5e9092db6ad2228eac23ef" title="MessageConsole::getMessages" alt="" coords="584,239,792,265"/>
+<area shape="rect" id="node5" href="$class_ogre2d_manager.html#a7509ca589334721687a3ef8d1cd901a9" title="Buffers a sprite to be sent to the screen at render time." alt="" coords="851,289,1042,316"/>
+<area shape="rect" id="node6" href="$class_base_collection.html#af9ebbd03b2fbac988a3d6d28a695f5f6" title="BaseCollection::getIterator" alt="" coords="859,340,1034,367"/>
+<area shape="rect" id="node7" href="$class_game_collection_iterator.html#acc40b6fd7f123d428d0c41ac23e2da0e" title="GameCollectionIterator\l::hasNext" alt="" coords="869,158,1024,199"/>
+<area shape="rect" id="node8" href="$class_game_collection_iterator.html#a4a923549421dedbaf354998087ccc9af" title="GameCollectionIterator\l::getNext" alt="" coords="869,223,1024,265"/>
+<area shape="rect" id="node14" href="$class_health_component.html#af7cccf447dbe1e622a69b063944700e3" title="HealthComponent::getHealth" alt="" coords="853,529,1041,556"/>
+<area shape="rect" id="node16" href="$class_health_component.html#a39c95499a6783d6b7a48ca418a49cf9b" title="HealthComponent::getMaxHealth" alt="" coords="840,107,1053,133"/>
+</map>

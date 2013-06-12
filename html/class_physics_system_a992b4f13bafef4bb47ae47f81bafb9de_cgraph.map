@@ -1,0 +1,9 @@
+<map id="PhysicsSystem::updateOneObject" name="PhysicsSystem::updateOneObject">
+<area shape="rect" id="node2" href="$class_physics_component.html#aa3c87a2fc940a26b14bcf5cef5ce9e70" title="PhysicsComponent::update\lVelocity" alt="" coords="251,5,434,46"/>
+<area shape="rect" id="node3" href="$class_game_object.html#aea633e11afb98d0b56e34deb8198cbcf" title="GameObject::getForwardVector" alt="" coords="240,71,445,97"/>
+<area shape="rect" id="node4" href="$class_physics_component.html#afeaadda2efceb4ca074e24e0cefec19d" title="PhysicsComponent::update\lRotation" alt="" coords="251,122,434,163"/>
+<area shape="rect" id="node5" href="$class_game_object___movable.html#a0b4de65c4e13db36ec1fde4a7c8c41c0" title="GameObject_Movable\l::rotate" alt="" coords="268,187,417,229"/>
+<area shape="rect" id="node6" href="$class_physics_component.html#a0ae214404f13eaa08ac3b3992f6e322a" title="PhysicsComponent::getRot\lVelocityValue" alt="" coords="252,253,433,294"/>
+<area shape="rect" id="node7" href="$class_game_object___movable.html#ae0d50ae843d5c7b88a66c164c662ae99" title="GameObject_Movable\l::move" alt="" coords="268,318,417,359"/>
+<area shape="rect" id="node8" href="$class_physics_component.html#a3405d475be56cbb0ce65043baaf15956" title="PhysicsComponent::getCurrent\lVelocity" alt="" coords="241,383,444,425"/>
+</map>

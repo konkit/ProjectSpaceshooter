@@ -1,0 +1,7 @@
+<map id="BulletCollection::instantiate" name="BulletCollection::instantiate">
+<area shape="rect" id="node2" href="$class_game_object.html#a728e700b1d541fbd912aa5fef11bb55b" title="GameObject::setVisible" alt="" coords="252,5,412,32"/>
+<area shape="rect" id="node3" href="$class_base_collection.html#a984b0e4042a8565bbfa72b5c334c3303" title="BaseCollection\&lt; BulletPrefab,\l Bullet \&gt;::getPrefab" alt="" coords="235,57,429,98"/>
+<area shape="rect" id="node4" href="$class_bullet.html#aca48cc4207babfbd633131a13a65342b" title="Bullet::resetBullet" alt="" coords="269,123,395,149"/>
+<area shape="rect" id="node6" href="$class_game_collection.html#aff7bc13a1d76d3b763f0bf72665988f3" title="GameCollection::addObject" alt="" coords="241,173,423,200"/>
+<area shape="rect" id="node5" href="$class_time_to_live_component.html#a7c6a5df997d852b2ff0a4cd8fee44c73" title="TimeToLiveComponent\l::setTimeToLive" alt="" coords="477,115,629,157"/>
+</map>

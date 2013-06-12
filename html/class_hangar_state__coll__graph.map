@@ -1,0 +1,4 @@
+<map id="HangarState" name="HangarState">
+<area shape="rect" id="node2" href="$class_game_state.html" title="GameState" alt="" coords="8,96,96,123"/>
+<area shape="rect" id="node3" href="$class_game_data.html" title="GameData" alt="" coords="10,5,93,32"/>
+</map>

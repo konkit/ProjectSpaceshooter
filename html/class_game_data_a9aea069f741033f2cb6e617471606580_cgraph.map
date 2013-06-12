@@ -1,0 +1,5 @@
+<map id="GameData::createCore" name="GameData::createCore">
+<area shape="rect" id="node2" href="$class_base_collection.html#a984b0e4042a8565bbfa72b5c334c3303" title="BaseCollection::getPrefab" alt="" coords="230,5,402,32"/>
+<area shape="rect" id="node3" href="$class_game_data.html#a32edc3fe64e100c1eff915a766605911" title="GameData::getSceneManagerFor" alt="" coords="208,56,424,83"/>
+<area shape="rect" id="node4" href="$class_base_collection.html#a986bb9ae4600f2fb24eb65d223c90787" title="BaseCollection::addObject\lToCollection" alt="" coords="228,107,404,149"/>
+</map>

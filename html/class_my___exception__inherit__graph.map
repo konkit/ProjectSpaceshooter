@@ -1,0 +1,7 @@
+<map id="My_Exception" name="My_Exception">
+<area shape="rect" id="node3" href="$class_core_null_exception.html" title="CoreNullException" alt="" coords="319,5,449,32"/>
+<area shape="rect" id="node4" href="$class_enemy_null_exception.html" title="EnemyNullException" alt="" coords="313,56,455,83"/>
+<area shape="rect" id="node5" href="$class_iterator_exception.html" title="IteratorException" alt="" coords="324,107,444,133"/>
+<area shape="rect" id="node6" href="$class_parser_exception.html" title="ParserException" alt="" coords="325,157,443,184"/>
+<area shape="rect" id="node7" href="$class_prefab_exception.html" title="PrefabException" alt="" coords="325,208,443,235"/>
+</map>

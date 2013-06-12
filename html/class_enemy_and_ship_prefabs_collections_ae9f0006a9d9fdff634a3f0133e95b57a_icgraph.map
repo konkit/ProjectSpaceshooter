@@ -1,0 +1,4 @@
+<map id="EnemyAndShipPrefabsCollections::getWeaponPrefab" name="EnemyAndShipPrefabsCollections::getWeaponPrefab">
+<area shape="rect" id="node2" href="$class_game_data.html#a7eef851803a954dc0f755586a65535db" title="GameData::createPlayerFrom\lPrefab" alt="" coords="275,5,469,46"/>
+<area shape="rect" id="node3" href="$class_game_data.html#a3aa2f6bf6792c1ae757e9063d527f8c1" title="GameData::getWeaponPrefab" alt="" coords="275,71,469,97"/>
+</map>

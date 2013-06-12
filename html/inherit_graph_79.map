@@ -1,0 +1,11 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$class_prefab.html" title="Prefab" alt="" coords="5,81,64,108"/>
+<area shape="rect" id="node2" href="$class_prefab_with_mesh.html" title="PrefabWithMesh" alt="" coords="113,56,231,83"/>
+<area shape="rect" id="node9" href="$class_weapon_prefab.html" title="WeaponPrefab" alt="" coords="119,107,225,133"/>
+<area shape="rect" id="node3" href="$class_movable_prefab.html" title="MovablePrefab" alt="" coords="292,31,399,57"/>
+<area shape="rect" id="node6" href="$class_prefab_with_collider.html" title="PrefabWithCollider" alt="" coords="281,81,410,108"/>
+<area shape="rect" id="node4" href="$class_bullet_prefab.html" title="BulletPrefab" alt="" coords="459,5,551,32"/>
+<area shape="rect" id="node5" href="$class_ship_prefab.html" title="ShipPrefab" alt="" coords="463,56,548,83"/>
+<area shape="rect" id="node7" href="$class_effect_prefab.html" title="EffectPrefab" alt="" coords="459,107,551,133"/>
+<area shape="rect" id="node8" href="$class_static_prefab.html" title="StaticPrefab" alt="" coords="459,157,552,184"/>
+</map>

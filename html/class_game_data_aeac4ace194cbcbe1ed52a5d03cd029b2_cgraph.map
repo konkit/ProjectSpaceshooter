@@ -1,0 +1,6 @@
+<map id="GameData::instantiateEnemy" name="GameData::instantiateEnemy">
+<area shape="rect" id="node2" href="$class_enemy_and_ship_prefabs_collections.html#ac3423b5f25c0dedaf5771fa16e6209aa" title="EnemyAndShipPrefabsCollections\l::instantiateEnemy" alt="" coords="249,34,469,75"/>
+<area shape="rect" id="node5" href="$class_game_data.html#a32edc3fe64e100c1eff915a766605911" title="GameData::getSceneManagerFor" alt="" coords="251,100,467,127"/>
+<area shape="rect" id="node3" href="$class_base_collection.html#a984b0e4042a8565bbfa72b5c334c3303" title="BaseCollection\&lt; ShipPrefab,\l EnemyObject \&gt;::getPrefab" alt="" coords="518,5,706,46"/>
+<area shape="rect" id="node4" href="$class_game_collection.html#aff7bc13a1d76d3b763f0bf72665988f3" title="GameCollection::addObject" alt="" coords="521,71,703,97"/>
+</map>

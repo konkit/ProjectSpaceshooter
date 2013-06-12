@@ -1,0 +1,7 @@
+<map id="EffectPrefab" name="EffectPrefab">
+<area shape="rect" id="node2" href="$class_prefab_with_collider.html" title="PrefabWithCollider" alt="" coords="203,277,332,304"/>
+<area shape="rect" id="node3" href="$class_prefab_with_mesh.html" title="PrefabWithMesh" alt="" coords="122,187,240,213"/>
+<area shape="rect" id="node4" href="$class_prefab.html" title="Prefab" alt="" coords="5,96,64,123"/>
+<area shape="rect" id="node7" href="$structrotation__struct.html" title="rotation_struct" alt="" coords="309,96,413,123"/>
+<area shape="rect" id="node8" href="$class_collider.html" title="Collider" alt="" coords="265,187,329,213"/>
+</map>

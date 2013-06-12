@@ -1,0 +1,5 @@
+<map id="AbstractInstanceGUI" name="AbstractInstanceGUI">
+<area shape="rect" id="node2" href="$class_game_over_g_u_i.html" title="GameOverGUI" alt="" coords="5,80,109,107"/>
+<area shape="rect" id="node3" href="$class_hangar_g_u_i.html" title="HangarGUI" alt="" coords="135,80,220,107"/>
+<area shape="rect" id="node4" href="$class_play_g_u_i.html" title="PlayGUI" alt="" coords="245,80,315,107"/>
+</map>

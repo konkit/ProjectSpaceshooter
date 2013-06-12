@@ -1,0 +1,6 @@
+<map id="PhysicsComponent::setFromPrefab" name="PhysicsComponent::setFromPrefab">
+<area shape="rect" id="node2" href="$class_game_object___movable.html#a9a36cb53bd80df063e428aecb240c9d0" title="GameObject_Movable\l::setPhysicsFromPrefab" alt="" coords="259,5,421,46"/>
+<area shape="rect" id="node5" href="$class_enemy_object.html#a17db74640fac28172c184189b2e80da7" title="EnemyObject::EnemyObject" alt="" coords="246,71,434,97"/>
+<area shape="rect" id="node3" href="$class_ship.html#a427a7750a9db4fd36dbde30b5de822b0" title="Ship::setShip" alt="" coords="483,12,583,39"/>
+<area shape="rect" id="node4" href="$class_player.html#ab6c613ea31bfa8a517ba1a5e46c5310a" title="Player::setShip" alt="" coords="633,12,743,39"/>
+</map>

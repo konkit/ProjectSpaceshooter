@@ -1,0 +1,4 @@
+<map id="BulletCollection" name="BulletCollection">
+<area shape="rect" id="node2" href="$class_base_collection.html" title="BaseCollection\&lt; BulletPrefab,\l Bullet \&gt;" alt="" coords="61,97,256,138"/>
+<area shape="rect" id="node3" href="$class_game_collection.html" title="GameCollection\&lt; Bullet \&gt;" alt="" coords="5,5,176,32"/>
+</map>

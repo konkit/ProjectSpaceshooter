@@ -1,0 +1,7 @@
+<map id="GameObject_Movable" name="GameObject_Movable">
+<area shape="rect" id="node3" href="$class_bullet.html" title="Bullet" alt="" coords="15,155,69,181"/>
+<area shape="rect" id="node4" href="$class_ship.html" title="Ship" alt="" coords="95,155,143,181"/>
+<area shape="rect" id="node2" href="$class_game_object.html" title="GameObject" alt="" coords="33,5,127,32"/>
+<area shape="rect" id="node5" href="$class_enemy_object.html" title="EnemyObject" alt="" coords="16,229,117,256"/>
+<area shape="rect" id="node6" href="$class_player.html" title="Player" alt="" coords="141,229,200,256"/>
+</map>
